@@ -50,15 +50,21 @@ html[dir="rtl"] .eye-icon {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px -4px 4px -1px;
 }
 .custom-select-align-end {
-  appearance: none; /* Remove default arrow */
+  appearance: none; 
   -webkit-appearance: none;
   -moz-appearance: none;
   background: url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>") no-repeat right 0.75rem center;
   background-color: #fff;
   background-size: 2em;
-  padding-right: 2rem; /* Space for the custom arrow */
-  color:#77734E;
+  padding-inline-end: 2rem;
+  color: #77734E;
 }
+
+/* For RTL languages */
+:dir(rtl) .custom-select-align-end {
+  background-position: left 0.75rem center;
+}
+
 .login-forms input[type=email], .login-forms input[type=password] {
   height: 50px;
   margin-bottom: 12px!important;
