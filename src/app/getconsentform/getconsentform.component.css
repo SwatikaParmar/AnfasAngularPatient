@@ -1,0 +1,48 @@
+
+.back-btn-left-circle {
+  margin: 0px 10px 0px 0px;
+}
+.back-btn-left-circle {
+  background:linear-gradient(180deg, rgba(255, 239, 177, 1) 0%, rgba(254, 195, 79, 1) 100%);
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 0px 21px 10px;
+}
+.card-shipper .black-home {
+  color: #726641;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.card-shipper {
+  display: flex;
+  align-items: center;
+}
+.input-form {
+  margin: 0px 0px 20px 0px;
+  background-color: white;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  padding: 10px 20px 20px 20px;
+  border-radius: 20px;
+}
+.content-body {
+padding-top: 1.5rem;
+scrollbar-width: thin;
+}
+.btn.gold-btn {
+  background-color: #fbcb6bfc; 
+  color: #000; 
+  border-radius: 5px; 
+  cursor: pointer;
+  transition: background-color 0.3s ease; 
+}
+.color{
+  background-color:  #fee19a !important;
+}
+

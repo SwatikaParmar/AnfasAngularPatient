@@ -1,0 +1,101 @@
+<section>
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="add-update-book">
+                <div class="row justify-content-center align-items-center g-2">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                        <form class="input-form" [formGroup]="bannerForm" (ngSubmit)="banner()">
+                            <div class="back-btn-left-circle">
+                                <i class="fi fi-rr-arrow-small-left" (click)="backClicked()"
+                                    style="color:black; padding-top: 7px;"></i>
+                            </div>
+                            <div class="row justify-content-start align-items-start">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-2">
+                                    <div class="mb-3">
+                                        <!-- <h4>Book Form</h4> -->
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                                    <div class="mb-3">
+                                        <div class="upload-image">
+                                            <div class="upload_file text-center">
+                                                <div class="image-upload">
+
+                                                    <div class="image-preview"
+                                                        [style.background-image]="'url(' + previewImage + ')'"
+                                                        (click)="triggerFileInput()">
+                                                        <img *ngIf="imageUrl; else uploadPlaceholder" [src]="imageUrl"
+                                                            alt="Preview" class="preview-img" />
+                                                        <ng-template #uploadPlaceholder>
+                                                            <label class="upload-label">
+                                                                <i *ngIf="!isImageUploaded" class="bi bi-plus"></i>
+                                                                <span *ngIf="!isImageUploaded">{{ 'UPLOAD' | translate}}</span>
+                                                            </label>
+                                                        </ng-template>
+                                                    
+                                                </div>
+                                                    <input type="file" #fileInput (change)="onFileSelected($event)"
+                                                        accept="image/*" style="display: none;" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                                    <div class="mb-3">
+                                        <label for="bannerTypeSelect" class="form-label">{{ 'BANNER_TYPE' | translate}}</label>
+                                        <select
+                                          class="form-control"
+                                          id="bannerTypeSelect"
+                                          formControlName="BannerType"
+                                          [ngClass]="{ 'is-invalid': submitted && f['BannerType'].errors }"
+                                        >
+                                          <option value="" disabled selected>{{ 'SELECT_BANNER_TYPE' | translate}}</option>
+                                          <option value="PatientDashboard">{{ 'PATIENT_DASHBOARD' | translate}}</option>
+                                          <option value="DoctorDashboard">{{ 'DOCTOR_DASHBOARD' | translate}}</option>
+                                        </select>
+                                      
+                                        <div *ngIf="submitted && f['BannerType'].errors" class="help-block" style="color: red; font-size: 13px;">
+                                          <div *ngIf="f['BannerType'].errors['required']">{{ 'BANNER_TYPE_IS_REQUIRED' | translate}}</div>
+                                        </div>
+                                      </div>
+                                      
+                                </div>
+                                <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Banner Description</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1"
+                                placeholder="Banner Description " formControlName="BannerDescription">
+
+                            
+
+                        </div>
+                    </div> -->
+                                <!-- <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Banner Title</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1"
+                                placeholder=" Banner Title" formControlName="BannerTitle">
+
+                        </div>
+                    </div> -->
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-2">
+                                    <button class="cssbuttons-io-button">
+                                        <svg height="24" width="24" viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z" fill="currentColor">
+                                            </path>
+                                        </svg>
+                                        <span>{{ 'SUBMIT' | translate}}</span>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

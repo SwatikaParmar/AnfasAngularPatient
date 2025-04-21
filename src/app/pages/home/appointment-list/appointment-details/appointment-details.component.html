@@ -1,0 +1,67 @@
+<div class="content-body">
+  <div class="container-fluid">
+  <img style="margin-top: 10px;" (click)="backClicked()" src="/assets/plugins/images/backimage1.png"
+    class="backimage-butn" />
+  <div class="user-list-images">
+    <h6><b>Appointment Details</b></h6>
+  </div>
+
+  <div class="user-list-images">
+    <div class="row">
+      <div class="col-md-6 ">
+        <ul>
+          <li><b>Appointment Date:&nbsp; </b> {{appointmentDetail?.appointmentDate}}</li>
+          <li><b>Start Time: &nbsp;</b> {{appointmentDetail?.slotFrom}}</li>
+          <li><b>End Time: &nbsp;</b>{{appointmentDetail?.slotTo}}</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <ul>
+          <li></li>                            
+          <li><b>Status:&nbsp; </b>{{appointmentDetail.details}}</li>
+          <li><b>Appointment Fee:&nbsp; </b> {{appointmentDetail?.fee}}</li>
+          <li></li>                                                          
+        </ul> 
+      </div>
+    </div>
+  </div>
+  <div class="user-list-images"> 
+    <div class="row"> 
+      <div class="col-md-6">
+        <ul>
+          <li><b>Doctor Details</b></li>
+          <li><b>Full Name:&nbsp;</b> {{appointmentDetail?.doctorFirstName}} {{appointmentDetail.doctorLastName}}</li>
+          <li><b>Email Address: &nbsp;</b> {{appointmentDetail?.doctoremail}}</li>
+        </ul>                                        
+      </div>
+      <div class="col-md-6">
+        <ul>
+          <li style="visibility: hidden;">.</li>
+          <li><b>Phone Number:&nbsp;</b> {{appointmentDetail?.doctorPhoneNumber}}</li>
+          <li></li>
+        </ul>                                                                    
+      </div>
+    </div>
+  </div>
+
+  <div class="user-list-images">
+    <div class="row">
+      <div class="col-md-6">
+        <ul>
+          <li><b>Patient Details</b></li>
+          <li><b>Full Name:&nbsp;</b> {{appointmentDetail?.patientFirstName}} {{appointmentDetail?.patientLastName}}
+          </li>
+          <li><b>Email Address:&nbsp;</b> {{appointmentDetail?.patientEmail }}</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <ul>
+          <li style="visibility: hidden;"></li>
+          <li><b>Phone Number:&nbsp;</b> {{appointmentDetail?.PhoneNumber}}</li>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

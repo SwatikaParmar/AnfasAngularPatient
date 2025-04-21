@@ -1,0 +1,53 @@
+<div class="content-body">
+  <div class="container-fluid">
+    <!-- <div class="mt-10 d-flex align-items-center">
+      <tr>
+        <td colspan="6">
+          <h4 style="background-color: #f3f3f3 !important;">{{ 'TERMS_AND_CONDITIONS' | translate }}</h4>
+        </td>
+      </tr>
+
+    </div> -->
+    <div *ngIf="currentLanguage === 'ar'" class="white-box table-box bg-white mt-30 rtl-content">
+      <section class="address-info-form">
+        <form [formGroup]="termsAndConditionForm" (ngSubmit)="submit()">
+      
+          <div>
+            <angular-editor formControlName="termsCondition" [config]="editorConfig"></angular-editor>
+          </div>
+          <div class="info-per-btn mt-20">
+            <button type="submit" class="btn gold-btn-submit">{{ 'UPDATE' | translate }}</button>
+          </div>
+        </form>
+      </section>
+    </div>
+    
+    <div *ngIf="currentLanguage !== 'ar'" class="white-box table-box bg-white mt-30 ltr-content">
+      <section class="address-info-form">
+        <form [formGroup]="termsAndConditionForm" (ngSubmit)="submit()">
+          <div>
+            <angular-editor formControlName="termsCondition" [config]="editorConfig"></angular-editor>
+          </div>
+          <div class="info-per-btn mt-20 mb-20" style="padding-bottom: 20px;">
+            <button type="submit" class="btn gold-btn-submit">{{ 'UPDATE' | translate }}</button>
+          </div>
+        </form>
+      </section>
+    </div>
+    
+    <!-- <div class="white-box table-box bg-white mt-30">
+      <section class="address-info-form">
+        <form [formGroup]="termsAndConditionForm" (ngSubmit)="submit($event)" >
+          <div>
+            <angular-editor formControlName="termsConditions" [config]="editorConfig"></angular-editor>
+          </div>
+          <div class="info-per-btn mt-20">
+            <button type="submit" class="btn gold-btn-submit" >{{ 'UPDATE' | translate }}</button>
+          </div>
+        </form>
+      </section>
+    </div> -->
+  </div>
+</div>        
+
+

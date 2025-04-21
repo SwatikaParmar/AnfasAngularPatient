@@ -1,0 +1,24 @@
+<div class="content-body">
+  <div class="container-fluid">
+    <!-- <div class="mt-10 d-flex align-items-center">
+      <tr>
+        <td colspan="6">
+          <h4 style="background-color: #f3f3f3 !important;">  {{ 'ABOUT_US' | translate }}</h4>
+        </td>
+      </tr>
+    </div> -->
+    <div class="white-box table-box bg-white mt-30">
+      <section class="address-info-form">
+        <form [formGroup]="aboutusForm" (ngSubmit)="submit($event)">
+          <div>
+            <!-- Using angular-editor for rich text editing -->
+            <angular-editor formControlName="aboutUs" [config]="editorConfig"></angular-editor>
+          </div>
+          <div class="info-per-btn mt-20" style="padding-bottom: 20px;">
+            <button type="submit" class="btn gold-btn-submit" >{{ 'UPDATE' | translate }}</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+</div>

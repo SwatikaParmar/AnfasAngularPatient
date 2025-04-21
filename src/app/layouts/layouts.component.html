@@ -1,0 +1,189 @@
+<div class="dashboard-outer">
+
+  <div class="nav-header">
+
+    <a href="index.html" class="brand-logo">
+      <img class="logo-abbr" src="assets/images/logo-dashboard.png" alt="">
+    </a>
+
+    <ul class="header-profile d-none xs-d-grid">
+      <li><a href="/" class=""><img src="assets/images/notification-i.svg" class="img-responsive"></a></li>
+      <li><a href="/" class=""><img src="assets/images/profile-i.svg" class="img-responsive"></a></li>
+      <li><a href="/" class="setting"><img src="assets/images/settings-i.svg" class="img-responsive"></a></li>
+    </ul>
+
+    <div class="nav-control">
+      <div class="toggle-menu nav-toggle">
+        <img src="assets/images/menu-i.svg">
+      </div>
+    </div>
+
+  </div>
+  <!--**********************************
+    Nav header end
+***********************************-->
+  <header class="xs-d-none">
+    <ul class="headnav mr-auto xs-d-none">
+      <li><a href="javascript:void(0)"></a></li>
+    </ul>
+    <ul class="header-profile">
+      <li><a class="setting " data-toggle="dropdown"><img src="assets/images/profile-i.svg" class="img-responsive"></a>
+        <ul class="dropdown-menu mt-10">
+          <li><a class="dropdown-item" [routerLink]="['/']">
+              {{ 'LOGOUT' | translate }}</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a class="setting " data-toggle="dropdown"><img src="assets/images/settings-i.svg" class="img-responsive"></a>
+        <ul class="dropdown-menu mt-10">
+          <li><a class="dropdown-item" [routerLink]="['/privacy-policy']">
+              {{ 'PRIVACY_POLICY' | translate }}</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/terms-and-conditions']">
+              {{ 'TERMS_AND_CONDITIONS' | translate }}</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/about-us']">
+              {{ 'ABOUT_US' | translate }}</a></li>
+        </ul>
+      </li>
+      <li class="language-dropdown"
+        [ngClass]="{'english-selected': currentLanguage === 'en', 'arabic-selected': currentLanguage === 'ar'}">
+        <a href="javascript:void(0)" class="language-icon" id="languageDropdown" (click)="toggleLanguageMenu()">
+          <img src="assets/images/language-icon.svg" class="img-responsive">
+        </a>
+        <ul class="dropdown-menu1 language-menu1" [ngClass]="{'show': isLanguageMenuOpen}">
+          <li>
+            <a class="down" href="javascript:void(0)" (click)="switchLanguage('en')" [class.selected]="currentLanguage === 'en'"> {{
+              'ENGLISH' | translate }}</a>
+          </li>
+          <li>
+            <a class="down" href="javascript:void(0)" (click)="switchLanguage('ar')" [class.selected]="currentLanguage === 'ar'"> {{
+              'ARABIC' | translate }}</a>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+  </header>
+
+  <!-- ---- -->
+  <section>
+    <aside class="side-bar">
+      <a href="index.html" class="aside-logo text-center">
+        <img class="logo-abbr" src="assets/images/logo-dashboard.png" style="max-width: 120px;">
+      </a>
+
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <div class="menu">
+            <div class="item one">
+              <a [routerLink]="['/dashboard']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><svg
+                  xmlns=" http://www.w3.org/2000/svg "
+                  viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.2 by @fontawesome -  https://fontawesome.com  License -  https://fontawesome.com/license/free  Copyright 2024 Fonticons, Inc.-->
+                  <path
+                    d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z">
+                  </path>
+                </svg> {{ 'DASHBOARD' | translate }}</a>
+            </div>
+
+            <!-- <div class="item shw one"routerLinkActive="active">
+              <a class="sub-btn"[routerLink]="['/appointment-list']"><svg xmlns=" http://www.w3.org/2000/svg "
+                  viewBox="0 0 448 512">
+                  <path
+                    d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192h80v56H48V192zm0 104h80v64H48V296zm128 0h96v64H176V296zm144 0h80v64H320V296zm80-48H320V192h80v56zm0 160v40c0 8.8-7.2 16-16 16H320V408h80zm-128 0v56H176V408h96zm-144 0v56H64c-8.8 0-16-7.2-16-16V408h80zM272 248H176V192h96v56z">
+                  </path>
+                </svg> {{ 'APPOINTMENTS' | translate }}
+              </a>
+
+          
+            </div> -->
+
+
+
+
+            <div class="item one">
+              <a routerLinkActive="active" [routerLink]="['/doctors-list']" class="nav-link"><svg
+                  xmlns=" http://www.w3.org/2000/svg " viewBox="0 0 448 512">
+                  <path
+                    d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-96 55.2C54 332.9 0 401.3 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7c0-81-54-149.4-128-171.1V362c27.6 7.1 48 32.2 48 62v40c0 8.8-7.2 16-16 16H336c-8.8 0-16-7.2-16-16s7.2-16 16-16V424c0-17.7-14.3-32-32-32s-32 14.3-32 32v24c8.8 0 16 7.2 16 16s-7.2 16-16 16H256c-8.8 0-16-7.2-16-16V424c0-29.8 20.4-54.9 48-62V304.9c-6-.6-12.1-.9-18.3-.9H178.3c-6.2 0-12.3 .3-18.3 .9v65.4c23.1 6.9 40 28.3 40 53.7c0 30.9-25.1 56-56 56s-56-25.1-56-56c0-25.4 16.9-46.8 40-53.7V311.2zM144 448a24 24 0 1 0 0-48 24 24 0 1 0 0 48z">
+                  </path>
+                </svg> {{ 'DOCTORS' | translate }}</a>
+            </div>
+
+            <div class="item one">
+              <a routerLinkActive="active" [routerLink]="['/patients-list']" class="nav-link"><svg
+                  xmlns=" http://www.w3.org/2000/svg " viewBox="0 0 640 512">
+                  <path
+                    d="M483.2 9.6L524 64h92c13.3 0 24 10.7 24 24s-10.7 24-24 24H512c-7.6 0-14.7-3.6-19.2-9.6L468.7 70.3l-47 99.9c-3.7 7.8-11.3 13.1-19.9 13.7s-16.9-3.4-21.7-10.6L339.2 112H216c-13.3 0-24-10.7-24-24s10.7-24 24-24H352c8 0 15.5 4 20 10.7l24.4 36.6 45.9-97.5C445.9 6.2 453.2 1 461.6 .1s16.6 2.7 21.6 9.5zM320 160h12.7l20.7 31.1c11.2 16.8 30.6 26.3 50.7 24.8s37.9-13.7 46.5-32L461.9 160H544c53 0 96 43 96 96V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V448H352 320 64v32c0 17.7-14.3 32-32 32s-32-14.3-32-32V96C0 78.3 14.3 64 32 64s32 14.3 32 32V352H288V192c0-17.7 14.3-32 32-32zm-144 0a80 80 0 1 1 0 160 80 80 0 1 1 0-160z">
+                  </path>
+                </svg> {{ 'PATIENTS' | translate }}</a>
+            </div>
+
+
+
+            <!-- <div class="item one">
+              <a routerLinkActive="active" [routerLink]="['/patients-lists']"  class="nav-link"><svg xmlns=" http://www.w3.org/2000/svg " viewBox="0 0 640 512">
+                  <path
+                    d="M483.2 9.6L524 64h92c13.3 0 24 10.7 24 24s-10.7 24-24 24H512c-7.6 0-14.7-3.6-19.2-9.6L468.7 70.3l-47 99.9c-3.7 7.8-11.3 13.1-19.9 13.7s-16.9-3.4-21.7-10.6L339.2 112H216c-13.3 0-24-10.7-24-24s10.7-24 24-24H352c8 0 15.5 4 20 10.7l24.4 36.6 45.9-97.5C445.9 6.2 453.2 1 461.6 .1s16.6 2.7 21.6 9.5zM320 160h12.7l20.7 31.1c11.2 16.8 30.6 26.3 50.7 24.8s37.9-13.7 46.5-32L461.9 160H544c53 0 96 43 96 96V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V448H352 320 64v32c0 17.7-14.3 32-32 32s-32-14.3-32-32V96C0 78.3 14.3 64 32 64s32 14.3 32 32V352H288V192c0-17.7 14.3-32 32-32zm-144 0a80 80 0 1 1 0 160 80 80 0 1 1 0-160z">
+                  </path>
+                </svg> {{ 'Reports' | translate }}</a>
+            </div> -->
+            <div class="item one">
+              <a routerLinkActive="active" [routerLink]="['/banner-list']" class="nav-link">
+                <i class="fas fa-flag"></i> {{ 'BANNERS' | translate }}
+              </a>
+            </div>
+
+            <div class="item one">
+              <a routerLinkActive="active" [routerLink]="['/complaint-list']" class="nav-link">
+                  <i class="fas fa-exclamation-triangle"></i> {{ 'COMPLAINT' | translate }}
+              </a>
+          </div>
+
+          <div class="item one">
+            <a routerLinkActive="active" [routerLink]="['/feedback-list']" class="nav-link">
+                <i class="fas fa-comment"></i> {{ 'FEEDBACK' | translate }}
+            </a>
+        </div>
+
+        <div class="item one">
+          <a routerLinkActive="active" [routerLink]="['/satisfaction-survey']" class="nav-link">
+            <i class="fas fa-smile"></i> {{ 'SATISFACTION_SURVEY' | translate }}
+          </a>
+        </div>
+
+
+            <div class="item one" routerLinkActive="active">
+              <a [routerLink]="['/privacy-policy']">
+                <i class="fas fa-user-shield"></i> {{ 'PRIVACY_POLICY' | translate }}
+              </a>
+            </div>
+
+
+            <div class="item one" routerLinkActive="active">
+              <a [routerLink]="['/terms-and-conditions']">
+                <i class="fas fa-file-contract"></i> {{ 'TERMS_AND_CONDITIONS' | translate }}
+              </a>
+            </div>
+
+
+
+            <div class="item one" routerLinkActive="active">
+              <a [routerLink]="['/about-us']">
+                <i class="fas fa-users"></i> {{ 'ABOUT_US' | translate }}
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+
+
+
+      </div>
+
+
+    </aside>
+
+
+    <router-outlet></router-outlet>
+  </section>
+</div>

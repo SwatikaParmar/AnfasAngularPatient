@@ -1,0 +1,196 @@
+<section>
+  <div class="content-body">
+    <div class="container-fluid">
+      <div class="input-form">
+        <div class="row justify-content-start align-items-start g-0">
+          <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 col-xxl-9">
+            <div class="card-shipper">
+              <div class="back-btn-left-circle mt-1">
+                <i class="fi fi-rr-arrow-small-left" (click)="backClicked()"
+                  style="color:#726641; padding-top: 7px;"></i>
+              </div>
+              <div>
+                <p>
+                  <span class="black-home">{{ 'PERSONAL_INFORMATION' | translate}}</span>
+                </p>
+              </div>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                 {{ 'DOCTOR_NAME' | translate}}
+                </p>
+                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                </p>
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  <label class="address-texts">{{doctorDetails?.name || 'N/A'}}
+                    <span style="margin-left: 8px;"> {{doctorDetails?.lastName || 'N/A'}}</span></label>
+                </p>
+              </li>
+              <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  {{ 'DOCTOR_CODE' | translate}}
+                </p>
+                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                </p>
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  <label class="address-texts">{{doctorDetails?.code || 'N/A'}}</label>
+                </p>
+              </li>
+              <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  {{ 'GENDER' | translate}}
+                </p>
+                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                </p>
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  <label class="address-texts">{{doctorDetails?.gender?.valueDescription || 'N/A'}}</label>
+                </p>
+              </li>
+              <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  {{ 'DEFAULT_DEPARTMENT' | translate}}
+                </p>
+                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                </p>
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  <label class="address-texts">{{doctorDetails?.defaultDepartment?.name || 'N/A'}}</label>
+                </p>
+              </li>
+              <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  {{ 'DEFAULT_ROLE' | translate}}
+                </p>
+                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                </p>
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  <label class="address-texts">{{doctorDetails?.defaultRole?.name || 'N/A'}}</label>
+                </p>
+              </li>
+              <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  {{ 'DEFAULT_ORGANISATION' | translate}}
+                </p>
+                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                </p>
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  <label class="address-texts">{{doctorDetails?.defaultOrg?.name || 'N/A'}}</label>
+                </p>
+              </li>
+              <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  {{ 'CODE' | translate}}
+                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                </p>
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  <label class="address-texts">{{doctorDetails?.defaultOrg?.code || 'N/A'}}</label>
+                </p>
+              </li>
+              <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+               {{ 'ORGANISATION_CODE' | translate}}
+                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                </p>
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  <label class="address-texts">{{doctorDetails?.defaultOrg?.organisationCode || 'N/A'}}</label>
+                </p>
+              </li>
+              <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  {{ 'HAS_LOGIN' | translate}}
+                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                </p>
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  <label class="address-texts">{{doctorDetails?.hasLogin || 'N/A'}}</label>
+                </p>
+              </li>
+              <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+               {{ 'IS_ADMIT_CONSULTANT' | translate}}
+                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                </p>
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  <label class="address-texts">{{doctorDetails?.isAdmitConsultant || 'N/A'}}</label>
+                </p>
+              </li>
+              <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                 {{ 'IS_CARE_PROVIDER' | translate}}
+                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                </p>
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  <label class="address-texts">{{doctorDetails?.isCareProvider || 'N/A'}}</label>
+                </p>
+              </li>
+              <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  {{ 'IS_OP_CONSULTANT' | translate}}
+                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                </p>
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  <label class="address-texts">{{doctorDetails?.isOpConsultant || 'N/A'}}</label>
+                </p>
+              </li>
+              <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                {{ 'CONTACT' | translate}}
+                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                </p>
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  <label class="address-texts">{{doctorDetails?.contact?.mobilePhone || 'N/A'}}</label>
+                </p>
+              </li>
+              <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                {{ 'CREATED_BY' | translate}}
+                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                </p>
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  <label class="address-texts">{{doctorDetails?.createdBy?.name || 'N/A'}}</label>
+                </p>
+              </li>
+              <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+               {{ 'CREATED_AT' | translate}}
+                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                </p>
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  <label class="address-texts">{{ doctorDetails?.createdAt ? (doctorDetails?.createdAt | date: 'MM/dd/yyyy') : 'N/A' }}</label>
+                </p>
+              </li>
+              <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                {{ 'MODIFIED_AT' | translate}}
+                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                </p>
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  <label class="address-texts">{{ doctorDetails?.modifiedAt ? (doctorDetails?.modifiedAt | date: 'MM/dd/yyyy') : 'N/A' }}</label>
+                </p>
+              </li>
+
+
+            </ul>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

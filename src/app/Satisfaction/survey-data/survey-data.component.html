@@ -1,0 +1,335 @@
+<section>
+    <div class="content-body">
+        <div class="container-fluid">
+
+            <div class="bx-table table-responsive">
+                <!-- <button class="btn gold-btn" [routerLink]="['/']">{{ 'ADD_DOCTOR' | translate}}
+                </button> -->
+                <div class="card-shipper">
+                    <div class="back-btn-left-circle mt-1">
+                        <i class="fi fi-rr-arrow-small-left" (click)="backClicked()"
+                            style="color:#726641; padding-top: 4px;"></i>
+                    </div>
+                    <div>
+                        <p>
+                            <span class="black-home">{{ 'PATIENT_SATISFACTION' | translate}}</span>
+                        </p>
+                    </div>
+                </div>
+                <table class="table data">
+                    <div class="form-container">
+                        <div class="form-group1">
+                            <label class="done" for="hospital">{{ 'MRN_NO.' | translate}}:</label>
+                            <label for="hospital"> {{detail?.mrn || 'N/A'}}</label>
+                        </div>
+                        <div class="form-group1">
+                            <label class="done" for="hospital">{{ 'PATIENT_NAME' | translate}}:</label>
+                            <label for="hospital">{{detail?.patientName|| 'N/A'}}</label>
+                        </div>
+
+                    </div>
+                    <div class="form-container">
+                        <div class="form-group1">
+                            <label class="done" for="hospital">{{ 'DATE_OF_BIRTH' | translate}}: </label>
+                            <label for="hospital">{{detail?.dateOfVisit|| 'N/A'}}</label>
+                        </div>
+                        <div class="form-group1">
+                            <label class="done" for="hospital">{{ 'DEPARTMENT/DOCTOR_VISITED' | translate}}: </label>
+                            <label for="hospital">{{detail?.department || 'N/A'}}</label>
+                        </div>
+                    </div>
+                    <div class="bx-table table-responsive">
+                        <!-- <button class="btn gold-btn" [routerLink]="['/']">{{ 'ADD_DOCTOR' | translate}}
+                        </button> -->
+
+                        <table class="table data">
+                            <tr>
+                                <td colspan="8" style="background-color: #F3F3F3 !important;">
+                                    <!-- Updated colspan to match the number of columns -->
+                                    <h4 style="background-color: #F3F3F3 !important;">{{ 'APPOINTMENT_PROCESS' |
+                                        translate}}</h4>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="col">{{ 'ASPECT' | translate}}</th>
+                                <th scope="col">{{ 'VERY_DISSATISFIED' | translate}}</th>
+                                <th scope="col">{{ 'DISSATISFIED' | translate}}</th>
+                                <th scope="col">{{ 'NEUTRAL' | translate}}</th>
+                                <th scope="col">{{ 'SATISFIED' | translate}}</th>
+                                <th scope="col">{{ 'VERY_SATISFIED' | translate}}</th>
+                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td>{{ 'EASE_OF_SCHEDULING_APPOINTMENTS' | translate}}</td>
+                                    <!-- Use *ngFor to dynamically generate columns -->
+                                    <td *ngFor="let i of [].constructor(maxRating); let idx = index">
+                                        <i [class.fi-rr-checkbox]="idx + 1 === detail?.appointmentEase"
+                                            [class.fi-rr-square-small]="idx + 1 !== detail?.appointmentEase"
+                                            [style.color]="idx < detail?.appointmentEase ? 'green' : 'gray'"
+                                            [style.fontSize]="'24px'"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{ 'WAIT_TIME_FOR_APPOINTMENT' | translate}}</td>
+                                    <td *ngFor="let i of [].constructor(maxRating); let idx = index">
+                                        <i [class.fi-rr-checkbox]="idx + 1 === detail?.appointmentWaitTime"
+                                            [class.fi-rr-square-small]="idx + 1 !== detail?.appointmentWaitTime"
+                                            [style.color]="idx < detail?.appointmentWaitTime ? 'green' : 'gray'"
+                                            [style.fontSize]="'24px'"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{ 'FREINDLINESS_OF_FRONT-DESK_STAFF' | translate}}</td>
+                                    <td *ngFor="let i of [].constructor(maxRating); let idx = index">
+                                        <i [class.fi-rr-checkbox]="idx + 1 === detail?.frontDeskFriendliness"
+                                            [class.fi-rr-square-small]="idx + 1 !== detail?.frontDeskFriendliness"
+                                            [style.color]="idx < detail?.frontDeskFriendliness ? 'green' : 'gray'"
+                                            [style.fontSize]="'24px'"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                    <div class="bx-table table-responsive">
+                        <!-- <button class="btn gold-btn" [routerLink]="['/']">{{ 'ADD_DOCTOR' | translate}}
+                        </button> -->
+
+                        <table class="table data">
+                            <tr>
+                                <td colspan="8" style="background-color: #F3F3F3 !important;">
+                                    <!-- Updated colspan to match the number of columns -->
+                                    <h4 style="background-color: #F3F3F3 !important;">{{ 'FACILITIES' |
+                                        translate}}</h4>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="col">{{ 'ASPECT' | translate}}</th>
+                                <th scope="col">{{ 'VERY_DISSATISFIED' | translate}}</th>
+                                <th scope="col">{{ 'DISSATISFIED' | translate}}</th>
+                                <th scope="col">{{ 'NEUTRAL' | translate}}</th>
+                                <th scope="col">{{ 'SATISFIED' | translate}}</th>
+                                <th scope="col">{{ 'VERY_SATISFIED' | translate}}</th>
+                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td>{{ 'CLEANLINESS_OF_FACILITIES' | translate}}</td>
+                                    <td *ngFor="let i of [].constructor(maxRating); let idx = index">
+                                        <i [class.fi-rr-checkbox]="idx + 1 === detail?.facilityCleanliness"
+                                            [class.fi-rr-square-small]="idx + 1 !== detail?.facilityCleanliness"
+                                            [style.color]="idx < detail?.facilityCleanliness ? 'green' : 'gray'"
+                                            [style.fontSize]="'24px'"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{ 'AVAILABILITY_OF_PARKING' | translate}}</td>
+                                    <td *ngFor="let i of [].constructor(maxRating); let idx = index">
+                                        <i [class.fi-rr-checkbox]="idx + 1 === detail?.parkingAvailability"
+                                            [class.fi-rr-square-small]="idx + 1 !== detail?.parkingAvailability"
+                                            [style.color]="idx < detail?.parkingAvailability ? 'green' : 'gray'"
+                                            [style.fontSize]="'24px'"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{ 'COMFORT_OF_WAITING_AREA' | translate}}</td>
+                                    <td *ngFor="let i of [].constructor(maxRating); let idx = index">
+                                        <i [class.fi-rr-checkbox]="idx + 1 === detail?.waitingAreaComfort"
+                                            [class.fi-rr-square-small]="idx + 1 !== detail?.waitingAreaComfort"
+                                            [style.color]="idx < detail?.waitingAreaComfort ? 'green' : 'gray'"
+                                            [style.fontSize]="'24px'"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                    <div class="bx-table table-responsive">
+                        <!-- <button class="btn gold-btn" [routerLink]="['/']">{{ 'ADD_DOCTOR' | translate}}
+                        </button> -->
+
+                        <table class="table data">
+                            <tr>
+                                <td colspan="8" style="background-color: #F3F3F3 !important;">
+                                    <!-- Updated colspan to match the number of columns -->
+                                    <h4 style="background-color: #F3F3F3 !important;">{{ 'CONSULTATION_EXPERIENCE' |
+                                        translate}}</h4>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="col">{{ 'ASPECT' | translate}}</th>
+                                <th scope="col">{{ 'VERY_DISSATISFIED' | translate}}</th>
+                                <th scope="col">{{ 'DISSATISFIED' | translate}}</th>
+                                <th scope="col">{{ 'NEUTRAL' | translate}}</th>
+                                <th scope="col">{{ 'SATISFIED' | translate}}</th>
+                                <th scope="col">{{ 'VERY_SATISFIED' | translate}}</th>
+                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td>{{ 'FRIENDLINESS_OF_THE_DOCTOR' | translate}}</td>
+                                    <td *ngFor="let i of [].constructor(maxRating); let idx = index">
+                                        <i [class.fi-rr-checkbox]="idx + 1 === detail?.doctorFriendliness"
+                                            [class.fi-rr-square-small]="idx + 1 !== detail?.doctorFriendliness"
+                                            [style.color]="idx < detail?.doctorFriendliness ? 'green' : 'gray'"
+                                            [style.fontSize]="'24px'"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{ 'DOCTORS_ABILITY_TO_EXPLAIN_CLEARLY' | translate}}</td>
+                                    <td *ngFor="let i of [].constructor(maxRating); let idx = index">
+                                        <i [class.fi-rr-checkbox]="idx + 1 === detail?.doctorExplanation"
+                                            [class.fi-rr-square-small]="idx + 1 !== detail?.doctorExplanation"
+                                            [style.color]="idx < detail?.doctorExplanation ? 'green' : 'gray'"
+                                            [style.fontSize]="'24px'"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{ 'TIME_SPENT_WITH_THE_DOCTOR' | translate}}</td>
+                                    <td *ngFor="let i of [].constructor(maxRating); let idx = index">
+                                        <i [class.fi-rr-checkbox]="idx + 1 === detail?.doctorTimeSpent"
+                                            [class.fi-rr-square-small]="idx + 1 !== detail?.doctorTimeSpent"
+                                            [style.color]="idx < detail?.doctorTimeSpent ? 'green' : 'gray'"
+                                            [style.fontSize]="'24px'"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                    <div class="bx-table table-responsive">
+                        <!-- <button class="btn gold-btn" [routerLink]="['/']">{{ 'ADD_DOCTOR' | translate}}
+                        </button> -->
+
+                        <table class="table data">
+                            <tr>
+                                <td colspan="8" style="background-color: #F3F3F3 !important;">
+                                    <!-- Updated colspan to match the number of columns -->
+                                    <h4 style="background-color: #F3F3F3 !important;">{{ 'TREATMENT_AND_CARE' |
+                                        translate}}</h4>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="col">{{ 'ASPECT' | translate}}</th>
+                                <th scope="col">{{ 'VERY_DISSATISFIED' | translate}}</th>
+                                <th scope="col">{{ 'DISSATISFIED' | translate}}</th>
+                                <th scope="col">{{ 'NEUTRAL' | translate}}</th>
+                                <th scope="col">{{ 'SATISFIED' | translate}}</th>
+                                <th scope="col">{{ 'VERY_SATISFIED' | translate}}</th>
+                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td>{{ 'QUALITY_OF_TREATMENT_RECEIVED' | translate}} </td>
+                                    <td *ngFor="let i of [].constructor(maxRating); let idx = index">
+                                        <i [class.fi-rr-checkbox]="idx + 1 === detail?.treatmentQuality"
+                                            [class.fi-rr-square-small]="idx + 1 !== detail?.treatmentQuality"
+                                            [style.color]="idx < detail?.treatmentQuality ? 'green' : 'gray'"
+                                            [style.fontSize]="'24px'"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{ 'AVAILABILITY_OF_MEDICATIONS' | translate}} </td>
+                                    <td *ngFor="let i of [].constructor(maxRating); let idx = index">
+                                        <i [class.fi-rr-checkbox]="idx + 1 === detail?.medicationAvailability"
+                                            [class.fi-rr-square-small]="idx + 1 !== detail?.medicationAvailability"
+                                            [style.color]="idx < detail?.medicationAvailability ? 'green' : 'gray'"
+                                            [style.fontSize]="'24px'"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{ 'EXPLANATION_OF_TREATMENT_AND_CARE' | translate}}</td>
+                                    <td *ngFor="let i of [].constructor(maxRating); let idx = index">
+                                        <i [class.fi-rr-checkbox]="idx + 1 === detail?.treatmentExplanation"
+                                            [class.fi-rr-square-small]="idx + 1 !== detail?.treatmentExplanation"
+                                            [style.color]="idx < detail?.treatmentExplanation ? 'green' : 'gray'"
+                                            [style.fontSize]="'24px'"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                    <div class="bx-table table-responsive">
+                        <!-- <button class="btn gold-btn" [routerLink]="['/']">{{ 'ADD_DOCTOR' | translate}}
+                        </button> -->
+
+                        <table class="table data">
+                            <tr>
+                                <td colspan="8" style="background-color: #F3F3F3 !important;">
+                                    <!-- Updated colspan to match the number of columns -->
+                                    <h4 style="background-color: #F3F3F3 !important;">{{ 'OVERALL_EXPERIENCE' |
+                                        translate}}</h4>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="col">{{ 'ASPECT' | translate}}</th>
+                                <th scope="col">{{ 'VERY_DISSATISFIED' | translate}}</th>
+                                <th scope="col">{{ 'DISSATISFIED' | translate}}</th>
+                                <th scope="col">{{ 'NEUTRAL' | translate}}</th>
+                                <th scope="col">{{ 'SATISFIED' | translate}}</th>
+                                <th scope="col">{{ 'VERY_SATISFIED' | translate}}</th>
+                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td>{{ 'OVERALLSATISFACTION' | translate}}</td>
+                                    <td *ngFor="let i of [].constructor(maxRating); let idx = index">
+                                        <i [class.fi-rr-checkbox]="idx + 1 === detail?.overallSatisfaction"
+                                            [class.fi-rr-square-small]="idx + 1 !== detail?.overallSatisfaction"
+                                            [style.color]="idx < detail?.overallSatisfaction ? 'green' : 'gray'"
+                                            [style.fontSize]="'24px'"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{ 'LIKELIHOOD_TO_RECOMMEND_US' | translate}}</td>
+                                    <td *ngFor="let i of [].constructor(maxRating); let idx = index">
+                                        <i [class.fi-rr-checkbox]="idx + 1 === detail?.recommendationLikelihood"
+                                            [class.fi-rr-square-small]="idx + 1 !== detail?.recommendationLikelihood"
+                                            [style.color]="idx < detail?.recommendationLikelihood ? 'green' : 'gray'"
+                                            [style.fontSize]="'24px'"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                    <div class="bx-table table-responsive">
+                        <table class="table data">
+                            <tr>
+                                <td colspan="8" style="background-color: #F3F3F3 !important;">
+                                    <h4 style="background-color: #F3F3F3 !important;">
+                                        {{ 'TREATMENT_AND_CARE' | translate }}
+                                    </h4>
+                                </td>
+                            </tr>
+
+                            <!-- Textarea for comments, with readonly and disabled set to make it non-editable and non-clickable -->
+                            <tr>
+                                <td colspan="8" style="background-color:#F3F3F3; margin: 0;">
+                                    <textarea [value]="detail?.additionalComments || 'N/A'" readonly
+                                        disabled></textarea>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+
+
+
+                </table>
+                <div class="feedback-message">
+                    {{
+                    'THANK_YOU_FOR_TAKING_THE_TIME_TO_PROVIDE_YOUR_FEEDBACK_YOUR_RESPONSE__HELP_US_IMPROVE_OUR_SERVICES'
+                    | translate }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

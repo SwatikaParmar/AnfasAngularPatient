@@ -1,0 +1,71 @@
+/* 
+.btn.gold-btn {
+    background-color: #d8aa4ffc; 
+    color: #000; 
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+} */
+
+.data tr th {
+    font-size: 16px;
+}
+.data tr.ng-star-inserted td {
+    font-size: 14px;
+    line-height: 20px;
+}
+.data tr.ng-star-inserted td span {
+    padding: 0;
+   	background: none;
+}
+.data tr.ng-star-inserted td a {
+    background: none;   
+    padding: 5px 5px;
+ 
+}
+
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+    border-color: unset !important;
+}
+
+.data tr:nth-child(even) {
+    background-color: #fee19a !important;
+}
+
+@media (max-width:1499px){
+	.data tr.ng-star-inserted td a {
+	    background: none;
+	    display: inline-flex;
+	    padding: 5px 5px;
+	}
+}
+
+
+
+.btn.focus, .btn:focus {
+    box-shadow: none !important;
+}
+
+
+
+/* Default select styling */
+.form-select {
+    direction: ltr; /* Left-to-right by default (for English) */
+    text-align: left; /* Align text to the left */
+  }
+  
+  /* RTL (Right-to-left) styling for Arabic */
+  .form-select.rtl {
+    direction: rtl; /* Right-to-left for Arabic */
+    text-align: right; /* Align text to the right */
+  }
+  
+  /* Optional: Custom styling for the select arrow */
+  .form-select.rtl {
+    padding-right: 25px; /* Add padding for the arrow to appear on the left */
+  }
+  
+  .form-select:not(.rtl) {
+    padding-left: 25px; /* For English, make sure the padding appears on the left */
+  }
+  

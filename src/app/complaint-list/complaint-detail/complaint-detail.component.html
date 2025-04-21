@@ -1,0 +1,125 @@
+<section>
+  <div class="content-body">
+    <div class="container-fluid">
+      <div class="input-form">
+        <div class="row justify-content-start align-items-start g-0">
+          <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 col-xxl-9">
+            <div class="card-shipper">
+              <div class="back-btn-left-circle mt-1">
+                <i class="fi fi-rr-arrow-small-left" (click)="backClicked()"
+                  style="color:#726641; padding-top: 7px;"></i>
+              </div>
+              <div>
+                <p>
+                  <span class="black-home">{{ 'COMPLAINT_DETAILS' | translate}}</span>
+                </p>
+              </div>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  {{ 'PATIENT_NAME' | translate}}
+                </p>
+                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                </p>
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  <label class="address-texts">{{detail?.patientName || 'N/A'}}</label>
+                </p>
+              </li>
+              <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  {{ 'COMPLAINT_TYPENAME' | translate}}
+                </p>
+                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                </p>
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  <label class="address-texts">{{detail?.complaintTypeName || 'N/A'}}</label>
+                </p>
+              </li>
+
+              <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  {{ 'STATUS' | translate}}
+                </p>
+                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                </p>
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  <label class="address-texts">{{detail?.status || 'N/A'}}</label>
+                </p>
+              </li>
+
+              <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  {{ 'CREATED_AT' | translate}}
+                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                </p>
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  <label class="address-texts">{{ detail?.createdAt ? (detail?.createdAt | date: 'MM/dd/yyyy') : 'N/A'
+                    }}</label>
+                </p>
+              </li>
+              <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  {{ 'DESCRIPTION1' | translate}}
+                </p>
+                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                  <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                </p>
+                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                  <label>{{detail?.description || 'N/A'}}</label>
+                </p>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="content-body1">
+    <div class="container-fluid">
+      <div class="input-form">
+        <div class="row justify-content-start align-items-start g-0">
+          <!-- Left Column for Comments and Message Input -->
+          <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 col-xxl-9">
+            <div class="card-shipper">
+              <div>
+                <p>
+                  <span class="black-home">{{ 'COMMENT' | translate }}</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Message Input Section -->
+            <div class="message-container">
+              <div class="input-container" style="background-color:none; margin: 0;">
+                <textarea [(ngModel)]="newMessage" placeholder="Your comments and suggestions here..."></textarea>
+                <button (click)="sendMessage()">{{ 'SEND' | translate }}</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column for Chat Messages -->
+          <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 col-xxl-7">
+            <div class="chat-messages" id="chatbox" #chatbox>
+              <div *ngFor="let reply of replies" class="message" [ngClass]="{'received': reply.role !== 'Admin', 'sent': reply.role === 'Admin'}">
+                <div class="text">{{ reply.reply }}</div>
+                <div class="timestamp">{{ reply.createdAt }}</div>
+              </div>
+              
+          
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

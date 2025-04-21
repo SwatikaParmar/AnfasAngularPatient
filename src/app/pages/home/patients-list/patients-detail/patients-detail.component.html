@@ -1,0 +1,275 @@
+<section>
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="input-form">
+                <div class="row justify-content-start align-items-start g-0">
+                    <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 col-xxl-9">
+                        <div class="card-shipper">
+                            <div class="back-btn-left-circle mt-1">
+                                <i class="fi fi-rr-arrow-small-left" (click)="backClicked()"
+                                    style="color:#726641; padding-top: 7px;"></i>
+                            </div>
+                            <div>
+                                <p>
+                                    <span class="black-home">{{ 'PATIENT_DETAILS' | translate}}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    {{ 'PATIENT_NAME' | translate}}
+                                </p>
+                                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                                    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                </p>
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    <label class="address-texts">{{detail?.firstName || 'N/A'}}
+                                        <span style="margin-left: 8px;">{{detail?.lastName ||  'N/A'}}</span>
+                            </label>
+                                </p>
+                            </li>
+                            <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    {{ 'LOCAL_NAME' | translate}}
+                                </p>
+                                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                                    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                </p>
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    <label class="address-texts">{{detail?.localFirstName ||'N/A'}} 
+                                          <span style="margin-left: 8px;">{{detail?.localLastName || 'N/A'}}</span></label>
+                                </p>
+                            </li>
+                            <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    {{ 'GENDER' | translate}}
+                                </p>
+                                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                                    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                </p>
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    <label class="address-texts"> {{detail?.gender?.valueDescription || 'N/A'}}</label>
+                                </p>
+                            </li>
+                            <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    {{ 'DATE_OF_BIRTH' | translate}}
+                                </p>
+                                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                                    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                </p>
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    <label class="address-texts">
+                                        {{ detail?.dateOfBirth ? (detail?.dateOfBirth | date: 'MM/dd/yyyy') : 'N/A' }}
+                                    </label>
+                                </p>
+                            </li>
+                            <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    {{ 'NATIONALITY' | translate}}
+                                </p>
+                                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                                    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                </p>
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    <label class="address-texts">{{detail?.nationality?.valueDescription || 'N/A'}}</label>
+                                </p>
+                            </li>
+                            <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    {{ 'RELIGION' | translate}}
+                                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                                    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                </p>
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    <label class="address-texts">{{detail?.religion?.valueDescription || 'N/A'}}</label>
+                                </p>
+                            </li>
+                            <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    {{ 'PREFERRED_LANGUAGE' | translate}}
+                                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                                    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                </p>
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    <label class="address-texts">{{detail?.preferredLanguage?.valueDescription ||
+                                        'N/A'}}</label>
+                                </p>
+                            </li>
+                            <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    {{ 'MARITAL_STATUS' | translate}}
+                                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                                    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                </p>
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    <label class="address-texts">{{detail?.maritalStatus?.valueDescription ||
+                                        'N/A'}}</label>
+                                </p>
+                            </li>
+                            <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    {{ 'NATIONAL_ID' | translate}}
+                                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                                    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                </p>
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    <label class="address-texts"> {{detail?.nationalId || 'N/A'}}</label>
+                                </p>
+                            </li>
+                            <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    {{ 'CONTACT_NUMBER' | translate}}
+                                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                                    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                </p>
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    <label class="address-texts">{{detail?.contact?.mobilePhone || 'N/A'}}</label>
+                                </p>
+                            </li>
+                            <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    {{ 'REGISTERED_DATE' | translate}}
+                                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                                    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                </p>
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    <label class="address-texts">
+                                        {{ detail?.registeredDate ? (detail?.registeredDate | date: 'MM/dd/yyyy') : 'N/A' }}
+                                    </label>
+                                </p>
+                            </li>
+                            <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    {{ 'CREATED_BY' | translate}}
+                                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                                    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                </p>
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    <label class="address-texts">{{detail?.createdBy?.name || 'N/A'}}</label>
+                                </p>
+                            </li>
+                            <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    {{ 'ORGANIZATION' | translate}}
+                                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                                    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                </p>
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    <label class="address-texts">{{detail?.organisation?.name || 'N/A'}}</label>
+                                </p>
+                            </li>
+                            <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    {{ 'ORGANISATION_CODE' | translate}}
+                                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                                    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                </p>
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    <label class="address-texts">{{detail?.organisation?.organisationCode ||
+                                        'N/A'}}</label>
+                                </p>
+                            </li>
+                            <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                                <!-- Consent Form Label -->
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    {{ 'CONSENT_FORM' | translate}}
+                                </p>
+                                
+                                <!-- Icon -->
+                                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                                    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                </p>
+                                
+                                <!-- Consent Form Status and Preview Link -->
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    <label class="address-texts">{{ detail?.isConsentSinged ? '' : 'N/A' }}</label>
+                                    
+                                    <!-- Preview Button -->
+                                    <button 
+                                        *ngIf="detail.isConsentSinged" 
+                                        class="btn btn-primary ms-2"
+                                        (click)="navigateToPreview()"
+                                     >
+                                        Preview
+                                    </button>
+                                </p>
+                            </li>
+                            
+                            <!-- <li class="list-group-item d-flex row justify-content-space-between align-items-center">
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    {{ 'SIGNATURE' | translate}}
+                                <p class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+                                    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                </p>
+                                <p class="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                                    <ng-container *ngIf="detail.signature; else noSignature">
+                                      <img 
+                                        [src]="rootUrl + detail?.signature"
+                                        alt="Signature" 
+                                        class="signature-image" />
+                                    </ng-container>
+                                    <ng-template #noSignature>
+                                      <label class="address-texts">N/A</label>
+                                    </ng-template>
+                                  </p>
+                                  
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="bx-table table-responsive">
+                <table class="table">
+                    <tr>
+                        <td colspan="12">
+                            <h4
+                                style="background-color: #f3f3f3 !important; color:#726641; font-size: 20px; margin-bottom: 17px;">
+                                {{ 'VISIT_LIST' | translate}}</h4>
+                        </td>
+                    </tr>
+                    <tr class="color">
+
+                        <th scope="col">{{ 'DEPARTMENT_UID' | translate}}</th>
+                        <th scope="col">{{ 'DEPARTMENT_NAME' | translate}}</th>
+                        <th scope="col">{{ 'CARE_PROVIDER_UID' | translate}}</th>
+                        <th scope="col">{{ 'CARE_PROVIDER_NAME' | translate}}</th>
+                        <th scope="col">{{ 'PATIENT_UID' | translate}}</th>
+                        <th scope="col">{{ 'PATIENT_VISIT_UId' | translate}}</th>
+                        <th scope="col">{{ 'ACTION' | translate}}</th>
+                    </tr>
+                    <tr *ngFor="
+                    let item of visitsList
+                      | paginate : { itemsPerPage: 10, currentPage: page, totalItems: totalItems, id: '1' };
+                    let i = index
+                  ">
+                        <td>{{ item?.departmentUid || 'N/A' }} </td>
+                        <td>{{ item?.departmentName || 'N/A' }}</td>
+                        <td> {{ item?.careProviderUid || 'N/A' }}</td>
+                        <td> {{ item?.careProviderName || 'N/A' }}{{ item?.careProviderLastName || 'N/A' }}</td>
+                        <td>{{ item?.patientUid || 'N/A' }}</td>
+                        <td>{{ item?.patientVisitUId || 'N/A' }}</td>
+                        <td>
+                            <a class="list-icon"><i class="fa fa-eye" (click)="editContent(item)"
+                                    aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <pagination-controls (pageChange)="((page = $event))" id="1" (pageIndex)="page" class="paginate-doctor-list"
+                queryParamsHandling="merge" (pageChange)="onPageChange($event)">
+            </pagination-controls>
+
+        </div>
+    </div>
+</section>

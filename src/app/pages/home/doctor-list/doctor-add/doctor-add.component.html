@@ -1,0 +1,150 @@
+<div class="app-main__inner">
+    <div class="user-header">
+        <img (click)="backClicked()" src="/assets/plugins/images/backimage1.png" class="backimage-butn" />
+        <h3>Add Doctor</h3>
+    </div>
+
+    <form [formGroup]="doctorForm">
+        <section class="address-info-form">
+            <h5 style="text-align: center;">Upload Profile Pic</h5>
+            <div class="row">
+            </div>
+
+            <div class="imges-upload mb-0">
+                <div class="imgUp imgUp-1 m-auto">
+                    <label class="btn btn-primary">
+                        Upload<input type="file" name="featureBannerImage" formControlName="uploadPhoto"
+                            class="uploadFile img" value="Upload Photo"
+                            style="width: 0px;height: 0px;overflow: file; border-style: none;">
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <section class="address-info-form">
+            <h5>Personal Infomation</h5>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">{{ 'FIRST_NAME' }}</label>
+                    <input type="text" class="form-control" formControlName="firstName">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">LAST_NAME</label>
+                    <input type="text" class="form-control" formControlName="lastName">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputAddress">CHOOSE_GENDER</label>
+                    <select id="" class="form-control" formControlName="genderId">
+                        <option value=" " [selected]="true">{{ 'CHOOSE_GENDER' }}</option>
+                        <option value="1">{{ 'MALE' }}</option>
+                        <option value="2">{{ 'FEMALE' }}</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">{{ 'DATE_OF_BIRTH'}}</label>
+                    <input type="datetime" bsDatepicker class="form-control" formControlName="dateOfBirth"
+                        placeholder="{{ 'ENTER_DOB'}}">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputAddress">{{ 'EMAIL_ADDRESS' }}</label>
+                    <input type="email" class="form-control" formControlName="email" placeholder="{{ 'ENTER_EMAIL' }}">
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Date Of Birth</label>
+                <input type="datetime" bsDatepicker class="form-control" formControlName="dateOfBirth"
+                    placeholder="Enter DOB">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group  col-md-6">
+                    <label for="inputAddress">Enter Email Address </label>
+                    <input type="email" class="form-control" formControlName="email" placeholder="Enter Email Address">
+                </div>
+
+                <div class="form-group  col-md-6">
+                    <label for="inputAddress">Enter Phone Number </label>
+                    <input type="text" class="form-control" formControlName="phoneNumber"
+                        placeholder="Enter Phone Number" OnlyNumbers>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group  col-md-6">
+                    <label for="inputAddress">Education</label>
+                    <ng-multiselect-dropdown formControlName="degreeId" (onSelect)="onItemSelect($event)"
+                        (onSelectAll)="onSelectAll($event)">
+                    </ng-multiselect-dropdown>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputAddress">Medical Registration Number</label>
+                    <input type="text" class="form-control" formControlName="medicalRegistrationNumber"
+                        placeholder="Enter Registration Number">
+                </div>                                     
+            </div>
+
+            <div class="form-row">                   
+                <div class="form-group col-md-6">                   
+                    <label for="inputAddress">Specialization</label>
+                    <ng-multiselect-dropdown formControlName="doctorSpecialization" (onSelect)="onItemSelect($event)"
+                        (onSelectAll)="onSelectAll($event)">                     
+                    </ng-multiselect-dropdown>
+                </div>
+
+                <div class="form-group col-md-6">                     
+                    <label for="inputPassword4">Language Known</label>                                    
+                    <ng-multiselect-dropdown formControlName="doctorLanguage" (onDeSelect)="onItemSelect($event)"
+                        (onSelectAll)="onSelectAll($event)">
+                    </ng-multiselect-dropdown>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">Experience In Years</label>
+                    <input type="text" class="form-control" formControlName="experience" placeholder="Enter Experience"
+                        numbersOnly>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">About</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="about"
+                    placeholder="About"></textarea>
+            </div>
+        </section>
+
+        <section class="address-info-form">
+            <h5>Address Information</h5>
+            <div class="form-row">
+                <div class="form-group  col-md-6">
+                    <label for="inputAddress">Country</label>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">State</label>
+                </div>                                      
+            </div>     
+            <div class="form-row">
+                <div class="form-group col-md-6">      
+                    <label for="inputEmail4">City Name</label>    
+                    <input type="text" class="form-control" formControlName="city" placeholder="Enter City Name"
+                        appAlphabeticOnly>                 
+                </div>                    
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Address</label>
+                <textarea class="form-control" rows="3" formControlName="address"
+                    placeholder="Enter Your Address"></textarea>
+            </div>
+            <div class="info-per-btn">
+                <button class="save-btn">Save</button>
+                <button class="cancel-btn">Cancel</button>
+            </div>
+        </section>
+    </form>
+</div>

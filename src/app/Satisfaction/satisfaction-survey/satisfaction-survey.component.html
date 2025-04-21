@@ -1,0 +1,63 @@
+<section>
+    <div class="content-body">
+        <div class="container-fluid">
+
+            <div class="bx-table table-responsive">
+                <!-- <button class="btn gold-btn" [routerLink]="['/']">{{ 'ADD_DOCTOR' | translate}}
+                </button> -->
+
+                <table class="table data">
+                    <tr>
+                      <td colspan="8">
+                        <!-- Updated colspan to match the number of columns -->
+                        <h4 style="background-color: #f3f3f3 !important;">{{ 'SURVEY_LIST' | translate}}</h4>
+                      </td>
+                    </tr>
+                  
+                    <tr>
+                      <th scope="col">{{ 'MRN' | translate}}</th>
+                      <th scope="col">{{ 'PATIENT_NAME' | translate}}</th>
+                      <th scope="col">{{ 'FEEDBACK' | translate}}</th>
+                      <th scope="col">{{ 'DEPARTMENT' | translate}}</th>
+                      <th scope="col">{{ 'OVERALLSATISFACTION' | translate}}</th>
+                      <th scope="col">{{ 'RECOMMENDATIONLIKELIHOOD' | translate}}</th>
+                      <th scope="col">{{ 'CREATED_AT' | translate}}</th>
+                      <th scope="col">{{ 'ACTION' | translate}}</th>
+                    </tr>
+                  
+                    <tr
+                      *ngFor="
+                        let item of satisfactionList 
+                          | paginate : { itemsPerPage: 10, currentPage: page, totalItems: totalItems, id: '1' };
+                        let i = index
+                      "
+                    >
+                     
+                      <td>{{ item?.mrn || 'N/A' }}</td>
+                      <td>{{ item?.patientName || item?.patientName === '' ? 'N/A' : item?.patientName }}</td>
+                      <td>{{ item?.feedback || 'N/A' }}</td>
+                      <td>{{ item?.department || 'N/A' }}</td>
+                      <td>{{ item?.overallSatisfaction || 'N/A' }}</td>
+                      <td>{{ item?.recommendationLikelihood || 'N/A' }}</td>
+                      <td>{{ item?.dateOfVisit ? (item?.dateOfVisit | date: 'MM/dd/yyyy') : 'N/A' }}</td>
+                      <td>
+                        <a class="list-icon" [routerLink]="['/satisfaction-survey/data', item?.id]">
+                          <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>                        
+                        <a type="button" class="cross-btn-table" (click)="delete(item.id)">
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
+                      </td>
+                    </tr>
+
+                    
+                  </table>
+                  
+            </div>
+            <pagination-controls (pageChange)="((page = $event))" id="1" (pageIndex)="page" class="paginate-doctor-list"
+                queryParamsHandling="merge" (pageChange)="onPageChange($event)">
+            </pagination-controls>
+
+        </div>
+    </div>
+</section>

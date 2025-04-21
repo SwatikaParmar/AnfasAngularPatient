@@ -1,0 +1,60 @@
+<section>
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="bx-table table-responsive">
+                <button class="btn gold-btn" [routerLink]="['/banner-list/banner-add']">
+                  {{ 'ADD_BANNER' | translate}}
+                </button>
+                <table class="table data">
+                    <tr>
+                        <td colspan="8">
+                          <!-- Updated colspan to match the number of columns -->
+                          <h4 style="background-color: #f3f3f3 !important;"> {{ 'BANNER_LIST' | translate}}</h4>
+                        </td>
+                        </tr>
+                        <tr>
+                            <th scope="col">{{ 'BANNER_IMAGE' | translate}}</th>
+                            <th scope="col">{{ 'BANNER_TYPE' | translate}}</th>
+                            <th scope="col">{{ 'CREATE_DATE' | translate}}</th>
+                            <th scope="col">{{ 'ACTION' | translate}}</th>
+                          </tr>
+
+                          <tr  *ngFor="
+                          let item of bannerList 
+                            | paginate : { itemsPerPage: 10, currentPage: page, totalItems: totalItems, id: '1' };
+                          let i = index
+                        ">
+                         
+                          <!-- <td>{{item?.bannerUrl || 'N/A'}}</td> -->
+                          <td class="photo1"><img style="background-color: inherit; " [src]="rootUrl + item?.bannerUrl"
+                            class="img-responsive mid-img"></td>  
+                            <td>{{ formatCamelCase(item?.bannerType) }}</td>
+
+                          <td>{{ item?.createdAt ? (item.createdAt | date: 'MM/dd/yyyy') : 'N/A' }}</td>
+
+                         
+                          <td>
+                            <!-- <a
+                              [routerLink]="['/banner-list/banner-detail']"
+                              class="list-icon"
+                              ><i class="fa fa-eye" aria-hidden="true"></i
+                            ></a> -->
+                            <a class="edit-btn" type="button"  (click)="editContent(item)">
+                              <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </a>
+                            
+                            <a type="button" class="cross-btn-table" (click)="delete(item.id)">
+                              <i class="fa fa-times" aria-hidden="true"></i>
+                            </a>
+                          </td>
+                        </tr>
+    
+                </table>
+            </div>
+            <pagination-controls (pageChange)="((page = $event))" id="1" (pageIndex)="page" class="paginate-doctor-list"
+            queryParamsHandling="merge" (pageChange)="onPageChange($event)">
+        </pagination-controls>
+
+        </div>
+    </div>
+</section>
