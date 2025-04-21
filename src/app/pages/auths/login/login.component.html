@@ -23,8 +23,8 @@
                             <h6 style="font-size: 18px; margin: 0;">Patient Sign In</h6>
                             <div class="lang-container">
                               <div class="lang-toggle">
-                                <div class="lang-option active" onclick="toggleLang(this)">EN</div>
-                                <div class="lang-option" onclick="toggleLang(this)">AR</div>
+                                <div class="lang-option active" (click)="switchLanguage('en')">EN</div>
+                                <div class="lang-option" (click)="switchLanguage('ar')">AR</div>
                               </div>
                             </div>
                           </div>
@@ -34,10 +34,10 @@
                             formControlName="email"> -->
                             <div class="form-group">
                                 <select id="mrNumber" class="form-control custom-select-align-end">
-                                  <option value="" disabled selected>Select MR Number</option>
-                                  <option value="1">MR001</option>
-                                  <option value="2">MR002</option>
-                                  <option value="3">MR003</option>
+                                  <option value="" disabled selected>Select</option>
+                                  <option value="1">MR Number</option>
+                                  <option value="2">Phone Number</option>
+                                  <option value="3">National Id</option>
                                   <!-- Add more options as needed -->
                                 </select>
                               </div>
@@ -45,12 +45,12 @@
                               
                         <div class="d-flex position-relative">
                             <input [type]="password ? 'text' : 'password'" class="form-control password"
-                                   placeholder="{{ 'ENTER_YOUR_PASSWORD' | translate }}" formControlName="password"
+                                   placeholder="{{ 'Enter MR Number' | translate }}" formControlName="password"
                                    [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
                             <div class="eye-icon" (click)="togglePasswordVisibility()"
                                  [ngClass]="{'eye-icon-rtl': currentLanguage === 'ar', 'eye-icon-ltr': currentLanguage !== 'ar'}">
                               <!-- Use fa-eye-slash by default (hidden), fa-eye when password is visible -->
-                              <i class="fa" [ngClass]="password ? 'fa-eye' : 'fa-eye-slash'" aria-hidden="true"></i>
+                              <!-- <i class="fa" [ngClass]="password ? 'fa-eye' : 'fa-eye-slash'" aria-hidden="true"></i> -->
                             </div>
                           </div>
                           

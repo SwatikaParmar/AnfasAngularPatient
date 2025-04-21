@@ -1,28 +1,3 @@
-[dir="rtl"] .fixed-sidebar .app-sidebar {
-  position: fixed;
-  height: 100vh;
-  right: 0;
-  left: auto;
-}
-
-[dir="rtl"] .fixed-sidebar .app-main .app-main__outer {
-  z-index: 9;
-  padding-right: 265px;
-  padding-left: 0;
-}
-
-[dir="rtl"] .app-main__outer {
-  z-index: 9;
-  padding-right: 280px;
-  padding-left: 0;
-}
-
-
-[dir="rtl"] .some-other-class {
-  text-align: right;
-}
-
-[dir="rtl"] .another-class {
-  margin-right: 10px;
-  margin-left: 0;
+.hidden {
+  display: none;
 }

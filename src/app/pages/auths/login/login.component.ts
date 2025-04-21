@@ -87,7 +87,7 @@ export class LoginComponent implements OnInit {
         if (response.status === true) {
           this.loginForm.reset();
           this.toasterService.success(response.message);
-          this.router.navigateByUrl('/dashboard');
+          this.router.navigateByUrl('/home');
         } else {
           this.toasterService.error(response.message);
         }
