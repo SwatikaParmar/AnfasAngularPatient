@@ -10,6 +10,12 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpLoaderFactory } from 'src/app/app.module';
 import { HttpClient } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { VisitListComponent } from './visit/visit-list/visit-list.component';
+import { ComplaintListComponent } from './complaint/complaint-list/complaint-list.component';
+import { SatisfactionFormComponent } from './satisfaction/satisfaction-form/satisfaction-form.component';
+import { AboutUsComponent } from './about/about-us/about-us.component';
+import { MessagesListComponent } from './messages/messages-list/messages-list.component';
+import { AppointmentListComponent } from './appointment/appointment-list/appointment-list.component';
 
 
 
@@ -20,6 +26,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [
     HomeComponent,
+    VisitListComponent,
+    ComplaintListComponent,
+    SatisfactionFormComponent,
+    AboutUsComponent,
+    MessagesListComponent,
+    AppointmentListComponent,
    
   ],
   imports: [

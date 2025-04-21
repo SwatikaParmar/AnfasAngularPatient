@@ -20,6 +20,9 @@ export class LoginComponent implements OnInit {
   submitted = false;
   show = false;
   currentLanguage: string = 'en';
+
+  currentLang: string = 'en'; // Default language
+
   constructor(
     private renderer: Renderer2,
     private formBuilder: FormBuilder,
@@ -40,6 +43,7 @@ export class LoginComponent implements OnInit {
   }
 
   switchLanguage(lang: string) {
+    this.currentLang = lang;
     this.currentLanguage = lang;
     this.languageService.switchLanguage(lang);
     localStorage.setItem('language', lang); // Store the selected language

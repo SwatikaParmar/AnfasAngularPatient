@@ -23,10 +23,23 @@
                             <h6 style="font-size: 18px; margin: 0;">Patient Sign In</h6>
                             <div class="lang-container">
                               <div class="lang-toggle">
-                                <div class="lang-option active" (click)="switchLanguage('en')">EN</div>
-                                <div class="lang-option" (click)="switchLanguage('ar')">AR</div>
+                                <div
+                                  class="lang-option"
+                                  [class.active]="currentLang === 'en'"
+                                  (click)="switchLanguage('en')"
+                                >
+                                  EN
+                                </div>
+                                <div
+                                  class="lang-option"
+                                  [class.active]="currentLang === 'ar'"
+                                  (click)="switchLanguage('ar')"
+                                >
+                                  AR
+                                </div>
                               </div>
                             </div>
+                            
                           </div>
                           
                         <div class="mt-20"></div>

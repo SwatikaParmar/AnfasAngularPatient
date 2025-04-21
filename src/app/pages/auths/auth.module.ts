@@ -7,12 +7,15 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { AuthRoutingModule } from './auth-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
+import { OtpComponent } from './otp/otp.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    OtpComponent,
+    
   ],
   imports: [
     CommonModule,
