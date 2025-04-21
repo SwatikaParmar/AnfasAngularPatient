@@ -465,6 +465,7 @@ header {
 
 .header-profile li img {
     max-width: 16px;
+    margin: auto;
 }
 
 header.sticky {

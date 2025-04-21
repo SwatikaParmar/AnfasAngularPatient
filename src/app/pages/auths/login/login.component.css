@@ -27,7 +27,7 @@ html[dir="rtl"] .eye-icon {
 }
 .eye-icon-ltr {
   position: absolute;
-  right: 10px;
+  right: 32px;
   cursor: pointer; 
   top: 42%; 
   transform: translateY(-50%);
