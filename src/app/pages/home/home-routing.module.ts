@@ -4,10 +4,15 @@ import { HomeComponent } from './home.component';
 import { LayoutsComponent } from 'src/app/layouts/layouts.component';
 
 import { AuthGuard } from 'src/app/shared/guards/auth.guard';
-
+import { VisitListComponent } from './visit/visit-list/visit-list.component';
+import { ComplaintListComponent } from './complaint/complaint-list/complaint-list.component';
+import { SatisfactionFormComponent } from './satisfaction/satisfaction-form/satisfaction-form.component';
+import { AboutUsComponent } from './about/about-us/about-us.component';
+import { MessagesListComponent } from './messages/messages-list/messages-list.component';
+import { AppointmentListComponent } from './appointment/appointment-list/appointment-list.component';
 
 const routes: Routes = [
-        
+
   {
     path: '',
     component: LayoutsComponent,
@@ -15,12 +20,18 @@ const routes: Routes = [
     children: [
 
       { path: 'home', component: HomeComponent },
-    
+      { path: 'visit', component: VisitListComponent },
+      { path: 'complaint', component: ComplaintListComponent },
+      { path: 'satisfaction-form', component: SatisfactionFormComponent },
+      { path: 'about-Us', component: AboutUsComponent },
+      { path: 'messages', component: MessagesListComponent },
+      { path: 'appointment', component: AppointmentListComponent }
+
     ]
-  } 
+  }
 ];
 
-@NgModule({    
+@NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
