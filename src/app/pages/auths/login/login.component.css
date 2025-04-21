@@ -114,6 +114,7 @@ html[dir="rtl"] .eye-icon {
   border: 1px solid #ccc;
   border-radius: 5px;
   overflow: hidden;
+  border-radius: 20px;
 }
 
 .lang-option {
@@ -129,6 +130,6 @@ html[dir="rtl"] .eye-icon {
 }
 
 .lang-option.active {
-  background-color: #007bff;
+  background-color: #77734E;
   color: #fff;
 }

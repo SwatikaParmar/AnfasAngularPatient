@@ -1,7 +1,7 @@
 <div class="login-wrapper position-relative z-index-9"
     style="background:url(./assets/images/plusbg.png)no-repeat left 0px center;background-size: 600px !important;">
 
-    <div class="container">
+    <div class="container justify-content-center">
         <div class="login-perents d-grid column-two">
             <div class="login-child text-center">
                 <img src="assets/images/anfas-logo.svg" class="img-responsive m-auto d-block" style="max-width: 130px;">
@@ -18,9 +18,9 @@
                 style="background: #FEC34F; height: 100vh; display: grid; align-items: center; ">
                 <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
                     <div class="login-forms">
-                        <h2 style="color: #77734E; margin-bottom: 30px;">welcome back!</h2>
+                        <h2 style="color: #77734E; margin-bottom: 30px; font-size: 30px; font-weight: 600;">welcome back!</h2>
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <h6 style="font-size: 18px; margin: 0;">Patient Sign In</h6>
+                            <h6 style="font-size: 20px; margin: 0;">Patient Sign In</h6>
                             <div class="lang-container">
                               <div class="lang-toggle">
                                 <div
@@ -42,7 +42,7 @@
                             
                           </div>
                           
-                        <div class="mt-20"></div>
+                        <!-- <div class="mt-20"></div> -->
                         <!-- <input type="email" class="form-control user" placeholder="Email or Phone"
                             formControlName="email"> -->
                             <div class="form-group">
@@ -56,7 +56,7 @@
                               </div>
                               
                               
-                        <div class="d-flex position-relative">
+                        <div class="d-flex position-relative mb-10">
                             <input [type]="password ? 'text' : 'password'" class="form-control password"
                                    placeholder="{{ 'Enter MR Number' | translate }}" formControlName="password"
                                    [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
@@ -78,7 +78,7 @@
                                 <span>{{ 'REMEMBER_ME' | translate }}</span></div>
                             <div><a [routerLink]="['/forgot-password']">{{ 'FORGOT_PASSWORD' | translate }}</a></div>
                         </div> -->
-                        <div class="mt-20"></div>
+                        <!-- <div class="mt-20"></div> -->
                         <input type="submit" class="view-more" value="{{ 'SIGN_IN' | translate }}">
                     </div>
                 </form>
