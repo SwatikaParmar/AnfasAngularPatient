@@ -19,6 +19,7 @@ import { AppointmentListComponent } from './appointment/appointment-list/appoint
 import { DoctorListComponent } from './doctor/doctor-list/doctor-list.component';
 import { DoctorDetailComponent } from './doctor/doctor-detail/doctor-detail.component';
 import { PatientProfileComponent } from './profile/patient-profile/patient-profile.component';
+import { PatientConsentComponent } from './profile/patient-consent/patient-consent.component';
 
 
 
@@ -38,6 +39,7 @@ import { PatientProfileComponent } from './profile/patient-profile/patient-profi
     DoctorListComponent,
     DoctorDetailComponent,
     PatientProfileComponent,
+    PatientConsentComponent,
    
   ],
   imports: [

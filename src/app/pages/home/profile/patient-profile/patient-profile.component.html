@@ -50,12 +50,16 @@
                       <!-- <div class="consent-button pl-5">
                         <a href="#">Review Your Consent Form</a>
                       </div> -->
-                      <div class="consent-button-top mt-3 pl-5">
-                        <a href="#" style="color: blue; font-weight: 400;">Review Your Consent Form</a>
+                      <div class="consent-button-top mt-3 pl-5" *ngIf="detail.isConsentSinged == true" (click)="navigateToPreview()">
+                        <a  style="color: blue; font-weight: 400;">Review Your Consent Form</a>
                       </div>
-                      <div class="consent-button-top mt-3 pb-10 pl-5">
-                        <a href="#" style="color: blue; font-weight: 400;">You have not yet signed the consent form. To proceed with future bookings, please sign the consent form now.</a>
+                      
+                      <div class="consent-button-top mt-3 pb-10 pl-5" *ngIf="detail.isConsentSinged == false">
+                        <a href="#" style="color: blue; font-weight: 400;">
+                          You have not yet signed the consent form. To proceed with future bookings, please sign the consent form now.
+                        </a>
                       </div>
+                      
                       
                       
                   </div>
