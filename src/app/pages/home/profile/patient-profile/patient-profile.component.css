@@ -1,0 +1,33 @@
+.info-container {
+    display: flex;
+    justify-content: center; /* centers items horizontally */
+    align-items: center;     /* centers items vertically */
+    gap: 145px;               /* space between the two groups */
+    margin: 20px 0;
+  }
+  
+  .info-group {
+    padding: 5px;
+  }
+  .consent-button a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid #FEC34F;
+    color: #d49e32;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+  
+  .consent-button a:hover {
+    background: linear-gradient(90deg, #FEC34F, #FEC34F);
+    color:black;
+
+  }
+  
+  .consent-button {
+    display: flex;
+    align-items: center;
+  }
+  
