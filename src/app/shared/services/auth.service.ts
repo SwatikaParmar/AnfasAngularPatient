@@ -23,7 +23,7 @@ export class AuthService {
     return this.currentUserSubject.value;       
   }              
 
-  login(user: Login) {    
+  login(user: any) {    
     return this.http.post<any>(environment.apiUrl + ApiEndPoint.login,user)
       .pipe(map(user => {
         if (user.data) {     
@@ -40,6 +40,12 @@ export class AuthService {
       }));
   }
 
+
+  patientDetails(data:any){
+    debugger
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.patientDetail + '?Mrn=' + data.mrn)
+  }
+
   logout() {
     localStorage.clear();
     this.router.navigate(['/home-page'])
@@ -47,8 +53,8 @@ export class AuthService {
         window.location.reload();
       });
   }
-  otp(data:any){
-    return this.http.post<any>(environment.apiUrl + ApiEndPoint. emailOtp,data)
-  }
+  // otp(data:any){
+  //   return this.http.post<any>(environment.apiUrl + ApiEndPoint. emailOtp,data)
+  // }
 
 }

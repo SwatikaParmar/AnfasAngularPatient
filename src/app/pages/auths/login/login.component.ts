@@ -55,12 +55,13 @@ export class LoginComponent implements OnInit {
 
   setConfigurationOfLoginForm() {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-      deviceToken:['string'],
-      deviceType:['string']
+      mrn: [''],
+      mobilePhone: [''],
+      nationalId: [''],
+      isVerified: [true]
     });
   }
+  
      
   togglePasswordVisibility() {
     this.password = !this.password;
@@ -85,13 +86,15 @@ export class LoginComponent implements OnInit {
       this.spinner.hide();
       return;
     } 
+
     this.loginModel = this.loginForm.value;
+
     this.authService.login(this.loginModel).subscribe({
       next: (response) => {
         if (response.status === true) {
           this.loginForm.reset();
           this.toasterService.success(response.message);
-          this.router.navigateByUrl('/home');
+       this.patientDetail();
         } else {
           this.toasterService.error(response.message);
         }
@@ -104,5 +107,30 @@ export class LoginComponent implements OnInit {
       }
     });
   } 
+
+
+  patientDetail(){
+
+    
+    this.authService.patientDetails(this.loginModel).subscribe({
+      next: (response) => {
+        debugger
+        if (response.status === true) {
+          this.loginForm.reset();
+       //   this.toasterService.success(response.message);
+          this.router.navigateByUrl('/otp');
+        } else {
+          this.toasterService.error(response.message);
+        }
+        this.spinner.hide();
+      },
+      error: (err) => {
+    //    this.toasterService.error('Login failed. Please try again.');
+        this.spinner.hide();
+        console.error('Login error:', err);
+      }
+    });
+
+  }
   
 }
