@@ -18,5 +18,8 @@ export class ContentService {
     return this.http.get<any>(environment.apiUrl +  ApiEndPoint.doctors)
   }
 
-  
+  patientDetails(data:any){
+    debugger
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.patientDetail + '?Mrn=' + data)
+  }
 }
