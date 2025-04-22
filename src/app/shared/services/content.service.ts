@@ -14,5 +14,9 @@ export class ContentService {
   constructor(private http: HttpClient) { }
 
  
+  getDoctors() {  
+    return this.http.get<any>(environment.apiUrl +  ApiEndPoint.doctors)
+  }
+
   
 }

@@ -41,37 +41,19 @@
 
                                 
                     </div>
-                     <!-- <div class="flex justify-start">
-                        <div class="bg-white rounded-2xl shadow-lg p-3 w-48">
-                      
-                          <img src="assets/images/logo-dashboard.png"
-                               alt="Doctor"
-                               class=" w-100 h-auto mx-auto object-cover mb-4">
-                      
-                         
-                          <h2 class=" font-semibold text-gray-800 mb-2" style="text-align: center;">Dr. MOHAMMED ELAWADLY</h2>
-                          <p class="text-gray-600 mb-3" style="text-align: center;">Physicians Department</p>
-                      
-                         
-                          <div class="flex justify-center">
-                            <button class="bg-yellow-700 hover:bg-yellow-800 text-white px-4 py-2 rounded-full text-sm transition duration-300 ease-in-out" style="font-size: 12px; font-weight:600;">
-                              Book Appointment
-                            </button>
-                          </div>
-                          
-                      
-                        </div>
-                      </div> 
-                       -->
+                   
                        <div class="container mt-4">
-                        <div class="row">
+                        <div class="row" *ngFor="let item of doctorList">
                           <!-- Card 1 -->
                           <div class="col-md-4 mb-4">
                             <div class="card d-flex flex-row align-items-center p-2 shadow-sm rounded">
                               <img src="assets/images/logo-dashboard.png" alt="Doctor" class="img-fluid  me-3" style="width: 70px; height: 70px;">
                               <div>
-                                <h6 class="mb-1 mt-2 fw-bold" style="font-size: 14px;">Dr. MOHAMMED ELAWADLY</h6>
-                                <p class="mb-2 text-muted small">- Physicians Department</p>
+                                <h6 class="mb-1 mt-2 fw-bold" style="font-size: 14px;">{{item.title}} {{item.printName}}</h6>
+                                <p class="mb-2 text-muted small" *ngFor="let dept of item.departments">
+                                  - {{ dept }}
+                                </p>
+                                
                                 <div class="flex justify-end">
                                     <button class="btn btn-sm rounded-pill px-3 bg-yellow-700 hover:bg-yellow-800 text-white">
                                       Book Appointment
@@ -81,36 +63,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="col-md-4 mb-4">
-                            <div class="card d-flex flex-row align-items-center p-2 shadow-sm rounded">
-                              <img src="assets/images/logo-dashboard.png" alt="Doctor" class="img-fluid  me-3" style="width: 70px; height: 70px;">
-                              <div>
-                                <h6 class="mb-1 mt-2 fw-bold" style="font-size: 14px;">Dr. MOHAMMED ELAWADLY</h6>
-                                <p class="mb-2 text-muted small">- Physicians Department</p>
-                                <div class="flex justify-end">
-                                    <button class="btn btn-sm rounded-pill px-3 bg-yellow-700 hover:bg-yellow-800 text-white">
-                                      Book Appointment
-                                    </button>
-                                  </div>
-                                  
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-md-4 mb-4">
-                            <div class="card d-flex flex-row align-items-center p-2 shadow-sm rounded">
-                              <img src="assets/images/logo-dashboard.png" alt="Doctor" class="img-fluid  me-3" style="width: 70px; height: 70px;">
-                              <div>
-                                <h6 class="mb-1 mt-2 fw-bold" style="font-size: 14px;">Dr. MOHAMMED ELAWADLY</h6>
-                                <p class="mb-2 text-muted small">- Physicians Department</p>
-                                <div class="flex justify-end">
-                                    <button class="btn btn-sm rounded-pill px-3 bg-yellow-700 hover:bg-yellow-800 text-white">
-                                      Book Appointment
-                                    </button>
-                                  </div>
-                                  
-                              </div>
-                            </div>
-                          </div>
+                          
                          
                       
                           
