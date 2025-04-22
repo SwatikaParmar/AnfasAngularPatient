@@ -18,6 +18,7 @@ import { MessagesListComponent } from './messages/messages-list/messages-list.co
 import { AppointmentListComponent } from './appointment/appointment-list/appointment-list.component';
 import { DoctorListComponent } from './doctor/doctor-list/doctor-list.component';
 import { DoctorDetailComponent } from './doctor/doctor-detail/doctor-detail.component';
+import { PatientProfileComponent } from './profile/patient-profile/patient-profile.component';
 
 
 
@@ -36,6 +37,7 @@ import { DoctorDetailComponent } from './doctor/doctor-detail/doctor-detail.comp
     AppointmentListComponent,
     DoctorListComponent,
     DoctorDetailComponent,
+    PatientProfileComponent,
    
   ],
   imports: [
