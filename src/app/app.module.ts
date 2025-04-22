@@ -14,7 +14,7 @@ import { AuthModule } from './pages/auths/auth.module';
 import { JwtInterceptor } from './shared/helpers/jwt.interceptor'; 
 import { LayoutModule } from './layouts/layout.module';
 
-
+import { NgOtpInputModule } from 'ng-otp-input';
 
 
 
@@ -37,6 +37,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     HomeModule, 
     LayoutModule,
     NgxSpinnerModule, 
+    NgOtpInputModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

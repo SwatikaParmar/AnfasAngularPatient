@@ -93,7 +93,7 @@ export class LoginComponent implements OnInit {
       next: (response) => {
         if (response.status === true) {
           this.loginForm.reset();
-          this.toasterService.success(response.message);
+          this.toasterService.success('OTP sent on your phone no');
        this.patientDetail();
         } else {
           this.toasterService.error(response.message);

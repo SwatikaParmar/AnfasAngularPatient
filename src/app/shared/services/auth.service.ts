@@ -26,11 +26,12 @@ export class AuthService {
   login(user: any) {    
     return this.http.post<any>(environment.apiUrl + ApiEndPoint.login,user)
       .pipe(map(user => {
-        if (user.data) {     
-          localStorage.setItem('currentUser', JSON.stringify(user));
+        if (user.data) {   
+          debugger  
+          localStorage.setItem('currentUser', JSON.stringify(user.data));
           localStorage.setItem('loginRole', user.data.role);
-          // localStorage.setItem('userId', user.data.userId);
-          // localStorage.setItem('userId', user.data.id);
+          localStorage.setItem('fname', user.data.patient.firstName);
+          localStorage.setItem('lname', user.data.patient.lastName);
           //   localStorage.setItem('distributorId', user.data.distributorId);
           this.currentUserSubject.next(user);
         } else {

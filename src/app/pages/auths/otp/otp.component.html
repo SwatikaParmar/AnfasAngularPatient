@@ -18,50 +18,27 @@
                 style="background: #FEC34F; height: 100vh; display: grid; align-items: center; ">
                 <form>
                     <div class="login-forms">
-                        <div class=" flex items-center justify-center" style="border-radius: 20px;">
-                            <div class=" p-8  text-center relative" style="border-radius: 30px;">
-                              <!-- Top Decoration (optional image or design) -->
-                              <div class="absolute top-0 left-0 w-full h-20  rounded-t-xl"></div>
-                              
-                              <!-- Illustration -->
-                              <div class="relative mt-8">
-                                <img src="https://img.icons8.com/color/96/000000/forgot-password.png" alt="OTP Illustration" class="mx-auto h-24">
-                              </div>
-                          
-                              <!-- Instruction -->
-                              <p class="text-gray-700 mt-6 text-sm">
-                                Please enter the 5-digit code that was sent to your phone number ending in *** *** 387
-                              </p>
-                          
-                              <!-- OTP Inputs -->
-                              <div class="flex justify-center space-x-2 mt-6">
-                                <input type="text" maxlength="1" class="w-12 h-12 text-center border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" />
-                                <input type="text" maxlength="1" class="w-12 h-12 text-center border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" />
-                                <input type="text" maxlength="1" class="w-12 h-12 text-center border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" />
-                                <input type="text" maxlength="1" class="w-12 h-12 text-center border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" />
-                                <input type="text" maxlength="1" class="w-12 h-12 text-center border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500" />
-                              </div>
-                          
-                              <!-- Verify Button -->
-                              <button class="mt-6 w-full bg-yellow-700 hover:bg-yellow-800 text-white py-2 rounded-full font-medium">
-                                Verify
-                              </button>
-                          
-                              <!-- Resend Option -->
-                              <p class="mt-4 text-sm text-gray-600">
-                                Don’t receive code?
-                                <a href="#" class="text-yellow-600 underline" style="color:blue;">Resend Code</a>
-                              </p>
-                            </div>
-                          </div>
-                       
-                              
-                              
-                       
-                          
-                          
+                      <div class="flex justify-center space-x-2 mt-6">
+                        <ng-otp-input
+                          [config]="otpConfig"
+                          (onInputChange)="onOtpChange($event)">
+                        </ng-otp-input>
+                      </div>
+                  
+                      <!-- Error Message -->
+                      <div *ngIf="error" class="text-red-600 mt-2 text-center">
+                        {{ error }}
+                      </div>
+                  
+                      <button 
+                        class="mt-6 w-full bg-yellow-700 hover:bg-yellow-800 text-white py-2 rounded-full font-medium"
+                        type="button"
+                        (click)="verifyOtp()">
+                        Verify
+                      </button>
                     </div>
-                </form>
+                  </form>
+                  
             </div>
         </div>
     </div>

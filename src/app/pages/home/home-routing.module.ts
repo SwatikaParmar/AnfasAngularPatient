@@ -10,6 +10,8 @@ import { SatisfactionFormComponent } from './satisfaction/satisfaction-form/sati
 import { AboutUsComponent } from './about/about-us/about-us.component';
 import { MessagesListComponent } from './messages/messages-list/messages-list.component';
 import { AppointmentListComponent } from './appointment/appointment-list/appointment-list.component';
+import { DoctorDetailComponent } from './doctor/doctor-detail/doctor-detail.component';
+import { DoctorListComponent } from './doctor/doctor-list/doctor-list.component';
 
 const routes: Routes = [
 
@@ -25,7 +27,9 @@ const routes: Routes = [
       { path: 'satisfaction-form', component: SatisfactionFormComponent },
       { path: 'about-Us', component: AboutUsComponent },
       { path: 'messages', component: MessagesListComponent },
-      { path: 'appointment', component: AppointmentListComponent }
+      { path: 'appointment', component: AppointmentListComponent },
+      { path: 'doctor-list', component:DoctorListComponent},
+      { path: 'doctor-list/detail/:id', component: DoctorDetailComponent}
 
     ]
   }

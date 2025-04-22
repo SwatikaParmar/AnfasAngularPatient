@@ -8,6 +8,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
 import { OtpComponent } from './otp/otp.component';
+import { NgOtpInputModule } from 'ng-otp-input';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { OtpComponent } from './otp/otp.component';
     BrowserAnimationsModule,
     FormsModule,
     AuthRoutingModule,
-    TranslateModule
+    TranslateModule,
+    NgOtpInputModule
   ],
   providers: []
 })
