@@ -32,6 +32,7 @@ export class AuthService {
           localStorage.setItem('loginRole', user.data.role);
           localStorage.setItem('fname', user.data.patient.firstName);
           localStorage.setItem('lname', user.data.patient.lastName);
+          localStorage.setItem('mrn', user.data.patient.mrn);
           //   localStorage.setItem('distributorId', user.data.distributorId);
           this.currentUserSubject.next(user);
         } else {
@@ -47,6 +48,7 @@ export class AuthService {
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.patientDetail + '?Mrn=' + data.mrn)
   }
 
+ 
   logout() {
     localStorage.clear();
     this.router.navigate(['/home-page'])
