@@ -1,1 +1,98 @@
-<p>visit-list works!</p>
+<div class="dashboard-outer">
+
+    <section>
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="flex mb-2 items-center ml-1">
+                    <!-- Back Arrow Button -->
+                    <button class="flex items-center justify-center w-7 h-7 rounded-full mr-3 text-white" style="background-color: #726641;">
+                        <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center;"></i>
+
+                      </button>
+                      
+
+
+                    <!-- Title Text -->
+                    <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">My Visits</h1>
+                </div>
+
+                <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 10px;">
+                    <div class="container mt-4">
+                        <div class="row">
+                            <!-- Card 1 -->
+                            <div class="col-md-4 mb-4 mt-3">
+                                <div class="physician-card ">
+                                    <div class="header">
+                                        <img src="assets/images/logo-dashboard.png" alt="Logo" class="logo">
+                                        <span class="department-name">Physicians Department</span>
+                                    </div>
+                                    <div class="info">
+                                        <p><span class="label" style="margin-left:32px;">Visit Type-</span></p>
+                                        <p><span class="label" style="margin-left:32px;">Care Provider-</span> <span
+                                                style="margin-left:19px;">MOHAMMED ELAWADLY</span></p>
+                                        <p><span class="label" style="margin-left:32px;">En Type-</span> <span
+                                                style="margin-left:137px;">Inpatient</span></p>
+                                    </div>
+                                    <button class="view-button" onclick="openPopup()">View Reports ➔</button>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4 mt-3">
+                                <div class="physician-card ">
+                                    <div class="header">
+                                        <img src="assets/images/logo-dashboard.png" alt="Logo" class="logo">
+                                        <span class="department-name">Physicians Department</span>
+                                    </div>
+                                    <div class="info">
+                                        <p><span class="label" style="margin-left:32px;">Visit Type-</span></p>
+                                        <p><span class="label" style="margin-left:32px;">Care Provider-</span> <span
+                                                style="margin-left:19px;">MOHAMMED ELAWADLY</span></p>
+                                        <p><span class="label" style="margin-left:32px;">En Type-</span> <span
+                                                style="margin-left:137px;">Inpatient</span></p>
+                                    </div>
+                                    <button class="view-button">View Reports ➔</button>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4 mt-3">
+                                <div class="physician-card ">
+                                    <div class="header">
+                                        <img src="assets/images/logo-dashboard.png" alt="Logo" class="logo">
+                                        <span class="department-name">Physicians Department</span>
+                                    </div>
+                                    <div class="info">
+                                        <p><span class="label" style="margin-left:32px;">Visit Type-</span></p>
+                                        <p><span class="label" style="margin-left:32px;">Care Provider-</span> <span
+                                                style="margin-left:19px;">MOHAMMED ELAWADLY</span></p>
+                                        <p><span class="label" style="margin-left:32px;">En Type-</span> <span
+                                                style="margin-left:137px;">Inpatient</span></p>
+                                    </div>
+                                    <button class="view-button">View Reports ➔</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Popup -->
+<div id="popup">
+    <div id="popup-content">
+        <div class="top-bar">
+            <h2 style="color:#726641;">Reports</h2>
+            <i class="fa fa-times close-icon "  id="close" onclick="closePopup()"></i>
+        </div>
+        
+  
+      <div class="report-card">
+        <span>Lab Report</span>
+        <span>➔</span>
+      </div>
+  
+      <div class="report-card">
+        <span>RIS Report</span>
+        <span>➔</span>
+      </div>
+    </div>
+  </div>
