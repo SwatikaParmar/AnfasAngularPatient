@@ -22,4 +22,9 @@ export class ContentService {
     debugger
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.patientDetail + '?Mrn=' + data)
   }
+
+  getConsent(mrn:any){
+    debugger
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.consentForm + '?mrn=' + mrn.mrn + '&language=' + mrn.language )
+  }
 }

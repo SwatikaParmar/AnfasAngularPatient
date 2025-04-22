@@ -1,0 +1,18 @@
+<section>
+    <div class="content-body">
+      <div class="container-fluid">
+        <form class="w-100">
+          <div class="back-btn-left-circle mt-1">
+            <i class="fi fi-rr-arrow-small-left" (click)="backClicked()" style="color:#726641; padding-top: 7px;"></i>
+          </div>
+  
+          <!-- Toggle between Shadow DOM and direct rendering -->
+          <div *ngIf="useShadowDom">
+            <div id="shadowContainer"></div>
+          </div>
+          <div *ngIf="!useShadowDom" class="terms-content" [innerHTML]="mrnUrl"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+  

@@ -63,4 +63,15 @@ debugger
     });
 
   }
+
+  navigateToPreview(): void {
+    if (this.detail && this.detail.mrn) {
+      this.router.navigate(['/profile/consent'], {
+        queryParams: { mrn: this.detail.mrn }
+      });
+    } else {
+      this.toastrService.warning('Consent form ID is missing.');
+    }
+  }
+
 }
