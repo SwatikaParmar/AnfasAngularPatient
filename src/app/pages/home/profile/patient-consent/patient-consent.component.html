@@ -13,14 +13,18 @@
           </div>
           <div *ngIf="!useShadowDom" class="terms-content" [innerHTML]="mrnUrl"></div>
         </form>
-        <div class="flex justify-center mt-3 mb-2">
-          <button class=" py-2 rounded-md btn-yellow mr-2" style="width: 20%; color:black">
-             Done
-          </button>
-          <button class=" py-2 rounded-md " style="width: 20%; color: rgb(255, 255, 255); background-color: #77734E;">
-            Edit
-        </button>
-        </div>
+<!-- This whole div will be hidden after clicking Edit -->
+<div class="flex justify-center mt-3 mb-2" *ngIf="!isEditing">
+  <button class="py-2 rounded-md btn-yellow mr-2" style="width: 20%; color:black"
+          [routerLink]="['/profile']">
+    Done
+  </button>
+  <button class="py-2 rounded-md" style="width: 20%; color: rgb(255, 255, 255); background-color: #77734E;"
+          (click)="onEditClick()">
+    Edit
+  </button>
+</div>
+
     
       </div>
     </div>

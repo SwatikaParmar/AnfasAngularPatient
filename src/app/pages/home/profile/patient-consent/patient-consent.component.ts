@@ -12,6 +12,7 @@ export class PatientConsentComponent {
   Mrn: string = '';
   mrnUrl: SafeHtml = ''; // For direct rendering
   useShadowDom: boolean = true; // Toggle for Shadow DOM usage
+  isEditing: boolean = false;
 
   constructor(
     private contentService: ContentService,
@@ -1342,4 +1343,9 @@ export class PatientConsentComponent {
   backClicked(): void {
     this._location.back();
   }
+
+  onEditClick() {
+    this.isEditing = true;
+  }
+  
 }
