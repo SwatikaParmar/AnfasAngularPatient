@@ -15,6 +15,7 @@ export class AppointmentListComponent {
   totalItems!: number;
   appointmentList: any;
   rootUrl: any;
+  doctorList: any;
  
 
   
@@ -31,27 +32,29 @@ export class AppointmentListComponent {
     this.route.queryParams.subscribe((params) => {
       this.page = +params['page'] || 0;
     });
-    this.getAppointment();  
+    this.doctorLists();  
   }
 
-  getAppointment() {
+  doctorLists() {
 
-    debugger
-        this.contentService.getAppointment(localStorage.getItem('mrn')).subscribe(
-          response => {
-            if (response.status === true) {
-              this.appointmentList = response.data;
-            } else {
-              this.toastrService.error('Failed to fetch doctor list.');
-              console.error('API returned failure:', response);
-            }
-          },
-          error => {
-            this.toastrService.error('Error fetching doctor list.');
-            console.error('Error fetching doctor list:', error);
-          }
-        );
-      }    
+
+    this.contentService.getDoctors().subscribe(
+      response => {
+        if (response.status === true) {
+          debugger
+          this.doctorList = response.data;
+        } else {
+          this.toastrService.error('Failed to fetch doctor list.');
+          console.error('API returned failure:', response);
+        }
+      },
+      error => {
+        this.toastrService.error('Error fetching doctor list.');
+        console.error('Error fetching doctor list:', error);
+      }
+    );
+  }    
+
     
       onPageChange(page: number): void {
         // Update query parameters for pagination
