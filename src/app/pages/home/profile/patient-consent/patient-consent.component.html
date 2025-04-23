@@ -2,9 +2,10 @@
     <div class="content-body">
       <div class="container-fluid">
         <form class="w-100">
-          <div class="back-btn-left-circle mt-1">
-            <i class="fi fi-rr-arrow-small-left" (click)="backClicked()" style="color:#726641; padding-top: 7px;"></i>
-          </div>
+          <button class="flex items-center justify-center w-7 h-7 rounded-full mr-3 mb-2 text-white"
+          style="background-color: #726641;">
+          <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center;"></i>
+      </button>
   
           <!-- Toggle between Shadow DOM and direct rendering -->
           <div *ngIf="useShadowDom">
