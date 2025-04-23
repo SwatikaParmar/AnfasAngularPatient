@@ -1,0 +1,21 @@
+
+  
+  .card-title {
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+  
+  .rating-item {
+    margin-bottom: 16px;
+  }
+  
+  .stars {
+    color: #ccc;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .fa-star.filled {
+    color: #d4af37;
+  }
+  
