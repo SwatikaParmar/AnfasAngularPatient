@@ -1311,3 +1311,42 @@ ul.ngx-pagination li.pagination-next a {
     text-align: left;
     direction: ltr;
 }
+
+
+/* Large screens (desktops) */
+@media screen and (min-width: 1200px) {
+    .content-body {
+        margin-left: 17rem;
+    }
+}
+
+/* Medium screens (tablets, small laptops) */
+@media screen and (max-width: 1199px) and (min-width: 768px) {
+    .content-body {
+        margin-left: 0rem!important;
+    }
+    .custom-container {
+        padding: 5px!important;
+      }
+}
+
+/* Small screens (large phones) */
+@media screen and (max-width: 767px) and (min-width: 576px) {
+    .content-body {
+        margin-left: 0rem!important;
+    }
+    .custom-container {
+        padding: 5px!important;
+      }
+}
+
+/* Extra small screens (phones) */
+@media screen and (max-width: 575px) {
+    .content-body {
+        margin-left: 0!important;
+        padding: 1rem;
+    }
+    .custom-container {
+        padding: 5px!important;
+      }
+}
