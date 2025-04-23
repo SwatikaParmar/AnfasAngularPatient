@@ -1,0 +1,7 @@
+.btn-yellow {
+    background-color: #FEC34F;
+  }
+
+  .btn-yellow:hover {
+    background-color: #e0ac3f; /* Slightly darker shade of #FEC34F */
+  }
