@@ -1,0 +1,29 @@
+.status-btn {
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    background-color: transparent;
+    cursor: default;
+  }
+  
+  .pending {
+    color: #d9534f; /* Bootstrap's danger color */
+    border: 1px solid gray;
+  }
+  .status-btn-top {
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    background-color: transparent;
+    cursor: default;
+  }
+  
+  .pending-top {
+    color: green; /* Bootstrap's danger color */
+    border: 1px solid gray;
+  }
+  
