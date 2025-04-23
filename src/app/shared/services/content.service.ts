@@ -27,4 +27,27 @@ export class ContentService {
     debugger
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.consentForm + '?mrn=' + mrn.mrn + '&language=' + mrn.language )
   }
+
+  
+  getVisit(data:any) {  
+    return this.http.get<any>(environment.apiUrl +  ApiEndPoint.visitList + '?mrn=' + data + '&forPatient=true' + '&forDoctor=false')
+  }
+
+
+  getLab(data:any){
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.LabReport + '?PatientUid=' + data.PatientUid 
+      + '&PatientVisitUid=' + data.PatientVisitUid
+    )
+  }
+
+  getRis(data:any){
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.RisReport + '?PatientUid=' + data.PatientUid 
+      + '&PatientVisitUid=' + data.PatientVisitUid
+    )
+  }
+
+  getAppointment(data:any){
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.appointment + '?mrn=' + data)
+  }
+
 }

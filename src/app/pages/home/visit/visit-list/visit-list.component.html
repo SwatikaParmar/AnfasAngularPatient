@@ -20,63 +20,23 @@
                     <div class="container mt-4">
                         <div class="row">
                             <!-- Card 1 -->
-                            <div class="col-md-4 mb-4 mt-3">
+                            <div class="col-md-4 mb-4 mt-3" *ngFor="let item of visitList">
                                 <div class="physician-card ">
                                     <div class="header">
                                         <img src="assets/images/logo-dashboard.png" alt="Logo" class="logo">
-                                        <span class="department-name">Physicians Department</span>
+                                        <span class="department-name">{{item.departmentName}}</span>
                                     </div>
                                     <div class="info">
-                                        <p><span class="label" style="margin-left:32px;">Visit Type-</span></p>
+                                        <p><span class="label" style="margin-left:32px;">Visit Type-</span>{{item.visitTypeDescription}}</p>
                                         <p><span class="label" style="margin-left:32px;">Care Provider-</span> <span
-                                                style="margin-left:19px;">MOHAMMED ELAWADLY</span></p>
+                                                style="margin-left:19px;">{{item.careProviderName}} {{item.careProviderLastName}}</span></p>
                                         <p><span class="label" style="margin-left:32px;">En Type-</span> <span
-                                                style="margin-left:137px;">Inpatient</span></p>
+                                                style="margin-left:137px;">{{item.entypeValueDescription}}</span></p>
                                     </div>
                                     <button class="view-button" onclick="openPopup()">View Reports </button>
                                 </div>
-                            </div>
-                            <div class="col-md-4 mb-4 mt-3">
-                                <div class="physician-card ">
-                                    <div class="header">
-                                        <img src="assets/images/logo-dashboard.png" alt="Logo" class="logo">
-                                        <span class="department-name">Physicians Department</span>
-                                    </div>
-                                    <div class="info">
-                                        <p><span class="label" style="margin-left:32px;">Visit Type-</span></p>
-                                        <p><span class="label" style="margin-left:32px;">Care Provider-</span> <span
-                                                style="margin-left:19px;">MOHAMMED ELAWADLY</span></p>
-                                        <p><span class="label" style="margin-left:32px;">En Type-</span> <span
-                                                style="margin-left:137px;">Inpatient</span></p>
-                                    </div>
-                                    <button class="view-button" onclick="openPopup()">View Reports </button>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-4 mt-3">
-                                <div class="physician-card ">
-                                    <div class="header">
-                                        <img src="assets/images/logo-dashboard.png" alt="Logo" class="logo">
-                                        <span class="department-name">Physicians Department</span>
-                                    </div>
-                                    <div class="info">
-                                        <p><span class="label" style="margin-left:32px;">Visit Type-</span></p>
-                                        <p><span class="label" style="margin-left:32px;">Care Provider-</span> <span
-                                                style="margin-left:19px;">MOHAMMED ELAWADLY</span></p>
-                                        <p><span class="label" style="margin-left:32px;">En Type-</span> <span
-                                                style="margin-left:137px;">Inpatient</span></p>
-                                    </div>
-                                    <button class="view-button" onclick="openPopup()">View Reports </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
 
-<!-- Popup -->
+                                <!-- Popup -->
 <div id="popup">
     <div id="popup-content">
         <div class="top-bar">
@@ -85,14 +45,26 @@
         </div>
         
   
-      <div class="report-card">
+      <div class="report-card" (click)="lab(item)">
         <span>Lab Report</span>
         <span>➔</span>
       </div>
   
-      <div class="report-card">
+      <div class="report-card"  (click)="ris(item)">
         <span>RIS Report</span>
         <span>➔</span>
       </div>
     </div>
   </div>
+
+                            </div>
+                         
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
