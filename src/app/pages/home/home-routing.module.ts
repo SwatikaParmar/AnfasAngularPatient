@@ -14,6 +14,7 @@ import { DoctorDetailComponent } from './doctor/doctor-detail/doctor-detail.comp
 import { DoctorListComponent } from './doctor/doctor-list/doctor-list.component';
 import { PatientProfileComponent } from './profile/patient-profile/patient-profile.component';
 import { PatientConsentComponent } from './profile/patient-consent/patient-consent.component';
+import { BookAppointmentComponent } from './appointment/book-appointment/book-appointment.component';
 
 const routes: Routes = [
 
@@ -33,7 +34,8 @@ const routes: Routes = [
       { path: 'doctor-list', component:DoctorListComponent},
       { path: 'doctor-list/detail/:id', component: DoctorDetailComponent},
       { path: 'profile', component:PatientProfileComponent},
-      { path: 'profile/consent', component:PatientConsentComponent}
+      { path: 'profile/consent', component:PatientConsentComponent},
+      { path: 'appointment/book', component:BookAppointmentComponent}
 
     ]
   }
