@@ -21,6 +21,7 @@ import { DoctorDetailComponent } from './doctor/doctor-detail/doctor-detail.comp
 import { PatientProfileComponent } from './profile/patient-profile/patient-profile.component';
 import { PatientConsentComponent } from './profile/patient-consent/patient-consent.component';
 import { BookAppointmentComponent } from './appointment/book-appointment/book-appointment.component';
+import { EditConsentComponent } from './profile/edit-consent/edit-consent.component';
 
 
 
@@ -42,6 +43,7 @@ import { BookAppointmentComponent } from './appointment/book-appointment/book-ap
     PatientProfileComponent,
     PatientConsentComponent,
     BookAppointmentComponent,
+    EditConsentComponent,
    
   ],
   imports: [

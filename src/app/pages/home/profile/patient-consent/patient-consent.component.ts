@@ -96,7 +96,7 @@ export class PatientConsentComponent {
         }
 
         .backgroung img {
-            width: 115%!important;
+            width: 100%!important;
             height: auto;
         }
 
@@ -116,7 +116,7 @@ export class PatientConsentComponent {
         }
 
         .hr {
-            font-size: 30px;
+            font-size: 23px!important;
             padding-left: 30px;
             color: #F9BC34;
         }
