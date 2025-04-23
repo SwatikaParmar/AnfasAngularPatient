@@ -1,80 +1,91 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Location } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { ContentService } from 'src/app/shared/services/content.service';
 @Component({
-  selector: 'app-patient-consent',
-  templateUrl: './patient-consent.component.html',
-  styleUrls: ['./patient-consent.component.css']
+    selector: 'app-patient-consent',
+    templateUrl: './patient-consent.component.html',
+    styleUrls: ['./patient-consent.component.css']
 })
 export class PatientConsentComponent {
-  Mrn: string = '';
-  mrnUrl: SafeHtml = ''; // For direct rendering
-  useShadowDom: boolean = true; // Toggle for Shadow DOM usage
-  isEditing: boolean = false;
+    Mrn: string = '';
+    mrnUrl: SafeHtml = ''; // For direct rendering
+    useShadowDom: boolean = true; // Toggle for Shadow DOM usage
+    isEditing: boolean = false;
+    signaturePreview: string | ArrayBuffer | null = null;
+    selectedSignature: any;
+    consentGiven: boolean = false;
+    @ViewChild('signatureCanvas', { static: false }) signatureCanvas!: ElementRef<HTMLCanvasElement>;
+    showSignaturePad: boolean = false;
+    private ctx!: CanvasRenderingContext2D;
+    private isDrawing = false;
+    mrn: any;
+    localStorage: any;
 
-  constructor(
-    private contentService: ContentService,
-    private _location: Location,
-    private sanitizer: DomSanitizer,
-    private route: ActivatedRoute,
-    private elRef: ElementRef
-  ) {}
+    constructor(
+        private contentService: ContentService,
+        private _location: Location,
+        private sanitizer: DomSanitizer,
+        private route: ActivatedRoute,
+        private elRef: ElementRef,
+        private cdRef: ChangeDetectorRef
+    ) { }
 
-  ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.Mrn = params['mrn'];
-      if (this.Mrn) {
-        this.getConsentForm();
-      } else {
-        console.error('MRN is missing');
-      }
-    });
-  }
+    ngOnInit(): void {
+        this.mrn = localStorage.getItem('mrn');
+        this.route.queryParams.subscribe(params => {
+            this.Mrn = params['mrn'];
+            if (this.Mrn) {
+                this.getConsentForm();
+            } else {
+                console.error('MRN is missing');
+            }
+        });
+    }
 
-  getConsentForm(): void {
-    // Map the language code to the respective language name
-    const languageMap: { [key: string]: string } = {
-      en: 'English',
-      ar: 'Arabic'
-    };
-  
-    // Retrieve the language code from localStorage and map it
-    const languageCode = localStorage.getItem('language') || 'en'; // Default to 'en'
-    const selectedLanguage = languageMap[languageCode] || 'English'; // Default to English if mapping fails
-  
-    let payload = {
-      mrn: this.Mrn,
-      language: selectedLanguage // Use the mapped language name
-    };
-  
-    this.contentService.getConsent(payload).subscribe(
-      (response: any) => {
-        if (response.isSuccess) {
-          if (this.useShadowDom) {
-            this.renderInShadowDom(response.data);
-          } else {
-            this.mrnUrl = this.sanitizer.bypassSecurityTrustHtml(response.data);
-          }
-        } else {
-          console.error('Failed to fetch consent form');
-        }
-      },
-      error => {
-        console.error('Error fetching consent form', error);
-      }
-    );
-  }
-  
-  renderInShadowDom(htmlContent: string): void {
-    const container = this.elRef.nativeElement.querySelector('#shadowContainer');
+    getConsentForm(): void {
+        // Map the language code to the respective language name
+        const languageMap: { [key: string]: string } = {
+            en: 'English',
+            ar: 'Arabic'
+        };
 
-    // Create Shadow DOM
-    const shadowRoot = container.attachShadow({ mode: 'open' });
+        // Retrieve the language code from localStorage and map it
+        const languageCode = localStorage.getItem('language') || 'en'; // Default to 'en'
+        const selectedLanguage = languageMap[languageCode] || 'English'; // Default to English if mapping fails
 
-    // Add isolated styles and content
-    shadowRoot.innerHTML = `
+        let payload = {
+            mrn: this.Mrn,
+            language: selectedLanguage // Use the mapped language name
+        };
+
+        this.contentService.getConsent(payload).subscribe(
+            (response: any) => {
+                if (response.isSuccess) {
+                    if (this.useShadowDom) {
+                        this.renderInShadowDom(response.data);
+                    } else {
+                        this.mrnUrl = this.sanitizer.bypassSecurityTrustHtml(response.data);
+                    }
+                } else {
+                    console.error('Failed to fetch consent form');
+                }
+            },
+            error => {
+                console.error('Error fetching consent form', error);
+            }
+        );
+    }
+
+    renderInShadowDom(htmlContent: string): void {
+        const container = this.elRef.nativeElement.querySelector('#shadowContainer');
+
+        // Create Shadow DOM
+        const shadowRoot = container.attachShadow({ mode: 'open' });
+
+        // Add isolated styles and content
+        shadowRoot.innerHTML = `
   <style>
         body {
             padding: 0;
@@ -1338,14 +1349,142 @@ export class PatientConsentComponent {
     </style>
       ${htmlContent}
     `;
-  }
+    }
 
-  backClicked(): void {
-    this._location.back();
-  }
+    backClicked(): void {
+        this._location.back();
+    }
 
-  onEditClick() {
-    this.isEditing = true;
-  }
-  
+    onEditClick() {
+        this.isEditing = true;
+    }
+
+    initialized = false;
+
+    ngAfterViewChecked(): void {
+      if (this.showSignaturePad && this.signatureCanvas && !this.initialized) {
+        this.initCanvas();
+        this.initialized = true;
+      }
+    }
+    
+      
+      initCanvas(): void {
+        const canvasEl = this.signatureCanvas.nativeElement;
+        this.ctx = canvasEl.getContext('2d')!;
+        this.ctx.strokeStyle = '#000'; // Optional: Set stroke color
+      
+        canvasEl.addEventListener('mousedown', this.startDraw);
+        canvasEl.addEventListener('mousemove', this.draw);
+        canvasEl.addEventListener('mouseup', this.stopDraw);
+        canvasEl.addEventListener('mouseleave', this.stopDraw);
+      }
+      
+    startDraw = (e: MouseEvent) => {
+        this.isDrawing = true;
+        this.ctx.beginPath();
+        this.ctx.moveTo(e.offsetX, e.offsetY);
+    };
+
+    draw = (e: MouseEvent) => {
+        if (!this.isDrawing) return;
+        this.ctx.lineTo(e.offsetX, e.offsetY);
+        this.ctx.stroke();
+    };
+
+    stopDraw = () => {
+        this.isDrawing = false;
+        this.ctx.closePath();
+    };
+
+    clearSignature() {
+        const canvas = this.signatureCanvas.nativeElement;
+        this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    saveDrawnSignature() {
+        const canvas = this.signatureCanvas.nativeElement;
+        canvas.toBlob(blob => {
+          if (blob) {
+            this.selectedSignature = new File([blob], 'signature.png', { type: 'image/png' });
+      
+            const reader = new FileReader();
+            reader.onload = () => {
+              this.signaturePreview = reader.result;
+              
+              // Now close the signature pad after setting preview
+              this.showSignaturePad = false;
+            };
+            reader.readAsDataURL(this.selectedSignature);
+          }
+        });
+      }
+      
+    hideSignaturePad() {
+        const canvasEl = this.signatureCanvas?.nativeElement;
+        if (canvasEl) {
+          canvasEl.removeEventListener('mousedown', this.startDraw);
+          canvasEl.removeEventListener('mousemove', this.draw);
+          canvasEl.removeEventListener('mouseup', this.stopDraw);
+          canvasEl.removeEventListener('mouseleave', this.stopDraw);
+        }
+      
+        this.ctx = null!;
+        this.showSignaturePad = false;
+        this.initialized = false;
+      }
+      
+      
+    onSignatureSelected(event: Event): void {
+        const input = event.target as HTMLInputElement;
+        if (input.files && input.files.length > 0) {
+            this.selectedSignature = input.files[0];
+
+            // Show preview
+            const reader = new FileReader();
+            reader.onload = () => {
+                this.signaturePreview = reader.result;
+                this.cdRef.detectChanges(); // Force update
+                this.showSignaturePad = false;
+              };
+              reader.readAsDataURL(this.selectedSignature); // ← Add this
+              
+        }
+    }
+    // other methods like getConsentForm(), renderInShadowDom(), etc.
+
+    saveConsentForm() {
+        debugger
+        const formData = new FormData(); // Ensure this is declared
+        
+        // Retrieve MRN from localStorage
+        const mrn = localStorage.getItem('mrn');
+        console.log('MRN from localStorage:', mrn); // Log MRN value
+    
+        if (mrn) {
+            formData.append('mrn', mrn);       
+        } else {
+            console.error('MRN is undefined or null in localStorage');
+            return; // Prevent sending the request if MRN is not found
+        }
+    
+        if (this.selectedSignature) {
+            formData.append('Signature', this.selectedSignature);
+        }
+    
+        this.contentService.saveConsentForm(formData).subscribe(
+            (res: any) => {
+                if (res.isSuccess) {
+                    console.log('Consent saved successfully');
+                    this.isEditing = false;
+                }
+            },
+            error => {
+                console.error('Error saving consent', error);
+            }
+        );
+    }
+    
+    
+
 }

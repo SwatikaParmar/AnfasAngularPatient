@@ -26,24 +26,63 @@ div<section>
 </div>
 
 <div *ngIf="isEditing">
-<div class="mb-4 mt-3 text-end">
-  <a href="#" class="text-blue-600 underline mr-12 ">Add new signature</a>
+  <!-- Add New Signature -->
+  <div class="mb-4 mt-3 text-end">
+    <label  class="text-blue-600 underline mr-12 cursor-pointer"(click)="showSignaturePad = true">
+      Add new signature
+    </label>
+    <input type="file" id="signatureUpload" accept="image/*" (change)="onSignatureSelected($event)" hidden />
+  </div>
+
+  <!-- Signature Preview (Optional) -->
+  <div *ngIf="signaturePreview" class="text-center mb-4">
+    <p class="text-gray-600 mb-2">Preview:</p>
+    <img [src]="signaturePreview" alt="Signature Preview" class="mx-auto h-24 border p-2 rounded-md shadow" />
+  </div>
+
+  <!-- Consent Checkbox -->
+  <div class="mb-4 mt-3">
+    <label class="custom-checkbox ml-14">
+      <input type="checkbox" [(ngModel)]="consentGiven">
+      <span class="checkmark"></span>
+      <span class="checkbox-label ml-3">I consent</span>
+    </label>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="flex justify-center mt-3 mb-2">
+    <button
+      class="py-2 rounded-md mr-2"
+      style="width: 20%; background-color: #77734E; color: #FEC34F;"
+      (click)="saveConsentForm()">
+      Submit Consent
+    </button>
+
+    <button
+      class="py-2 rounded-md"
+      style="width: 20%; background-color: #ccc; color: #333;"
+      (click)="isEditing = false">
+      Cancel
+    </button>
+  </div>
 </div>
-<div class="mb-4 mt-3">
-<label class="custom-checkbox " style="margin-left: 52px;">
-  <input type="checkbox">
-  <span class="checkmark"></span>
-  <span class="checkbox-label ml-3">I consent</span>
-</label>
-</div>
-<div class="flex justify-center mt-3 mb-2">
- 
-  <button class="py-2 rounded-md" style="width: 20%; color: #FEC34F; background-color: #77734E;">
-   Submit Consent
-  </button>
-</div>
-</div>
+
       </div>
     </div>
   </section>
   
+
+  <!-- Signature Modal -->
+<div *ngIf="showSignaturePad" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+    <h2 class="text-lg font-semibold mb-4 text-center">Draw your Signature</h2>
+    
+    <canvas #signatureCanvas width="350" height="150" class="border border-gray-300 mb-4"></canvas>
+
+    <div class="flex justify-between">
+      <button (click)="clearSignature()" class="bg-gray-200 text-gray-800 px-4 py-1 rounded">Clear</button>
+      <button (click)="saveDrawnSignature()" class="bg-blue-600 text-white px-4 py-1 rounded">Save</button>
+      <button (click)="showSignaturePad = false" class="bg-red-500 text-white px-4 py-1 rounded">Cancel</button>
+    </div>
+  </div>
+</div>

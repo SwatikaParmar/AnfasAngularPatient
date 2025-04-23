@@ -49,5 +49,26 @@ export class ContentService {
   getAppointment(data:any){
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.appointment + '?mrn=' + data)
   }
+ 
+  // saveConsentForm(data: any) {
+  //   debugger
+  //   const formData = new FormData();
+  //   formData.append('mrn', data.mrn);
+  //   formData.append('Signature', data.Signature); // Signature should be a File (e.g., from an input type="file")
+  
+  //   return this.http.post<any>(environment.apiUrl + ApiEndPoint.saveConsent, formData);
+  // }
+
+  saveConsentForm(data: any) {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
+    const options = {
+      headers: headers
+    };
+    return this.http.post<any>(environment.apiUrl + ApiEndPoint.saveConsent, data, options).pipe(map((data: any) => {
+      localStorage.setItem('File', data);
+      return data;
+    }));
+  }
 
 }

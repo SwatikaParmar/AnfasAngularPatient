@@ -6,9 +6,7 @@ export enum ApiEndPoint {
     visitList = "api/User/GetAllVisits",
     LabReport  = "api/User/LabReport",
     RisReport = "api/User/RISReport",
-    appointment = "api/User/GetPatitentAppointments"
-   
-
-
+    appointment = "api/User/GetPatitentAppointments",
+    saveConsent = "api/User/SaveConsentForm"
 }
 
