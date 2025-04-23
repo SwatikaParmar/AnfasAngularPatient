@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./book-appointment.component.css']
 })
 export class BookAppointmentComponent {
+  selectedTime: string = 'morning';
 
+constructor(){}
+
+ngoninit(){
+
+}
+
+  selectTime(time: string) {
+    this.selectedTime = time;
+  }
 }
