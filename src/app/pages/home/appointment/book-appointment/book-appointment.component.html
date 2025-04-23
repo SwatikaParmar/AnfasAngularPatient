@@ -1,5 +1,4 @@
 <div class="dashboard-outer">
-
     <section>
         <div class="content-body">
             <div class="container-fluid">
@@ -26,38 +25,28 @@
                     </div>
                 </div>
                 <div class="flex justify-center mb-4 mt-5">
-                    <button
-                      class="pt-2 pb-2 rounded-l-full"
-                      [ngClass]="selectedTime === 'morning' ? 'text-white' : 'bg-white text-gray-700'"
-                      [ngStyle]="selectedTime === 'morning' ? {'background-color': '#FEC34F'} : {}"
-                      style="width: 30%;"
-                      (click)="selectTime('morning')"
-                    >
-                      Morning
+                    <button class="pt-2 pb-2 rounded-l-full"
+                        [ngClass]="selectedTime === 'morning' ? 'text-white' : 'bg-white text-gray-700'"
+                        [ngStyle]="selectedTime === 'morning' ? {'background-color': '#FEC34F'} : {}"
+                        style="width: 30%;" (click)="selectTime('morning')">
+                        Morning
                     </button>
-                    <button
-                      class="pt-2 pb-2 rounded-r-full"
-                      [ngClass]="selectedTime === 'evening' ? 'text-white' : 'bg-white text-gray-700'"
-                      [ngStyle]="selectedTime === 'evening' ? {'background-color': '#FEC34F'} : {}"
-                      style="width: 30%;"
-                      (click)="selectTime('evening')"
-                    >
-                      Evening
+                    <button class="pt-2 pb-2 rounded-r-full"
+                        [ngClass]="selectedTime === 'evening' ? 'text-white' : 'bg-white text-gray-700'"
+                        [ngStyle]="selectedTime === 'evening' ? {'background-color': '#FEC34F'} : {}"
+                        style="width: 30%;" (click)="selectTime('evening')">
+                        Evening
                     </button>
-                  </div>
-                  
-                  
+                </div>
                 <div class=" bg-white h-20 border border-gray-200 rounded mb-4"></div>
                 <div class="mb-4 text-center">
                     <a href="#" class="text-blue-600 underline">Review Your Consent Form</a>
-                  </div>
-                  <div class="flex justify-center">
+                </div>
+                <div class="flex justify-center">
                     <button class="text-white py-2 rounded-md" style="width: 30%; background-color: #FEC34F;">
-                      Book an Appointment
+                        Book an Appointment
                     </button>
-                  </div>
-                  
-                  
+                </div>
             </div>
         </div>
     </section>
