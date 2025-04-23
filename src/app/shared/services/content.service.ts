@@ -71,4 +71,7 @@ export class ContentService {
     }));
   }
 
+  aboutUs() {
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.getAbout);
+  }
 }

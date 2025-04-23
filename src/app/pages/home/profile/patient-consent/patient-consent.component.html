@@ -1,82 +1,77 @@
 <section>
-    <div class="content-body">
-      <div class="container-fluid">
-        <form class="w-100">
-          <button class="flex items-center justify-center w-7 h-7 rounded-full mr-3 mb-2 text-white"
+  <div class="content-body">
+    <div class="container-fluid">
+      <form class="w-100">
+        <button class="flex items-center justify-center w-7 h-7 rounded-full mr-3 mb-2 text-white"
           style="background-color: #726641;">
-          <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center;"></i>
-      </button>
-  
-          <!-- Toggle between Shadow DOM and direct rendering -->
-          <div *ngIf="useShadowDom">
-            <div id="shadowContainer"></div>
-          </div>
-          <div *ngIf="!useShadowDom" class="terms-content" [innerHTML]="mrnUrl"></div>
-        </form>
-<!-- This whole div will be hidden after clicking Edit -->
-<div class="flex justify-center mt-3 mb-2" *ngIf="!isEditing">
-  <button class="py-2 rounded-md btn-yellow mr-2" style="width: 20%; color:black"
-          [routerLink]="['/profile']">
-    Done
-  </button>
-  <button class="py-2 rounded-md" style="width: 20%; color: rgb(255, 255, 255); background-color: #77734E;"
+          <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center;"(click)="backClicked()"></i>
+        </button>
+
+        <!-- Toggle between Shadow DOM and direct rendering -->
+        <div *ngIf="useShadowDom">
+          <div id="shadowContainer"></div>
+        </div>
+        <div *ngIf="!useShadowDom" class="terms-content" [innerHTML]="mrnUrl"></div>
+      </form>
+      <!-- This whole div will be hidden after clicking Edit -->
+      <div class="flex justify-center mt-3 mb-2" *ngIf="!isEditing">
+        <button class="py-2 rounded-md btn-yellow mr-2" style="width: 20%; color:black" [routerLink]="['/profile']">
+          Done
+        </button>
+        <button class="py-2 rounded-md" style="width: 20%; color: rgb(255, 255, 255); background-color: #77734E;"
           (click)="onEditClick()">
-    Edit
-  </button>
-</div>
-
-<div *ngIf="isEditing">
-  <!-- Add New Signature -->
-  <div class="mb-4 mt-3 text-end">
-    <label  class="text-blue-600 underline mr-12 cursor-pointer"(click)="showSignaturePad = true">
-      Add new signature
-    </label>
-    <input type="file" id="signatureUpload" accept="image/*" (change)="onSignatureSelected($event)" hidden />
-  </div>
-
-  <!-- Signature Preview (Optional) -->
-  <div *ngIf="signaturePreview" class="text-center mb-4">
-    <p class="text-gray-600 mb-2">Preview:</p>
-    <img [src]="signaturePreview" alt="Signature Preview" class="mx-auto h-24 border p-2 rounded-md shadow" />
-  </div>
-
-  <!-- Consent Checkbox -->
-  <div class="mb-4 mt-3">
-    <label class="custom-checkbox ml-14">
-      <input type="checkbox" [(ngModel)]="consentGiven">
-      <span class="checkmark"></span>
-      <span class="checkbox-label ml-3">I consent</span>
-    </label>
-  </div>
-
-  <!-- Action Buttons -->
-  <div class="flex justify-center mt-3 mb-2">
-    <button
-      class="py-2 rounded-md mr-2"
-      style="width: 20%; background-color: #77734E; color: #FEC34F;"
-      (click)="saveConsentForm()">
-      Submit Consent
-    </button>
-
-    <button
-      class="py-2 rounded-md"
-      style="width: 20%; background-color: #ccc; color: #333;"
-      (click)="isEditing = false">
-      Cancel
-    </button>
-  </div>
-</div>
-
+          Edit
+        </button>
       </div>
-    </div>
-  </section>
-  
 
-  <!-- Signature Modal -->
+      <div *ngIf="isEditing">
+        <!-- Add New Signature -->
+        <div class="mb-4 mt-3 text-end">
+          <label class="text-blue-600 underline mr-12 cursor-pointer" (click)="showSignaturePad = true">
+            Add new signature
+          </label>
+          <input type="file" id="signatureUpload" accept="image/*" (change)="onSignatureSelected($event)" hidden />
+        </div>
+
+        <!-- Signature Preview (Optional) -->
+        <div *ngIf="signaturePreview" class="text-center mb-4">
+          <p class="text-gray-600 mb-2">Preview:</p>
+          <img [src]="signaturePreview" alt="Signature Preview" class="mx-auto h-24 border p-2 rounded-md shadow" />
+        </div>
+
+        <!-- Consent Checkbox -->
+        <div class="mb-4 mt-3">
+          <label class="custom-checkbox ml-14">
+            <input type="checkbox" [(ngModel)]="consentGiven">
+            <span class="checkmark"></span>
+            <span class="checkbox-label ml-3">I consent</span>
+          </label>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex justify-center mt-3 mb-2">
+          <button class="py-2 rounded-md mr-2" style="width: 20%; background-color: #77734E; color: #FEC34F;"
+            (click)="saveConsentForm()">
+            Submit Consent
+          </button>
+
+          <button class="py-2 rounded-md" style="width: 20%; background-color: #ccc; color: #333;"
+            (click)="isEditing = false">
+            Cancel
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Signature Modal -->
 <div *ngIf="showSignaturePad" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
   <div class="bg-white p-6 rounded-lg shadow-lg w-96">
     <h2 class="text-lg font-semibold mb-4 text-center">Draw your Signature</h2>
-    
+
     <canvas #signatureCanvas width="350" height="150" class="border border-gray-300 mb-4"></canvas>
 
     <div class="flex justify-between">

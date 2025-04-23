@@ -1,8 +1,9 @@
 import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Location } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ContentService } from 'src/app/shared/services/content.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
     selector: 'app-patient-consent',
     templateUrl: './patient-consent.component.html',
@@ -29,7 +30,9 @@ export class PatientConsentComponent {
         private sanitizer: DomSanitizer,
         private route: ActivatedRoute,
         private elRef: ElementRef,
-        private cdRef: ChangeDetectorRef
+        private cdRef: ChangeDetectorRef,
+        private spinner: NgxSpinnerService,
+        private router: Router,
     ) { }
 
     ngOnInit(): void {
@@ -44,6 +47,7 @@ export class PatientConsentComponent {
         });
     }
 
+    
     getConsentForm(): void {
         // Map the language code to the respective language name
         const languageMap: { [key: string]: string } = {
@@ -1452,39 +1456,43 @@ export class PatientConsentComponent {
         }
     }
     // other methods like getConsentForm(), renderInShadowDom(), etc.
-
     saveConsentForm() {
-        debugger
-        const formData = new FormData(); // Ensure this is declared
-        
-        // Retrieve MRN from localStorage
+        const formData = new FormData();
         const mrn = localStorage.getItem('mrn');
-        console.log('MRN from localStorage:', mrn); // Log MRN value
-    
+      
         if (mrn) {
-            formData.append('mrn', mrn);       
+          formData.append('mrn', mrn);
         } else {
-            console.error('MRN is undefined or null in localStorage');
-            return; // Prevent sending the request if MRN is not found
+          console.error('MRN is undefined or null in localStorage');
+          return;
         }
-    
-        if (this.selectedSignature) {
-            formData.append('Signature', this.selectedSignature);
+      
+        if (!this.selectedSignature) {
+          alert('Please upload or draw your signature before submitting.');
+          return;
         }
-    
+      
+        formData.append('Signature', this.selectedSignature);
+      
+        // Show spinner
+        this.spinner.show();
+      
         this.contentService.saveConsentForm(formData).subscribe(
-            (res: any) => {
-                if (res.isSuccess) {
-                    console.log('Consent saved successfully');
-                    this.isEditing = false;
-                }
-            },
-            error => {
-                console.error('Error saving consent', error);
+          (res: any) => {
+            this.spinner.hide(); // Hide spinner on success
+            if (res.isSuccess) {
+              console.log('Consent saved successfully');
+              this.isEditing = false;
+      
+              this.router.navigate(['/profile']);
             }
+          },
+          error => {
+            this.spinner.hide(); // Hide spinner on error
+            console.error('Error saving consent', error);
+          }
         );
-    }
+      }
+      
     
-    
-
 }
