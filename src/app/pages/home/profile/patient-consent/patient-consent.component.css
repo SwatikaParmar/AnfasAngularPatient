@@ -5,3 +5,35 @@
   .btn-yellow:hover {
     background-color: #e0ac3f; /* Slightly darker shade of #FEC34F */
   }
+
+
+  /* Hide the default checkbox */
+input[type="checkbox"] {
+  display: none;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #e0ac3f; /* ✅ Border color red */
+  border-radius: 4px;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+/* Optional: Show a tick mark when checked */
+input[type="checkbox"]:checked + .checkmark::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 6px;
+  height: 12px;
+  border: solid rgb(0, 0, 0);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  background-color: transparent;
+}
