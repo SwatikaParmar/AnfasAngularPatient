@@ -81,4 +81,13 @@ export class ContentService {
       '&page=' + data.page + '&pageSize=' + data.pageSize
     )
   }
+
+
+  getMessagesList(userName: any) {
+    const url = `${environment.apiUrl}${ApiEndPoint.messagesList}/${userName}`;
+    return this.http.get<any>(url);
+  }
+  
+  
+  
 }

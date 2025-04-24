@@ -28,18 +28,20 @@
                                     </tr>
                                   </thead>
                                   <tbody>
-                                    <tr class="row-light">
-                                      <td>MOHAMMED</td>
-                                      <td>ELAWADLY</td>
-                                      <td>thank you so much</td>
+                                    <tr class="row-light" *ngFor="let item of messageList">
+                                      <td>{{item.firstName}}</td>
+                                      <td>{{item.lastName}}</td>
+                                      <td>{{item.lastMessage}}</td>
                                       <td>
-                                        2025-04-15T04:55:52.067
+                                        {{item.lastMessageTime}}
                                       </td>
-                                     <td style="color: green;">Online</td>
+                                      <td [style.color]="item.status ? 'green' : 'red'">
+                                        {{ item.status ? 'Online' : 'Offline' }}
+                                      </td>
                                       <td [routerLink]="['/messages/chat']"><i class="fa fa-eye"></i></td>
 
                                     </tr>
-                                    <tr class="row-dark">
+                                    <!-- <tr class="row-dark">
                                         <td>MOHAMMED</td>
                                         <td>ELAWADLY</td>
                                         <td>thank you so much</td>
@@ -49,7 +51,7 @@
                                        <td style="color: red;">Offline</td>
                                         <td [routerLink]="['/messages/chat']"><i class="fa fa-eye"></i></td>
 
-                                    </tr>
+                                    </tr> -->
                                   </tbody>
                                 </table>
                               </div>
