@@ -74,4 +74,11 @@ export class ContentService {
   aboutUs() {
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.getAbout);
   }
+
+
+  getComplaint(data:any){
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.complaintList + '?mrn=' + data.mrn +
+      '&page=' + data.page + '&pageSize=' + data.pageSize
+    )
+  }
 }
