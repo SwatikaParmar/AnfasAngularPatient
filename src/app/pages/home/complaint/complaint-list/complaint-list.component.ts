@@ -45,7 +45,7 @@ export class ComplaintListComponent {
     this.contentService.getComplaint(payload).subscribe(
       response => {
         if (response.status === true) {
-          this.complaintList = response.data;
+          this.complaintList = response.data.complaints;
         } else {
           this.toastrService.error('Failed to fetch doctor list.');
           console.error('API returned failure:', response);
