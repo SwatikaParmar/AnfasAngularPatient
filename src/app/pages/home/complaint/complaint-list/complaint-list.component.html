@@ -29,10 +29,7 @@
                                       <td>{{item.complaintTypeName}}</td>
                                       <td>{{item.createdAt}}</td>
                                       <td>
-                                        <select>
-                                          <option>Pending</option>
-                                          <option>Resolved</option>
-                                        </select>
+                                       {{item.status}}
                                       </td>
                                      
                                       <td [routerLink]="['/complaint/chat']"><i class="fa fa-eye"></i></td>
