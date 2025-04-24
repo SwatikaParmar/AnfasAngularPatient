@@ -1,0 +1,68 @@
+.appointment-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+  }
+  .appointment-header {
+    font-weight: 600;
+    font-size: 14px;
+    color: #6c757d;
+  }
+  .doctor-name {
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0;
+  }
+  .department {
+    font-size: 14px;
+    color: #666;
+  }
+  .status-booked {
+    color: #007bff;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .appointment-btn {
+    background-color: #a68c4d;
+    color: #fff;
+    border: none;
+    padding: 6px 15px;
+    border-radius: 20px;
+  }
+  .appointment-btn:hover {
+    background-color: #8e773f;
+  }
+  .doctor-img {
+    border-radius: 10px;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+  }
+
+
+  /* Styling for the container */
+.dropdown-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Styling the select dropdown */
+  .domain-dropdown {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  /* Customizing the dropdown appearance */
+  .domain-dropdown:focus {
+    outline: none;
+    border-color: #FEC34F; /* Change border color on focus */
+  }
+  
