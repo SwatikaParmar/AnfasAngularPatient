@@ -12,9 +12,10 @@
                     <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">Complaint List</h1>
                 </div>
                 <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
-                    <div class="custom-container max-w-5xl mx-auto p-4">
-                        <div class="container mt-4">
-                            <div class="row">
+                    <div class="custom-container max-w-5xl mx-auto p-3">
+                        <div class="container">
+                            <!-- <div class="row">
+
                                 <div class="col-md-4 mb-4">
                                     <div class="card p-2 shadow-sm rounded">
                                         <h6 class="mb-1 mt-1 fw-bold" style="font-size: 14px;">Rudeness or Lack of Compassion 
@@ -56,7 +57,52 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
+
+                            <div class="table-container">
+                                <table>
+                                  <thead>
+                                    <tr>
+                                      <th>Patient Name</th>
+                                      <th>Complaint Type Name</th>
+                                      <th>Date</th>
+                                      <th>Status</th>
+                                     
+                                      <th>Action</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr class="row-light">
+                                      <td>KHADIJAH ABDULAZIZ</td>
+                                      <td>Rudeness or Lack of Compassion</td>
+                                      <td>12-06-2025</td>
+                                      <td>
+                                        <select>
+                                          <option>Pending</option>
+                                          <option>Resolved</option>
+                                        </select>
+                                      </td>
+                                     
+                                      <td><i class="fa fa-eye"></i></td>
+
+                                    </tr>
+                                    <tr class="row-dark">
+                                      <td>KHADIJAH ABDULAZIZ</td>
+                                      <td>Rudeness or Lack of Compassion</td>
+                                      <td>14-06-2025</td>
+                                      <td>
+                                        <select>
+                                          <option>Pending</option>
+                                          <option selected>Resolved</option>
+                                        </select>
+                                      </td>
+                                     
+                                      <td><i class="fa fa-eye"></i></td>
+
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
                         </div>
                     </div>
                 </div>
