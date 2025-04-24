@@ -21,11 +21,11 @@
                             <div class="row">
                                 <div class="col-12 col-sm-6 col-md-4 mb-3">
                                     <div class="card p-2">
-                                        <div class="card-title">Appointment Process</div>
+                                        <div class="card-title">Appointment Process </div>
 
                                         <div class="rating-item"
                                             style="border-bottom: 1px solid gray; padding-bottom: 10px;">
-                                            <label>Ease of scheduling appointments</label>
+                                            <label>Ease of scheduling appointments </label>
                                             <div class="stars">
                                                 <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
                                                     <i class="fa" [ngClass]="{
@@ -40,7 +40,7 @@
 
                                         <div class="rating-item"
                                             style="border-bottom: 1px solid gray; padding-bottom: 10px;">
-                                            <label>Wait time for appointment</label>
+                                            <label>Wait time for appointment </label>
                                             <div class="stars">
                                                 <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
                                                     <i class="fa" [ngClass]="{
@@ -52,7 +52,7 @@
                                         </div>
 
                                         <div class="rating-item">
-                                            <label>Friendliness of front-desk staff</label>
+                                            <label>Friendliness of front-desk staff </label>
                                             <div class="stars">
                                                 <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
                                                     <i class="fa" [ngClass]="{
@@ -72,7 +72,7 @@
 
                                         <div class="rating-item"
                                             style="border-bottom: 1px solid gray; padding-bottom: 10px;">
-                                            <label>Ease of scheduling appointments</label>
+                                            <label>Cleanliness of facilities </label>
                                             <div class="stars">
                                                 <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
                                                     <i class="fa" [ngClass]="{
@@ -87,7 +87,7 @@
 
                                         <div class="rating-item"
                                             style="border-bottom: 1px solid gray; padding-bottom: 10px;">
-                                            <label>Wait time for appointment</label>
+                                            <label>Availability of parking </label>
                                             <div class="stars">
                                                 <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
                                                     <i class="fa" [ngClass]="{
@@ -99,7 +99,7 @@
                                         </div>
 
                                         <div class="rating-item">
-                                            <label>Friendliness of front-desk staff</label>
+                                            <label>Comfort of waiting area </label>
                                             <div class="stars">
                                                 <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
                                                     <i class="fa" [ngClass]="{
@@ -115,11 +115,11 @@
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-4 mb-3">
                                     <div class="card p-2">
-                                        <div class="card-title">Consultation Experience </div>
+                                        <div class="card-title">Consultation Experience  </div>
 
                                         <div class="rating-item"
                                             style="border-bottom: 1px solid gray; padding-bottom: 10px;">
-                                            <label>Ease of scheduling appointments</label>
+                                            <label>Friendliness of the doctor </label>
                                             <div class="stars">
                                                 <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
                                                     <i class="fa" [ngClass]="{
@@ -134,7 +134,7 @@
 
                                         <div class="rating-item"
                                             style="border-bottom: 1px solid gray; padding-bottom: 10px;">
-                                            <label>Wait time for appointment</label>
+                                            <label>Doctor's ability to explain clearly </label>
                                             <div class="stars">
                                                 <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
                                                     <i class="fa" [ngClass]="{
@@ -146,7 +146,7 @@
                                         </div>
 
                                         <div class="rating-item">
-                                            <label>Friendliness of front-desk staff</label>
+                                            <label>Time spent with the doctor </label>
                                             <div class="stars">
                                                 <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
                                                     <i class="fa" [ngClass]="{
@@ -158,12 +158,92 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="mt-5">
-                                    <label class="block text-sm font-medium text-gray-700">Your comments and suggestions
-                                        here…</label>
-                                    <textarea rows="3"
+                                <div class="col-12 col-sm-6 col-md-4 mb-3">
+                                    <div class="card p-2">
+                                        <div class="card-title">Treatment and Care  </div>
+
+                                        <div class="rating-item"
+                                            style="border-bottom: 1px solid gray; padding-bottom: 10px;">
+                                            <label>Quality of treatment received </label>
+                                            <div class="stars">
+                                                <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                                                    <i class="fa" [ngClass]="{
+                                                      'fa-star': i < selectedRating,
+                                                      'fa-star-o': i >= selectedRating
+                                                    }" style="cursor: pointer; color: gold;"></i>
+                                                </ng-container>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="rating-item"
+                                            style="border-bottom: 1px solid gray; padding-bottom: 10px;">
+                                            <label>Availability of medications </label>
+                                            <div class="stars">
+                                                <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                                                    <i class="fa" [ngClass]="{
+                                                      'fa-star': i < selectedRating,
+                                                      'fa-star-o': i >= selectedRating
+                                                    }" style="cursor: pointer; color: gold;"></i>
+                                                </ng-container>
+                                            </div>
+                                        </div>
+
+                                        <div class="rating-item">
+                                            <label>Explanation of treatment and care </label>
+                                            <div class="stars">
+                                                <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                                                    <i class="fa" [ngClass]="{
+                                                      'fa-star': i < selectedRating,
+                                                      'fa-star-o': i >= selectedRating
+                                                    }" style="cursor: pointer; color: gold;"></i>
+                                                </ng-container>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-4 mb-3">
+                                    <div class="card p-2">
+                                        <div class="card-title">Overall Experience </div>
+
+                                        <div class="rating-item"
+                                            style="border-bottom: 1px solid gray; padding-bottom: 10px;">
+                                            <label>Overall satisfaction </label>
+                                            <div class="stars">
+                                                <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                                                    <i class="fa" [ngClass]="{
+                                                      'fa-star': i < selectedRating,
+                                                      'fa-star-o': i >= selectedRating
+                                                    }" style="cursor: pointer; color: gold;"></i>
+                                                </ng-container>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="rating-item"
+                                            style="border-bottom: 1px solid gray; padding-bottom: 10px;">
+                                            <label>Likelihood to recommend us </label>
+                                            <div class="stars">
+                                                <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                                                    <i class="fa" [ngClass]="{
+                                                      'fa-star': i < selectedRating,
+                                                      'fa-star-o': i >= selectedRating
+                                                    }" style="cursor: pointer; color: gold;"></i>
+                                                </ng-container>
+                                            </div>
+                                        </div>
+
+                                        
+                                    </div>
+                                </div>
+                                <div class="mt-3 mb-3">
+                                  
+                                    <textarea id="comments" rows="3" placeholder="Your comments and suggestions here…" 
                                         class="w-full border border-gray-300 p-2 rounded mt-1"></textarea>
                                 </div>
+                                
 
                                 <div class="flex flex-col  space-y-2 mt-2 mb--5">
                                     <button
