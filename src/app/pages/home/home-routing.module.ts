@@ -18,6 +18,7 @@ import { BookAppointmentComponent } from './appointment/book-appointment/book-ap
 import { MessageChatComponent } from './messages/message-chat/message-chat.component';
 import { ComplaintChatComponent } from './complaint/complaint-chat/complaint-chat.component';
 import { ComplaintFormComponent } from './complaint/complaint-form/complaint-form.component';
+import { HistoryListComponent } from 'src/app/history/history-list/history-list.component';
 
 const routes: Routes = [
 
@@ -41,7 +42,8 @@ const routes: Routes = [
       { path: 'appointment/book', component:BookAppointmentComponent},
       { path: 'messages/chat', component:MessageChatComponent},
       { path: 'complaint/chat', component:ComplaintChatComponent},
-      { path: 'complaint-add', component: ComplaintFormComponent}
+      { path: 'complaint-add', component: ComplaintFormComponent},
+      { path: 'history-list', component: HistoryListComponent}
 
     ]
   }
