@@ -10,6 +10,8 @@ export enum ApiEndPoint {
     saveConsent = "api/User/SaveConsentForm",
     getAbout = "api/Admin/GetAbout",
     complaintList = "api/Admin/GetComplaints",
-    messagesList = "api/Chat/chatUsers"
+    messagesList = "api/Chat/chatUsers",
+    complaintType = "api/Admin/GetComplaintTypes",
+    addComplaint = "api/Admin/AddUpdateComplaint"
 }
 

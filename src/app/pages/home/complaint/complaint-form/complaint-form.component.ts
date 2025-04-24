@@ -19,6 +19,8 @@ export class ComplaintFormComponent {
   currentLanguage: string = 'en';
 
   currentLang: string = 'en'; // Default language
+  typeList: any;
+  showFeedbackTextarea = false;
 
   constructor(
     private renderer: Renderer2,
@@ -34,10 +36,13 @@ export class ComplaintFormComponent {
   }
 
   ngOnInit() {
+    this.getComplaint();
+
     this.renderer.addClass(document.querySelector('app-root'), 'login-page');
-    this.Form();
+  
     this.currentLanguage = localStorage.getItem('language') || 'en';
     this.languageService.switchLanguage(this.currentLanguage);
+    this.Form();
   }
 
 
@@ -47,11 +52,87 @@ export class ComplaintFormComponent {
 
   Form() {
     this.complaintForm = this.formBuilder.group({
-      mrn: [''],
-      mobilePhone: [''],
-      nationalId: [''],
-      isVerified: [true]
+      complaint: this.formBuilder.group({
+        complaintTypeId: [null, Validators.required],
+        description: ['', Validators.required]
+      }),
+      feedbackDetails: this.formBuilder.group({
+        enableFeedback: [false],
+        feedback: ['']
+      })
     });
+  }
+
+  getComplaint(){
+
+    this.content.getComplaintType().subscribe(response => {
+      if(response.status ===true) {
+this.typeList = response.data;
+      } else {
+
+      }
+    }
+    )
+  }
+
+  get complaintTypeId() {
+    return this.complaintForm.get('complaint.complaintTypeId');
+  }
+  
+  get complaintDescription() {
+    return this.complaintForm.get('complaint.description');
+  }
+
+
+  onToggleChange() {
+    const feedbackCtrl = this.complaintForm.get('feedbackDetails.feedback');
+    const isEnabled = this.complaintForm.get('feedbackDetails.enableFeedback')?.value;
+  
+    if (isEnabled) {
+      feedbackCtrl?.enable();
+    } else {
+      feedbackCtrl?.disable();  // Optional: Disable when hidden
+      feedbackCtrl?.reset();    // Optional: Clear textarea when unchecked
+    }
+  }
+  onSubmit() {
+    debugger
+    if (this.complaintForm.invalid) {
+      this.complaintForm.markAllAsTouched(); // 🔥 this triggers all validation messages
+      this.toasterService.error('Please fill all required fields.');
+      return;
+    }
+
+      // 2️⃣ Build your base payload
+  const payload: any = {
+    mrn:localStorage.getItem('mrn'),
+    complaint: {
+      complaintId: 0, // or pull from form if dynamic
+      complaintTypeId: this.complaintForm.get('complaint.complaintTypeId')!.value,
+      description: this.complaintForm.get('complaint.description')!.value
+    },
+    feedbackDetails: null  // default
+  };
+
+  // 3️⃣ Only include feedbackDetails if the toggle was on AND there's text
+  const feedbackGroup = this.complaintForm.get('feedbackDetails')!;
+  const enabled = feedbackGroup.get('enableFeedback')!.value;
+  const feedbackText = feedbackGroup.get('feedback')!.value?.trim();
+
+  if (enabled && feedbackText) {
+    payload.feedbackDetails = { feedback: feedbackText };
+  }
+
+
+  this.content.addComplaint(payload).subscribe(resposne => {
+    if(resposne.status == true) {
+      this.toasterService.success(resposne.message);
+      this.router.navigateByUrl('/complaint')
+    } else {
+      this.toasterService.error(resposne.message);
+    }
+  });
+
   }
 
 }

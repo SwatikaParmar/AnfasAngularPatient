@@ -88,6 +88,12 @@ export class ContentService {
     return this.http.get<any>(url);
   }
   
+  getComplaintType(){
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.complaintType)
+  }
   
+  addComplaint(data:any){
+    return this.http.post<any>(environment.apiUrl + ApiEndPoint.addComplaint,data)
+  }
   
 }

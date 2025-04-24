@@ -3,6 +3,7 @@
     <section>
         <div class="content-body">
             <div class="container-fluid">
+              <form [formGroup]="complaintForm" (ngSubmit)="onSubmit()">
                 <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
                     <div class="custom-container max-w-5xl mx-auto p-3">
                 <div class="flex items-center justify-between mb-2 ml-1">
@@ -25,33 +26,52 @@
                     
                 
                     <div class="form-box">
+                      <div formGroupName="complaint">
                         <div class="col-md-4 p-0">
                             <div class="form-group custom-select-wrapper">
-                              <select class="form-control custom-select" id="complaint">
-                                <option>Select Complaint</option>
-                                <option>Late Delivery</option>
-                                <option>Wrong Item</option>
-                                <option>Rude Staff</option>
+                              <select class="form-control custom-select" id="complaint" formControlName="complaintTypeId" id="complaintTypeId">
+                                <option value="null" disabled selected>Select Complaint</option>
+                                <option *ngFor="let type of typeList" [value]="type.complaintTypeId">   {{ type.complaintTypeName }}t</option>
+                               
                               </select>
+
+                              <div *ngIf="complaintTypeId?.touched && complaintTypeId?.invalid" class="text-danger">
+                                Complaint type is required.
+                              </div>
+
                             </div>
                           </div>
                           
                 
-                      <textarea placeholder="Reason for complaint"></textarea>
-                
+                      <textarea placeholder="Reason for complaint" formControlName="description"></textarea>
+                      <div *ngIf="complaintDescription?.touched && complaintDescription?.invalid" class="text-danger">
+                        Complaint description is required.
+                      </div>
+                    </div>
+                    <div formGroupName="feedbackDetails">
                       <div class="toggle-box" style="background-color: white;">
                         <span style="font-size: 18px; font-weight: 600;">Feedback or suggestions</span>
                         <label class="switch">
-                          <input type="checkbox">
+                          <input type="checkbox" [formControlName]="'enableFeedback'" (change)="onToggleChange()" />
                           <span class="slider round"></span>
                         </label>
                       </div>
-                      <textarea placeholder="Enter your Feedback or suggestions"></textarea>
+                    
+                      <textarea
+                        *ngIf="complaintForm.get('feedbackDetails.enableFeedback')?.value"
+                        formControlName="feedback"
+                        class="form-control mt-2"
+                        placeholder="Enter your Feedback or suggestions">
+                      </textarea>
+                    </div>
+                    
+                    
                       <button class="submit-btn mt-2">Submit</button>
                     </div>
                   </div>
                   </div>
                   </div>
+                </form>
             </div>
         </div>
     </section>
