@@ -2,7 +2,11 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageSwitcherServiceService } from 'src/app/shared/services/language-switcher.service.service';
-
+import { ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
+import { ContentService } from 'src/app/shared/services/content.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -22,11 +26,18 @@ export class HomeComponent {
   user: any;
   fname!: string | null;
   lname!: string | null;
-
+  historyListOriginal: any[] = []; // the full original list
+  historyList: any[] = [];         // the filtered list
+  selectedStatus: string = 'All';  // dropdown selection
+  
   constructor(
     private translateService: TranslateService,
     private languageService: LanguageSwitcherServiceService,
-    private router: Router
+    private router: Router,
+    private toastrService: ToastrService,
+    private spinner: NgxSpinnerService,
+    private contentService: ContentService,
+    private route: ActivatedRoute,
   ) {
    
   }
@@ -38,7 +49,7 @@ export class HomeComponent {
     this.dots = document.querySelectorAll('.dot');
     this.updateCarousel();
     this.startAutoSlide();
-
+this.appointment();
   }
 
   ngOnDestroy() {
@@ -79,4 +90,25 @@ export class HomeComponent {
     debugger
     this.router.navigate(['/doctor-list']);
   }
+
+
+  appointment() {
+    this.contentService.getAppointment(localStorage.getItem('mrn')).subscribe(
+      response => {
+        if (response.status === true) {
+          this.historyListOriginal = response.data;
+          this.historyList = this.historyListOriginal.length > 0 ? [this.historyListOriginal[0]] : [];
+        } else {
+          this.toastrService.error('Failed to fetch doctor list.');
+          console.error('API returned failure:', response);
+        }
+      },
+      error => {
+        this.toastrService.error('Error fetching doctor list.');
+        console.error('Error fetching doctor list:', error);
+      }
+    );
+  }
+  
+
 }

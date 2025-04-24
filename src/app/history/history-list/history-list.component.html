@@ -36,7 +36,7 @@
                                             style="border-bottom: 1px solid gray; padding-bottom: 10px;">
                                             <!-- Left Side: Text + Date -->
                                             <div class="appointment-header">
-                                                Appointment Date<br><strong>27-04-2025</strong>
+                                                Appointment Date<br><strong> {{ item.slots[0]?.start | date: 'medium' }}</strong>
                                             </div>
 
                                             <!-- Right Side: Chat Icon -->
