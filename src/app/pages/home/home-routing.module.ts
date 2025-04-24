@@ -17,6 +17,7 @@ import { PatientConsentComponent } from './profile/patient-consent/patient-conse
 import { BookAppointmentComponent } from './appointment/book-appointment/book-appointment.component';
 import { MessageChatComponent } from './messages/message-chat/message-chat.component';
 import { ComplaintChatComponent } from './complaint/complaint-chat/complaint-chat.component';
+import { ComplaintFormComponent } from './complaint/complaint-form/complaint-form.component';
 
 const routes: Routes = [
 
@@ -39,7 +40,8 @@ const routes: Routes = [
       { path: 'profile/consent', component:PatientConsentComponent},
       { path: 'appointment/book', component:BookAppointmentComponent},
       { path: 'messages/chat', component:MessageChatComponent},
-      { path: 'complaint/chat', component:ComplaintChatComponent}
+      { path: 'complaint/chat', component:ComplaintChatComponent},
+      { path: 'complaint-add', component: ComplaintFormComponent}
 
     ]
   }

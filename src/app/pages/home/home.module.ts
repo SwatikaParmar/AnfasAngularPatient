@@ -24,6 +24,7 @@ import { BookAppointmentComponent } from './appointment/book-appointment/book-ap
 import { EditConsentComponent } from './profile/edit-consent/edit-consent.component';
 import { MessageChatComponent } from './messages/message-chat/message-chat.component';
 import { ComplaintChatComponent } from './complaint/complaint-chat/complaint-chat.component';
+import { ComplaintFormComponent } from './complaint/complaint-form/complaint-form.component';
 
 
 
@@ -48,6 +49,7 @@ import { ComplaintChatComponent } from './complaint/complaint-chat/complaint-cha
     EditConsentComponent,
     MessageChatComponent,
     ComplaintChatComponent,
+    ComplaintFormComponent,
    
   ],
   imports: [
