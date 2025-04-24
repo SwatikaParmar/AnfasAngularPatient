@@ -22,6 +22,7 @@ import { PatientProfileComponent } from './profile/patient-profile/patient-profi
 import { PatientConsentComponent } from './profile/patient-consent/patient-consent.component';
 import { BookAppointmentComponent } from './appointment/book-appointment/book-appointment.component';
 import { EditConsentComponent } from './profile/edit-consent/edit-consent.component';
+import { MessageChatComponent } from './messages/message-chat/message-chat.component';
 
 
 
@@ -44,6 +45,7 @@ import { EditConsentComponent } from './profile/edit-consent/edit-consent.compon
     PatientConsentComponent,
     BookAppointmentComponent,
     EditConsentComponent,
+    MessageChatComponent,
    
   ],
   imports: [

@@ -15,6 +15,7 @@ import { DoctorListComponent } from './doctor/doctor-list/doctor-list.component'
 import { PatientProfileComponent } from './profile/patient-profile/patient-profile.component';
 import { PatientConsentComponent } from './profile/patient-consent/patient-consent.component';
 import { BookAppointmentComponent } from './appointment/book-appointment/book-appointment.component';
+import { MessageChatComponent } from './messages/message-chat/message-chat.component';
 
 const routes: Routes = [
 
@@ -35,7 +36,8 @@ const routes: Routes = [
       { path: 'doctor-list/detail/:id', component: DoctorDetailComponent},
       { path: 'profile', component:PatientProfileComponent},
       { path: 'profile/consent', component:PatientConsentComponent},
-      { path: 'appointment/book', component:BookAppointmentComponent}
+      { path: 'appointment/book', component:BookAppointmentComponent},
+      { path: 'messages/chat', component:MessageChatComponent}
 
     ]
   }
