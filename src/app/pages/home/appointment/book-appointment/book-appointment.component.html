@@ -19,41 +19,47 @@
                 </div>
                 <h1 class="text-lg font-semibold mt-2 mb-2 ml-3" style="font-size: 20px; color: #726641;">Appointments
                     Schedule</h1>
-                <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
-                    <div class="calendar-container">
-                        <!-- <mat-calendar
-                        
-                          [dateClass]="dateClass"    
-                          [selected]="selectedDate" 
-                          (selectedChange)="onSelect($event)">
-                        </mat-calendar> -->
-                        <!-- <mat-spinner *ngIf="loadingDates"></mat-spinner> -->
+                    <div class="flex items-start justify-start gap-6 p-4 bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
+                        <!-- Calendar Section -->
+                        <div class="d-flex gap-2" style="width: 100%; background-color: #f8f9fa;">
+                            <!-- Calendar Section - 50% -->
+                            <div style="width: 50%; background-color: white; padding: 1rem; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 12px;">
 
-                        <mat-calendar
-                          #calendar
-                          [dateClass]="dateClass"
-                          (selectedChange)="selectedDate = $event">
-                        </mat-calendar>
-                        
+                              <mat-calendar
+                                #calendar
+                                [dateClass]="dateClass"
+                                (selectedChange)="selectedDate = $event">
+                              </mat-calendar>
+                            </div>
+                          
+                            <!-- Button Section - 50% -->
+                            <div style="width: 50%; background-color: white; padding: 1rem; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 12px;">
 
+                              <div class="d-flex justify-content-center  h-100">
+                                <div>
+                                  <div class="d-flex">
+                                    <button class="pt-2 pb-2 rounded-l-full"
+                                      [ngClass]="selectedTime === 'morning' ? 'text-white' : 'bg-white text-gray-700'"
+                                      [ngStyle]="selectedTime === 'morning' ? {'background-color': '#FEC34F'} : {}"
+                                      style="width: 120px;" (click)="selectTime('morning')">
+                                      Morning
+                                    </button>
+                                    <button class="pt-2 pb-2 rounded-r-full"
+                                      [ngClass]="selectedTime === 'evening' ? 'text-white' : 'bg-white text-gray-700'"
+                                      [ngStyle]="selectedTime === 'evening' ? {'background-color': '#FEC34F'} : {}"
+                                      style="width: 120px;" (click)="selectTime('evening')">
+                                      Evening
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                   
                       </div>
                       
-                </div>
-                <div class="flex justify-center mb-4 mt-5">
-                    <button class="pt-2 pb-2 rounded-l-full"
-                        [ngClass]="selectedTime === 'morning' ? 'text-white' : 'bg-white text-gray-700'"
-                        [ngStyle]="selectedTime === 'morning' ? {'background-color': '#FEC34F'} : {}"
-                        style="width: 30%;" (click)="selectTime('morning')">
-                        Morning
-                    </button>
-                    <button class="pt-2 pb-2 rounded-r-full"
-                        [ngClass]="selectedTime === 'evening' ? 'text-white' : 'bg-white text-gray-700'"
-                        [ngStyle]="selectedTime === 'evening' ? {'background-color': '#FEC34F'} : {}"
-                        style="width: 30%;" (click)="selectTime('evening')">
-                        Evening
-                    </button>
-                </div>
-                <div class=" bg-white h-20 border border-gray-200 rounded mb-4"></div>
+                <div class=" bg-white h-20 border border-gray-200 rounded mb-4 mt-4"></div>
                 <div class="mb-4 text-center">
                     <a href="#" class="text-blue-600 underline">Review Your Consent Form</a>
                 </div>

@@ -16,6 +16,7 @@
 ::ng-deep .mat-calendar-body-cell:not(.available-date)
   .mat-calendar-body-cell-content {
   opacity: 0.3;
+  color: black!important;
 }
 
 /* Style for selected date */
@@ -27,6 +28,491 @@
   /* Style for available date */
   .available-date {
     background-color: #f0ad4e; /* Yellow or any color you prefer */
+    color: white;
+  }
+  
+
+  
+
+
+  /* .imges-upload {
+    position: relative;
+    width: 150px;
+    height: 100px;
+    margin: auto;
+} */
+
+.imgUp {
+  position: relative;
+}
+
+.imagePreview {
+  width: 30%;
+  height: 200px;
+  background-color: #4f4f4f;
+  display: inline-block;
+
+  overflow: hidden;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.imagePreview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.form-dashboard input[type=time] {
+  height: 45px;
+  border-width: 2px;
+  border-radius: 6px;
+  border-width: 0;
+  background: #444;
+  color: #fff;
+  box-shadow: none;
+}
+
+.btn-primary {
+  margin-top: 8px;
+}
+
+
+
+::ng-deep ngx-multiple-dates#ngx-multiple-dates-0 {
+  display: none;
+
+}
+
+ngx-multiple-dates {
+  display: none !important;
+}
+
+
+
+
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 1px;
+
+}
+
+
+.check-now {
+  list-style-type: none;
+  margin: 25px 0 0 0;
+  padding: 0;
+}
+
+.user-header ul {
+  display: inline-block;
+  margin-top: 10px !important;
+}
+
+.check-now li {
+  float: left;
+  margin: 10px 5px 0 15px;
+  width: 180px;
+  height: 50px;
+  position: relative;
+  text-align: center;
+  padding: 14px;
+  display: flex;
+}
+
+.check-now label,
+.check-now input {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.check-now input[type="radio"] {
+  opacity: 0.01;
+  z-index: 100;
+}
+
+.check-now input[type="radio"]:checked+label,
+.Checked+label {
+  background: #3270b8;
+  color: #fff;
+}
+
+.check-now label {
+  padding: 10px;
+  border: 1px solid #CCC;
+  cursor: pointer;
+  z-index: 90;
+  border-radius: 10px;
+}
+
+.check-now label:hover {
+  background: #DDD;
+}
+
+.next-btn {
+  width: 100px;
+  margin: 0 auto;
+  position: relative;
+  top: 12px;
+}
+
+.app-main__inner {
+  padding-bottom: 60px !important;
+}
+
+
+
+.mat-calendar {
+  display: block;
+  background-color: #fff;
+  border-radius: 10px;
+
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-form-field-flex {
+  display: inline-flex;
+  align-items: baseline;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 41px;
+  background-color: #fff;
+  padding: 0px 24px;
+}
+
+/* ::ng-deep .mat-calendar-body-cell-content:hover, .mat-calendar-body-cell.selected .mat-calendar-body-cell-content:not(.disabled), .mat-calendar-body-cell.selected .mat-calendar-body-cell-content:not(.disabled):hover, .mat-calendar-body-cell.selected:hover .mat-calendar-body-cell-content, .mat-calendar-body-cell.selected:hover .mat-calendar-body-cell-content:hover, .mat-calendar-body-cell.selected:hover .mat-calendar-body-cell-content:not(.disabled), .mat-calendar-body-cell.selected:hover .mat-calendar-body-cell-content:not(.disabled):hover, .mat-calendar-body-cell.selected:not(.mat-calendar-body-disabled) .mat-calendar-body-cell-content, .mat-calendar-body-cell.selected:not(.mat-calendar-body-disabled) .mat-calendar-body-cell-content:hover, .mat-calendar-body-cell.selected:not(.mat-calendar-body-disabled) .mat-calendar-body-cell-content:not(.disabled), .mat-calendar-body-cell.selected:not(.mat-calendar-body-disabled) .mat-calendar-body-cell-content:not(.disabled):hover, .mat-calendar-body-cell.selected:not(.mat-calendar-body-disabled):hover .mat-calendar-body-cell-content, .mat-calendar-body-cell.selected:not(.mat-calendar-body-disabled):hover .mat-calendar-body-cell-content:hover, .mat-calendar-body-cell.selected:not(.mat-calendar-body-disabled):hover .mat-calendar-body-cell-content:not(.disabled), .mat-calendar-body-cell.selected:not(.mat-calendar-body-disabled):hover .mat-calendar-body-cell-content:not(.disabled):hover {
+  background-color: #2d7bbc!important;
+}
+
+::ng-deep .mat-calendar-body-cell.selected:hover .mat-calendar-body-cell-content{
+  background-color: #2d7bbc!important;
+} */
+
+
+::ng-deep .mat-calendar-body-cell-content.mat-focus-indicator {
+  position: absolute;
+  color: #ffffff!important;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ::ng-deep .mat-calendar-body-cell {
+  color: #c5c5c2;
+  cursor: not-allowed;
+  pointer-events:none;
+} */
+
+.mat-calendar-body-cell::after {
+  color: black;
+}
+
+
+button.example-custom-date-class {
+  background: #c1f7ff !important;
+  border-radius: 100%;
+}
+
+
+.mat-calendar-body-selected {
+  background-color: #3270b8 !important;
+  color: #444444;
+}
+
+label {
+  color: #e1c377;
+}
+
+
+.toggle-link::after {
+  display: inline-block;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+}
+
+.btn-primary {
+  margin-bottom: 25px !important;
+  border-color: #e1c377 !important;
+  background: #e1c377 !important;
+  color: #111 !important;
+  padding: 0px 25px !important;
+  height: 45px !important;
+  margin-bottom: 15px !important;
+  border-radius: 7px !important;
+  font-weight: 500 !important;
+  font-size: 15px !important;
+  margin-left: 20px!important;
+}
+
+.gold-btn {
+  margin-top: 32px !important;
+}
+
+select[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  /* Makes the icon white */
+  opacity: 1;
+  color: black!important;
+}
+
+
+::ng-deep .available-date {
+  background-color: 0px !important;
+  color: rgb(58, 58, 58) !important;
+  border-radius: 50%;
+}
+
+::ng-deep .disabled-date {
+  pointer-events: none;
+  color: gray !important;
+  opacity: 0.5;
+  color: black!important;
+}
+
+::ng-deep .available-date {
+  background-color: 0px !important;
+  color: rgb(44, 44, 44) !important;
+  border-radius: 50%;
+}
+
+::ng-deep .disabled-date {
+  pointer-events: none;
+  color: gray !important;
+  opacity: 0.5;
+  color: black!important;
+}
+
+.slots-container {
+  margin-top: 20px;
+}
+
+.slot-list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.slot-btn {
+  background-color: #e1c377;
+  color: rgb(26, 26, 26);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.slot-btn:hover {
+  background-color: #e1c377;
+}
+
+::ng-deep .mat-icon-button {
+  padding: 0px;
+  margin: 0 3px !important;
+  min-width: 0;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  line-height: 40px;
+  border-radius: 50%;
+  background-color: #e1c377;
+}
+
+::ng-deep .mat-calendar-body-cell-content {
+  top: 5%;
+  left: 5%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 90%;
+  height: 90%;
+  line-height: 1;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 50%;
+  border-color: black ;
+  color: #111;
+  /* Ensures it remains a circle */
+}
+
+/* Apply background color to available dates */
+::ng-deep .mat-calendar-body-cell.available-date .mat-calendar-body-cell-content {
+  background-color: #e1c377 !important;
+  color: black !important;
+}
+
+/* ::ng-deep .available-date {
+  background-color:0px!important;
+  color: white !important;
+  border-radius: 50%;
+} */
+.gold-bt {
+  background: #e1c377 !important;
+  color: #111 !important;
+  padding: 0px 25px !important;
+  height: 45px !important;
+  margin-bottom: 20px !important;
+  border-radius: 7px !important;
+  font-weight: 500 !important;
+  font-size: 15px !important;
+  margin-left: -17px;
+}
+.gold-btnn {
+  background: #e1c377 !important;
+  color: #111 !important;
+  padding: 0px 25px !important;
+  height: 45px !important;
+  margin-bottom: 20px !important;
+  border-radius: 7px !important;
+  font-weight: 500 !important;
+  font-size: 15px !important;
+  margin-left: -17px;
+}
+.btn-danger {
+  --bs-btn-color: #555555;
+  --bs-btn-bg: #dc3545;
+  margin-bottom: 3px;
+}
+
+::ng-deep .mat-calendar-table-header th {
+  text-align: center;
+  color: #e1c377;
+  padding: 8px 0 !important; /* Applies 8px padding only to top & bottom */
+
+  font-size: 12px;
+}
+::ng-deep .mat-calendar-body-label {
+  height: 0;
+  line-height: 0;
+  text-align: left;
+  padding-left: 4.7142857143%;
+  padding-right: 4.7142857143%;
+  font-size: 20px;
+  font-weight: bold; /* Makes the font bold */
+  color: #e1c377;
+}
+::ng-deep .mat-calendar {
+  display: block;
+ 
+  border-radius: 10px;;
+}
+  .container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Adjust the gap between containers */
+  width: 100%;
+  padding: 0!important;
+  margin: 15px;
+}
+.calendar-container {
+  width: 50%;
+}
+.form-dashboard {
+  display: block;
+  background-color: #262626 !important;
+  border-radius: 10px;
+  box-shadow: 0px 0px 4px 0px grey;
+}
+.foggy {
+  opacity: 0.5;
+  pointer-events: none; /* Prevents selection */
+  color: black!important;
+}
+
+.unavailable {
+  color: rgb(8, 8, 8);
+  justify-content: space-between;
+  display: flex;
+  }
+.delete-icon{
+  color: #e1c377;
+}
+
+
+.content-body .container-fluid-toop {
+  padding-top: 10px;
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-bottom: 30px;
+}
+
+h6 {
+  text-align: left;
+  color: #E1C377 !important;
+  font-size: 27px;
+  padding: 10px !important;
+}
+
+.gold-btn-submit-top {
+  background: #e1c377 !important;
+  color: #111 !important;
+  height: 41px !important;
+  font-weight: 500 !important;
+  font-size: 15px !important;
+  border: none !important;
+  padding: 10px 20px !important;
+  display: block !important;
+
+}
+
+.date-dropdown {
+  height: 40px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  padding: 0px 10px;
+  font-size: 15px;
+  border: none;
+  width: 60% !important;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+::ng-deep .mat-calendar-body-cell.available-date
+  .mat-calendar-body-cell-content {
+  background: #fff8e1;
+  border: 1px solid #ffc107;
+  border-radius: 50%;
+}
+
+::ng-deep .mat-calendar-body-cell.clicked-date-highlight
+  .mat-calendar-body-cell-content {
+  background: #1976d2 !important;
+  color: #fff !important;
+  border-radius: 50%;
+}
+
+
+::ng-deep .mat-calendar-body-cell:not(.available-date)
+  .mat-calendar-body-cell-content {
+  opacity: 0.3;
+}
+
+
+.clicked-date-highlight {
+    background-color: #4caf50; 
+    color: white;
+  }
+  
+  
+  .available-date {
+    background-color: #f0ad4e;
     color: white;
   }
   
