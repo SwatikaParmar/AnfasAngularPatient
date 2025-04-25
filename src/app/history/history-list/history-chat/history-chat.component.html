@@ -15,7 +15,7 @@
   
             <!-- Header -->
             <div class="bg-[#77734E] text-white text-center py-3 shadow">
-              <h2 class="text-lg font-semibold">Complaint</h2>
+              <h2 class="text-lg font-semibold">{{ receiverName || 'Unknown Receiver' }}</h2>
             </div>
   
   
@@ -23,20 +23,19 @@
             <div class="relative flex-1 overflow-y-auto px-4 py-6 space-y-4 bg-white/80"
               style="background-color: #FEFEFF;">
               <div class="relative z-10">
-                <ng-container *ngFor="let chat of replies">
+                <ng-container *ngFor="let chat of chatHistory">
                   <!-- Message from Receiver -->
-                  <div *ngIf="chat.role === 'Receiver'" class="flex flex-col items-start">
-                    <div class="bg-white text-black px-4 py-2 rounded-lg shadow">{{ chat.reply }}</div>
-                    <span class="text-xs text-gray-500 mt-1">{{ chat.createdAt }}</span>
+                  <div *ngIf="chat.senderUserName === receiverId" class="flex flex-col items-start">
+                    <div class="bg-white text-black px-4 py-2 rounded-lg shadow">{{ chat.messageContent }}</div>
+                    <span class="text-xs text-gray-500 mt-1">{{ chat.timestamp }}</span>
                   </div>
-                
+  
                   <!-- Message from Sender -->
-                  <div *ngIf="chat.role === 'Admin'" class="flex flex-col items-end">
-                    <div class="bg-[#77734E] text-white px-4 py-2 rounded-lg shadow">{{ chat.reply }}</div>
-                    <span class="text-xs text-gray-500 mt-1">{{ chat.createdAt }}</span>
+                  <div *ngIf="chat.senderUserName === senderId" class="flex flex-col items-end">
+                    <div class="bg-[#77734E] text-white px-4 py-2 rounded-lg shadow">{{ chat.messageContent }}</div>
+                    <span class="text-xs text-gray-500 mt-1">{{ chat.timestamp }}</span>
                   </div>
                 </ng-container>
-                
               </div>
             </div>
   
@@ -56,6 +55,7 @@
                 ➤
               </button>
             </div>
+            
   
           </div>
         </div>

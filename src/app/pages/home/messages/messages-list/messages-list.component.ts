@@ -36,19 +36,41 @@ export class MessagesListComponent {
 
     const userName = localStorage.getItem('mrn');
       debugger
-    this.contentService.getMessagesList(userName).subscribe(
-      response => {
-        if (response.isSuccess === true) {
-          this.messageList = response.data;
-        } else {
-          this.toastrService.error('Failed to fetch doctor list.');
-          console.error('API returned failure:', response);
+      this.contentService.getMessagesList(userName).subscribe(
+        response => {
+          if (response.isSuccess === true) {
+            // Assuming the response data contains the user's first name
+            this.messageList = response.data.map((user: { firstName: any; }) => ({
+              ...user,
+              firstName: user.firstName || 'Unknown'  // Add firstName here
+            }));
+          } else {
+            this.toastrService.error('Failed to fetch messages list.');
+            console.error('API returned failure:', response);
+          }
+        },
+        error => {
+          this.toastrService.error('Error fetching messages list.');
+          console.error('Error fetching messages list:', error);
         }
-      },
-      error => {
-        this.toastrService.error('Error fetching doctor list.');
-        console.error('Error fetching doctor list:', error);
+      );
+    }      
+    editContent(item: any): void {
+      const senderId = localStorage.getItem('mrn'); // senderId comes from localStorage
+      const receiverId = item.userName; // receiverId comes from the clicked item
+      const receiverName = item.firstName; // Assuming the firstName is included in the list
+      
+      if (senderId && receiverId) {
+        this.router.navigate(['/messages/chat'], {
+          queryParams: {
+            senderId: senderId,
+            receiverId: receiverId,
+            receiverName: receiverName // Pass receiver's first name
+          }
+        });
+      } else {
+        this.toastrService.error('Invalid sender or receiver information.');
       }
-    );
-  }    
+    }
+    
 }

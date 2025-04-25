@@ -38,7 +38,7 @@
                                       <td [style.color]="item.status ? 'green' : 'red'">
                                         {{ item.status ? 'Online' : 'Offline' }}
                                       </td>
-                                      <td [routerLink]="['/messages/chat']"><i class="fa fa-eye"></i></td>
+                                      <td (click)="editContent(item)"><i class="fa fa-eye"></i></td>
 
                                     </tr>
                                     <!-- <tr class="row-dark">

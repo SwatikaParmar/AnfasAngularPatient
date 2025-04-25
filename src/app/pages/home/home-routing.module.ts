@@ -19,6 +19,7 @@ import { MessageChatComponent } from './messages/message-chat/message-chat.compo
 import { ComplaintChatComponent } from './complaint/complaint-chat/complaint-chat.component';
 import { ComplaintFormComponent } from './complaint/complaint-form/complaint-form.component';
 import { HistoryListComponent } from 'src/app/history/history-list/history-list.component';
+import { HistoryChatComponent } from 'src/app/history/history-list/history-chat/history-chat.component';
 
 const routes: Routes = [
 
@@ -41,9 +42,10 @@ const routes: Routes = [
       { path: 'profile/consent', component:PatientConsentComponent},
       { path: 'appointment/book', component:BookAppointmentComponent},
       { path: 'messages/chat', component:MessageChatComponent},
-      { path: 'complaint/chat', component:ComplaintChatComponent},
+      { path: 'complaint/chat/:id', component:ComplaintChatComponent},
       { path: 'complaint-add', component: ComplaintFormComponent},
-      { path: 'history-list', component: HistoryListComponent}
+      { path: 'history-list', component: HistoryListComponent},
+      { path: 'history-list/chat', component:HistoryChatComponent},
 
     ]
   }

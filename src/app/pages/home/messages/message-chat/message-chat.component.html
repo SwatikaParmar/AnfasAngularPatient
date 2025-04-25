@@ -1,94 +1,64 @@
 <div class="dashboard-outer">
 
-    <section>
-        <div class="content-body">
-            <div class="container-fluid">
-                <div class="flex mb-2 items-center ml-1">
-                    <!-- Back Arrow Button -->
-                    <button class="flex items-center justify-center w-7 h-7 rounded-full mr-3 mb-2 text-white"
-                        style="background-color: #726641;">
-                        <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center;"></i>
-                    </button>
-                    
-                </div>
-                <div class="bg-gray-100 min-h-screen flex flex-col justify-between font-sans">
+  <section>
+    <div class="content-body">
+      <div class="container-fluid">
+        <div class="flex mb-2 items-center ml-1">
+          <!-- Back Arrow Button -->
+          <button class="flex items-center justify-center w-7 h-7 rounded-full mr-3 mb-2 text-white"
+            style="background-color: #726641;" (click)="backClicked()">
+            <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center;"></i>
+          </button>
 
-                    <!-- Header -->
-                    <div class="bg-[#77734E] text-white text-center py-3 shadow">
-                        <h2 class="text-lg font-semibold">MOHAMMED ELAWADLY</h2>
-                      </div>
-                      
-                  
-                    <!-- Chat Messages -->
-                    <div class="relative flex-1 overflow-y-auto px-4 py-6 space-y-4 bg-white/80" style="background-color: #FEFEFF;">
-                        <!-- <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] bg-repeat opacity-30 z-0 " ></div> -->
-                        <div class="relative z-10">
-
-                      
-                      <!-- Left Message -->
-                      <div class="flex flex-col items-start">
-                        <div class="bg-white text-black px-4 py-2 rounded-lg shadow">Hello</div>
-                        <span class="text-xs text-gray-500 mt-1">Apr 8, 2025 04:40 pm</span>
-                      </div>
-                  
-                      <!-- Left Message -->
-                      <div class="flex flex-col items-start">
-                        <div class="bg-white text-black px-4 py-2 rounded-lg shadow">Heillo</div>
-                        <span class="text-xs text-gray-500 mt-1">Apr 8, 2025 04:45 pm</span>
-                      </div>
-                  
-                      <!-- Right Message -->
-                      <div class="flex flex-col items-end">
-                        <div class="bg-[#77734E] text-white px-4 py-2 rounded-lg shadow">User</div>
-                        <span class="text-xs text-gray-500 mt-1">Apr 8, 2025 04:48 PM</span>
-                      </div>
-                  
-                      <!-- Left Message -->
-                      <div class="flex flex-col items-start">
-                        <div class="bg-white text-black px-4 py-2 rounded-lg shadow">Gi</div>
-                        <span class="text-xs text-gray-500 mt-1">Apr 8, 2025 04:49 pm</span>
-                      </div>
-                  
-                      <!-- Right Messages -->
-                      <div class="flex flex-col items-end space-y-3">
-                        <div>
-                          <div class="bg-[#77734E] text-white px-4 py-2 rounded-lg shadow">Ki</div>
-                          <span class="text-xs text-gray-500 mt-1">Apr 8, 2025 04:51 PM</span>
-                        </div>
-                        <div>
-                          <div class="bg-[#77734E] text-white px-4 py-2 rounded-lg shadow">hello</div>
-                          <span class="text-xs text-gray-500 mt-1">Apr 14, 2025 04:50 PM</span>
-                        </div>
-                        <div>
-                          <div class="bg-[#77734E] text-white px-4 py-2 rounded-lg shadow">nice to meet you</div>
-                          <span class="text-xs text-gray-500 mt-1">Apr 14, 2025 04:53 PM</span>
-                        </div>
-                        <div>
-                          <div class="bg-[#77734E] text-white px-4 py-2 rounded-lg shadow">good evening</div>
-                          <span class="text-xs text-gray-500 mt-1">Apr 14, 2025 06:06 PM</span>
-                        </div>
-                      </div>
-                  
-                      <!-- Left Message -->
-                      <div class="flex flex-col items-start">
-                        <div class="bg-white text-black px-4 py-2 rounded-lg shadow">thank you so much</div>
-                        <span class="text-xs text-gray-500 mt-1">Apr 15, 2025 10:25 am</span>
-                      </div>
-                  
-                    </div>
-                </div>
-                    <!-- Footer Input -->
-                    <div class="bg-[#77734E] px-4 py-3 flex items-center">
-                      <input type="text" placeholder="Write a reply" class="flex-1 px-4 py-2 rounded-full bg-white text-black outline-none mr-2" />
-                      <button 
-                      class="text-white text-xl bg-[#FEC34F] rounded-full w-12 h-12 flex items-center justify-center">
-                      ➤
-                    </button>
-                    
-                    </div>
-                  
-                  </div>
-            </div>
         </div>
-    </section>
+        <div class="bg-gray-100 min-h-screen flex flex-col justify-between font-sans">
+
+          <!-- Header -->
+          <div class="bg-[#77734E] text-white text-center py-3 shadow">
+            <h2 class="text-lg font-semibold">{{ receiverName || 'Unknown Receiver' }}</h2>
+          </div>
+
+
+          <!-- Chat Messages -->
+          <div class="relative flex-1 overflow-y-auto px-4 py-6 space-y-4 bg-white/80"
+            style="background-color: #FEFEFF;">
+            <div class="relative z-10">
+              <ng-container *ngFor="let chat of chatHistory">
+                <!-- Message from Receiver -->
+                <div *ngIf="chat.senderUserName === receiverId" class="flex flex-col items-start">
+                  <div class="bg-white text-black px-4 py-2 rounded-lg shadow">{{ chat.messageContent }}</div>
+                  <span class="text-xs text-gray-500 mt-1">{{ chat.timestamp }}</span>
+                </div>
+
+                <!-- Message from Sender -->
+                <div *ngIf="chat.senderUserName === senderId" class="flex flex-col items-end">
+                  <div class="bg-[#77734E] text-white px-4 py-2 rounded-lg shadow">{{ chat.messageContent }}</div>
+                  <span class="text-xs text-gray-500 mt-1">{{ chat.timestamp }}</span>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+
+          <!-- Footer Input -->
+          <div class="bg-[#77734E] px-4 py-3 flex items-center">
+            <input 
+              type="text" 
+              placeholder="Write a reply"
+              [(ngModel)]="newMessage" 
+              (keyup.enter)="sendMessage()" 
+              class="flex-1 px-4 py-2 rounded-full bg-white text-black outline-none mr-2"
+            />
+            <button 
+              (click)="sendMessage()"  
+              class="text-white text-xl bg-[#FEC34F] rounded-full w-12 h-12 flex items-center justify-center"
+            >
+              ➤
+            </button>
+          </div>
+          
+
+        </div>
+      </div>
+    </div>
+  </section>
 </div>

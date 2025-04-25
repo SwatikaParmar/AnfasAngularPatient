@@ -77,6 +77,30 @@ export class HistoryListComponent {
     }
   }
   
+  editContent(item: any): void {
+    const senderId = localStorage.getItem('mrn'); // senderId comes from localStorage
+    const slot = item.slots; // Get the first slot from the array
+  
+    if (!slot || !item.careProviderUid) {
+      this.toastrService.error('Invalid appointment slot or provider data.');
+      return;
+    }
+  
+    const receiverId = item.careProviderUid.code; // Doctor code as receiverId
+    const receiverName = item.careProviderUid.name; // Doctor's name as receiverName
+  
+    if (senderId && receiverId) {
+      this.router.navigate(['/history-list/chat'], {
+        queryParams: {
+          senderId: senderId,
+          receiverId: receiverId,
+          receiverName: receiverName
+        }
+      });
+    } else {
+      this.toastrService.error('Invalid sender or receiver information.');
+    }
+  }
   
   
 }

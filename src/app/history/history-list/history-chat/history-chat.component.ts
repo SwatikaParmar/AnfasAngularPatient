@@ -7,11 +7,11 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-message-chat',
-  templateUrl: './message-chat.component.html',
-  styleUrls: ['./message-chat.component.css']
+  selector: 'app-history-chat',
+  templateUrl: './history-chat.component.html',
+  styleUrls: ['./history-chat.component.css']
 })
-export class MessageChatComponent {
+export class HistoryChatComponent {
   senderId: string = '';
   receiverId: string = '';
   chatHistory: any[] = [];
@@ -141,3 +141,4 @@ getCurrentLocalDateTime(): string {
 
 
 }
+

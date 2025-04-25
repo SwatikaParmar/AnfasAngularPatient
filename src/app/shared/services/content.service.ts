@@ -95,5 +95,31 @@ export class ContentService {
   addComplaint(data:any){
     return this.http.post<any>(environment.apiUrl + ApiEndPoint.addComplaint,data)
   }
+
+
+  getChatHistory(senderId: string, receiverId: string) {
+    const url = `${environment.apiUrl + ApiEndPoint.chatHistory}?senderId=${senderId}&receiverId=${receiverId}`;
+    return this.http.get<any>(url);
+  }
   
+ sendMessage(data: any) {
+    return this.http.post<any>(
+      environment.apiUrl + ApiEndPoint.sendMessage,
+      data
+    );
+  }
+
+
+  getComplaintReply(data: any) {
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.complaintReply + '?complaintId=' + data.complaintId + '&page=' + data.page
+      + '&pageSize=' + data.pageSize
+    );
+  }
+
+  complaintAddUpdate(data: any) {
+    return this.http.post<any>(
+      environment.apiUrl + ApiEndPoint.addUpdatecomplaint,
+      data
+    );
+  }
 }
