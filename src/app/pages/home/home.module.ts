@@ -25,7 +25,10 @@ import { EditConsentComponent } from './profile/edit-consent/edit-consent.compon
 import { MessageChatComponent } from './messages/message-chat/message-chat.component';
 import { ComplaintChatComponent } from './complaint/complaint-chat/complaint-chat.component';
 import { ComplaintFormComponent } from './complaint/complaint-form/complaint-form.component';
-
+import { DateAdapter, MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 // export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -60,6 +63,10 @@ import { ComplaintFormComponent } from './complaint/complaint-form/complaint-for
     NgxPaginationModule,
     FormsModule,
     AngularEditorModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

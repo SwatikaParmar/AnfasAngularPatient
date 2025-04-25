@@ -12,6 +12,11 @@ export enum ApiEndPoint {
     complaintList = "api/Admin/GetComplaints",
     messagesList = "api/Chat/chatUsers",
     complaintType = "api/Admin/GetComplaintTypes",
-    addComplaint = "api/Admin/AddUpdateComplaint"
+    addComplaint = "api/Admin/AddUpdateComplaint",
+    DoctorTimeSlot = "api/User/GetDoctorTimeSlot",
+    availableDates = "api/User/GetAvailableDates"
+
+
+
 }
 

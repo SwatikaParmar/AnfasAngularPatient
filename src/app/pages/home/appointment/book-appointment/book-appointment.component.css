@@ -1,0 +1,32 @@
+::ng-deep .mat-calendar-body-cell.available-date
+  .mat-calendar-body-cell-content {
+  background: #fff8e1;
+  border: 1px solid #ffc107;
+  border-radius: 50%;
+}
+
+::ng-deep .mat-calendar-body-cell.clicked-date-highlight
+  .mat-calendar-body-cell-content {
+  background: #1976d2 !important;
+  color: #fff !important;
+  border-radius: 50%;
+}
+
+/* optionally grey‐out others */
+::ng-deep .mat-calendar-body-cell:not(.available-date)
+  .mat-calendar-body-cell-content {
+  opacity: 0.3;
+}
+
+/* Style for selected date */
+.clicked-date-highlight {
+    background-color: #4caf50; /* Green or any color you prefer */
+    color: white;
+  }
+  
+  /* Style for available date */
+  .available-date {
+    background-color: #f0ad4e; /* Yellow or any color you prefer */
+    color: white;
+  }
+  
