@@ -121,5 +121,11 @@ export class ContentService {
       environment.apiUrl + ApiEndPoint.addUpdatecomplaint,
       data
     );
+
+  }
+  getAvailableDate(data:any){
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.availableDates + '?OrgCode=' + data.OrgCode
+      + '&CareProviderCode=' + data.CareProviderCode + '&FromDate=' + data.FromDate + '&ToDate=' + data.ToDate
+    )
   }
 }

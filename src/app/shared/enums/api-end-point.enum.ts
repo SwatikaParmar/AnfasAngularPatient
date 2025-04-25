@@ -17,5 +17,10 @@ export enum ApiEndPoint {
     sendMessage="api/Chat/sendMessage",
     complaintReply="api/Admin/GetComplaintReplys",
     addUpdatecomplaint="api/Admin/AddUpdateComplaintReply",
+    DoctorTimeSlot = "api/User/GetDoctorTimeSlot",
+    availableDates = "api/User/GetAvailableDates"
+
+
+
 }
 
