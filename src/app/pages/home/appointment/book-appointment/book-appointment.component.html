@@ -20,9 +20,24 @@
                 <h1 class="text-lg font-semibold mt-2 mb-2 ml-3" style="font-size: 20px; color: #726641;">Appointments
                     Schedule</h1>
                 <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
-                    <div class="max-w-5xl mx-auto p-4">
+                    <div class="calendar-container">
+                        <!-- <mat-calendar
+                        
+                          [dateClass]="dateClass"    
+                          [selected]="selectedDate" 
+                          (selectedChange)="onSelect($event)">
+                        </mat-calendar> -->
+                        <!-- <mat-spinner *ngIf="loadingDates"></mat-spinner> -->
 
-                    </div>
+                        <mat-calendar
+                          #calendar
+                          [dateClass]="dateClass"
+                          (selectedChange)="selectedDate = $event">
+                        </mat-calendar>
+                        
+
+                      </div>
+                      
                 </div>
                 <div class="flex justify-center mb-4 mt-5">
                     <button class="pt-2 pb-2 rounded-l-full"

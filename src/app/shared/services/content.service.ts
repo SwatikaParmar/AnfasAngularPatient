@@ -96,4 +96,11 @@ export class ContentService {
     return this.http.post<any>(environment.apiUrl + ApiEndPoint.addComplaint,data)
   }
   
+
+
+  getAvailableDate(data:any){
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.availableDates + '?OrgCode=' + data.OrgCode
+      + '&CareProviderCode=' + data.CareProviderCode + '&FromDate=' + data.FromDate + '&ToDate=' + data.ToDate
+    )
+  }
 }
