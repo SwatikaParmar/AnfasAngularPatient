@@ -25,7 +25,6 @@ import { MatCalendar, MatCalendarCellClassFunction } from '@angular/material/dat
 export class BookAppointmentComponent {
   @ViewChild('calendar') calendar!: MatCalendar<Date>;
 
-  selectedTime: string = 'morning';
   currentLanguage: string = 'en';
   currentLang: string = 'en'; // Default language
   date!: string;
@@ -33,7 +32,11 @@ export class BookAppointmentComponent {
   selectedDate: Date | null = null; // Store the selected date
   availableDates: string[] = []; // Store the available dates from API
   loadingDates = true;
-  slots: any;
+
+  
+  selectedTime: 'morning' | 'evening' = 'morning';
+  slots: any[] = [];
+  filteredSlots: any[] = [];
 
   constructor(
     private renderer: Renderer2,
@@ -70,9 +73,7 @@ export class BookAppointmentComponent {
     this.getAvailableDate();
   }
 
-  selectTime(time: string) {
-    this.selectedTime = time;
-  }
+  
 
   getAvailableDate(): void {
     const today = new Date();
@@ -199,13 +200,14 @@ export class BookAppointmentComponent {
       FromDate: date,
       ToDate: date
     };
-  
+  debugger
     this.spinner.show();
     this.content.slotsAvaliable(payload).pipe(
       finalize(() => this.spinner.hide())
     ).subscribe((resp: any) => {
       if (resp && resp.data) {
-        this.slots = resp.data;
+        this.slots = resp.data.freeSlots;
+        this.filterSlotsByTime(); // Filter when data is loaded
         console.log('Slots:', this.slots);
       } else {
         this.toasterService.warning('No slots available.');
@@ -213,6 +215,23 @@ export class BookAppointmentComponent {
     });
   }
   
-  
+   // Filter by AM or PM
+   filterSlotsByTime() {
+    debugger
+    if (this.selectedTime === 'morning') {
+      this.filteredSlots = this.slots.filter(slot => slot.startTime.includes('AM'));
+    } else {
+      this.filteredSlots = this.slots.filter(slot => slot.startTime.includes('PM'));
+    }
+  }
 
+  selectTime(time: 'morning' | 'evening') {
+    this.selectedTime = time;
+  debugger
+    this.filteredSlots = this.slots.filter(slot => {
+      const isMorning = slot.startTime.trim().toLowerCase().includes('am');
+      return time === 'morning' ? isMorning : !isMorning;
+    });
+  }
+  
 }
