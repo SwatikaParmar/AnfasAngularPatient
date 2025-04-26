@@ -24,7 +24,13 @@
                                     </tr>
                                   </thead>
                                   <tbody>
-                                    <tr class="row-light" *ngFor="let item of complaintList">
+                                    <tr class="row-light" *ngFor="let item of complaintList  | paginate
+                                    : {
+                                        itemsPerPage: 5,
+                                        currentPage: page,
+                                        totalItems: totalItems,
+                                        id: '1'
+                                      }">
                                       <td>{{item.patientName}}</td>
                                       <td>{{item.complaintTypeName}}</td>
                                       <td>{{item.createdAt}}</td>
@@ -38,6 +44,12 @@
                               
                                   </tbody>
                                 </table>
+
+                                
+                        <div class="pagination-container">
+                          <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
+                            queryParamsHandling="merge"></pagination-controls>
+                        </div>
                               </div>
                         </div>
                     </div>

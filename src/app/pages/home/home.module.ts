@@ -29,6 +29,9 @@ import { DateAdapter, MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { HistoryListComponent } from 'src/app/history/history-list/history-list.component';
+import { HistoryChatComponent } from 'src/app/history/history-list/history-chat/history-chat.component';
+
 
 
 // export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -53,6 +56,8 @@ import { MatInputModule } from '@angular/material/input';
     MessageChatComponent,
     ComplaintChatComponent,
     ComplaintFormComponent,
+    HistoryListComponent,
+    HistoryChatComponent
    
   ],
   imports: [

@@ -73,4 +73,13 @@ export class MessagesListComponent {
       }
     }
     
+
+    onPageChange(page: number): void {
+      // Update query parameters for pagination
+      this.router.navigate([], {
+        relativeTo: this.route,
+        queryParams: { page: page },
+        queryParamsHandling: 'merge',
+      });
+    }
 }

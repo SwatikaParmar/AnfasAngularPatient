@@ -81,7 +81,11 @@ export class PatientConsentComponent {
             }
         );
     }
-
+    
+    goBack(): void {
+        window.history.back();
+    }
+    
     renderInShadowDom(htmlContent: string): void {
         const container = this.elRef.nativeElement.querySelector('#shadowContainer');
 

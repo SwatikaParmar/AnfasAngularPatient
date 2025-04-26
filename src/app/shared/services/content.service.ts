@@ -135,4 +135,12 @@ export class ContentService {
       `${environment.apiUrl}${ApiEndPoint.DoctorTimeSlot}?OrgCode=${data.OrgCode}&CareProviderCode=${data.CareProviderCode}&FromDate=${data.FromDate}&ToDate=${data.ToDate}`
     );
   }
+
+  bookAppointment(data: any) {
+    return this.http.post<any>(
+      environment.apiUrl + ApiEndPoint.bookAppointment,
+      data
+    );
+  }
+
 }

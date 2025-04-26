@@ -30,7 +30,13 @@
                               </div>
                               
                             <div class="row">
-                                <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let item of historyList">
+                                <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let item of historyList | paginate
+                                : {
+                                    itemsPerPage: 6,
+                                    currentPage: page,
+                                    totalItems: totalItems,
+                                    id: '1'
+                                  }">
                                     <div class="appointment-card">
                                         <div class="d-flex justify-content-between align-items-start mb-2"
                                             style="border-bottom: 1px solid gray; padding-bottom: 10px;">
@@ -82,6 +88,11 @@
                         
                               
                             </div>
+                            
+                        <div class="pagination-container">
+                          <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
+                            queryParamsHandling="merge"></pagination-controls>
+                        </div>
                         </div>
                     </div>
                 </div>

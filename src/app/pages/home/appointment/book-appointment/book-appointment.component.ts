@@ -6,7 +6,7 @@ import {
   Component,
   ViewChild,NgZone 
 } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
@@ -14,8 +14,9 @@ import { LanguageSwitcherServiceService } from 'src/app/shared/services/language
 import { ContentService } from 'src/app/shared/services/content.service';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { finalize, forkJoin, Subscription } from 'rxjs';
-
+import { Location } from '@angular/common';
 import { MatCalendar, MatCalendarCellClassFunction } from '@angular/material/datepicker';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-book-appointment',
@@ -37,6 +38,9 @@ export class BookAppointmentComponent {
   selectedTime: 'morning' | 'evening' = 'morning';
   slots: any[] = [];
   filteredSlots: any[] = [];
+  rootUrl: any;
+  receiverName: any;
+  CareProviderCode: any;
 
   constructor(
     private renderer: Renderer2,
@@ -48,8 +52,8 @@ export class BookAppointmentComponent {
     private spinner: NgxSpinnerService,
     private languageService: LanguageSwitcherServiceService,
     private cdr: ChangeDetectorRef,
-    private zone: NgZone
-
+    private route: ActivatedRoute,
+    private _location: Location,
   ) {
   
   }
@@ -62,6 +66,11 @@ export class BookAppointmentComponent {
   }
 
   ngOnInit(): void {
+     this.rootUrl = environment.rootPathUrl;
+        this.route.queryParamMap.subscribe(params => {
+          this.CareProviderCode = params.get('CareProviderCode') || '';
+          this.receiverName = params.get('receiverName') || 'Unknown Receiver';
+        });
     // your existing root‐class logic
     this.renderer.addClass(document.querySelector('app-root'), 'login-page');
     this.currentLanguage = localStorage.getItem('language') || 'en';
@@ -82,7 +91,7 @@ export class BookAppointmentComponent {
 
     const payload = {
       OrgCode: 'AMC',
-      CareProviderCode: 1567,
+      CareProviderCode: this.CareProviderCode,
       FromDate: this.formatDate(today),
       ToDate: this.formatDate(after30),
     };
@@ -192,11 +201,15 @@ export class BookAppointmentComponent {
       this.selectedDate = null;
     }
   }
-    
+
+  backClicked() {
+    this._location.back();
+  }  
+
   getSlotsTime(date: string) {
     const payload = {
       OrgCode: 'AMC',
-      CareProviderCode: 1567,
+      CareProviderCode: this.CareProviderCode,
       FromDate: date,
       ToDate: date
     };
@@ -234,4 +247,65 @@ export class BookAppointmentComponent {
     });
   }
   
+
+  bookSelectedAppointment() {
+    if (!this.selectedDate) {
+      this.toasterService.warning('Please select a date first.');
+      return;
+    }
+  
+    if (!this.filteredSlots.length) {
+      this.toasterService.warning('Please select a time slot.');
+      return;
+    }
+  
+    const selectedSlot = this.filteredSlots[0]; // you can improve this to allow user selection
+    
+    const payload = {
+      appointmentDate: this.formatDate(this.selectedDate),
+      comment: null,
+      mrn: 'AMCH24110975',  // Ideally, you should get the MRN dynamically
+      careProviderCode: this.CareProviderCode,
+      orgCode: 'AMC',
+      checkOrganisation: true,
+      appointmentNumber: '',
+      status: 'BOKSTS1',
+      statusCode: 'BOKSTS1',
+      reasonCode: '11429006',
+      reasonText: 'UNK',
+      slotId: selectedSlot.slotId,
+      visitTypeCode: 'VSTTYP14',
+      isTeleconsult: false
+    };
+  
+    this.spinner.show();
+    this.content.bookAppointment(payload).pipe(
+      finalize(() => this.spinner.hide())
+    ).subscribe((response: any) => {
+      if (response.status) {
+        this.toasterService.success('Appointment booked successfully.');
+        this.router.navigate(['/appointment-success'], { queryParams: { referenceId: response.data.referenceid } });
+      } else {
+        this.toasterService.error('Failed to book appointment.');
+      }
+    }, (error) => {
+      this.spinner.hide();
+      this.toasterService.error('Something went wrong. Please try again.');
+      console.error('Error booking appointment:', error);
+    });
+  }
+  
+
+  navigateToPreview(): void {
+    const mrn = localStorage.getItem('mrn');
+    if (mrn) {
+      this.router.navigate(['/profile/consent'], {
+        queryParams: { mrn }
+      });
+    } else {
+      this.toasterService.warning('MRN is missing.');
+    }
+  }
+  
+
 }

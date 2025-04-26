@@ -26,7 +26,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 
 @NgModule({  
   declarations: [ 
-    AppComponent, HistoryListComponent, HistoryChatComponent
+    AppComponent
   ],
   imports: [
     FormsModule, 

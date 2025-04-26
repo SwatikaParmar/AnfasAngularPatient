@@ -18,8 +18,6 @@ export class AppointmentListComponent {
   rootUrl: any;
   doctorList: any;
  
-
-  
   constructor(
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService,
@@ -38,8 +36,6 @@ export class AppointmentListComponent {
   }
 
   doctorLists() {
-
-
     this.contentService.getDoctors().subscribe(
       response => {
         if (response.status === true) {
@@ -70,4 +66,21 @@ export class AppointmentListComponent {
       backClicked() {
         this._location.back();
       }  
+
+
+      editContent(item: any): void {
+        const CareProviderCode = item.code; 
+        const receiverName = item.name; 
+        
+        if (CareProviderCode && receiverName) {
+          this.router.navigate(['/appointment/book'], {
+            queryParams: {
+              CareProviderCode: CareProviderCode,
+              receiverName: receiverName 
+            }
+          });
+        } else {
+          this.toastrService.error('Invalid sender or receiver information.');
+        }
+      }
 }
