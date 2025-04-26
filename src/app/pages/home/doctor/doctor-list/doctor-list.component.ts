@@ -4,6 +4,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { ContentService } from 'src/app/shared/services/content.service';
 import { environment } from 'src/environments/environment';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-doctor-list',
   templateUrl: './doctor-list.component.html',
@@ -22,6 +23,7 @@ export class DoctorListComponent {
     private contentService: ContentService,
     private router: Router,
     private route: ActivatedRoute,
+    private _location: Location,
   ){ }
 
   ngOnInit(): void {
@@ -71,6 +73,8 @@ export class DoctorListComponent {
     });
   }
   
-  
+  backClicked() {
+    this._location.back();
+  }
   
 }

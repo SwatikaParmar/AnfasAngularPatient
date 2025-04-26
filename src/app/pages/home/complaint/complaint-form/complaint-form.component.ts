@@ -6,6 +6,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { LanguageSwitcherServiceService } from 'src/app/shared/services/language-switcher.service.service';
 import { ContentService } from 'src/app/shared/services/content.service';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-complaint-form',
   templateUrl: './complaint-form.component.html',
@@ -30,7 +31,8 @@ export class ComplaintFormComponent {
     private router: Router,
     private translate: TranslateService,
     private spinner: NgxSpinnerService,
-    private languageService: LanguageSwitcherServiceService
+    private languageService: LanguageSwitcherServiceService,
+    private _location: Location,
   ) {
   
   }
@@ -134,5 +136,7 @@ this.typeList = response.data;
   });
 
   }
-
+  backClicked() {
+    this._location.back();
+  }
 }

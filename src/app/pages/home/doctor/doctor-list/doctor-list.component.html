@@ -5,7 +5,8 @@
             <div class="container-fluid">
                 <div class="flex mb-2 items-center ml-1">
                     <!-- Back Arrow Button -->
-                    <button class="flex items-center justify-center w-7 h-7 rounded-full mr-3 text-white" style="background-color: #726641;">
+                    <button class="flex items-center justify-center w-7 h-7 rounded-full mr-3 text-white" style="background-color: #726641;"
+                    (click)="backClicked()">
                         <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center;"></i>
 
                       </button>
@@ -43,7 +44,13 @@
                     </div>
                    
                        <div class="container mt-4">
-                        <div class="row" *ngFor="let item of doctorList">
+                        <div class="row" *ngFor="let item of doctorList  | paginate
+                        : {
+                            itemsPerPage: 6,
+                            currentPage: page,
+                            totalItems: totalItems,
+                            id: '1'
+                          }">
                           <!-- Card 1 -->
                           <div class="col-md-4 mb-4">
                             <div class="card d-flex flex-row align-items-center p-2 shadow-sm rounded">
@@ -67,6 +74,11 @@
                          
                       
                           
+                        </div>
+                        
+                        <div class="pagination-container">
+                          <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
+                            queryParamsHandling="merge"></pagination-controls>
                         </div>
                       </div>
                       
