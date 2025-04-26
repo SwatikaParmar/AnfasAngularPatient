@@ -18,7 +18,8 @@ export enum ApiEndPoint {
     complaintReply="api/Admin/GetComplaintReplys",
     addUpdatecomplaint="api/Admin/AddUpdateComplaintReply",
     DoctorTimeSlot = "api/User/GetDoctorTimeSlot",
-    availableDates = "api/User/GetAvailableDates"
+    availableDates = "api/User/GetAvailableDates",
+    
 
 
 

@@ -33,6 +33,7 @@ export class BookAppointmentComponent {
   selectedDate: Date | null = null; // Store the selected date
   availableDates: string[] = []; // Store the available dates from API
   loadingDates = true;
+  slots: any;
 
   constructor(
     private renderer: Renderer2,
@@ -140,18 +141,18 @@ export class BookAppointmentComponent {
   };
   
   // Handle date selection
-  onSelect(date: Date | null) {
-    // Check if the date is null or not
-    if (date !== null) {
-      const iso = this.formatDate(date);
-      if (this.availableDates.includes(iso)) {
-        this.selectedDate = date;
-      }
-    } else {
-      // Handle null case if needed (e.g., reset selectedDate)
-      this.selectedDate = null;
-    }
-  }
+  // onSelect(date: Date | null) {
+  //   // Check if the date is null or not
+  //   if (date !== null) {
+  //     const iso = this.formatDate(date);
+  //     if (this.availableDates.includes(iso)) {
+  //       this.selectedDate = date;
+  //     }
+  //   } else {
+  //     // Handle null case if needed (e.g., reset selectedDate)
+  //     this.selectedDate = null;
+  //   }
+  // }
   
 
   // Update active date when month changes
@@ -160,11 +161,11 @@ export class BookAppointmentComponent {
     this.getAvailableDate(); // Re-fetch available dates based on the new month
   }
 
-  onDateChange(event: Date) {
-    this.selectedDate = event;
-    console.log('Selected date:', event);
-    // You can fetch your slots here
-  }
+  // onDateChange(event: Date) {
+  //   this.selectedDate = event;
+  //   console.log('Selected date:', event);
+  //   // You can fetch your slots here
+  // }
 
   getWeekdayName(id: number): string {
     const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -174,7 +175,44 @@ export class BookAppointmentComponent {
   onAvailableDateSelect(event: any) {
     this.availableDates  = event.target.value;
   }
-
-
+  onDateChange(event: Date) {
+    this.selectedDate = event;
+    const formattedDate = this.formatDate(event);
+    this.getSlotsTime(formattedDate);
+  }
+  onSelect(date: Date | null) {
+    if (date !== null) {
+      const iso = this.formatDate(date);
+      if (this.availableDates.includes(iso)) {
+        this.selectedDate = date;
+        this.getSlotsTime(iso); // Fetch time slots when date is selected
+      }
+    } else {
+      this.selectedDate = null;
+    }
+  }
+    
+  getSlotsTime(date: string) {
+    const payload = {
+      OrgCode: 'AMC',
+      CareProviderCode: 1567,
+      FromDate: date,
+      ToDate: date
+    };
+  
+    this.spinner.show();
+    this.content.slotsAvaliable(payload).pipe(
+      finalize(() => this.spinner.hide())
+    ).subscribe((resp: any) => {
+      if (resp && resp.data) {
+        this.slots = resp.data;
+        console.log('Slots:', this.slots);
+      } else {
+        this.toasterService.warning('No slots available.');
+      }
+    });
+  }
+  
+  
 
 }

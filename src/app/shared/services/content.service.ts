@@ -128,4 +128,11 @@ export class ContentService {
       + '&CareProviderCode=' + data.CareProviderCode + '&FromDate=' + data.FromDate + '&ToDate=' + data.ToDate
     )
   }
+
+  slotsAvaliable(data: any) {
+    debugger
+    return this.http.get<any>(
+      `${environment.apiUrl}${ApiEndPoint.DoctorTimeSlot}?OrgCode=${data.OrgCode}&CareProviderCode=${data.CareProviderCode}&FromDate=${data.FromDate}&ToDate=${data.ToDate}`
+    );
+  }
 }

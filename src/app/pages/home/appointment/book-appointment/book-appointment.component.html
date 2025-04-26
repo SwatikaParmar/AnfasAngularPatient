@@ -24,12 +24,12 @@
                         <div class="d-flex gap-2" style="width: 100%; background-color: #f8f9fa;">
                             <!-- Calendar Section - 50% -->
                             <div style="width: 50%; background-color: white; padding: 1rem; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 12px;">
-
                               <mat-calendar
-                                #calendar
-                                [dateClass]="dateClass"
-                                (selectedChange)="selectedDate = $event">
-                              </mat-calendar>
+                              #calendar
+                              [dateClass]="dateClass"
+                              (selectedChange)="onSelect($event)">
+                            </mat-calendar>
+                            
                             </div>
                           
                             <!-- Button Section - 50% -->
