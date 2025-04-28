@@ -23,6 +23,7 @@ import { HistoryChatComponent } from 'src/app/history/history-list/history-chat/
 import { HealthTrackingComponent } from 'src/app/Health/health-tracking/health-tracking.component';
 import { MedicationListComponent } from 'src/app/Medication/medication-list/medication-list.component';
 import { RequestListComponent } from 'src/app/Medication/request-list/request-list.component';
+import { BloodPressureComponent } from 'src/app/Health/blood-pressure/blood-pressure.component';
 
 const routes: Routes = [
 
@@ -53,6 +54,7 @@ const routes: Routes = [
       { path: 'Health-Tracker', component: HealthTrackingComponent},
       { path: 'medication-list', component: MedicationListComponent},
       { path: 'request-list', component: RequestListComponent},
+      { path: 'Blood-Pressure', component: BloodPressureComponent},
     ]
   }
 ];
