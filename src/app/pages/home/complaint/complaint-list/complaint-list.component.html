@@ -31,11 +31,11 @@
                                         totalItems: totalItems,
                                         id: '1'
                                       }">
-                                      <td>{{item.patientName}}</td>
-                                      <td>{{item.complaintTypeName}}</td>
-                                      <td>{{item.createdAt}}</td>
+                                      <td>{{item.patientName  || 'N/A' }}</td>
+                                      <td>{{item.complaintTypeName  || 'N/A' }}</td>
+                                      <td>{{item.createdAt  || 'N/A' }}</td>
                                       <td>
-                                       {{item.status}}
+                                       {{item.status || 'N/A' }}
                                       </td>
                                      
                                       <td [routerLink]="['/complaint/chat', item?.complaintId]"><i class="fa fa-eye"></i></td>

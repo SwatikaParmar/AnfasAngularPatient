@@ -31,6 +31,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { HistoryListComponent } from 'src/app/history/history-list/history-list.component';
 import { HistoryChatComponent } from 'src/app/history/history-list/history-chat/history-chat.component';
+import { HealthTrackingComponent } from 'src/app/Health/health-tracking/health-tracking.component';
+import { BloodPressureComponent } from 'src/app/Health/blood-pressure/blood-pressure.component';
+import { BloodSugarComponent } from 'src/app/Health/blood-sugar/blood-sugar.component';
+import { HeartRateComponent } from 'src/app/Health/heart-rate/heart-rate.component';
+import { WeightComponent } from 'src/app/Health/weight/weight.component';
+import { LabResultsComponent } from 'src/app/Health/lab-results/lab-results.component';
+import { StepsComponent } from 'src/app/Health/steps/steps.component';
 
 
 
@@ -57,8 +64,15 @@ import { HistoryChatComponent } from 'src/app/history/history-list/history-chat/
     ComplaintChatComponent,
     ComplaintFormComponent,
     HistoryListComponent,
-    HistoryChatComponent
-   
+    HistoryChatComponent,
+    HealthTrackingComponent,
+    BloodPressureComponent,
+    BloodSugarComponent,
+    HeartRateComponent,
+    WeightComponent,
+    LabResultsComponent,
+    StepsComponent,
+
   ],
   imports: [
     CommonModule,

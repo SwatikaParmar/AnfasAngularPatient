@@ -97,8 +97,6 @@ debugger
     });
   }
 
-
-
   ris(data:any){
     debugger
     let payload = {

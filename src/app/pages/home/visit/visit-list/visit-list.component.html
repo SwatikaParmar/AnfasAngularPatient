@@ -30,16 +30,16 @@
                                 <div class="physician-card ">
                                     <div class="header">
                                         <img src="assets/images/logo-dashboard.png" alt="Logo" class="logo">
-                                        <span class="department-name">{{item.departmentName}}</span>
+                                        <span class="department-name">{{item.departmentName  || 'N/A' }}</span>
                                     </div>
                                     <div class="info">
                                         <p><span class="label" style="margin-left:32px;">Visit
-                                                Type-</span>{{item.visitTypeDescription}}</p>
+                                                Type-</span>{{item.visitTypeDescription  || 'N/A' }}</p>
                                         <p><span class="label" style="margin-left:32px;">Care Provider-</span> <span
                                                 style="margin-left:19px;">{{item.careProviderName}}
                                                 {{item.careProviderLastName}}</span></p>
                                         <p><span class="label" style="margin-left:32px;">En Type-</span> <span
-                                                style="margin-left:137px;">{{item.entypeValueDescription}}</span></p>
+                                                style="margin-left:137px;">{{item.entypeValueDescription  || 'N/A' }}</span></p>
                                     </div>
                                     <button class="view-button" onclick="openPopup()">View Reports </button>
                                 </div>

@@ -42,7 +42,7 @@
                                             style="border-bottom: 1px solid gray; padding-bottom: 10px;">
                                             <!-- Left Side: Text + Date -->
                                             <div class="appointment-header">
-                                                Appointment Date<br><strong> {{ item.slots[0]?.start | date: 'medium' }}</strong>
+                                                Appointment Date<br><strong> {{ item.slots[0]?.start | date: 'medium'  || 'N/A'  }}</strong>
                                             </div>
 
                                             <!-- Right Side: Chat Icon -->
@@ -66,10 +66,10 @@
                                             Dr. {{ item.careProviderUid?.name }} {{ item.careProviderUid?.lastName }}
                                           </p>
                                           <p class="department mb-1">
-                                            {{ item.departmentUid?.name }}
+                                            {{ item.departmentUid?.name  || 'N/A'  }}
                                           </p>
                                           <p class="status-booked mb-0">
-                                            {{ item.slots[0]?.statusUid?.valueDescription }}
+                                            {{ item.slots[0]?.statusUid?.valueDescription  || 'N/A' }}
                                           </p>
                                         </div>
                                       </div>

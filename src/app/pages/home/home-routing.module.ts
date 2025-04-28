@@ -20,6 +20,7 @@ import { ComplaintChatComponent } from './complaint/complaint-chat/complaint-cha
 import { ComplaintFormComponent } from './complaint/complaint-form/complaint-form.component';
 import { HistoryListComponent } from 'src/app/history/history-list/history-list.component';
 import { HistoryChatComponent } from 'src/app/history/history-list/history-chat/history-chat.component';
+import { HealthTrackingComponent } from 'src/app/Health/health-tracking/health-tracking.component';
 
 const routes: Routes = [
 
@@ -46,7 +47,8 @@ const routes: Routes = [
       { path: 'complaint-add', component: ComplaintFormComponent},
       { path: 'history-list', component: HistoryListComponent},
       { path: 'history-list/chat', component:HistoryChatComponent},
-
+      { path: 'appointment-list', component: HistoryListComponent},
+      { path: 'Health-Tracker', component: HealthTrackingComponent},
     ]
   }
 ];

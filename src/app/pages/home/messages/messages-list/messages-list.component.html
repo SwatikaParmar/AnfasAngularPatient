@@ -35,11 +35,11 @@
                                         totalItems: totalItems,
                                         id: '1'
                                       }">
-                                      <td>{{item.firstName}}</td>
-                                      <td>{{item.lastName}}</td>
-                                      <td>{{item.lastMessage}}</td>
+                                      <td>{{ item.firstName || 'N/A' }}</td>
+                                      <td>{{item.lastName  || 'N/A' }}</td>
+                                      <td>{{item.lastMessage  || 'N/A' }}</td>
                                       <td>
-                                        {{item.lastMessageTime}}
+                                        {{item.lastMessageTime  || 'N/A' }}
                                       </td>
                                       <td [style.color]="item.status ? 'green' : 'red'">
                                         {{ item.status ? 'Online' : 'Offline' }}
