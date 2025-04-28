@@ -14,7 +14,10 @@
     background: #FEC34F;
     color: #fff;
 
+
 }
+
+
 .side-bar .item {
     margin-bottom: 4px; 
 }
@@ -253,3 +256,16 @@
 
 
 
+/* Hover: make icon white */
+.item.one:hover i {
+  color: white!important;
+}
+
+/* Active (click): text white, icon #726641 */
+.item.one.active a {
+  color: white; /* text color white */
+}
+
+.item.one.active i {
+  color: #726641; /* icon color #726641 */
+}
