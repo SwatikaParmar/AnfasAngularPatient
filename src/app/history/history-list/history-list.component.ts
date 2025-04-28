@@ -19,7 +19,7 @@ export class HistoryListComponent {
   historyListOriginal: any[] = []; // the full original list
   historyList: any[] = [];         // the filtered list
   selectedStatus: string = 'All';  // dropdown selection
-  
+  showAppointmentButton = true;
 
   constructor(
     private toastrService: ToastrService,
@@ -35,7 +35,13 @@ export class HistoryListComponent {
       this.page = +params['page'] || 0;
     });
     this.appointment();  
+
+    const currentUrl = this.router.url;
+    if (currentUrl.includes('history-list')) {
+      this.showAppointmentButton = false;
+    }
   }
+  
   
   appointment() {
     this.contentService.getAppointment(localStorage.getItem('mrn')).subscribe(
