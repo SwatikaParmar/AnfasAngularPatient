@@ -73,7 +73,7 @@ export class AppointmentListComponent {
         const receiverName = item.name; 
         
         if (CareProviderCode && receiverName) {
-          this.router.navigate(['/appointment/book'], {
+          this.router.navigate(['/appointment-list/appointment/book'], {
             queryParams: {
               CareProviderCode: CareProviderCode,
               receiverName: receiverName 
