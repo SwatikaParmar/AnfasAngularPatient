@@ -15,9 +15,6 @@ import { JwtInterceptor } from './shared/helpers/jwt.interceptor';
 import { LayoutModule } from './layouts/layout.module';
 
 import { NgOtpInputModule } from 'ng-otp-input';
-import { HistoryListComponent } from './history/history-list/history-list.component';
-import { HistoryChatComponent } from './history/history-list/history-chat/history-chat.component';
-
 
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader { 
@@ -26,7 +23,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 
 @NgModule({  
   declarations: [ 
-    AppComponent
+    AppComponent, 
   ],
   imports: [
     FormsModule, 

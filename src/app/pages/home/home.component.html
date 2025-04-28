@@ -97,7 +97,7 @@
                                 <img src="assets/images/logo-dashboard.png" alt="Doctor" class="doctor-img">
                                 <div class="doctor-text">
                                   <h6>Dr. {{ item.careProviderUid?.name }} {{ item.careProviderUid?.lastName }}</h6>
-                                  <small style="color: #77734E;"> {{ item.departmentUid?.name }}</small><br>
+                                  <small style="color: #77734E;"> {{ item.departmentUid?.name  || 'N/A'  }}</small><br>
                                   <span class="appointment-date"> {{ item.slots[0]?.start | date: 'medium' }}</span>
                                 </div>
                               </div>
