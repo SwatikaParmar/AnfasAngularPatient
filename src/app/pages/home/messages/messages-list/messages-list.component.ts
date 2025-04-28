@@ -35,7 +35,6 @@ export class MessagesListComponent {
   messageLists() {
 
     const userName = localStorage.getItem('mrn');
-      debugger
       this.contentService.getMessagesList(userName).subscribe(
         response => {
           if (response.isSuccess === true) {

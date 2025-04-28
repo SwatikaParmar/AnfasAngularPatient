@@ -23,5 +23,6 @@ export enum ApiEndPoint {
     medication = "api/User/GetAllMedications",
     requestType = "api/User/GetAllRequestTypes",
     requestList = "api/User/GetAllRequests",
+    healthTracker ="api/User/GetHealthRecordsByType",
 }
 
