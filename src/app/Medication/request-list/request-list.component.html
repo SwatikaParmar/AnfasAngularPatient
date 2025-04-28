@@ -1,0 +1,62 @@
+<div class="dashboard-outer">
+
+    <section>
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="flex mb-2 items-center ml-1">
+             
+                    <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">Request List</h1>
+                </div>
+                <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
+                    <div class="custom-container max-w-5xl mx-auto p-3">
+                        <div class="container">
+                            
+                            <div class="table-container">
+                                <table>
+                                  <thead>
+                                    <tr>
+                                      <th>User&nbsp;Name</th>
+                                      <th>Request&nbsp;Type&nbsp;Name</th>
+                                      <th>Phone&nbsp;Number</th>
+                                      <th>Status</th>
+                                      <th>Description</th>
+                                      <!-- <th>Action</th> -->
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr class="row-light" *ngFor="let item of requestList  | paginate
+                                    : {
+                                        itemsPerPage: 5,
+                                        currentPage: page,
+                                        totalItems: totalItems,
+                                        id: '1'
+                                      }">
+                                      <td>{{item.userName  || 'N/A' }}</td>
+                                      <td>{{item.requestTypeName  || 'N/A' }}</td>
+                                      <td>{{item.phoneNumber  || 'N/A' }}</td>
+                                      <td>
+                                       {{item.status || 'N/A' }}
+                                      </td>
+                                      <td>
+                                        {{item.discretion || 'N/A' }}
+                                      </td>                                      
+                                      <!-- <td [routerLink]="['/complaint/chat', item?.complaintId]"><i class="fa fa-eye"></i></td> -->
+
+                                    </tr>
+                              
+                                  </tbody>
+                                </table>
+
+                                
+                        <div class="pagination-container">
+                          <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
+                            queryParamsHandling="merge"></pagination-controls>
+                        </div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,62 @@
+<div class="dashboard-outer">
+
+    <section>
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="flex mb-2 items-center ml-1">
+             
+                    <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">Medication List</h1>
+                </div>
+                <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
+                    <div class="custom-container max-w-5xl mx-auto p-3">
+                        <div class="container">
+                            
+                            <div class="table-container">
+                                <table>
+                                  <thead>
+                                    <tr>
+                                      <th>Medication&nbsp;Name</th>
+                                      <th>Dosage</th>
+                                      <th>Frequency</th>
+                                      <th>Instructions</th>
+                                       <th>Created&nbsp;At</th>
+                                      <!-- <th>Action</th> -->
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr class="row-light" *ngFor="let item of medicationList  | paginate
+                                    : {
+                                        itemsPerPage: 5,
+                                        currentPage: page,
+                                        totalItems: totalItems,
+                                        id: '1'
+                                      }">
+                                      <td>{{item.medicationName  || 'N/A' }}</td>
+                                      <td>{{item.dosage  || 'N/A' }}</td>
+                                      <td>{{item.frequency  || 'N/A' }}</td>
+                                      <td>
+                                       {{item.instructions || 'N/A' }}
+                                      </td>
+                                      <td>
+                                        {{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : 'N/A' }}
+                                      </td>                                      
+                                      <!-- <td [routerLink]="['/complaint/chat', item?.complaintId]"><i class="fa fa-eye"></i></td> -->
+
+                                    </tr>
+                              
+                                  </tbody>
+                                </table>
+
+                                
+                        <div class="pagination-container">
+                          <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
+                            queryParamsHandling="merge"></pagination-controls>
+                        </div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

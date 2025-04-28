@@ -15,6 +15,8 @@ import { JwtInterceptor } from './shared/helpers/jwt.interceptor';
 import { LayoutModule } from './layouts/layout.module';
 
 import { NgOtpInputModule } from 'ng-otp-input';
+import { MedicationListComponent } from './Medication/medication-list/medication-list.component';
+import { RequestListComponent } from './Medication/request-list/request-list.component';
 
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader { 
@@ -23,7 +25,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 
 @NgModule({  
   declarations: [ 
-    AppComponent, 
+    AppComponent,
   ],
   imports: [
     FormsModule, 

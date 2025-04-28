@@ -20,7 +20,8 @@ export enum ApiEndPoint {
     DoctorTimeSlot = "api/User/GetDoctorTimeSlot",
     availableDates = "api/User/GetAvailableDates",
     bookAppointment = "api/User/CreateAppointment",
-
-    
+    medication = "api/User/GetAllMedications",
+    requestType = "api/User/GetAllRequestTypes",
+    requestList = "api/User/GetAllRequests",
 }
 

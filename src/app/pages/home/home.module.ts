@@ -38,6 +38,8 @@ import { HeartRateComponent } from 'src/app/Health/heart-rate/heart-rate.compone
 import { WeightComponent } from 'src/app/Health/weight/weight.component';
 import { LabResultsComponent } from 'src/app/Health/lab-results/lab-results.component';
 import { StepsComponent } from 'src/app/Health/steps/steps.component';
+import { MedicationListComponent } from 'src/app/Medication/medication-list/medication-list.component';
+import { RequestListComponent } from 'src/app/Medication/request-list/request-list.component';
 
 
 
@@ -72,6 +74,8 @@ import { StepsComponent } from 'src/app/Health/steps/steps.component';
     WeightComponent,
     LabResultsComponent,
     StepsComponent,
+    MedicationListComponent,
+    RequestListComponent
 
   ],
   imports: [

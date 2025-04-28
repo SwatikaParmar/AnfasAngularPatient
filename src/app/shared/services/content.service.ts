@@ -143,4 +143,19 @@ export class ContentService {
     );
   }
 
+  getmedication(data: any) {
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.medication + '?mrn=' + data.mrn + '&pageNumber=' + data.pageNumber
+      + '&pageSize=' + data.pageSize
+    );
+  }
+
+  getRequestType(){
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.requestType)
+  }
+
+  getRequestList(data: any) {
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.requestList + '?userName=' + data.userName + '&pageNumber=' + data.pageNumber
+      + '&pageSize=' + data.pageSize
+    );
+  }
 }

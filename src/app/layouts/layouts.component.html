@@ -117,7 +117,22 @@
               </a>
             </div>
             
+  
+            <div class="item shw one" routerLinkActive="active">
+              <a class="sub-btn"  [routerLink]="['/medication-list']">
+                <i class="fas fa-clipboard-list" style="font-size: 20px;"></i>
 
+                {{ 'Medication' | translate }}
+              </a>
+            </div>
+
+            <div class="item shw one" routerLinkActive="active">
+              <a class="sub-btn"  [routerLink]="['/request-list']">
+                <i class="fas fa-clipboard-list" style="font-size: 20px;"></i>
+
+                {{ 'Request' | translate }}
+              </a>
+            </div>
 
             <div class="item shw one" routerLinkActive="active">
               <a class="sub-btn" [routerLink]="['/messages']">
