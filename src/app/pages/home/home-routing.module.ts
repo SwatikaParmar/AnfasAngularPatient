@@ -24,6 +24,11 @@ import { HealthTrackingComponent } from 'src/app/Health/health-tracking/health-t
 import { MedicationListComponent } from 'src/app/Medication/medication-list/medication-list.component';
 import { RequestListComponent } from 'src/app/Medication/request-list/request-list.component';
 import { BloodPressureComponent } from 'src/app/Health/blood-pressure/blood-pressure.component';
+import { BloodSugarComponent } from 'src/app/Health/blood-sugar/blood-sugar.component';
+import { HeartRateComponent } from 'src/app/Health/heart-rate/heart-rate.component';
+import { WeightComponent } from 'src/app/Health/weight/weight.component';
+import { LabResultsComponent } from 'src/app/Health/lab-results/lab-results.component';
+import { StepsComponent } from 'src/app/Health/steps/steps.component';
 
 const routes: Routes = [
 
@@ -55,6 +60,11 @@ const routes: Routes = [
       { path: 'medication-list', component: MedicationListComponent},
       { path: 'request-list', component: RequestListComponent},
       { path: 'Blood-Pressure', component: BloodPressureComponent},
+      { path: 'Blood-Sugar', component: BloodSugarComponent},
+      { path: 'Heart-Rate', component: HeartRateComponent},
+      { path: 'Weight', component: WeightComponent},
+      { path: 'Lab-Results', component: LabResultsComponent},
+      { path: 'Steps', component: StepsComponent},
     ]
   }
 ];
