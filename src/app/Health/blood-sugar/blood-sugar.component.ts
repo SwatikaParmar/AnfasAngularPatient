@@ -4,6 +4,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { ContentService } from 'src/app/shared/services/content.service';
 import { environment } from 'src/environments/environment';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-blood-sugar',
@@ -23,6 +24,7 @@ export class BloodSugarComponent {
     private contentService: ContentService,
     private router: Router,
     private route: ActivatedRoute,
+    private _location: Location,
   ){ }
 
   ngOnInit(): void {
@@ -66,4 +68,9 @@ export class BloodSugarComponent {
     });
   }
 
+
+  backClicked() {
+    this._location.back();
+  }
+  
 }

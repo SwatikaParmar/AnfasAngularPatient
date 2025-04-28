@@ -59,12 +59,12 @@ const routes: Routes = [
       { path: 'Health-Tracker', component: HealthTrackingComponent},
       { path: 'medication-list', component: MedicationListComponent},
       { path: 'request-list', component: RequestListComponent},
-      { path: 'Blood-Pressure', component: BloodPressureComponent},
-      { path: 'Blood-Sugar', component: BloodSugarComponent},
-      { path: 'Heart-Rate', component: HeartRateComponent},
-      { path: 'Weight', component: WeightComponent},
-      { path: 'Lab-Results', component: LabResultsComponent},
-      { path: 'Steps', component: StepsComponent},
+      { path: 'Health-Tracker/Blood-Pressure', component: BloodPressureComponent},
+      { path: 'Health-Tracker/Blood-Sugar', component: BloodSugarComponent},
+      { path: 'Health-Tracker/Heart-Rate', component: HeartRateComponent},
+      { path: 'Health-Tracker/Weight', component: WeightComponent},
+      { path: 'Health-Tracker/Lab-Results', component: LabResultsComponent},
+      { path: 'Health-Tracker/Steps', component: StepsComponent},
     ]
   }
 ];

@@ -1,1 +1,66 @@
-<p>weight works!</p>
+<div class="dashboard-outer">
+
+    <section>
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="flex justify-between items-center mb-3 ml-1">
+                    <button class="flex items-center justify-center w-7 h-7 rounded-full mr-3 mb-2 text-white"
+                        style="background-color: #726641;" (click)="backClicked()">
+                        <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center;"></i>
+                    </button>
+                    <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">Weight Tracking</h1>
+
+                    <!-- Book Appointment Button -->
+                    <button class="appointment-btn ml-auto bg-blue-500 text-white px-4 py-2 rounded-full">+ Weight Tracking
+                    </button>
+
+                </div>
+                <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
+                    <div class="custom-container max-w-5xl mx-auto p-3">
+                        <div class="container">
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>MRN</th>
+                                            <th>Weight</th>
+                                            <th>Notes</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="row-light" *ngFor="let item of weightList  | paginate
+                                        : {
+                                            itemsPerPage: 5,
+                                            currentPage: page,
+                                            totalItems: totalItems,
+                                            id: '1'
+                                          }">
+                                            <td>{{item.mrn || 'N/A' }}</td>
+                                            <td>{{item.weights || 'N/A' }}</td>
+                                            <td>
+                                                {{item.notes || 'N/A' }}
+                                            </td>
+                                            <td>
+                                                {{ item.createdat ? (item.createdat | date:'dd-MM-yyyy') : 'N/A' }}
+                                            </td>
+
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+
+                                <div class="pagination-container">
+                                    <pagination-controls (pageChange)="onPageChange($event)" id="1"
+                                        class="paginate-doctor-list" queryParamsHandling="merge"></pagination-controls>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
