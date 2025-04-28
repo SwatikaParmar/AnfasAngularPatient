@@ -62,15 +62,20 @@
                   <!-- Display filtered time slots -->
                   <div class="mt-4">
                     <ng-container *ngIf="filteredSlots.length > 0; else noSlots">
-                      <div *ngFor="let slot of filteredSlots" class="border p-2 rounded mb-2">
-                        {{ slot.startTime }} - {{ slot.endTime }}
+                      <div class="row">
+                        <div *ngFor="let slot of filteredSlots" class="col-6 mb-3">
+                          <div class="border p-2 rounded h-100">
+                            {{ slot.startTime }} - {{ slot.endTime }}
+                          </div>
+                        </div>
                       </div>
                     </ng-container>
-
+                  
                     <ng-template #noSlots>
                       <div class="text-gray-500 mt-2">No {{ selectedTime }} slots available.</div>
                     </ng-template>
                   </div>
+                  
 
                 </div>
               </div>
