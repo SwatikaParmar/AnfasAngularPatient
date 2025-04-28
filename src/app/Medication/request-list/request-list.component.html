@@ -38,8 +38,9 @@
                                        {{item.status || 'N/A' }}
                                       </td>
                                       <td>
-                                        {{item.discretion || 'N/A' }}
-                                      </td>                                      
+                                        {{ item.discretion ? (item.discretion.split(' ').slice(0, 3).join(' ') + (item.discretion.split(' ').length > 3 ? '...' : '')) : 'N/A' }}
+                                      </td>
+                                                                           
                                       <!-- <td [routerLink]="['/complaint/chat', item?.complaintId]"><i class="fa fa-eye"></i></td> -->
 
                                     </tr>
