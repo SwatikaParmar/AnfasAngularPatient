@@ -46,7 +46,7 @@ const routes: Routes = [
       { path: 'complaint-add', component: ComplaintFormComponent},
       { path: 'history-list', component: HistoryListComponent},
       { path: 'history-list/chat', component:HistoryChatComponent},
-
+      { path: 'appointment-list', component: HistoryListComponent},
     ]
   }
 ];
