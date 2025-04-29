@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BloddPressureComponent } from './blood-pressure.component';
+import { BloodPressureComponent } from './blood-pressure.component';
 
-describe('BloddPressureComponent', () => {
-  let component: BloddPressureComponent;
-  let fixture: ComponentFixture<BloddPressureComponent>;
+describe('BloodPressureComponent', () => {
+  let component: BloodPressureComponent;
+  let fixture: ComponentFixture<BloodPressureComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BloddPressureComponent ]
+      declarations: [ BloodPressureComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BloddPressureComponent);
+    fixture = TestBed.createComponent(BloodPressureComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -164,4 +164,43 @@ export class ContentService {
       '&pageNumber=' + data.pageNumber + '&pageSize=' + data.pageSize
     );
   }
+
+  addBloodPressure(data: any) {
+    return this.http.post<any>(
+      environment.apiUrl + ApiEndPoint.addBloodPressure,
+      data
+    );
+
+  }
+
+  addBloodSugar(data: any) {
+    return this.http.post<any>(
+      environment.apiUrl + ApiEndPoint.addBloodSugar,
+      data
+    );
+
+  }
+  addHeartRate(data: any) {
+    return this.http.post<any>(
+      environment.apiUrl + ApiEndPoint.addHeartRate,
+      data
+    );
+
+  }
+  addWeight(data: any) {
+    return this.http.post<any>(
+      environment.apiUrl + ApiEndPoint.addWeight,
+      data
+    );
+
+  }
+  addStep(data: any) {
+    return this.http.post<any>(
+      environment.apiUrl + ApiEndPoint.addStep,
+      data
+    );
+
+  }
+
+ 
 }

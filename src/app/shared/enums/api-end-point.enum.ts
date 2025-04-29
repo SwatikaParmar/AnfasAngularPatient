@@ -24,5 +24,10 @@ export enum ApiEndPoint {
     requestType = "api/User/GetAllRequestTypes",
     requestList = "api/User/GetAllRequests",
     healthTracker ="api/User/GetHealthRecordsByType",
+    addBloodPressure ="api/User/AddOrUpdateBloodPressureRecord",
+    addBloodSugar ="api/User/AddOrUpdateBloodSugarRecord",
+    addHeartRate ="api/User/AddOrUpdateHeartRateRecord",
+    addWeight ="api/User/AddOrUpdateWeightRecord",
+    addStep ="api/User/AddOrUpdateStepRecord",
 }
 
