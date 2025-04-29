@@ -1,4 +1,4 @@
-import { Component, ElementRef, NgZone, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
@@ -19,7 +19,6 @@ export class BloodSugarComponent {
   bloodSugarList: any;
   rootUrl: any;
   form!: FormGroup;
-  @ViewChild('bloodSugarModal') bloodSugarModal!: ElementRef;
   modalInstance: any;
 
   constructor(
@@ -41,10 +40,6 @@ export class BloodSugarComponent {
     this.BloodSugarList();
   }
 
-
-  ngAfterViewInit(): void {
-    this.modalInstance = bootstrap.Modal.getInstance(this.bloodSugarModal.nativeElement);
-  }
 
   BloodSugarList() {
     let payload = {
@@ -98,7 +93,7 @@ export class BloodSugarComponent {
       this.toastrService.warning('Please fill out the form correctly.');
       return;
     }
-
+  
     const payload = {
       id: 0,
       mrn: localStorage.getItem('mrn'),
@@ -106,9 +101,9 @@ export class BloodSugarComponent {
       value: this.form.value.value,
       notes: this.form.value.notes
     };
-
+  
     this.spinner.show();
-
+  
     this.contentService.addBloodSugar(payload).subscribe({
       next: (res) => {
         this.spinner.hide();
@@ -116,12 +111,11 @@ export class BloodSugarComponent {
           this.toastrService.success('Blood Sugar Record Added Successfully');
           this.form.reset();
           this.BloodSugarList();
-
-          // Close the modal properly
-          const instance = bootstrap.Modal.getInstance(this.bloodSugarModal.nativeElement);
-          if (instance) {
-            instance.hide();
-          }
+         
+          // Delay the page reload for 3 seconds
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);  // 3000ms = 3 seconds
         } else {
           this.toastrService.error('Failed to add blood Sugar record');
         }
@@ -133,5 +127,6 @@ export class BloodSugarComponent {
       }
     });
   }
+  
 
 }

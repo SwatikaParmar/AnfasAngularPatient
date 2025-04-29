@@ -17,6 +17,7 @@
                     </button>
 
 
+
                 </div>
                 <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
                     <div class="custom-container max-w-5xl mx-auto p-3">
@@ -71,7 +72,8 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="bloodSugarModal" #bloodSugarModal tabindex="-1" aria-labelledby="bloodSugarModalLabel" aria-hidden="true">
+<div class="modal fade" id="bloodSugarModal" #bloodSugarModal tabindex="-1" aria-labelledby="bloodSugarModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <form [formGroup]="form" (ngSubmit)="addRecord()" class="modal-content" style="border-radius: 25px;">
             <div class="modal-header flex items-center justify-between">
@@ -84,22 +86,21 @@
             <div class="modal-body">
                 <div class="flex gap-4 mb-4">
                     <label class="flex items-center space-x-2 cursor-pointer">
-                      <input type="radio" formControlName="type" [value]="1" class="accent-yellow-700" />
-                      <span class="text-sm">Fasting</span>
+                        <input type="radio" formControlName="type" [value]="1" class="accent-yellow-700" />
+                        <span class="text-sm">Fasting</span>
                     </label>
                     <label class="flex items-center space-x-2 cursor-pointer">
-                      <input type="radio" formControlName="type" [value]="2" class="accent-yellow-700" />
-                      <span class="text-sm">Post-Meal</span>
+                        <input type="radio" formControlName="type" [value]="2" class="accent-yellow-700" />
+                        <span class="text-sm">Post-Meal</span>
                     </label>
-                  </div>
-                  
+                </div>
+
 
                 <label class="block text-sm text-gray-700 mb-1" for="sugarInput">Blood Sugar (mg/dL)</label>
                 <input type="text" id="sugarInput" formControlName="value" placeholder="Enter blood sugar level"
                     class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-600 mb-4" />
 
-                <button type="submit"
-                    class="w-full bg-yellow-700 text-white py-2 rounded-full hover:bg-yellow-800"
+                <button type="submit" class="w-full bg-yellow-700 text-white py-2 rounded-full hover:bg-yellow-800"
                     style="color: #fde092!important;">
                     Save Blood Sugar
                 </button>
