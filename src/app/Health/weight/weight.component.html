@@ -81,7 +81,7 @@
     <form [formGroup]="form" (ngSubmit)="addRecord()">
       <div class="modal-header flex items-center justify-between">
         <div class="flex-1 text-center">
-            <h5 class="modal-title text-xl font-semibold" id="bloodSugarModalLabel">Add Blood Sugar</h5>
+            <h5 class="modal-title text-xl font-semibold" id="bloodSugarModalLabel">Weight</h5>
         </div>
         <button 
           type="button" 
@@ -92,8 +92,8 @@
       </div>
       <div class="modal-body">
         <div class="mb-3">
-          <label for="beatsPerMinute" class="form-label">Current Weight (kg)</label>
-          <input type="text" formControlName="beatsPerMinute" class="form-control" id="beatsPerMinute" />
+          <label for="weights" class="form-label">Current Weight (kg)</label>
+          <input type="text" formControlName="weights" class="form-control" id="weights" />
           <div *ngIf="form.get('beatsPerMinute')?.invalid && form.get('beatsPerMinute')?.touched" class="text-danger">
             Required field
           </div>

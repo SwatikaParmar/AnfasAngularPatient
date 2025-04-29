@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
@@ -6,6 +6,8 @@ import { ContentService } from 'src/app/shared/services/content.service';
 import { environment } from 'src/environments/environment';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+declare var bootstrap: any;  // Declare bootstrap for TypeScript
 
 @Component({
   selector: 'app-heart-rate',
@@ -18,7 +20,9 @@ export class HeartRateComponent {
   totalItems!: number;
   heartRateList: any;
   rootUrl: any;
- form!: FormGroup;
+  form!: FormGroup;
+
+  @ViewChild('heartRateModal', { static: true }) heartRateModal!: ElementRef;  // Non-null assertion
 
   constructor(
     private toastrService: ToastrService,
@@ -27,8 +31,8 @@ export class HeartRateComponent {
     private router: Router,
     private route: ActivatedRoute,
     private _location: Location,
-       private fb: FormBuilder
-  ){ }
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.rootUrl = environment.rootPathUrl;
@@ -36,19 +40,19 @@ export class HeartRateComponent {
     this.route.queryParams.subscribe((params) => {
       this.page = +params['page'] || 0;
     });
-    this.HeartRateList();  
+    this.HeartRateList();
   }
-  
+
   HeartRateList() {
     let payload = {
-      mrn : localStorage.getItem('mrn'),
-      type :'heartrate',
-      pageNumber : 1,
-      pageSize : 10
-    }
+      mrn: localStorage.getItem('mrn'),
+      type: 'heartrate',
+      pageNumber: 1,
+      pageSize: 10
+    };
 
     this.contentService.getHealthTracker(payload).subscribe(
-      response => {
+      (response) => {
         if (response.isSuccess) {
           this.heartRateList = response.data.dataList;
         } else {
@@ -56,12 +60,12 @@ export class HeartRateComponent {
           console.error('API returned failure:', response);
         }
       },
-      error => {
+      (error) => {
         this.toastrService.error('Error fetching heartrate list.');
         console.error('Error fetching heartrate list:', error);
       }
     );
-  }    
+  }
 
   onPageChange(page: number): void {
     // Update query parameters for pagination
@@ -76,45 +80,52 @@ export class HeartRateComponent {
     this._location.back();
   }
 
-   initForm(): void {
-        this.form = this.fb.group({
-          beatsPerMinute: ['', [Validators.required]],
-          notes: [''] // hidden in modal, optional
-        });
-      }
-  
-    addRecord(): void {
-      debugger
-      if (this.form.invalid) {
-        this.toastrService.warning('Please fill out the form correctly.');
-        return;
-      }
-  
-      const payload = {
-        id: 0,
-        mrn: localStorage.getItem('mrn'),
-        beatsPerMinute: this.form.value.beatsPerMinute,
-        notes: this.form.value.notes
-      };
-  
-      this.spinner.show();
-  
-      this.contentService.addHeartRate(payload).subscribe({
-        next: (res) => {
-          this.spinner.hide();
-          if (res.isSuccess) {
-            this.toastrService.success('Heart Rate Record Added Successfully');
-            this.form.reset();
-            this.heartRateList(); // Refresh list
-          } else {
-            this.toastrService.error('Failed to add Heart Rate record');
-          }
-        },
-        error: (err) => {
-          this.spinner.hide();
-          this.toastrService.error('Error adding Heart Rate record');
-          console.error('Error:', err);
-        }
-      });
+  initForm(): void {
+    this.form = this.fb.group({
+      beatsPerMinute: ['', [Validators.required]],
+      notes: [''] // hidden in modal, optional
+    });
+  }
+
+  addRecord(): void {
+    if (this.form.invalid) {
+      this.toastrService.warning('Please fill out the form correctly.');
+      return;
     }
+  
+    const payload = {
+      id: 0,
+      mrn: localStorage.getItem('mrn'),
+      beatsPerMinute: this.form.value.beatsPerMinute,
+      notes: this.form.value.notes
+    };
+  
+    this.spinner.show();
+  
+    this.contentService.addHeartRate(payload).subscribe({
+      next: (res) => {
+        this.spinner.hide();
+        if (res.isSuccess) {
+          this.toastrService.success('Heart Rate Record Added Successfully');
+          this.form.reset();
+          this.HeartRateList(); // refresh list
+          // ✅ Close the modal
+          const modalInstance = bootstrap.Modal.getInstance(this.heartRateModal.nativeElement);
+          modalInstance?.hide();
+  
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
+        } else {
+          this.toastrService.error('Failed to add Heart Rate record');
+        }
+      },
+      error: (err) => {
+        this.spinner.hide();
+        this.toastrService.error('Error adding Heart Rate record');
+        console.error('Error:', err);
+      }
+    });
+  }
+  
 }
