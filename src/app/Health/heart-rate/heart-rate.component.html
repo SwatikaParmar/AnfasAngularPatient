@@ -11,9 +11,13 @@
                     <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">Heart Rate</h1>
 
                     <!-- Book Appointment Button -->
-                    <button class="appointment-btn ml-auto bg-blue-500 text-white px-4 py-2 rounded-full">+ Heart Rate
-                    </button>
-
+                    <button
+                    class="appointment-btn ml-auto bg-blue-500 text-white px-4 py-2 rounded-full"
+                    data-bs-toggle="modal"
+                    data-bs-target="#heartRateModal">
+                    + Heart Rate
+                  </button>
+                  
                 </div>
                 <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
                     <div class="custom-container max-w-5xl mx-auto p-3">
@@ -23,7 +27,7 @@
                                     <thead>
                                         <tr>
                                             <th>MRN</th>
-                                            <th>Beats&nbsp;PerMinute</th>
+                                            <th>Beats&nbsp;Per&nbsp;Minute</th>
                                             <th>Notes</th>
                                             <th>Date</th>
                                         </tr>
@@ -64,3 +68,36 @@
         </div>
     </section>
 </div>
+
+<!-- Heart Rate Modal -->
+<div class="modal fade" id="heartRateModal" tabindex="-1" aria-labelledby="heartRateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form [formGroup]="form" (ngSubmit)="addRecord()">
+          <div class="modal-header">
+            <h5 class="modal-title" id="heartRateModalLabel">Add Heart Rate</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+  
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="beatsPerMinute" class="form-label">Beats Per Minute</label>
+              <input type="number" formControlName="beatsPerMinute" class="form-control" id="beatsPerMinute" />
+              <div *ngIf="form.get('beatsPerMinute')?.invalid && form.get('beatsPerMinute')?.touched" class="text-danger">
+                Required field
+              </div>
+            </div>
+            <div class="mb-3 d-none">
+              <label for="notes" class="form-label">Notes</label>
+              <textarea formControlName="notes" class="form-control" id="notes"></textarea>
+            </div>
+          </div>
+  
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Save</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

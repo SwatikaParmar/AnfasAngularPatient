@@ -11,8 +11,12 @@
                     <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">Weight Tracking</h1>
 
                     <!-- Book Appointment Button -->
-                    <button class="appointment-btn ml-auto bg-blue-500 text-white px-4 py-2 rounded-full">+ Weight Tracking
-                    </button>
+                    <button
+                    class="appointment-btn ml-auto bg-blue-500 text-white px-4 py-2 rounded-full"
+                    (click)="openModal()"
+                  >
+                    + Weight Tracking
+                  </button>
 
                 </div>
                 <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
@@ -63,4 +67,39 @@
             </div>
         </div>
     </section>
+</div>
+
+
+
+<!-- Modal Overlay -->
+<div
+  class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+  *ngIf="showModal"
+>
+  <div class="bg-white p-6 rounded-lg w-full max-w-md">
+    <h2 class="text-xl font-semibold mb-4">Add Weight Record</h2>
+    <form [formGroup]="form" (ngSubmit)="addRecord()">
+      <div class="mb-4">
+        <label class="block text-sm font-medium mb-1">Weight (kg)</label>
+        <input
+          formControlName="weights"
+          type="number"
+          class="w-full border border-gray-300 px-3 py-2 rounded"
+          placeholder="Enter your weight"
+        />
+      </div>
+      <div class="flex justify-end space-x-2">
+        <button type="button" (click)="closeModal()" class="px-4 py-2 bg-gray-300 rounded">
+          Cancel
+        </button>
+        <button
+          type="submit"
+          class="px-4 py-2 bg-blue-600 text-white rounded"
+          [disabled]="form.invalid"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
