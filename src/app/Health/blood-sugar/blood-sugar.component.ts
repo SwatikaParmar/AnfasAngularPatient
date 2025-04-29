@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, ElementRef, NgZone, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
@@ -6,7 +6,7 @@ import { ContentService } from 'src/app/shared/services/content.service';
 import { environment } from 'src/environments/environment';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+declare var bootstrap: any; // Add at the top if not already declared
 @Component({
   selector: 'app-blood-sugar',
   templateUrl: './blood-sugar.component.html',
@@ -18,7 +18,9 @@ export class BloodSugarComponent {
   totalItems!: number;
   bloodSugarList: any;
   rootUrl: any;
- form!: FormGroup;
+  form!: FormGroup;
+  @ViewChild('bloodSugarModal') bloodSugarModal!: ElementRef;
+  modalInstance: any;
 
   constructor(
     private toastrService: ToastrService,
@@ -27,8 +29,8 @@ export class BloodSugarComponent {
     private router: Router,
     private route: ActivatedRoute,
     private _location: Location,
-     private fb: FormBuilder
-  ){ }
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
     this.rootUrl = environment.rootPathUrl;
@@ -36,15 +38,20 @@ export class BloodSugarComponent {
     this.route.queryParams.subscribe((params) => {
       this.page = +params['page'] || 0;
     });
-    this.BloodSugarList();  
+    this.BloodSugarList();
   }
-  
+
+
+  ngAfterViewInit(): void {
+    this.modalInstance = bootstrap.Modal.getInstance(this.bloodSugarModal.nativeElement);
+  }
+
   BloodSugarList() {
     let payload = {
-      mrn : localStorage.getItem('mrn'),
-      type :'bloodsugar',
-      pageNumber : 1,
-      pageSize : 10
+      mrn: localStorage.getItem('mrn'),
+      type: 'bloodsugar',
+      pageNumber: 1,
+      pageSize: 10
     }
 
     this.contentService.getHealthTracker(payload).subscribe(
@@ -61,7 +68,7 @@ export class BloodSugarComponent {
         console.error('Error fetching bloodSugar list:', error);
       }
     );
-  }    
+  }
 
   onPageChange(page: number): void {
     // Update query parameters for pagination
@@ -76,17 +83,17 @@ export class BloodSugarComponent {
   backClicked() {
     this._location.back();
   }
-  
-   initForm(): void {
-      this.form = this.fb.group({
-        type: ['', [Validators.required]],
-        value: ['', [Validators.required]],
-        notes: [''] // hidden in modal, optional
-      });
-    }
+
+  initForm(): void {
+    this.form = this.fb.group({
+      type: ['', [Validators.required]],
+      value: ['', [Validators.required]],
+      notes: [''] // hidden in modal, optional
+    });
+  }
+
 
   addRecord(): void {
-    debugger
     if (this.form.invalid) {
       this.toastrService.warning('Please fill out the form correctly.');
       return;
@@ -108,7 +115,13 @@ export class BloodSugarComponent {
         if (res.isSuccess) {
           this.toastrService.success('Blood Sugar Record Added Successfully');
           this.form.reset();
-          this.BloodSugarList(); // Refresh list
+          this.BloodSugarList();
+
+          // Close the modal properly
+          const instance = bootstrap.Modal.getInstance(this.bloodSugarModal.nativeElement);
+          if (instance) {
+            instance.hide();
+          }
         } else {
           this.toastrService.error('Failed to add blood Sugar record');
         }
@@ -120,4 +133,5 @@ export class BloodSugarComponent {
       }
     });
   }
+
 }

@@ -122,6 +122,7 @@ export class BloodPressureComponent {
           this.toastrService.success('Blood Pressure Record Added Successfully');
           this.form.reset();
           this.BloodPressureList(); // Refresh list
+          this.closeModal();
         } else {
           this.toastrService.error('Failed to add blood pressure record');
         }

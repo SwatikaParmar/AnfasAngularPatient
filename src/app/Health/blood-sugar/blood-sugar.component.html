@@ -10,7 +10,6 @@
                     </button>
                     <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">Blood Sugar</h1>
 
-                    <!-- Book Appointment Button -->
                     <!-- Button to open modal -->
                     <button class="appointment-btn ml-auto bg-blue-500 text-white px-4 py-2 rounded-full"
                         data-bs-toggle="modal" data-bs-target="#bloodSugarModal">
@@ -72,7 +71,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="bloodSugarModal" tabindex="-1" aria-labelledby="bloodSugarModalLabel" aria-hidden="true">
+<div class="modal fade" id="bloodSugarModal" #bloodSugarModal tabindex="-1" aria-labelledby="bloodSugarModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <form [formGroup]="form" (ngSubmit)="addRecord()" class="modal-content" style="border-radius: 25px;">
             <div class="modal-header flex items-center justify-between">
@@ -83,26 +82,28 @@
             </div>
 
             <div class="modal-body">
+                <div class="flex gap-4 mb-4">
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                      <input type="radio" formControlName="type" [value]="1" class="accent-yellow-700" />
+                      <span class="text-sm">Fasting</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                      <input type="radio" formControlName="type" [value]="2" class="accent-yellow-700" />
+                      <span class="text-sm">Post-Meal</span>
+                    </label>
+                  </div>
+                  
 
-                <div class="flex  gap-4 mb-4">
-                    <label class="flex items-center space-x-2 cursor-pointer">
-                        <input type="radio" name="sugarType" value="fasting" checked class="accent-yellow-700">
-                        <span class="text-sm">Fasting</span>
-                    </label>
-                    <label class="flex items-center space-x-2 cursor-pointer">
-                        <input type="radio" name="sugarType" value="postMeal" class="accent-yellow-700">
-                        <span class="text-sm">Post-Meal</span>
-                    </label>
-                </div>
-                <label class="block text-sm text-gray-700 mb-1" for="sugarInput">Fasting (mg/dL)</label>
-                <input type="text" id="sugarInput" placeholder="Enter fasting sugar level"
+                <label class="block text-sm text-gray-700 mb-1" for="sugarInput">Blood Sugar (mg/dL)</label>
+                <input type="text" id="sugarInput" formControlName="value" placeholder="Enter blood sugar level"
                     class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-600 mb-4" />
-                <button class="w-full bg-yellow-700 text-white py-2 rounded-full hover:bg-yellow-800"
+
+                <button type="submit"
+                    class="w-full bg-yellow-700 text-white py-2 rounded-full hover:bg-yellow-800"
                     style="color: #fde092!important;">
                     Save Blood Sugar
                 </button>
             </div>
-
         </form>
     </div>
 </div>
