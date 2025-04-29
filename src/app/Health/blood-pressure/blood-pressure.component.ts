@@ -19,6 +19,7 @@ export class BloodPressureComponent {
   bloodPressureList: any;
   rootUrl: any;
   form!: FormGroup;
+  showModal: boolean = false; // controls modal visibility
   
   constructor(
     private toastrService: ToastrService,
@@ -87,7 +88,15 @@ export class BloodPressureComponent {
     });
   }
 
- 
+  openModal(): void {
+    this.form.reset();
+    this.showModal = true;
+  }
+
+  closeModal(): void {
+    this.showModal = false;
+  }
+
 
   addRecord(): void {
     debugger
