@@ -68,9 +68,16 @@
                         <p class="department mb-1">
                           {{ item.departmentUid?.name || 'N/A' }}
                         </p>
-                        <p class="status-booked mb-0">
+                        <p class="status-booked mb-0" [ngStyle]="{
+                          color: item.slots[0]?.statusUid?.valueDescription === 'No Show' ? 'orange' :
+                                 item.slots[0]?.statusUid?.valueDescription === 'Booked' ? 'blue' :
+                                 item.slots[0]?.statusUid?.valueDescription === 'Rescheduled' ? 'green' :
+                                 item.slots[0]?.statusUid?.valueDescription === 'Cancelled' ? 'red' : 'inherit'
+                        }">
                           {{ item.slots[0]?.statusUid?.valueDescription || 'N/A' }}
                         </p>
+                        
+
                       </div>
                     </div>
 
