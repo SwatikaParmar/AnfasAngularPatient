@@ -55,3 +55,55 @@
     cursor: pointer;
   }
   
+
+  .popup-container {
+    width: 460px;
+    background-color: white;
+    border-radius: 25px!important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 100px auto;
+    position: relative;
+  }
+
+  .popup-container h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .popup-container label {
+    font-size: 14px;
+    display: block;
+    margin: 10px 0 5px;
+  }
+
+  .popup-container input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+    box-sizing: border-box;
+  }
+
+  .popup-container .end {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background-color: #a78b52; /* gold/olive tone */
+    color: #fde092!important;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 18px;
+    cursor: pointer;
+  }
