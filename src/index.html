@@ -42,7 +42,18 @@
       document.getElementById('popup').style.display = 'none';
     }
   </script>
-  
+  <script>
+    function togglePopup() {
+      const overlay = document.getElementById("popup-overlay");
+      overlay.style.display = (overlay.style.display === "flex") ? "none" : "flex";
+    }
+    
+    function closeOnOutsideClick(event) {
+      if (event.target.id === "popup-overlay") {
+        togglePopup();
+      }
+    }
+    </script>
   <app-root></app-root>
 </body>
 

@@ -76,7 +76,7 @@
 
                     <!-- Footer Button -->
                     <div class="d-flex justify-content-end">
-                      <button class="appointment-btn d-flex align-items-center gap-1">
+                      <button class="appointment-btn d-flex align-items-center gap-1" onclick="togglePopup()">
                         <span style="font-size: 15px; color: #FEC34F;">Appointments</span>
                         <i class="fas fa-chevron-down" style="font-size: 10px; color: #FEC34F;"></i>
                       </button>
@@ -99,4 +99,54 @@
     </div>
 
   </section>
+</div>
+
+<div id="popup-overlay" class="popup-overlay" onclick="closeOnOutsideClick(event)" style="display: none;">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style=" border-radius: 25px; border: none;">
+      <form >
+        <div class="modal-header flex items-center justify-between">
+          <div class="flex-1 text-center">
+            <h5 class="modal-title text-xl font-semibold" id="bloodSugarModalLabel">My Appointment</h5>
+          </div>
+          
+        </div>
+        <div class="p-6 shadow-md  font-sans space-y-4 " style="width: 460px;">
+
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <img src="assets/images/logo-dashboard.png" alt="Icon" class="w-5 h-5">
+              <div class="text-sm text-gray-500">Appointment Number</div>
+            </div>
+            <div class="font-semibold text-black">A2504240002</div>
+          </div>
+          
+          <div class="flex items-center justify-between">
+            <div class="text-sm text-gray-500 pl-4" >Start Time</div>
+            <div class="font-semibold text-black">30-04-2025 at 10:40 AM</div>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="text-sm text-gray-500 pl-4">End Time</div>
+            <div class="font-semibold text-black">30-04-2025 at 10:50 AM</div>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="text-sm text-gray-500 pl-4">Status</div>
+            <div class="text-blue-600 font-medium">Booked</div>
+          </div>
+          <div class="flex justify-end space-x-3 pt-2">
+            <button class="px-4 py-2 border border-gray-800 rounded-full text-sm text-black font-bold hover:bg-gray-100" onclick="togglePopup()">
+              Cancel
+            </button>
+            
+            <button class="px-3 py-1 bg-[#b89c5a]  rounded-full text-sm font-bold hover:bg-[#a88d4e] flex items-center"  style="color: #FEC34F!important;">
+              Reschedule
+              <span class="ml-2">&gt;</span>
+            </button>
+            
+            
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
