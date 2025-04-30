@@ -60,7 +60,9 @@
 
                                     </tbody>
                                 </table>
-
+                                <div class="no-data text-center" *ngIf="bloodPressureList && bloodPressureList.length === 0" >
+                                    <img src="assets/images/ffffrq.jpg">
+                                </div>
 
                                 <div class="pagination-container">
                                     <pagination-controls (pageChange)="onPageChange($event)" id="1"

@@ -101,7 +101,6 @@ this.typeList = response.data;
     debugger
     if (this.complaintForm.invalid) {
       this.complaintForm.markAllAsTouched(); // 🔥 this triggers all validation messages
-      this.toasterService.error('Please fill all required fields.');
       return;
     }
 
