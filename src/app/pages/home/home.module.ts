@@ -40,6 +40,7 @@ import { LabResultsComponent } from 'src/app/Health/lab-results/lab-results.comp
 import { StepsComponent } from 'src/app/Health/steps/steps.component';
 import { MedicationListComponent } from 'src/app/Medication/medication-list/medication-list.component';
 import { RequestListComponent } from 'src/app/Medication/request-list/request-list.component';
+import { CustomDateAdapter } from './appointment/book-appointment/custom-date-formats';
 
 
 
@@ -98,6 +99,8 @@ import { RequestListComponent } from 'src/app/Medication/request-list/request-li
       }
     })
   ],
-  providers: []
+  providers: [
+    { provide: DateAdapter, useClass: CustomDateAdapter }, // Override default DateAdapter
+  ],
 })
 export class HomeModule { }

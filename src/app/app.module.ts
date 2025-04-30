@@ -17,8 +17,6 @@ import { LayoutModule } from './layouts/layout.module';
 import { NgOtpInputModule } from 'ng-otp-input';
 import { MedicationListComponent } from './Medication/medication-list/medication-list.component';
 import { RequestListComponent } from './Medication/request-list/request-list.component';
-
-
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader { 
   return new TranslateHttpLoader(http, './assets/i18n/', '.json'); 
 }
@@ -54,8 +52,13 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     
   ], 
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-  ], 
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }
+  ],
+  
   bootstrap: [AppComponent] 
 })
 export class AppModule { }
