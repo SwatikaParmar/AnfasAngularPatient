@@ -71,7 +71,7 @@
                     </ng-container>
                   
                     <ng-template #noSlots>
-                      <div class="text-gray-500 mt-2 col-12">No {{ selectedTime }} slots available.</div>
+                      <div class="text-gray-500 mt-2 col-12">{{ 'NO' | translate }} {{ selectedTime }} {{ 'SLOTS_AVAILABLE' | translate }}</div>
                     </ng-template>
                   </div>
                   
@@ -86,12 +86,12 @@
 
         <!-- <div class=" bg-white h-20 border border-gray-200 rounded mb-4 mt-4"></div> -->
         <div class="mb-4 text-center">
-          <a (click)="navigateToPreview()" class="text-blue-600 underline">Review Your Consent Form</a>
+          <a (click)="navigateToPreview()" class="text-blue-600 underline">{{ 'REVIEW_YOUR_CONSENT_FORM' | translate }}</a>
         </div>
         <div class="flex justify-center">
           <button (click)="bookSelectedAppointment()" class="text-white py-2 rounded-md"
             style="width: 30%; background-color: #FEC34F;">
-            Book an Appointment
+            {{ 'BOOK_AN_APPOINTMENT' | translate }}
           </button>
         </div>
 

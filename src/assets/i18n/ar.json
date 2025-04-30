@@ -259,7 +259,10 @@
   "RESCHEDULE": "إعادة الجدولة",
   "PHYSICIANS_DEPARTMENT": "قسم الأطباء",
   "APPOINTMENTS_SCHEDULE": "جدول المواعيد",
-  "MORNING":"صباح",
-  "EVENING":"مساء"
- 
+  "MORNING": "صباح",
+  "EVENING": "مساء",
+  "NO": "لا",
+  "SLOTS_AVAILABLE": "الفتحات المتاحة.",
+  "REVIEW_YOUR_CONSENT_FORM": "مراجعة نموذج موافقتك",
+  "BOOK_AN_APPOINTMENT": "حجز موعد"
 }

@@ -258,5 +258,9 @@
   "PHYSICIANS_DEPARTMENT": "Physicians Department",
   "APPOINTMENTS_SCHEDULE": "Appointments Schedule",
   "MORNING": "Morning",
-  "EVENING": "Evening"
+  "EVENING": "Evening",
+  "NO": "No",
+  "SLOTS_AVAILABLE": "slots available.",
+  "REVIEW_YOUR_CONSENT_FORM": "Review Your Consent Form",
+  "BOOK_AN_APPOINTMENT": "Book an Appointment"
 }
