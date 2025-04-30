@@ -4,21 +4,22 @@
         <div class="content-body">
             <div class="container-fluid">
                 <div class="flex justify-between items-center mb-3 ml-1">
-                    <button class="flex items-center justify-center w-7 h-7 rounded-full mr-3 mb-2 text-white"
+                    <button class="flex items-center justify-center w-7 h-7 rounded-full mr-3 mb-2 text-white ml-2 mt-2"
                         style="background-color: #726641;" (click)="backClicked()">
                         <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center;"></i>
                     </button>
+                
                     <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">Blood Sugar</h1>
-
-                    <!-- Button to open modal -->
-                    <button class="appointment-btn ml-auto bg-blue-500 text-white px-4 py-2 rounded-full"
-                        data-bs-toggle="modal" data-bs-target="#bloodSugarModal">
+                
+                    <!-- Button alignment changes based on direction -->
+                    <button
+                        class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full ltr:ml-auto rtl:mr-auto"
+                        data-bs-toggle="modal"
+                        data-bs-target="#bloodSugarModal">
                         + Blood Sugar
                     </button>
-
-
-
                 </div>
+                
                 <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
                     <div class="custom-container max-w-5xl mx-auto p-3">
                         <div class="container">

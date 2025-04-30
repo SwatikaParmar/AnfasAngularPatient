@@ -3,20 +3,27 @@
     <section>
         <div class="content-body">
             <div class="container-fluid">
-                <div class="flex justify-between items-center mb-3 ml-1">
-                    <button class="flex items-center justify-center w-7 h-7 rounded-full mr-3 mb-2 text-white"
-                        style="background-color: #726641;" (click)="backClicked()">
+                <div class="flex justify-between items-center mb-3 ml-1" [ngClass]="{'flex-row': isLTR, 'flex-row-reverse': !isLTR}">
+  
+                    <!-- Left Group: Back Button + Title -->
+                    <div class="flex items-center" [ngClass]="{'flex-row': isLTR, 'flex-row-reverse': !isLTR}">
+                      <!-- Back Button -->
+                      <button class="flex items-center justify-center w-7 h-7 rounded-full mr-2 mb-2 text-white mt-2 "
+                              style="background-color: #726641;" (click)="backClicked()">
                         <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center;"></i>
-                    </button>
-                    <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">Blood pressure</h1>
-
-                    <!-- Book Appointment Button -->
-                    <button (click)="openModal()" class="appointment-btn ml-auto bg-blue-500 text-white px-4 py-2 rounded-full">
-                        + Blood pressure
                       </button>
-
-
-                </div>
+                  
+                      <!-- Title -->
+                      <h1 class="text-lg font-semibold mx-3" style="font-size: 25px; color: #726641;">Blood pressure</h1>
+                    </div>
+                  
+                    <!-- Right: Book Appointment Button -->
+                    <button (click)="openModal()" class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full">
+                      + Blood pressure
+                    </button>
+                  
+                  </div>
+                  
                 <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
                     <div class="custom-container max-w-5xl mx-auto p-3">
                         <div class="container">

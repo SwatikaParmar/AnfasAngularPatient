@@ -54,6 +54,21 @@
       }
     }
     </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const lang = document.documentElement.getAttribute('dir');
+        const btn = document.querySelector('.appointment-btn');
+    
+        if (lang === 'rtl') {
+          btn.classList.remove('ml-auto');
+          btn.classList.add('mr-auto');
+        } else {
+          btn.classList.remove('mr-auto');
+          btn.classList.add('ml-auto');
+        }
+      });
+    </script>
+    
   <app-root></app-root>
 </body>
 

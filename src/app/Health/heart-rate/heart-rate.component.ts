@@ -6,7 +6,7 @@ import { ContentService } from 'src/app/shared/services/content.service';
 import { environment } from 'src/environments/environment';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { TranslateService } from '@ngx-translate/core';
 declare var bootstrap: any;  // Declare bootstrap for TypeScript
 
 @Component({
@@ -21,6 +21,7 @@ export class HeartRateComponent {
   heartRateList: any;
   rootUrl: any;
   form!: FormGroup;
+  isArabic: boolean = false; // Set to true if Arabic is the current language
 
   @ViewChild('heartRateModal', { static: true }) heartRateModal!: ElementRef;  // Non-null assertion
 
@@ -28,11 +29,12 @@ export class HeartRateComponent {
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService,
     private contentService: ContentService,
+    private translate: TranslateService,
     private router: Router,
     private route: ActivatedRoute,
     private _location: Location,
     private fb: FormBuilder
-  ) {}
+  ) {  this.isArabic = this.translate.currentLang === 'ar';}
 
   ngOnInit(): void {
     this.rootUrl = environment.rootPathUrl;
