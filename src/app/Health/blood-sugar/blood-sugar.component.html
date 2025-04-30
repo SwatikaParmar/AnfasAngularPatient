@@ -53,7 +53,9 @@
 
                                     </tbody>
                                 </table>
-
+                                <div class="no-data text-center" *ngIf="bloodSugarList && bloodSugarList.length === 0">
+                                    <img src="assets/images/ffffrq-removebg-preview.png" style="width: 50%; margin: auto; padding: 50px;">
+                                </div>
 
                                 <div class="pagination-container">
                                     <pagination-controls (pageChange)="onPageChange($event)" id="1"
