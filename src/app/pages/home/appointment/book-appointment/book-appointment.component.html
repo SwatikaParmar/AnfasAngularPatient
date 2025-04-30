@@ -64,10 +64,19 @@
                   <div class="mt-4 row">
                     <ng-container *ngIf="filteredSlots.length > 0; else noSlots">
                       <div *ngFor="let slot of filteredSlots; let i = index" class="col-6">
-                        <div class="border p-2 rounded mb-2">
+                        <div
+                          class="border p-2 rounded mb-2"
+                          [ngStyle]="{
+                            backgroundColor: selectedSlot === slot ? '#E1C377' : '',
+                            color: selectedSlot === slot ? 'white' : ''
+                          }"
+                          (click)="selectSlot(slot)"
+                          style="cursor: pointer;"
+                        >
                           {{ slot.startTime }} - {{ slot.endTime }}
                         </div>
                       </div>
+                      
                     </ng-container>
 
                     <ng-template #noSlots>
