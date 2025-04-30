@@ -20,7 +20,7 @@ export class BloodPressureComponent {
   rootUrl: any;
   form!: FormGroup;
   showModal: boolean = false; // controls modal visibility
-  
+  isLTR = true;
   constructor(
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService,
@@ -40,6 +40,8 @@ export class BloodPressureComponent {
     });
 
     this.BloodPressureList();
+    const lang = document.documentElement.lang || 'en'; // get lang from <html lang="en">
+    this.isLTR = lang !== 'ar'; // or however you detect RTL languages
   }
   
   BloodPressureList() {

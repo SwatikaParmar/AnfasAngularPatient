@@ -4,15 +4,18 @@
     <div class="content-body">
       <div class="container-fluid">
         <div class="flex justify-between items-center mb-3 ml-1">
-          <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">{{ 'MY_APPOINTMENTS' | translate }}</h1>
-
+          <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">
+            {{ 'MY_APPOINTMENTS' | translate }}
+          </h1>
+        
           <!-- Book Appointment Button -->
           <button *ngIf="showAppointmentButton"
-            class="appointment-btn ml-auto bg-blue-500 text-white px-4 py-2 rounded-full"
-            [routerLink]="['/appointment-list/appointment']">+ {{ 'BOOK_APPOINTMENT' | translate }}
+            class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full ltr:ml-auto rtl:mr-auto"
+            [routerLink]="['/appointment-list/appointment']">
+            + {{ 'BOOK_APPOINTMENT' | translate }}
           </button>
-
         </div>
+        
 
 
 

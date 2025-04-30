@@ -3,22 +3,24 @@
     <section>
         <div class="content-body">
             <div class="container-fluid">
-                <div class="flex justify-between items-center mb-3 ml-1">
-                    <button class="flex items-center justify-center w-7 h-7 rounded-full mr-3 mb-2 text-white"
-                        style="background-color: #726641;" (click)="backClicked()">
-                        <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center;"></i>
-                    </button>
-                    <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">Heart Rate</h1>
-
-                    <!-- Book Appointment Button -->
-                    <button
-                    class="appointment-btn ml-auto bg-blue-500 text-white px-4 py-2 rounded-full"
-                    data-bs-toggle="modal"
-                    data-bs-target="#heartRateModal">
-                    + Heart Rate
-                  </button>
+                <div [dir]="isArabic ? 'rtl' : 'ltr'" class="flex items-center mb-3 ml-1 justify-between">
+                    <div class="flex items-center">
+                      <button class="flex items-center justify-center w-7 h-7 rounded-full mb-2 text-white mr-2 ml-2 mt-2"
+                          style="background-color: #726641;" (click)="backClicked()">
+                          <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center;"></i>
+                      </button>
+                      <h1 class="text-lg font-semibold ml-2" style="font-size: 25px; color: #726641;">Heart Rate</h1>
+                    </div>
                   
-                </div>
+                    <button
+                      class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full"
+                      data-bs-toggle="modal"
+                      data-bs-target="#heartRateModal">
+                      + Heart Rate
+                    </button>
+                  </div>
+                  
+                  
                 <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
                     <div class="custom-container max-w-5xl mx-auto p-3">
                         <div class="container">
