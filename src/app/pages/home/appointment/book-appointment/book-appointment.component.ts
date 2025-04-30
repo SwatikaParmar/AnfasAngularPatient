@@ -41,7 +41,7 @@ export class BookAppointmentComponent {
   rootUrl: any;
   receiverName: any;
   CareProviderCode: any;
-
+  selectedSlot: any = null;
   constructor(
     private renderer: Renderer2,
     private formBuilder: FormBuilder,
@@ -306,6 +306,8 @@ export class BookAppointmentComponent {
       this.toasterService.warning('MRN is missing.');
     }
   }
-  
+  selectSlot(slot: any): void {
+    this.selectedSlot = slot;
+  }
 
 }
