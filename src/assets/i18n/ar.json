@@ -247,15 +247,19 @@
   "FEEDBACK_OR_SUGGESSTIONS": "الملاحظات أو الاقتراحات",
   "BOOK_APPOINTMENT": "حجز موعد",
   "SELECT_OPTION": "اختيار_الخيار",
-  "ALL":"الجميع",
-  "BOOKED":"تم حجزه",
-  "CANCELLED":"تم الإلغاء",
-  "NO_SHOW":"لا يوجد حضور",
-  "MY_APPOINTMENT":"موعدي",
-  "APPOINTMENT_NUMBER":"رقم الموعد",
-  "START_TIME":"وقت البدء",
-  "END_TIME":"وقت النهاية",
-  "CANCEL":"يلغي",
-  "RESCHEDULE":"إعادة الجدولة"
-  
+  "ALL": "الجميع",
+  "BOOKED": "تم حجزه",
+  "CANCELLED": "تم الإلغاء",
+  "NO_SHOW": "لا يوجد حضور",
+  "MY_APPOINTMENT": "موعدي",
+  "APPOINTMENT_NUMBER": "رقم الموعد",
+  "START_TIME": "وقت البدء",
+  "END_TIME": "وقت النهاية",
+  "CANCEL": "يلغي",
+  "RESCHEDULE": "إعادة الجدولة",
+  "PHYSICIANS_DEPARTMENT": "قسم الأطباء",
+  "APPOINTMENTS_SCHEDULE": "جدول المواعيد",
+  "MORNING":"صباح",
+  "EVENING":"مساء"
+ 
 }
