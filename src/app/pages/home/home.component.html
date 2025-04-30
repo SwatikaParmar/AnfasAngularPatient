@@ -9,10 +9,10 @@
               <!-- Greeting and Heading -->
               <div>
                 <p class="text-sm sm:text-base text-black-500">
-                  Hello <strong class="text-yellow-400">{{ fname }} {{ lname }}</strong>
+                  {{ 'HELLO' | translate }} <strong class="text-yellow-400">{{ fname }} {{ lname }}</strong>
                 </p>
                 <h2 class="text-lg sm:text-xl font-semibold text-[#77734E]">
-                  Find Your Specialist
+                  {{ 'FIND_YOUR_SPECIALIST' | translate }}
                 </h2>
               </div>
 
@@ -61,9 +61,12 @@
             </div>
             <!-- Welcome Card -->
             <div class="bg-white rounded-xl shadow-md p-4 mt-4 text-center" style="background-color: azure;">
-              <h3 class="text-lg font-bold" style="color: #77734E; font-size: 25px;">Welcome to ANFAS Healthcare</h3>
-              <p class="text-sm mt-2" style="font-size: 15px;">Your trusted partner for home care, radiology, and lab
-                services. Experience the best healthcare at your convenience.</p>
+              <h3 class="text-lg font-bold" style="color: #77734E; font-size: 25px;">{{ 'WELCOME_TO_ANFAS_HEALTHCARE' |
+                translate }}</h3>
+              <p class="text-sm mt-2" style="font-size: 15px;">
+                {{
+                'YOUR_TRUSTED_PARTNER_FOR_HOME_CARE_RADIOLOGY_AND_LAB_SERVICES_EXPERIENCE_THE_BEST_HEALTHCARE_AT_YOUR_CONVENIENCE'
+                | translate }}</p>
             </div>
 
             <!-- Action Buttons -->
@@ -71,34 +74,34 @@
               <button class=" bg-white shadow p-4 rounded-lg  flex flex-col items-center gap-1"
                 style="  border:1px solid #FEC34F;" [routerLink]="['/appointment']">
                 <i class="fa-solid fa-calendar-days text-2xl" style="color: #77734E;"></i>
-                <span style="color:#77734E; font-weight: 600;">Appointment</span>
+                <span style="color:#77734E; font-weight: 600;">{{ 'APPOINTMENT' | translate }}</span>
               </button>
 
               <button class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 text-center"
                 style="border:1px solid #FEC34F!important;" [routerLink]="['/visit']">
                 <i class="fa-solid fa-file-medical text-blue-600 text-2xl" style="color: #77734E;"></i>
-                <span style="color:#77734E; font-weight: 600;">My Visits</span>
+                <span style="color:#77734E; font-weight: 600;">{{ 'MY_VISITS' | translate }}</span>
               </button>
               <button class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 text-center"
                 style="border:1px solid #FEC34F!important;" [routerLink]="['/complaint-add']">
                 <i class="fa-solid fa-comment-dots text-red-500 text-2xl" style="color: #77734E;"></i>
-                <span style="color:#77734E; font-weight: 600;">Complaints</span>
+                <span style="color:#77734E; font-weight: 600;">{{ 'COMPLAINTS' | translate }}</span>
               </button>
               <button class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 text-center"
                 style="border:1px solid #FEC34F!important;" [routerLink]="['/Health-Tracker']">
                 <i class="fa-solid fa-heartbeat text-red-500 text-2xl" style="color: #77734E;"></i>
-                <span style="color:#77734E; font-weight: 600;">Health Tracking</span>
+                <span style="color:#77734E; font-weight: 600;">{{ 'HEALTH_TRACKING' | translate }}</span>
               </button>
               <button class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 text-center"
                 style="border:1px solid #FEC34F!important;" [routerLink]="['/medication-list']">
                 <i class="fa-solid fa-pills text-red-500 text-2xl" style="color: #77734E;"></i>
-                <span style="color:#77734E; font-weight: 600;">Medication</span>
+                <span style="color:#77734E; font-weight: 600;">{{ 'MEDICATION' | translate }}</span>
               </button>
               <button class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 text-center"
                 style="border:1px solid #FEC34F!important;" [routerLink]="['/request-list']">
                 <!-- Modern Clipboard Icon -->
                 <i class="fa-solid fa-clipboard-list text-red-500 text-2xl" style="color: #77734E;"></i>
-                <span style="color:#77734E; font-weight: 600;">Request</span>
+                <span style="color:#77734E; font-weight: 600;">{{ 'REQUEST' | translate }}</span>
               </button>
 
             </div>
@@ -106,14 +109,16 @@
 
 
             <div class=" mt-8">
-              <h4 class="text-lg font-semibold mb-4" style="color: #77734E; font-size: 25px;">My Appointments</h4>
+              <h4 class="text-lg font-semibold mb-4" style="color: #77734E; font-size: 25px;">{{ 'MY_APPOINTMENTS' |
+                translate }}</h4>
               <div class="row" *ngFor="let item of historyList">
                 <div class="col-12 ">
                   <div class="appointment-card">
                     <div class="doctor-info">
                       <img src="assets/images/logo-dashboard.png" alt="Doctor" class="doctor-img">
                       <div class="doctor-text">
-                        <h6>Dr. {{ item.careProviderUid?.name }} {{ item.careProviderUid?.lastName }}</h6>
+                        <h6>{{ 'DR' | translate }}{{ item.careProviderUid?.name }} {{ item.careProviderUid?.lastName }}
+                        </h6>
                         <small style="color: #77734E;"> {{ item.departmentUid?.name || 'N/A' }}</small><br>
                         <span class="appointment-date"> {{ item.slots[0]?.start | date: 'medium' }}</span>
                       </div>
@@ -127,30 +132,34 @@
 
             <!-- Medical File Section -->
             <div class="mt-8">
-              <h4 class="text-lg font-semibold mb-4" style="color: #77734E; font-size: 25px;">Medical File</h4>
+              <h4 class="text-lg font-semibold mb-4" style="color: #77734E; font-size: 25px;">{{ 'MEDICAL_FILE' |
+                translate }}</h4>
               <div class="space-y-3">
                 <div class="flex justify-between items-center bg-white p-3 shadow rounded-lg">
-                  <span>Diabetes Test Report</span>
+                  <span>{{ 'DIABETES_TEST_REPORT' | translate }}</span>
                   <button class=" text-black px-4 py-1 rounded-md hover:bg-gray-700"
-                    style="    background: linear-gradient(180deg, rgba(255, 239, 177, 1) 0%, rgba(254, 195, 79, 1) 100%);">View</button>
+                    style="    background: linear-gradient(180deg, rgba(255, 239, 177, 1) 0%, rgba(254, 195, 79, 1) 100%);">{{
+                    'VIEW' | translate }}</button>
                 </div>
                 <div class="flex justify-between items-center bg-white p-3 shadow rounded-lg">
-                  <span>Cholesterol Report</span>
+                  <span>{{ 'CHOLESTROL_REPORT' | translate }}</span>
                   <button class=" text-black px-4 py-1 rounded-md hover:bg-gray-700"
-                    style="    background: linear-gradient(180deg, rgba(255, 239, 177, 1) 0%, rgba(254, 195, 79, 1) 100%);">View</button>
+                    style="    background: linear-gradient(180deg, rgba(255, 239, 177, 1) 0%, rgba(254, 195, 79, 1) 100%);">{{
+                    'VIEW' | translate }}</button>
                 </div>
                 <div class="flex justify-between items-center bg-white p-3 shadow rounded-lg">
-                  <span>Allergy Test Report</span>
+                  <span>{{ 'ALLERGY_TEST_REPORT' | translate }}</span>
                   <button class=" text-black px-4 py-1 rounded-md hover:bg-gray-700"
-                    style="    background: linear-gradient(180deg, rgba(255, 239, 177, 1) 0%, rgba(254, 195, 79, 1) 100%);">View</button>
+                    style="    background: linear-gradient(180deg, rgba(255, 239, 177, 1) 0%, rgba(254, 195, 79, 1) 100%);">{{
+                    'VIEW' | translate }}</button>
                 </div>
               </div>
             </div>
 
             <!-- Hospital Address -->
             <div class="mt-8">
-              <h4 class="text-lg font-semibold " style="color: #77734E; font-size: 25px; margin-bottom: 20px;">Hospital
-                Address</h4>
+              <h4 class="text-lg font-semibold " style="color: #77734E; font-size: 25px; margin-bottom: 20px;">{{
+                'HOSPITAL_ADDRESS' | translate }}</h4>
               <div class="w-full h-64">
                 <iframe class="w-full h-full rounded-xl"
                   src="https://maps.google.com/maps?q=Riyadh%20Saudi%20Arabia&t=&z=13&ie=UTF8&iwloc=&output=embed"
@@ -158,10 +167,10 @@
                 </iframe>
               </div>
               <p class=" text-sm" style="font-size: 15px; margin-top: 15px!important;">
-                2259 Prince Saad bin Abdul Rahman I Road, As saadah, Riyadh 14257 7182
+                {{ '2259_PRINCE_SAAD_BIN_ABDUL_RAHMAN_I_ROAD_AS_SAADAH_RIYADH_14257_7182' | translate }}
                 <br />
-                <a href="#" class="text-blue-600 underline mt-3"
-                  style="font-size: 15px; margin-top: 15px!important;">Get Direction</a>
+                <a href="#" class="text-blue-600 underline mt-3" style="font-size: 15px; margin-top: 15px!important;">{{
+                  'GET_DIRECTION' | translate }}</a>
               </p>
             </div>
           </div>

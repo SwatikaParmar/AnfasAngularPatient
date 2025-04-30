@@ -13,7 +13,7 @@
 
 
                     <!-- Title Text -->
-                    <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">My Visits</h1>
+                    <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">{{ 'MY_VISITS' | translate }}</h1>
                 </div>
 
                 <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 10px;">
@@ -30,36 +30,37 @@
                                 <div class="physician-card ">
                                     <div class="header">
                                         <img src="assets/images/logo-dashboard.png" alt="Logo" class="logo">
-                                        <span class="department-name">{{item.departmentName  || 'N/A' }}</span>
+                                        <span class="department-name">{{item.departmentName || 'N/A' }}</span>
                                     </div>
                                     <div class="info">
-                                        <p><span class="label" style="margin-left:32px;">Visit
-                                                Type-</span>{{item.visitTypeDescription  || 'N/A' }}</p>
-                                        <p><span class="label" style="margin-left:32px;">Care Provider-</span> <span
+                                        <p><span class="label" style="margin-left:32px;">{{ 'VISIT_TYPE' |
+                                                translate }}-</span>{{item.visitTypeDescription || 'N/A' }}</p>
+                                        <p><span class="label" style="margin-left:32px;">{{ 'CARE_PROVIDER' | translate }}-</span> <span
                                                 style="margin-left:19px;">{{item.careProviderName}}
                                                 {{item.careProviderLastName}}</span></p>
-                                        <p><span class="label" style="margin-left:32px;">En Type-</span> <span
-                                                style="margin-left:137px;">{{item.entypeValueDescription  || 'N/A' }}</span></p>
+                                        <p><span class="label" style="margin-left:32px;">{{ 'EN_TYPE' | translate }}-</span> <span
+                                                style="margin-left:137px;">{{item.entypeValueDescription || 'N/A'
+                                                }}</span></p>
                                     </div>
-                                    <button class="view-button" onclick="openPopup()">View Reports </button>
+                                    <button class="view-button" onclick="openPopup()">{{ 'VIEW_REPORTS' | translate }}</button>
                                 </div>
 
                                 <!-- Popup -->
                                 <div id="popup">
                                     <div id="popup-content">
                                         <div class="top-bar">
-                                            <h2 style="color:#726641;">Reports</h2>
+                                            <h2 style="color:#726641;">{{ 'REPORTS' | translate }}</h2>
                                             <i class="fa fa-times close-icon " id="close" onclick="closePopup()"></i>
                                         </div>
 
 
                                         <div class="report-card" (click)="lab(item)">
-                                            <span>Lab Report</span>
+                                            <span>{{ 'LAB_REPORT' | translate }}</span>
                                             <span>➔</span>
                                         </div>
 
                                         <div class="report-card" (click)="ris(item)">
-                                            <span>RIS Report</span>
+                                            <span>{{ 'RIS_REPORT' | translate }}</span>
                                             <span>➔</span>
                                         </div>
                                     </div>
@@ -72,8 +73,8 @@
 
                         <div class="pagination-container">
                             <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
-                              queryParamsHandling="merge"></pagination-controls>
-                          </div>
+                                queryParamsHandling="merge"></pagination-controls>
+                        </div>
                     </div>
                 </div>
             </div>
