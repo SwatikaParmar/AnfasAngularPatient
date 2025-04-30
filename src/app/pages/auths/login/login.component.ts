@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   currentLanguage: string = 'en';
 
   currentLang: string = 'en'; // Default language
-
+  selectedField: string = 'mrn'; // Default selection
   constructor(
     private renderer: Renderer2,
     private formBuilder: FormBuilder,
@@ -75,49 +75,57 @@ export class LoginComponent implements OnInit {
   //     this.password = 'password';  
   //     this.show = false;                                                                        
   //   }                                            
-  // }                                               
+  // }    
+  
+   // Handle dropdown selection change
+   onSelectChange(event: any) {
+    this.selectedField = event.target.value;
+    this.setConfigurationOfLoginForm();  // Reset form to ensure selected field is active
+  }
+
 
   onLogin() {
     this.spinner.show();
     this.submitted = true;
   
-    if (this.loginForm.invalid) {
-      this.toasterService.error('Incorrect Username');
+    if (!this.loginForm.get(this.selectedField)?.value) {
+      this.toasterService.error('Please enter correct value');
       this.spinner.hide();
       return;
-    } 
-
-    this.loginModel = this.loginForm.value;
-
-    this.authService.login(this.loginModel).subscribe({
+    }
+  
+    const payload: any = {
+      isVerified: true,
+    };
+    payload[this.selectedField] = this.loginForm.get(this.selectedField)?.value;
+  
+    this.authService.login(payload).subscribe({
       next: (response) => {
         if (response.status === true) {
+          this.toasterService.success('OTP sent to your phone number');
           this.loginForm.reset();
-          this.toasterService.success('OTP sent on your phone no');
-       this.patientDetail();
+          this.router.navigateByUrl('/otp'); // Navigate immediately after successful login
+          // Optionally still fetch patient details in background
+          this.patientDetail(payload);
         } else {
           this.toasterService.error(response.message);
         }
+        
         this.spinner.hide();
       },
       error: (err) => {
         this.toasterService.error('Login failed. Please try again.');
-        this.spinner.hide();
         console.error('Login error:', err);
+        this.spinner.hide();
       }
     });
-  } 
+  }
+  
 
-
-  patientDetail(){
-
-    
-    this.authService.patientDetails(this.loginModel).subscribe({
+  patientDetail(data: any) {
+    this.authService.patientDetails(data).subscribe({
       next: (response) => {
-        debugger
         if (response.status === true) {
-          this.loginForm.reset();
-       //   this.toasterService.success(response.message);
           this.router.navigateByUrl('/otp');
         } else {
           this.toasterService.error(response.message);
@@ -125,12 +133,10 @@ export class LoginComponent implements OnInit {
         this.spinner.hide();
       },
       error: (err) => {
-    //    this.toasterService.error('Login failed. Please try again.');
+        console.error('Patient details error:', err);
         this.spinner.hide();
-        console.error('Login error:', err);
       }
     });
-
   }
   
 }
