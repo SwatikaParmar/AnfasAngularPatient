@@ -70,7 +70,7 @@
 <!-- Signature Modal -->
 <div *ngIf="showSignaturePad" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
   <div class="bg-white p-6 rounded-lg shadow-lg w-96">
-    <h2 class="text-lg font-semibold mb-4 text-center">{{ 'DRAW_YOUR_SIGNATURE' | translate }}</h2>
+    <h2 class="text-lg font-semibold mb-4 text-center"(click)="editSignature()">{{ 'DRAW_YOUR_SIGNATURE' | translate }}</h2>
 
     <canvas #signatureCanvas width="350" height="150" class="border border-gray-300 mb-4"></canvas>
 

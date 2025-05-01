@@ -49,7 +49,6 @@ debugger
         if (response.status === true) {
           this.detail = response.data;
           this.gender  = response.data.gender;
-         this.toastrService.success(response.message);
         } else {
           this.toastrService.error(response.message);
         }

@@ -1378,17 +1378,23 @@ export class PatientConsentComponent {
     initialized = false;
 
     ngAfterViewChecked(): void {
-      if (this.showSignaturePad && this.signatureCanvas && !this.initialized) {
-        this.initCanvas();
-        this.initialized = true;
+        if (this.showSignaturePad && this.signatureCanvas) {
+          this.initCanvas();
+        }
       }
-    }
-    
       
+    
       initCanvas(): void {
         const canvasEl = this.signatureCanvas.nativeElement;
+      
+        // Clear previous listeners (avoid duplicates)
+        canvasEl.removeEventListener('mousedown', this.startDraw);
+        canvasEl.removeEventListener('mousemove', this.draw);
+        canvasEl.removeEventListener('mouseup', this.stopDraw);
+        canvasEl.removeEventListener('mouseleave', this.stopDraw);
+      
         this.ctx = canvasEl.getContext('2d')!;
-        this.ctx.strokeStyle = '#000'; // Optional: Set stroke color
+        this.ctx.strokeStyle = '#000';
       
         canvasEl.addEventListener('mousedown', this.startDraw);
         canvasEl.addEventListener('mousemove', this.draw);
@@ -1419,24 +1425,36 @@ export class PatientConsentComponent {
     }
 
     saveDrawnSignature() {
+        // Show spinner before starting the signature saving process
+        this.spinner.show();
+    
         const canvas = this.signatureCanvas.nativeElement;
         canvas.toBlob(blob => {
-          if (blob) {
-            this.selectedSignature = new File([blob], 'signature.png', { type: 'image/png' });
-      
-            const reader = new FileReader();
-            reader.onload = () => {
-              this.signaturePreview = reader.result;
-              
-              // Now close the signature pad after setting preview
-              this.showSignaturePad = false;
-              
-            };
-            reader.readAsDataURL(this.selectedSignature);
-          }
+            if (blob) {
+                this.selectedSignature = new File([blob], 'signature.png', { type: 'image/png' });
+    
+                const reader = new FileReader();
+                reader.onload = () => {
+                    this.signaturePreview = reader.result;
+    
+                    // Now close the signature pad after setting preview
+                    this.showSignaturePad = false;
+    
+                    // Hide the spinner once the signature has been saved
+                    this.spinner.hide();
+                };
+                reader.readAsDataURL(this.selectedSignature);
+            } else {
+                // If blob creation fails, hide the spinner and show an error message
+                this.spinner.hide();
+                this.toastr.error('Failed to save signature');
+            }
         });
+    }
+    
+    editSignature(): void {
+        this.showSignaturePad = true;
       }
-      
     hideSignaturePad() {
         const canvasEl = this.signatureCanvas?.nativeElement;
         if (canvasEl) {
@@ -1444,12 +1462,14 @@ export class PatientConsentComponent {
           canvasEl.removeEventListener('mousemove', this.draw);
           canvasEl.removeEventListener('mouseup', this.stopDraw);
           canvasEl.removeEventListener('mouseleave', this.stopDraw);
+          
+          this.ctx?.clearRect(0, 0, canvasEl.width, canvasEl.height); // Clear canvas too
         }
       
         this.ctx = null!;
         this.showSignaturePad = false;
-        this.initialized = false;
       }
+      
       
       
     onSignatureSelected(event: Event): void {
@@ -1471,38 +1491,41 @@ export class PatientConsentComponent {
     // other methods like getConsentForm(), renderInShadowDom(), etc.
     saveConsentForm(): void {
         if (!this.selectedSignature || !this.consentGiven) {
-          alert('Please provide a signature and give consent before submitting.');
-          return;
+            this.toastr.error('Please provide a signature and give consent before submitting.');
+            return;
         }
-      
+    
         const formData = new FormData();
         formData.append('mrn', this.Mrn);
         formData.append('consentGiven', this.consentGiven.toString());
         formData.append('signature', this.selectedSignature);
-      
+    
+        // Show spinner before starting the API call
         this.spinner.show();
-      
+    
         this.contentService.saveConsentForm(formData).subscribe(
-          (response: any) => {
-            this.spinner.hide();
-            if (response.isSuccess) {
-              this.toastr.success('Consent form submitted successfully.');
-              this.isEditing = false;
-              this.signaturePreview = null;
-              this.selectedSignature = null;
-              this.router.navigate(['/profile']);
-            } else {
-              this.toastr.error('Failed to submit consent form.');
-              console.error('Failed to submit consent form');
+            (response: any) => {
+                // Hide spinner once response is received
+                
+                this.spinner.hide();
+    
+                if (response.isSuccess) {
+                    this.isEditing = false;
+                    this.signaturePreview = null;
+                    this.selectedSignature = null;
+                    this.router.navigate(['/profile']);
+                } else {
+                    this.toastr.error('Failed to submit consent form.');
+                    console.error('Failed to submit consent form');
+                }
+            },
+            error => {
+                // Hide spinner if there is an error
+                this.spinner.hide();
+                this.toastr.error('Error submitting consent form');
+                console.error('Error submitting consent form', error);
             }
-          },
-          error => {
-            this.spinner.hide();
-            this.toastr.error('Error submitting consent form');
-            console.error('Error submitting consent form', error);
-          }
         );
-      }
-      
-       
+    }
+    
 }
