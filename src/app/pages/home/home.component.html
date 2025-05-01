@@ -113,7 +113,7 @@
                 translate }}</h4>
               <div class="row" *ngFor="let item of historyList">
                 <div class="col-12 ">
-                  <div class="appointment-card">
+                  <div class="appointment-card"[routerLink]="['/appointment-list']">
                     <div class="doctor-info">
                       <img src="assets/images/logo-dashboard.png" alt="Doctor" class="doctor-img">
                       <div class="doctor-text">
