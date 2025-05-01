@@ -285,5 +285,22 @@
   "SUBMIT_CONSENT":"Submit Consent",
   "DRAW_YOUR_SIGNATURE":"Draw your Signature",
   "CLEAR":"Clear",
-  "SAVE":"Save"
+  "SAVE":"Save",
+  "MY_PROFILE":"My Profile",
+  "PATIENT_SATISFACTION_FORM":"Patient Satisfaction Form",
+  "DATE_OF_VISIT":"Date of Visit",
+  "CONSULTATION_EXPERIENCE":"Consultation Experience",
+  "YOUR_COMMENTS_AND_SUGGESTIONS_HERE":"Your comments and suggestions here…",
+  "MEDICATION_LIST":"Medication List",
+  "MEDICATION_NAME":"Medication Name",
+  "DOSAGE":"Dosage",
+  "FREQUENCY":"Frequency",
+  "INTRUCTIONS":"Instructions",
+  "REQUEST_LIST":"Request List",
+  "USER_NAME":"User Name",
+  "REQUEST_TYPE_NAME":"Request Type Name",
+  "LAST_MESSAGE":"Last Message",
+  "LAST_MESSAGE_TIME":"Last Message Time",
+  "WRITE_A_REPLY":"Write a reply"
+
 }

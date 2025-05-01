@@ -284,7 +284,23 @@
   "PREVIEW": "معاينة",
   "I_CONSENT": "انا اوافق",
   "SUBMIT_CONSENT": "إرسال الموافقة",
-  "DRAW_YOUR_SIGNATURE":"ارسم توقيعك",
-  "CLEAR":"واضح",
-  "SAVE":"يحفظ"
+  "DRAW_YOUR_SIGNATURE": "ارسم توقيعك",
+  "CLEAR": "واضح",
+  "SAVE": "يحفظ",
+  "MY_PROFILE": "ملفي الشخصي",
+  "PATIENT_SATISFACTION_FORM": "نموذج رضا المريض",
+  "DATE_OF_VISIT": "تاريخ الزيارة",
+  "YOUR_COMMENTS_AND_SUGGESTIONS_HERE": "تعليقاتكم ومقترحاتكم هنا…",
+  "MEDICATION_LIST":"قائمة الأدوية",
+  "MEDICATION_NAME":"اسم الدواء",
+  "DOSAGE":"الجرعة",
+   "FREQUENCY":"تكرار",
+   "INTRUCTIONS":"تعليمات",
+   "REQUEST_LIST":"قائمة الطلبات",
+   "USER_NAME":"اسم المستخدم",
+  "REQUEST_TYPE_NAME":"اسم نوع الطلب",
+  "LAST_MESSAGE":"الرسالة الأخيرة",
+  "LAST_MESSAGE_TIME":"وقت آخر رسالة",
+   "WRITE_A_REPLY":"اكتب ردا"
+
 }

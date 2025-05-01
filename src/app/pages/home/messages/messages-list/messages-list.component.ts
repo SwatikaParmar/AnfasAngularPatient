@@ -58,19 +58,22 @@ export class MessagesListComponent {
       const senderId = localStorage.getItem('mrn'); // senderId comes from localStorage
       const receiverId = item.userName; // receiverId comes from the clicked item
       const receiverName = item.firstName; // Assuming the firstName is included in the list
-      
+      const receiverlastName = item.lastName;
+    
       if (senderId && receiverId) {
         this.router.navigate(['/messages/chat'], {
           queryParams: {
             senderId: senderId,
             receiverId: receiverId,
-            receiverName: receiverName // Pass receiver's first name
+            receiverName: receiverName, // Pass receiver's first name
+            receiverlastName: receiverlastName
           }
         });
       } else {
         this.toastrService.error('Invalid sender or receiver information.');
       }
     }
+    
     
 
     onPageChange(page: number): void {

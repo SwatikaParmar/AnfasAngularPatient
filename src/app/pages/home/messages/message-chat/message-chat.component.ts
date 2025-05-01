@@ -20,7 +20,7 @@ export class MessageChatComponent {
   senderName: any;
   receiverName: any;
   newMessage: string = '';
-
+  receiverlastName:any;
   constructor(
     private contentService: ContentService,
     private route: ActivatedRoute,
@@ -36,6 +36,7 @@ export class MessageChatComponent {
       this.senderId = params.get('senderId') || '';
       this.receiverId = params.get('receiverId') || '';
       this.receiverName = params.get('receiverName') || 'Unknown Receiver';
+      this.receiverlastName = params.get('receiverlastName') || 'Unknown Receiver';
       this.loadChatHistory();
     });
   }

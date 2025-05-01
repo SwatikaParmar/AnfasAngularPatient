@@ -20,7 +20,7 @@ export class HistoryChatComponent {
   senderName: any;
   receiverName: any;
   newMessage: string = '';
-
+  receiverLastName:any;
   constructor(
     private contentService: ContentService,
     private route: ActivatedRoute,
@@ -36,6 +36,7 @@ export class HistoryChatComponent {
       this.senderId = params.get('senderId') || '';
       this.receiverId = params.get('receiverId') || '';
       this.receiverName = params.get('receiverName') || 'Unknown Receiver';
+      this.receiverLastName = params.get('receiverLastName') || 'Unknown Receiver';
       this.loadChatHistory();
     });
   }

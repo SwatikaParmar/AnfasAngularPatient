@@ -96,13 +96,15 @@ export class HistoryListComponent {
   
     const receiverId = item.careProviderUid.code; // Doctor code as receiverId
     const receiverName = item.careProviderUid.name; // Doctor's name as receiverName
-  
+    const receiverLastName = item.careProviderUid.lastName;
+
     if (senderId && receiverId) {
       this.router.navigate(['/history-list/chat'], {
         queryParams: {
           senderId: senderId,
           receiverId: receiverId,
-          receiverName: receiverName
+          receiverName: receiverName,
+          receiverLastName:receiverLastName
         }
       });
     } else {
@@ -128,20 +130,24 @@ getStatusColor(status: string | undefined): string {
 }
 
 edit(item: any): void {
-  debugger
   const CareProviderCode = item.careProviderUid.code;
   const receiverName = item.careProviderUid.name;
+  const receiverLastName = item.careProviderUid.lastName;
 
-  if (CareProviderCode && receiverName) {
+  console.log('Navigating with:', CareProviderCode, receiverName, receiverLastName);
+
+  if (CareProviderCode && receiverName && receiverLastName) {
     this.router.navigate(['/appointment-list/appointment/book'], {
       queryParams: {
         CareProviderCode,
-        receiverName
+        receiverName,
+        receiverLastName
       }
     });
   } else {
     this.toastrService.error('Invalid sender or receiver information.');
   }
 }
+
 
 }

@@ -15,7 +15,8 @@
 
           <!-- Header -->
           <div class="bg-[#77734E] text-white text-center py-3 shadow">
-            <h2 class="text-lg font-semibold">{{ receiverName || 'Unknown Receiver' }}</h2>
+            <h2 class="text-lg font-semibold">{{ 'DR' | translate }} {{ receiverName || 'Unknown Receiver' }} {{
+              receiverlastName || 'Unknown Receiver' }}</h2>
           </div>
 
 
@@ -41,21 +42,14 @@
 
           <!-- Footer Input -->
           <div class="bg-[#77734E] px-4 py-3 flex items-center">
-            <input 
-              type="text" 
-              placeholder="Write a reply"
-              [(ngModel)]="newMessage" 
-              (keyup.enter)="sendMessage()" 
-              class="flex-1 px-4 py-2 rounded-full bg-white text-black outline-none mr-2"
-            />
-            <button 
-              (click)="sendMessage()"  
-              class="text-white text-xl bg-[#FEC34F] rounded-full w-12 h-12 flex items-center justify-center"
-            >
+            <input type="text" placeholder="{{ 'WRITE_A_REPLY' | translate }}" [(ngModel)]="newMessage" (keyup.enter)="sendMessage()"
+              class="flex-1 px-4 py-2 rounded-full bg-white text-black outline-none mr-2" />
+            <button (click)="sendMessage()"
+              class="text-white text-xl bg-[#FEC34F] rounded-full w-12 h-12 flex items-center justify-center">
               ➤
             </button>
           </div>
-          
+
 
         </div>
       </div>
