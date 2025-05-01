@@ -1344,11 +1344,43 @@ ul.ngx-pagination li.pagination-next a {
 @media screen and (max-width: 575px) {
     .content-body {
         margin-left: 0!important;
-        padding: 1rem;
+        padding: 0;
     }
     .custom-container {
         padding: 5px!important;
       }
+}
+
+
+.content-body .container-fluid {
+    padding-right: 30px!important;
+    padding-left: 30px!important;
+    padding-bottom: 30px!important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .content-body .container-fluid {
+        padding-right: 20px!important;
+        padding-left: 20px!important;
+        padding-bottom: 25px!important;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-body .container-fluid {
+        padding-right: 15px!important;
+        padding-left: 15px!important;
+        padding-bottom: 20px!important;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-body .container-fluid {
+        padding-right: 10px!important;
+        padding-left: 10px!important;
+        padding-bottom: 15px!important;
+    }
 }
 
 
