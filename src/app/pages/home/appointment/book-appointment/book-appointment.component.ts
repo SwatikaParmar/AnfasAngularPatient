@@ -250,7 +250,7 @@ export class BookAppointmentComponent {
     const payload = {
       appointmentDate: this.formatDate(this.selectedDate),
       comment: null,
-      mrn: 'AMCH24110975',  // Ideally, you should get the MRN dynamically
+      mrn:  localStorage.getItem('mrn'),  // Ideally, you should get the MRN dynamically
       careProviderCode: this.CareProviderCode,
       orgCode: 'AMC',
       checkOrganisation: true,
