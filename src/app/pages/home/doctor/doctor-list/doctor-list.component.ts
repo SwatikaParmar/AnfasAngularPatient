@@ -52,7 +52,7 @@ export class DoctorListComponent {
       }
     );
   }    
-  
+
   get filteredDoctorList() {
     if (!this.doctorList || this.doctorList.length === 0) {
       return [];
@@ -87,4 +87,21 @@ export class DoctorListComponent {
     this._location.back();
   }
   
+
+  edit(item: any): void {
+    debugger
+    const CareProviderCode = item.code;
+    const receiverName = item.name;
+  
+    if (CareProviderCode && receiverName) {
+      this.router.navigate(['/appointment-list/appointment/book'], {
+        queryParams: {
+          CareProviderCode,
+          receiverName
+        }
+      });
+    } else {
+      this.toastrService.error('Invalid sender or receiver information.');
+    }
+  }
 }
