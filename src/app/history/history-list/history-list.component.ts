@@ -13,14 +13,14 @@ export class HistoryListComponent {
   page: number = 0;
   itemsPerPage!: number;
   totalItems!: number;
-
+  item:any;
   rootUrl: any;
 
   historyListOriginal: any[] = []; // the full original list
   historyList: any[] = [];         // the filtered list
   selectedStatus: string = 'All';  // dropdown selection
   showAppointmentButton = true;
-
+  selectedAppointment: any = null;
   constructor(
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService,
@@ -108,5 +108,38 @@ export class HistoryListComponent {
     }
   }
   
-  
+
+
+closeOnOutsideClick(event: MouseEvent): void {
+  this.selectedAppointment = null;
+}
+
+
+getStatusColor(status: string | undefined): string {
+  switch (status) {
+    case 'No Show': return 'orange';
+    case 'Booked': return 'blue';
+    case 'Rescheduled': return 'green';
+    case 'Cancelled': return 'red';
+    default: return 'inherit';
+  }
+}
+
+edit(item: any): void {
+  debugger
+  const CareProviderCode = item.careProviderUid.code;
+  const receiverName = item.careProviderUid.name;
+
+  if (CareProviderCode && receiverName) {
+    this.router.navigate(['/appointment-list/appointment/book'], {
+      queryParams: {
+        CareProviderCode,
+        receiverName
+      }
+    });
+  } else {
+    this.toastrService.error('Invalid sender or receiver information.');
+  }
+}
+
 }

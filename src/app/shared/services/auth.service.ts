@@ -43,10 +43,19 @@ export class AuthService {
   }
 
 
-  patientDetails(data:any){
-    debugger
-    return this.http.get<any>(environment.apiUrl + ApiEndPoint.patientDetail + '?Mrn=' + data.mrn)
+  patientDetails(data: any) {
+    let query = '';
+    if (data.mrn) {
+      query = '?Mrn=' + data.mrn;
+    } else if (data.mobilePhone) {
+      query = '?MobilePhone=' + data.mobilePhone;
+    } else if (data.nationalId) {
+      query = '?NationalId=' + data.nationalId;
+    }
+  
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.patientDetail + query);
   }
+  
 
  
   logout() {

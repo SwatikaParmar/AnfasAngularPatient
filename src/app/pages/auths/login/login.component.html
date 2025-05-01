@@ -1,90 +1,102 @@
 <div class="login-wrapper position-relative z-index-9"
-    style="background:url(./assets/images/plusbg.png)no-repeat left 0px center;background-size: 600px !important;">
+  style="background:url(./assets/images/plusbg.png)no-repeat left 0px center;background-size: 600px !important;">
 
-    <div class="container justify-content-center">
-        <div class="login-perents d-grid column-two">
-            <div class="login-child text-center">
-                <img src="assets/images/anfas-logo.svg" class="img-responsive m-auto d-block" style="max-width: 130px;">
-                <div class="mt-20 logtchilda">
-                <span (click)="switchLanguage('ar')" style="cursor: pointer;">أنفاس</span>
-             
-                <h3 (click)="switchLanguage('en')" style="text-transform: uppercase; color: #FEC24F; cursor: pointer;">
-                    anfas</h3>
-                <p>{{ 'YOUR_PATH_TO_WELLNESS_STARTS_HERE' | translate }}</p>
+  <div class="container justify-content-center">
+    <div class="login-perents d-grid column-two">
+      <div class="login-child text-center">
+        <img src="assets/images/anfas-logo.svg" class="img-responsive m-auto d-block" style="max-width: 130px;">
+        <div class="mt-20 logtchilda">
+          <span (click)="switchLanguage('ar')" style="cursor: pointer;">أنفاس</span>
+
+          <h3 (click)="switchLanguage('en')" style="text-transform: uppercase; color: #FEC24F; cursor: pointer;">
+            anfas</h3>
+          <p>{{ 'YOUR_PATH_TO_WELLNESS_STARTS_HERE' | translate }}</p>
+        </div>
+      </div>
+
+      <div class="plus position-relative"
+        style="background: #FEC34F; height: 100vh; display: grid; align-items: center; ">
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+          <div class="login-forms">
+            <h2 style="color: #77734E; margin-bottom: 30px; font-size: 30px; font-weight: 600;">welcome back!</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <h6 style="font-size: 20px; margin: 0;">Patient Sign In</h6>
+              <div class="lang-container">
+                <div class="lang-toggle">
+                  <div class="lang-option" [class.active]="currentLang === 'en'" (click)="switchLanguage('en')">
+                    EN
+                  </div>
+                  <div class="lang-option" [class.active]="currentLang === 'ar'" (click)="switchLanguage('ar')">
+                    AR
+                  </div>
+                </div>
+              </div>
+
             </div>
-        </div>       
-                   
-            <div class="plus position-relative"
-                style="background: #FEC34F; height: 100vh; display: grid; align-items: center; ">
-                <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-                    <div class="login-forms">
-                        <h2 style="color: #77734E; margin-bottom: 30px; font-size: 30px; font-weight: 600;">welcome back!</h2>
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <h6 style="font-size: 20px; margin: 0;">Patient Sign In</h6>
-                            <div class="lang-container">
-                              <div class="lang-toggle">
-                                <div
-                                  class="lang-option"
-                                  [class.active]="currentLang === 'en'"
-                                  (click)="switchLanguage('en')"
-                                >
-                                  EN
-                                </div>
-                                <div
-                                  class="lang-option"
-                                  [class.active]="currentLang === 'ar'"
-                                  (click)="switchLanguage('ar')"
-                                >
-                                  AR
-                                </div>
-                              </div>
-                            </div>
-                            
-                          </div>
-                          
-                        <!-- <div class="mt-20"></div> -->
-                        <!-- <input type="email" class="form-control user" placeholder="Email or Phone"
+
+            <!-- <div class="mt-20"></div> -->
+            <!-- <input type="email" class="form-control user" placeholder="Email or Phone"
                             formControlName="email"> -->
+            <div class="form-group">
+              <select id="mrNumber" class="form-control custom-select-align-end" (change)="onSelectChange($event)">
+                <option value="" disabled selected>Select</option>
+                <option value="mrn">MR Number</option>
+                <option value="mobilePhone">Phone Number</option>
+                <option value="nationalId">National Id</option>
+              </select>
+            </div>
 
-                            
-                            <div class="form-group">
-                                <select id="mrNumber" class="form-control custom-select-align-end">
-                                  <option value="" disabled selected>Select</option>
-                                  <option value="mrn">MR Number</option>
-                                  <option value="mobilePhone">Phone Number</option>
-                                  <option value="nationalId">National Id</option>
-                                  <!-- Add more options as needed -->
-                                </select>
-                              </div>
-                              
-                              
-                        <div class="d-flex position-relative mb-10">
-                            <input class="form-control password"
-                                   placeholder="{{ 'Enter MR Number' | translate }}" formControlName="mrn"
-                                   [ngClass]="{ 'is-invalid': submitted && f['mrn'].errors }">
-                            <div class="eye-icon" 
-                                 [ngClass]="{'eye-icon-rtl': currentLanguage === 'ar', 'eye-icon-ltr': currentLanguage !== 'ar'}">
-                              <!-- Use fa-eye-slash by default (hidden), fa-eye when password is visible -->
-                              <!-- <i class="fa" [ngClass]="password ? 'fa-eye' : 'fa-eye-slash'" aria-hidden="true"></i> -->
-                            </div>
-                          </div>
-                          
-                          <div *ngIf="submitted && f['mrn'].errors" class="help-block" style="color: red;">
-                            <div *ngIf="f['mrn'].errors['required']"> {{ 'Please enter correct value' | translate }}
-                            </div>
-                          </div>
-                          
 
-                        <!-- <div class="remember-me">
+            <div class="d-flex position-relative mb-10" *ngIf="selectedField === 'mrn'">
+              <input class="form-control password" placeholder="{{ 'Enter MR Number' | translate }}"
+                formControlName="mrn" [ngClass]="{ 'is-invalid': submitted && f['mrn'].errors }">
+              <div class="eye-icon"
+                [ngClass]="{'eye-icon-rtl': currentLanguage === 'ar', 'eye-icon-ltr': currentLanguage !== 'ar'}">
+                <!-- Use fa-eye-slash by default (hidden), fa-eye when password is visible -->
+                <!-- <i class="fa" [ngClass]="password ? 'fa-eye' : 'fa-eye-slash'" aria-hidden="true"></i> -->
+              </div>
+            </div>
+           
+            <div class="d-flex position-relative mb-10" *ngIf="selectedField === 'mobilePhone'">
+              <input class="form-control password"
+                     placeholder="{{ 'Enter Phone Number' | translate }}"
+                     formControlName="mobilePhone"
+                     [ngClass]="{ 'is-invalid': submitted && f['mobilePhone'].errors }">
+                     <div class="eye-icon"
+                     [ngClass]="{'eye-icon-rtl': currentLanguage === 'ar', 'eye-icon-ltr': currentLanguage !== 'ar'}">
+                     <!-- Use fa-eye-slash by default (hidden), fa-eye when password is visible -->
+                     <!-- <i class="fa" [ngClass]="password ? 'fa-eye' : 'fa-eye-slash'" aria-hidden="true"></i> -->
+                   </div>
+            </div>
+            
+            <div class="d-flex position-relative mb-10" *ngIf="selectedField === 'nationalId'">
+              <input class="form-control password"
+                     placeholder="{{ 'Enter National Id' | translate }}"
+                     formControlName="nationalId"
+                     [ngClass]="{ 'is-invalid': submitted && f['nationalId'].errors }">
+                     <div class="eye-icon"
+                     [ngClass]="{'eye-icon-rtl': currentLanguage === 'ar', 'eye-icon-ltr': currentLanguage !== 'ar'}">
+                     <!-- Use fa-eye-slash by default (hidden), fa-eye when password is visible -->
+                     <!-- <i class="fa" [ngClass]="password ? 'fa-eye' : 'fa-eye-slash'" aria-hidden="true"></i> -->
+                   </div>
+            </div>
+
+            <div *ngIf="submitted && f['mrn'].errors" class="help-block" style="color: red;">
+              <div *ngIf="f['mrn'].errors['required']"> {{ 'Please enter correct value' | translate }}
+              </div>
+            </div>
+
+
+            <!-- <div class="remember-me">
                             <div class="checkbox"><input type="checkbox" class="checkbox">
                                 <span>{{ 'REMEMBER_ME' | translate }}</span></div>
                             <div><a [routerLink]="['/forgot-password']">{{ 'FORGOT_PASSWORD' | translate }}</a></div>
                         </div> -->
-                        <!-- <div class="mt-20"></div> -->
-                        <input type="submit" class="view-more" value="{{ 'SIGN_IN' | translate }}">
-                    </div>
-                </form>
-            </div>
-        </div>
+            <!-- <div class="mt-20"></div> -->
+            <input type="submit" class="view-more" value="{{ 'SIGN_IN' | translate }}">
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
