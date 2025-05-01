@@ -7,7 +7,7 @@
           <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">
             {{ 'MY_APPOINTMENTS' | translate }}
           </h1>
-        
+
           <!-- Book Appointment Button -->
           <button *ngIf="showAppointmentButton"
             class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full ltr:ml-auto rtl:mr-auto"
@@ -15,7 +15,7 @@
             + {{ 'BOOK_APPOINTMENT' | translate }}
           </button>
         </div>
-        
+
 
 
 
@@ -47,7 +47,8 @@
                       style="border-bottom: 1px solid gray; padding-bottom: 10px;">
                       <!-- Left Side: Text + Date -->
                       <div class="appointment-header">
-                       {{ 'APPOINTMENT_DATE' | translate }}<br><strong> {{ item.slots[0]?.start | date: 'medium' || 'N/A' }}</strong>
+                        {{ 'APPOINTMENT_DATE' | translate }}<br><strong> {{ item.slots[0]?.start | date: 'medium' ||
+                          'N/A' }}</strong>
                       </div>
 
                       <!-- Right Side: Chat Icon -->
@@ -71,25 +72,24 @@
                         <p class="department mb-1">
                           {{ item.departmentUid?.name || 'N/A' }}
                         </p>
-                        <p class="status-booked mb-0" [ngStyle]="{
-                          color: item.slots[0]?.statusUid?.valueDescription === 'No Show' ? 'orange' :
-                                 item.slots[0]?.statusUid?.valueDescription === 'Booked' ? 'blue' :
-                                 item.slots[0]?.statusUid?.valueDescription === 'Rescheduled' ? 'green' :
-                                 item.slots[0]?.statusUid?.valueDescription === 'Cancelled' ? 'red' : 'inherit'
-                        }">
+                        <p class="status-booked mb-0"
+                          [ngStyle]="{ color: getStatusColor(item.slots[0]?.statusUid?.valueDescription) }">
                           {{ item.slots[0]?.statusUid?.valueDescription || 'N/A' }}
                         </p>
-                        
+
+
 
                       </div>
                     </div>
 
                     <!-- Footer Button -->
                     <div class="d-flex justify-content-end">
-                      <button class="appointment-btn d-flex align-items-center gap-1" onclick="togglePopup()">
+                      <button class="appointment-btn d-flex align-items-center gap-1"
+                        (click)="selectedAppointment = item">
                         <span style="font-size: 15px; color: #FEC34F;">{{ 'APPOINTMENTS' | translate }}</span>
                         <i class="fas fa-chevron-down" style="font-size: 10px; color: #FEC34F;"></i>
                       </button>
+
                     </div>
 
                   </div>
@@ -111,49 +111,53 @@
   </section>
 </div>
 
-<div id="popup-overlay" class="popup-overlay" onclick="closeOnOutsideClick(event)" style="display: none;">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content" style=" border-radius: 25px; border: none;">
-      <form >
+<!-- Popup Overlay (Angular Bound) -->
+<div *ngIf="selectedAppointment" class="popup-overlay" (click)="closeOnOutsideClick($event)">
+  <div class="modal-dialog modal-dialog-centered" (click)="$event.stopPropagation()">
+    <div class="modal-content" style="border-radius: 25px; border: none;">
+      <form>
         <div class="modal-header flex items-center justify-between">
           <div class="flex-1 text-center">
-            <h5 class="modal-title text-xl font-semibold" id="bloodSugarModalLabel">{{ 'MY_APPOINTMENT' | translate }}</h5>
+            <h5 class="modal-title text-xl font-semibold">{{ 'MY_APPOINTMENT' | translate }}</h5>
           </div>
-          
         </div>
-        <div class="p-6 shadow-md  font-sans space-y-4 " style="width: 460px;">
-
+        <div class="p-6 shadow-md font-sans space-y-4" style="width: 460px;">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-2">
               <img src="assets/images/logo-dashboard.png" alt="Icon" class="w-5 h-5">
               <div class="text-sm text-gray-500">{{ 'APPOINTMENT_NUMBER' | translate }}</div>
             </div>
-            <div class="font-semibold text-black">A2504240002</div>
+            <div class="font-semibold text-black"> {{ selectedAppointment.slots[0]?.appointmentNumber || 'N/A' }}</div>
           </div>
-          
           <div class="flex items-center justify-between">
-            <div class="text-sm text-gray-500 pl-4" >{{ 'START_TIME' | translate }}</div>
-            <div class="font-semibold text-black">30-04-2025 at 10:40 AM</div>
+            <div class="text-sm text-gray-500 pl-4">{{ 'START_TIME' | translate }}</div>
+            <div class="font-semibold text-black">{{ selectedAppointment.slots[0]?.start | date: 'medium' }}</div>
           </div>
           <div class="flex items-center justify-between">
             <div class="text-sm text-gray-500 pl-4">{{ 'END_TIME' | translate }}</div>
-            <div class="font-semibold text-black">30-04-2025 at 10:50 AM</div>
+            <div class="font-semibold text-black">{{ selectedAppointment.slots[0]?.end | date: 'medium' }}</div>
           </div>
           <div class="flex items-center justify-between">
             <div class="text-sm text-gray-500 pl-4">{{ 'STATUS' | translate }}</div>
-            <div class="text-blue-600 font-medium">Booked</div>
+            <div class="font-medium"
+              [ngStyle]="{ color: getStatusColor(selectedAppointment.slots[0]?.statusUid?.valueDescription) }">
+              {{ selectedAppointment.slots[0]?.statusUid?.valueDescription || 'N/A' }}
+            </div>
           </div>
+
           <div class="flex justify-end space-x-3 pt-2">
-            <button class="px-4 py-2 border border-gray-800 rounded-full text-sm text-black font-bold hover:bg-gray-100" onclick="togglePopup()">
+            <button type="button"
+              class="px-4 py-2 border border-gray-800 rounded-full text-sm text-black font-bold hover:bg-gray-100"
+              (click)="selectedAppointment = null">
               {{ 'CANCEL' | translate }}
             </button>
-            
-            <button class="px-3 py-1 bg-[#b89c5a]  rounded-full text-sm font-bold hover:bg-[#a88d4e] flex items-center"  style="color: #FEC34F!important;">
+            <button type="button"
+              class="px-3 py-1 bg-[#b89c5a] rounded-full text-sm font-bold hover:bg-[#a88d4e] flex items-center"
+              style="color: #FEC34F!important;" (click)="edit(selectedAppointment)">
               {{ 'RESCHEDULE' | translate }}
               <span class="ml-2">&gt;</span>
             </button>
-            
-            
+
           </div>
         </div>
       </form>
