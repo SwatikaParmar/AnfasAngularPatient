@@ -516,3 +516,67 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     color: white;
   }
   
+
+
+
+  @media (max-width: 768px) {
+    /* Stack calendar and time slots vertically */
+    .d-flex.gap-2 {
+      flex-direction: column !important;
+    }
+  
+    /* Ensure full width on small screens */
+    .d-flex.gap-2 > div {
+      width: 100% !important;
+    }
+  
+    /* Adjust button widths */
+    .d-flex.justify-content-center.align-items-center button {
+      width: 100% !important;
+    }
+  
+    /* Center and wrap appointment slots */
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  
+    .row .col-6 {
+      width: 100% !important;
+    }
+  
+    /* Margin tweaks */
+    .ml-3 {
+      margin-left: 0.75rem !important;
+    }
+  
+    .ml-1 {
+      margin-left: 0.25rem !important;
+    }
+  
+    .mb-2 {
+      margin-bottom: 0.5rem !important;
+    }
+  
+    .text-lg {
+      font-size: 1.125rem !important;
+    }
+  
+    .max-w-5xl {
+      max-width: 100% !important;
+    }
+  
+    .w-7, .h-7 {
+      width: 2rem !important;
+      height: 2rem !important;
+    }
+  
+    /* Button at bottom */
+    button[style*="width: 30%"] {
+      width: 90% !important;
+    }
+  }
+
+  
+  
+  
