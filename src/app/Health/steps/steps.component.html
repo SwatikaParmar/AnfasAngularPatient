@@ -19,40 +19,37 @@
                     <div class="custom-container max-w-5xl mx-auto p-3">
                         <div class="container">
                             <div class="table-container">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>MRN</th>
-                                            <th>Steps</th>
-                                            <th>Total&nbsp;Distance</th>
-                                            <th>Date</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="row-light" *ngFor="let item of stepsList  | paginate
-                                        : {
-                                            itemsPerPage: 5,
-                                            currentPage: page,
-                                            totalItems: totalItems,
-                                            id: '1'
-                                          }">
-                                            <td>{{item.mrn || 'N/A' }}</td>
-                                            <td>{{item.steps || 'N/A' }}</td>
-                                            <td>
-                                                {{item.totalDistance || 'N/A' }}
-                                            </td>
-                                            <td>
-                                                {{ item.date ? (item.date | date:'dd-MM-yyyy') : 'N/A' }}
-                                            </td>
-
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-
+                                <div class="overflow-x-auto">
+                                    <table class="min-w-full table-auto">
+                                        <thead>
+                                            <tr>
+                                                <th class="px-4 py-2 text-sm md:text-base">MRN</th>
+                                                <th class="px-4 py-2 text-sm md:text-base">Steps</th>
+                                                <th class="px-4 py-2 text-sm md:text-base">Total&nbsp;Distance</th>
+                                                <th class="px-4 py-2 text-sm md:text-base">Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="row-light" *ngFor="let item of stepsList | paginate
+                                                                        : {
+                                                                            itemsPerPage: 5,
+                                                                            currentPage: page,
+                                                                            totalItems: totalItems,
+                                                                            id: '1'
+                                                                          }">
+                                                <td class="px-4 py-2 text-sm md:text-base">{{item.mrn || 'N/A' }}</td>
+                                                <td class="px-4 py-2 text-sm md:text-base">{{item.steps || 'N/A' }}</td>
+                                                <td class="px-4 py-2 text-sm md:text-base">{{item.totalDistance || 'N/A' }}</td>
+                                                <td class="px-4 py-2 text-sm md:text-base">{{ item.date ? (item.date | date:'dd-MM-yyyy') : 'N/A' }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
                                 <div class="no-data text-center" *ngIf="stepsList && stepsList.length === 0">
                                     <img src="assets/images/ffffrq-removebg-preview.png" style="width: 50%; margin: auto; padding: 50px;">
                                 </div>
+                                
                                 <div class="pagination-container pt-3 pb-3">
                                     <pagination-controls (pageChange)="onPageChange($event)" id="1"
                                         class="paginate-doctor-list" queryParamsHandling="merge"></pagination-controls>

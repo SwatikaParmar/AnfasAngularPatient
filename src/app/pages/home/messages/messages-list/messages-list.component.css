@@ -43,3 +43,42 @@
     cursor: pointer;
   }
   
+
+
+
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .message-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .message-table th,
+  .message-table td {
+    padding: 12px;
+    text-align: left;
+    white-space: nowrap;
+    min-width: 120px; /* Ensures minimum width per column */
+  }
+  
+  .message-table th {
+ 
+    font-weight: bold;
+  }
+  
+  @media (max-width: 768px) {
+    .message-table th,
+    .message-table td {
+      padding: 8px;
+      font-size: 14px;
+    }
+  
+    .no-data img {
+      width: 80% !important;
+    }
+  }
+  
