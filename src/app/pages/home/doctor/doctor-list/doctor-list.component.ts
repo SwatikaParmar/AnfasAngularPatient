@@ -16,7 +16,7 @@ export class DoctorListComponent {
   totalItems!: number;
   doctorList: any;
   rootUrl: any;
-
+  searchTerm: string = '';  // Search term for filtering doctors
   constructor(
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService,
@@ -52,6 +52,16 @@ export class DoctorListComponent {
       }
     );
   }    
+  
+  get filteredDoctorList() {
+    if (!this.doctorList || this.doctorList.length === 0) {
+      return [];
+    }
+    return this.doctorList.filter((doctor: any) =>
+      doctor.printName.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
+  
 
   onPageChange(page: number): void {
     // Update query parameters for pagination
