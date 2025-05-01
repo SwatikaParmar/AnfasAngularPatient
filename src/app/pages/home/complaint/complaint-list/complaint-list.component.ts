@@ -67,6 +67,18 @@ export class ComplaintListComponent {
     });
   }
 
+  getStatusColor(status: string): string {
+    switch (status) {
+      case 'Pending':
+        return 'orange';  // Yellow or Orange
+      case 'Resolved':
+        return 'green';
+      case 'NoAction':
+        return 'red';
+      default:
+        return 'black';  // Default color
+    }
+  }
   
  
   
