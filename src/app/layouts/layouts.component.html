@@ -120,20 +120,25 @@
             
   
             <div class="item shw one" routerLinkActive="active">
-              <a class="sub-btn"  [routerLink]="['/medication-list']">
-                <i class="fas fa-clipboard-list" style="font-size: 20px;"></i>
-                <span style="font-size: 15px !important; font-weight: 600 !important;">{{ 'MEDICATION' | translate }}</span>
+              <a class="sub-btn" [routerLink]="['/medication-list']">
+                <i class="fas fa-pills" style="font-size: 20px;"></i>
+                <span style="font-size: 15px !important; font-weight: 600 !important;">
+                  {{ 'MEDICATION' | translate }}
+                </span>
               </a>
             </div>
             
-            
-
             <div class="item shw one" routerLinkActive="active">
-              <a class="sub-btn"  [routerLink]="['/request-list']">
-                <i class="fas fa-clipboard-list" style="font-size: 20px;"></i>
-                <span style="font-size: 15px !important; font-weight: 600 !important;">{{ 'REQUEST' | translate }}</span>
+              <a class="sub-btn" [routerLink]="['/request-list']">
+                <i class="fas fa-user-plus" style="font-size: 20px;"></i>
+                <span style="font-size: 15px !important; font-weight: 600 !important;">
+                  {{ 'REQUEST' | translate }}
+                </span>
               </a>
             </div>
+            
+            
+            
             
             <div class="item shw one" routerLinkActive="active">
               <a class="sub-btn" [routerLink]="['/messages']">
