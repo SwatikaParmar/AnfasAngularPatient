@@ -1455,6 +1455,7 @@ export class PatientConsentComponent {
     editSignature(): void {
         this.showSignaturePad = true;
       }
+      
     hideSignaturePad() {
         const canvasEl = this.signatureCanvas?.nativeElement;
         if (canvasEl) {
