@@ -4,6 +4,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContentService } from 'src/app/shared/services/content.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 @Component({
     selector: 'app-patient-consent',
     templateUrl: './patient-consent.component.html',
@@ -33,6 +34,7 @@ export class PatientConsentComponent {
         private cdRef: ChangeDetectorRef,
         private spinner: NgxSpinnerService,
         private router: Router,
+        private toastr: ToastrService
     ) { }
 
     ngOnInit(): void {
@@ -49,38 +51,44 @@ export class PatientConsentComponent {
 
     
     getConsentForm(): void {
-        // Map the language code to the respective language name
         const languageMap: { [key: string]: string } = {
-            en: 'English',
-            ar: 'Arabic'
+          en: 'English',
+          ar: 'Arabic'
         };
-
-        // Retrieve the language code from localStorage and map it
-        const languageCode = localStorage.getItem('language') || 'en'; // Default to 'en'
-        const selectedLanguage = languageMap[languageCode] || 'English'; // Default to English if mapping fails
-
-        let payload = {
-            mrn: this.Mrn,
-            language: selectedLanguage // Use the mapped language name
+      
+        const languageCode = localStorage.getItem('language') || 'en';
+        const selectedLanguage = languageMap[languageCode] || 'English';
+      
+        const payload = {
+          mrn: this.Mrn,
+          language: selectedLanguage,
+          timestamp: new Date().getTime() // Prevent cached response
         };
-
+      
         this.contentService.getConsent(payload).subscribe(
-            (response: any) => {
-                if (response.isSuccess) {
-                    if (this.useShadowDom) {
-                        this.renderInShadowDom(response.data);
-                    } else {
-                        this.mrnUrl = this.sanitizer.bypassSecurityTrustHtml(response.data);
-                    }
-                } else {
-                    console.error('Failed to fetch consent form');
-                }
-            },
-            error => {
-                console.error('Error fetching consent form', error);
+          (response: any) => {
+            if (response.isSuccess) {
+              let htmlData = response.data;
+      
+              // Bust browser cache for any signature image
+              htmlData = htmlData.replace(/(signature\.png)/g, `$1?t=${Date.now()}`);
+      
+              if (this.useShadowDom) {
+                this.renderInShadowDom(htmlData);
+              } else {
+                this.mrnUrl = this.sanitizer.bypassSecurityTrustHtml(htmlData);
+              }
+            } else {
+              console.error('Failed to fetch consent form');
             }
+          },
+          error => {
+            console.error('Error fetching consent form', error);
+          }
         );
-    }
+      }
+      
+      
     
     goBack(): void {
         window.history.back();
@@ -1422,6 +1430,7 @@ export class PatientConsentComponent {
               
               // Now close the signature pad after setting preview
               this.showSignaturePad = false;
+              
             };
             reader.readAsDataURL(this.selectedSignature);
           }
@@ -1460,43 +1469,40 @@ export class PatientConsentComponent {
         }
     }
     // other methods like getConsentForm(), renderInShadowDom(), etc.
-    saveConsentForm() {
+    saveConsentForm(): void {
+        if (!this.selectedSignature || !this.consentGiven) {
+          alert('Please provide a signature and give consent before submitting.');
+          return;
+        }
+      
         const formData = new FormData();
-        const mrn = localStorage.getItem('mrn');
+        formData.append('mrn', this.Mrn);
+        formData.append('consentGiven', this.consentGiven.toString());
+        formData.append('signature', this.selectedSignature);
       
-        if (mrn) {
-          formData.append('mrn', mrn);
-        } else {
-          console.error('MRN is undefined or null in localStorage');
-          return;
-        }
-      
-        if (!this.selectedSignature) {
-          alert('Please upload or draw your signature before submitting.');
-          return;
-        }
-      
-        formData.append('Signature', this.selectedSignature);
-      
-        // Show spinner
         this.spinner.show();
       
         this.contentService.saveConsentForm(formData).subscribe(
-          (res: any) => {
-            this.spinner.hide(); // Hide spinner on success
-            if (res.isSuccess) {
-              console.log('Consent saved successfully');
+          (response: any) => {
+            this.spinner.hide();
+            if (response.isSuccess) {
+              this.toastr.success('Consent form submitted successfully.');
               this.isEditing = false;
-      
+              this.signaturePreview = null;
+              this.selectedSignature = null;
               this.router.navigate(['/profile']);
+            } else {
+              this.toastr.error('Failed to submit consent form.');
+              console.error('Failed to submit consent form');
             }
           },
           error => {
-            this.spinner.hide(); // Hide spinner on error
-            console.error('Error saving consent', error);
+            this.spinner.hide();
+            this.toastr.error('Error submitting consent form');
+            console.error('Error submitting consent form', error);
           }
         );
       }
       
-    
+       
 }

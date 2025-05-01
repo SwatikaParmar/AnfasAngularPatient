@@ -19,8 +19,8 @@
               <!-- Search Box -->
               <div
                 class="flex items-center border border-yellow-300 px-3 py-1 rounded-full shadow-sm focus-within:ring w-full sm:w-auto">
-                <input type="text" placeholder="Find a Doctor" class="flex-grow focus:outline-none bg-gray-50"
-                  (click)="goToDoctorList()" />
+                <input type="text" placeholder="{{ 'FIND_A_DOCTOR' | translate }}"
+                  class="flex-grow focus:outline-none bg-gray-50" (click)="goToDoctorList()" />
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 cursor-pointer text-yellow-400"
                   viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd"
@@ -125,7 +125,7 @@
                 translate }}</h4>
               <div class="row" *ngFor="let item of historyList">
                 <div class="col-12 ">
-                  <div class="appointment-card"[routerLink]="['/appointment-list']">
+                  <div class="appointment-card" [routerLink]="['/appointment-list']">
                     <div class="doctor-info">
                       <img src="assets/images/logo-dashboard.png" alt="Doctor" class="doctor-img">
                       <div class="doctor-text">
@@ -181,15 +181,12 @@
               <p class=" text-sm" style="font-size: 15px; margin-top: 15px!important;">
                 {{ '2259_PRINCE_SAAD_BIN_ABDUL_RAHMAN_I_ROAD_AS_SAADAH_RIYADH_14257_7182' | translate }}
                 <br />
-                <a 
-                href="https://www.google.com/maps/dir/?api=1&destination=Riyadh%2C+Saudi+Arabia" 
-                class="text-blue-600 underline mt-3" 
-                style="font-size: 15px; margin-top: 15px!important;" 
-                target="_blank" 
-                rel="noopener noreferrer">
-                {{ 'GET_DIRECTION' | translate }}
-              </a>
-              
+                <a href="https://www.google.com/maps/dir/?api=1&destination=Riyadh%2C+Saudi+Arabia"
+                  class="text-blue-600 underline mt-3" style="font-size: 15px; margin-top: 15px!important;"
+                  target="_blank" rel="noopener noreferrer">
+                  {{ 'GET_DIRECTION' | translate }}
+                </a>
+
               </p>
             </div>
           </div>

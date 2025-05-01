@@ -59,18 +59,27 @@ export class ContentService {
   //   return this.http.post<any>(environment.apiUrl + ApiEndPoint.saveConsent, formData);
   // }
 
-  saveConsentForm(data: any) {
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'multipart/form-data');
-    const options = {
-      headers: headers
-    };
-    return this.http.post<any>(environment.apiUrl + ApiEndPoint.saveConsent, data, options).pipe(map((data: any) => {
-      localStorage.setItem('File', data);
-      return data;
-    }));
-  }
+  // saveConsentForm(data: any) {
+  //   const headers = new HttpHeaders();
+  //   headers.append('Content-Type', 'multipart/form-data');
+  //   const options = {
+  //     headers: headers
+  //   };
+  //   return this.http.post<any>(environment.apiUrl + ApiEndPoint.saveConsent, data, options).pipe(map((data: any) => {
+  //     localStorage.setItem('File', data);
+  //     return data;
+  //   }));
+  // }
 
+  saveConsentForm(data: any) {
+    return this.http.post<any>(environment.apiUrl + ApiEndPoint.saveConsent, data).pipe(
+      map((response: any) => {
+        localStorage.setItem('File', JSON.stringify(response));
+        return response;
+      })
+    );
+  }
+  
   aboutUs() {
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.getAbout);
   }
