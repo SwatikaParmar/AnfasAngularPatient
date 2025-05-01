@@ -71,38 +71,50 @@
 
             <!-- Action Buttons -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6 text-center">
-              <button class=" bg-white shadow p-4 rounded-lg  flex flex-col items-center gap-1"
-                style="  border:1px solid #FEC34F;" [routerLink]="['/appointment-list']">
+              <button
+                class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 hover:scale-105 transition-transform duration-300 ease-in-out"
+                style="border: 1px solid #FEC34F;" [routerLink]="['/appointment-list']">
                 <i class="fa-solid fa-calendar-days text-2xl" style="color: #77734E;"></i>
                 <span style="color:#77734E; font-weight: 600;">{{ 'APPOINTMENT' | translate }}</span>
               </button>
 
-              <button class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 text-center"
+
+              <button
+                class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 text-center hover:scale-105 transition-transform duration-300 ease-in-out"
                 style="border:1px solid #FEC34F!important;" [routerLink]="['/visit']">
                 <i class="fa-solid fa-file-medical text-blue-600 text-2xl" style="color: #77734E;"></i>
                 <span style="color:#77734E; font-weight: 600;">{{ 'MY_VISITS' | translate }}</span>
               </button>
-              <button class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 text-center"
+
+              <button
+                class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 text-center hover:scale-105 transition-transform duration-300 ease-in-out"
                 style="border:1px solid #FEC34F!important;" [routerLink]="['/complaint-add']">
                 <i class="fa-solid fa-comment-dots text-red-500 text-2xl" style="color: #77734E;"></i>
                 <span style="color:#77734E; font-weight: 600;">{{ 'COMPLAINTS' | translate }}</span>
               </button>
-              <button class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 text-center"
+
+              <button
+                class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 text-center hover:scale-105 transition-transform duration-300 ease-in-out"
                 style="border:1px solid #FEC34F!important;" [routerLink]="['/Health-Tracker']">
                 <i class="fa-solid fa-heartbeat text-red-500 text-2xl" style="color: #77734E;"></i>
                 <span style="color:#77734E; font-weight: 600;">{{ 'HEALTH_TRACKING' | translate }}</span>
               </button>
-              <button class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 text-center"
+
+              <button
+                class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 text-center hover:scale-105 transition-transform duration-300 ease-in-out"
                 style="border:1px solid #FEC34F!important;" [routerLink]="['/medication-list']">
                 <i class="fa-solid fa-pills text-red-500 text-2xl" style="color: #77734E;"></i>
                 <span style="color:#77734E; font-weight: 600;">{{ 'MEDICATION' | translate }}</span>
               </button>
-              <button class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 text-center"
+
+              <button
+                class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 text-center hover:scale-105 transition-transform duration-300 ease-in-out"
                 style="border:1px solid #FEC34F!important;" [routerLink]="['/request-list']">
                 <!-- Modern Clipboard Icon -->
                 <i class="fa-solid fa-clipboard-list text-red-500 text-2xl" style="color: #77734E;"></i>
                 <span style="color:#77734E; font-weight: 600;">{{ 'REQUEST' | translate }}</span>
               </button>
+
 
             </div>
 

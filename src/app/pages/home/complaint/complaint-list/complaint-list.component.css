@@ -45,3 +45,43 @@
     cursor: pointer;
   }
   
+
+
+
+
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .complaint-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .complaint-table th,
+  .complaint-table td {
+    padding: 12px;
+    text-align: left;
+    white-space: nowrap; /* Prevent wrapping */
+    min-width: 120px; /* Ensures minimum column width */
+  }
+  
+  .complaint-table th {
+
+    font-weight: bold;
+  }
+  
+  @media (max-width: 768px) {
+    .complaint-table th,
+    .complaint-table td {
+      font-size: 14px;
+      padding: 8px;
+    }
+  
+    .no-data img {
+      width: 80% !important;
+    }
+  }
+  

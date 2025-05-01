@@ -15,37 +15,35 @@
                     <div class="custom-container max-w-5xl mx-auto p-3">
                         <div class="container">
                             <div class="table-container">
-                                <table>
+                              <div class="table-responsive">
+                                <table class="message-table">
                                   <thead>
                                     <tr>
                                       <th>First Name</th>
                                       <th>Last Name</th>
                                       <th>Last Message</th>
-                                      <th>lastMessageTime</th>
+                                      <th>Last Message Time</th>
+                                      <th>Status</th>
                                       <th>Action</th>
-                                        <th>Status</th>
-                                        
                                     </tr>
                                   </thead>
                                   <tbody>
-                                    <tr class="row-light" *ngFor="let item of messageList  | paginate
-                                    : {
+                                    <tr class="row-light" *ngFor="let item of messageList | paginate : {
                                         itemsPerPage: 5,
                                         currentPage: page,
                                         totalItems: totalItems,
                                         id: '1'
                                       }">
                                       <td>{{ item.firstName || 'N/A' }}</td>
-                                      <td>{{item.lastName  || 'N/A' }}</td>
-                                      <td>{{item.lastMessage  || 'N/A' }}</td>
-                                      <td>
-                                        {{item.lastMessageTime  || 'N/A' }}
-                                      </td>
+                                      <td>{{ item.lastName || 'N/A' }}</td>
+                                      <td>{{ item.lastMessage || 'N/A' }}</td>
+                                      <td>{{ item.lastMessageTime || 'N/A' }}</td>
                                       <td [style.color]="item.status ? 'green' : 'red'">
                                         {{ item.status ? 'Online' : 'Offline' }}
                                       </td>
-                                      <td (click)="editContent(item)"><i class="fa fa-eye"></i></td>
-
+                                      <td (click)="editContent(item)">
+                                        <i class="fa fa-eye"></i>
+                                      </td>
                                     </tr>
                                     <!-- <tr class="row-dark">
                                         <td>MOHAMMED</td>
@@ -60,10 +58,10 @@
                                     </tr> -->
                                   </tbody>
                                 </table>
-                                
+                                </div>
                                 <div class="no-data text-center" *ngIf="messageList && messageList.length === 0">
                                   <img src="assets/images/ffffrq-removebg-preview.png" style="width: 50%; margin: auto; padding: 50px;">
-                              </div>
+                                </div>
                                 
                         <div class="pagination-container pt-3 pb-3">
                           <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"

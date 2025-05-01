@@ -137,3 +137,32 @@
     transform: translateX(18px);
   }
   
+
+  .submit-btn {
+ 
+    padding: 12px 24px; /* Default padding for desktop */
+    font-size: 16px; /* Default font size */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: auto; /* Default width */
+  }
+  
+ 
+  
+  @media (max-width: 768px) {
+    .submit-btn {
+      padding: 10px 20px; /* Reduced padding for smaller screens */
+      font-size: 14px; /* Smaller font size on mobile */
+      width: 100%; /* Make the button take full width on mobile */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .submit-btn {
+      padding: 8px 16px; /* Even smaller padding on very small screens */
+      font-size: 12px; /* Even smaller font size */
+    }
+  }
+  

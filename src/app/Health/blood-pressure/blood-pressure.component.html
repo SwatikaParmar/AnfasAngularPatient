@@ -3,66 +3,70 @@
     <section>
         <div class="content-body">
             <div class="container-fluid">
-                <div class="flex justify-between items-center mb-3 ml-1" [ngClass]="{'flex-row': isLTR, 'flex-row-reverse': !isLTR}">
-  
-                    <!-- Left Group: Back Button + Title -->
-                    <div class="flex items-center" [ngClass]="{'flex-row': isLTR, 'flex-row-reverse': !isLTR}">
-                      <!-- Back Button -->
-                      <button class="flex items-center justify-center w-7 h-7 rounded-full mr-2 mb-2 text-white mt-2 "
-                              style="background-color: #726641;" (click)="backClicked()">
-                        <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center;"></i>
-                      </button>
-                  
-                      <!-- Title -->
-                      <h1 class="text-lg font-semibold mx-3" style="font-size: 25px; color: #726641;">Blood pressure</h1>
-                    </div>
-                  
-                    <!-- Right: Book Appointment Button -->
-                    <button (click)="openModal()" class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full">
-                      + Blood pressure
-                    </button>
-                  
-                  </div>
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 ml-1"
+              [ngClass]="{'sm:flex-row': isLTR, 'sm:flex-row-reverse': !isLTR}">
+           
+           <!-- Left Group: Back Button + Title -->
+           <div class="flex items-center mb-2 sm:mb-0"
+                [ngClass]="{'flex-row': isLTR, 'flex-row-reverse': !isLTR}">
+             
+             <!-- Back Button -->
+             <button class="flex items-center justify-center w-8 h-8 rounded-full text-white"
+                     style="background-color: #726641;" (click)="backClicked()">
+               <i class="fas fa-arrow-left text-xs text-center"></i>
+             </button>
+         
+             <!-- Title -->
+             <h1 class="text-xl sm:text-2xl font-semibold mx-3 mt-1 text-[#726641]">
+               Blood pressure
+             </h1>
+           </div>
+         
+           <!-- Right: Book Appointment Button -->
+           <button (click)="openModal()" 
+                   class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full w-full sm:w-auto">
+             + Blood pressure
+           </button>
+         
+         </div>
+         
                   
                 <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
                     <div class="custom-container max-w-5xl mx-auto p-3">
                         <div class="container">
                             <div class="table-container">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>MRN</th>
-                                            <th>Systolic</th>
-                                            <th>Diastolic</th>
-                                            <th>Notes</th>
-                                            <th>Date</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="row-light" *ngFor="let item of bloodPressureList  | paginate
-                                        : {
-                                            itemsPerPage: 5,
-                                            currentPage: page,
-                                            totalItems: totalItems,
-                                            id: '1'
-                                          }">
-                                            <td>{{item.mrn || 'N/A' }}</td>
-                                            <td>{{item.systolic || 'N/A' }}</td>
-                                            <td>{{item.diastolic || 'N/A' }}</td>
-                                            <td>
-                                                {{item.notes || 'N/A' }}
-                                            </td>
-                                            <td>
-                                                {{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : 'N/A' }}
-                                            </td>
-
-                                        </tr>
-
-                                    </tbody>
+                              <div class="table-responsive">
+                                <table class="blood-pressure-table">
+                                  <thead>
+                                    <tr>
+                                      <th>MRN</th>
+                                      <th>Systolic</th>
+                                      <th>Diastolic</th>
+                                      <th>Notes</th>
+                                      <th>Date</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr class="row-light" *ngFor="let item of bloodPressureList | paginate : {
+                                        itemsPerPage: 5,
+                                        currentPage: page,
+                                        totalItems: totalItems,
+                                        id: '1'
+                                      }">
+                                      <td>{{ item.mrn || 'N/A' }}</td>
+                                      <td>{{ item.systolic || 'N/A' }}</td>
+                                      <td>{{ item.diastolic || 'N/A' }}</td>
+                                      <td>{{ item.notes || 'N/A' }}</td>
+                                      <td>{{ item.createdAt ? (item.createdAt | date: 'dd-MM-yyyy') : 'N/A' }}</td>
+                                    </tr>
+                                  </tbody>
                                 </table>
-                                <div class="no-data text-center" *ngIf="bloodPressureList && bloodPressureList.length === 0">
-                                    <img src="assets/images/ffffrq-removebg-preview.png" style="width: 50%; margin: auto; padding: 50px;">
-                                </div>
+                              </div>
+                              
+                              <div class="no-data text-center" *ngIf="bloodPressureList && bloodPressureList.length === 0">
+                                <img src="assets/images/ffffrq-removebg-preview.png" style="width: 50%; margin: auto; padding: 50px;">
+                              </div>
+                              
 
                                 <div class="pagination-container pt-3 pb-3">
                                     <pagination-controls (pageChange)="onPageChange($event)" id="1"
