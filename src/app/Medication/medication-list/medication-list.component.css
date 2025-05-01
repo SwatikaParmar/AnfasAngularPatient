@@ -45,3 +45,35 @@
     cursor: pointer;
   }
   
+
+
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .medication-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .medication-table th,
+  .medication-table td {
+    padding: 12px;
+    text-align: left;
+    white-space: nowrap; /* Prevent content wrapping */
+  }
+  
+  @media (max-width: 768px) {
+    .medication-table th,
+    .medication-table td {
+      padding: 8px;
+      font-size: 14px;
+    }
+  
+    .no-data img {
+      width: 80% !important;
+    }
+  }
+  
