@@ -104,56 +104,74 @@
 
   </section>
 </div>
-
 <!-- Popup Overlay (Angular Bound) -->
-<div *ngIf="selectedAppointment" class="popup-overlay" (click)="closeOnOutsideClick($event)">
-  <div class="modal-dialog modal-dialog-centered" (click)="$event.stopPropagation()">
-    <div class="modal-content" style="border-radius: 25px; border: none;">
+<div *ngIf="selectedAppointment"
+     class="popup-overlay fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
+     (click)="closeOnOutsideClick($event)">
+  <div class="modal-dialog modal-dialog-centered w-full max-w-[95%] sm:max-w-[90%] md:max-w-[460px] mx-auto"
+       (click)="$event.stopPropagation()">
+    <div class="modal-content rounded-2xl border-none p-6 shadow-md font-sans space-y-4">
       <form>
-        <div class="modal-header flex items-center justify-between">
-          <div class="flex-1 text-center">
-            <h5 class="modal-title text-xl font-semibold">{{ 'MY_APPOINTMENT' | translate }}</h5>
-          </div>
+        <!-- Modal Header -->
+        <div class="modal-header flex justify-center mb-4">
+          <h5 class="modal-title text-lg sm:text-xl font-semibold text-center">
+            {{ 'MY_APPOINTMENT' | translate }}
+          </h5>
         </div>
-        <div class="p-6 shadow-md font-sans space-y-4" style="width: 460px;">
+
+        <!-- Modal Body -->
+        <div class="space-y-4">
+          <!-- Appointment Number -->
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-2">
               <img src="assets/images/logo-dashboard.png" alt="Icon" class="w-5 h-5">
-              <div class="text-sm text-gray-500">{{ 'APPOINTMENT_NUMBER' | translate }}</div>
+              <span class="text-sm text-gray-500">{{ 'APPOINTMENT_NUMBER' | translate }}</span>
             </div>
-            <div class="font-semibold text-black"> {{ selectedAppointment.slots[0]?.appointmentNumber || 'N/A' }}</div>
-          </div>
-          <div class="flex items-center justify-between">
-            <div class="text-sm text-gray-500 pl-4">{{ 'START_TIME' | translate }}</div>
-            <div class="font-semibold text-black">{{ selectedAppointment.slots[0]?.start | date: 'medium' }}</div>
-          </div>
-          <div class="flex items-center justify-between">
-            <div class="text-sm text-gray-500 pl-4">{{ 'END_TIME' | translate }}</div>
-            <div class="font-semibold text-black">{{ selectedAppointment.slots[0]?.end | date: 'medium' }}</div>
-          </div>
-          <div class="flex items-center justify-between">
-            <div class="text-sm text-gray-500 pl-4">{{ 'STATUS' | translate }}</div>
-            <div class="font-medium"
-              [ngStyle]="{ color: getStatusColor(selectedAppointment.slots[0]?.statusUid?.valueDescription) }">
-              {{ selectedAppointment.slots[0]?.statusUid?.valueDescription || 'N/A' }}
+            <div class="font-semibold text-black text-right truncate">
+              {{ selectedAppointment.slots[0]?.appointmentNumber || 'N/A' }}
             </div>
           </div>
 
-          <div class="flex justify-end space-x-3 pt-2"
-            *ngIf="selectedAppointment.slots[0]?.statusUid?.valueDescription !== 'No Show'">
+          <!-- Start Time -->
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-500 pl-4">{{ 'START_TIME' | translate }}</span>
+            <span class="font-semibold text-black text-right">
+              {{ selectedAppointment.slots[0]?.start | date: 'medium' }}
+            </span>
+          </div>
+
+          <!-- End Time -->
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-500 pl-4">{{ 'END_TIME' | translate }}</span>
+            <span class="font-semibold text-black text-right">
+              {{ selectedAppointment.slots[0]?.end | date: 'medium' }}
+            </span>
+          </div>
+
+          <!-- Status -->
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-500 pl-4">{{ 'STATUS' | translate }}</span>
+            <span class="font-medium text-right"
+                  [ngStyle]="{ color: getStatusColor(selectedAppointment.slots[0]?.statusUid?.valueDescription) }">
+              {{ selectedAppointment.slots[0]?.statusUid?.valueDescription || 'N/A' }}
+            </span>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex justify-end gap-3 pt-4"
+               *ngIf="selectedAppointment.slots[0]?.statusUid?.valueDescription !== 'No Show'">
             <button type="button"
-              class="px-4 py-2 border border-gray-800 rounded-full text-sm text-black font-bold hover:bg-gray-100"
-              (click)="selectedAppointment = null">
+                    class="px-4 py-2 border border-gray-800 rounded-full text-sm text-black font-bold hover:bg-gray-100"
+                    (click)="selectedAppointment = null">
               {{ 'CANCEL' | translate }}
             </button>
             <button type="button"
-              class="px-3 py-1 bg-[#b89c5a] rounded-full text-sm font-bold hover:bg-[#a88d4e] flex items-center"
-              style="color: #FEC34F!important;" (click)="edit(selectedAppointment)">
+                    class="px-4 py-2 bg-[#b89c5a] hover:bg-[#a88d4e] rounded-full text-sm font-bold flex items-center text-[#FEC34F]"
+                    (click)="edit(selectedAppointment)">
               {{ 'RESCHEDULE' | translate }}
               <span class="ml-2">&gt;</span>
             </button>
           </div>
-
         </div>
       </form>
     </div>
