@@ -264,5 +264,15 @@
   "NO": "لا",
   "SLOTS_AVAILABLE": "الفتحات المتاحة.",
   "REVIEW_YOUR_CONSENT_FORM": "مراجعة نموذج موافقتك",
-  "BOOK_AN_APPOINTMENT": "حجز موعد"
+  "BOOK_AN_APPOINTMENT": "حجز موعد",
+  "WELCOME_BACK": "مرحبًا بعودتك",
+  "PATIENT_SIGN_IN": "تسجيل دخول المريض",
+  "EN": "الإنجليزية",
+  "AR": "عربي",
+  "SELECT": "يختار",
+  "MR_NUMBER":"رقم السيد",
+  "PHONE_NUMBER":"رقم التليفون",
+  "ENTER_MR_NUMBER":"أدخل رقم السيد",
+  "ENTER_PHONE_NUMBER":"أدخل رقم الهاتف",
+  "ENTER_NATIONAL_ID":"أدخل رقم الهوية الوطنية"
 }

@@ -262,5 +262,16 @@
   "NO": "No",
   "SLOTS_AVAILABLE": "slots available.",
   "REVIEW_YOUR_CONSENT_FORM": "Review Your Consent Form",
-  "BOOK_AN_APPOINTMENT": "Book an Appointment"
+  "BOOK_AN_APPOINTMENT": "Book an Appointment",
+  "WELCOME_BACK": "welcome back",
+  "PATIENT_SIGN_IN": "Patient Sign In",
+  "EN":"EN",
+  "AR":"AR",
+  "SELECT":"Select",
+  "MR_NUMBER":"MR Number",
+  "PHONE_NUMBER":"Phone Number",
+  "ENTER_MR_NUMBER":"Enter MR Number",
+  "ENTER_PHONE_NUMBER":"Enter Phone Number",
+  "ENTER_NATIONAL_ID":"Enter National Id"
+ 
 }

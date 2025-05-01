@@ -46,9 +46,12 @@
                       style="border-bottom: 1px solid gray; padding-bottom: 10px;">
                       <!-- Left Side: Text + Date -->
                       <div class="appointment-header">
-                        {{ 'APPOINTMENT_DATE' | translate }}<br><strong> {{ item.slots[0]?.start | date: 'medium' ||
-                          'N/A' }}</strong>
+                        {{ 'APPOINTMENT_DATE' | translate }}<br>
+                        <strong>
+                          {{ item.slots[0]?.start ? (item.slots[0].start | date: 'medium') : 'N/A' }}
+                        </strong>
                       </div>
+                      
 
                       <!-- Right Side: Chat Icon -->
                       <div class="chat-icon-box d-flex justify-content-center align-items-center pt-2">

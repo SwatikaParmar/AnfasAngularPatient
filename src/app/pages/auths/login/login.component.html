@@ -18,16 +18,16 @@
         style="background: #FEC34F; height: 100vh; display: grid; align-items: center; ">
         <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
           <div class="login-forms">
-            <h2 style="color: #77734E; margin-bottom: 30px; font-size: 30px; font-weight: 600;">welcome back!</h2>
+            <h2 style="color: #77734E; margin-bottom: 30px; font-size: 30px; font-weight: 600;">{{ 'WELCOME_BACK' | translate }}!</h2>
             <div style="display: flex; justify-content: space-between; align-items: center;">
-              <h6 style="font-size: 20px; margin: 0;">Patient Sign In</h6>
+              <h6 style="font-size: 20px; margin: 0;">{{ 'PATIENT_SIGN_IN' | translate }}</h6>
               <div class="lang-container">
                 <div class="lang-toggle">
                   <div class="lang-option" [class.active]="currentLang === 'en'" (click)="switchLanguage('en')">
-                    EN
+                    {{ 'EN' | translate }}
                   </div>
                   <div class="lang-option" [class.active]="currentLang === 'ar'" (click)="switchLanguage('ar')">
-                    AR
+                    {{ 'AR' | translate }}
                   </div>
                 </div>
               </div>
@@ -39,16 +39,16 @@
                             formControlName="email"> -->
             <div class="form-group">
               <select id="mrNumber" class="form-control custom-select-align-end" (change)="onSelectChange($event)">
-                <option value="" disabled selected>Select</option>
-                <option value="mrn">MR Number</option>
-                <option value="mobilePhone">Phone Number</option>
-                <option value="nationalId">National Id</option>
+                <option value="" disabled selected>{{ 'SELECT' | translate }}</option>
+                <option value="mrn">{{ 'MR_NUMBER' | translate }}</option>
+                <option value="mobilePhone">{{ 'PHONE_NUMBER' | translate }}</option>
+                <option value="nationalId">{{ 'NATIONAL_ID' | translate }}</option>
               </select>
             </div>
 
 
             <div class="d-flex position-relative mb-10" *ngIf="selectedField === 'mrn'">
-              <input class="form-control password" placeholder="{{ 'Enter MR Number' | translate }}"
+              <input class="form-control password" placeholder="{{ 'ENTER_MR_NUMBER' | translate }}"
                 formControlName="mrn" [ngClass]="{ 'is-invalid': submitted && f['mrn'].errors }">
               <div class="eye-icon"
                 [ngClass]="{'eye-icon-rtl': currentLanguage === 'ar', 'eye-icon-ltr': currentLanguage !== 'ar'}">
@@ -59,7 +59,7 @@
            
             <div class="d-flex position-relative mb-10" *ngIf="selectedField === 'mobilePhone'">
               <input class="form-control password"
-                     placeholder="{{ 'Enter Phone Number' | translate }}"
+                     placeholder="{{ 'ENTER_PHONE_NUMBER' | translate }}"
                      formControlName="mobilePhone"
                      [ngClass]="{ 'is-invalid': submitted && f['mobilePhone'].errors }">
                      <div class="eye-icon"
@@ -71,7 +71,7 @@
             
             <div class="d-flex position-relative mb-10" *ngIf="selectedField === 'nationalId'">
               <input class="form-control password"
-                     placeholder="{{ 'Enter National Id' | translate }}"
+                     placeholder="{{ 'ENTER_NATIONAL_ID' | translate }}"
                      formControlName="nationalId"
                      [ngClass]="{ 'is-invalid': submitted && f['nationalId'].errors }">
                      <div class="eye-icon"

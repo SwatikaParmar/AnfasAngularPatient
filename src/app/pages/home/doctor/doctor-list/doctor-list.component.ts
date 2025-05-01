@@ -16,7 +16,7 @@ export class DoctorListComponent {
   totalItems!: number;
   doctorList: any;
   rootUrl: any;
-
+  searchTerm: string = '';  // Search term for filtering doctors
   constructor(
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService,
@@ -53,6 +53,16 @@ export class DoctorListComponent {
     );
   }    
 
+  get filteredDoctorList() {
+    if (!this.doctorList || this.doctorList.length === 0) {
+      return [];
+    }
+    return this.doctorList.filter((doctor: any) =>
+      doctor.printName.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
+  
+
   onPageChange(page: number): void {
     // Update query parameters for pagination
     this.router.navigate([], {
@@ -77,4 +87,21 @@ export class DoctorListComponent {
     this._location.back();
   }
   
+
+  edit(item: any): void {
+    debugger
+    const CareProviderCode = item.code;
+    const receiverName = item.name;
+  
+    if (CareProviderCode && receiverName) {
+      this.router.navigate(['/appointment-list/appointment/book'], {
+        queryParams: {
+          CareProviderCode,
+          receiverName
+        }
+      });
+    } else {
+      this.toastrService.error('Invalid sender or receiver information.');
+    }
+  }
 }
