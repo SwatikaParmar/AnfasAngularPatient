@@ -18,6 +18,7 @@ import { Location } from '@angular/common';
 import { MatCalendar, MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { environment } from 'src/environments/environment';
 
+
 @Component({
   selector: 'app-book-appointment',
   templateUrl: './book-appointment.component.html',
@@ -42,6 +43,10 @@ export class BookAppointmentComponent {
   receiverName: any;
   CareProviderCode: any;
   selectedSlot: any = null;
+
+
+
+
   constructor(
     private renderer: Renderer2,
     private formBuilder: FormBuilder,
@@ -65,6 +70,10 @@ export class BookAppointmentComponent {
     }
   }
 
+  ngAfterViewInit() {
+    this.getAvailableDate();
+  }
+
   ngOnInit(): void {
      this.rootUrl = environment.rootPathUrl;
         this.route.queryParamMap.subscribe(params => {
@@ -77,14 +86,11 @@ export class BookAppointmentComponent {
     this.languageService.switchLanguage(this.currentLanguage);
   }
 
-  ngAfterViewInit() {
-    // now that the <mat-calendar> is in the DOM…
-    this.getAvailableDate();
-  }
-
+ 
   
 
   getAvailableDate(): void {
+    this.spinner.show();  // 👈 Start spinner
     const today = new Date();
     const after30 = new Date(today);
     after30.setDate(today.getDate() + 30);
@@ -96,20 +102,18 @@ export class BookAppointmentComponent {
       ToDate: this.formatDate(after30),
     };
     this.content.getAvailableDate(payload).subscribe((resp: { data: string[] }) => {
-      // if (!resp.status) {
-      //   this.toasterService.error(resp.message);
-      //   return;
-      // }
+      this.availableDates = [...resp.data.map((d) => this.formatDate(new Date(d)))];
 
-      this.availableDates = resp.data.map((d) => this.formatDate(new Date(d)));
-
-      // Trigger change detection and calendar re-render after data is loaded
       this.cdr.detectChanges();
+      // Trigger re-render of dateClass logic
       if (this.calendar) {
+        this.calendar.updateTodaysDate();
         this.calendar.stateChanges.next();
-      } else {
-        console.error('Calendar is not yet initialized');
+        this.spinner.hide(); // 👈 Stop spinner
+
       }
+  
+
     });
   }
 
@@ -121,33 +125,15 @@ export class BookAppointmentComponent {
     ].join('-');
   }
 
-  // dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
-  //   if (view !== 'month') return '';
-  //   const iso = this.formatDate(cellDate);
-  //   if (this.availableDates.includes(iso)) {
-  //     return this.selectedDate && this.formatDate(this.selectedDate) === iso
-  //       ? 'clicked-date-highlight'
-  //       : 'available-date';
-  //   }
-  //   return '';
-  // };
-  
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
-    debugger
     if (view !== 'month') return '';
-  
+
     const iso = this.formatDate(cellDate);
-  
-    // If the cell is an available date, highlight it
     if (this.availableDates.includes(iso)) {
-      if (this.selectedDate && this.formatDate(this.selectedDate) === iso) {
-        return 'clicked-date-highlight';  // Highlight for selected date
-      } else {
-        return 'available-date';  // Highlight for available date
-      }
+      return 'available-date';
     }
-  
-    return '';  // No class if the date is neither selected nor available
+
+    return '';
   };
   
   // Handle date selection
