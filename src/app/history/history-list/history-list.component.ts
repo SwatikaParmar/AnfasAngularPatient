@@ -1,5 +1,6 @@
 import { Component, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { ContentService } from 'src/app/shared/services/content.service';
@@ -15,7 +16,7 @@ export class HistoryListComponent {
   totalItems!: number;
   item:any;
   rootUrl: any;
-
+  isArabic: boolean = false; // set this to true if the current language is Arabic
   historyListOriginal: any[] = []; // the full original list
   historyList: any[] = [];         // the filtered list
   selectedStatus: string = 'All';  // dropdown selection
@@ -27,7 +28,8 @@ export class HistoryListComponent {
     private contentService: ContentService,
     private router: Router,
     private route: ActivatedRoute,
-  ){ }
+    private translateService: TranslateService,
+  ){  this.isArabic = this.translateService.currentLang === 'ar';}
 
   ngOnInit(): void {
     this.rootUrl = environment.rootPathUrl;

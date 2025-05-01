@@ -7,14 +7,16 @@
           <h1 class="text-lg sm:text-xl font-semibold text-[#726641]">
             {{ 'MY_APPOINTMENTS' | translate }}
           </h1>
-
+        
           <!-- Book Appointment Button -->
           <button *ngIf="showAppointmentButton"
             class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full w-full sm:w-auto sm:ml-auto"
+            [ngClass]="{'sm:ml-0': isArabic, 'sm:ml-auto': !isArabic}"
             [routerLink]="['/appointment-list/appointment']">
             + {{ 'BOOK_APPOINTMENT' | translate }}
           </button>
         </div>
+        
 
 
 
