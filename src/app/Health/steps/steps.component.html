@@ -8,7 +8,7 @@
                         style="background-color: #726641;" (click)="backClicked()">
                         <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center;"></i>
                     </button>
-                    <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">Steps</h1>
+                    <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">{{ 'STEPS' | translate }}</h1>
 
                     <!-- Book Appointment Button -->
                     <!-- <button class="appointment-btn ml-auto bg-blue-500 text-white px-4 py-2 rounded-full">+ Steps
@@ -23,10 +23,10 @@
                                     <table class="min-w-full table-auto">
                                         <thead>
                                             <tr>
-                                                <th class="px-4 py-2 text-sm md:text-base">MRN</th>
-                                                <th class="px-4 py-2 text-sm md:text-base">Steps</th>
-                                                <th class="px-4 py-2 text-sm md:text-base">Total&nbsp;Distance</th>
-                                                <th class="px-4 py-2 text-sm md:text-base">Date</th>
+                                                <th class="px-4 py-2 text-sm md:text-base">{{ 'MRN' | translate }}</th>
+                                                <th class="px-4 py-2 text-sm md:text-base">{{ 'STEPS' | translate }}</th>
+                                                <th class="px-4 py-2 text-sm md:text-base">{{ 'TOTAL_DISTANCE' | translate }}</th>
+                                                <th class="px-4 py-2 text-sm md:text-base">{{ 'DATE' | translate }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>

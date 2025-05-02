@@ -10,13 +10,13 @@
           </button>
           
           <h1 class="text-lg font-semibold ml-2 text-center sm:text-left" style="font-size: 25px; color: #726641;">
-              Weight Tracking
+            {{ 'WEIGHT_TRACKING' | translate }}
           </h1>
           
           <!-- Book Appointment Button -->
           <button class="appointment-btn ml-auto bg-blue-500 text-white px-4 py-2 rounded-full w-full sm:w-auto mt-2 sm:mt-0"
                   (click)="openModal()">
-              + Weight Tracking
+              + {{ 'WEIGHT_TRACKING' | translate }}
           </button>
       </div>
       
@@ -28,10 +28,10 @@
                   <table class="min-w-full table-auto">
                       <thead>
                           <tr>
-                              <th class="px-4 py-2 text-sm md:text-base">MRN</th>
-                              <th class="px-4 py-2 text-sm md:text-base">Weight</th>
-                              <th class="px-4 py-2 text-sm md:text-base">Notes</th>
-                              <th class="px-4 py-2 text-sm md:text-base">Date</th>
+                              <th class="px-4 py-2 text-sm md:text-base">{{ 'MRN' | translate }}</th>
+                              <th class="px-4 py-2 text-sm md:text-base">{{ 'WEIGHT' | translate }}</th>
+                              <th class="px-4 py-2 text-sm md:text-base">{{ 'NOTES' | translate }}</th>
+                              <th class="px-4 py-2 text-sm md:text-base">{{ 'DATE' | translate }}</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -45,7 +45,7 @@
                               <td class="px-4 py-2 text-sm md:text-base">{{item.mrn || 'N/A' }}</td>
                               <td class="px-4 py-2 text-sm md:text-base">{{item.weights || 'N/A' }}</td>
                               <td class="px-4 py-2 text-sm md:text-base">{{item.notes || 'N/A' }}</td>
-                              <td class="px-4 py-2 text-sm md:text-base">{{ item.createdat ? (item.createdat | date:'dd-MM-yyyy') : 'N/A' }}</td>
+                              <td class="px-4 py-2 text-sm md:text-base">{{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : 'N/A' }}</td>
                           </tr>
                       </tbody>
                   </table>
@@ -84,7 +84,7 @@
     <form [formGroup]="form" (ngSubmit)="addRecord()">
       <div class="modal-header flex items-center justify-between">
         <div class="flex-1 text-center">
-            <h5 class="modal-title text-xl font-semibold" id="bloodSugarModalLabel">Weight</h5>
+            <h5 class="modal-title text-xl font-semibold" id="bloodSugarModalLabel">{{ 'WEIGHT' | translate }}</h5>
         </div>
         <button 
           type="button" 
@@ -95,17 +95,15 @@
       </div>
       <div class="modal-body">
         <div class="mb-3">
-          <label for="weights" class="form-label">Current Weight (kg)</label>
-          <input type="text" formControlName="weights" class="form-control" id="weights" />
-          <div *ngIf="form.get('beatsPerMinute')?.invalid && form.get('beatsPerMinute')?.touched" class="text-danger">
-            Required field
-          </div>
+          <label for="weights" class="form-label">{{ 'CURRENT_WEIGHT' | translate }} ({{ 'KG' | translate }})</label>
+          <input type="text" formControlName="weights" class="form-control" id="weights" placeholder="{{ 'ENTER_WEIGHT' | translate }}"/>
+         
           <div class="flex justify-center">
             <button 
               type="submit"
               class="w-80 bg-yellow-700 text-white py-2 rounded-full hover:bg-yellow-800 mt-3"
               style="color: #fde092!important;">
-              Save Weight
+            {{ 'SAVE_WEIGHT' | translate }}
             </button>
           </div>
         </div>

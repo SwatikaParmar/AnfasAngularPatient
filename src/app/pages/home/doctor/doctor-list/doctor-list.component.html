@@ -9,7 +9,7 @@
           </button>
 
           <!-- Title Text -->
-          <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">Find a Doctor</h1>
+          <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">{{ 'FIND_A_DOCTOR' | translate }}</h1>
           <div></div> <!-- Placeholder for spacing -->
         </div>
         
@@ -20,7 +20,7 @@
               <div class="flex items-center border border-goldenlight px-3 py-1 ml-3 rounded-full shadow-sm focus-within:ring">
                 <input
                   type="text"
-                  placeholder="Find a Doctor"
+                  placeholder="{{ 'FIND_A_DOCTOR' | translate }}"
                   [(ngModel)]="searchTerm"
                   class="flex-grow focus:outline-none"
                   style="background-color: #F9FAFB!important;"
@@ -45,7 +45,7 @@
 
                       <div class="flex justify-end">
                         <button class="btn btn-sm rounded-pill px-3 bg-yellow-700 hover:bg-yellow-800 text-white"(click)="edit(item)">
-                          Book Appointment
+                        {{ 'BOOK_APPOINTMENT' | translate }}
                         </button>
                       </div>
                     </div>

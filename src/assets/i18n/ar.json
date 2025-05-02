@@ -321,8 +321,14 @@
   "MG_DL": "ملغ/ديسيلتر",
   "ENTER_SYSTOLIC_VALUE": "أدخل القيمة الانقباضية",
   "ENTER_DIASTOLIC_VALUE": "أدخل القيمة الانبساطية",
-  "BEATS_PER_MINUTE":"نبضات في الدقيقة",
-   "BPM":"نبضة في الدقيقة",
-   "ENTER_BEATS_PER_MINUTE":"أدخل نبضات في الدقيقة",
-   "SAVE_HEART_RATE":"حفظ معدل ضربات القلب"
+  "BEATS_PER_MINUTE": "نبضات في الدقيقة",
+  "BPM": "نبضة في الدقيقة",
+  "ENTER_BEATS_PER_MINUTE": "أدخل نبضات في الدقيقة",
+  "SAVE_HEART_RATE": "حفظ معدل ضربات القلب",
+  "WEIGHT": "وزن",
+  "CURRENT_WEIGHT": "الوزن الحالي",
+  "KG": "كجم",
+  "ENTER_WEIGHT":"أدخل الوزن",
+  "SAVE_WEIGHT":"توفير الوزن",
+  "TOTAL_DISTANCE":"المسافة الإجمالية"
 }

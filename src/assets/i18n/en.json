@@ -323,5 +323,11 @@
   "BEATS_PER_MINUTE": "Beats Per Minute",
   "BPM": "BPM",
   "ENTER_BEATS_PER_MINUTE":"Enter beats per minute",
-  "SAVE_HEART_RATE":"Save Heart Rate"
+  "SAVE_HEART_RATE":"Save Heart Rate",
+  "WEIGHT":"Weight",
+  "CURRENT_WEIGHT":"Current Weight",
+  "KG":"kg",
+  "ENTER_WEIGHT":"Enter weight",
+  "SAVE_WEIGHT":" Save Weight",
+  "TOTAL_DISTANCE":"Total Distance"
 }
