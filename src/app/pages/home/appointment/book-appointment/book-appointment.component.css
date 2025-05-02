@@ -578,5 +578,29 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   }
 
   
-  
-  
+
+/* Small devices (phones) */
+@media (max-width: 600px) {
+  ::ng-deep .mat-calendar-table-header th {
+    font-size: 7px;
+    padding: 1px !important;
+  }
+}
+
+/* Medium devices (tablets) */
+@media (min-width: 601px) and (max-width: 960px) {
+  ::ng-deep .mat-calendar-table-header th {
+    font-size: 9px;
+    padding: 2px !important;
+  }
+}
+
+/* Large devices (desktops) */
+@media (min-width: 961px) {
+  ::ng-deep .mat-calendar-tableheader th {
+    font-size: 11px;
+    padding: 4px !important;
+  }
+}
+
+
