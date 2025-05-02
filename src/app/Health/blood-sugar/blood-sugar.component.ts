@@ -42,28 +42,33 @@ export class BloodSugarComponent {
 
 
   BloodSugarList() {
-    let payload = {
+    this.spinner.show();
+  
+    const payload = {
       mrn: localStorage.getItem('mrn'),
       type: 'bloodsugar',
       pageNumber: 1,
       pageSize: 10
-    }
-
-    this.contentService.getHealthTracker(payload).subscribe(
-      response => {
-        if (response.isSuccess) {
-          this.bloodSugarList = response.data.dataList;
+    };
+  
+    this.contentService.getHealthTracker(payload).subscribe({
+      next: (response) => {
+        if (response?.isSuccess) {
+          this.bloodSugarList = response.data?.dataList || [];
         } else {
-          this.toastrService.error('Failed to fetch bloodSugar list.');
+          this.toastrService.error('Failed to fetch blood sugar list.');
           console.error('API returned failure:', response);
         }
+        this.spinner.hide();
       },
-      error => {
-        this.toastrService.error('Error fetching bloodSugar list.');
-        console.error('Error fetching bloodSugar list:', error);
+      error: (error) => {
+        this.toastrService.error('Error fetching blood sugar list.');
+        console.error('Error fetching blood sugar list:', error);
+        this.spinner.hide();
       }
-    );
+    });
   }
+  
 
   onPageChange(page: number): void {
     // Update query parameters for pagination

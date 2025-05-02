@@ -9,12 +9,14 @@
                                 style="background-color: #726641;" (click)="backClicked()">
                             <i class="fas fa-arrow-left" style="font-size: 13px;"></i>
                         </button>
-                        <h1 class="text-lg font-semibold ml-2 text-center sm:text-left" style="font-size: 25px; color: #726641;">Heart Rate</h1>
+                        <h1 class="text-lg font-semibold ml-2 text-center sm:text-left" style="font-size: 25px; color: #726641;">
+                            {{ 'HEART_RATE' | translate }}
+                        </h1>
                     </div>
                     
                     <button class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full w-full sm:w-auto mt-2 sm:mt-0"
                             data-bs-toggle="modal" data-bs-target="#heartRateModal">
-                        + Heart Rate
+                        + {{ 'HEART_RATE' | translate }}
                     </button>
                 </div>
                 
@@ -28,10 +30,10 @@
                                     <table class="min-w-full table-auto">
                                         <thead>
                                             <tr>
-                                                <th class="px-4 py-2 text-sm md:text-base">MRN</th>
-                                                <th class="px-4 py-2 text-sm md:text-base">Beats&nbsp;Per&nbsp;Minute</th>
-                                                <th class="px-4 py-2 text-sm md:text-base">Notes</th>
-                                                <th class="px-4 py-2 text-sm md:text-base">Date</th>
+                                                <th class="px-4 py-2 text-sm md:text-base">{{ 'MRN' | translate }}</th>
+                                                <th class="px-4 py-2 text-sm md:text-base">{{ 'BEATS_PER_MINUTE' | translate }}</th>
+                                                <th class="px-4 py-2 text-sm md:text-base">{{ 'NOTES' | translate }}</th>
+                                                <th class="px-4 py-2 text-sm md:text-base"> {{ 'DATE' | translate }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -76,14 +78,15 @@
           <form [formGroup]="form" (ngSubmit)="addRecord()">
               <div class="modal-header flex items-center justify-between">
                   <div class="flex-1 text-center">
-                      <h5 class="modal-title text-xl font-semibold" id="bloodSugarModalLabel">Heart Rate</h5>
+                      <h5 class="modal-title text-xl font-semibold" id="bloodSugarModalLabel"> {{ 'HEART_RATE' | translate }}</h5>
                   </div>
                   <button type="button" class="btn-close ml-auto" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                   <div class="mb-3">
-                      <label for="beatsPerMinute" class="form-label">BPM (beats per minute)</label>
-                      <input type="text" formControlName="beatsPerMinute" class="form-control" id="beatsPerMinute" />
+                      <label for="beatsPerMinute" class="form-label">BPM {{ 'HEART_RATE' | translate }} ({{ 'BEATS_PER_MINUTE' | translate }})</label>
+                      <input type="text" formControlName="beatsPerMinute" class="form-control" id="beatsPerMinute" placeholder="Enter beats per minute
+                       {{ 'HEART_RATE' | translate }}" />
                       <div *ngIf="form.get('beatsPerMinute')?.invalid && form.get('beatsPerMinute')?.touched" class="text-danger">
                           Required field
                       </div>
@@ -91,7 +94,7 @@
                           <button type="submit"
                               class="w-80 bg-yellow-700 text-white py-2 rounded-full hover:bg-yellow-800 mt-3"
                               style="color: #fde092!important;">
-                              Save Heart Rate
+                              Save Heart Rate {{ 'HEART_RATE' | translate }}
                           </button>
                       </div>
                   </div>
