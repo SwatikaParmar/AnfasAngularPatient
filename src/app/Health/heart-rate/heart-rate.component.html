@@ -84,9 +84,9 @@
               </div>
               <div class="modal-body">
                   <div class="mb-3">
-                      <label for="beatsPerMinute" class="form-label">BPM {{ 'HEART_RATE' | translate }} ({{ 'BEATS_PER_MINUTE' | translate }})</label>
-                      <input type="text" formControlName="beatsPerMinute" class="form-control" id="beatsPerMinute" placeholder="Enter beats per minute
-                       {{ 'HEART_RATE' | translate }}" />
+                      <label for="beatsPerMinute" class="form-label">{{ 'BPM' | translate }} ({{ 'BEATS_PER_MINUTE' | translate }})</label>
+                      <input type="text" formControlName="beatsPerMinute" class="form-control" id="beatsPerMinute" placeholder="
+                       {{ 'ENTER_BEATS_PER_MINUTE' | translate }}" />
                       <div *ngIf="form.get('beatsPerMinute')?.invalid && form.get('beatsPerMinute')?.touched" class="text-danger">
                           Required field
                       </div>
@@ -94,7 +94,7 @@
                           <button type="submit"
                               class="w-80 bg-yellow-700 text-white py-2 rounded-full hover:bg-yellow-800 mt-3"
                               style="color: #fde092!important;">
-                              Save Heart Rate {{ 'HEART_RATE' | translate }}
+                            {{ 'SAVE_HEART_RATE' | translate }}
                           </button>
                       </div>
                   </div>
