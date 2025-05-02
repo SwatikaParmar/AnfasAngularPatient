@@ -1384,3 +1384,15 @@ ul.ngx-pagination li.pagination-next a {
 }
 
 
+.toggle-menu img {
+    display: block;
+    left: 0px;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    object-fit: cover;
+    object-position: bottom;
+    background: #fbcb6bfc;
+}
