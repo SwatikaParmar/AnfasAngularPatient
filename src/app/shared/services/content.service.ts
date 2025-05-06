@@ -203,5 +203,13 @@ export class ContentService {
 
   }
 
- 
+  geteducationalMaterial(data: any) {
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.educationalMaterial + '?pageNumber=' + data.pageNumber + '&pageSize=' + data.pageSize
+      + '&isApproved=' + data.isApproved  + '&mrn=' + data.mrn
+    );
+  }
+
+  statusEducational(data: any) {
+    return this.http.post<any>(environment.apiUrl + ApiEndPoint.educationalStatus, data);
+  }
 }

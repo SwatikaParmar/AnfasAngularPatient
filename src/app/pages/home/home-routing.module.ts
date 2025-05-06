@@ -29,6 +29,8 @@ import { HeartRateComponent } from 'src/app/Health/heart-rate/heart-rate.compone
 import { WeightComponent } from 'src/app/Health/weight/weight.component';
 import { LabResultsComponent } from 'src/app/Health/lab-results/lab-results.component';
 import { StepsComponent } from 'src/app/Health/steps/steps.component';
+import { EducationalMaterialComponent } from 'src/app/education/educational-material/educational-material.component';
+
 
 const routes: Routes = [
 
@@ -52,7 +54,7 @@ const routes: Routes = [
       { path: 'appointment-list/appointment/book', component:BookAppointmentComponent},
       { path: 'messages/chat', component:MessageChatComponent},
       { path: 'complaint/chat/:id', component:ComplaintChatComponent},
-      { path: 'complaint-add', component: ComplaintFormComponent},
+      { path: 'complaint/complaint-add', component: ComplaintFormComponent},
       { path: 'history-list', component: HistoryListComponent},
       { path: 'history-list/chat', component:HistoryChatComponent},
       { path: 'appointment-list', component: HistoryListComponent},
@@ -65,6 +67,8 @@ const routes: Routes = [
       { path: 'Health-Tracker/Weight', component: WeightComponent},
       { path: 'Health-Tracker/Lab-Results', component: LabResultsComponent},
       { path: 'Health-Tracker/Steps', component: StepsComponent},
+      { path: 'educational-Material', component: EducationalMaterialComponent},
+     
     ]
   }
 ];

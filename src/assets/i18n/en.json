@@ -329,5 +329,9 @@
   "KG":"kg",
   "ENTER_WEIGHT":"Enter weight",
   "SAVE_WEIGHT":" Save Weight",
-  "TOTAL_DISTANCE":"Total Distance"
+  "TOTAL_DISTANCE":"Total Distance",
+  "EDUCATIONAL_MATERIAL":"Educational Material",
+  "IMAGE":"Image",
+  "CARE_PROVIDER_CODE":"Care Provider Code",
+  "IS_APPROVED":"Is Approved"
 }

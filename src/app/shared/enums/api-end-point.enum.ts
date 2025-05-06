@@ -29,5 +29,7 @@ export enum ApiEndPoint {
     addHeartRate ="api/User/AddOrUpdateHeartRateRecord",
     addWeight ="api/User/AddOrUpdateWeightRecord",
     addStep ="api/User/AddOrUpdateStepRecord",
+    educationalMaterial = "api/User/GetEducationMaterials",
+    educationalStatus = "api/User/UpdateEducationMaterialStatus"
 }
 

@@ -41,6 +41,8 @@ import { StepsComponent } from 'src/app/Health/steps/steps.component';
 import { MedicationListComponent } from 'src/app/Medication/medication-list/medication-list.component';
 import { RequestListComponent } from 'src/app/Medication/request-list/request-list.component';
 import { CustomDateAdapter } from './appointment/book-appointment/custom-date-formats';
+import { EducationalMaterialComponent } from 'src/app/education/educational-material/educational-material.component';
+import { AddComplaintComponent } from './complaint/add-complaint/add-complaint.component';
 
 
 
@@ -76,7 +78,9 @@ import { CustomDateAdapter } from './appointment/book-appointment/custom-date-fo
     LabResultsComponent,
     StepsComponent,
     MedicationListComponent,
-    RequestListComponent
+    RequestListComponent,
+    EducationalMaterialComponent,
+    AddComplaintComponent
 
   ],
   imports: [

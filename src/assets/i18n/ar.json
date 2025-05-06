@@ -328,7 +328,11 @@
   "WEIGHT": "وزن",
   "CURRENT_WEIGHT": "الوزن الحالي",
   "KG": "كجم",
-  "ENTER_WEIGHT":"أدخل الوزن",
-  "SAVE_WEIGHT":"توفير الوزن",
-  "TOTAL_DISTANCE":"المسافة الإجمالية"
+  "ENTER_WEIGHT": "أدخل الوزن",
+  "SAVE_WEIGHT": "توفير الوزن",
+  "TOTAL_DISTANCE": "المسافة الإجمالية",
+  "EDUCATIONAL_MATERIAL": "المواد التعليمية",
+  "IMAGE": "صورة",
+  "CARE_PROVIDER_CODE": "رمز مقدم الرعاية",
+  "IS_APPROVED": "تمت الموافقة"
 }
