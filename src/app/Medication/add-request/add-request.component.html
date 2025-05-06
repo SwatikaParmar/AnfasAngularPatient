@@ -1,64 +1,86 @@
 <div class="dashboard-outer">
+  <section>
+    <div class="content-body">
+      <div class="container-fluid">
+        <form [formGroup]="requestForm" (ngSubmit)="onSubmit()">
+          <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
+            <div class="custom-container max-w-5xl mx-auto p-3">
+              <div class="flex items-center justify-between mb-2 ml-1">
+                <!-- Back Arrow Button on the Left -->
+                <button class="flex items-center justify-center w-7 h-7 rounded-full text-white"
+                  style="background-color: #726641;" (click)="backClicked()">
+                  <i class="fas fa-arrow-left" style="font-size: 13px;"></i>
+                </button>
 
-    <section>
-        <div class="content-body">
-            <div class="container-fluid">
-                <form >
-                    <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
-                        <div class="custom-container max-w-5xl mx-auto p-3">
-                            <div class="flex items-center justify-between mb-2 ml-1">
-                                <!-- Back Arrow Button on the Left -->
-                                <button class="flex items-center justify-center w-7 h-7 rounded-full text-white"
-                                    style="background-color: #726641;" >
-                                    <i class="fas fa-arrow-left" style="font-size: 13px;"></i>
-                                </button>
+                <!-- Center Text -->
+                <h1 class="text-lg font-semibold text-center flex-1" style="font-size: 25px; color: #726641;">
+                  {{ 'REQUEST' | translate }}
+                </h1>
+              </div>
+              <div class="container mt-5">
+                <div class="row mb-3">
+                  <div class="col-4">
+                    <label for="username" class="form-label">{{ 'USER_NAME' | translate }}</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="{{ 'ENTER_USER_NAME' | translate }}"
+                      formControlName="username">
 
-                                <!-- Center Text -->
-                                <h1 class="text-lg font-semibold text-center flex-1"
-                                    style="font-size: 25px; color: #726641;">
-                                    Request
-                                </h1>
-                            </div>
-                            <div class="container mt-5">
-                                <form>
-                                  <div class="row mb-3">
-                                    <div class="col-4">
-                                      <label for="username" class="form-label">Username</label>
-                                      <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
-                                    </div>
-                                    <div class="col-4">
-                                        <label for="phone" class="form-label">Phone Number</label>
-                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter phone number">
-                                      </div>
-                                    <div class="col-4">
-                                      <label for="type" class="form-label">Type</label>
-                                      <select class="form-select" id="type" name="type">
-                                        <option selected disabled>Select type</option>
-                                        <option value="1">Dummy Type 1</option>
-                                        <option value="2">Dummy Type 2</option>
-                                        <option value="3">Dummy Type 3</option>
-                                      </select>
-                                    </div>
-                              
-                                    
-                                  </div>
-                                  <div class="row mb-3 mt-3">
-                                    <div class="col-12">
-                                      <label for="description" class="form-label">Description</label>
-                                      <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter description"></textarea>
-                                    </div>
-                                  </div>
-                              
-                                  <div class="d-flex justify-content-center mb-50">
-                                    <button class="submit-btn mt-2">Submit</button>
-                                  </div>
-                                  
-                                </form>
-                              </div>
-                        </div>
+                    <div *ngIf="submitted && f['username'].errors" class="help-block" style="color: #b91b1b">
+                      <div *ngIf="f['username'].errors['required']">
+                        {{ 'USER_NAME_IS_REQUIRED' | translate }}
+                      </div>
                     </div>
-                </form>
+                  </div>
+
+                  <div class="col-4">
+                    <label for="phone" class="form-label">{{ 'PHONE_NUMBER' | translate }}</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="{{ 'ENTER_PHONE_NUMBER' | translate }}"
+                      formControlName="phoneNumber">
+
+                    <div *ngIf="submitted && f['phoneNumber'].errors" class="help-block" style="color: #b91b1b">
+                      <div *ngIf="f['phoneNumber'].errors['required']">
+                    {{ 'PHONE_NUMBER_IS_REQUIRED' | translate }}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-4">
+                    <label for="type" class="form-label">{{ 'REQUEST_TYPE' | translate }}</label>
+                    <select class="form-select" id="type" name="type" formControlName="requestTypeId">
+                      <option value="" disabled>{{ 'SELECT' | translate }}</option>
+                      <option *ngFor="let type of requestTypeList" [value]="type.requestTypeID">
+                        {{ type.requestTypeName }}
+                      </option>
+                    </select>
+                    <div *ngIf="submitted && f['requestTypeId'].errors" class="help-block text-danger">
+                      <div *ngIf="f['requestTypeId'].errors['required']">
+                       {{ 'REQUEST_TYPE_IS_REQUIRED' | translate }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mb-3 mt-3">
+                  <div class="col-12">
+                    <label for="description" class="form-label">{{ 'DESCRIPTION1' | translate }}</label>
+                    <textarea class="form-control" id="description" name="description" rows="3"
+                      placeholder="{{ 'ENTER_DESCRETION' | translate }}" formControlName="discretion"></textarea>
+
+                    <div *ngIf="submitted && f['discretion'].errors" class="help-block" style="color: #b91b1b">
+                      <div *ngIf="f['discretion'].errors['required']">
+                       {{ 'DISCRETION_IS_REQUIRED' | translate }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-center mb-50">
+                  <button type="submit" class="submit-btn mt-2">{{ 'SUBMIT' | translate }}</button>
+                </div>
+              </div>
             </div>
-        </div>
-    </section>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
 </div>

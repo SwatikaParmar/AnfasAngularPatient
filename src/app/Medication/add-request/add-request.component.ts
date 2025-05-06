@@ -14,32 +14,34 @@ export class AddRequestComponent {
   requestForm!: FormGroup;
   submitted = false;
   id: any;
+  requestTypeList: any;
 
 
-  constructor(private toaster: ToastrService,
+  constructor(
+    private toaster: ToastrService,
     private spinner: NgxSpinnerService,
     private content: ContentService,
     private router: Router,
     private route: ActivatedRoute,
-    private contentService: ContentService,
     private formBuilder: FormBuilder,
-    private _location: Location,) { }
+    private _location: Location
+  ) { }
+  
 
   ngOnInit(): void {
-    this.request();
-    // Check if editing
-    this.route.params.subscribe(params => {
-      this.id = params['id']; // Ensure 'id' matches the route parameter name
-    });
+    this.initializeForm();
+    this.getRequestType();
   }
-
-  request() {
+  
+  initializeForm() {
     this.requestForm = this.formBuilder.group({
       username: ['', Validators.required],
+      requestTypeId: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       discretion: ['', Validators.required]
     });
   }
+  
 
   get f() {
     return this.requestForm.controls;
@@ -49,40 +51,48 @@ export class AddRequestComponent {
     this._location.back();
   }
 
+  getRequestType() {
+    debugger
+    this.content.getRequestType().subscribe(response => {
+      if (response.status) {
+        this.requestTypeList = response.data;
+      }
+    });
+  }
+  
   onSubmit() {
     this.submitted = true;
-
-    // Validate form
+  
     if (this.requestForm.invalid) {
       return;
     }
-    this.spinner.show();
-
-      // Add new category
-      const addData = {
-        id: 0, // Default 0 for adding a new category
-        username: this.requestForm.value.username,
-        requestTypeId: this.requestForm.value.requestTypeId,
-        phoneNumber: this.requestForm.value.phoneNumber,
-        discretion :this.requestForm.value.discretion,
-      };
-
-      this.content.addRequest(addData).subscribe(
-        response => {
-          this.spinner.hide();
-          if (response.isSuccess) {
-            this.toaster.success("Request added successfully");
-            this.router.navigate(['/request-list']);
-          } else {
-            this.toaster.error(response.messages);
-          }
-        },
-        error => {
-          this.spinner.hide();
-          this.toaster.error("An error occurred while adding the Request.");
-        }
-      );
-    }
   
-
+    this.spinner.show();
+  
+    const addData = {
+      id: 0,
+      username: this.requestForm.value.username,
+      requestTypeId: this.requestForm.value.requestTypeId,
+      phoneNumber: this.requestForm.value.phoneNumber,
+      discretion: this.requestForm.value.discretion,
+    };
+  
+    this.content.addRequest(addData).subscribe(
+      response => {
+        this.spinner.hide();
+        if (response.status) {
+          // this.toaster.success(response.message);
+          this.router.navigate(['/request-list']);
+        } else {
+          this.toaster.error(response.message || 'Failed to save request');
+        }
+      },
+      error => {
+        this.spinner.hide();
+        this.toaster.error('Something went wrong');
+      }
+    );
+  }
+  
+ 
 }

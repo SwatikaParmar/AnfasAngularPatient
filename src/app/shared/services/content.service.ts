@@ -151,6 +151,7 @@ export class ContentService {
   }
 
   getRequestType() {
+    debugger
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.requestType)
   }
 

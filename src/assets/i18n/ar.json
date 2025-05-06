@@ -336,5 +336,12 @@
   "CARE_PROVIDER_CODE": "رمز مقدم الرعاية",
   "IS_APPROVED": "تمت الموافقة",
   "ADD_COMPLAINT": "إضافة شكوى",
-  "ADD_REQUEST": "إضافة طلب"
+  "ADD_REQUEST": "إضافة طلب",
+  "ENTER_USER_NAME":"أدخل اسم المستخدم",
+  "USER_NAME_IS_REQUIRED":"اسم المستخدم مطلوب",
+  "PHONE_NUMBER_IS_REQUIRED":"رقم الهاتف مطلوب",
+  "REQUEST_TYPE":"نوع الطلب",
+  "REQUEST_TYPE_IS_REQUIRED":"نوع الطلب مطلوب",
+  "ENTER_DESCRETION":"أدخل التقدير",
+  "DISCRETION_IS_REQUIRED":"التقدير مطلوب"
 }
