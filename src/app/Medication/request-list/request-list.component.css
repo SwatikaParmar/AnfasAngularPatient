@@ -44,4 +44,13 @@
     font-size: 18px;
     cursor: pointer;
   }
-  
+  .appointment-btn {
+    background-color: #a68c4d;
+    color: #fff;
+    border: none;
+    padding: 6px 15px;
+    border-radius: 20px;
+  }
+  .appointment-btn:hover {
+    background-color: #8e773f;
+  }

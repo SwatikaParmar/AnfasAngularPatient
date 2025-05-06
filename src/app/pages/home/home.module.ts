@@ -43,6 +43,7 @@ import { RequestListComponent } from 'src/app/Medication/request-list/request-li
 import { CustomDateAdapter } from './appointment/book-appointment/custom-date-formats';
 import { EducationalMaterialComponent } from 'src/app/education/educational-material/educational-material.component';
 import { AddComplaintComponent } from './complaint/add-complaint/add-complaint.component';
+import { AddRequestComponent } from 'src/app/Medication/add-request/add-request.component';
 
 
 
@@ -80,7 +81,8 @@ import { AddComplaintComponent } from './complaint/add-complaint/add-complaint.c
     MedicationListComponent,
     RequestListComponent,
     EducationalMaterialComponent,
-    AddComplaintComponent
+    AddComplaintComponent,
+    AddRequestComponent
 
   ],
   imports: [
