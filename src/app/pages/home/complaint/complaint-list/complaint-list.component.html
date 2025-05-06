@@ -1,70 +1,70 @@
 <div class="dashboard-outer">
 
-    <section>
-        <div class="content-body">
-            <div class="container-fluid">
-                <div class="flex mb-2 items-center ml-1">
-             
-                    <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">{{ 'COMPLAINT_LIST' | translate }}</h1>
+  <section>
+    <div class="content-body">
+      <div class="container-fluid">
+        <div class="flex mb-2 items-center ml-1">
 
-                    
-          <button 
-            class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full w-full sm:w-auto"
+          <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">{{ 'COMPLAINT_LIST' | translate }}
+          </h1>
+
+
+          <button class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full w-full sm:w-auto"
             [routerLink]="['/complaint/complaint-add']">
             + {{ 'ADD_COMPLAINT' | translate }}
           </button>
-                </div>
-                <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
-                    <div class="custom-container max-w-5xl mx-auto p-3">
-                        <div class="container">
-                            
-                            <div class="table-container">
-                              <div class="table-responsive">
-                                <table class="complaint-table">
-                                  <thead>
-                                    <tr>
-                                      <th>{{ 'PATIENT_NAME' | translate }}</th>
-                                      <th>{{ 'COMPLAINT_TYPE_NAME' | translate }}</th>
-                                      <th>{{ 'DATE' | translate }}</th>
-                                      <th>{{ 'STATUS' | translate }}</th>
-                                      <th>{{ 'ACTION' | translate }}</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr class="row-light" *ngFor="let item of complaintList | paginate : {
+        </div>
+        <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
+          <div class="custom-container max-w-5xl mx-auto p-3">
+            <div class="container">
+
+              <div class="table-container">
+                <div class="table-responsive">
+                  <table class="complaint-table">
+                    <thead>
+                      <tr>
+                        <th>{{ 'PATIENT_NAME' | translate }}</th>
+                        <th>{{ 'COMPLAINT_TYPE_NAME' | translate }}</th>
+                        <th>{{ 'DATE' | translate }}</th>
+                        <th>{{ 'STATUS' | translate }}</th>
+                        <th>{{ 'ACTION' | translate }}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="row-light" *ngFor="let item of complaintList | paginate : {
                                         itemsPerPage: 5,
                                         currentPage: page,
                                         totalItems: totalItems,
                                         id: '1'
                                       }">
-                                      <td>{{ item.patientName || 'N/A' }}</td>
-                                      <td>{{ item.complaintTypeName || 'N/A' }}</td>
-                                      <td>{{ item.createdAt || 'N/A' }}</td>
-                                      <td [ngStyle]="{
+                        <td>{{ item.patientName || 'N/A' }}</td>
+                        <td>{{ item.complaintTypeName || 'N/A' }}</td>
+                        <td>{{ item.createdAt || 'N/A' }}</td>
+                        <td [ngStyle]="{
                                         'color': getStatusColor(item.status)
                                     }">
-                                      {{ item.status || 'N/A' }}
-                                    </td>
-                                    
-                                      <td [routerLink]="['/complaint/chat', item?.complaintId]"><i class="fa fa-eye"></i></td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </div>
-                              
-                              <div class="no-data text-center" *ngIf="complaintList && complaintList.length === 0">
-                                <img src="assets/images/ffffrq-removebg-preview.png" style="width: 50%; margin: auto; padding: 50px;">
-                              </div>
-                              
-                        <div class="pagination-container pb-3 pt-3">
-                          <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
-                            queryParamsHandling="merge"></pagination-controls>
-                        </div>
-                              </div>
-                        </div>
-                    </div>
+                          {{ item.status || 'N/A' }}
+                        </td>
+
+                        <td [routerLink]="['/complaint/chat', item?.complaintId]"><i class="fa fa-eye"></i></td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
+
+                <div class="no-data text-center" *ngIf="complaintList && complaintList.length === 0">
+                  <img src="assets/images/ffffrq-removebg-preview.png" style="width: 50%; margin: auto; padding: 50px;">
+                </div>
+
+                <div class="pagination-container pb-3 pt-3">
+                  <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
+                    queryParamsHandling="merge"></pagination-controls>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 </div>

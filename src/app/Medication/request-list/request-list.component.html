@@ -1,71 +1,72 @@
 <div class="dashboard-outer">
 
-    <section>
-        <div class="content-body">
-            <div class="container-fluid">
-                <div class="flex mb-2 items-center ml-1">
-             
-                    <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">{{ 'REQUEST_LIST' | translate }}</h1>
-                    <button 
-                    class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full w-full sm:w-auto "
-                    [routerLink]="['/request-list/request-add']">
-                    + {{ 'ADD_REQUEST' | translate }}
-                  </button>
-                </div>
-                <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
-                    <div class="custom-container max-w-5xl mx-auto p-3">
-                        <div class="container">
-                            
-                            <div class="table-container">
-                                <table>
-                                  <thead>
-                                    <tr>
-                                      <th>{{ 'USER_NAME' | translate }}</th>
-                                      <th>{{ 'REQUEST_TYPE_NAME' | translate }}</th>
-                                      <th>{{ 'PHONE_NUMBER' | translate }}</th>
-                                      <th>{{ 'STATUS' | translate }}</th>
-                                      <th>{{ 'DESCRIPTION1' | translate }}</th>
-                                      <!-- <th>Action</th> -->
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr class="row-light" *ngFor="let item of requestList  | paginate
+  <section>
+    <div class="content-body">
+      <div class="container-fluid">
+        <div class="flex mb-2 items-center ml-1">
+
+          <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">{{ 'REQUEST_LIST' | translate }}
+          </h1>
+          <button class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full w-full sm:w-auto "
+            [routerLink]="['/request-list/request-add']">
+            + {{ 'ADD_REQUEST' | translate }}
+          </button>
+        </div>
+        <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
+          <div class="custom-container max-w-5xl mx-auto p-3">
+            <div class="container">
+
+              <div class="table-container">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>{{ 'USER_NAME' | translate }}</th>
+                      <th>{{ 'REQUEST_TYPE_NAME' | translate }}</th>
+                      <th>{{ 'PHONE_NUMBER' | translate }}</th>
+                      <th>{{ 'STATUS' | translate }}</th>
+                      <th>{{ 'DESCRIPTION1' | translate }}</th>
+                      <!-- <th>Action</th> -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="row-light" *ngFor="let item of requestList  | paginate
                                     : {
                                         itemsPerPage: 5,
                                         currentPage: page,
                                         totalItems: totalItems,
                                         id: '1'
                                       }">
-                                      <td>{{item.userName  || 'N/A' }}</td>
-                                      <td>{{item.requestTypeName  || 'N/A' }}</td>
-                                      <td>{{item.phoneNumber  || 'N/A' }}</td>
-                                      <td>
-                                       {{item.status || 'N/A' }}
-                                      </td>
-                                      <td>
-                                        {{ item.discretion ? (item.discretion.split(' ').slice(0, 3).join(' ') + (item.discretion.split(' ').length > 3 ? '...' : '')) : 'N/A' }}
-                                      </td>
-                                                                           
-                                      <!-- <td [routerLink]="['/complaint/chat', item?.complaintId]"><i class="fa fa-eye"></i></td> -->
+                      <td>{{item.userName || 'N/A' }}</td>
+                      <td>{{item.requestTypeName || 'N/A' }}</td>
+                      <td>{{item.phoneNumber || 'N/A' }}</td>
+                      <td>
+                        {{item.status || 'N/A' }}
+                      </td>
+                      <td>
+                        {{ item.discretion ? (item.discretion.split(' ').slice(0, 3).join(' ') +
+                        (item.discretion.split(' ').length > 3 ? '...' : '')) : 'N/A' }}
+                      </td>
 
-                                    </tr>
-                              
-                                  </tbody>
-                                </table>
-                                <div class="no-data text-center" *ngIf="requestList && requestList.length === 0">
-                                  <img src="assets/images/ffffrq-removebg-preview.png" style="width: 50%; margin: auto; padding: 50px;">
-                              </div>
+                      <!-- <td [routerLink]="['/complaint/chat', item?.complaintId]"><i class="fa fa-eye"></i></td> -->
 
-                                
-                        <div class="pagination-container pt-3 pb-3">
-                          <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
-                            queryParamsHandling="merge"></pagination-controls>
-                        </div>
-                              </div>
-                        </div>
-                    </div>
+                    </tr>
+
+                  </tbody>
+                </table>
+                <div class="no-data text-center" *ngIf="requestList && requestList.length === 0">
+                  <img src="assets/images/ffffrq-removebg-preview.png" style="width: 50%; margin: auto; padding: 50px;">
                 </div>
+
+
+                <div class="pagination-container pt-3 pb-3">
+                  <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
+                    queryParamsHandling="merge"></pagination-controls>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 </div>
