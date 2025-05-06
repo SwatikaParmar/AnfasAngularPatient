@@ -333,5 +333,7 @@
   "EDUCATIONAL_MATERIAL":"Educational Material",
   "IMAGE":"Image",
   "CARE_PROVIDER_CODE":"Care Provider Code",
-  "IS_APPROVED":"Is Approved"
+  "IS_APPROVED":"Is Approved",
+  "ADD_COMPLAINT":"Add Complaint",
+  "ADD_REQUEST":"Add Request"
 }

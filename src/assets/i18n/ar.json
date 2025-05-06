@@ -334,5 +334,7 @@
   "EDUCATIONAL_MATERIAL": "المواد التعليمية",
   "IMAGE": "صورة",
   "CARE_PROVIDER_CODE": "رمز مقدم الرعاية",
-  "IS_APPROVED": "تمت الموافقة"
+  "IS_APPROVED": "تمت الموافقة",
+  "ADD_COMPLAINT": "إضافة شكوى",
+  "ADD_REQUEST": "إضافة طلب"
 }

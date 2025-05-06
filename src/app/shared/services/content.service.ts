@@ -212,4 +212,13 @@ export class ContentService {
   statusEducational(data: any) {
     return this.http.post<any>(environment.apiUrl + ApiEndPoint.educationalStatus, data);
   }
+
+  addRequest(data: any) {
+    return this.http.post<any>(
+      environment.apiUrl + ApiEndPoint.addRequest,
+      data
+    );
+
+  }
+
 }
