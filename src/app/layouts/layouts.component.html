@@ -2,7 +2,7 @@
 
   <div class="nav-header">
 
-    <a  class="brand-logo">
+    <a class="brand-logo">
       <img class="logo-abbr" src="assets/images/logo-dashboard.png" alt="">
     </a>
 
@@ -28,16 +28,16 @@
     </ul>
     <ul class="header-profile">
       <li><a class="setting" data-toggle="dropdown">
-        <img src="assets/images/profile-i.svg" class="img-responsive">
-      </a>
+          <img src="assets/images/profile-i.svg" class="img-responsive">
+        </a>
         <ul class="dropdown-menu mt-10">
-           <li  class="mb-2"><a class="dropdown-item " [routerLink]="['/profile']">{{ 'PROFILE' | translate }}</a></li>
+          <li class="mb-2"><a class="dropdown-item " [routerLink]="['/profile']">{{ 'PROFILE' | translate }}</a></li>
           <li><a class="dropdown-item" [routerLink]="['/']">
-            {{ 'LOGOUT' | translate }}</a></li>
-         
+              {{ 'LOGOUT' | translate }}</a></li>
+
         </ul>
       </li>
-      
+
       <!-- <li class="dropdown">
         <a class="setting " data-toggle="dropdown"><img src="assets/images/settings-i.svg" class="img-responsive"></a>
         <ul class="dropdown-menu mt-10">
@@ -56,11 +56,13 @@
         </a>
         <ul class="dropdown-menu1 language-menu1" [ngClass]="{'show': isLanguageMenuOpen}">
           <li class="mb-2">
-            <a class="down" href="javascript:void(0)" (click)="switchLanguage('en')" [class.selected]="currentLanguage === 'en'"> {{
+            <a class="down" href="javascript:void(0)" (click)="switchLanguage('en')"
+              [class.selected]="currentLanguage === 'en'"> {{
               'ENGLISH' | translate }}</a>
           </li>
           <li>
-            <a class="down" href="javascript:void(0)" (click)="switchLanguage('ar')" [class.selected]="currentLanguage === 'ar'"> {{
+            <a class="down" href="javascript:void(0)" (click)="switchLanguage('ar')"
+              [class.selected]="currentLanguage === 'ar'"> {{
               'ARABIC' | translate }}</a>
           </li>
         </ul>
@@ -72,7 +74,7 @@
   <!-- ---- -->
   <section>
     <aside class="side-bar">
-      <a  class="aside-logo text-center">
+      <a class="aside-logo text-center">
         <img class="logo-abbr" src="assets/images/logo-dashboard.png" style="max-width: 120px; margin: auto;">
       </a>
 
@@ -81,45 +83,50 @@
           <div class="menu">
             <div class="item one">
               <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><svg
-                  xmlns=" http://www.w3.org/2000/svg "
-                  viewBox="0 0 576 512">
+                  xmlns=" http://www.w3.org/2000/svg " viewBox="0 0 576 512">
                   <path
                     d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z">
                   </path>
-                </svg> <span style="font-size: 15px !important; font-weight: 600 !important;">{{ 'DASHBOARD' | translate }}</span></a>
+                </svg> <span style="font-size: 15px !important; font-weight: 600 !important;">{{ 'DASHBOARD' | translate
+                  }}</span></a>
             </div>
 
             <div class="item one" routerLinkActive="active">
               <a class="sub-btn" [routerLink]="['/visit']">
-                <i class="fas fa-calendar-check"  style="font-size: 20px;"></i>    <span style="font-size: 15px !important; font-weight: 600 !important;">{{ 'MY_VISITS' | translate }}</span>
+                <i class="fas fa-calendar-check" style="font-size: 20px;"></i> <span
+                  style="font-size: 15px !important; font-weight: 600 !important;">{{ 'MY_VISITS' | translate }}</span>
 
-              </a>
-            </div>
-            
-            <div class="item shw one" routerLinkActive="active">
-              <a  [routerLink]="['/complaint']">
-                <i class="fas fa-exclamation-circle" style="font-size: 20px;"></i> <span style="font-size: 15px !important; font-weight: 600 !important;">{{ 'COMPLAINT_LIST' | translate }}</span>
               </a>
             </div>
 
             <div class="item shw one" routerLinkActive="active">
-              <a  [routerLink]="['/appointment-list']">
+              <a [routerLink]="['/complaint']">
+                <i class="fas fa-exclamation-circle" style="font-size: 20px;"></i> <span
+                  style="font-size: 15px !important; font-weight: 600 !important;">{{ 'COMPLAINT_LIST' | translate
+                  }}</span>
+              </a>
+            </div>
+
+            <div class="item shw one" routerLinkActive="active">
+              <a [routerLink]="['/appointment-list']">
                 <i class="fas fa-clipboard-list" style="font-size: 20px;"></i>
 
-                <span style="font-size: 15px !important; font-weight: 600 !important;">{{ 'MY_APPOINTMENTS' | translate }}</span>
+                <span style="font-size: 15px !important; font-weight: 600 !important;">{{ 'MY_APPOINTMENTS' | translate
+                  }}</span>
               </a>
             </div>
 
-            
+
 
             <div class="item shw one" routerLinkActive="active">
               <a class="sub-btn" [routerLink]="['/satisfaction-form']">
-                <i class="fas fa-thumbs-up" style="font-size: 20px;"></i> 
-                <span style="font-size: 15px !important; font-weight: 600 !important;">{{ 'SATISFACTION_FORM' | translate }}</span>
+                <i class="fas fa-thumbs-up" style="font-size: 20px;"></i>
+                <span style="font-size: 15px !important; font-weight: 600 !important;">{{ 'SATISFACTION_FORM' |
+                  translate }}</span>
               </a>
             </div>
-            
-  
+
+
             <div class="item shw one" routerLinkActive="active">
               <a class="sub-btn" [routerLink]="['/medication-list']">
                 <i class="fas fa-pills" style="font-size: 20px;"></i>
@@ -128,7 +135,7 @@
                 </span>
               </a>
             </div>
-            
+
             <div class="item shw one" routerLinkActive="active">
               <a class="sub-btn" [routerLink]="['/request-list']">
                 <i class="fas fa-user-plus" style="font-size: 20px;"></i>
@@ -137,24 +144,26 @@
                 </span>
               </a>
             </div>
-            
-            
-            
-            
+
+
+
+
             <div class="item shw one" routerLinkActive="active">
               <a class="sub-btn" [routerLink]="['/messages']">
                 <i class="fas fa-comment-dots" style="font-size: 20px;"></i>
-                <span style="font-size: 15px !important; font-weight: 600 !important;"> {{ 'MESSAGES' | translate }}</span>
+                <span style="font-size: 15px !important; font-weight: 600 !important;"> {{ 'MESSAGES' | translate
+                  }}</span>
               </a>
             </div>
-            
+
             <div class="item shw one" routerLinkActive="active">
               <a class="sub-btn" [routerLink]="['/history-list']">
-                <i class="fas fa-history" style="font-size: 20px;"></i> 
-                <span style="font-size: 15px !important; font-weight: 600 !important;">{{ 'HISTORY' | translate }}</span>
+                <i class="fas fa-history" style="font-size: 20px;"></i>
+                <span style="font-size: 15px !important; font-weight: 600 !important;">{{ 'HISTORY' | translate
+                  }}</span>
               </a>
             </div>
-            
+
             <div class="item shw one" routerLinkActive="active">
               <a class="sub-btn" [routerLink]="['/Health-Tracker']">
                 <i class="fas fa-heartbeat" style="font-size: 20px; margin-right: 5px;"></i> <!-- NEW icon -->
@@ -163,7 +172,7 @@
                 </span>
               </a>
             </div>
-            
+
             <div class="item shw one" routerLinkActive="active">
               <a class="sub-btn" [routerLink]="['/educational-Material']">
                 <i class="fas fa-book" style="font-size: 20px; margin-right: 5px;"></i> <!-- Book icon -->
@@ -172,8 +181,8 @@
                 </span>
               </a>
             </div>
-            
-            
+
+
 
             <!-- <div class="item shw one" routerLinkActive="active">
               <a>
@@ -193,7 +202,7 @@
                 </span>
               </a>
             </div> -->
-            
+
 
             <!-- <div class="item shw one" routerLinkActive="active">
               <a>
@@ -206,7 +215,8 @@
              -->
             <div class="item one" routerLinkActive="active">
               <a [routerLink]="['/about-Us']">
-                <i class="fas fa-users"></i> <span style="font-size: 15px !important; font-weight: 600 !important;">{{ 'ABOUT_US' | translate }}</span>
+                <i class="fas fa-users"></i> <span style="font-size: 15px !important; font-weight: 600 !important;">{{
+                  'ABOUT_US' | translate }}</span>
               </a>
             </div>
 
