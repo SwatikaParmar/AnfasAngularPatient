@@ -44,6 +44,7 @@ import { CustomDateAdapter } from './appointment/book-appointment/custom-date-fo
 import { EducationalMaterialComponent } from 'src/app/education/educational-material/educational-material.component';
 import { AddComplaintComponent } from './complaint/add-complaint/add-complaint.component';
 import { AddRequestComponent } from 'src/app/Medication/add-request/add-request.component';
+import { EducationalMaterialDetailComponent } from 'src/app/education/educational-material/educational-material-detail/educational-material-detail.component';
 
 
 
@@ -82,7 +83,8 @@ import { AddRequestComponent } from 'src/app/Medication/add-request/add-request.
     RequestListComponent,
     EducationalMaterialComponent,
     AddComplaintComponent,
-    AddRequestComponent
+    AddRequestComponent,
+    EducationalMaterialDetailComponent
 
   ],
   imports: [

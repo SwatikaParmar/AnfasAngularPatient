@@ -19,6 +19,7 @@ import { MedicationListComponent } from './Medication/medication-list/medication
 import { RequestListComponent } from './Medication/request-list/request-list.component';
 import { EducationalMaterialComponent } from './education/educational-material/educational-material.component';
 import { AddRequestComponent } from './Medication/add-request/add-request.component';
+import { EducationalMaterialDetailComponent } from './education/educational-material/educational-material-detail/educational-material-detail.component';
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader { 
   return new TranslateHttpLoader(http, './assets/i18n/', '.json'); 
 }

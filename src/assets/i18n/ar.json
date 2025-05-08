@@ -343,5 +343,11 @@
   "REQUEST_TYPE":"نوع الطلب",
   "REQUEST_TYPE_IS_REQUIRED":"نوع الطلب مطلوب",
   "ENTER_DESCRETION":"أدخل التقدير",
-  "DISCRETION_IS_REQUIRED":"التقدير مطلوب"
+  "DISCRETION_IS_REQUIRED":"التقدير مطلوب",
+  "EDUCATIONAL_MATERIAL_DETAIL": "تفاصيل المواد التعليمية",
+  "CONTENT_URL": "عنوان URL للمحتوى",
+  "N_A": "غير متوفر",
+  "PATIENT_LIST": "قائمة المرضى",
+  "PROFILE_PiC": "صورة الملف الشخصي",
+  "VIEW_DOCUMENT": "عرض المستند"
 }

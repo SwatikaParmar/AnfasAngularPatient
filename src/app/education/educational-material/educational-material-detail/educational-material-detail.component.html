@@ -1,0 +1,121 @@
+<section>
+    <div class="content-body">
+      <div class="container-fluid">
+        <div class="input-form">
+          <div class="row justify-content-start align-items-start g-0">
+            <div class="col-12 col-md-9">
+              <div class="card-shipper">
+                <div class="back-btn-left-circle mt-1">
+                  <i class="fi fi-rr-arrow-small-left" (click)="backClicked()"
+                    style="color:#726641; padding-top: 7px;"></i>
+                </div>
+                <div>
+                  <p>
+                    <span class="black-home">{{ 'EDUCATIONAL_MATERIAL_DETAIL' | translate }}</span>
+                  </p>
+                </div>
+              </div>
+  
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex row align-items-center">
+                  <p class="col-5">{{ 'TITLE1' | translate }}</p>
+                  <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                  <p class="col-5">
+                    <label class="address-texts">{{ detail?.title || 'N/A' }}</label>
+                  </p>
+                </li>
+  
+                <li class="list-group-item d-flex row align-items-center">
+                  <p class="col-5">{{ 'DESCRIPTION1' | translate }}</p>
+                  <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                  <p class="col-5">
+                    <label class="address-texts">{{ detail?.description || 'N/A' }}</label>
+                  </p>
+                </li>
+                <li class="list-group-item d-flex row align-items-center">
+                  <p class="col-5">{{ 'CONTENT_URL' | translate }}</p>
+                  <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                  <p class="col-5">
+                    <label class="address-texts">
+                      <a *ngIf="detail?.contentUrl" [href]="rootUrl + detail.contentUrl" rel="noopener">
+                       {{ 'VIEW_DOCUMENT' | translate }}
+                      </a>
+                      <span *ngIf="!detail?.contentUrl">{{ 'N_A' | translate }}</span>
+                    </label>
+                  </p>
+                </li>
+  
+  
+                <li class="list-group-item d-flex row align-items-center">
+                  <p class="col-5">{{ 'CARE_PROVIDER_CODE' | translate }}</p>
+                  <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                  <p class="col-5">
+                    <label class="address-texts">{{ detail?.careProviderCode || 'N/A' }}</label>
+                  </p>
+                </li>
+  
+                <li class="list-group-item d-flex row align-items-center">
+                  <p class="col-5">{{ 'CREATED_AT' | translate }}</p>
+                  <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                  <p class="col-5">
+                    <label class="address-texts">
+                      {{ detail?.createdAt ? (detail.createdAt | date: 'MM/dd/yyyy') : 'N/A' }}
+                    </label>
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section *ngIf="patientList && patientList.length > 0">
+    <div class="content-body">
+      <div class="container-fluid">
+        <div class="input-form">
+          <div class="content-body-top">
+            <div class="container-fluid">
+              <div class="bx-table table-responsive">
+                <table class="table">
+                  <tr>
+                    <td colspan="12">
+                      <h4 style=" color:#726641; font-size: 20px; margin-bottom: 10px;">
+                        {{ 'PATIENT_LIST' | translate }}
+                      </h4>
+                    </td>
+                  </tr>
+                  <tr class="color">
+                    <th scope="col">{{ 'FIRST_NAME' | translate }}</th>
+                    <th scope="col">{{ 'LAST_NAME' | translate }}</th>
+                    <th scope="col">{{ 'PROFILE_PiC' | translate }}</th>
+                    <th scope="col">{{ 'MRN' | translate }}</th>
+                    <th scope="col">{{ 'PHONE_NUMBER' | translate }}</th>
+                    <th scope="col">{{ 'NATIONALITY' | translate }}</th>
+                  </tr>
+                  <tr
+                    *ngFor="let item of patientList | paginate : { itemsPerPage: 10, currentPage: page, totalItems: totalItems, id: '1' }; let i = index">
+                    <td>{{ item?.firstName || 'N/A' }}</td>
+                    <td>{{ item?.lastName || 'N/A' }}</td>
+                    <td>
+                      <img *ngIf="item?.profilePic" [src]="rootUrl + item.profilePic" alt="Profile" width="40"
+                        height="40">
+                      <span *ngIf="!item?.profilePic">N/A</span>
+                    </td>
+                    <td>{{ item?.mrn || 'N/A' }}</td>
+                    <td>{{ item?.phonenumber || 'N/A' }}</td>
+                    <td>{{ item?.nationality || 'N/A' }}</td>
+                  </tr>
+                </table>
+              </div>
+  
+              <pagination-controls (pageChange)="page = $event" id="1" class="paginate-doctor-list"
+                queryParamsHandling="merge">
+              </pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

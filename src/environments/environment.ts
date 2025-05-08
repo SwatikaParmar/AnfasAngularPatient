@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://192.168.1.9:5001/",
+  apiUrl: "http://81.208.171.189:4200/",
   rootPathUrl: "http://81.208.171.189:4200/",
 };
 

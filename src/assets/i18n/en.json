@@ -342,5 +342,11 @@
   "REQUEST_TYPE":"Request Type",
   "REQUEST_TYPE_IS_REQUIRED":"Request Type is required",
   "ENTER_DESCRETION":"Enter Discretion",
-  "DISCRETION_IS_REQUIRED":" Discretion is required"
+  "DISCRETION_IS_REQUIRED":" Discretion is required",
+  "EDUCATIONAL_MATERIAL_DETAIL":"Educational Material Detail",
+  "CONTENT_URL":"Content Url",
+  "N/A":"N/A",
+  "PATIENT_LIST":"Patient List",
+  "PROFILE_PiC":"Profile Pic",
+  "VIEW_DOCUMENT":"View Document"
 }

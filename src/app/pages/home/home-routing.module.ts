@@ -31,6 +31,7 @@ import { LabResultsComponent } from 'src/app/Health/lab-results/lab-results.comp
 import { StepsComponent } from 'src/app/Health/steps/steps.component';
 import { EducationalMaterialComponent } from 'src/app/education/educational-material/educational-material.component';
 import { AddRequestComponent } from 'src/app/Medication/add-request/add-request.component';
+import { EducationalMaterialDetailComponent } from 'src/app/education/educational-material/educational-material-detail/educational-material-detail.component';
 
 
 const routes: Routes = [
@@ -69,6 +70,7 @@ const routes: Routes = [
       { path: 'Health-Tracker/Lab-Results', component: LabResultsComponent},
       { path: 'Health-Tracker/Steps', component: StepsComponent},
       { path: 'educational-Material', component: EducationalMaterialComponent},
+      { path: 'educational-Material/educational-detail/:id', component: EducationalMaterialDetailComponent},
       { path: 'request-list/request-add', component: AddRequestComponent},
     ]
   }

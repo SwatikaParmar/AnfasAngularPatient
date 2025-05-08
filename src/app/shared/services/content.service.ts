@@ -206,7 +206,7 @@ export class ContentService {
 
   geteducationalMaterial(data: any) {
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.educationalMaterial + '?pageNumber=' + data.pageNumber + '&pageSize=' + data.pageSize
-      + '&isApproved=' + data.isApproved  + '&mrn=' + data.mrn
+      + '&mrn=' + data.mrn
     );
   }
 
@@ -219,7 +219,11 @@ export class ContentService {
       environment.apiUrl + ApiEndPoint.addRequest,
       data
     );
-
   }
 
+  geteducationalMaterialDetail(id: any): Observable<any> {
+    return this.http.get<any>(
+      `${environment.apiUrl}${ApiEndPoint.educationalMaterialDetail}?id=${id}`
+    );
+  }
 }

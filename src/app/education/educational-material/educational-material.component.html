@@ -18,11 +18,12 @@
                                         <thead>
                                             <tr>
                                                 <th>{{ 'TITLE1' | translate }}</th>
-                                                <th>{{ 'IMAGE' | translate }}</th>
+                                                <!-- <th>{{ 'IMAGE' | translate }}</th> -->
                                                 <th>{{ 'DESCRIPTION1' | translate }}</th>
                                                 <th>{{ 'CARE_PROVIDER_CODE' | translate }}</th>
                                                 <th>{{ 'IS_APPROVED' | translate }}</th>
                                                 <th>{{ 'CREATED_AT' | translate }}</th>
+                                                <th>{{ 'ACTION' | translate }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -33,18 +34,24 @@
                                         id: '1'
                                       }">
                                                 <td>{{ item.title || 'N/A' }}</td>
-                                                <td>
+                                                <!-- <td>
                                                     <img *ngIf="item.contentUrl; else noUrl"
                                                         [src]="rootUrl + item.contentUrl" alt="Content" width="50"
                                                         height="50">
                                                     <ng-template #noUrl>N/A</ng-template>
-                                                </td>
+                                                </td> -->
 
                                                 <td>{{ item.description || 'N/A' }}</td>
                                                 <td>{{ item.careProviderCode || 'N/A' }}</td>
                                                 <td>{{ item.isApproved || 'N/A' }}</td>
                                                 <td>{{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : 'N/A' }}
                                                 </td>
+                                                <td>
+                                                    <a
+                                                      class="list-icon"
+                                                      ><i class="fa fa-eye" [routerLink]="['/educational-Material/educational-detail', item?.id]" aria-hidden="true"></i></a>
+                                              
+                                                  </td>
                                             </tr>
                                         </tbody>
                                     </table>
