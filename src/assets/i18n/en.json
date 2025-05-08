@@ -335,5 +335,12 @@
   "CARE_PROVIDER_CODE":"Care Provider Code",
   "IS_APPROVED":"Is Approved",
   "ADD_COMPLAINT":"Add Complaint",
-  "ADD_REQUEST":"Add Request"
+  "ADD_REQUEST":"Add Request",
+  "ENTER_USER_NAME":"Enter username",
+  "USER_NAME_IS_REQUIRED":"User Name is required",
+  "PHONE_NUMBER_IS_REQUIRED":"Phone Number is required",
+  "REQUEST_TYPE":"Request Type",
+  "REQUEST_TYPE_IS_REQUIRED":"Request Type is required",
+  "ENTER_DESCRETION":"Enter Discretion",
+  "DISCRETION_IS_REQUIRED":" Discretion is required"
 }

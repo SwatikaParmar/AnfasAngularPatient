@@ -33,28 +33,35 @@ page: number = 0;
     this.RequestList();  
   }
   
-  RequestList() {
-    let payload = {
-      userName : localStorage.getItem('mrn'),
-      pageNumber : 1,
-      pageSize : 10
-    }
-
-    this.contentService.getRequestList(payload).subscribe(
-      response => {
-        if (response.status) {
-          this.requestList = response.data;
+  RequestList(): void {
+    this.spinner.show();
+  
+    const mrn = localStorage.getItem('mrn') || '';
+    const payload = {
+      userName: mrn,
+      pageNumber: 1,
+      pageSize: 10
+    };
+  
+    this.contentService.getRequestList(payload).subscribe({
+      next: (response: any) => {
+        if (response?.status) {
+          this.requestList = response.data || [];
         } else {
           this.toastrService.error('Failed to fetch request list.');
           console.error('API returned failure:', response);
         }
       },
-      error => {
+      error: (error) => {
         this.toastrService.error('Error fetching request list.');
         console.error('Error fetching request list:', error);
+      },
+      complete: () => {
+        this.spinner.hide();
       }
-    );
-  }    
+    });
+  }
+  
 
   onPageChange(page: number): void {
     // Update query parameters for pagination
