@@ -21,10 +21,8 @@
   
   
   .address-texts {
-    white-space: nowrap !important;
-    overflow: hidden !important;
     text-overflow: ellipsis !important;
-    max-width: 100%;
+    max-width: 100%!important;
     font-weight: 400;
   }
   
@@ -60,7 +58,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0px 0px 21px 10px;
+    margin: 0px 0px 9px 10px;
 }
 .card-shipper .black-home {
     color: #726641;
