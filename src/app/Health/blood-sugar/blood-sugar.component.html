@@ -3,22 +3,30 @@
     <section>
         <div class="content-body">
             <div class="container-fluid">
-                <div class="flex  items-center mb-3 ml-1 flex-wrap">
-                    <button class="flex items-center justify-center w-7 h-7 rounded-full mr-3 mb-2 text-white ml-2 mt-2"
-                            style="background-color: #726641;" (click)="backClicked()">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 ml-1 gap-2">
+  
+                    <!-- Back Button + Title Group -->
+                    <div class="flex items-center flex-wrap">
+                      <button class="flex items-center justify-center w-7 h-7 rounded-full mr-3 text-white ml-2 mt-2"
+                              style="background-color: #726641;" 
+                              (click)="backClicked()">
                         <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center;"></i>
-                    </button>
-                
-                    <h1 class="text-lg font-semibold text-center sm:text-left" style="font-size: 25px; color: #726641;">{{ 'BLOOD_SUGAR' | translate }}</h1>
-                
-                    <!-- Button with 100% width on mobile screens -->
+                      </button>
+                  
+                      <h1 class="text-lg font-semibold text-center sm:text-left" style="font-size: 25px; color: #726641;">
+                        {{ 'BLOOD_SUGAR' | translate }}
+                      </h1>
+                    </div>
+                  
+                    <!-- Action Button -->
                     <button
-                        class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full w-full sm:w-auto mt-2 sm:mt-0"
-                        data-bs-toggle="modal"
-                        data-bs-target="#bloodSugarModal">
-                        + {{ 'BLOOD_SUGAR' | translate }}
+                      class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full w-full sm:w-auto"
+                      data-bs-toggle="modal"
+                      data-bs-target="#bloodSugarModal">
+                      + {{ 'BLOOD_SUGAR' | translate }}
                     </button>
-                </div>
+                  </div>
+                  
                 
                 
                 
