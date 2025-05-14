@@ -150,4 +150,28 @@ edit(item: any): void {
 }
 
 
+cancelAppointment(item:any){
+  debugger
+  const payload = {
+    comment: "Cancel",   // or any appropriate comment
+    mrn: localStorage.getItem('mrn'),                      // Medical Record Number
+    orgcode: "AMC",                        // Organization code
+    appointmentnumber: item.slots[0].appointmentNumber,       // Unique appointment ID
+    status: "BOKSTS3"                    // Status update
+  };
+  
+
+  this.contentService.cancelAppoint(payload).subscribe(response => {
+    if(response.status == true) {
+debugger
+      this.toastrService.success(response.message);
+      window.location.reload();
+    } else {
+
+      this.toastrService.error(response.message)
+
+    }
+  })
+}
+
 }

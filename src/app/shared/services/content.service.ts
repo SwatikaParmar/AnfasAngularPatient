@@ -226,4 +226,9 @@ export class ContentService {
       `${environment.apiUrl}${ApiEndPoint.educationalMaterialDetail}?id=${id}`
     );
   }
+
+
+  cancelAppoint(data:any){
+return this.http.post<any>(environment.apiUrl + ApiEndPoint.cancelAppointment,data)
+  }
 }
