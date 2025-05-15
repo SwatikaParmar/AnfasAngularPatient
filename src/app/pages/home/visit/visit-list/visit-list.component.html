@@ -33,16 +33,24 @@
                                         <span class="department-name">{{item.departmentName || 'N/A' }}</span>
                                     </div>
                                     <div class="info">
-                                        <p><span class="label" style="margin-left:32px;">{{ 'VISIT_TYPE' |
-                                                translate }}-</span>{{item.visitTypeDescription || 'N/A' }}</p>
-                                        <p><span class="label" style="margin-left:32px;">{{ 'CARE_PROVIDER' | translate }}-</span> <span
-                                                style="margin-left:19px;">{{item.careProviderName}}
+                                        <p><span class="label" style="margin-left:10px; font-size:13px;">{{ 'VISIT_TYPE' |
+                                                translate }}-</span><span style="margin-left:169px; font-size:13px; color:black;">{{item.visitTypeDescription || 'N/A' }}</span></p>
+                                        <p><span class="label" style="margin-left:10px; font-size:13px;">{{ 'CARE_PROVIDER' | translate }}-</span> <span
+                                                style="margin-left:19px; font-size:13px;">{{item.careProviderName}}
                                                 {{item.careProviderLastName}}</span></p>
-                                        <p><span class="label" style="margin-left:32px;">{{ 'EN_TYPE' | translate }}-</span> <span
-                                                style="margin-left:137px;">{{item.entypeValueDescription || 'N/A'
+                                        <p><span class="label" style="margin-left:10px; font-size:13px;">{{ 'EN_TYPE' | translate }}-</span> <span
+                                                style="margin-left:137px; font-size:13px;">{{item.entypeValueDescription || 'N/A'
                                                 }}</span></p>
                                     </div>
-                                    <button class="view-button" onclick="openPopup()">{{ 'VIEW_REPORTS' | translate }}</button>
+                                   <div class="rating-and-button">
+  <div class="rating-stars">
+    ☆☆☆☆☆ <!-- Replace with your dynamic star logic -->
+  </div>
+  <button class="view-button" onclick="openPopup()">
+    {{ 'VIEW_REPORTS' | translate }}
+  </button>
+</div>
+
                                 </div>
 
                                 <!-- Popup -->
