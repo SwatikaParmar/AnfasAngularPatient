@@ -128,5 +128,22 @@ debugger
       
     });
   }
+getStars(rating: number): string {
+  const maxStars = 5;
+  const filledStars = '★'.repeat(rating);
+  const emptyStars = '☆'.repeat(maxStars - rating);
+  return filledStars + emptyStars;
+}
+
+openSatisfactionForm(satisfactionFormId: number | null) {
+  // If there's no satisfactionFormId, assume it's a new form (add)
+  if (satisfactionFormId) {
+    // Navigate to form with query param for update
+    this.router.navigate(['/satisfaction-form'], { queryParams: { id: satisfactionFormId } });
+  } else {
+    // Navigate to form without ID for adding new rating
+    this.router.navigate(['/satisfaction-form']);
+  }
+}
 
 }

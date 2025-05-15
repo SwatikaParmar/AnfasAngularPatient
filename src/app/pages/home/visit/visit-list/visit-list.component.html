@@ -13,7 +13,8 @@
 
 
                     <!-- Title Text -->
-                    <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">{{ 'MY_VISITS' | translate }}</h1>
+                    <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">{{ 'MY_VISITS' |
+                        translate }}</h1>
                 </div>
 
                 <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 10px;">
@@ -33,23 +34,35 @@
                                         <span class="department-name">{{item.departmentName || 'N/A' }}</span>
                                     </div>
                                     <div class="info">
-                                        <p><span class="label" style="margin-left:10px; font-size:13px;">{{ 'VISIT_TYPE' |
-                                                translate }}-</span><span style="margin-left:169px; font-size:13px; color:black;">{{item.visitTypeDescription || 'N/A' }}</span></p>
-                                        <p><span class="label" style="margin-left:10px; font-size:13px;">{{ 'CARE_PROVIDER' | translate }}-</span> <span
+                                        <p><span class="label" style="margin-left:10px; font-size:13px;">{{ 'VISIT_TYPE'
+                                                |
+                                                translate }}-</span><span
+                                                style="margin-left:169px; font-size:13px; color:black;">{{item.visitTypeDescription
+                                                || 'N/A' }}</span></p>
+                                        <p><span class="label" style="margin-left:10px; font-size:13px;">{{
+                                                'CARE_PROVIDER' | translate }}-</span> <span
                                                 style="margin-left:19px; font-size:13px;">{{item.careProviderName}}
                                                 {{item.careProviderLastName}}</span></p>
-                                        <p><span class="label" style="margin-left:10px; font-size:13px;">{{ 'EN_TYPE' | translate }}-</span> <span
-                                                style="margin-left:137px; font-size:13px;">{{item.entypeValueDescription || 'N/A'
+                                        <p><span class="label" style="margin-left:10px; font-size:13px;">{{ 'EN_TYPE' |
+                                                translate }}-</span> <span
+                                                style="margin-left:137px; font-size:13px;">{{item.entypeValueDescription
+                                                || 'N/A'
                                                 }}</span></p>
                                     </div>
-                                   <div class="rating-and-button">
-  <div class="rating-stars">
-    ☆☆☆☆☆ <!-- Replace with your dynamic star logic -->
-  </div>
-  <button class="view-button" onclick="openPopup()">
-    {{ 'VIEW_REPORTS' | translate }}
-  </button>
-</div>
+                                    <div class="rating-and-button">
+                                        <div *ngFor="let visit of visitList" class="visit-item">
+                                            <div class="rating-stars"
+                                                (click)="openSatisfactionForm(visit.satisfactionFormId)">
+                                                {{ getStars(visit.overallRating || 0) }}
+                                            </div>
+                                           
+                                        </div>
+
+
+                                        <button class="view-button" onclick="openPopup()">
+                                            {{ 'VIEW_REPORTS' | translate }}
+                                        </button>
+                                    </div>
 
                                 </div>
 
@@ -79,7 +92,7 @@
 
                         </div>
 
-                        <div class="pagination-container pb-3" >
+                        <div class="pagination-container pb-3">
                             <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
                                 queryParamsHandling="merge"></pagination-controls>
                         </div>
