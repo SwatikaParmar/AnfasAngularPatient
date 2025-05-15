@@ -123,32 +123,64 @@ getStatusColor(status: string | undefined): string {
   switch (status) {
     case 'No Show': return 'orange';
     case 'Booked': return 'blue';
-    case 'Rescheduled': return 'green';
+    case 'Confirmed': return 'green';
     case 'Cancelled': return 'red';
     default: return 'inherit';
   }
 }
 
-edit(item: any): void {
-  const CareProviderCode = item.careProviderUid.code;
-  const receiverName = item.careProviderUid.name;
-  const receiverLastName = item.careProviderUid.lastName;
+// edit(item: any): void {
+//   const CareProviderCode = item.careProviderUid.code;
+//   const receiverName = item.careProviderUid.name;
+//   const receiverLastName = item.careProviderUid.lastName;
 
-  console.log('Navigating with:', CareProviderCode, receiverName, receiverLastName);
+//   console.log('Navigating with:', CareProviderCode, receiverName, receiverLastName);
 
-  if (CareProviderCode && receiverName && receiverLastName) {
-    this.router.navigate(['/appointment-list/appointment/book'], {
-      queryParams: {
-        CareProviderCode,
-        receiverName,
-        receiverLastName
-      }
-    });
-  } else {
-    this.toastrService.error('Invalid sender or receiver information.');
+//   if (CareProviderCode && receiverName && receiverLastName) {
+//     this.router.navigate(['/appointment-list/appointment/book'], {
+//       queryParams: {
+//         CareProviderCode,
+//         receiverName,
+//         receiverLastName
+//       }
+//     });
+//   } else {
+//     this.toastrService.error('Invalid sender or receiver information.');
+//   }
+// }
+
+rescheduleAppointment(item: any) {
+  debugger
+  const payload = {
+    appointmentdate: new Date().toISOString(), // Ideally, allow user to pick a new date/time
+    comment: 'reschedule',
+    mrn: localStorage.getItem('mrn'),
+    orgcode: 'AMC', // Replace with dynamic value if needed
+    appointmentnumber: item.slots[0]?.appointmentNumber,
+    status: 'BOKSTS2', // Assuming this is the new "Rescheduled" status
+    slotId: item.slots[0]?.id
+  };
+
+  if (!payload.appointmentnumber || !payload.slotId) {
+    this.toastrService.error('Missing appointment information.');
+    return;
   }
-}
 
+  this.contentService.rescheduleAppointment(payload).subscribe({
+    next: (response) => {
+      if (response.status) {
+        this.toastrService.success(response.message || 'Appointment rescheduled successfully.');
+        window.location.reload();
+      } else {
+        this.toastrService.error(response.message || 'Failed to reschedule appointment.');
+      }
+    },
+    error: (error) => {
+      this.toastrService.error('Error while rescheduling appointment.');
+      console.error('Reschedule error:', error);
+    }
+  });
+}
 
 cancelAppointment(item:any){
   debugger

@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: "http://81.208.171.189:4200/",
+  apiUrl: "http://192.168.1.4:5001/",
   rootPathUrl: "http://81.208.171.189:4200/",
 };
 

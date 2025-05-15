@@ -51,7 +51,7 @@ export class ContentService {
   }
 
 
- // saveConsentForm(data: any) {
+  // saveConsentForm(data: any) {
   //   const headers = new HttpHeaders();
   //   headers.append('Content-Type', 'multipart/form-data');
   //   const options = {
@@ -71,7 +71,7 @@ export class ContentService {
       })
     );
   }
-  
+
   aboutUs() {
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.getAbout);
   }
@@ -227,8 +227,33 @@ export class ContentService {
     );
   }
 
-
-  cancelAppoint(data:any){
-return this.http.post<any>(environment.apiUrl + ApiEndPoint.cancelAppointment,data)
+  cancelAppoint(data: any) {
+    return this.http.post<any>(environment.apiUrl + ApiEndPoint.cancelAppointment, data)
   }
+
+  rescheduleAppointment(data: any) {
+    return this.http.post<any>(
+      environment.apiUrl + ApiEndPoint.rescheduleAppointment, data
+    );
+  }
+
+  getsatisfactionList(data: any) {
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.satisfactionList + '?PageNumber=' + data.PageNumber + '&PageSize=' + data.pageSize
+
+    );
+  }
+
+  addUpdateSatisfaction(data: any) {
+    return this.http.post<any>(
+      environment.apiUrl + ApiEndPoint.addUpdateSatisfaction,
+      data
+    );
+  }
+
+  satisfactionDetail(id: any): Observable<any> {
+    return this.http.get<any>(
+      `${environment.apiUrl}${ApiEndPoint.satisfactionDetail}?id=${id}`
+    );
+  }
+
 }
