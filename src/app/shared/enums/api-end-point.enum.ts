@@ -33,6 +33,10 @@ export enum ApiEndPoint {
     educationalStatus = "api/User/UpdateEducationMaterialStatus",
     addRequest = "api/User/AddOrUpdateRequest",
     educationalMaterialDetail = "api/User/GetEducationMaterialDetail",
-    cancelAppointment = "api/User/CancelAppointment"
+    cancelAppointment = "api/User/CancelAppointment",
+    rescheduleAppointment = "api/User/RescheduleAppointment",
+    satisfactionList = "api/User/GetPatientSatisfactionList",
+    addUpdateSatisfaction = "api/User/AddOrUpdatePatientSatisfaction",
+    satisfactionDetail = "api/User/GetPatientSatisfactionDetail"
 }
 

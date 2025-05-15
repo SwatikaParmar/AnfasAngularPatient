@@ -270,7 +270,7 @@ export class BookAppointmentComponent {
     ).subscribe((response: any) => {
       if (response.status) {
         this.toasterService.success('Appointment booked successfully.');
-        this.router.navigate(['/appointment-success'], { queryParams: { referenceId: response.data.referenceid } });
+        this.router.navigate(['/appointment-list'], { queryParams: { referenceId: response.data.referenceid } });
       } else {
         this.toasterService.error('Failed to book appointment.');
       }
