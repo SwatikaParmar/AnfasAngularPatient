@@ -135,15 +135,14 @@ getStars(rating: number): string {
   return filledStars + emptyStars;
 }
 
-openSatisfactionForm(satisfactionFormId: number | null) {
-  // If there's no satisfactionFormId, assume it's a new form (add)
+
+
+openSatisfactionForm(satisfactionFormId: number | null, visitId: string) {
+  const queryParams: any = { visitId: visitId };
   if (satisfactionFormId) {
-    // Navigate to form with query param for update
-    this.router.navigate(['/satisfaction-form'], { queryParams: { id: satisfactionFormId } });
-  } else {
-    // Navigate to form without ID for adding new rating
-    this.router.navigate(['/satisfaction-form']);
+    queryParams.id = satisfactionFormId;
   }
+  this.router.navigate(['/visit/satisfaction-form'], { queryParams });
 }
 
 }

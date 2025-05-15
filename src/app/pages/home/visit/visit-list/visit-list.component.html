@@ -50,13 +50,13 @@
                                                 }}</span></p>
                                     </div>
                                     <div class="rating-and-button">
-                                        <div *ngFor="let visit of visitList" class="visit-item">
-                                            <div class="rating-stars"
-                                                (click)="openSatisfactionForm(visit.satisfactionFormId)">
-                                                {{ getStars(visit.overallRating || 0) }}
-                                            </div>
-                                           
-                                        </div>
+                                       <div *ngFor="let visit of visitList" class="visit-item">
+  <div class="rating-stars"
+       (click)="openSatisfactionForm(visit.satisfactionFormId, visit.visitId)">
+    {{ getStars(visit.overallRating || 0) }}
+  </div>
+</div>
+
 
 
                                         <button class="view-button" onclick="openPopup()">

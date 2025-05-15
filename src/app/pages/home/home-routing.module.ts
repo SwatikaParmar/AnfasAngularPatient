@@ -45,7 +45,7 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'visit', component: VisitListComponent },
       { path: 'complaint', component: ComplaintListComponent },
-      { path: 'satisfaction-form', component: SatisfactionFormComponent },
+      { path: 'visit/satisfaction-form', component: SatisfactionFormComponent },
       { path: 'about-Us', component: AboutUsComponent },
       { path: 'messages', component: MessagesListComponent },
       { path: 'appointment-list/appointment', component: AppointmentListComponent },
