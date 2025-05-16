@@ -348,5 +348,7 @@
   "N/A":"N/A",
   "PATIENT_LIST":"Patient List",
   "PROFILE_PiC":"Profile Pic",
-  "VIEW_DOCUMENT":"View Document"
+  "VIEW_DOCUMENT":"View Document",
+  "PLEASE_RATE_OVERALL_SATIFACTION":"Please rate overall satisfaction",
+  "PLEASE_RATE_LIKELIHOOD_TO RECOMMENDd":" Please rate likelihood to recommend"
 }

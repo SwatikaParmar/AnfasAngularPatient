@@ -349,5 +349,7 @@
   "N_A": "غير متوفر",
   "PATIENT_LIST": "قائمة المرضى",
   "PROFILE_PiC": "صورة الملف الشخصي",
-  "VIEW_DOCUMENT": "عرض المستند"
+  "VIEW_DOCUMENT": "عرض المستند",
+  "PLEASE_RATE_OVERALL_SATIFACTION":"يرجى تقييم الرضا العام",
+  "PLEASE_RATE_LIKELIHOOD_TO_RECOMMEND":"يرجى تقييم احتمالية التوصية"
 }

@@ -6,7 +6,7 @@
                 <div class="flex mb-2 items-center ml-1">
                     <!-- Back Arrow Button -->
                     <button class="flex items-center justify-center w-7 h-7 rounded-full mr-3 mb-2 text-white"
-                        style="background-color: #726641;"(click)="backClicked()">
+                        style="background-color: #726641;" (click)="backClicked()">
                         <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center;"></i>
                     </button>
                     <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">{{
@@ -34,238 +34,245 @@
                                                 <div class="stars">
                                                     <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
                                                         <i class="fa" [ngClass]="{
-          'fa-star': star <= Form.get('appointmentEase')?.value,
-          'fa-star-o': star > Form.get('appointmentEase')?.value
-        }" (click)="setRating('appointmentEase', star)" style="cursor: pointer; color: gold"></i>
+    'fa-star': star <= Form.get('appointmentEase')?.value,
+    'fa-star-o': star > Form.get('appointmentEase')?.value
+  }" (click)="setRating('appointmentEase', star)" style="cursor: pointer; color: gold">
+                                                        </i>
+
                                                     </ng-container>
                                                 </div>
-                                            
 
 
 
-                                        </div>
 
-                                        <div class="rating-item"
-                                            style="border-bottom: 1px solid gray; padding-bottom: 10px;">
-                                            <label>{{ 'WAIT_TIME_FOR_APPOINTMENT' | translate }}</label>
-                                            <div class="stars">
-                                                <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
-                                                    <i class="fa" [ngClass]="{
+                                            </div>
+
+                                            <div class="rating-item"
+                                                style="border-bottom: 1px solid gray; padding-bottom: 10px;">
+                                                <label>{{ 'WAIT_TIME_FOR_APPOINTMENT' | translate }}</label>
+                                                <div class="stars">
+                                                    <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                                                        <i class="fa" [ngClass]="{
           'fa-star': star <= Form.get('appointmentWaitTime')?.value,
           'fa-star-o': star > Form.get('appointmentWaitTime')?.value
         }" (click)="setRating('appointmentWaitTime', star)" style="cursor: pointer; color: gold"></i>
-                                                </ng-container>
+                                                    </ng-container>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="rating-item">
-                                            <label>{{ 'FREINDLINESS_OF_FRONT-DESK_STAFF' | translate }}</label>
-                                            <div class="stars">
-                                                <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
-                                                   <i class="fa" [ngClass]="{
+                                            <div class="rating-item">
+                                                <label>{{ 'FREINDLINESS_OF_FRONT-DESK_STAFF' | translate }}</label>
+                                                <div class="stars">
+                                                    <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                                                        <i class="fa" [ngClass]="{
           'fa-star': star <= Form.get('frontDeskFriendliness')?.value,
           'fa-star-o': star > Form.get('frontDeskFriendliness')?.value
         }" (click)="setRating('frontDeskFriendliness', star)" style="cursor: pointer; color: gold"></i>
-                                                </ng-container>
+                                                    </ng-container>
+                                                </div>
                                             </div>
+
+
                                         </div>
-
-
                                     </div>
-                                </div>
-                                <div class="col-12 col-sm-6 col-md-4 mb-3">
-                                    <div class="card p-2">
-                                        <div class="card-title">{{ 'FACILITIES' | translate }} </div>
+                                    <div class="col-12 col-sm-6 col-md-4 mb-3">
+                                        <div class="card p-2">
+                                            <div class="card-title">{{ 'FACILITIES' | translate }} </div>
 
-                                        <div class="rating-item"
-                                            style="border-bottom: 1px solid gray; padding-bottom: 10px;">
-                                            <label>{{ 'CLEANLINESS_OF_FACILITIES' | translate }} </label>
-                                            <div class="stars">
-                                                <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
-                                                    <i class="fa" [ngClass]="{
+                                            <div class="rating-item"
+                                                style="border-bottom: 1px solid gray; padding-bottom: 10px;">
+                                                <label>{{ 'CLEANLINESS_OF_FACILITIES' | translate }} </label>
+                                                <div class="stars">
+                                                    <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                                                        <i class="fa" [ngClass]="{
           'fa-star': star <= Form.get('facilityCleanliness')?.value,
           'fa-star-o': star > Form.get('facilityCleanliness')?.value
         }" (click)="setRating('facilityCleanliness', star)" style="cursor: pointer; color: gold"></i>
-                                                </ng-container>
+                                                    </ng-container>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="rating-item"
-                                            style="border-bottom: 1px solid gray; padding-bottom: 10px;">
-                                            <label>{{ 'AVAILABILITY_OF_PARKING' | translate }}</label>
-                                            <div class="stars">
-                                                <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
-                                                 <i class="fa" [ngClass]="{
+                                            <div class="rating-item"
+                                                style="border-bottom: 1px solid gray; padding-bottom: 10px;">
+                                                <label>{{ 'AVAILABILITY_OF_PARKING' | translate }}</label>
+                                                <div class="stars">
+                                                    <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                                                        <i class="fa" [ngClass]="{
           'fa-star': star <= Form.get('parkingAvailability')?.value,
           'fa-star-o': star > Form.get('parkingAvailability')?.value
         }" (click)="setRating('parkingAvailability', star)" style="cursor: pointer; color: gold"></i>
-                                                </ng-container>
+                                                    </ng-container>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="rating-item">
-                                            <label>{{ 'COMFORT_OF_WAITING_AREA' | translate }}</label>
-                                            <div class="stars">
-                                                <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
-                                                    <i class="fa" [ngClass]="{
+                                            <div class="rating-item">
+                                                <label>{{ 'COMFORT_OF_WAITING_AREA' | translate }}</label>
+                                                <div class="stars">
+                                                    <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                                                        <i class="fa" [ngClass]="{
           'fa-star': star <= Form.get('waitingAreaComfort')?.value,
           'fa-star-o': star > Form.get('waitingAreaComfort')?.value
         }" (click)="setRating('waitingAreaComfort', star)" style="cursor: pointer; color: gold"></i>
-                                                </ng-container>
+                                                    </ng-container>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-12 col-sm-6 col-md-4 mb-3">
-                                    <div class="card p-2">
-                                        <div class="card-title">{{ 'CONSULTATION_EXPERIENCE' | translate }} </div>
+                                    <div class="col-12 col-sm-6 col-md-4 mb-3">
+                                        <div class="card p-2">
+                                            <div class="card-title">{{ 'CONSULTATION_EXPERIENCE' | translate }} </div>
 
-                                        <div class="rating-item"
-                                            style="border-bottom: 1px solid gray; padding-bottom: 10px;">
-                                            <label>{{ 'FRIENDLINESS_OF_THE_DOCTOR' | translate }} </label>
-                                            <div class="stars">
-                                                <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
-                                                   <i class="fa" [ngClass]="{
+                                            <div class="rating-item"
+                                                style="border-bottom: 1px solid gray; padding-bottom: 10px;">
+                                                <label>{{ 'FRIENDLINESS_OF_THE_DOCTOR' | translate }} </label>
+                                                <div class="stars">
+                                                    <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                                                        <i class="fa" [ngClass]="{
           'fa-star': star <= Form.get('doctorFriendliness')?.value,
           'fa-star-o': star > Form.get('doctorFriendliness')?.value
         }" (click)="setRating('doctorFriendliness', star)" style="cursor: pointer; color: gold"></i>
-                                                </ng-container>
+                                                    </ng-container>
+                                                </div>
+
+
                                             </div>
 
-
-                                        </div>
-
-                                        <div class="rating-item"
-                                            style="border-bottom: 1px solid gray; padding-bottom: 10px;">
-                                            <label>{{ 'DOCTORS_ABILITY_TO_EXPLAIN_CLEARLY' | translate }}</label>
-                                            <div class="stars">
-                                                <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
-                                                    <i class="fa" [ngClass]="{
+                                            <div class="rating-item"
+                                                style="border-bottom: 1px solid gray; padding-bottom: 10px;">
+                                                <label>{{ 'DOCTORS_ABILITY_TO_EXPLAIN_CLEARLY' | translate }}</label>
+                                                <div class="stars">
+                                                    <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                                                        <i class="fa" [ngClass]="{
           'fa-star': star <= Form.get('doctorExplanation')?.value,
           'fa-star-o': star > Form.get('doctorExplanation')?.value
         }" (click)="setRating('doctorExplanation', star)" style="cursor: pointer; color: gold"></i>
-                                                </ng-container>
+                                                    </ng-container>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="rating-item">
-                                            <label>{{ 'TIME_SPENT_WITH_THE_DOCTOR' | translate }} </label>
-                                            <div class="stars">
-                                                <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
-                                                 <i class="fa" [ngClass]="{
+                                            <div class="rating-item">
+                                                <label>{{ 'TIME_SPENT_WITH_THE_DOCTOR' | translate }} </label>
+                                                <div class="stars">
+                                                    <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                                                        <i class="fa" [ngClass]="{
           'fa-star': star <= Form.get('doctorTimeSpent')?.value,
           'fa-star-o': star > Form.get('doctorTimeSpent')?.value
         }" (click)="setRating('doctorTimeSpent', star)" style="cursor: pointer; color: gold"></i>
-                                                </ng-container>
+                                                    </ng-container>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-12 col-sm-6 col-md-4 mb-3">
-                                    <div class="card p-2">
-                                        <div class="card-title">{{ 'TREATMENT_AND_CARE' | translate }} </div>
+                                    <div class="col-12 col-sm-6 col-md-4 mb-3">
+                                        <div class="card p-2">
+                                            <div class="card-title">{{ 'TREATMENT_AND_CARE' | translate }} </div>
 
-                                        <div class="rating-item"
-                                            style="border-bottom: 1px solid gray; padding-bottom: 10px;">
-                                            <label>{{ 'QUALITY_OF_TREATMENT_RECEIVED' | translate }}</label>
-                                            <div class="stars">
-                                                <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
-                                                 <i class="fa" [ngClass]="{
+                                            <div class="rating-item"
+                                                style="border-bottom: 1px solid gray; padding-bottom: 10px;">
+                                                <label>{{ 'QUALITY_OF_TREATMENT_RECEIVED' | translate }}</label>
+                                                <div class="stars">
+                                                    <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                                                        <i class="fa" [ngClass]="{
           'fa-star': star <= Form.get('treatmentQuality')?.value,
           'fa-star-o': star > Form.get('treatmentQuality')?.value
         }" (click)="setRating('treatmentQuality', star)" style="cursor: pointer; color: gold"></i>
-                                                </ng-container>
+                                                    </ng-container>
+                                                </div>
+
+
                                             </div>
 
-
-                                        </div>
-
-                                        <div class="rating-item"
-                                            style="border-bottom: 1px solid gray; padding-bottom: 10px;">
-                                            <label>{{ 'AVAILABILITY_OF_MEDICATIONS' | translate }} </label>
-                                            <div class="stars">
-                                                <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
-                                                   <i class="fa" [ngClass]="{
+                                            <div class="rating-item"
+                                                style="border-bottom: 1px solid gray; padding-bottom: 10px;">
+                                                <label>{{ 'AVAILABILITY_OF_MEDICATIONS' | translate }} </label>
+                                                <div class="stars">
+                                                    <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                                                        <i class="fa" [ngClass]="{
           'fa-star': star <= Form.get('medicationAvailability')?.value,
           'fa-star-o': star > Form.get('medicationAvailability')?.value
         }" (click)="setRating('medicationAvailability', star)" style="cursor: pointer; color: gold"></i>
-                                                </ng-container>
+                                                    </ng-container>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="rating-item">
-                                            <label>{{ 'EXPLANATION_OF_TREATMENT_AND_CARE' | translate }}</label>
-                                            <div class="stars">
-                                                <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
-                                                   <i class="fa" [ngClass]="{
+                                            <div class="rating-item">
+                                                <label>{{ 'EXPLANATION_OF_TREATMENT_AND_CARE' | translate }}</label>
+                                                <div class="stars">
+                                                    <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                                                        <i class="fa" [ngClass]="{
           'fa-star': star <= Form.get('treatmentExplanation')?.value,
           'fa-star-o': star > Form.get('treatmentExplanation')?.value
         }" (click)="setRating('treatmentExplanation', star)" style="cursor: pointer; color: gold"></i>
-                                                </ng-container>
+                                                    </ng-container>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-12 col-sm-6 col-md-4 mb-3">
-                                    <div class="card p-2">
-                                        <div class="card-title">{{ 'OVERALL_EXPERIENCE' | translate }} </div>
+                                    <div class="col-12 col-sm-6 col-md-4 mb-3">
+                                        <div class="card p-2">
+                                            <div class="card-title">{{ 'OVERALL_EXPERIENCE' | translate }} </div>
 
-                                        <div class="rating-item"
-                                            style="border-bottom: 1px solid gray; padding-bottom: 10px;">
-                                            <label>{{ 'OVERALLSATISFACTION' | translate }} </label>
-                                            <div class="stars">
-                                                <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
-                                                 <i class="fa" [ngClass]="{
+                                            <div class="rating-item"
+                                                style="border-bottom: 1px solid gray; padding-bottom: 10px;">
+                                                <label>{{ 'OVERALLSATISFACTION' | translate }} </label>
+                                                <div class="stars">
+                                                    <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                                                        <i class="fa" [ngClass]="{
           'fa-star': star <= Form.get('overallSatisfaction')?.value,
           'fa-star-o': star > Form.get('overallSatisfaction')?.value
         }" (click)="setRating('overallSatisfaction', star)" style="cursor: pointer; color: gold"></i>
-                                                </ng-container>
+                                                    </ng-container>
+                                                </div>
+                                                <div *ngIf="submitted && Form.get('overallSatisfaction')?.invalid"
+                                                    class="text-danger" style="font-size: 0.8rem;">
+                                                    {{ 'PLEASE_RATE_OVERALL_SATIFACTION' | translate}}
+                                                </div>
+
                                             </div>
 
-
-                                        </div>
-
-                                        <div class="rating-item"
-                                            style="border-bottom: 1px solid gray; padding-bottom: 10px;">
-                                            <label>{{ 'LIKELIHOOD_TO_RECOMMEND_US' | translate }} </label>
-                                            <div class="stars">
-                                                <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
-                                                    <i class="fa" [ngClass]="{
+                                            <div class="rating-item"
+                                                style="border-bottom: 1px solid gray; padding-bottom: 10px;">
+                                                <label>{{ 'LIKELIHOOD_TO_RECOMMEND_US' | translate }} </label>
+                                                <div class="stars">
+                                                    <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                                                        <i class="fa" [ngClass]="{
           'fa-star': star <= Form.get('recommendationLikelihood')?.value,
           'fa-star-o': star > Form.get('recommendationLikelihood')?.value
         }" (click)="setRating('recommendationLikelihood', star)" style="cursor: pointer; color: gold"></i>
-                                                </ng-container>
+                                                    </ng-container>
+                                                </div>
                                             </div>
+                                            <div *ngIf="submitted && Form.get('recommendationLikelihood')?.invalid"
+                                                class="text-danger" style="font-size: 0.8rem;">
+                                                {{ 'PLEASE_RATE_LIKELIHOOD_TO_RECOMMEND' | translate }}
+                                            </div>
+
                                         </div>
+                                    </div>
+                                    <div class="mt-3 mb-3">
+
+                                        <textarea id="comments" rows="3" formControlName="additionalComments"
+                                            placeholder="{{ 'YOUR_COMMENTS_AND_SUGGESTIONS_HERE' | translate }}"
+                                            class="w-full border border-gray-300 p-2 rounded mt-1"></textarea>
+
+                                    </div>
+
+
+                                    <div class="flex flex-col  space-y-2 mt-2 mb--5">
+                                        <button
+                                            class="py-2 px-4 rounded-md text-[#FEC34F] bg-[#77734E] w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5">
+                                            {{ 'SUBMIT' | translate }}
+                                        </button>
 
 
                                     </div>
-                                </div>
-                                <div class="mt-3 mb-3">
-
-                                  <textarea id="comments" rows="3"
-    formControlName="additionalComments"
-    placeholder="{{ 'YOUR_COMMENTS_AND_SUGGESTIONS_HERE' | translate }}"
-    class="w-full border border-gray-300 p-2 rounded mt-1"></textarea>
 
                                 </div>
-
-
-                                <div class="flex flex-col  space-y-2 mt-2 mb--5">
-                                    <button
-                                        class="py-2 px-4 rounded-md text-[#FEC34F] bg-[#77734E] w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5">
-                                        {{ 'SUBMIT' | translate }}
-                                    </button>
-
-
-                                </div>
-
                             </div>
                         </div>
                     </div>
+                </form>
             </div>
-            </form>
         </div>
-</div>
-</section>
+    </section>
 </div>

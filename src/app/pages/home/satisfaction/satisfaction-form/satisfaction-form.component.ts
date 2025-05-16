@@ -63,59 +63,52 @@ export class SatisfactionFormComponent {
 
 
   initForm() {
-    this.Form = this.fb.group(
-      {
-        id: [0],
-        appointmentNumber: [''],
-        mrn: [''],
-        visitId: [''],
-        dateOfVisit: [''],
-        department: [''],
-        appointmentEase: [0],
-        appointmentWaitTime: [0],
-        frontDeskFriendliness: [0],
-        facilityCleanliness: [0],
-        parkingAvailability: [0],
-        waitingAreaComfort: [0],
-        doctorFriendliness: [0],
-        doctorExplanation: [0],
-        doctorTimeSpent: [0],
-        treatmentQuality: [0],
-        medicationAvailability: [0],
-        treatmentExplanation: [0],
-        overallSatisfaction: [0],
-        recommendationLikelihood: [0],
-        additionalComments: ['']
-      }
+    this.Form = this.fb.group({
+      dateOfVisit: [''],
+      appointmentEase: [0],
+      appointmentWaitTime: [0],
+      frontDeskFriendliness: [0],
+      facilityCleanliness: [0],
+      parkingAvailability: [0],
+      waitingAreaComfort: [0],
+      doctorFriendliness: [0],
+      doctorExplanation: [0],
+      doctorTimeSpent: [0],
+      treatmentQuality: [0],
+      medicationAvailability: [0],
+      treatmentExplanation: [0],
+        overallSatisfaction: [0, [Validators.required, Validators.min(1)]], // Require at least 1 star
+    recommendationLikelihood: [0, [Validators.required, Validators.min(1)]], // Require at least 1 star
+      additionalComments: [''],
+    });
 
-    );
   }
 
-getDetail() {
-  this.content.satisfactionDetail(this.id).subscribe((res: any) => {
-  if (res.isSuccess && res.data) {
-    const data = res.data;
-    this.Form.patchValue({
-      dateOfVisit: data.dateOfVisit.split('T')[0], // Format to 'YYYY-MM-DD' for input[type="date"]
-      appointmentEase: data.appointmentEase,
-      appointmentWaitTime: data.appointmentWaitTime,
-      frontDeskFriendliness: data.frontDeskFriendliness,
-      facilityCleanliness: data.facilityCleanliness,
-      parkingAvailability: data.parkingAvailability,
-      waitingAreaComfort: data.waitingAreaComfort,
-      doctorFriendliness: data.doctorFriendliness,
-      doctorExplanation: data.doctorExplanation,
-      doctorTimeSpent: data.doctorTimeSpent,
-      treatmentQuality: data.treatmentQuality,
-      medicationAvailability: data.medicationAvailability,
-      treatmentExplanation: data.treatmentExplanation,
-      overallSatisfaction: data.overallSatisfaction,
-      recommendationLikelihood: data.recommendationLikelihood,
-      additionalComments: data.additionalComments
+  getDetail() {
+    this.content.satisfactionDetail(this.id).subscribe((res: any) => {
+      if (res.isSuccess && res.data) {
+        const data = res.data;
+        this.Form.patchValue({
+          dateOfVisit: data.dateOfVisit.split('T')[0], // Format to 'YYYY-MM-DD' for input[type="date"]
+          appointmentEase: data.appointmentEase,
+          appointmentWaitTime: data.appointmentWaitTime,
+          frontDeskFriendliness: data.frontDeskFriendliness,
+          facilityCleanliness: data.facilityCleanliness,
+          parkingAvailability: data.parkingAvailability,
+          waitingAreaComfort: data.waitingAreaComfort,
+          doctorFriendliness: data.doctorFriendliness,
+          doctorExplanation: data.doctorExplanation,
+          doctorTimeSpent: data.doctorTimeSpent,
+          treatmentQuality: data.treatmentQuality,
+          medicationAvailability: data.medicationAvailability,
+          treatmentExplanation: data.treatmentExplanation,
+          overallSatisfaction: data.overallSatisfaction,
+          recommendationLikelihood: data.recommendationLikelihood,
+          additionalComments: data.additionalComments
+        });
+      }
     });
   }
-});
-}
 
   submit() {
     this.submitted = true;
@@ -147,8 +140,8 @@ getDetail() {
     );
   }
 
-  setRating(controlName: string, rating: number) {
-    this.Form.get(controlName)?.setValue(rating);
+  setRating(controlName: string, value: number): void {
+    this.Form.get(controlName)?.setValue(value);
   }
 
   // setRating(field: number, value: number) {
@@ -161,8 +154,8 @@ getDetail() {
     this.selectedRating = rating;
     console.log("Rated:", rating);
   }
- backClicked() {
-   this._location.back();
- }
+  backClicked() {
+    this._location.back();
+  }
 
 }
