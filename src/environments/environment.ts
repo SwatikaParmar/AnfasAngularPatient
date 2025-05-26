@@ -4,10 +4,9 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://192.168.1.4:5001/",
+  apiUrl: "http://81.208.171.189:4200/",
   rootPathUrl: "http://81.208.171.189:4200/",
 };
-
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

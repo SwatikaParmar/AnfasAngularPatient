@@ -18,7 +18,7 @@ export class HomeComponent {
   images: string[] = [
     'assets/images/Photo3.jpg',
     'assets/images/Photo2.jpg',
-    
+
   ];
   dots: any;
   intervalId: any;
@@ -29,7 +29,7 @@ export class HomeComponent {
   historyListOriginal: any[] = []; // the full original list
   historyList: any[] = [];         // the filtered list
   selectedStatus: string = 'All';  // dropdown selection
-  
+
   constructor(
     private translateService: TranslateService,
     private languageService: LanguageSwitcherServiceService,
@@ -39,7 +39,7 @@ export class HomeComponent {
     private contentService: ContentService,
     private route: ActivatedRoute,
   ) {
-   
+
   }
   ngOnInit() {
     debugger
@@ -49,7 +49,7 @@ export class HomeComponent {
     this.dots = document.querySelectorAll('.dot');
     this.updateCarousel();
     this.startAutoSlide();
-this.appointment();
+    this.appointment();
   }
 
   ngOnDestroy() {
@@ -109,6 +109,6 @@ this.appointment();
       }
     );
   }
-  
+
 
 }
