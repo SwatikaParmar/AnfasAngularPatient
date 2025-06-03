@@ -120,7 +120,7 @@
 
 
 
-            <div class=" mt-8">
+            <div class=" mt-8" *ngIf="historyList?.length">
               <h4 class="text-lg font-semibold mb-4" style="color: #77734E; font-size: 25px;">{{ 'MY_APPOINTMENTS' |
                 translate }}</h4>
               <div class="row" *ngFor="let item of historyList">

@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://81.208.171.189:4200/",
-  rootPathUrl: "http://81.208.171.189:4200/",
+  apiUrl: "https://81.208.171.189/",
+  rootPathUrl: "https://81.208.171.189/",
 };
 /*
  * For easier debugging in development mode, you can import the following file
