@@ -36,6 +36,12 @@ import { DoctorDashboardComponent } from 'src/app/doctor/doctor-dashboard/doctor
 import { DoctorAppointmentComponent } from 'src/app/doctor/doctor-appointment/doctor-appointment.component';
 import { DoctorPatientComponent } from 'src/app/doctor/doctor-patient/doctor-patient.component';
 import { DoctorRecordsComponent } from 'src/app/doctor/doctor-records/doctor-records.component';
+import { DoctorBloodPressureComponent } from 'src/app/doctor/doctor-blood-pressure/doctor-blood-pressure.component';
+import { DoctorBloodsugarComponent } from 'src/app/doctor/doctor-bloodsugar/doctor-bloodsugar.component';
+import { DoctorHeartRateComponent } from 'src/app/doctor/doctor-heart-rate/doctor-heart-rate.component';
+import { DoctorWeightComponent } from 'src/app/doctor/doctor-weight/doctor-weight.component';
+import { DoctorLabresultsComponent } from 'src/app/doctor/doctor-labresults/doctor-labresults.component';
+import { DoctorStepsComponent } from 'src/app/doctor/doctor-steps/doctor-steps.component';
 
 const routes: Routes = [
 
@@ -82,6 +88,13 @@ const routes: Routes = [
       { path: 'doctor-appointment', component: DoctorAppointmentComponent },
       { path: 'doctor-patient', component: DoctorPatientComponent },
       { path: 'doctor-records', component: DoctorRecordsComponent },
+      { path: 'doctor-records', component: DoctorRecordsComponent },
+      { path: 'doctor-bloodPressure', component: DoctorBloodPressureComponent },
+      { path: 'doctor-bloodSugar', component: DoctorBloodsugarComponent },
+      { path: 'doctor-HeartRate', component: DoctorHeartRateComponent },
+      { path: 'doctor-weight', component: DoctorWeightComponent },
+      { path: 'doctor-labresults', component: DoctorLabresultsComponent },
+      { path: 'doctor-steps', component: DoctorStepsComponent },
 
     ]
   }
