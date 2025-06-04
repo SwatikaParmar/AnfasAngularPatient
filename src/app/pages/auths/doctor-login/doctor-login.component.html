@@ -20,7 +20,7 @@
           <div class="login-forms">
             <h2 style="color: #77734E; margin-bottom: 30px; font-size: 30px; font-weight: 600;">{{ 'WELCOME_BACK' | translate }}!</h2>
             <div style="display: flex; justify-content: space-between; align-items: center;">
-              <h6 style="font-size: 20px; margin: 0;">{{ 'PATIENT_SIGN_IN' | translate }}</h6>
+              <h6 style="font-size: 20px; margin: 0;">Doctor Sign In</h6>
               <div class="lang-container">
                 <div class="lang-toggle">
                   <div class="lang-option" [class.active]="currentLang === 'en'" (click)="switchLanguage('en')">
@@ -94,9 +94,9 @@
                         </div> -->
             <!-- <div class="mt-20"></div> -->
              <div>
-              <button [routerLink]="'/doctor-login'">Sign in Doctor</button>
+              <button [routerLink]="'/doctor-login'">Sign in Patient</button>
              </div>
-            <input type="submit" class="view-more" value="{{ 'SIGN_IN' | translate }}">
+            <input type="submit" [routerLink]="'/doctor-dashboard'" class="view-more" value="{{ 'SIGN_IN' | translate }}">
           </div>
         </form>
       </div>

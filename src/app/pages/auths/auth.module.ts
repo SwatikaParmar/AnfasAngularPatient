@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
 import { OtpComponent } from './otp/otp.component';
 import { NgOtpInputModule } from 'ng-otp-input';
+import { DoctorLoginComponent } from './doctor-login/doctor-login.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { NgOtpInputModule } from 'ng-otp-input';
     RegisterComponent,
     ForgotPasswordComponent,
     OtpComponent,
+    DoctorLoginComponent,
     
   ],
   imports: [
