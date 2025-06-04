@@ -20,6 +20,7 @@ import { RequestListComponent } from './Medication/request-list/request-list.com
 import { EducationalMaterialComponent } from './education/educational-material/educational-material.component';
 import { AddRequestComponent } from './Medication/add-request/add-request.component';
 import { EducationalMaterialDetailComponent } from './education/educational-material/educational-material-detail/educational-material-detail.component';
+import { DoctorRecordsComponent } from './doctor/doctor-records/doctor-records.component';
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader { 
   return new TranslateHttpLoader(http, './assets/i18n/', '.json'); 
 }

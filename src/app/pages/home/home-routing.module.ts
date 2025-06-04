@@ -35,6 +35,7 @@ import { EducationalMaterialDetailComponent } from 'src/app/education/educationa
 import { DoctorDashboardComponent } from 'src/app/doctor/doctor-dashboard/doctor-dashboard.component';
 import { DoctorAppointmentComponent } from 'src/app/doctor/doctor-appointment/doctor-appointment.component';
 import { DoctorPatientComponent } from 'src/app/doctor/doctor-patient/doctor-patient.component';
+import { DoctorRecordsComponent } from 'src/app/doctor/doctor-records/doctor-records.component';
 
 const routes: Routes = [
 
@@ -51,35 +52,37 @@ const routes: Routes = [
       { path: 'about-Us', component: AboutUsComponent },
       { path: 'messages', component: MessagesListComponent },
       { path: 'appointment-list/appointment', component: AppointmentListComponent },
-      { path: 'doctor-list', component:DoctorListComponent},
-      { path: 'doctor-list/detail/:id', component: DoctorDetailComponent},
-      { path: 'profile', component:PatientProfileComponent},
-      { path: 'profile/consent', component:PatientConsentComponent},
-      { path: 'appointment-list/appointment/book', component:BookAppointmentComponent},
-      { path: 'messages/chat', component:MessageChatComponent},
-      { path: 'complaint/chat/:id', component:ComplaintChatComponent},
-      { path: 'complaint/complaint-add', component: ComplaintFormComponent},
-      { path: 'history-list', component: HistoryListComponent},
-      { path: 'history-list/chat', component:HistoryChatComponent},
-      { path: 'appointment-list', component: HistoryListComponent},
-      { path: 'Health-Tracker', component: HealthTrackingComponent},
-      { path: 'medication-list', component: MedicationListComponent},
-      { path: 'request-list', component: RequestListComponent},
-      { path: 'Health-Tracker/Blood-Pressure', component: BloodPressureComponent},
-      { path: 'Health-Tracker/Blood-Sugar', component: BloodSugarComponent},
-      { path: 'Health-Tracker/Heart-Rate', component: HeartRateComponent},
-      { path: 'Health-Tracker/Weight', component: WeightComponent},
-      { path: 'Health-Tracker/Lab-Results', component: LabResultsComponent},
-      { path: 'Health-Tracker/Steps', component: StepsComponent},
-      { path: 'educational-Material', component: EducationalMaterialComponent},
-      { path: 'educational-Material/educational-detail/:id', component: EducationalMaterialDetailComponent},
-      { path: 'request-list/request-add', component: AddRequestComponent},
+      { path: 'doctor-list', component: DoctorListComponent },
+      { path: 'doctor-list/detail/:id', component: DoctorDetailComponent },
+      { path: 'profile', component: PatientProfileComponent },
+      { path: 'profile/consent', component: PatientConsentComponent },
+      { path: 'appointment-list/appointment/book', component: BookAppointmentComponent },
+      { path: 'messages/chat', component: MessageChatComponent },
+      { path: 'complaint/chat/:id', component: ComplaintChatComponent },
+      { path: 'complaint/complaint-add', component: ComplaintFormComponent },
+      { path: 'history-list', component: HistoryListComponent },
+      { path: 'history-list/chat', component: HistoryChatComponent },
+      { path: 'appointment-list', component: HistoryListComponent },
+      { path: 'Health-Tracker', component: HealthTrackingComponent },
+      { path: 'medication-list', component: MedicationListComponent },
+      { path: 'request-list', component: RequestListComponent },
+      { path: 'Health-Tracker/Blood-Pressure', component: BloodPressureComponent },
+      { path: 'Health-Tracker/Blood-Sugar', component: BloodSugarComponent },
+      { path: 'Health-Tracker/Heart-Rate', component: HeartRateComponent },
+      { path: 'Health-Tracker/Weight', component: WeightComponent },
+      { path: 'Health-Tracker/Lab-Results', component: LabResultsComponent },
+      { path: 'Health-Tracker/Steps', component: StepsComponent },
+      { path: 'educational-Material', component: EducationalMaterialComponent },
+      { path: 'educational-Material/educational-detail/:id', component: EducationalMaterialDetailComponent },
+      { path: 'request-list/request-add', component: AddRequestComponent },
 
       // Doctor Routes
 
-      { path: 'doctor-dashboard', component:DoctorDashboardComponent},
-      { path: 'doctor-aappointment', component:DoctorAppointmentComponent},
-      { path: 'doctor-patient', component: DoctorPatientComponent}
+      { path: 'doctor-dashboard', component: DoctorDashboardComponent },
+      { path: 'doctor-aappointment', component: DoctorAppointmentComponent },
+      { path: 'doctor-patient', component: DoctorPatientComponent },
+      { path: 'doctor-records', component: DoctorRecordsComponent },
+
     ]
   }
 ];

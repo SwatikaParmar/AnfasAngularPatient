@@ -47,6 +47,7 @@ import { AddRequestComponent } from 'src/app/Medication/add-request/add-request.
 import { EducationalMaterialDetailComponent } from 'src/app/education/educational-material/educational-material-detail/educational-material-detail.component';
 import { DoctorAppointmentComponent } from 'src/app/doctor/doctor-appointment/doctor-appointment.component';
 import { DoctorPatientComponent } from 'src/app/doctor/doctor-patient/doctor-patient.component';
+import { DoctorRecordsComponent } from 'src/app/doctor/doctor-records/doctor-records.component';
 
 
 // export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -87,7 +88,8 @@ import { DoctorPatientComponent } from 'src/app/doctor/doctor-patient/doctor-pat
     AddRequestComponent,
     EducationalMaterialDetailComponent,
     DoctorAppointmentComponent,
-    DoctorPatientComponent
+    DoctorPatientComponent,
+    DoctorRecordsComponent
 
   ],
   imports: [
