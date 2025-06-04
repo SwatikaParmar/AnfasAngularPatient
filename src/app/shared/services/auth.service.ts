@@ -33,6 +33,26 @@ export class AuthService {
           localStorage.setItem('fname', user.data.patient.firstName);
           localStorage.setItem('lname', user.data.patient.lastName);
           localStorage.setItem('mrn', user.data.patient.mrn);
+          localStorage.setItem('role', 'Patient')
+          //   localStorage.setItem('distributorId', user.data.distributorId);
+          this.currentUserSubject.next(user);
+        } else {
+          this.router.navigateByUrl('/login');          
+        }                
+        return user;
+      }));
+  }
+
+   Doctorlogin(user: any) {    
+    return this.http.post<any>(environment.apiUrl + ApiEndPoint.doctorLogin,user)
+      .pipe(map(user => {
+        if (user.data) {   
+          debugger  
+          localStorage.setItem('currentUser', JSON.stringify(user.data));    
+               localStorage.setItem('dname', user.data.doctor.printName);  
+                              localStorage.setItem('code', user.data.doctor.code);  
+
+          localStorage.setItem('role', 'Doctor')
           //   localStorage.setItem('distributorId', user.data.distributorId);
           this.currentUserSubject.next(user);
         } else {

@@ -256,4 +256,18 @@ export class ContentService {
     );
   }
 
+
+
+  // doctor api's
+
+ docAppointment(data:any){
+  debugger
+  return this.http.get<any>(environment.apiUrl + ApiEndPoint.doctorAppointment + '?CareProviderCode=' + data.careProviderCode 
++ '&FromDate=' + data.FromDate + '&ToDate=' + data.ToDate
+  )
+ }
+
+  docPatient(CareProviderCode:any){
+  return this.http.get<any>(environment.apiUrl + ApiEndPoint.doctorPatient + '?CareProviderCode=' + CareProviderCode)
+ }
 }

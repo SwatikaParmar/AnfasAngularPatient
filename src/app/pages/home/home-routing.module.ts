@@ -85,7 +85,7 @@ const routes: Routes = [
       // Doctor Routes
 
       { path: 'doctor-dashboard', component: DoctorDashboardComponent },
-      { path: 'doctor-aappointment', component: DoctorAppointmentComponent },
+      { path: 'doctor-appointment', component: DoctorAppointmentComponent },
       { path: 'doctor-patient', component: DoctorPatientComponent },
       { path: 'doctor-records', component: DoctorRecordsComponent },
       { path: 'doctor-records', component: DoctorRecordsComponent },

@@ -21,7 +21,6 @@ loginForm!: FormGroup;
   currentLanguage: string = 'en';
 
   currentLang: string = 'en'; // Default language
-  selectedField: string = 'mrn'; // Default selection
   constructor(
     private renderer: Renderer2,
     private formBuilder: FormBuilder,
@@ -54,10 +53,9 @@ loginForm!: FormGroup;
 
   setConfigurationOfLoginForm() {
     this.loginForm = this.formBuilder.group({
-      mrn: [''],
-      mobilePhone: [''],
-      nationalId: [''],
-      isVerified: [true]
+      orgCode: [''],
+      loginid: [''],
+      showInPatientPortal: [true]
     });
   }
   
@@ -76,36 +74,27 @@ loginForm!: FormGroup;
   //   }                                            
   // }    
   
-   // Handle dropdown selection change
-   onSelectChange(event: any) {
-    this.selectedField = event.target.value;
-    this.setConfigurationOfLoginForm();  // Reset form to ensure selected field is active
-  }
-
+  
 
   onLogin() {
     this.spinner.show();
     this.submitted = true;
-  
-    if (!this.loginForm.get(this.selectedField)?.value) {
+  debugger
+     if (this.loginForm.invalid) {
       this.toasterService.error('Please enter correct value');
       this.spinner.hide();
       return;
     }
   
-    const payload: any = {
-      isVerified: true,
-    };
-    payload[this.selectedField] = this.loginForm.get(this.selectedField)?.value;
+   
   
-    this.authService.login(payload).subscribe({
+    this.authService.Doctorlogin(this.loginForm.value).subscribe({
       next: (response) => {
         if (response.status === true) {
           this.toasterService.success('OTP sent to your phone number');
           this.loginForm.reset();
           this.router.navigateByUrl('/otp'); // Navigate immediately after successful login
           // Optionally still fetch patient details in background
-          this.patientDetail(payload);
         } else {
           this.toasterService.error(response.message);
         }
@@ -121,21 +110,5 @@ loginForm!: FormGroup;
   }
   
 
-  patientDetail(data: any) {
-    this.authService.patientDetails(data).subscribe({
-      next: (response) => {
-        if (response.status === true) {
-          this.router.navigateByUrl('/otp');
-        } else {
-          this.toasterService.error(response.message);
-        }
-        this.spinner.hide();
-      },
-      error: (err) => {
-        console.error('Patient details error:', err);
-        this.spinner.hide();
-      }
-    });
-  }
-  
+ 
 }

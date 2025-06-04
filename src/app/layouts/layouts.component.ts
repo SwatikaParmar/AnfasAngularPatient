@@ -26,6 +26,7 @@ export class LayoutsComponent {
   // currentLanguage: any;
   currentLanguage: string = 'en';
   isLanguageMenuOpen: boolean = false;
+  role = localStorage.getItem('role')
   constructor(
     private spinner: NgxSpinnerService,
     private contentServices: ContentService,

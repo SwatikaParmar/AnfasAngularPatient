@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./otp.component.css']
 })
 export class OtpComponent {
+  
   otpConfig = {
     length: 5,
     inputClass: 'otp-input',
@@ -16,7 +17,7 @@ export class OtpComponent {
   otp: string = '';
   expectedOtp: string = '12345';
   error: string = '';
-
+ role = localStorage.getItem('role')
   constructor(private router: Router) {}
 
   onOtpChange(otp: string) {
@@ -27,7 +28,14 @@ export class OtpComponent {
   verifyOtp() {
     if (this.otp === this.expectedOtp) {
       // ✅ Navigate to the next page
-      this.router.navigate(['/home']); // replace with your actual route
+
+      if(this.role == 'Patient') {
+         this.router.navigate(['/home']); // replace with your actual route
+      } else if (this.role == 'Doctor') {
+         this.router.navigate(['/doctor-dashboard']); // replace with your actual route
+
+      }
+     
     } else {
       // ❌ Show error message
       this.error = 'Incorrect OTP. Please try again.';
