@@ -95,7 +95,15 @@
     showOnly({ target: document.querySelector(".tab-button.active") }, 'carrier');
   });
 </script>
+<script>
+  function openPopup() {
+    document.getElementById('imagePopup').style.display = 'flex';
+  }
 
+  function closePopup(e) {
+    document.getElementById('imagePopup').style.display = 'none';
+  }
+</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <app-root></app-root>
