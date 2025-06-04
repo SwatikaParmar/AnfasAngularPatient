@@ -42,6 +42,7 @@ import { DoctorHeartRateComponent } from 'src/app/doctor/doctor-heart-rate/docto
 import { DoctorWeightComponent } from 'src/app/doctor/doctor-weight/doctor-weight.component';
 import { DoctorLabresultsComponent } from 'src/app/doctor/doctor-labresults/doctor-labresults.component';
 import { DoctorStepsComponent } from 'src/app/doctor/doctor-steps/doctor-steps.component';
+import { DoctorEducationComponent } from 'src/app/doctor/doctor-education/doctor-education.component';
 
 const routes: Routes = [
 
@@ -95,6 +96,7 @@ const routes: Routes = [
       { path: 'doctor-weight', component: DoctorWeightComponent },
       { path: 'doctor-labresults', component: DoctorLabresultsComponent },
       { path: 'doctor-steps', component: DoctorStepsComponent },
+      { path: 'doctor-education', component:DoctorEducationComponent}
 
     ]
   }

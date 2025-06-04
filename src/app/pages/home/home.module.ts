@@ -54,6 +54,7 @@ import { DoctorHeartRateComponent } from 'src/app/doctor/doctor-heart-rate/docto
 import { DoctorLabresultsComponent } from 'src/app/doctor/doctor-labresults/doctor-labresults.component';
 import { DoctorWeightComponent } from 'src/app/doctor/doctor-weight/doctor-weight.component';
 import { DoctorStepsComponent } from 'src/app/doctor/doctor-steps/doctor-steps.component';
+import { DoctorEducationComponent } from 'src/app/doctor/doctor-education/doctor-education.component';
 
 
 // export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -101,7 +102,8 @@ import { DoctorStepsComponent } from 'src/app/doctor/doctor-steps/doctor-steps.c
     DoctorHeartRateComponent,
     DoctorLabresultsComponent,
     DoctorWeightComponent,
-    DoctorStepsComponent
+    DoctorStepsComponent,
+    DoctorEducationComponent
 
   ],
   imports: [
