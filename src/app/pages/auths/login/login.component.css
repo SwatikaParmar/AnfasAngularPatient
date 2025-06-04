@@ -139,3 +139,17 @@ html[dir="rtl"] .eye-icon {
   background-color: #77734E;
   color: #fff;
 }
+
+
+
+.doctor-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* space between icon and text */
+  width: 100%;
+}
+
+.doctor-btn i {
+  font-size: 18px;
+}

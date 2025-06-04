@@ -93,10 +93,16 @@
                             <div><a [routerLink]="['/forgot-password']">{{ 'FORGOT_PASSWORD' | translate }}</a></div>
                         </div> -->
             <!-- <div class="mt-20"></div> -->
-             <div>
+             <!-- <div>
               <button [routerLink]="'/doctor-login'">Sign in Patient</button>
-             </div>
+             </div> -->
             <input type="submit" [routerLink]="'/doctor-dashboard'" class="view-more" value="{{ 'SIGN_IN' | translate }}">
+             <div class="view-more w-100" style="margin-top: 20px;">
+              <button [routerLink]="'/doctor-login'" class="patient-btn">
+               <i class="fas fa-user-injured"></i>
+                <span>Sign in Patient</span>
+              </button>
+            </div>
           </div>
         </form>
       </div>
