@@ -68,6 +68,34 @@
         }
       });
     </script>
+    <script>
+  function showOnly(event, id) {
+    const allSections = document.querySelectorAll('.tab-detail');
+    const allButtons = document.querySelectorAll('.tab-button');
+
+    // Hide all detail sections
+    allSections.forEach(section => {
+      section.style.display = 'none';
+    });
+
+    // Remove active class from all buttons
+    allButtons.forEach(btn => {
+      btn.classList.remove('active');
+    });
+
+    // Show selected detail
+    document.getElementById(id).style.display = 'block';
+
+    // Add active class to the clicked button
+    event.target.classList.add('active');
+  }
+
+  // Set default visible tab on load
+  document.addEventListener("DOMContentLoaded", function () {
+    showOnly({ target: document.querySelector(".tab-button.active") }, 'carrier');
+  });
+</script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <app-root></app-root>
