@@ -45,5 +45,10 @@ export enum ApiEndPoint {
     doctorLogin = "api/User/DoctorLogin",
     doctorAppointment = "api/User/GetDoctorAppointments",
     doctorPatient = "api/Admin/GetPatientList"
+
+
+
+
+    
 }
 
