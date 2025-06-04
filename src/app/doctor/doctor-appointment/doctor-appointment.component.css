@@ -1,0 +1,35 @@
+.patient-card {
+  width: 105%;
+  max-width: 400px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 10px;
+  font-family: 'Arial', sans-serif;
+  margin-top:20px;
+}
+
+.patient-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.patient-details {
+  color: #77734E;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+
+
+.chat-icon {
+  color: #C2A44F; /* Gold color */
+  font-size: 18px;
+}
+
+.patient-name {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #726641;
+}
