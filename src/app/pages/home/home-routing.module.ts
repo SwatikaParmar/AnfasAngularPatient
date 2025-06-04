@@ -33,7 +33,7 @@ import { EducationalMaterialComponent } from 'src/app/education/educational-mate
 import { AddRequestComponent } from 'src/app/Medication/add-request/add-request.component';
 import { EducationalMaterialDetailComponent } from 'src/app/education/educational-material/educational-material-detail/educational-material-detail.component';
 import { DoctorDashboardComponent } from 'src/app/doctor/doctor-dashboard/doctor-dashboard.component';
-
+import { DoctorAppointmentComponent } from 'src/app/doctor/doctor-appointment/doctor-appointment.component';
 
 const routes: Routes = [
 
@@ -76,7 +76,8 @@ const routes: Routes = [
 
       // Doctor Routes
 
-      { path: 'doctor-dashboard', component:DoctorDashboardComponent}
+      { path: 'doctor-dashboard', component:DoctorDashboardComponent},
+      { path: 'doctor-aappointment', component:DoctorAppointmentComponent}
     ]
   }
 ];
