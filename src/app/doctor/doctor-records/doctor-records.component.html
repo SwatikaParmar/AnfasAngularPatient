@@ -14,8 +14,8 @@
                             <button class="tab-button active" onclick="showOnly(event, 'carrier')">Medication
                                 Record</button>
                             <button class="tab-button" onclick="showOnly(event, 'shipper')">Health Tracking</button>
-                            <button class="tab-button" onclick="showOnly(event, 'driver')">Education Material</button>
-                            <button class="tab-button" onclick="showOnly(event, 'route')">Visit Record</button>
+                            <button class="tab-button" onclick="showOnly(event, 'driver')" (click)="getPatientEducation()">Education Material</button>
+                            <button class="tab-button" onclick="showOnly(event, 'route')" (click)="getDoctorVisit()">Visit Record</button>
 
                         </div>
                         <div id="carrier" class="tab-detail">
@@ -36,57 +36,60 @@
                                             </button>
                                             <div class="table-container">
                                                 <div class="table-responsive">
-                                                    <table class="medication-table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Medication Name</th>
-                                                                <th> Dosage</th>
-                                                                <th> Frequency</th>
-                                                                <th>Intructions</th>
-                                                                <th>Created at</th>
-                                                                <th>Status</th>
-                                                                <th>Action</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>asa</td>
-                                                                <td>SAD</td>
-                                                                <td>ADFSDSG</td>
-                                                                <td>
-                                                                    QEFWRAGETH
-                                                                </td>
+                                                   <table class="medication-table">
+  <thead>
+    <tr>
+      <th>Medication Name</th>
+      <th>Dosage</th>
+      <th>Frequency</th>
+      <th>Instructions</th>
+      <th>Created At</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of medicationList | paginate
+                            : {
+                                itemsPerPage: 6,
+                                currentPage: page,
+                                totalItems: totalItems,
+                                id: '1'
+                              }">
+      <td>{{ item.medicationName }}</td>
+      <td>{{ item.dosage }}</td>
+      <td>{{ item.frequency }}</td>
+      <td>{{ item.instructions }}</td>
+      <td>{{ item.createdAt | date: 'dd-MM-yyyy hh:mm a' }}</td>
+      <td>
+        <div class="form-check form-switch">
+        <input
+  class="form-check-input"
+  type="checkbox"
+  role="switch"
+  [checked]="item.status === 'Active'"
+    (change)="onCheckboxChange($event, item)"
+/>
 
-                                                                <td>DSAFSGD</td>
-                                                                <td>
-                                                                    <div class="form-check form-switch ">
-                                                                        <input class="form-check-input" type="checkbox"
-                                                                            role="switch" id="flexSwitchCheckChecked"
-                                                                            checked formControlName="isAvailable">
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <a class="list-icon"><i class="fa fa-eye"
-                                                                            aria-hidden="true"></i></a>
-                                                                    <a class="list-icon"><i class="fa fa-edit"
-                                                                            aria-hidden="true"></i></a>
+        </div>
+      </td>
+      <td>
+        <a class="list-icon"><i class="fa fa-eye" aria-hidden="true"></i></a>
+        <a class="list-icon"><i class="fa fa-edit" aria-hidden="true"></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-
-
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
                                                 </div>
 
                                                 <!-- <div class="no-data text-center" *ngIf="medicationList && medicationList.length === 0">
                   <img src="assets/images/ffffrq-removebg-preview.png" style="width: 50%; margin: auto; padding: 50px;">
                 </div> -->
-
-                                                <!-- <div class="pagination-container pt-3 pb-3">
+ <div class="pagination-container pt-3 pb-3">
                   <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
                     queryParamsHandling="merge"></pagination-controls>
-                </div> -->
+                </div> 
                                             </div>
                                         </div>
                                     </div>
@@ -101,7 +104,7 @@
                             <div class="container mt-4">
                                 <div class="row text-center">
                                     <div class="col-6 col-md-4 mb-4">
-                                        <a [routerLink]="['/doctor-bloodPressure']"
+                                        <a [routerLink]="['/doctor-patient/doctor-bloodPressure']"
                                             style="text-decoration: none; color: inherit;">
                                             <div class="health-box p-3 shadow-sm rounded bg-white">
                                                 <i class="fa-solid fa-tint fa-2x mb-2" style="color: #83764C;"></i>
@@ -110,7 +113,7 @@
                                         </a>
                                     </div>
                                     <div class="col-6 col-md-4 mb-4">
-                                        <a [routerLink]="['/doctor-bloodSugar']"
+                                        <a [routerLink]="['/doctor-patient/doctor-bloodSugar']"
                                             style="text-decoration: none; color: inherit;">
                                             <div class="health-box p-3 shadow-sm rounded bg-white">
                                                 <i class="fa-solid fa-syringe fa-2x mb-2" style="color: #83764C;"></i>
@@ -119,7 +122,7 @@
                                         </a>
                                     </div>
                                     <div class="col-6 col-md-4 mb-4">
-                                        <a [routerLink]="['/doctor-HeartRate']"
+                                        <a [routerLink]="['/doctor-patient/doctor-HeartRate']"
                                             style="text-decoration: none; color: inherit;">
                                             <div class="health-box p-3 shadow-sm rounded bg-white">
                                                 <i class="fa-solid fa-heartbeat fa-2x mb-2" style="color: #83764C;"></i>
@@ -128,7 +131,7 @@
                                         </a>
                                     </div>
                                     <div class="col-6 col-md-4 mb-4">
-                                        <a [routerLink]="['/doctor-weight']"
+                                        <a [routerLink]="['/doctor-patient/doctor-weight']"
                                             style="text-decoration: none; color: inherit;">
                                             <div class="health-box p-3 shadow-sm rounded bg-white">
                                                 <i class="fa-solid fa-weight fa-2x mb-2" style="color: #83764C;"></i>
@@ -137,7 +140,7 @@
                                         </a>
                                     </div>
                                     <div class="col-6 col-md-4 mb-4">
-                                        <a [routerLink]="['/doctor-labresults']"
+                                        <a [routerLink]="['/doctor-patient/doctor-labresults']"
                                             style="text-decoration: none; color: inherit;">
                                             <div class="health-box p-3 shadow-sm rounded bg-white">
                                                 <i class="fa-solid fa-vials fa-2x mb-2" style="color: #83764C;"></i>
@@ -146,7 +149,7 @@
                                         </a>
                                     </div>
                                     <div class="col-6 col-md-4 mb-4">
-                                        <a [routerLink]="['/doctor-steps']"
+                                        <a [routerLink]="['/doctor-patient/doctor-steps']"
                                             style="text-decoration: none; color: inherit;">
                                             <div class="health-box p-3 shadow-sm rounded bg-white">
                                                 <i class="fa-solid fa-shoe-prints fa-2x mb-2"
@@ -167,37 +170,35 @@
                                 </button> -->
                                 <div class="table-container">
                                     <div class="table-responsive">
-                                        <table class="medication-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Title</th>
-                                                    <th>Description</th>
-                                                    <th>File Url</th>
-                                                    <th> Is Approved</th>
-                                                    <th>Created at</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>adsfd</td>
+                                      <table class="medication-table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>File URL</th>
+      <th>Is Approved</th>
+      <th>Created At</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of educationMaterial">
+      <td>{{ item.title }}</td>
+      <td>{{ item.description }}</td>
+      <td>
+        <a [href]="'https://your-domain.com/' + item.contentUrl" target="_blank">
+          View PDF
+        </a>
+      </td>
+      <td>{{ item.isApproved }}</td>
+      <td>{{ item.createdAt | date: 'medium' }}</td>
+      <td>
+        <a class="list-icon"><i class="fa fa-eye" aria-hidden="true"></i></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-                                                    <td>
-                                                        hfgj
-                                                    </td>
-
-                                                    <td>fgh</td>
-                                                    <td>ghjg</td>
-                                                    <td>dhgfjg
-                                                    </td>
-                                                    <td>
-                                                        <a class="list-icon"><i class="fa fa-eye"
-                                                                aria-hidden="true"></i></a>
-
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
                                     </div>
 
                                     <!-- <div class="no-data text-center" *ngIf="materialList && materialList.length === 0">

@@ -43,6 +43,7 @@ import { DoctorWeightComponent } from 'src/app/doctor/doctor-weight/doctor-weigh
 import { DoctorLabresultsComponent } from 'src/app/doctor/doctor-labresults/doctor-labresults.component';
 import { DoctorStepsComponent } from 'src/app/doctor/doctor-steps/doctor-steps.component';
 import { DoctorEducationComponent } from 'src/app/doctor/doctor-education/doctor-education.component';
+import { TermsConditionComponent } from 'src/app/doctor/terms-condition/terms-condition.component';
 
 const routes: Routes = [
 
@@ -88,15 +89,15 @@ const routes: Routes = [
       { path: 'doctor-dashboard', component: DoctorDashboardComponent },
       { path: 'doctor-appointment', component: DoctorAppointmentComponent },
       { path: 'doctor-patient', component: DoctorPatientComponent },
-      { path: 'doctor-records', component: DoctorRecordsComponent },
-      { path: 'doctor-records', component: DoctorRecordsComponent },
-      { path: 'doctor-bloodPressure', component: DoctorBloodPressureComponent },
-      { path: 'doctor-bloodSugar', component: DoctorBloodsugarComponent },
-      { path: 'doctor-HeartRate', component: DoctorHeartRateComponent },
-      { path: 'doctor-weight', component: DoctorWeightComponent },
-      { path: 'doctor-labresults', component: DoctorLabresultsComponent },
-      { path: 'doctor-steps', component: DoctorStepsComponent },
-      { path: 'doctor-education', component:DoctorEducationComponent}
+      { path: 'doctor-patient/doctor-records/:id', component: DoctorRecordsComponent },
+      { path: 'doctor-patient/doctor-bloodPressure', component: DoctorBloodPressureComponent },
+      { path: 'doctor-patient/doctor-bloodSugar', component: DoctorBloodsugarComponent },
+      { path: 'doctor-patient/doctor-HeartRate', component: DoctorHeartRateComponent },
+      { path: 'doctor-patient/doctor-weight', component: DoctorWeightComponent },
+      { path: 'doctor-patient/doctor-labresults', component: DoctorLabresultsComponent },
+      { path: 'doctor-patient/doctor-steps', component: DoctorStepsComponent },
+      { path: 'doctor-education', component:DoctorEducationComponent},
+      { path : 'terms', component:TermsConditionComponent}
 
     ]
   }

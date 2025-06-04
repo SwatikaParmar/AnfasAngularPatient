@@ -56,6 +56,7 @@ import { DoctorWeightComponent } from 'src/app/doctor/doctor-weight/doctor-weigh
 import { DoctorStepsComponent } from 'src/app/doctor/doctor-steps/doctor-steps.component';
 import { DoctorEducationComponent } from 'src/app/doctor/doctor-education/doctor-education.component';
 
+import { TermsConditionComponent } from 'src/app/doctor/terms-condition/terms-condition.component';
 
 // export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 //   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -103,7 +104,8 @@ import { DoctorEducationComponent } from 'src/app/doctor/doctor-education/doctor
     DoctorLabresultsComponent,
     DoctorWeightComponent,
     DoctorStepsComponent,
-    DoctorEducationComponent
+    DoctorEducationComponent,
+    TermsConditionComponent
 
   ],
   imports: [

@@ -276,4 +276,38 @@ export class ContentService {
       + '&careProviderCode=' + data.careProviderCode
     );
   }
+
+  getdoctorMedication(data:any){
+    return this.http.get<any>(environment.apiUrl +  ApiEndPoint.doctorMedication + '?pageNumber=' + data.pageNumber
+      + '&pageSize=' + data.pageSize + '&careProviderCode=' + data.careProviderCode + '&mrn=' + data.mrn
+    )
+  }
+
+  setMedicationStatus(data:any){
+    return this.http.post<any>(environment.apiUrl + ApiEndPoint.medicationStatus,data)
+  }
+
+    geteducationalMaterialDoct(data: any) {
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.educationalMaterial + '?pageNumber=' + data.pageNumber + '&pageSize=' + data.pageSize
+      + '&mrn=' + data.mrn + '&careProviderCode=' + data.careProviderCode
+    );
+  }
+
+
+  getDoctorVisit(data:any){
+        return this.http.get<any>(environment.apiUrl + ApiEndPoint.visitList + '?mrn=' + data + '&forPatient=false' + '&forDoctor=true')
+
+  }
+
+  //   terms() {
+  //   return this.http.get<any>(environment.apiUrl + ApiEndPoint.getterms);
+  // }
+
+  terms(): Observable<any> {
+  return this.http.get('https://81.208.171.189/api/Admin/GetTermsHtml', {
+    responseType: 'text' as 'json' // This is the key fix
+  });
+}
+
+
 }
