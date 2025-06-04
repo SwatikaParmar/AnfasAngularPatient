@@ -37,6 +37,13 @@ export enum ApiEndPoint {
     rescheduleAppointment = "api/User/RescheduleAppointment",
     satisfactionList = "api/User/GetPatientSatisfactionList",
     addUpdateSatisfaction = "api/User/AddOrUpdatePatientSatisfaction",
-    satisfactionDetail = "api/User/GetPatientSatisfactionDetail"
+    satisfactionDetail = "api/User/GetPatientSatisfactionDetail",
+
+
+    // Doctor Login
+
+    doctorLogin = "api/User/DoctorLogin",
+    doctorAppointment = "api/User/GetDoctorAppointments",
+    doctorPatient = "api/Admin/GetPatientList"
 }
 

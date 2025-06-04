@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class DoctorDashboardComponent {
 
+  fname = localStorage.getItem('dname')
 }

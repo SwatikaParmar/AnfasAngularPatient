@@ -9,71 +9,44 @@
                                 Appointment List
                             </h1>
                         </div>
-                        <div class="row">
-                            <div class="col-12 col-md-4 mb-4">
-                                <div class="patient-card">
-                                    <div class="patient-info d-flex justify-content-between">
-                                        <div class="patient-details">
-                                            <div style="color: #83764C;">Appointment Number : AMCH24110001</div>
-                                            <div style="color: #83764C;">Appointment Date : 05-07-2025 at 05:55 AM
-                                            </div>
-                                        </div>
-                                        <div class="chat-icon">
-                                            <i class="fa-solid fa-comment-dots"></i>
-                                        </div>
-                                    </div>
-                                    <div style="border-bottom: 1px solid gray; margin-top: 5px;"></div>
-                                    <div class="patient-name">
-                                       <div><strong>John Doe</strong></div>
-                                        <div>Physicians Department</div>
-                                        <div>Normal()</div>
-                                    </div>
-                                </div>
-                            </div>
+                 <div class="row">
+  <div
+    class="col-12 col-md-4 mb-4"
+    *ngFor="let appointment of doctorappoint?.appointments"
+  >
+    <div class="patient-card">
+      <div class="patient-info d-flex justify-content-between">
+        <div class="patient-details">
+          <div style="color: #83764C;">
+            Appointment Number : {{ appointment.appointmentNumber }}
+          </div>
+          <div style="color: #83764C;">
+            Appointment Date :
+            {{
+              appointment.appointmentDate | date: 'dd-MM-yyyy'
+            }}
+            at
+            {{
+              appointment.startTime | date: 'hh:mm a'
+            }}
+          </div>
+        </div>
+        <div class="chat-icon">
+          <i class="fa-solid fa-comment-dots"></i>
+        </div>
+      </div>
 
-                            <div class="col-12 col-md-4 mb-4">
-                                <div class="patient-card">
-                                    <div class="patient-info d-flex justify-content-between">
-                                        <div class="patient-details">
-                                            <div style="color: #83764C;">Appointment Number : AMCH24110002</div>
-                                            <div style="color: #83764C;">Appointment Date : 05-07-2025 at 09:30 AM
-                                            </div>
-                                        </div>
-                                        <div class="chat-icon">
-                                            <i class="fa-solid fa-comment-dots"></i>
-                                        </div>
-                                    </div>
-                                    <div style="border-bottom: 1px solid gray; margin-top: 5px;"></div>
-                                    <div class="patient-name">
-                                        <div><strong> Sharma </strong></div>
-                                        <div>Dental Department</div>
-                                        <div>Emergency()</div>
-                                    </div>
-                                </div>
-                            </div>
+      <div style="border-bottom: 1px solid gray; margin-top: 5px;"></div>
 
-                            <div class="col-12 col-md-4 mb-4">
-                                <div class="patient-card">
-                                    <div class="patient-info d-flex justify-content-between">
-                                        <div class="patient-details">
-                                            <div style="color: #83764C;">Appointment Number : AMCH24110003</div>
-                                            <div style="color: #83764C;">Appointment Date : 06-07-2025 at 11:15 AM
-                                            </div>
-                                        </div>
-                                        <div class="chat-icon">
-                                            <i class="fa-solid fa-comment-dots"></i>
-                                        </div>
-                                    </div>
-                                    <div style="border-bottom: 1px solid gray; margin-top: 5px;"></div>
-                                    <div class="patient-name">
-                                        <div><strong> Khan</strong></div>
-                                        <div>Cardiology Department</div>
-                                        <div>Follow-up()</div>
-                                    </div>
-                                </div>
-                            </div>
+      <div class="patient-name">
+        <div><strong>{{ appointment.patientName }}</strong></div>
+        <div>{{ appointment.departmentName }}</div>
+        <div>{{ appointment.priority }}</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-                        </div>
 
 
 

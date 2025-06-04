@@ -38,18 +38,17 @@
             <!-- <input type="email" class="form-control user" placeholder="Email or Phone"
                             formControlName="email"> -->
             <div class="form-group">
-              <select id="mrNumber" class="form-control custom-select-align-end" (change)="onSelectChange($event)">
+              <select id="mrNumber" class="form-control custom-select-align-end" formControlName="orgCode">
                 <option value="" disabled selected>{{ 'SELECT' | translate }}</option>
-                <option value="mrn">{{ 'MR_NUMBER' | translate }}</option>
-                <option value="mobilePhone">{{ 'PHONE_NUMBER' | translate }}</option>
-                <option value="nationalId">{{ 'NATIONAL_ID' | translate }}</option>
+                <option value="AMC">{{ 'AMC' | translate }}</option>
+               
               </select>
             </div>
 
 
-            <div class="d-flex position-relative mb-10" *ngIf="selectedField === 'mrn'">
+            <div class="d-flex position-relative mb-10" >
               <input class="form-control password" placeholder="{{ 'ENTER_MR_NUMBER' | translate }}"
-                formControlName="mrn" [ngClass]="{ 'is-invalid': submitted && f['mrn'].errors }">
+                formControlName="loginid" [ngClass]="{ 'is-invalid': submitted && f['loginid'].errors }">
               <div class="eye-icon"
                 [ngClass]="{'eye-icon-rtl': currentLanguage === 'ar', 'eye-icon-ltr': currentLanguage !== 'ar'}">
                 <!-- Use fa-eye-slash by default (hidden), fa-eye when password is visible -->
@@ -57,32 +56,11 @@
               </div>
             </div>
            
-            <div class="d-flex position-relative mb-10" *ngIf="selectedField === 'mobilePhone'">
-              <input class="form-control password"
-                     placeholder="{{ 'ENTER_PHONE_NUMBER' | translate }}"
-                     formControlName="mobilePhone"
-                     [ngClass]="{ 'is-invalid': submitted && f['mobilePhone'].errors }">
-                     <div class="eye-icon"
-                     [ngClass]="{'eye-icon-rtl': currentLanguage === 'ar', 'eye-icon-ltr': currentLanguage !== 'ar'}">
-                     <!-- Use fa-eye-slash by default (hidden), fa-eye when password is visible -->
-                     <!-- <i class="fa" [ngClass]="password ? 'fa-eye' : 'fa-eye-slash'" aria-hidden="true"></i> -->
-                   </div>
-            </div>
-            
-            <div class="d-flex position-relative mb-10" *ngIf="selectedField === 'nationalId'">
-              <input class="form-control password"
-                     placeholder="{{ 'ENTER_NATIONAL_ID' | translate }}"
-                     formControlName="nationalId"
-                     [ngClass]="{ 'is-invalid': submitted && f['nationalId'].errors }">
-                     <div class="eye-icon"
-                     [ngClass]="{'eye-icon-rtl': currentLanguage === 'ar', 'eye-icon-ltr': currentLanguage !== 'ar'}">
-                     <!-- Use fa-eye-slash by default (hidden), fa-eye when password is visible -->
-                     <!-- <i class="fa" [ngClass]="password ? 'fa-eye' : 'fa-eye-slash'" aria-hidden="true"></i> -->
-                   </div>
-            </div>
+          
+           
 
-            <div *ngIf="submitted && f['mrn'].errors" class="help-block" style="color: red;">
-              <div *ngIf="f['mrn'].errors['required']"> {{ 'Please enter correct value' | translate }}
+            <div *ngIf="submitted && f['loginid'].errors" class="help-block" style="color: red;">
+              <div *ngIf="f['loginid'].errors['required']"> {{ 'Please enter correct value' | translate }}
               </div>
             </div>
 
@@ -96,7 +74,7 @@
              <!-- <div>
               <button [routerLink]="'/doctor-login'">Sign in Patient</button>
              </div> -->
-            <input type="submit" [routerLink]="'/doctor-dashboard'" class="view-more" value="{{ 'SIGN_IN' | translate }}">
+            <input type="submit" class="view-more" value="{{ 'SIGN_IN' | translate }}">
              <!-- <div class="view-more-top w-100" style="margin-top: 20px;">
               <button [routerLink]="'/doctor-login'" class="patient-btn">
               <i class="fas fa-user-injured"></i> 
