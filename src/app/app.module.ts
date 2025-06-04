@@ -15,19 +15,14 @@ import { JwtInterceptor } from './shared/helpers/jwt.interceptor';
 import { LayoutModule } from './layouts/layout.module';
 
 import { NgOtpInputModule } from 'ng-otp-input';
-import { MedicationListComponent } from './Medication/medication-list/medication-list.component';
-import { RequestListComponent } from './Medication/request-list/request-list.component';
-import { EducationalMaterialComponent } from './education/educational-material/educational-material.component';
-import { AddRequestComponent } from './Medication/add-request/add-request.component';
-import { EducationalMaterialDetailComponent } from './education/educational-material/educational-material-detail/educational-material-detail.component';
-import { DoctorRecordsComponent } from './doctor/doctor-records/doctor-records.component';
+
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader { 
   return new TranslateHttpLoader(http, './assets/i18n/', '.json'); 
 }
 
 @NgModule({  
   declarations: [ 
-    AppComponent
+    AppComponent, 
   ],
   imports: [
     FormsModule, 

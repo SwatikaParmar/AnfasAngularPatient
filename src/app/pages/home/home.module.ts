@@ -48,6 +48,12 @@ import { EducationalMaterialDetailComponent } from 'src/app/education/educationa
 import { DoctorAppointmentComponent } from 'src/app/doctor/doctor-appointment/doctor-appointment.component';
 import { DoctorPatientComponent } from 'src/app/doctor/doctor-patient/doctor-patient.component';
 import { DoctorRecordsComponent } from 'src/app/doctor/doctor-records/doctor-records.component';
+import { DoctorBloodPressureComponent } from 'src/app/doctor/doctor-blood-pressure/doctor-blood-pressure.component';
+import { DoctorBloodsugarComponent } from 'src/app/doctor/doctor-bloodsugar/doctor-bloodsugar.component';
+import { DoctorHeartRateComponent } from 'src/app/doctor/doctor-heart-rate/doctor-heart-rate.component';
+import { DoctorLabresultsComponent } from 'src/app/doctor/doctor-labresults/doctor-labresults.component';
+import { DoctorWeightComponent } from 'src/app/doctor/doctor-weight/doctor-weight.component';
+import { DoctorStepsComponent } from 'src/app/doctor/doctor-steps/doctor-steps.component';
 
 
 // export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -89,7 +95,13 @@ import { DoctorRecordsComponent } from 'src/app/doctor/doctor-records/doctor-rec
     EducationalMaterialDetailComponent,
     DoctorAppointmentComponent,
     DoctorPatientComponent,
-    DoctorRecordsComponent
+    DoctorRecordsComponent,
+    DoctorBloodPressureComponent,
+    DoctorBloodsugarComponent,
+    DoctorHeartRateComponent,
+    DoctorLabresultsComponent,
+    DoctorWeightComponent,
+    DoctorStepsComponent
 
   ],
   imports: [
