@@ -141,14 +141,3 @@ html[dir="rtl"] .eye-icon {
 }
 
 
-.patient-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px; /* space between icon and text */
-  width: 100%;
-}
-
-.patient-btn i {
-  font-size: 18px;
-}

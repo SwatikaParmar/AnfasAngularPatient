@@ -97,9 +97,15 @@
               <button [routerLink]="'/doctor-login'">Sign in Patient</button>
              </div> -->
             <input type="submit" [routerLink]="'/doctor-dashboard'" class="view-more" value="{{ 'SIGN_IN' | translate }}">
-             <div class="view-more w-100" style="margin-top: 20px;">
+             <!-- <div class="view-more-top w-100" style="margin-top: 20px;">
               <button [routerLink]="'/doctor-login'" class="patient-btn">
-               <i class="fas fa-user-injured"></i>
+              <i class="fas fa-user-injured"></i> 
+                <span>Sign in Patient</span>
+              </button>
+            </div> -->
+             <div class="view-more-top w-100" style="margin-top: 10px; text-align: end;">
+              <button [routerLink]="'/doctor-login'" class="patient-btn"
+                style="background: none; border: none; color: #007AFF; text-decoration: underline; cursor: pointer; padding: 0;">
                 <span>Sign in Patient</span>
               </button>
             </div>
