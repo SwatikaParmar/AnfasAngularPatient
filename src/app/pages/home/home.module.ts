@@ -46,6 +46,7 @@ import { AddComplaintComponent } from './complaint/add-complaint/add-complaint.c
 import { AddRequestComponent } from 'src/app/Medication/add-request/add-request.component';
 import { EducationalMaterialDetailComponent } from 'src/app/education/educational-material/educational-material-detail/educational-material-detail.component';
 import { DoctorAppointmentComponent } from 'src/app/doctor/doctor-appointment/doctor-appointment.component';
+import { DoctorPatientComponent } from 'src/app/doctor/doctor-patient/doctor-patient.component';
 
 
 // export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -85,7 +86,8 @@ import { DoctorAppointmentComponent } from 'src/app/doctor/doctor-appointment/do
     AddComplaintComponent,
     AddRequestComponent,
     EducationalMaterialDetailComponent,
-    DoctorAppointmentComponent
+    DoctorAppointmentComponent,
+    DoctorPatientComponent
 
   ],
   imports: [

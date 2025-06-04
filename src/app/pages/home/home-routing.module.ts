@@ -34,6 +34,7 @@ import { AddRequestComponent } from 'src/app/Medication/add-request/add-request.
 import { EducationalMaterialDetailComponent } from 'src/app/education/educational-material/educational-material-detail/educational-material-detail.component';
 import { DoctorDashboardComponent } from 'src/app/doctor/doctor-dashboard/doctor-dashboard.component';
 import { DoctorAppointmentComponent } from 'src/app/doctor/doctor-appointment/doctor-appointment.component';
+import { DoctorPatientComponent } from 'src/app/doctor/doctor-patient/doctor-patient.component';
 
 const routes: Routes = [
 
@@ -77,7 +78,8 @@ const routes: Routes = [
       // Doctor Routes
 
       { path: 'doctor-dashboard', component:DoctorDashboardComponent},
-      { path: 'doctor-aappointment', component:DoctorAppointmentComponent}
+      { path: 'doctor-aappointment', component:DoctorAppointmentComponent},
+      { path: 'doctor-patient', component: DoctorPatientComponent}
     ]
   }
 ];
