@@ -1,1 +1,82 @@
-<p>doctor-education works!</p>
+<div class="dashboard-outer">
+
+    <section>
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="flex mb-2 items-center ml-1">
+
+                    <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">{{ 'EDUCATIONAL_MATERIAL'
+                        | translate }}</h1>
+                </div>
+                <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
+                    <div class="custom-container mx-auto p-3">
+                        <div class="container">
+
+                            <div class="table-container">
+                                <div class="table-responsive">
+                                    <table class="medication-table">
+                                        <thead>
+                                            <tr>
+                                                <th>{{ 'TITLE1' | translate }}</th>
+                                                <!-- <th>{{ 'IMAGE' | translate }}</th> -->
+                                                <th>{{ 'DESCRIPTION1' | translate }}</th>
+                                                <th>{{ 'CARE_PROVIDER_CODE' | translate }}</th>
+                                                <th>{{ 'IS_APPROVED' | translate }}</th>
+                                                <th>{{ 'CREATED_AT' | translate }}</th>
+                                                <th>{{ 'ACTION' | translate }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="row-light" *ngFor="let item of materialList | paginate : {
+                                        itemsPerPage: 5,
+                                        currentPage: page,
+                                        totalItems: totalItems,
+                                        id: '1'
+                                      }">
+                                                <td>{{ item.title || 'N/A' }}</td>
+                                                <!-- <td>
+                                                    <img *ngIf="item.contentUrl; else noUrl"
+                                                        [src]="rootUrl + item.contentUrl" alt="Content" width="50"
+                                                        height="50">
+                                                    <ng-template #noUrl>N/A</ng-template>
+                                                </td> -->
+
+                                                <td>
+                                                    {{
+                                                      (item.description ? item.description.split(' ').slice(0, 2).join(' ') + 
+                                                        (item.description.split(' ').length > 2 ? '...' : '') : 'N/A')
+                                                    }}
+                                                  </td>
+                                                  
+                                                <td>{{ item.careProviderCode || 'N/A' }}</td>
+                                                <td>{{ item.isApproved || 'N/A' }}</td>
+                                                <td>{{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : 'N/A' }}
+                                                </td>
+                                                <td>
+                                                    <a
+                                                      class="list-icon"
+                                                      ><i class="fa fa-eye" [routerLink]="['/educational-Material/educational-detail', item?.id]" aria-hidden="true"></i></a>
+                                              
+                                                  </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="no-data text-center" *ngIf="materialList && materialList.length === 0">
+                                    <img src="assets/images/ffffrq-removebg-preview.png"
+                                        style="width: 50%; margin: auto; padding: 50px;">
+                                </div>
+
+                                <div class="pagination-container pt-3 pb-3">
+                                    <pagination-controls (pageChange)="onPageChange($event)" id="1"
+                                        class="paginate-doctor-list" queryParamsHandling="merge"></pagination-controls>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
