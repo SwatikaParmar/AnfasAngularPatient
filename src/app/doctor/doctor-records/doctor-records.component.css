@@ -251,3 +251,26 @@
    .list-icon i {
     color: white; /* icon color white */
   }
+
+
+    /* Base off state */
+  .form-check-input {
+    background-color: #ccc;
+    border-color: #ccc;
+  }
+
+  /* On state */
+  .form-check-input:checked {
+    background-color: #28a745; /* green */
+    border-color: #28a745;
+  }
+
+  /* Optional: transition effect */
+  .form-check-input {
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  .form-check {
+    position: relative;
+    display: block;
+    padding-left: 2.25rem;
+}

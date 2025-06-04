@@ -5,7 +5,7 @@
                 <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 10px;">
                     <div class=" mx-auto p-4">
                         <div class="flex mb-3 items-center ml-1">
-                            
+
                             <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">
                                 Vital Records
                             </h1>
@@ -44,6 +44,7 @@
                                                                 <th> Frequency</th>
                                                                 <th>Intructions</th>
                                                                 <th>Created at</th>
+                                                                <th>Status</th>
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
@@ -57,6 +58,13 @@
                                                                 </td>
 
                                                                 <td>DSAFSGD</td>
+                                                                <td>
+                                                                    <div class="form-check form-switch ">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                            role="switch" id="flexSwitchCheckChecked"
+                                                                            checked formControlName="isAvailable">
+                                                                    </div>
+                                                                </td>
                                                                 <td>
                                                                     <a class="list-icon"><i class="fa fa-eye"
                                                                             aria-hidden="true"></i></a>
@@ -93,51 +101,58 @@
                             <div class="container mt-4">
                                 <div class="row text-center">
                                     <div class="col-6 col-md-4 mb-4">
-                                         <a [routerLink]="['/doctor-bloodPressure']" style="text-decoration: none; color: inherit;">
-                                        <div class="health-box p-3 shadow-sm rounded bg-white">
-                                            <i class="fa-solid fa-tint fa-2x mb-2" style="color: #83764C;"></i>
-                                            <div>Blood Pressure</div>
-                                        </div>
+                                        <a [routerLink]="['/doctor-bloodPressure']"
+                                            style="text-decoration: none; color: inherit;">
+                                            <div class="health-box p-3 shadow-sm rounded bg-white">
+                                                <i class="fa-solid fa-tint fa-2x mb-2" style="color: #83764C;"></i>
+                                                <div>Blood Pressure</div>
+                                            </div>
                                         </a>
                                     </div>
                                     <div class="col-6 col-md-4 mb-4">
-                                         <a [routerLink]="['/doctor-bloodSugar']" style="text-decoration: none; color: inherit;">
-                                        <div class="health-box p-3 shadow-sm rounded bg-white">
-                                            <i class="fa-solid fa-syringe fa-2x mb-2" style="color: #83764C;"></i>
-                                            <div>Blood Sugar</div>
-                                        </div>
+                                        <a [routerLink]="['/doctor-bloodSugar']"
+                                            style="text-decoration: none; color: inherit;">
+                                            <div class="health-box p-3 shadow-sm rounded bg-white">
+                                                <i class="fa-solid fa-syringe fa-2x mb-2" style="color: #83764C;"></i>
+                                                <div>Blood Sugar</div>
+                                            </div>
                                         </a>
                                     </div>
                                     <div class="col-6 col-md-4 mb-4">
-                                          <a [routerLink]="['/doctor-HeartRate']" style="text-decoration: none; color: inherit;">
-                                        <div class="health-box p-3 shadow-sm rounded bg-white">
-                                            <i class="fa-solid fa-heartbeat fa-2x mb-2" style="color: #83764C;"></i>
-                                            <div>Heart Rate</div>
-                                        </div>
+                                        <a [routerLink]="['/doctor-HeartRate']"
+                                            style="text-decoration: none; color: inherit;">
+                                            <div class="health-box p-3 shadow-sm rounded bg-white">
+                                                <i class="fa-solid fa-heartbeat fa-2x mb-2" style="color: #83764C;"></i>
+                                                <div>Heart Rate</div>
+                                            </div>
                                         </a>
                                     </div>
                                     <div class="col-6 col-md-4 mb-4">
-                                          <a [routerLink]="['/doctor-weight']" style="text-decoration: none; color: inherit;">
-                                        <div class="health-box p-3 shadow-sm rounded bg-white">
-                                            <i class="fa-solid fa-weight fa-2x mb-2" style="color: #83764C;"></i>
-                                            <div>Weight</div>
-                                        </div>
+                                        <a [routerLink]="['/doctor-weight']"
+                                            style="text-decoration: none; color: inherit;">
+                                            <div class="health-box p-3 shadow-sm rounded bg-white">
+                                                <i class="fa-solid fa-weight fa-2x mb-2" style="color: #83764C;"></i>
+                                                <div>Weight</div>
+                                            </div>
                                         </a>
                                     </div>
                                     <div class="col-6 col-md-4 mb-4">
-                                        <a [routerLink]="['/doctor-labresults']" style="text-decoration: none; color: inherit;">
-                                        <div class="health-box p-3 shadow-sm rounded bg-white">
-                                            <i class="fa-solid fa-vials fa-2x mb-2" style="color: #83764C;"></i>
-                                            <div>Lab Results</div>
-                                        </div>
+                                        <a [routerLink]="['/doctor-labresults']"
+                                            style="text-decoration: none; color: inherit;">
+                                            <div class="health-box p-3 shadow-sm rounded bg-white">
+                                                <i class="fa-solid fa-vials fa-2x mb-2" style="color: #83764C;"></i>
+                                                <div>Lab Results</div>
+                                            </div>
                                         </a>
                                     </div>
                                     <div class="col-6 col-md-4 mb-4">
-                                          <a [routerLink]="['/doctor-steps']" style="text-decoration: none; color: inherit;">
-                                        <div class="health-box p-3 shadow-sm rounded bg-white">
-                                            <i class="fa-solid fa-shoe-prints fa-2x mb-2" style="color: #83764C;"></i>
-                                            <div>Steps</div>
-                                        </div>
+                                        <a [routerLink]="['/doctor-steps']"
+                                            style="text-decoration: none; color: inherit;">
+                                            <div class="health-box p-3 shadow-sm rounded bg-white">
+                                                <i class="fa-solid fa-shoe-prints fa-2x mb-2"
+                                                    style="color: #83764C;"></i>
+                                                <div>Steps</div>
+                                            </div>
                                         </a>
                                     </div>
                                 </div>
