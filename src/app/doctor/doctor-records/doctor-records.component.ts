@@ -44,7 +44,7 @@ export class DoctorRecordsComponent {
 
 
   getMedicationRecord(){
-
+this.spinner.show();
     let payload = {
       pageNumber : 1,
       pageSize :100,
@@ -54,9 +54,11 @@ export class DoctorRecordsComponent {
 
     this.contentService.getdoctorMedication(payload).subscribe(response => {
       if(response.isSuccess == true){
-
+this.spinner.hide();
         this.medicationList = response.data;
       } else {
+        this.spinner.hide();
+
         this.toastrService.error(response.message);
       }
     })

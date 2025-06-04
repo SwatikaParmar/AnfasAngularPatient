@@ -57,6 +57,8 @@ import { DoctorStepsComponent } from 'src/app/doctor/doctor-steps/doctor-steps.c
 import { DoctorEducationComponent } from 'src/app/doctor/doctor-education/doctor-education.component';
 
 import { TermsConditionComponent } from 'src/app/doctor/terms-condition/terms-condition.component';
+import { DoctorDashboardComponent } from 'src/app/doctor/doctor-dashboard/doctor-dashboard.component';
+import { DoctorProfileComponent } from 'src/app/doctor/doctor-profile/doctor-profile.component';
 
 // export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 //   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -105,7 +107,9 @@ import { TermsConditionComponent } from 'src/app/doctor/terms-condition/terms-co
     DoctorWeightComponent,
     DoctorStepsComponent,
     DoctorEducationComponent,
-    TermsConditionComponent
+    TermsConditionComponent,
+    DoctorDashboardComponent,
+    DoctorProfileComponent
 
   ],
   imports: [

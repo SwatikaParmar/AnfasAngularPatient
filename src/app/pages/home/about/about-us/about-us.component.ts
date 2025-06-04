@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { ContentService } from 'src/app/shared/services/content.service';
 
@@ -18,7 +19,9 @@ export class AboutUsComponent {
   constructor(
     private toastrService: ToastrService,
     private contentService: ContentService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+        private spinner: NgxSpinnerService,
+    
   ){ }
   
 
@@ -27,14 +30,16 @@ export class AboutUsComponent {
   }
 
   getAbout(){
+    this.spinner.show();
     this.contentService.aboutUs().subscribe(
       (response) => {
         if (response.status ) {
+          this.spinner.hide();
           this.aboutUsContent = this.sanitizer.bypassSecurityTrustHtml(response.data.data);
         }
       },
       (error) => {
-      
+      this.spinner.hide();
         this.toastrService.error('Failed to load terms and conditions content.');
       }
     );

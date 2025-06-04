@@ -41,10 +41,11 @@ import { DoctorBloodsugarComponent } from 'src/app/doctor/doctor-bloodsugar/doct
 import { DoctorHeartRateComponent } from 'src/app/doctor/doctor-heart-rate/doctor-heart-rate.component';
 import { DoctorWeightComponent } from 'src/app/doctor/doctor-weight/doctor-weight.component';
 import { DoctorLabresultsComponent } from 'src/app/doctor/doctor-labresults/doctor-labresults.component';
+
 import { DoctorStepsComponent } from 'src/app/doctor/doctor-steps/doctor-steps.component';
 import { DoctorEducationComponent } from 'src/app/doctor/doctor-education/doctor-education.component';
 import { TermsConditionComponent } from 'src/app/doctor/terms-condition/terms-condition.component';
-
+import { DoctorProfileComponent } from 'src/app/doctor/doctor-profile/doctor-profile.component';
 const routes: Routes = [
 
   {
@@ -90,14 +91,15 @@ const routes: Routes = [
       { path: 'doctor-appointment', component: DoctorAppointmentComponent },
       { path: 'doctor-patient', component: DoctorPatientComponent },
       { path: 'doctor-patient/doctor-records/:id', component: DoctorRecordsComponent },
-      { path: 'doctor-patient/doctor-bloodPressure', component: DoctorBloodPressureComponent },
+      { path: 'doctor-patient/doctor-bloodPressure/:id', component: DoctorBloodPressureComponent },
       { path: 'doctor-patient/doctor-bloodSugar', component: DoctorBloodsugarComponent },
       { path: 'doctor-patient/doctor-HeartRate', component: DoctorHeartRateComponent },
       { path: 'doctor-patient/doctor-weight', component: DoctorWeightComponent },
       { path: 'doctor-patient/doctor-labresults', component: DoctorLabresultsComponent },
       { path: 'doctor-patient/doctor-steps', component: DoctorStepsComponent },
       { path: 'doctor-education', component:DoctorEducationComponent},
-      { path : 'terms', component:TermsConditionComponent}
+      { path : 'terms', component:TermsConditionComponent},
+      { path : 'doctor-profile',component:DoctorProfileComponent}
 
     ]
   }

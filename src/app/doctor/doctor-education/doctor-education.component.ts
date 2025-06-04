@@ -34,6 +34,7 @@ export class DoctorEducationComponent {
 
 
   MaterialList() {
+    this.spinner.show();
     let payload = {
       pageNumber : 1,
       pageSize : 10,
@@ -46,7 +47,9 @@ export class DoctorEducationComponent {
       response => {
         if (response.isSuccess) {
           this.materialList = response.data.dataList;
+          this.spinner.hide();
         } else {
+          this.spinner.hide();
           this.toastrService.error('Failed to fetch medication list.');
           console.error('API returned failure:', response);
         }

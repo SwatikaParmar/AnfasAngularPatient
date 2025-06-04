@@ -67,7 +67,7 @@
 
                         <!-- Action Buttons -->
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6 text-center">
-                            <button
+                            <button [routerLink]="['/doctor-appointment']"
                                 class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 hover:scale-105 transition-transform duration-300 ease-in-out"
                                 style="border: 1px solid #FEC34F;">
                                 <i class="fa-solid fa-calendar-days text-2xl" style="color: #77734E;"></i>
@@ -75,14 +75,14 @@
                             </button>
 
 
-                            <button
+                            <button [routerLink]="['/doctor-education']"
                                 class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 text-center hover:scale-105 transition-transform duration-300 ease-in-out"
                                 style="border:1px solid #FEC34F!important;">
                                 <i class="fa-solid fa-book text-blue-600 text-2xl" style="color: #77734E;"></i>
                                 <span style="color:#77734E; font-weight: 600;">Educational Material</span>
                             </button>
 
-                            <button
+                            <button [routerLink]="['/doctor-patient']"
                                 class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 text-center hover:scale-105 transition-transform duration-300 ease-in-out"
                                 style="border:1px solid #FEC34F!important;">
                                 <i class="fa-solid fa-user-injured text-red-500 text-2xl" style="color: #77734E;"></i>

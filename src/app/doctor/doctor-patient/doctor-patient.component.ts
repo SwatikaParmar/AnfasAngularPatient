@@ -39,12 +39,15 @@ export class DoctorPatientComponent {
 
    getDocAppointment(){
 
+    this.spinner.show();
     const CareProviderCode = localStorage.getItem('code')
     this.contentService.docPatient(CareProviderCode).subscribe(response => {
       if (response.isSuccess == true) {
           debugger
           this.patientlist = response.data;
+          this.spinner.hide();
         } else {
+          this.spinner.hide();
           this.toastrService.error('Failed to fetch  list.');
           console.error('API returned failure:', response);
         }

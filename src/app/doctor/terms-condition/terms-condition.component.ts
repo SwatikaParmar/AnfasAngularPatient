@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
 import { ContentService } from 'src/app/shared/services/content.service';
 import { SafeHtml } from '@angular/platform-browser';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-terms-condition',
@@ -19,7 +20,9 @@ constructor(
 
     private toastrService: ToastrService,
     private contentService: ContentService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+        private spinner: NgxSpinnerService,
+    
   ){
 
       this.termsForm = this.fb.group({
@@ -32,11 +35,14 @@ constructor(
     this.getterms();
   }
 getterms() {
+  this.spinner.show();
   this.contentService.terms().subscribe(
     (response: string) => {
+      this.spinner.hide();
       this.termsText = this.sanitizer.bypassSecurityTrustHtml(response);
     },
     (error) => {
+      this.spinner.hide();
       this.toastrService.error('Failed to load terms and conditions content.');
       console.error(error);
     }

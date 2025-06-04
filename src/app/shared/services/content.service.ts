@@ -310,4 +310,19 @@ export class ContentService {
 }
 
 
+getBloodPressure(data: any) {
+  let url = `${environment.apiUrl}${ApiEndPoint.recordType}?pageNumber=${data.pageNumber}&pageSize=${data.pageSize}&careProviderCode=${data.careProviderCode}&mrn=${data.mrn}&type=${data.type}`;
+
+  if (data.fromDate) {
+    url += `&fromDate=${data.fromDate}`;
+  }
+
+  if (data.toDate) {
+    url += `&toDate=${data.toDate}`;
+  }
+
+  return this.http.get<any>(url);
+}
+
+
 }

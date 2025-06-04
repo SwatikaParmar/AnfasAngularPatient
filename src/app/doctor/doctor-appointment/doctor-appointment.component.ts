@@ -38,7 +38,7 @@ page: number = 0;
 
 
  getDocAppointment() {
-
+this.spinner.show();
   const now = new Date();
   const fromDate = new Date(now.getFullYear(), now.getMonth(), 1); // First day of current month
   const toDate = new Date(now.getFullYear(), now.getMonth() + 1, 0); // Last day of current month
@@ -53,7 +53,11 @@ debugger
     response => {
       if (response.status === true) {
         this.doctorappoint = response.data;
+        this.spinner.hide();
+
       } else {
+        this.spinner.hide();
+
         this.toastrService.error('Failed to fetch list.');
         console.error('API returned failure:', response);
       }
