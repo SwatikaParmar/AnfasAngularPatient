@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: "https://81.208.171.189/",
-  rootPathUrl: "https://81.208.171.189/",
+  apiUrl: "https://swagger.amchealthgroup.com/",
+  rootPathUrl: "https://swagger.amchealthgroup.com/",
 };
 /*
  * For easier debugging in development mode, you can import the following file

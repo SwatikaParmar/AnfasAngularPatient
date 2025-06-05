@@ -354,5 +354,9 @@ addEduMaterial(data: any) {
 }
 
 
+setvitalStatus(data:any){
+  return this.http.post<any>(environment.apiUrl + ApiEndPoint.vitalStatus,data)
+}
+
 
 }

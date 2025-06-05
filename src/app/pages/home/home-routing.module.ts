@@ -96,7 +96,7 @@ const routes: Routes = [
       { path: 'doctor-patient', component: DoctorPatientComponent },
       { path: 'doctor-patient/doctor-records/:id', component: DoctorRecordsComponent },
       { path: 'doctor-patient/doctor-bloodPressure/:id', component: DoctorBloodPressureComponent },
-      { path: 'doctor-patient/doctor-bloodSugar', component: DoctorBloodsugarComponent },
+      { path: 'doctor-patient/doctor-bloodSugar/:id', component: DoctorBloodsugarComponent },
       { path: 'doctor-patient/doctor-HeartRate', component: DoctorHeartRateComponent },
       { path: 'doctor-patient/doctor-weight', component: DoctorWeightComponent },
       { path: 'doctor-patient/doctor-labresults', component: DoctorLabresultsComponent },

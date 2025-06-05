@@ -13,18 +13,17 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./doctor-blood-pressure.component.css']
 })
 export class DoctorBloodPressureComponent {
- page: number = 0;
+  page: number = 0;
   itemsPerPage!: number;
   totalItems!: number;
   appointmentList: any;
   rootUrl: any;
   mrn: any;
   data: any;
-bloodForm!: FormGroup;
+  bloodForm!: FormGroup;
 
-    constructor(
-          private formBuilder: FormBuilder,
-      
+  constructor(
+    private formBuilder: FormBuilder,
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService,
     private contentService: ContentService,
@@ -32,15 +31,15 @@ bloodForm!: FormGroup;
     private route: ActivatedRoute,
     private _location: Location,
     private http: HttpClient
-  ){ 
+  ) {
     this.bloodForm = this.formBuilder.group({
-  FromDate: [''],
-  ToDate: ['']
-});
+      FromDate: [''],
+      ToDate: ['']
+    });
   }
 
   ngOnInit(): void {
-     this.mrn = this.route.snapshot.params['id'];
+    this.mrn = this.route.snapshot.params['id'];
     this.rootUrl = environment.rootPathUrl;
     this.route.queryParams.subscribe((params) => {
       this.page = +params['page'] || 0;
@@ -49,49 +48,92 @@ bloodForm!: FormGroup;
   }
 
 
-  getBlood(){
-const formValues = this.bloodForm.value;
+  getBlood() {
+    const formValues = this.bloodForm.value;
 
-let payload: any = {
-  pageNumber: 1,
-  pageSize: 100,
-  type: 'bloodpressure',
-  mrn: this.mrn,
-  careProviderCode: localStorage.getItem('code')
-};
+    let payload: any = {
+      pageNumber: 1,
+      pageSize: 100,
+      type: 'bloodpressure',
+      mrn: this.mrn,
+      careProviderCode: localStorage.getItem('code')
+    };
 
-if (formValues.FromDate) {
-  payload.fromDate = formValues.FromDate;
-}
+    if (formValues.FromDate) {
+      payload.fromDate = formValues.FromDate;
+    }
 
-if (formValues.ToDate) {
-  payload.toDate = formValues.ToDate;
-}
+    if (formValues.ToDate) {
+      payload.toDate = formValues.ToDate;
+    }
     this.contentService.getBloodPressure(payload).subscribe(response => {
-      if(response.isSuccess == true) {
+      if (response.isSuccess == true) {
 
         this.data = response.data.dataList;
-      }else {
-this.toastrService.error();
+      } else {
+        this.toastrService.error();
       }
     });
   }
 
 
-  
-  
-      onPageChange(page: number): void {
-        // Update query parameters for pagination
-        this.router.navigate([], {
-          relativeTo: this.route,
-          queryParams: { page: page },
-          queryParamsHandling: 'merge',
-        });
+
+
+  onPageChange(page: number): void {
+    // Update query parameters for pagination
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { page: page },
+      queryParamsHandling: 'merge',
+    });
+  }
+
+  backClicked() {
+    this._location.back();
+  }
+
+  approveItem(item: any) {
+    // Your logic to approve
+    console.log('Approved:', item);
+    // Optionally update status
+    item.status = 'Verified';
+    debugger
+    let payload = {
+      id: item.id,
+      type: 'BloodPressure',
+      status: 'Verified'
+    }
+    this.contentService.setvitalStatus(payload).subscribe(response => {
+      if (response.isSuccess == true) {
+        this.toastrService.success(response.messages);
+      } else {
+        this.toastrService.error(response.messages);
+
       }
-    
-      backClicked() {
-        this._location.back();
-      }  
+    });
+  }
+
+  rejectItem(item: any) {
+    // Your logic to reject
+    console.log('Rejected:', item);
+    item.status = 'Rejected';
+
+    let payload = {
+      id: item.id,
+      type: 'BloodPressure',
+      status: 'Rejected'
+    }
+    this.contentService.setvitalStatus(payload).subscribe(response => {
+      if (response.isSuccess == true) {
+        this.toastrService.success(response.messages);
+      } else {
+        this.toastrService.error(response.messages);
+
+      }
+    });
+
+  }
+
 
 
 }
