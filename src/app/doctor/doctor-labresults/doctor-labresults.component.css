@@ -1,0 +1,64 @@
+ .tab-button {
+    padding: 10px 20px;
+    background-color: #d3d3d3;
+    border: none;
+    margin-right: 5px;
+    cursor: pointer;
+    border-radius: 30px;
+    font-weight: 600;
+  }
+
+  .tab-button.active {
+    background-color: #FCC75A;
+    color: white;
+  }
+
+  .tab-detail {
+    padding: 20px;
+    margin-top: 10px;
+    background-color: #fafafa;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+
+
+
+  @media (max-width: 576px) {
+    .button-container {
+      flex-direction: column;
+    }
+
+    .tab-button {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+
+  
+  
+.pdf-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  background-color: #f2f4f8;
+  border: 1px solid #d1d9e6;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.pdf-link:hover {
+  background-color: #e0e7ef;
+  border-color: #bcc7d8;
+  color: #e63946;
+}
+
+.pdf-link i {
+  color: #e63946;
+  font-size: 18px;
+}
