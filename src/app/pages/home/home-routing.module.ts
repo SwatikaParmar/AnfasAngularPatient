@@ -47,6 +47,7 @@ import { DoctorEducationComponent } from 'src/app/doctor/doctor-education/doctor
 import { TermsConditionComponent } from 'src/app/doctor/terms-condition/terms-condition.component';
 import { DoctorProfileComponent } from 'src/app/doctor/doctor-profile/doctor-profile.component';
 import { ChatListComponent } from 'src/app/doctor/chat/chat-list/chat-list.component';
+import { ChatBoxComponent } from 'src/app/doctor/chat/chat-box/chat-box.component';
 const routes: Routes = [
 
   {
@@ -101,7 +102,8 @@ const routes: Routes = [
       { path: 'doctor-education', component:DoctorEducationComponent},
       { path : 'terms', component:TermsConditionComponent},
       { path : 'doctor-profile',component:DoctorProfileComponent},
-      { path: 'chat-list',component:ChatListComponent}
+      { path: 'chat-list',component:ChatListComponent},
+      { path: 'chat-list/chat',component:ChatBoxComponent}
 
     ]
   }
