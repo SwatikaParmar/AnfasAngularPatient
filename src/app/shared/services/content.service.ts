@@ -359,4 +359,9 @@ setvitalStatus(data:any){
 }
 
 
+getMessageList(userName :any){
+
+  return this.http.get<any>(environment.apiUrl + ApiEndPoint.messageList + userName )
+
+}
 }

@@ -11,7 +11,10 @@ import { Location } from '@angular/common';
   styleUrls: ['./chat-list.component.css']
 })
 export class ChatListComponent {
-
+  data: any;
+  page: number = 0;
+  itemsPerPage!: number;
+  totalItems!: number;
     constructor(
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService,
@@ -22,12 +25,36 @@ export class ChatListComponent {
   ){ }
 
   ngOnInit(): void {
- 
+ this.getmessagePerson();
   }
 
 
   getmessagePerson(){
     
+    const code = localStorage.getItem('code');
+debugger
+    this.contentService.getMessageList(code).subscribe(response => {
+
+      if(response.isSuccess == true){
+this.data = response.data;
+      }else {
+
+      }
+    });
   }
+
+
+    onPageChange(page: number): void {
+        // Update query parameters for pagination
+        this.router.navigate([], {
+          relativeTo: this.route,
+          queryParams: { page: page },
+          queryParamsHandling: 'merge',
+        });
+      }
+    
+      backClicked() {
+        this._location.back();
+      }  
 
 }
