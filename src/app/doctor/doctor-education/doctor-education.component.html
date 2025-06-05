@@ -11,7 +11,10 @@
                 <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
                     <div class="custom-container mx-auto p-3">
                         <div class="container">
-
+                            <div class="text-end d-flex align-items-end justify-content-end mb-3">
+                                <button type="button" class="btn  mt-3 " 
+                                    style="background-color: #FEC34F; ">+ Add Educational</button>
+                            </div>
                             <div class="table-container">
                                 <div class="table-responsive">
                                     <table class="medication-table">
@@ -43,21 +46,22 @@
 
                                                 <td>
                                                     {{
-                                                      (item.description ? item.description.split(' ').slice(0, 2).join(' ') + 
-                                                        (item.description.split(' ').length > 2 ? '...' : '') : 'N/A')
+                                                    (item.description ? item.description.split(' ').slice(0, 2).join('
+                                                    ') +
+                                                    (item.description.split(' ').length > 2 ? '...' : '') : 'N/A')
                                                     }}
-                                                  </td>
-                                                  
+                                                </td>
+
                                                 <td>{{ item.careProviderCode || 'N/A' }}</td>
                                                 <td>{{ item.isApproved || 'N/A' }}</td>
                                                 <td>{{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : 'N/A' }}
                                                 </td>
                                                 <td>
-                                                    <a
-                                                      class="list-icon"
-                                                      ><i class="fa fa-eye" [routerLink]="['/educational-Material/educational-detail', item?.id]" aria-hidden="true"></i></a>
-                                              
-                                                  </td>
+                                                    <a class="list-icon"><i class="fa fa-eye"
+                                                            [routerLink]="['/educational-Material/educational-detail', item?.id]"
+                                                            aria-hidden="true"></i></a>
+
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
