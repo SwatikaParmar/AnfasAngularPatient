@@ -1,79 +1,79 @@
 <section>
-    <div class="content-body">
-      <div class="container-fluid">
-        <div class="input-form">
-          <div class="row justify-content-start align-items-start g-0">
-            <div class="col-12 col-md-9">
-              <div class="card-shipper">
-                <div class="back-btn-left-circle mt-1">
-                  <i class="fi fi-rr-arrow-small-left" (click)="backClicked()"
-                    style="color:#726641; padding-top: 7px;"></i>
-                </div>
-                <div>
-                  <p>
-                    <span class="black-home">{{ 'EDUCATIONAL_MATERIAL_DETAIL' | translate }}</span>
-                  </p>
-                </div>
+  <div class="content-body">
+    <div class="container-fluid">
+      <div class="input-form">
+        <div class="row justify-content-start align-items-start g-0">
+          <div class="col-12 col-md-9">
+            <div class="card-shipper">
+              <div class="back-btn-left-circle mt-1">
+                <i class="fi fi-rr-arrow-small-left" (click)="backClicked()"
+                  style="color:#726641; padding-top: 7px;"></i>
               </div>
-  
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item d-flex row align-items-center">
-                  <p class="col-5">{{ 'TITLE1' | translate }}</p>
-                  <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                  <p class="col-5">
-                    <label class="address-texts">{{ detail?.title || 'N/A' }}</label>
-                  </p>
-                </li>
-  
-            
-                <li class="list-group-item d-flex row align-items-center">
-                  <p class="col-5">{{ 'CONTENT_URL' | translate }}</p>
-                  <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                  <p class="col-5">
-                    <label class="address-texts">
-                      <a *ngIf="detail?.contentUrl" [href]="rootUrl + detail.contentUrl" rel="noopener">
-                       {{ 'VIEW_DOCUMENT' | translate }}
-                      </a>
-                      <span *ngIf="!detail?.contentUrl">{{ 'N_A' | translate }}</span>
-                    </label>
-                  </p>
-                </li>
-  
-  
-                <li class="list-group-item d-flex row align-items-center">
-                  <p class="col-5">{{ 'CARE_PROVIDER_CODE' | translate }}</p>
-                  <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                  <p class="col-5">
-                    <label class="address-texts">{{ detail?.careProviderCode || 'N/A' }}</label>
-                  </p>
-                </li>
-  
-                <li class="list-group-item d-flex row align-items-center">
-                  <p class="col-5">{{ 'CREATED_AT' | translate }}</p>
-                  <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                  <p class="col-5">
-                    <label class="address-texts">
-                      {{ detail?.createdAt ? (detail.createdAt | date: 'MM/dd/yyyy') : 'N/A' }}
-                    </label>
-                  </p>
-                </li>
-
-                <li class="list-group-item d-flex row align-items-center">
-                  <p class="col-5">{{ 'DESCRIPTION1' | translate }}</p>
-                  <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                  <p class="col-5">
-                    <label class="address-texts">{{ detail?.description || 'N/A' }}</label>
-                  </p>
-                </li>
-              </ul>
+              <div>
+                <p>
+                  <span class="black-home">{{ 'EDUCATIONAL_MATERIAL_DETAIL' | translate }}</span>
+                </p>
+              </div>
             </div>
+
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex row align-items-center">
+                <p class="col-5">{{ 'TITLE1' | translate }}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5">
+                  <label class="address-texts">{{ detail?.title || 'N/A' }}</label>
+                </p>
+              </li>
+
+
+              <li class="list-group-item d-flex row align-items-center">
+                <p class="col-5">{{ 'CONTENT_URL' | translate }}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5">
+                  <label class="address-texts">
+                    <a *ngIf="detail?.contentUrl" [href]="rootUrl + detail.contentUrl" rel="noopener">
+                      {{ 'VIEW_DOCUMENT' | translate }}
+                    </a>
+                    <span *ngIf="!detail?.contentUrl">{{ 'N_A' | translate }}</span>
+                  </label>
+                </p>
+              </li>
+
+
+              <li class="list-group-item d-flex row align-items-center">
+                <p class="col-5">{{ 'CARE_PROVIDER_CODE' | translate }}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5">
+                  <label class="address-texts">{{ detail?.careProviderCode || 'N/A' }}</label>
+                </p>
+              </li>
+
+              <li class="list-group-item d-flex row align-items-center">
+                <p class="col-5">{{ 'CREATED_AT' | translate }}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5">
+                  <label class="address-texts">
+                    {{ detail?.createdAt ? (detail.createdAt | date: 'MM/dd/yyyy') : 'N/A' }}
+                  </label>
+                </p>
+              </li>
+
+              <li class="list-group-item d-flex row align-items-center">
+                <p class="col-5">{{ 'DESCRIPTION1' | translate }}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5">
+                  <label class="address-texts">{{ detail?.description || 'N/A' }}</label>
+                </p>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
-  </section>
-  
-  <!-- <section *ngIf="patientList && patientList.length > 0">
+  </div>
+</section>
+
+<!-- <section *ngIf="patientList && patientList.length > 0">
     <div class="content-body">
       <div class="container-fluid">
         <div class="input-form">
@@ -121,3 +121,66 @@
       </div>
     </div>
   </section> -->
+
+
+<section>
+  <div class="content-body">
+    <div class="container-fluid-top">
+      <div class="input-form">
+        <div class="row justify-content-center align-items-center g-0">
+          <div class="col-12 col-md-12">
+            <div class="card-shipper mb-3 mt-2">
+              <div>
+                <p>
+                  <span class="black-home">Assign Material to Patient</span>
+                </p>
+              </div>
+            </div>
+            <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
+              <div class="custom-container mx-auto p-3">
+                <div class="container p-0">
+
+                  <div class="table-container">
+                    <div class="table-responsive">
+                      <table class="medication-table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+
+                            <th>Phone Number</th>
+                            <th>MRN Number</th>
+                            <th>Action</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="row-light">
+                            <td>KHADIJAH ABDULAZIZ</td>
+
+                            <td>
+                              2587412547
+                            </td>
+
+                            <td>36985214785</td>
+                            <td>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="exampleCheck" />
+                              
+                              </div>
+                            </td>
+
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
