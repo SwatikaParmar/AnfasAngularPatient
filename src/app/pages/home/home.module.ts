@@ -61,6 +61,8 @@ import { DoctorDashboardComponent } from 'src/app/doctor/doctor-dashboard/doctor
 import { DoctorProfileComponent } from 'src/app/doctor/doctor-profile/doctor-profile.component';
 import { ChatListComponent } from 'src/app/doctor/chat/chat-list/chat-list.component';
 import { ChatBoxComponent } from 'src/app/doctor/chat/chat-box/chat-box.component';
+import { DoctorAddEducationalmaterialComponent } from 'src/app/doctor/doctor-add-educationalmaterial/doctor-add-educationalmaterial.component';
+import { DoctorAddmedicationComponent } from 'src/app/doctor/doctor-addmedication/doctor-addmedication.component';
 
 // export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 //   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -113,7 +115,9 @@ import { ChatBoxComponent } from 'src/app/doctor/chat/chat-box/chat-box.componen
     DoctorDashboardComponent,
     DoctorProfileComponent,
     ChatListComponent,
-    ChatBoxComponent
+    ChatBoxComponent,
+    DoctorAddEducationalmaterialComponent,
+    DoctorAddmedicationComponent
 
   ],
   imports: [

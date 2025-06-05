@@ -16,6 +16,7 @@ import { LayoutModule } from './layouts/layout.module';
 
 import { NgOtpInputModule } from 'ng-otp-input';
 
+
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader { 
   return new TranslateHttpLoader(http, './assets/i18n/', '.json'); 
 }

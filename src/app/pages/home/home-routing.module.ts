@@ -48,6 +48,8 @@ import { TermsConditionComponent } from 'src/app/doctor/terms-condition/terms-co
 import { DoctorProfileComponent } from 'src/app/doctor/doctor-profile/doctor-profile.component';
 import { ChatListComponent } from 'src/app/doctor/chat/chat-list/chat-list.component';
 import { ChatBoxComponent } from 'src/app/doctor/chat/chat-box/chat-box.component';
+import { DoctorAddEducationalmaterialComponent } from 'src/app/doctor/doctor-add-educationalmaterial/doctor-add-educationalmaterial.component';
+import { DoctorAddmedicationComponent } from 'src/app/doctor/doctor-addmedication/doctor-addmedication.component';
 const routes: Routes = [
 
   {
@@ -99,11 +101,13 @@ const routes: Routes = [
       { path: 'doctor-patient/doctor-weight', component: DoctorWeightComponent },
       { path: 'doctor-patient/doctor-labresults', component: DoctorLabresultsComponent },
       { path: 'doctor-patient/doctor-steps', component: DoctorStepsComponent },
-      { path: 'doctor-education', component:DoctorEducationComponent},
-      { path : 'terms', component:TermsConditionComponent},
-      { path : 'doctor-profile',component:DoctorProfileComponent},
-      { path: 'chat-list',component:ChatListComponent},
-      { path: 'chat-list/chat',component:ChatBoxComponent}
+      { path: 'doctor-education', component: DoctorEducationComponent },
+      { path: 'terms', component: TermsConditionComponent },
+      { path: 'doctor-profile', component: DoctorProfileComponent },
+      { path: 'chat-list', component: ChatListComponent },
+      { path: 'chat-list/chat', component: ChatBoxComponent },
+      { path: 'doctor/educational-material', component: DoctorAddEducationalmaterialComponent },
+      { path: 'doctor/medication', component: DoctorAddmedicationComponent }
 
     ]
   }
