@@ -107,7 +107,7 @@ const routes: Routes = [
       { path: 'chat-list', component: ChatListComponent },
       { path: 'chat-list/chat', component: ChatBoxComponent },
       { path: 'doctor/educational-material', component: DoctorAddEducationalmaterialComponent },
-      { path: 'doctor/medication', component: DoctorAddmedicationComponent }
+      { path: 'doctor-patient/doctor/medication/:id', component: DoctorAddmedicationComponent }
 
     ]
   }

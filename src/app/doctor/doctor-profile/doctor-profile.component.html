@@ -1,43 +1,48 @@
 <div class="dashboard-outer">
-    <section>
-        <div class="content-body">
-            <div class="container-fluid">
-                <div class="flex mb-4 items-center ml-1">
-                    <!-- <button class="flex items-center justify-center w-8 h-8 rounded-full text-white"
-                        style="background-color: #726641;">
-                        <i class="fas fa-arrow-left text-xs text-center"></i>
-                    </button> -->
-                    <h1 class="text-lg font-semibold ml-2" style="font-size: 25px; color: #726641;">
-                        Profile
-                    </h1>
-                </div>
-                <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
-                    <div class="custom-container mx-auto p-3">
-                        <div class="container">
-                            <div class="profile-card mb-4" >
-                                <img src="/assets/images/icon01.png" alt="User Photo" class="profile-photo" />
-
-                                <div class="profile-details">
-                                    <div class="profile-title">MOHAMMED</div>
-
-                                    <div class="profile-section">
-                                        <div class="profile-label">Default Department</div>
-                                        <div class="profile-info">Physicians Department</div>
-                                    </div>
-
-                                    <div class="profile-section">
-                                        <div class="profile-label">User Departments</div>
-                                        <ul class="bullet-list">
-                                            <li>Physicians Department</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <section>
+    <div class="content-body">
+      <div class="container-fluid">
+        <div class="flex mb-4 items-center ml-1">
+          <h1 class="text-lg font-semibold ml-2" style="font-size: 25px; color: #726641;">
+            Profile
+          </h1>
         </div>
-    </section>
+
+        <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
+          <div class="custom-container mx-auto p-3">
+            <div class="container">
+              <div class="profile-card mb-4">
+                <img src="/assets/images/icon01.png" alt="User Photo" class="profile-photo" />
+
+                <div class="profile-details">
+                  <div class="profile-title">{{ profileData.name }}</div>
+
+                
+
+
+                  <div class="profile-section">
+                    <div class="profile-label">Default Department</div>
+                    <div class="profile-info">{{ profileData.defaultDepartment?.name }}</div>
+                  </div>
+
+                  <div class="profile-section">
+                    <div class="profile-label">User Departments</div>
+                    <ul class="bullet-list">
+                      <li *ngFor="let dept of profileData.userDepartments">
+                        {{ dept.id }}
+                      </li>
+                    </ul>
+                  </div>
+
+               
+
+              
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>

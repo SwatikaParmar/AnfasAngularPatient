@@ -49,7 +49,11 @@ export enum ApiEndPoint {
     medicationStatus = "api/User/SetMedicationStatus",
     doctorVisit = "api/User/GetAllVisits",
     getterms = "api/Admin/GetTermsHtml",
-    recordType ="api/User/GetHealthRecordsByType"
+    recordType ="api/User/GetHealthRecordsByType",
+    doctorDetail = "api/User/GetDoctorDetails",
+    addMedication = "api/User/AddOrUpdateMedication ",
+    messageList = "",
+    addEducationMaterial = "api/User/AddOrUpdateEducationMaterial"
 
 
 
