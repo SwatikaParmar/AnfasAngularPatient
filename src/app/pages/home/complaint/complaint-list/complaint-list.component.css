@@ -1,95 +1,118 @@
+/* General Layout */
+.dashboard-outer {
+  padding: 1rem;
+}
 
-  
+.content-body {
+  padding: 1rem 0;
+}
 
+.table-container {
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow-x: auto; /* Enables horizontal scroll on smaller screens */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 
-  .table-container {
-    margin: 0 auto;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  thead tr {
-    background-color: #fde092;
-    text-align: left;
-  }
-  
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; /* Ensures structure on small screens */
+}
+
+thead tr {
+  background-color: #fde092;
+  text-align: left;
+}
+
+th, td {
+  padding: 15px;
+  font-size: 14px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+tbody tr.row-light {
+  background-color: #ffffff;
+}
+
+tbody tr.row-dark {
+  background-color: #fde092;
+}
+
+/* Responsive Table Wrapper */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Buttons */
+.appointment-btn {
+  background-color: #a68c4d;
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.appointment-btn:hover {
+  background-color: #8e773f;
+}
+
+.eye {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* No Data Styling */
+.no-data img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
   th, td {
-    padding: 15px;
-    font-size: 14px;
+    font-size: 13px;
+    padding: 10px;
   }
-  
-  tbody tr.row-light {
-    background-color: #ffffff;
-  }
-  
-  tbody tr.row-dark {
-    background-color: #fde092;
-  }
-  
-  select {
-    padding: 5px 10px;
-    padding-right: 64px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  .eye {
-    font-size: 18px;
-    cursor: pointer;
-  }
-  
 
+  .flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 
-
-
-  .table-responsive {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  .complaint-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .complaint-table th,
-  .complaint-table td {
-    padding: 12px;
-    text-align: left;
-    white-space: nowrap; /* Prevent wrapping */
-    min-width: 120px; /* Ensures minimum column width */
-  }
-  
-  .complaint-table th {
-
-    font-weight: bold;
-  }
-  
-  @media (max-width: 768px) {
-    .complaint-table th,
-    .complaint-table td {
-      font-size: 14px;
-      padding: 8px;
-    }
-  
-    .no-data img {
-      width: 80% !important;
-    }
-  }
   .appointment-btn {
-    background-color: #a68c4d;
-    color: #fff;
-    border: none;
-    padding: 6px 15px;
-    border-radius: 20px;
+    width: 100%;
+    text-align: center;
   }
-  .appointment-btn:hover {
-    background-color: #8e773f;
+
+  .no-data img {
+    width: 100% !important;
   }
+}
+
+@media (max-width: 480px) {
+  th, td {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  h1 {
+    font-size: 20px !important;
+  }
+
+  .appointment-btn {
+    padding: 10px;
+    font-size: 13px;
+  }
+}
