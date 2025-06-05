@@ -13,10 +13,11 @@
     </ul>
 
     <div class="nav-control">
-      <div class="toggle-menu nav-toggle">
-        <img src="assets/images/menu-i.svg">
-      </div>
-    </div>
+<div class="toggle-menu nav-toggle" (click)="toggleMenus()">
+    <img src="assets/images/menu-i.svg">
+  </div>
+</div>
+
 
   </div>
   <!--**********************************
@@ -72,8 +73,8 @@
   </header>
 
   <!-- ---- -->
-  <section>
-    <aside class="side-bar">
+<section >
+<aside class="side-bar" [ngClass]="{'show-sidebar': isSidebarCollapsed}">
       <a class="aside-logo text-center">
         <img class="logo-abbr" src="assets/images/logo-dashboard.png" style="max-width: 120px; margin: auto;">
       </a>
@@ -255,13 +256,11 @@
       <li><a href="/" class=""><img src="assets/images/profile-i.svg" class="img-responsive"></a></li>
       <!-- <li><a href="/" class="setting"><img src="assets/images/settings-i.svg" class="img-responsive"></a></li> -->
     </ul>
-
-    <div class="nav-control">
-      <div class="toggle-menu nav-toggle">
-        <img src="assets/images/menu-i.svg">
-      </div>
-    </div>
-
+   <div class="nav-control">
+<div class="toggle-menu nav-toggle" (click)="toggleMenus()">
+    <img src="assets/images/menu-i.svg">
+  </div>
+</div>
   </div>
   <!--**********************************
     Nav header end
@@ -317,7 +316,7 @@
 
   <!-- ---- -->
   <section>
-    <aside class="side-bar">
+<aside class="side-bar" [ngClass]="{'sidebar-collapsed': isSidebarCollapsed}">
       <a class="aside-logo text-center">
         <img class="logo-abbr" src="assets/images/logo-dashboard.png" style="max-width: 120px; margin: auto;">
       </a>

@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <div class="flex mb-4 items-center ml-1">
                     <button class="flex items-center justify-center w-8 h-8 rounded-full text-white"
-                        style="background-color: #726641;">
+                        style="background-color: #726641;" (click)="backClicked()">
                         <i class="fas fa-arrow-left text-xs text-center"></i>
                     </button>
                     <h1 class="text-lg font-semibold ml-2" style="font-size: 25px; color: #726641;">
@@ -13,78 +13,47 @@
                 </div>
                 <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 10px;">
                     <div class=" mx-auto">
-                        <form class="px-4 mt-2 mb-3">
-                            <div class="row g-2">
-                                <div class="col-12 col-md-6 col-lg-4">
-                                    <div class="mt-3">
-                                        <label class="form-label" style="font-weight: 600;">From Date:</label>
-                                        <input type="date" class="form-control" formControlName="FromDate">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6 col-lg-4">
-                                    <div class="mt-3">
-                                        <label class="form-label" style="font-weight: 600;">To Date:</label>
-                                        <input type="date" class="form-control" formControlName="ToDate">
-                                    </div>
-                                </div>
+                    <form [formGroup]="bloodForm" class="px-4 mt-2 mb-3">
+              <div class="row g-2">
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="mt-3">
+                    <label class="form-label" style="font-weight: 600;">From Date:</label>
+                    <input type="date" class="form-control" formControlName="FromDate">
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="mt-3">
+                    <label class="form-label" style="font-weight: 600;">To Date:</label>
+                    <input type="date" class="form-control" formControlName="ToDate">
+                  </div>
+                </div>
 
-                                <!-- Button aligned right -->
-                                <div
-                                    class="col-12 col-md-12 col-lg-4 text-end d-flex align-items-end justify-content-end">
-                                    <button type="button" class="btn  mt-3 w-50"
-                                        style="background-color: #FEC34F;">Search</button>
-                                </div>
-                            </div>
-                        </form>
+                <!-- Button aligned right -->
+                <div class="col-12 col-md-12 col-lg-4 text-end d-flex align-items-end justify-content-end">
+                  <button type="button" class="btn  mt-3 w-50" (click)="getBlood()" style="background-color: #FEC34F;">Search</button>
+                </div>
+              </div>
+            </form>
 
 
 
                         <div class="container pt-2">
-                            <div class="row g-3">
+                         <div class="row g-3">
+  <div class="col-lg-4 col-md-6" *ngFor="let item of data">
+    <div class="custom-card">
+      <div class="left" style="display: flex; align-items: center;">
+        <div class="icon-circle">
+          <i class="fas fa-heartbeat" style="color: #9baec8; font-size: 22px;"></i>
+        </div>
+        <div class="card-text" style="margin-left: 10px;">
+          <div class="code">{{ item.weights }} Kg</div>
+          <div class="date">{{ item.createdAt | date: 'fullDate' }} {{ item.createdAt | date: 'shortTime' }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="custom-card">
-                                        <div class="left" style="display: flex; align-items: center;">
-                                            <div class="icon-circle">
-                                                <i class="fas fa-heartbeat"
-                                                    style="color: #9baec8; font-size: 22px;"></i>
-                                            </div>
-                                            <div class="card-text" style="margin-left: 10px;">
-                                                <div class="code">70 Kg</div>
-                                                <div class="date">Friday, 16 May 2025 11:25 Am</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                  <div class="col-lg-4 col-md-6">
-                                    <div class="custom-card">
-                                        <div class="left" style="display: flex; align-items: center;">
-                                            <div class="icon-circle">
-                                                <i class="fas fa-heartbeat"
-                                                    style="color: #9baec8; font-size: 22px;"></i>
-                                            </div>
-                                            <div class="card-text" style="margin-left: 10px;">
-                                                <div class="code">80 Kg</div>
-                                                <div class="date">Friday, 16 May 2025 11:25 Am</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                  <div class="col-lg-4 col-md-6">
-                                    <div class="custom-card">
-                                        <div class="left" style="display: flex; align-items: center;">
-                                            <div class="icon-circle">
-                                                <i class="fas fa-heartbeat"
-                                                    style="color: #9baec8; font-size: 22px;"></i>
-                                            </div>
-                                            <div class="card-text" style="margin-left: 10px;">
-                                                <div class="code">80 Kg</div>
-                                                <div class="date">Friday, 16 May 2025 11:25 Am</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

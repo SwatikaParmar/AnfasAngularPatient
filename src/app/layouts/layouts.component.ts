@@ -20,13 +20,14 @@ export class LayoutsComponent {
   userRole!: any;
   planType: any;
   item: any;
-  isMenuOpen = false;
   cartCount: any;
   distributorcartCount: any;
   // currentLanguage: any;
   currentLanguage: string = 'en';
   isLanguageMenuOpen: boolean = false;
-  role = localStorage.getItem('role')
+  role = localStorage.getItem('role');
+  isSidebarCollapsed = false;
+
   constructor(
     private spinner: NgxSpinnerService,
     private contentServices: ContentService,
@@ -42,14 +43,18 @@ export class LayoutsComponent {
     this.languageService.switchLanguage(this.currentLanguage);
   }
 
+ 
+
   /******** Toggle side nav *********/
   sideNavDisplay(event: any) {
     this.show = event;
   }
-  toggleMenu(): void {
-    this.isMenuOpen = !this.isMenuOpen;
-  }
+  
 
+  
+toggleMenus() {
+  this.isSidebarCollapsed = !this.isSidebarCollapsed;
+}
   switchLanguage(lang: string) {
     this.currentLanguage = lang;
     this.languageService.switchLanguage(lang);

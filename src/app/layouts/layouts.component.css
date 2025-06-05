@@ -1,3 +1,4 @@
+ 
  .side-bar .item a { 
     display: flex;
     align-items: center;
@@ -268,4 +269,26 @@
 
 .item.one.active i {
   color: #726641; /* icon color #726641 */
+}
+
+
+/* === Responsive Sidebar Toggle (Only for Mobile) === */
+@media (max-width: 768px) {
+  .side-bar {
+    position: fixed;
+    top: 60px; /* assuming header height */
+    left: 0;
+    height: calc(100% - 60px);
+    background: white;
+    width: 250px;
+    transform: translateX(-100%);
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    overflow-y: auto;
+  }
+
+  .side-bar.show-sidebar {
+    transform: translateX(0);
+  }
 }
