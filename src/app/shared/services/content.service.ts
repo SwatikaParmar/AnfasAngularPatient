@@ -339,7 +339,20 @@ addMedication(data:any){
 }
 
 
-addEduMaterial(){
-  
+addEduMaterial(data: any) {
+  const formData = new FormData();
+  formData.append('Id', data.Id || '');
+  formData.append('Title', data.Title);
+  formData.append('File', data.File); // This should be a File object
+  formData.append('Description', data.Description);
+  formData.append('CareProviderCode', data.CareProviderCode);
+
+  return this.http.post<any>(
+    environment.apiUrl + ApiEndPoint.addEducationMaterial,
+    formData
+  );
 }
+
+
+
 }

@@ -63,6 +63,8 @@ debugger
       }
     },
     error => {
+              this.spinner.hide();
+
       this.toastrService.error('Error fetching list.');
       console.error('Error fetching list:', error);
     }
