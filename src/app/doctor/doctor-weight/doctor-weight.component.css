@@ -1,0 +1,58 @@
+    .custom-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 16px;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      margin-bottom: 30px;;
+    }
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .icon-circle {
+      background-color: #f3f6fd;
+      padding: 10px;
+      border-radius: 10px;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-text {
+      line-height: 1.2;
+    }
+    .card-text .code {
+      font-weight: 600;
+      font-size: 16px;
+    }
+    .card-text .date {
+      font-size: 13px;
+      color: #777;
+    }
+    .badge-verified {
+      background-color: #e5f9ee;
+      color: #2aa853;
+      padding: 5px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 8px;
+    }
+    .badge-rejected {
+      background-color: #ffdcdc;
+      color: #ff4a4a;
+      padding: 5px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 8px;
+    }
+
+
+.badge-pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
