@@ -578,6 +578,7 @@ aside {
     -o-transition: all 0.3s;
     transition: all 0.3s;
     padding-left: 15px!important;
+    font-size: 20px;
 }
 
 .side-bar .menu .item {
