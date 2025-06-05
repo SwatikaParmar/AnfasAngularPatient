@@ -46,6 +46,7 @@ import { DoctorStepsComponent } from 'src/app/doctor/doctor-steps/doctor-steps.c
 import { DoctorEducationComponent } from 'src/app/doctor/doctor-education/doctor-education.component';
 import { TermsConditionComponent } from 'src/app/doctor/terms-condition/terms-condition.component';
 import { DoctorProfileComponent } from 'src/app/doctor/doctor-profile/doctor-profile.component';
+import { ChatListComponent } from 'src/app/doctor/chat/chat-list/chat-list.component';
 const routes: Routes = [
 
   {
@@ -99,7 +100,8 @@ const routes: Routes = [
       { path: 'doctor-patient/doctor-steps', component: DoctorStepsComponent },
       { path: 'doctor-education', component:DoctorEducationComponent},
       { path : 'terms', component:TermsConditionComponent},
-      { path : 'doctor-profile',component:DoctorProfileComponent}
+      { path : 'doctor-profile',component:DoctorProfileComponent},
+      { path: 'chat-list',component:ChatListComponent}
 
     ]
   }
