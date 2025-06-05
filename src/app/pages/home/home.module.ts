@@ -59,6 +59,7 @@ import { DoctorEducationComponent } from 'src/app/doctor/doctor-education/doctor
 import { TermsConditionComponent } from 'src/app/doctor/terms-condition/terms-condition.component';
 import { DoctorDashboardComponent } from 'src/app/doctor/doctor-dashboard/doctor-dashboard.component';
 import { DoctorProfileComponent } from 'src/app/doctor/doctor-profile/doctor-profile.component';
+import { ChatListComponent } from 'src/app/doctor/chat/chat-list/chat-list.component';
 
 // export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 //   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -109,7 +110,8 @@ import { DoctorProfileComponent } from 'src/app/doctor/doctor-profile/doctor-pro
     DoctorEducationComponent,
     TermsConditionComponent,
     DoctorDashboardComponent,
-    DoctorProfileComponent
+    DoctorProfileComponent,
+    ChatListComponent
 
   ],
   imports: [
