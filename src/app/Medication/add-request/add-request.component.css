@@ -1,5 +1,5 @@
   
-  .submit-btn {
+  .btn-custom  {
     padding: 10px;
     background: #a48f64;
     color: #FEC34F;
@@ -12,6 +12,8 @@
     margin: auto;
   }
   
-  .submit-btn:hover {
+  .btn-custom:hover{
     background: #8a774e;
   }
+
+ 
