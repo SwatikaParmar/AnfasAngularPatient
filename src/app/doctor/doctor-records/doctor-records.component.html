@@ -14,8 +14,10 @@
                             <button class="tab-button active" onclick="showOnly(event, 'carrier')">Medication
                                 Record</button>
                             <button class="tab-button" onclick="showOnly(event, 'shipper')">Health Tracking</button>
-                            <button class="tab-button" onclick="showOnly(event, 'driver')" (click)="getPatientEducation()">Education Material</button>
-                            <button class="tab-button" onclick="showOnly(event, 'route')" (click)="getDoctorVisit()">Visit Record</button>
+                            <button class="tab-button" onclick="showOnly(event, 'driver')"
+                                (click)="getPatientEducation()">Education Material</button>
+                            <button class="tab-button" onclick="showOnly(event, 'route')"
+                                (click)="getDoctorVisit()">Visit Record</button>
 
                         </div>
                         <div id="carrier" class="tab-detail">
@@ -36,60 +38,67 @@
                                             </button>
                                             <div class="table-container">
                                                 <div class="table-responsive">
-                                                   <table class="medication-table">
-  <thead>
-    <tr>
-      <th>Medication Name</th>
-      <th>Dosage</th>
-      <th>Frequency</th>
-      <th>Instructions</th>
-      <th>Created At</th>
-      <th>Status</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of medicationList | paginate
+                                                    <table class="medication-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Medication Name</th>
+                                                                <th>Dosage</th>
+                                                                <th>Frequency</th>
+                                                                <th>Instructions</th>
+                                                                <th>Created At</th>
+                                                                <th>Status</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let item of medicationList | paginate
                             : {
                                 itemsPerPage: 6,
                                 currentPage: page,
                                 totalItems: totalItems,
                                 id: '1'
                               }">
-      <td>{{ item.medicationName }}</td>
-      <td>{{ item.dosage }}</td>
-      <td>{{ item.frequency }}</td>
-      <td>{{ item.instructions }}</td>
-      <td>{{ item.createdAt | date: 'dd-MM-yyyy hh:mm a' }}</td>
-      <td>
-        <div class="form-check form-switch">
-        <input
-  class="form-check-input"
-  type="checkbox"
-  role="switch"
-  [checked]="item.status === 'Active'"
-    (change)="onCheckboxChange($event, item)"
-/>
+                                                                <td>{{ item.medicationName }}</td>
+                                                                <td>{{ item.dosage }}</td>
+                                                                <td>{{ item.frequency }}</td>
+                                                                <td>
+                                                                    {{
+                                                                    item.instructions.split(' ').slice(0, 3).join(' ')
+                                                                    }}{{ item.instructions.split(' ').length > 3 ? '...'
+                                                                    : '' }}
+                                                                </td>
 
-        </div>
-      </td>
-      <td>
-        <a class="list-icon"><i class="fa fa-eye" aria-hidden="true"></i></a>
-        <a class="list-icon"><i class="fa fa-edit" aria-hidden="true"></i></a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+                                                                <td>{{ item.createdAt | date: 'dd-MM-yyyy hh:mm a' }}
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-check form-switch">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                            role="switch"
+                                                                            [checked]="item.status === 'Active'"
+                                                                            (change)="onCheckboxChange($event, item)" />
+
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <a class="list-icon"><i class="fa fa-eye"
+                                                                            aria-hidden="true"></i></a>
+                                                                    <a class="list-icon"><i class="fa fa-edit"
+                                                                            aria-hidden="true"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
 
                                                 </div>
 
                                                 <!-- <div class="no-data text-center" *ngIf="medicationList && medicationList.length === 0">
                   <img src="assets/images/ffffrq-removebg-preview.png" style="width: 50%; margin: auto; padding: 50px;">
                 </div> -->
- <div class="pagination-container pt-3 pb-3">
-                  <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
-                    queryParamsHandling="merge"></pagination-controls>
-                </div> 
+                                                <div class="pagination-container pt-3 pb-3">
+                                                    <pagination-controls (pageChange)="onPageChange($event)" id="1"
+                                                        class="paginate-doctor-list"
+                                                        queryParamsHandling="merge"></pagination-controls>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -103,7 +112,7 @@
                         <div id="shipper" class="tab-detail" style="display:none;">
                             <div class="container mt-4">
                                 <div class="row text-center">
-                                    <div class="col-6 col-md-4 mb-4"> 
+                                    <div class="col-6 col-md-4 mb-4">
                                         <a [routerLink]="['/doctor-patient/doctor-bloodPressure/' + mrn]"
                                             style="text-decoration: none; color: inherit;">
                                             <div class="health-box p-3 shadow-sm rounded bg-white">
@@ -170,34 +179,41 @@
                                 </button> -->
                                 <div class="table-container">
                                     <div class="table-responsive">
-                                      <table class="medication-table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>File URL</th>
-      <th>Is Approved</th>
-      <th>Created At</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of educationMaterial">
-      <td>{{ item.title }}</td>
-      <td>{{ item.description }}</td>
-      <td>
-        <a [href]="'https://your-domain.com/' + item.contentUrl" target="_blank">
-          View PDF
-        </a>
-      </td>
-      <td>{{ item.isApproved }}</td>
-      <td>{{ item.createdAt | date: 'medium' }}</td>
-      <td>
-        <a class="list-icon"><i class="fa fa-eye" aria-hidden="true"></i></a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+                                        <table class="medication-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <th>Description</th>
+                                                    <th>File URL</th>
+                                                    <th>Is Approved</th>
+                                                    <th>Created At</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let item of educationMaterial">
+                                                    <td>{{ item.title }}</td>
+                                                    <td>
+                                                        {{
+                                                        item.description.split(' ').slice(0, 3).join(' ')
+                                                        }}{{ item.description.split(' ').length > 3 ? '...' : '' }}
+                                                    </td>
+
+                                                    <td>
+                                                        <a [href]="'https://your-domain.com/' + item.contentUrl"
+                                                            target="_blank">
+                                                            View PDF
+                                                        </a>
+                                                    </td>
+                                                    <td>{{ item.isApproved }}</td>
+                                                    <td>{{ item.createdAt | date: 'medium' }}</td>
+                                                    <td>
+                                                        <a class="list-icon"><i class="fa fa-eye"
+                                                                aria-hidden="true"></i></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
 
                                     </div>
 
