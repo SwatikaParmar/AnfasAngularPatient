@@ -117,7 +117,7 @@
             </div>
 
 
-<!-- 
+            <!-- 
             <div class="item shw one" routerLinkActive="active">
               <a class="sub-btn" [routerLink]="['/satisfaction-form']">
                 <i class="fas fa-thumbs-up" style="font-size: 20px;"></i>
@@ -326,8 +326,9 @@
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
           <div class="menu">
             <div class="item one">
-              <a [routerLink]="['/doctor-dashboard']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><svg
-                  xmlns=" http://www.w3.org/2000/svg " viewBox="0 0 576 512">
+              <a [routerLink]="['/doctor-dashboard']" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}"><svg xmlns=" http://www.w3.org/2000/svg "
+                  viewBox="0 0 576 512">
                   <path
                     d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z">
                   </path>
@@ -336,28 +337,29 @@
             </div>
 
 
-             <div class="item shw one" routerLinkActive="active">
+            <div class="item shw one" routerLinkActive="active">
               <a [routerLink]="['/doctor-appointment']">
-                <i class="fas fa-clipboard-list" style="font-size: 20px;"></i>
-
-                <span style="font-size: 15px !important; font-weight: 600 !important;">{{ 'MY_APPOINTMENTS' | translate
-                  }}</span>
+                <i class="fas fa-calendar-check" style="font-size: 20px;"></i>
+                <span style="font-size: 15px !important; font-weight: 600 !important;">
+                  {{ 'MY_APPOINTMENTS' | translate }}
+                </span>
               </a>
             </div>
-     
 
-                <div class="item shw one" routerLinkActive="active">
+
+
+            <div class="item shw one" routerLinkActive="active">
               <a [routerLink]="['/doctor-patient']">
-                <i class="fas fa-clipboard-list" style="font-size: 20px;"></i>
-
-                <span style="font-size: 15px !important; font-weight: 600 !important;">My Patient</span>
+                <i class="fas fa-user-injured" style="font-size: 20px;"></i>
+                <span style="font-size: 15px; font-weight: 600; color: #333;">My Patient</span>
               </a>
             </div>
-         
-          
+
+
+
             <div class="item shw one" routerLinkActive="active">
               <a class="sub-btn" [routerLink]="['/doctor-education']">
-                <i class="fas fa-book" style="font-size: 20px; margin-right: 5px;"></i> <!-- Book icon -->
+                <i class="fas fa-book" style="font-size: 20px; margin-right: 10px;"></i> <!-- Book icon -->
                 <span style="font-size: 15px !important; font-weight: 600 !important;">
                   {{ 'EDUCATIONAL_MATERIAL' | translate }}
                 </span>
@@ -366,26 +368,27 @@
 
 
 
-             <div class="item shw one" routerLinkActive="active">
+            <div class="item shw one" routerLinkActive="active">
               <a [routerLink]="['/chat-list']">
-                <i class="fas fa-comments" style="font-size: 20px;"></i> 
+                <i class="fas fa-comments" style="font-size: 20px;"></i>
                 <span style="font-size: 15px !important; font-weight: 600 !important;">
                   Message
                 </span>
               </a>
             </div>
-            
- 
-   <div class="item shw one" routerLinkActive="active">
+
+
+            <div class="item shw one" routerLinkActive="active">
               <a [routerLink]="['/doctor-profile']">
-                <i class="fas fa-comments" style="font-size: 20px;"></i> 
+                <i class="fas fa-user-circle"></i>
+
                 <span style="font-size: 15px !important; font-weight: 600 !important;">
                   Profile
                 </span>
               </a>
             </div>
 
-         
+
             <div class="item one" routerLinkActive="active">
               <a [routerLink]="['/about-Us']">
                 <i class="fas fa-users"></i> <span style="font-size: 15px !important; font-weight: 600 !important;">{{
@@ -394,15 +397,15 @@
             </div>
 
 
-               <div class="item shw one" routerLinkActive="active">
+            <div class="item shw one" routerLinkActive="active">
               <a [routerLink]="['/terms']">
                 <i class="fas fa-address-book" style="font-size: 20px;"></i>
                 <span style="font-size: 15px !important; font-weight: 600 !important;">
-                 Terms & Conditions
+                  Terms & Conditions
                 </span>
               </a>
             </div>
-            
+
           </div>
         </div>
 
@@ -418,5 +421,3 @@
     <router-outlet></router-outlet>
   </section>
 </div>
-
-
