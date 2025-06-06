@@ -73,57 +73,8 @@
   </div>
 </section>
 
-<!-- <section *ngIf="patientList && patientList.length > 0">
-    <div class="content-body">
-      <div class="container-fluid">
-        <div class="input-form">
-          <div class="content-body-top">
-            <div class="container-fluid">
-              <div class="bx-table table-responsive">
-                <table class="table">
-                  <tr>
-                    <td colspan="12">
-                      <h4 style=" color:#726641; font-size: 20px; margin-bottom: 10px;">
-                        {{ 'PATIENT_LIST' | translate }}
-                      </h4>
-                    </td>
-                  </tr>
-                  <tr class="color">
-                    <th scope="col">{{ 'FIRST_NAME' | translate }}</th>
-                    <th scope="col">{{ 'LAST_NAME' | translate }}</th>
-                    <th scope="col">{{ 'PROFILE_PiC' | translate }}</th>
-                    <th scope="col">{{ 'MRN' | translate }}</th>
-                    <th scope="col">{{ 'PHONE_NUMBER' | translate }}</th>
-                    <th scope="col">{{ 'NATIONALITY' | translate }}</th>
-                  </tr>
-                  <tr
-                    *ngFor="let item of patientList | paginate : { itemsPerPage: 10, currentPage: page, totalItems: totalItems, id: '1' }; let i = index">
-                    <td>{{ item?.firstName || 'N/A' }}</td>
-                    <td>{{ item?.lastName || 'N/A' }}</td>
-                    <td>
-                      <img *ngIf="item?.profilePic" [src]="rootUrl + item.profilePic" alt="Profile" width="40"
-                        height="40">
-                      <span *ngIf="!item?.profilePic">N/A</span>
-                    </td>
-                    <td>{{ item?.mrn || 'N/A' }}</td>
-                    <td>{{ item?.phonenumber || 'N/A' }}</td>
-                    <td>{{ item?.nationality || 'N/A' }}</td>
-                  </tr>
-                </table>
-              </div>
-  
-              <pagination-controls (pageChange)="page = $event" id="1" class="paginate-doctor-list"
-                queryParamsHandling="merge">
-              </pagination-controls>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
 
-
-<!-- <section>
+<section>
   <div class="content-body">
     <div class="container-fluid">
       <div class="input-form">
@@ -183,4 +134,4 @@
       </div>
     </div>
   </div>
-</section> -->
+</section>

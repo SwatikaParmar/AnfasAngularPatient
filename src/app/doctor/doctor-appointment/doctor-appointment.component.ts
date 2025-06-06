@@ -72,5 +72,25 @@ debugger
 }
 
 
+ editContent(item: any): void {
+  const senderId = item?.careProviderCode;
+  const receiverId = item?.patientMRN;
+  const receiverName = item?.patientName;
 
+
+  if (senderId && receiverId) {
+    this.router.navigate(['/doctor-appointment/appointment-list/chat'], {
+      queryParams: {
+        senderId,
+        receiverId,
+        receiverName,
+      
+      }
+    });
+  } else {
+    this.toastrService.error('Invalid sender or receiver information.');
+  }
+}
+
+  
 }

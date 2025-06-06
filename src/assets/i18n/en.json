@@ -368,6 +368,7 @@
   "ADD_EDUCATIONAL": "Add Educational",
   "ASSIGN_MATERIAL_TO_PATIENT": "Assign Material to Patient",
   "ADD_EDUCATIONAL_MATERIAL": "Add Educational Material",
+  "EDIT_EDUCATIONAL_MATERIAL": "Edit Educational Material",
   "UPLOAD_PDF": "Upload PDF",
   "SELECTED_FILE": "Selected File",
   "PDF_FILE_IS_REQUIRED": "PDF file is required",
@@ -376,9 +377,9 @@
   "ENTER_TITLE": "Enter title",
   "ENTER_DESCRIPTION": "Enter description",
   "USER_DEPARTMENTS": "User Departments",
-  "FROM_DATE":"From Date",
-  "TO_DATE":"To Date",
-  "SEARCH":"Search",
-  "APPROVE":"Approve",
-  "REJECT":"Reject"
+  "FROM_DATE": "From Date",
+  "TO_DATE": "To Date",
+  "SEARCH": "Search",
+  "APPROVE": "Approve",
+  "REJECT": "Reject"
 }

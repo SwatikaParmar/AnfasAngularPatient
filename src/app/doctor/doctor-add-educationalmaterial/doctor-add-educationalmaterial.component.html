@@ -8,7 +8,8 @@
             <i class="fas fa-arrow-left text-xs text-center"></i>
           </button>
           <h1 class="text-lg font-semibold ml-2" style="font-size: 25px; color: #726641;">
-            {{ 'ADD_EDUCATIONAL_MATERIAL' | translate }} 
+           {{ id ? ('EDIT_EDUCATIONAL_MATERIAL' | translate) : ('ADD_EDUCATIONAL_MATERIAL' | translate) }}
+
           </h1>
         </div>
 
