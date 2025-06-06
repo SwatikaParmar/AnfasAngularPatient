@@ -132,7 +132,7 @@
                                         </a>
                                     </div>
                                     <div class="col-6 col-md-4 mb-4">
-                                        <a [routerLink]="['/doctor-patient/doctor-HeartRate']"
+                                        <a [routerLink]="['/doctor-patient/doctor-HeartRate/' + mrn]"
                                             style="text-decoration: none; color: inherit;">
                                             <div class="health-box p-3 shadow-sm rounded bg-white">
                                                 <i class="fa-solid fa-heartbeat fa-2x mb-2" style="color: #83764C;"></i>
@@ -141,7 +141,7 @@
                                         </a>
                                     </div>
                                     <div class="col-6 col-md-4 mb-4">
-                                        <a [routerLink]="['/doctor-patient/doctor-weight']"
+                                        <a [routerLink]="['/doctor-patient/doctor-weight/' + mrn]"
                                             style="text-decoration: none; color: inherit;">
                                             <div class="health-box p-3 shadow-sm rounded bg-white">
                                                 <i class="fa-solid fa-weight fa-2x mb-2" style="color: #83764C;"></i>
@@ -234,81 +234,47 @@
                             <div class="card-grid">
 
                                 <!-- Card 1 -->
-                                <div class="report-card">
-                                    <div class="report-header">
-                                        <img src="/assets/images/Photo2.jpg" alt="icon" />
-                                        <span>Physicians Department</span>
-                                    </div>
-                                    <div class="report-details">
-                                        <div><span class="label">Visit Type -</span><span class="value">N/A</span></div>
-                                        <div><span class="label">Care Provider -</span><span class="value">MOHAMMED
-                                                ELAWADLY</span></div>
-                                        <div><span class="label">En Type -</span><span class="value">Inpatient</span>
-                                        </div>
-                                    </div>
-                                    <div class="button-wrapper">
-                                        <div class="stars">
-                                            <i class="fa-regular fa-star"></i>
-                                            <i class="fa-regular fa-star"></i>
-                                            <i class="fa-regular fa-star"></i>
-                                            <i class="fa-regular fa-star"></i>
-                                            <i class="fa-regular fa-star"></i>
-                                        </div>
-                                        <button class="view-button">View Reports</button>
-                                    </div>
-                                </div>
+                               <div *ngFor="let visit of visitList" class="report-card">
+  <div class="report-header">
+    <img src="/assets/images/Photo2.jpg" alt="icon" />
+    <span>{{ visit.departmentName }}</span>
+  </div>
 
-                                <!-- Card 2 -->
-                                <div class="report-card">
-                                    <div class="report-header">
-                                        <img src="/assets/images/Photo2.jpg" alt="icon" />
-                                        <span>Cardiology Unit</span>
-                                    </div>
-                                    <div class="report-details">
-                                        <div><span class="label">Visit Type -</span><span class="value">Follow-up</span>
-                                        </div>
-                                        <div><span class="label">Care Provider -</span><span class="value">DR. AMIRA
-                                                SAAD</span></div>
-                                        <div><span class="label">En Type -</span><span class="value">Outpatient</span>
-                                        </div>
-                                    </div>
-                                    <div class="button-wrapper">
-                                        <div class="stars">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-regular fa-star"></i>
-                                            <i class="fa-regular fa-star"></i>
-                                        </div>
-                                        <button class="view-button">View Reports</button>
-                                    </div>
-                                </div>
+  <div class="report-details">
+    <div>
+      <span class="label">Visit Type -</span>
+      <span class="value">
+        {{ visit.visitTypeDescription || 'N/A' }}
+      </span>
+    </div>
+    <div>
+      <span class="label">Care Provider -</span>
+      <span class="value">
+        {{ visit.careProviderName }} {{ visit.careProviderLastName }}
+      </span>
+    </div>
+    <div>
+      <span class="label">En Type -</span>
+      <span class="value">
+        {{ visit.entypeValueDescription || 'N/A' }}
+      </span>
+    </div>
+  </div>
 
-                                <!-- Card 3 -->
-                                <div class="report-card">
-                                    <div class="report-header">
-                                        <img src="/assets/images/Photo2.jpg" alt="icon" />
-                                        <span>Neurology Ward</span>
-                                    </div>
-                                    <div class="report-details">
-                                        <div><span class="label">Visit Type -</span><span
-                                                class="value">Consultation</span></div>
-                                        <div><span class="label">Care Provider -</span><span class="value">DR. KAREEM
-                                                LOTFY</span></div>
-                                        <div><span class="label">En Type -</span><span class="value">Inpatient</span>
-                                        </div>
-                                    </div>
-                                    <div class="button-wrapper">
-                                        <div class="stars">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-regular fa-star"></i>
-                                        </div>
-                                        <button class="view-button">View Reports</button>
-                                    </div>
-                                </div>
+  <div class="button-wrapper">
+    <div class="stars">
+      <i class="fa-regular fa-star"></i>
+      <i class="fa-regular fa-star"></i>
+      <i class="fa-regular fa-star"></i>
+      <i class="fa-regular fa-star"></i>
+      <i class="fa-regular fa-star"></i>
+    </div>
+    <button class="view-button">View Reports</button>
+  </div>
+</div>
+
+
+                            
 
                             </div>
 
