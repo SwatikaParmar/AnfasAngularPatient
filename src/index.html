@@ -104,6 +104,23 @@
     document.getElementById('imagePopup').style.display = 'none';
   }
 </script>
+<script>
+function openPopup() {
+  document.getElementById("popup").style.display = "block";
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
+// Optional: Close popup when clicking outside
+window.onclick = function(event) {
+  var popup = document.getElementById("popup");
+  if (event.target === popup) {
+    closePopup();
+  }
+};
+</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <app-root></app-root>

@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { Component, ElementRef, HostListener, Renderer2 } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ContentService } from '../shared/services/content.service';
 import { AuthService } from '../shared/services/auth.service';
@@ -28,6 +28,8 @@ export class LayoutsComponent {
   role = localStorage.getItem('role');
   isSidebarCollapsed = false;
 
+
+  
   constructor(
     private spinner: NgxSpinnerService,
     private contentServices: ContentService,
@@ -90,4 +92,23 @@ debugger
     localStorage.clear();
     this.auth.logout();
   }
+closeSidebar() {
+  this.isSidebarCollapsed = false;
+}
+
+// Or more descriptive
+onMenuClick() {
+  this.closeSidebar();
+}
+
+
+  @HostListener('document:click', ['$event'])
+onDocumentClick(event: MouseEvent): void {
+  const targetElement = event.target as HTMLElement;
+
+  if (!targetElement.closest('.side-bar') && !targetElement.closest('.toggle-menu')) {
+    this.isSidebarCollapsed = false; // Close sidebar if clicked outside
+  }
+}
+
 }

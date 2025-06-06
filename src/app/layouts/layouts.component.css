@@ -233,6 +233,16 @@
   .language-menu1 li a {
       font-size: 14px; /* Smaller font size on mobile */
   }
+  a:not([href]):not([tabindex]) {
+    text-decoration: none;
+    margin: auto;
+}
+
+
+
+
+
+
 }
 
 
@@ -276,7 +286,7 @@
 @media (max-width: 768px) {
   .side-bar {
     position: fixed;
-    top: 60px; /* assuming header height */
+    top: 100px; /* assuming header height */
     left: 0;
     height: calc(100% - 60px);
     background: white;
@@ -286,9 +296,14 @@
     transition: transform 0.3s ease;
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);
     overflow-y: auto;
+    padding-bottom: 30px;;
   }
-
+  .hide-logo {
+  display: none;
+}
   .side-bar.show-sidebar {
     transform: translateX(0);
   }
 }
+
+

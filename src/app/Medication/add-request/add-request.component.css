@@ -1,19 +1,38 @@
   
-  .btn-custom  {
-    padding: 10px;
-    background: #a48f64;
-    color: #FEC34F;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s;
-    width: 20%;
-    margin: auto;
-  }
-  
-  .btn-custom:hover{
-    background: #8a774e;
-  }
+
 
  
+.btn-custom {
+  padding: 10px;
+  background: #a48f64;
+  color: #FEC34F;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+  width: 100%; /* default full width on very small screens */
+  max-width: 200px;
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+/* Hover effect */
+.btn-custom:hover {
+  background: #8a774e;
+}
+
+/* Small devices (≥576px) */
+@media (min-width: 576px) {
+  .btn-custom {
+    width: 50% !important;
+  }
+}
+
+/* Medium devices (≥768px) */
+@media (min-width: 768px) {
+  .btn-custom {
+    width: 25% !important;
+  }
+}
