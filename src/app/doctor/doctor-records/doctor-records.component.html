@@ -115,55 +115,55 @@
                         <div id="shipper" class="tab-detail" style="display:none;">
                             <div class="container mt-4">
                                 <div class="row text-center">
-                                    <div class="col-6 col-md-4 mb-4">
+                                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-4">
                                         <a [routerLink]="['/doctor-patient/doctor-bloodPressure/' + mrn]"
-                                            style="text-decoration: none; color: inherit;">
-                                            <div class="health-box p-3 shadow-sm rounded bg-white">
+                                            class="text-decoration-none text-dark">
+                                            <div
+                                                class="health-box p-3 shadow-sm rounded bg-white h-100 d-flex flex-column align-items-center justify-content-center">
                                                 <i class="fa-solid fa-tint fa-2x mb-2" style="color: #83764C;"></i>
                                                 <div>{{ 'BLOOD_PRESSURE' | translate }}</div>
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="col-6 col-md-4 mb-4">
+
+                                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-4">
                                         <a [routerLink]="['/doctor-patient/doctor-bloodSugar/' + mrn]"
-                                            style="text-decoration: none; color: inherit;">
-                                            <div class="health-box p-3 shadow-sm rounded bg-white">
+                                            class="text-decoration-none text-dark">
+                                            <div
+                                                class="health-box p-3 shadow-sm rounded bg-white h-100 d-flex flex-column align-items-center justify-content-center">
                                                 <i class="fa-solid fa-syringe fa-2x mb-2" style="color: #83764C;"></i>
                                                 <div>{{ 'BLOOD_SUGAR' | translate }}</div>
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="col-6 col-md-4 mb-4">
+
+                                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-4">
                                         <a [routerLink]="['/doctor-patient/doctor-HeartRate/' + mrn]"
-                                            style="text-decoration: none; color: inherit;">
-                                            <div class="health-box p-3 shadow-sm rounded bg-white">
+                                            class="text-decoration-none text-dark">
+                                            <div
+                                                class="health-box p-3 shadow-sm rounded bg-white h-100 d-flex flex-column align-items-center justify-content-center">
                                                 <i class="fa-solid fa-heartbeat fa-2x mb-2" style="color: #83764C;"></i>
                                                 <div>{{ 'HEART_RATE' | translate }}</div>
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="col-6 col-md-4 mb-4">
+
+                                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-4">
                                         <a [routerLink]="['/doctor-patient/doctor-weight/' + mrn]"
-                                            style="text-decoration: none; color: inherit;">
-                                            <div class="health-box p-3 shadow-sm rounded bg-white">
+                                            class="text-decoration-none text-dark">
+                                            <div
+                                                class="health-box p-3 shadow-sm rounded bg-white h-100 d-flex flex-column align-items-center justify-content-center">
                                                 <i class="fa-solid fa-weight fa-2x mb-2" style="color: #83764C;"></i>
                                                 <div>{{ 'WEIGHT' | translate }}</div>
                                             </div>
                                         </a>
                                     </div>
-                                    <!-- <div class="col-6 col-md-4 mb-4">
-                                        <a [routerLink]="['/doctor-patient/doctor-labresults/' + mrn]"
-                                            style="text-decoration: none; color: inherit;">
-                                            <div class="health-box p-3 shadow-sm rounded bg-white">
-                                                <i class="fa-solid fa-vials fa-2x mb-2" style="color: #83764C;"></i>
-                                                <div>{{ 'LAB_RESULTS' | translate }}</div>
-                                            </div>
-                                        </a>
-                                    </div> -->
-                                    <div class="col-6 col-md-4 mb-4">
+
+                                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-4">
                                         <a [routerLink]="['/doctor-patient/doctor-steps/' + mrn]"
-                                            style="text-decoration: none; color: inherit;">
-                                            <div class="health-box p-3 shadow-sm rounded bg-white">
+                                            class="text-decoration-none text-dark">
+                                            <div
+                                                class="health-box p-3 shadow-sm rounded bg-white h-100 d-flex flex-column align-items-center justify-content-center">
                                                 <i class="fa-solid fa-shoe-prints fa-2x mb-2"
                                                     style="color: #83764C;"></i>
                                                 <div>{{ 'STEPS' | translate }}</div>
@@ -171,6 +171,7 @@
                                         </a>
                                     </div>
                                 </div>
+
                             </div>
 
                         </div>
