@@ -24,9 +24,11 @@
                   </label>
 
                   <!-- ✅ Show selected file name -->
-                  <div *ngIf="selectedFileName" class="mt-1 text-success">
-                    {{ 'SELECTED_FILE' | translate }}: {{ selectedFileName }}
-                  </div>
+               <div *ngIf="selectedFileName || existingFileName" class="mt-1 text-success">
+  {{ 'SELECTED_FILE' | translate }}:
+  {{ selectedFileName || existingFileName }}
+</div>
+
 
                   <!-- 🔴 Validation error -->
                   <div *ngIf="eduForm.get('file')?.touched && eduForm.get('file')?.invalid" class="text-danger">

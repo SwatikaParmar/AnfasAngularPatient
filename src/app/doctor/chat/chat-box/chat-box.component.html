@@ -1,68 +1,68 @@
 <div class="dashboard-outer">
-    <section>
-        <div class="content-body">
-            <div class="container-fluid">
-                <div class="flex mb-4 items-center ml-1">
-                    <button class="flex items-center justify-center w-8 h-8 rounded-full text-white"
-                        style="background-color: #726641;">
-                        <i class="fas fa-arrow-left text-xs text-center"></i>
-                    </button>
-                    <!-- <h1 class="text-lg font-semibold ml-2" style="font-size: 25px; color: #726641;">
+  <section>
+    <div class="content-body">
+      <div class="container-fluid">
+        <div class="flex mb-4 items-center ml-1">
+          <button class="flex items-center justify-center w-8 h-8 rounded-full text-white"
+            style="background-color: #726641;">
+            <i class="fas fa-arrow-left text-xs text-center"></i>
+          </button>
+          <!-- <h1 class="text-lg font-semibold ml-2" style="font-size: 25px; color: #726641;">
                         Chat
                     </h1> -->
-                </div>
-                <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
-                    <div class="custom-container mx-auto p-3">
-                        <div class="container">
-                            <div class="flex flex-col h-screen  mx-auto shadow-lg border bg-white">
-
-                                <!-- Header -->
-                                <div class="flex items-center justify-between p-4  text-white" style="background-color: #A39B83;">
-                                    <div class="flex items-center space-x-3">
-                                        <img src="/assets/images/icon01.png" alt="User"
-                                            class="w-10 h-10 rounded-full" />
-                                        <div>
-                                            <h2 class="text-lg font-semibold">{{name}}</h2>
-                                         
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Messages -->
-                                <!-- Chat Messages -->
-          <div class="relative flex-1 overflow-y-auto px-4 py-6 space-y-4 bg-white/80"
-            style="background-color: #FEFEFF;">
-            <div class="relative z-10">
-              <ng-container *ngFor="let chat of chatHistory">
-                <!-- Message from Receiver -->
-                <div *ngIf="chat.senderUserName === receiverId" class="flex flex-col items-start">
-                  <div class="bg-white text-black px-4 py-2 rounded-lg shadow">{{ chat.messageContent }}</div>
-                  <span class="text-xs text-gray-500 mt-1">{{ chat.timestamp }}</span>
-                </div>
-
-                <!-- Message from Sender -->
-                <div *ngIf="chat.senderUserName === senderId" class="flex flex-col items-end">
-                  <div class="bg-[#77734E] text-white px-4 py-2 rounded-lg shadow">{{ chat.messageContent }}</div>
-                  <span class="text-xs text-gray-500 mt-1">{{ chat.timestamp }}</span>
-                </div>
-              </ng-container>
-            </div>
-          </div>
-
-          <!-- Footer Input -->
-          <div class="bg-[#77734E] px-4 py-3 flex items-center">
-            <input type="text" placeholder="{{ 'WRITE_A_REPLY' | translate }}" [(ngModel)]="newMessage" (keyup.enter)="sendMessage()"
-              class="flex-1 px-4 py-2 rounded-full bg-white text-black outline-none mr-2" />
-            <button (click)="sendMessage()"
-              class="text-white text-xl bg-[#FEC34F] rounded-full w-12 h-12 flex items-center justify-center">
-              ➤
-            </button>
-          </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-    </section>
+        <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
+          <div class="custom-container mx-auto p-3">
+            <div class="container p-0">
+              <div class="flex flex-col h-screen  mx-auto shadow-lg border bg-white">
+
+                <!-- Header -->
+                <div class="flex items-center justify-between p-4  text-white" style="background-color: #A39B83;">
+                  <div class="flex items-center space-x-3">
+                    <img src="/assets/images/icon01.png" alt="User" class="w-10 h-10 rounded-full" />
+                    <div>
+                      <h2 class="text-lg font-semibold">{{name}}</h2>
+
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Messages -->
+                <!-- Chat Messages -->
+                <div class="relative flex-1 overflow-y-auto px-4 py-6 space-y-4 bg-white/80"
+                  style="background-color: #FEFEFF;">
+                  <div class="relative z-10">
+                    <ng-container *ngFor="let chat of chatHistory">
+                      <!-- Message from Receiver -->
+                      <div *ngIf="chat.senderUserName === receiverId" class="flex flex-col items-start">
+                        <div class="bg-white text-black px-4 py-2 rounded-lg shadow">{{ chat.messageContent }}</div>
+                        <span class="text-xs text-gray-500 mt-1">{{ chat.timestamp }}</span>
+                      </div>
+
+                      <!-- Message from Sender -->
+                      <div *ngIf="chat.senderUserName === senderId" class="flex flex-col items-end">
+                        <div class="bg-[#77734E] text-white px-4 py-2 rounded-lg shadow">{{ chat.messageContent }}</div>
+                        <span class="text-xs text-gray-500 mt-1">{{ chat.timestamp }}</span>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+
+                <!-- Footer Input -->
+                <div class="bg-[#77734E] px-2 py-3 flex items-center">
+                  <input type="text" placeholder="{{ 'WRITE_A_REPLY' | translate }}" [(ngModel)]="newMessage"
+                    (keyup.enter)="sendMessage()"
+                    class="flex-1 px-4 py-2 rounded-full bg-white text-black outline-none mr-2" />
+                  <button (click)="sendMessage()"
+                    class="text-white text-xl bg-[#FEC34F] rounded-full w-12 h-12 flex items-center justify-center">
+                    ➤
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>

@@ -2,86 +2,91 @@
   <section>
     <div class="content-body">
       <div class="container-fluid">
-        <div class="flex mb-4 items-center ml-1">
-          <button class="flex items-center justify-center w-8 h-8 rounded-full text-white"
-            style="background-color: #726641;" (click)="backClicked()">
-            <i class="fas fa-arrow-left text-xs text-center"></i>
+        <!-- Back Button and Header -->
+        <div class="d-flex align-items-center mb-4">
+          <button class="btn btn-sm text-white me-2" style="background-color: #726641; border-radius: 50%;"
+            (click)="backClicked()">
+            <i class="fas fa-arrow-left"></i>
           </button>
-          <h1 class="text-lg font-semibold ml-2" style="font-size: 25px; color: #726641;">
-            Add Medication Material
-          </h1>
+          <h1 class="h4 mb-0" style="color: #726641;">Add Medication Material</h1>
         </div>
-        <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
-          <div class="custom-container mx-auto p-3">
-            <div class="container">
 
-              <form [formGroup]="medicationForm" (ngSubmit)="addMedication()">
-                <div class="row">
-                  <div class="col-4 form-group">
-                    <label for="medicationName">Medication Name <span class="text-danger">*</span></label>
-                    <input type="text" id="medicationName" class="form-control" placeholder="Enter medication name"
-                      formControlName="medicationName" />
-                    <small class="text-danger"
-                      *ngIf="medicationForm.get('medicationName')?.touched && medicationForm.get('medicationName')?.invalid">
-                      Medication name is required.
-                    </small>
-                  </div>
-
-                  <div class="col-4 form-group">
-                    <label for="dosage">Dosage <span class="text-danger">*</span></label>
-                    <input type="text" id="dosage" class="form-control" placeholder="Enter dosage"
-                      formControlName="dosage" />
-                    <small class="text-danger"
-                      *ngIf="medicationForm.get('dosage')?.touched && medicationForm.get('dosage')?.invalid">
-                      Dosage is required.
-                    </small>
-                  </div>
-
-                  <div class="col-4 form-group">
-                    <label for="frequency">Frequency <span class="text-danger">*</span></label>
-                    <input type="text" id="frequency" class="form-control" placeholder="Enter frequency"
-                      formControlName="frequency" />
-                    <small class="text-danger"
-                      *ngIf="medicationForm.get('frequency')?.touched && medicationForm.get('frequency')?.invalid">
-                      Frequency is required.
-                    </small>
-                  </div>
-
-                  <div class="col-4 form-group">
-                    <label for="startDate">Start Date <span class="text-danger">*</span></label>
-                    <input type="date" id="startDate" class="form-control" formControlName="startDate" />
-                    <small class="text-danger"
-                      *ngIf="medicationForm.get('startDate')?.touched && medicationForm.get('startDate')?.invalid">
-                      Start date is required.
-                    </small>
-                  </div>
-
-                  <div class="col-4 form-group">
-                    <label for="endDate">End Date <span class="text-danger">*</span></label>
-                    <input type="date" id="endDate" class="form-control" formControlName="endDate" />
-                    <small class="text-danger"
-                      *ngIf="medicationForm.get('endDate')?.touched && medicationForm.get('endDate')?.invalid">
-                      End date is required.
-                    </small>
-                  </div>
-
-                  <div class="form-group col-12">
-                    <label for="instructions">Instructions</label>
-                    <textarea id="instructions" rows="4" class="form-control" placeholder="Enter instructions..."
-                      formControlName="instructions"></textarea>
-                  </div>
-
-                  <div class="col-12 text-end">
-                    <button type="submit" class="submit-btn  mt-3">
-                      Submit
-                    </button>
-                  </div>
+        <!-- Form Card -->
+        <div class="bg-light text-dark font-sans p-3 rounded">
+          <div class="container">
+            <form [formGroup]="medicationForm" (ngSubmit)="addMedication()">
+              <div class="row gy-3">
+                <!-- Medication Name -->
+                <div class="col-12 col-md-6 col-lg-4">
+                  <label for="medicationName">Medication Name <span class="text-danger">*</span></label>
+                  <input type="text" id="medicationName" class="form-control" placeholder="Enter medication name"
+                    formControlName="medicationName" />
+                  <small class="text-danger"
+                    *ngIf="medicationForm.get('medicationName')?.touched && medicationForm.get('medicationName')?.invalid">
+                    Medication name is required.
+                  </small>
                 </div>
-              </form>
 
-            </div>
+                <!-- Dosage -->
+                <div class="col-12 col-md-6 col-lg-4">
+                  <label for="dosage">Dosage <span class="text-danger">*</span></label>
+                  <input type="text" id="dosage" class="form-control" placeholder="Enter dosage"
+                    formControlName="dosage" />
+                  <small class="text-danger"
+                    *ngIf="medicationForm.get('dosage')?.touched && medicationForm.get('dosage')?.invalid">
+                    Dosage is required.
+                  </small>
+                </div>
+
+                <!-- Frequency -->
+                <div class="col-12 col-md-6 col-lg-4">
+                  <label for="frequency">Frequency <span class="text-danger">*</span></label>
+                  <input type="text" id="frequency" class="form-control" placeholder="Enter frequency"
+                    formControlName="frequency" />
+                  <small class="text-danger"
+                    *ngIf="medicationForm.get('frequency')?.touched && medicationForm.get('frequency')?.invalid">
+                    Frequency is required.
+                  </small>
+                </div>
+
+                <!-- Start Date -->
+                <div class="col-12 col-md-6 col-lg-4">
+                  <label for="startDate">Start Date <span class="text-danger">*</span></label>
+                  <input type="date" id="startDate" class="form-control" formControlName="startDate" />
+                  <small class="text-danger"
+                    *ngIf="medicationForm.get('startDate')?.touched && medicationForm.get('startDate')?.invalid">
+                    Start date is required.
+                  </small>
+                </div>
+
+                <!-- End Date -->
+                <div class="col-12 col-md-6 col-lg-4">
+                  <label for="endDate">End Date <span class="text-danger">*</span></label>
+                  <input type="date" id="endDate" class="form-control" formControlName="endDate" />
+                  <small class="text-danger"
+                    *ngIf="medicationForm.get('endDate')?.touched && medicationForm.get('endDate')?.invalid">
+                    End date is required.
+                  </small>
+                </div>
+
+                <!-- Instructions -->
+                <div class="col-12">
+                  <label for="instructions">Instructions</label>
+                  <textarea id="instructions" rows="4" class="form-control" placeholder="Enter instructions..."
+                    formControlName="instructions"></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="col-12 text-end">
+                  <button type="submit" class="submit-btn  mt-3 px-4">
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
+
       </div>
     </div>
   </section>

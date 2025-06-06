@@ -62,7 +62,11 @@
                                                 <td>
                                                     <a class="list-icon"><i class="fa fa-eye"
                                                             [routerLink]="['/educational-Material/educational-detail', item?.id]"
-                                                            aria-hidden="true"></i></a>
+                                                            aria-hidden="true"></i></a>&nbsp;
+
+                                                             <a  class="list-icon" 
+                                                              [routerLink]="'/doctor/educational-material-edit/' + item?.id"><i 
+                                    class="fa fa-pencil"></i></a>
 
                                                 </td>
                                             </tr>
