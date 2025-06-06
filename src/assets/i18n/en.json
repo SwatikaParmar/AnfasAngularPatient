@@ -366,7 +366,15 @@
    "VIEW_PDF":"View PDF",
    "SIGN_AS_PATIENT":"Sign as Patient",
    "ADD_EDUCATIONAL":"Add Educational",
-   "ASSIGN_MATERIAL_TO_PATIENT":"Assign Material to Patient"
+   "ASSIGN_MATERIAL_TO_PATIENT":"Assign Material to Patient",
+   "ADD_EDUCATIONAL_MATERIAL":"Add Educational Material",
+   "UPLOAD_PDF":"Upload PDF",
+   "SELECTED_FILE":"Selected File",
+   "PDF_FILE_IS_REQUIRED":"PDF file is required",
+   "TITLE_IS_REQUIRED":" Title is required",
+   "DESCRIPTION_IS_REQUIRED":" Description is required",
+   "ENTER_TITLE":"Enter title",
+   "ENTER_DESCRIPTION":"Enter description"
 
 
 }
