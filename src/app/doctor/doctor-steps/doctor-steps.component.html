@@ -1,55 +1,81 @@
 <div class="dashboard-outer">
-    <section>
-        <div class="content-body">
-            <div class="container-fluid">
-                <div class="flex mb-4 items-center ml-1">
-                    <button class="flex items-center justify-center w-8 h-8 rounded-full text-white"
-                        style="background-color: #726641;">
-                        <i class="fas fa-arrow-left text-xs text-center"></i>
-                    </button>
-                    <h1 class="text-lg font-semibold ml-2" style="font-size: 25px; color: #726641;">
-                        Steps
-                    </h1>
-                </div>
-                <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 10px;">
-                    <div class=" mx-auto">
-                        <form class="p-5 mt-2 mb-3">
-                            <div class="row g-2">
-                                <div class="container">
-                                  
-                                    <div class="title">Steps</div>
-                                    <img src="/assets/images/run.png" alt="Runner"
-                                        class="runner" />
-                                    <div class="steps-count">0</div>
-                                    <div class="steps-label">Today Steps</div>
-
-                                    <div class="chart-container">
-                                         <div class="target-label">Target</div>
-                                        <div class="target-line"></div>
-                                       
-                                        <div class="y-axis">
-                                            <div>4,000</div>
-                                            <div>3,000</div>
-                                            <div>2,000</div>
-                                            <div>1,000</div>
-                                            <div>0</div>
-                                        </div>
-                                        <div class="x-axis">
-                                            <span>29</span>
-                                            <span>30</span>
-                                            <span>31</span>
-                                            <span>Sun</span>
-                                            <span>Mon</span>
-                                            <span>Tue</span>
-                                            <span>Today</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+  <section>
+    <div class="content-body">
+      <div class="container-fluid">
+        <div class="flex mb-4 items-center ml-1">
+          <button (click)="backClicked()"
+            class="flex items-center justify-center w-8 h-8 rounded-full text-white"
+            style="background-color: #726641;"
+          >
+            <i class="fas fa-arrow-left text-xs text-center"></i>
+          </button>
+          <h1 class="text-lg font-semibold ml-2" style="font-size: 25px; color: #726641;">
+            Steps
+          </h1>
         </div>
-    </section>
+        <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 10px;">
+          <div class="mx-auto">
+            <form class="p-5 mt-2 mb-3">
+              <div class="row g-2">
+                <div class="container">
+                  <div class="title">Steps</div>
+                  <img src="/assets/images/run.png" alt="Runner" class="runner" />
+
+                  <!-- Show today's steps dynamically -->
+                  <div class="steps-count">{{ todaySteps }}</div>
+                  <div class="steps-label">Today Steps</div>
+
+                  <div class="chart-container" style="display: flex; position: relative; height: 220px;">
+
+                    <!-- Y axis labels -->
+                    <div class="y-axis" style="display: flex; flex-direction: column; justify-content: space-between; margin-right: 10px; font-size: 12px; color: #666;">
+                      <div *ngFor="let tick of yAxisTicks" style="border-top: 1px solid #eee; height: 20%; padding-right: 4px; box-sizing: border-box; text-align: right;">
+                        {{ tick | number }}
+                      </div>
+                    </div>
+
+                    <!-- Bars container -->
+                    <div class="bars-container" style="display: flex; align-items: flex-end; gap: 14px; flex-grow: 1; border-left: 1px solid #ddd; border-bottom: 1px solid #ddd; padding-bottom: 20px;">
+
+                      <div
+                        *ngFor="let item of chartData"
+                        class="bar-wrapper"
+                        [title]="item.steps + ' steps on ' + (item.date | date: 'MMM d')"
+                        style="display: flex; flex-direction: column; align-items: center; width: 36px;"
+                      >
+                        <!-- Step count above bar -->
+                        <div class="step-count" style="font-size: 11px; margin-bottom: 6px; color: #2f855a; font-weight: 600;">
+                          {{ item.steps }}
+                        </div>
+
+                        <!-- Bar -->
+                        <div
+                          class="bar"
+                          [style.height.%]="(item.steps / maxStepCount) * 100"
+                          style="width: 20px; background-color: #2f855a; border-radius: 4px 4px 0 0; transition: height 0.3s ease;"
+                        ></div>
+
+                        <!-- Date label below bar -->
+                        <div class="date-label" style="font-size: 10px; margin-top: 6px; color: #888; white-space: nowrap;">
+                          {{ item.date | date: 'MMM d' }}
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <!-- Target line and label -->
+                    <div class="target-line" style="position: absolute; left: 50px; top: 50px; width: calc(100% - 60px); border-top: 1px dashed #ccc;"></div>
+                    <div class="target-label" style="position: absolute; left: 0; top: 45px; font-size: 12px; color: #999;">
+                      Target
+                    </div>
+
+                  </div> <!-- end chart-container -->
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
