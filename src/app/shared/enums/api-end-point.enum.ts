@@ -52,8 +52,9 @@ export enum ApiEndPoint {
     recordType ="api/User/GetHealthRecordsByType",
     doctorDetail = "api/User/GetDoctorDetails",
     addMedication = "api/User/AddOrUpdateMedication ",
-    messageList = "",
-    addEducationMaterial = "api/User/AddOrUpdateEducationMaterial"
+    messageList = "api/Chat/chatUsers/",
+    addEducationMaterial = "api/User/AddOrUpdateEducationMaterial",
+    vitalStatus = "api/User/SetVitalRecordStatus"
 
 
 

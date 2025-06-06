@@ -53,21 +53,34 @@
                         <i class="fas fa-heartbeat" style="color: #9baec8; font-size: 22px;"></i>
                       </div>
                       <div class="card-text" style="margin-left: 10px;">
-                        <div class="code">{{ item.mrn }}</div>
+                        <div class="code">{{ item.systolic }} / {{item.diastolic}}</div>
                         <div class="date">{{ item.createdAt | date: 'fullDate' }} {{ item.createdAt | date: 'shortTime'
                           }}</div>
                       </div>
                     </div>
 
                     <div style="display: flex; justify-content: flex-end; margin-top: 5px;">
-                      <span class="badge" [ngClass]="{
-            'badge-verified': item.status === 'Verified',
-            'badge-pending': item.status === 'Pending',
-            'badge-rejected': item.status === 'Rejected'
-          }">
-                        {{ item.status }}
-                      </span>
-                    </div>
+  <ng-container *ngIf="item.status === 'Pending'; else statusBadge">
+    <!-- Buttons for pending status -->
+    <button class="btn btn-success btn-sm me-2" (click)="approveItem(item)">Approve</button>
+    <button class="btn btn-danger btn-sm" (click)="rejectItem(item)">Reject</button>
+  </ng-container>
+
+  <!-- Badge for statuses other than Pending -->
+  <ng-template #statusBadge>
+    <span
+      class="badge"
+      [ngClass]="{
+        'badge-verified': item.status === 'Verified',
+        'badge-pending': item.status === 'Pending',
+        'badge-rejected': item.status === 'Rejected'
+      }"
+    >
+      {{ item.status }}
+    </span>
+  </ng-template>
+</div>
+
                   </div>
                 </div>
 

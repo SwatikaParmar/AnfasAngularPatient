@@ -55,3 +55,23 @@
   color: #856404;
 }
 
+.badge {
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.badge-verified {
+  background-color: #28a745;
+  color: white;
+}
+
+.badge-pending {
+  background-color: #ffc107;
+  color: black;
+}
+
+.badge-rejected {
+  background-color: #dc3545;
+  color: white;
+}

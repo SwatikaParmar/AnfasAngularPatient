@@ -354,5 +354,14 @@ addEduMaterial(data: any) {
 }
 
 
+setvitalStatus(data:any){
+  return this.http.post<any>(environment.apiUrl + ApiEndPoint.vitalStatus,data)
+}
 
+
+getMessageList(userName :any){
+
+  return this.http.get<any>(environment.apiUrl + ApiEndPoint.messageList + userName )
+
+}
 }
