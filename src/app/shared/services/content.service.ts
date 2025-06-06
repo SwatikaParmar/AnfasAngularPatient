@@ -364,4 +364,19 @@ getMessageList(userName :any){
   return this.http.get<any>(environment.apiUrl + ApiEndPoint.messageList + userName )
 
 }
+
+ getDocLab(data: any) {
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.LabReport +
+      '?PatientVisitUid=' + data.PatientVisitUid
+    )
+  }
+
+
+    getDocRis(data: any) {
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.RisReport 
+      + '?PatientVisitUid=' + data.PatientVisitUid
+    )
+  }
+
+
 }

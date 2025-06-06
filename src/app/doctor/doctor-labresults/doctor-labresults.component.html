@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <div class="flex mb-4 items-center ml-1">
                     <button class="flex items-center justify-center w-8 h-8 rounded-full text-white"
-                        style="background-color: #726641;">
+                        style="background-color: #726641;" (click)="backClicked()">
                         <i class="fas fa-arrow-left text-xs text-center"></i>
                     </button>
                     <h1 class="text-lg font-semibold ml-2" style="font-size: 25px; color: #726641;">
@@ -18,20 +18,24 @@
                                 <div class="button-container mb-3">
                                     <button class="tab-button active" onclick="showOnly(event, 'carrier')">Lab
                                         Report</button>
-                                    <button class="tab-button" onclick="showOnly(event, 'shipper')">RIS Report</button>
+                                    <button (click)="getRis()" class="tab-button" onclick="showOnly(event, 'shipper')">RIS Report</button>
                                 </div>
-                                <div id="carrier" class="tab-detail mb-3">
-                                    <a href="your-document.pdf" target="_blank" class="pdf-link">
-                                        <i class="fas fa-file-pdf"></i> View Lab Report
-                                    </a>
+                              <div id="carrier" class="tab-detail mb-3" *ngIf="pdfUrl">
+  <a [href]="pdfUrl" target="_blank" class="pdf-link">
+    <i class="fas fa-file-pdf"></i> View Lab Report
+  </a>
+</div>
 
-                                </div>
                                 <div id="shipper" class="tab-detail mb-3" style="display:none;">
-                                   <a href="your-document.pdf" target="_blank" class="pdf-link">
+                                 
+                                     <a [href]="pdfUrls" target="_blank" class="pdf-link">
                                         <i class="fas fa-file-pdf"></i> View RIS Report
                                     </a>
 
                                 </div>
+
+
+                                
                             </div>
                         </form>
                     </div>

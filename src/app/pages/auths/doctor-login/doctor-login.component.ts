@@ -91,9 +91,9 @@ loginForm!: FormGroup;
     this.authService.Doctorlogin(this.loginForm.value).subscribe({
       next: (response) => {
         if (response.status === true) {
-          this.toasterService.success('OTP sent to your phone number');
+          this.toasterService.success(response.messages);
           this.loginForm.reset();
-          this.router.navigateByUrl('/otp'); // Navigate immediately after successful login
+         this.router.navigate(['/doctor-dashboard']); // replace with your actual route
           // Optionally still fetch patient details in background
         } else {
           this.toasterService.error(response.message);
