@@ -376,5 +376,10 @@
   "DESCRIPTION_IS_REQUIRED": "الوصف مطلوب",
   "ENTER_TITLE": "أدخل العنوان",
   "ENTER_DESCRIPTION": "أدخل الوصف",
-  "USER_DEPARTMENTS": "أقسام المستخدمين"
+  "USER_DEPARTMENTS": "أقسام المستخدمين",
+  "FROM_DATE": "من التاريخ",
+  "TO_DATE": "حتى الآن",
+  "SEARCH": "يبحث",
+  "APPROVE": "يعتمد",
+  "REJECT": "يرفض"
 }
