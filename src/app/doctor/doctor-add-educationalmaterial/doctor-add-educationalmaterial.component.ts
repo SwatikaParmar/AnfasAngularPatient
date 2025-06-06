@@ -16,6 +16,11 @@ export class DoctorAddEducationalmaterialComponent {
   eduForm!: FormGroup;
   selectedFile: File | null = null;
 selectedFileName: string = '';
+  id: any;
+  detail: any;
+  patientList: any;
+  totalItems: any;
+  existingFileName: any;
 
     constructor(
     private toastrService: ToastrService,
@@ -33,51 +38,99 @@ selectedFileName: string = '';
     });
   }
 
-
-onFileChange(event: Event) {
+  ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
+    if (this.id) {
+      this.loadDetail();
+    }
+  }
+  
+onFileChange(event: Event): void {
   const input = event.target as HTMLInputElement;
   if (input.files && input.files.length > 0) {
     this.selectedFile = input.files[0];
     this.selectedFileName = this.selectedFile.name;
 
-    // Patch the form control manually if needed
     this.eduForm.patchValue({ file: this.selectedFile });
+
+    // Ensure validator is set if user selects a new file
+    this.eduForm.get('file')?.setValidators(Validators.required);
     this.eduForm.get('file')?.updateValueAndValidity();
   }
 }
 
- submitForm() {
+
+
+submitForm() {
   if (this.eduForm.invalid) {
     this.eduForm.markAllAsTouched();
     return;
   }
 
   const payload = {
-    Id: '', // leave blank or add actual ID if updating
+    Id: this.detail?.id || '', // Add ID if editing
     Title: this.eduForm.value.title,
     Description: this.eduForm.value.description,
-    File: this.selectedFile, // this must be a File object
+    File: this.selectedFile, // new file from user, or null if not changed
     CareProviderCode: localStorage.getItem('code') || ''
   };
-this.spinner.show();
+
+  this.spinner.show();
   this.contentService.addEduMaterial(payload).subscribe({
     next: (response) => {
+      this.spinner.hide();
       if (response.isSuccess === true) {
         this.toastrService.success(response.messages);
-        this.spinner.hide();
         this._location.back();
       } else {
-                this.spinner.hide();
-
         this.toastrService.error(response.messages);
       }
     },
     error: () => {
+      this.spinner.hide();
       this.toastrService.error('Something went wrong');
     }
   });
 }
 
+
+loadDetail(): void {
+  this.spinner.show();
+  this.contentService.geteducationalMaterialDetail(this.id).subscribe({
+    next: (response) => {
+      if (response.isSuccess) {
+        this.detail = response.data.educationMaterialDetail;
+        this.patientList = response.data.patients || [];
+        this.totalItems = this.patientList.length;
+this.existingFileName = this.detail?.contentUrl || ''; // Adjust key as per API
+
+        // Patch form values
+        this.eduForm.patchValue({
+          title: this.detail.title,
+          description: this.detail.description
+          // file can't be patched like this if it's a file; skip or handle separately
+        });
+
+           // Remove required validator for 'file' if existing file is present
+      if (this.existingFileName) {
+        this.eduForm.get('file')?.clearValidators();
+        this.eduForm.get('file')?.updateValueAndValidity();
+      }
+      
+        // If the file is from server and you want to display it, store its name/path for reference (not patch into form directly)
+     //   this.selectedFileFromServer = this.detail.file; // Optional for display
+      } else {
+        this.toastrService.warning('No data found.');
+      }
+      this.spinner.hide();
+    },
+    error: (err) => {
+      console.error(err);
+      this.spinner.hide();
+      this.toastrService.error('An error occurred while fetching details.');
+    }
+  });
+}
 
  backClicked() {
         this._location.back();
