@@ -149,17 +149,17 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="col-6 col-md-4 mb-4">
-                                        <a [routerLink]="['/doctor-patient/doctor-labresults']"
+                                    <!-- <div class="col-6 col-md-4 mb-4">
+                                        <a [routerLink]="['/doctor-patient/doctor-labresults/' + mrn]"
                                             style="text-decoration: none; color: inherit;">
                                             <div class="health-box p-3 shadow-sm rounded bg-white">
                                                 <i class="fa-solid fa-vials fa-2x mb-2" style="color: #83764C;"></i>
                                                 <div>Lab Results</div>
                                             </div>
                                         </a>
-                                    </div>
+                                    </div> -->
                                     <div class="col-6 col-md-4 mb-4">
-                                        <a [routerLink]="['/doctor-patient/doctor-steps']"
+                                        <a [routerLink]="['/doctor-patient/doctor-steps/' + mrn]"
                                             style="text-decoration: none; color: inherit;">
                                             <div class="health-box p-3 shadow-sm rounded bg-white">
                                                 <i class="fa-solid fa-shoe-prints fa-2x mb-2"
@@ -269,7 +269,7 @@
       <i class="fa-regular fa-star"></i>
       <i class="fa-regular fa-star"></i>
     </div>
-    <button class="view-button">View Reports</button>
+    <button class="view-button" [routerLink]="['/doctor-patient/doctor-labresults/' + visit.patientVisitUId]">View Reports</button>
   </div>
 </div>
 
