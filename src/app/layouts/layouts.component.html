@@ -350,7 +350,7 @@
             <div class="item shw one" routerLinkActive="active">
               <a class="sub-btn" [routerLink]="['/doctor-patient']">
                 <i class="fas fa-user-injured" style="font-size: 20px;"></i>
-                <span style="font-size: 15px; font-weight: 600; ">My Patient</span>
+                <span style="font-size: 15px; font-weight: 600; ">{{ 'MY_PATIENT' | translate }}</span>
               </a>
             </div>
 
@@ -371,7 +371,7 @@
               <a [routerLink]="['/chat-list']">
                 <i class="fas fa-comments" style="font-size: 20px;"></i>
                 <span style="font-size: 15px !important; font-weight: 600 !important;">
-                  Message
+                  {{ 'MESSAGE' | translate }}
                 </span>
               </a>
             </div>
@@ -382,7 +382,7 @@
                 <i class="fas fa-user-circle"></i>
 
                 <span style="font-size: 15px !important; font-weight: 600 !important;">
-                  Profile
+                  {{ 'PROFILE' | translate }}
                 </span>
               </a>
             </div>
@@ -400,7 +400,7 @@
               <a [routerLink]="['/terms']">
                 <i class="fas fa-address-book" style="font-size: 20px;"></i>
                 <span style="font-size: 15px !important; font-weight: 600 !important;">
-                  Terms & Conditions
+                 {{ 'TERMS_&_CONDITIONS' | translate }}
                 </span>
               </a>
             </div>
