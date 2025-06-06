@@ -351,7 +351,7 @@
   "VIEW_DOCUMENT":"View Document",
   "PLEASE_RATE_OVERALL_SATIFACTION":"Please rate overall satisfaction",
   "PLEASE_RATE_LIKELIHOOD_TO RECOMMENDd":" Please rate likelihood to recommend",
-  "SIGN_IN_DOCTOR":"Sign in Doctor",
+  "SIGN_AS_DOCTOR":"Sign As Doctor",
    "FIND_A_PATIENT":"Find a Patient",
    "MY_PATIENT":"My Patient",
    "MESSAGE":"Message",
@@ -363,7 +363,19 @@
    "ADD_MEDICATION":"Add Medication",
    "INSTRUCTIONS":"Instructions",
    "FILE_URL":"File URL",
-   "VIEW_PDF":"View PDF"
+   "VIEW_PDF":"View PDF",
+   "SIGN_AS_PATIENT":"Sign as Patient",
+   "ADD_EDUCATIONAL":"Add Educational",
+   "ASSIGN_MATERIAL_TO_PATIENT":"Assign Material to Patient",
+   "ADD_EDUCATIONAL_MATERIAL":"Add Educational Material",
+   "UPLOAD_PDF":"Upload PDF",
+   "SELECTED_FILE":"Selected File",
+   "PDF_FILE_IS_REQUIRED":"PDF file is required",
+   "TITLE_IS_REQUIRED":" Title is required",
+   "DESCRIPTION_IS_REQUIRED":" Description is required",
+   "ENTER_TITLE":"Enter title",
+   "ENTER_DESCRIPTION":"Enter description",
+   "USER_DEPARTMENTS":"User Departments"
 
 
 }

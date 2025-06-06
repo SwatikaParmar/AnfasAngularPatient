@@ -5,7 +5,8 @@
             <div class="container-fluid">
                 <div class="flex mb-2 items-center ml-1">
 
-                    <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">Message</h1>
+                    <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">{{ 'MESSAGE' |
+                        translate }}</h1>
                 </div>
                 <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
                     <div class="custom-container mx-auto p-3">
@@ -16,10 +17,10 @@
                                     <table class="medication-table">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>MR Number</th>
-                                                <th>Last Message</th>
-                                                <th>Action</th>
+                                                <th>{{ 'NAME' | translate }}</th>
+                                                <th>{{ 'MR_NUMBER' | translate }}</th>
+                                                <th>{{ 'LAST_MESSAGE' | translate }}</th>
+                                                <th>{{ 'ACTION' | translate }}</th>
                                             </tr>
                                         <tbody>
                                             <tr class="row-light" *ngFor="let user of data | paginate
