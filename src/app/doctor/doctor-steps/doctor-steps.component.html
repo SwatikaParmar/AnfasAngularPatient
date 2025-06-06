@@ -35,16 +35,16 @@
                     </div>
 
                     <!-- Bars container -->
-                    <div class="bars-container" style="display: flex; align-items: flex-end; gap: 14px; flex-grow: 1; border-left: 1px solid #ddd; border-bottom: 1px solid #ddd; padding-bottom: 20px;">
+                    <div class="bars-container" style="display: flex; align-items: flex-end; gap: 14px; flex-grow: 1; border-left: 1px solid #ddd; border-bottom: 1px solid #ddd; padding-bottom: 20px; overflow-x: auto;">
 
                       <div
                         *ngFor="let item of chartData"
                         class="bar-wrapper"
                         [title]="item.steps + ' steps on ' + (item.date | date: 'MMM d')"
-                        style="display: flex; flex-direction: column; align-items: center; width: 36px;"
+                        style="display: flex; flex-direction: column; align-items: center; width: 36px; "
                       >
                         <!-- Step count above bar -->
-                        <div class="step-count" style="font-size: 11px; margin-bottom: 6px; color: #2f855a; font-weight: 600;">
+                        <div class="step-count" style="font-size: 11px; margin-bottom: 6px; color: #2f855a; font-weight: 600; ">
                           {{ item.steps }}
                         </div>
 
@@ -52,11 +52,11 @@
                         <div
                           class="bar"
                           [style.height.%]="(item.steps / maxStepCount) * 100"
-                          style="width: 20px; background-color: #2f855a; border-radius: 4px 4px 0 0; transition: height 0.3s ease;"
+                          style="width: 20px; background-color: #2f855a; border-radius: 4px 4px 0 0; transition: height 0.3s ease; "
                         ></div>
 
                         <!-- Date label below bar -->
-                        <div class="date-label" style="font-size: 10px; margin-top: 6px; color: #888; white-space: nowrap;">
+                        <div class="date-label" style="font-size: 10px; margin-top: 6px; color: #888; white-space: nowrap; ">
                           {{ item.date | date: 'MMM d' }}
                         </div>
                       </div>

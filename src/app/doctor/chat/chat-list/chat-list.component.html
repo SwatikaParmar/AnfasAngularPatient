@@ -21,36 +21,35 @@
                                                 <th>Last Message</th>
                                                 <th>Action</th>
                                             </tr>
-<tbody>
-  <tr
-    class="row-light"
-    *ngFor="let user of data | paginate
+                                        <tbody>
+                                            <tr class="row-light" *ngFor="let user of data | paginate
                             : {
                                 itemsPerPage: 6,
                                 currentPage: page,
                                 totalItems: totalItems,
                                 id: '1'
-                              }"
-  >
-    <td>{{ user.firstName }} {{ user.lastName }}</td>
-    <td>{{ user.userName }}</td>
-    <td>{{ user.lastMessage}}</td> <!-- Replace with actual phone number if available -->
-    <td [routerLink]="['/chat-list/chat/' + user.userName + '/' + user.firstName + ' ' + user.lastName]">
-      <div class="chat-icon">
-        <i class="fa-solid fa-comment-dots"></i>
-      </div>
-    </td>
-  </tr>
-</tbody>
+                              }">
+                                                <td>{{ user.firstName }} {{ user.lastName }}</td>
+                                                <td>{{ user.userName }}</td>
+                                                <td>{{ user.lastMessage}}</td>
+                                                <!-- Replace with actual phone number if available -->
+                                                <td
+                                                    [routerLink]="['/chat-list/chat/' + user.userName + '/' + user.firstName + ' ' + user.lastName]">
+                                                    <div class="chat-icon">
+                                                        <i class="fa-solid fa-comment-dots"></i>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
 
                                     </table>
                                 </div>
                             </div>
 
-                                <div class="pagination-container pt-3 pb-3">
-                <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
-                  queryParamsHandling="merge"></pagination-controls>
-              </div>
+                            <div class="pagination-container pt-3 pb-3">
+                                <pagination-controls (pageChange)="onPageChange($event)" id="1"
+                                    class="paginate-doctor-list" queryParamsHandling="merge"></pagination-controls>
+                            </div>
 
 
                         </div>
