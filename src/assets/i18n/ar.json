@@ -352,7 +352,7 @@
   "VIEW_DOCUMENT": "عرض المستند",
   "PLEASE_RATE_OVERALL_SATIFACTION": "يرجى تقييم الرضا العام",
   "PLEASE_RATE_LIKELIHOOD_TO_RECOMMEND": "يرجى تقييم احتمالية التوصية",
-  "SIGN_IN_DOCTOR": "تسجيل الدخول دكتور",
+  "SIGN_AS_DOCTOR": "تسجيل الدخول كطبيب",
   "FIND_A_PATIENT": "البحث عن مريض",
   "MY_PATIENT": "مريضتي",
   "MESSAGE": "رسالة",
@@ -364,5 +364,8 @@
   "ADD_MEDICATION": "إضافة الدواء",
   "INSTRUCTIONS": "تعليمات",
   "FILE_URL": "رابط الملف",
-  "VIEW_PDF": "عرض ملف PDF"
+  "VIEW_PDF": "عرض ملف PDF",
+  "SIGN_AS_PATIENT": "التوقيع كمريض",
+  "ADD_EDUCATIONAL": "إضافة التعليمية",
+  "ASSIGN_MATERIAL_TO_PATIENT": "تعيين المواد للمريض"
 }
