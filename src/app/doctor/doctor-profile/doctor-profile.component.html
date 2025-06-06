@@ -4,7 +4,7 @@
       <div class="container-fluid">
         <div class="flex mb-4 items-center ml-1">
           <h1 class="text-lg font-semibold ml-2" style="font-size: 25px; color: #726641;">
-            Profile
+            {{ 'PROFILE' | translate }}
           </h1>
         </div>
 
@@ -17,16 +17,16 @@
                 <div class="profile-details">
                   <div class="profile-title">{{ profileData.name }}</div>
 
-                
+
 
 
                   <div class="profile-section">
-                    <div class="profile-label">Default Department</div>
+                    <div class="profile-label">{{ 'DEFAULT_DEPARTMENT' | translate }}</div>
                     <div class="profile-info">{{ profileData.defaultDepartment?.name }}</div>
                   </div>
 
                   <div class="profile-section">
-                    <div class="profile-label">User Departments</div>
+                    <div class="profile-label">{{ 'USER_DEPARTMENTS' | translate }}</div>
                     <ul class="bullet-list">
                       <li *ngFor="let dept of profileData.userDepartments">
                         {{ dept.id }}
@@ -34,9 +34,9 @@
                     </ul>
                   </div>
 
-               
 
-              
+
+
                 </div>
               </div>
             </div>

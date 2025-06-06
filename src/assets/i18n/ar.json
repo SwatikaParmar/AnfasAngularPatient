@@ -375,5 +375,6 @@
   "TITLE_IS_REQUIRED": "العنوان مطلوب",
   "DESCRIPTION_IS_REQUIRED": "الوصف مطلوب",
   "ENTER_TITLE": "أدخل العنوان",
-  "ENTER_DESCRIPTION": "أدخل الوصف"
+  "ENTER_DESCRIPTION": "أدخل الوصف",
+  "USER_DEPARTMENTS": "أقسام المستخدمين"
 }

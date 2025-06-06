@@ -374,7 +374,8 @@
    "TITLE_IS_REQUIRED":" Title is required",
    "DESCRIPTION_IS_REQUIRED":" Description is required",
    "ENTER_TITLE":"Enter title",
-   "ENTER_DESCRIPTION":"Enter description"
+   "ENTER_DESCRIPTION":"Enter description",
+   "USER_DEPARTMENTS":"User Departments"
 
 
 }
