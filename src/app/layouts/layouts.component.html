@@ -53,7 +53,7 @@
       <li class="language-dropdown"
         [ngClass]="{'english-selected': currentLanguage === 'en', 'arabic-selected': currentLanguage === 'ar'}">
         <a href="javascript:void(0)" class="language-icon" id="languageDropdown" (click)="toggleLanguageMenu()">
-          <img src="assets/images/language-icon.svg" class="img-responsive">
+          <img src="assets/images/language-icon.svg" class="img-responsive" >
         </a>
         <ul class="dropdown-menu1 language-menu1" [ngClass]="{'show': isLanguageMenuOpen}">
           <li class="mb-2">
@@ -75,9 +75,10 @@
   <!-- ---- -->
 <section >
 <aside class="side-bar" [ngClass]="{'show-sidebar': isSidebarCollapsed}">
-      <a class="aside-logo text-center">
-        <img class="logo-abbr" src="assets/images/logo-dashboard.png" style="max-width: 120px; margin: auto;">
-      </a>
+     <a class="aside-logo text-center" [ngClass]="{'hide-logo': isSidebarCollapsed}">
+  <img class="logo-abbr" src="assets/images/logo-dashboard.png" style="max-width: 120px; margin: auto;">
+</a>
+
 
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">

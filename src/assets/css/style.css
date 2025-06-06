@@ -1363,7 +1363,7 @@ ul.ngx-pagination li.pagination-next a {
 @media (max-width: 1200px) {
     .content-body .container-fluid {
         padding-right: 20px!important;
-        padding-left: 20px!important;
+        padding-left: 285px!important;
         padding-bottom: 25px!important;
     }
 }
@@ -1382,6 +1382,7 @@ ul.ngx-pagination li.pagination-next a {
         padding-left: 10px!important;
         padding-bottom: 15px!important;
     }
+
 }
 
 
@@ -1397,3 +1398,5 @@ ul.ngx-pagination li.pagination-next a {
     object-position: bottom;
     background: #fbcb6bfc;
 }
+
+

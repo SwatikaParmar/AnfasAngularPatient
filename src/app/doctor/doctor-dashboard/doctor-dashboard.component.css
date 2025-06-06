@@ -42,3 +42,15 @@
   font-size: 1.5rem;
   color: #333;
 }
+
+@media (max-width: 768px) {
+  .carousel-images {
+    max-height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-images {
+    max-height: 150px;
+  }
+}
