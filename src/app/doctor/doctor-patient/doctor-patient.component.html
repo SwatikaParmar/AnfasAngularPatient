@@ -6,7 +6,7 @@
           <div class=" mx-auto p-4">
             <div class="flex mb-2 items-center ml-1">
               <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">
-                Patient List
+                {{ 'PATIENT_LIST' | translate }}
               </h1>
             </div>
             <div class="row">
@@ -16,8 +16,8 @@
                   <div class="patient-card">
                     <div class="patient-info d-flex justify-content-between">
                       <div class="patient-details">
-                        <div style="color: #83764C;">MR Number : {{ patient.mrn }}</div>
-                        <div style="color: #83764C;">Phone Number : {{ patient.phoneNumber }}</div>
+                        <div style="color: #83764C;">{{ 'MR_NUMBER' | translate }} : {{ patient.mrn }}</div>
+                        <div style="color: #83764C;">{{ 'PHONE_NUMBER' | translate }} : {{ patient.phoneNumber }}</div>
                       </div>
                       <div class="chat-icon">
                         <i class="fa-solid fa-comment-dots"></i>

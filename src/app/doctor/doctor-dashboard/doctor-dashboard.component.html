@@ -9,17 +9,17 @@
                             <!-- Greeting and Heading -->
                             <div>
                                 <p class="text-sm sm:text-base text-black-500">
-                                    Hello <strong class="text-yellow-400">{{ fname }}</strong>
+                                    {{ 'HELLO' | translate }} <strong class="text-yellow-400">{{ fname }}</strong>
                                 </p>
                                 <h2 class="text-lg sm:text-xl font-semibold text-[#77734E]">
-                                    Find Your Specialist
+                                      {{ 'FIND_YOUR_SPECIALIST' | translate }}
                                 </h2>
                             </div>
 
                             <!-- Search Box -->
                             <div
                                 class="flex items-center border border-yellow-300 px-3 py-1 rounded-full shadow-sm focus-within:ring w-full sm:w-auto">
-                                <input type="text" placeholder="Find a Patient"
+                                <input type="text" placeholder="{{ 'FIND_A_PATIENT' | translate }}"
                                     class="flex-grow focus:outline-none bg-gray-50" />
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 cursor-pointer text-yellow-400"
                                     viewBox="0 0 20 20" fill="currentColor">
@@ -58,11 +58,12 @@
                         <!-- Welcome Card -->
                         <div class="bg-white rounded-xl shadow-md p-4 mt-4 text-center"
                             style="background-color: azure;">
-                            <h3 class="text-lg font-bold" style="color: #77734E; font-size: 25px;">Welcome to ANFAS
-                                Healthcare</h3>
+                            <h3 class="text-lg font-bold" style="color: #77734E; font-size: 25px;">{{ 'WELCOME_TO_ANFAS_HEALTHCARE' |
+                translate }}</h3>
                             <p class="text-sm mt-2" style="font-size: 15px;">
-                                Your trusted partner for home care, radiology, and lab services. Experience the best
-                                healthcare at your convenience.</p>
+                              {{
+                'YOUR_TRUSTED_PARTNER_FOR_HOME_CARE_RADIOLOGY_AND_LAB_SERVICES_EXPERIENCE_THE_BEST_HEALTHCARE_AT_YOUR_CONVENIENCE'
+                | translate }}</p>
                         </div>
 
                         <!-- Action Buttons -->
@@ -71,7 +72,7 @@
                                 class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 hover:scale-105 transition-transform duration-300 ease-in-out"
                                 style="border: 1px solid #FEC34F;">
                                 <i class="fa-solid fa-calendar-days text-2xl" style="color: #77734E;"></i>
-                                <span style="color:#77734E; font-weight: 600;">Appointment</span>
+                                <span style="color:#77734E; font-weight: 600;">{{ 'APPOINTMENT' | translate }}</span>
                             </button>
 
 
@@ -79,14 +80,14 @@
                                 class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 text-center hover:scale-105 transition-transform duration-300 ease-in-out"
                                 style="border:1px solid #FEC34F!important;">
                                 <i class="fa-solid fa-book text-blue-600 text-2xl" style="color: #77734E;"></i>
-                                <span style="color:#77734E; font-weight: 600;">Educational Material</span>
+                                <span style="color:#77734E; font-weight: 600;">{{ 'EDUCATIONAL_MATERIAL' | translate }}</span>
                             </button>
 
                             <button [routerLink]="['/doctor-patient']"
                                 class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 text-center hover:scale-105 transition-transform duration-300 ease-in-out"
                                 style="border:1px solid #FEC34F!important;">
                                 <i class="fa-solid fa-user-injured text-red-500 text-2xl" style="color: #77734E;"></i>
-                                <span style="color:#77734E; font-weight: 600;">My Patient</span>
+                                <span style="color:#77734E; font-weight: 600;">{{ 'MY_PATIENT' | translate }}</span>
                             </button>
                         </div>
 
@@ -94,7 +95,7 @@
                         <div class="mt-8">
                             <h4 class="text-lg font-semibold "
                                 style="color: #77734E; font-size: 25px; margin-bottom: 20px;">
-                             Hospital Address</h4>
+                           {{ 'HOSPITAL_ADDRESS' | translate }}</h4>
                             <div class="w-full h-64">
                                 <iframe class="w-full h-full rounded-xl"
                                     src="https://maps.google.com/maps?q=Riyadh%20Saudi%20Arabia&t=&z=13&ie=UTF8&iwloc=&output=embed"
@@ -102,13 +103,13 @@
                                 </iframe>
                             </div>
                             <p class=" text-sm" style="font-size: 15px; margin-top: 15px!important;">
-                                2259 Prince Saad bin Abdul Rahman I Road, As saadah, Riyadh 14257 7182
+                                 {{ '2259_PRINCE_SAAD_BIN_ABDUL_RAHMAN_I_ROAD_AS_SAADAH_RIYADH_14257_7182' | translate }}
                                 <br />
                                 <a href="https://www.google.com/maps/dir/?api=1&destination=Riyadh%2C+Saudi+Arabia"
                                     class="text-blue-600 underline mt-3"
                                     style="font-size: 15px; margin-top: 15px!important;" target="_blank"
                                     rel="noopener noreferrer">
-                                     Get Direction    
+                                      {{ 'GET_DIRECTION' | translate }}
                                  </a>
 
                             </p>

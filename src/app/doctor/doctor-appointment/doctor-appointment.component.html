@@ -1,60 +1,57 @@
 <div class="dashboard-outer">
-    <section>
-        <div class="content-body">
-            <div class="container-fluid">
-                <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 10px;">
-                    <div class=" mx-auto p-4">
-                        <div class="flex mb-2 items-center ml-1">
-                            <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">
-                                Appointment List
-                            </h1>
-                        </div>
-                 <div class="row">
-  <div
-    class="col-12 col-md-4 mb-4"
-    *ngFor="let appointment of doctorappoint?.appointments"
-  >
-    <div class="patient-card">
-      <div class="patient-info d-flex justify-content-between">
-        <div class="patient-details">
-          <div style="color: #83764C;">
-            Appointment Number : {{ appointment.appointmentNumber }}
-          </div>
-          <div style="color: #83764C;">
-            Appointment Date :
-            {{
-              appointment.appointmentDate | date: 'dd-MM-yyyy'
-            }}
-            at
-            {{
-              appointment.startTime | date: 'hh:mm a'
-            }}
+  <section>
+    <div class="content-body">
+      <div class="container-fluid">
+        <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 10px;">
+          <div class=" mx-auto p-4">
+            <div class="flex mb-2 items-center ml-1">
+              <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">
+               {{ 'APPOINTMENT_LIST' | translate }}
+              </h1>
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-4 mb-4" *ngFor="let appointment of doctorappoint?.appointments">
+                <div class="patient-card">
+                  <div class="patient-info d-flex justify-content-between">
+                    <div class="patient-details">
+                      <div style="color: #83764C;">
+                    {{ '  APPOINTMENT_NUMBER' | translate }} : {{ appointment.appointmentNumber }}
+                      </div>
+                      <div style="color: #83764C;">
+                     {{ '  APPOINTMENT_DATE' | translate }} :
+                        {{
+                        appointment.appointmentDate | date: 'dd-MM-yyyy'
+                        }}
+                        at
+                        {{
+                        appointment.startTime | date: 'hh:mm a'
+                        }}
+                      </div>
+                    </div>
+                    <div class="chat-icon">
+                      <i class="fa-solid fa-comment-dots"></i>
+                    </div>
+                  </div>
+
+                  <div style="border-bottom: 1px solid gray; margin-top: 5px;"></div>
+
+                  <div class="patient-name">
+                    <div><strong>{{ appointment.patientName }}</strong></div>
+                    <div>{{ appointment.departmentName }}</div>
+                    <div>{{ appointment.priority }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
           </div>
         </div>
-        <div class="chat-icon">
-          <i class="fa-solid fa-comment-dots"></i>
-        </div>
-      </div>
-
-      <div style="border-bottom: 1px solid gray; margin-top: 5px;"></div>
-
-      <div class="patient-name">
-        <div><strong>{{ appointment.patientName }}</strong></div>
-        <div>{{ appointment.departmentName }}</div>
-        <div>{{ appointment.priority }}</div>
       </div>
     </div>
-  </div>
-</div>
-
-
-
-
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  </section>
 </div>

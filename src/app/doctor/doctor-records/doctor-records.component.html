@@ -7,17 +7,19 @@
                         <div class="flex mb-3 items-center ml-1">
 
                             <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">
-                                Vital Records
+                                {{ 'VITAL_RECORDS' | translate }}
                             </h1>
                         </div>
                         <div class="button-container mb-3">
-                            <button class="tab-button active" onclick="showOnly(event, 'carrier')">Medication
-                                Record</button>
-                            <button class="tab-button" onclick="showOnly(event, 'shipper')">Health Tracking</button>
+                            <button class="tab-button active" onclick="showOnly(event, 'carrier')">{{
+                                'MEDICATION_RECORD' | translate }}
+                            </button>
+                            <button class="tab-button" onclick="showOnly(event, 'shipper')">{{ 'HEALTH_TRACKING' |
+                                translate }}</button>
                             <button class="tab-button" onclick="showOnly(event, 'driver')"
-                                (click)="getPatientEducation()">Education Material</button>
-                            <button class="tab-button" onclick="showOnly(event, 'route')"
-                                (click)="getDoctorVisit()">Visit Record</button>
+                                (click)="getPatientEducation()">{{ 'EDUCATIONAL_MATERIAL' | translate }}</button>
+                            <button class="tab-button" onclick="showOnly(event, 'route')" (click)="getDoctorVisit()">{{
+                                'VISIT_RECORD' | translate }}</button>
 
                         </div>
                         <div id="carrier" class="tab-detail">
@@ -34,21 +36,21 @@
                                             <button
                                                 class="appointment-btn  text-white px-4 py-2  mb-3 rounded-full sm:w-auto"
                                                 style="background-color: #83764C; font-weight: 600;"
-                                                  [routerLink]="'/doctor-patient/doctor/medication/' + mrn">
-                                                + Add Medication
+                                                [routerLink]="'/doctor-patient/doctor/medication/' + mrn">
+                                                + {{ 'ADD_MEDICATION' | translate }}
                                             </button>
                                             <div class="table-container">
                                                 <div class="table-responsive">
                                                     <table class="medication-table">
                                                         <thead>
                                                             <tr>
-                                                                <th>Medication Name</th>
-                                                                <th>Dosage</th>
-                                                                <th>Frequency</th>
-                                                                <th>Instructions</th>
-                                                                <th>Created At</th>
-                                                                <th>Status</th>
-                                                                <th>Action</th>
+                                                                <th>{{ 'MEDICATION_NAME' | translate }}</th>
+                                                                <th> {{ 'DOSAGE' | translate }}</th>
+                                                                <th> {{ 'FREQUENCY' | translate }}</th>
+                                                                <th>{{ 'INSTRUCTIONS' | translate }}</th>
+                                                                <th> {{ 'CREATED_AT' | translate }}</th>
+                                                                <th> {{ 'STATUS' | translate }}</th>
+                                                                <th> {{ 'ACTION' | translate }}</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -118,7 +120,7 @@
                                             style="text-decoration: none; color: inherit;">
                                             <div class="health-box p-3 shadow-sm rounded bg-white">
                                                 <i class="fa-solid fa-tint fa-2x mb-2" style="color: #83764C;"></i>
-                                                <div>Blood Pressure</div>
+                                                <div>{{ 'BLOOD_PRESSURE' | translate }}</div>
                                             </div>
                                         </a>
                                     </div>
@@ -127,7 +129,7 @@
                                             style="text-decoration: none; color: inherit;">
                                             <div class="health-box p-3 shadow-sm rounded bg-white">
                                                 <i class="fa-solid fa-syringe fa-2x mb-2" style="color: #83764C;"></i>
-                                                <div>Blood Sugar</div>
+                                                <div>{{ 'BLOOD_SUGAR' | translate }}</div>
                                             </div>
                                         </a>
                                     </div>
@@ -136,7 +138,7 @@
                                             style="text-decoration: none; color: inherit;">
                                             <div class="health-box p-3 shadow-sm rounded bg-white">
                                                 <i class="fa-solid fa-heartbeat fa-2x mb-2" style="color: #83764C;"></i>
-                                                <div>Heart Rate</div>
+                                                <div>{{ 'HEART_RATE' | translate }}</div>
                                             </div>
                                         </a>
                                     </div>
@@ -145,7 +147,7 @@
                                             style="text-decoration: none; color: inherit;">
                                             <div class="health-box p-3 shadow-sm rounded bg-white">
                                                 <i class="fa-solid fa-weight fa-2x mb-2" style="color: #83764C;"></i>
-                                                <div>Weight</div>
+                                                <div>{{ 'WEIGHT' | translate }}</div>
                                             </div>
                                         </a>
                                     </div>
@@ -154,7 +156,7 @@
                                             style="text-decoration: none; color: inherit;">
                                             <div class="health-box p-3 shadow-sm rounded bg-white">
                                                 <i class="fa-solid fa-vials fa-2x mb-2" style="color: #83764C;"></i>
-                                                <div>Lab Results</div>
+                                                <div>{{ 'LAB_RESULTS' | translate }}</div>
                                             </div>
                                         </a>
                                     </div> -->
@@ -164,7 +166,7 @@
                                             <div class="health-box p-3 shadow-sm rounded bg-white">
                                                 <i class="fa-solid fa-shoe-prints fa-2x mb-2"
                                                     style="color: #83764C;"></i>
-                                                <div>Steps</div>
+                                                <div>{{ 'STEPS' | translate }}</div>
                                             </div>
                                         </a>
                                     </div>
@@ -183,12 +185,12 @@
                                         <table class="medication-table">
                                             <thead>
                                                 <tr>
-                                                    <th>Title</th>
-                                                    <th>Description</th>
-                                                    <th>File URL</th>
-                                                    <th>Is Approved</th>
-                                                    <th>Created At</th>
-                                                    <th>Action</th>
+                                                    <th>{{ 'TITLE1' | translate }}</th>
+                                                    <th>{{ 'DESCRIPTION1' | translate }}</th>
+                                                    <th>{{ 'FILE_URL' | translate }}</th>
+                                                    <th>{{ 'IS_APPROVED' | translate }}</th>
+                                                    <th>{{ 'CREATED_AT' | translate }}</th>
+                                                    <th>{{ 'ACTION' | translate }}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -203,7 +205,7 @@
                                                     <td>
                                                         <a [href]="'https://your-domain.com/' + item.contentUrl"
                                                             target="_blank">
-                                                            View PDF
+                                                            {{ 'VIEW_PDF' | translate }}
                                                         </a>
                                                     </td>
                                                     <td>{{ item.isApproved }}</td>
@@ -234,47 +236,49 @@
                             <div class="card-grid">
 
                                 <!-- Card 1 -->
-                               <div *ngFor="let visit of visitList" class="report-card">
-  <div class="report-header">
-    <img src="/assets/images/Photo2.jpg" alt="icon" />
-    <span>{{ visit.departmentName }}</span>
-  </div>
+                                <div *ngFor="let visit of visitList" class="report-card">
+                                    <div class="report-header">
+                                        <img src="/assets/images/Photo2.jpg" alt="icon" />
+                                        <span>{{ visit.departmentName }}</span>
+                                    </div>
 
-  <div class="report-details">
-    <div>
-      <span class="label">Visit Type -</span>
-      <span class="value">
-        {{ visit.visitTypeDescription || 'N/A' }}
-      </span>
-    </div>
-    <div>
-      <span class="label">Care Provider -</span>
-      <span class="value">
-        {{ visit.careProviderName }} {{ visit.careProviderLastName }}
-      </span>
-    </div>
-    <div>
-      <span class="label">En Type -</span>
-      <span class="value">
-        {{ visit.entypeValueDescription || 'N/A' }}
-      </span>
-    </div>
-  </div>
+                                    <div class="report-details">
+                                        <div>
+                                            <span class="label">{{ 'VISIT_TYPE' | translate }} -</span>
+                                            <span class="value">
+                                                {{ visit.visitTypeDescription || 'N/A' }}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span class="label">{{ 'CARE_PROVIDER' | translate }} -</span>
+                                            <span class="value">
+                                                {{ visit.careProviderName }} {{ visit.careProviderLastName }}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span class="label">{{ 'EN_TYPE' | translate }} -</span>
+                                            <span class="value">
+                                                {{ visit.entypeValueDescription || 'N/A' }}
+                                            </span>
+                                        </div>
+                                    </div>
 
-  <div class="button-wrapper">
-    <div class="stars">
-      <i class="fa-regular fa-star"></i>
-      <i class="fa-regular fa-star"></i>
-      <i class="fa-regular fa-star"></i>
-      <i class="fa-regular fa-star"></i>
-      <i class="fa-regular fa-star"></i>
-    </div>
-    <button class="view-button" [routerLink]="['/doctor-patient/doctor-labresults/' + visit.patientVisitUId]">View Reports</button>
-  </div>
-</div>
+                                    <div class="button-wrapper">
+                                        <div class="stars">
+                                            <i class="fa-regular fa-star"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                        </div>
+                                        <button class="view-button"
+                                            [routerLink]="['/doctor-patient/doctor-labresults/' + visit.patientVisitUId]">
+                                            {{ 'VIEW_REPORTS' | translate }}</button>
+                                    </div>
+                                </div>
 
 
-                            
+
 
                             </div>
 
