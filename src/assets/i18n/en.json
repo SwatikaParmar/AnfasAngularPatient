@@ -381,5 +381,7 @@
   "TO_DATE": "To Date",
   "SEARCH": "Search",
   "APPROVE": "Approve",
-  "REJECT": "Reject"
+  "REJECT": "Reject",
+  "VIEW_IMAGE": "View Image",
+  "REJECTED": "Rejected"
 }

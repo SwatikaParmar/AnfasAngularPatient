@@ -382,5 +382,7 @@
   "TO_DATE": "حتى الآن",
   "SEARCH": "يبحث",
   "APPROVE": "يعتمد",
-  "REJECT": "يرفض"
+  "REJECT": "يرفض",
+   "VIEW_IMAGE": "عرض الصورة",
+  "REJECTED": "مرفوض"
 }

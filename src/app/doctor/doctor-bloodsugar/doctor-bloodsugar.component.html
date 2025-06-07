@@ -8,7 +8,7 @@
             <i class="fas fa-arrow-left text-xs text-center"></i>
           </button>
           <h1 class="text-lg font-semibold ml-2" style="font-size: 25px; color: #726641;">
-            Blood Sugar
+          {{ 'BLOOD_SUGAR' | translate }}
           </h1>
         </div>
         <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 10px;">
@@ -17,13 +17,13 @@
               <div class="row g-2">
                 <div class="col-12 col-md-6 col-lg-4">
                   <div class="mt-3">
-                    <label class="form-label" style="font-weight: 600;">From Date:</label>
+                    <label class="form-label" style="font-weight: 600;">{{ 'FROM_DATE' | translate }}:</label>
                     <input type="date" class="form-control" formControlName="FromDate">
                   </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
                   <div class="mt-3">
-                    <label class="form-label" style="font-weight: 600;">To Date:</label>
+                    <label class="form-label" style="font-weight: 600;">{{ 'TO_DATE' | translate }}:</label>
                     <input type="date" class="form-control" formControlName="ToDate">
                   </div>
                 </div>
@@ -31,7 +31,7 @@
                 <!-- Button aligned right -->
                 <div class="col-12 col-md-12 col-lg-4 text-end d-flex align-items-end justify-content-end">
                   <button type="button" class="btn  mt-3 w-50" (click)="getBloodSugar()"
-                    style="background-color: #FEC34F;">Search</button>
+                    style="background-color: #FEC34F;">{{ 'SEARCH' | translate }}</button>
                 </div>
               </div>
             </form>
@@ -56,7 +56,7 @@
                         </div>
                         <div class="view-link" *ngIf="item.image" (click)="openPopup(item.image)"
                           style="cursor: pointer;">
-                          View Image →
+                           {{ 'VIEW_IMAGE' | translate }}→
                         </div>
                       </div>
                     </div>
@@ -64,11 +64,11 @@
                     <div class="card-actions mt-3">
                       <ng-container [ngSwitch]="item.status">
                         <div *ngSwitchCase="'Pending'" class="d-flex gap-2">
-                          <button class="btn-reject" (click)="rejectItem(item)">Reject</button>
-                          <button class="btn-approve" (click)="approveItem(item)">Approve</button>
+                          <button class="btn-reject" (click)="rejectItem(item)">{{ 'REJECT' | translate }}</button>
+                          <button class="btn-approve" (click)="approveItem(item)">{{ 'APPROVE' | translate }}</button>
                         </div>
-                        <button *ngSwitchCase="'Verified'" class="btn-verified">Verified</button>
-                        <button *ngSwitchCase="'Rejected'" class="btn-rejected">Rejected</button>
+                        <button *ngSwitchCase="'Verified'" class="btn-verified">{{ 'VERIFIED' | translate }}</button>
+                        <button *ngSwitchCase="'Rejected'" class="btn-rejected">{{ 'REJECTED' | translate }}</button>
                       </ng-container>
                     </div>
                   </div>
