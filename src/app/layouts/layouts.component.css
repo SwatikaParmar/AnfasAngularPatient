@@ -286,7 +286,7 @@
 @media (max-width: 768px) {
   .side-bar {
     position: fixed;
-    top: 100px; /* assuming header height */
+    top: 107px; /* assuming header height */
     left: 0;
     height: calc(100% - 60px);
     background: white;
@@ -305,5 +305,7 @@
     transform: translateX(0);
   }
 }
+
+
 
 

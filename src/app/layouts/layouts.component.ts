@@ -102,13 +102,18 @@ onMenuClick() {
 }
 
 
-  @HostListener('document:click', ['$event'])
+ @HostListener('document:click', ['$event'])
 onDocumentClick(event: MouseEvent): void {
-  const targetElement = event.target as HTMLElement;
-
-  if (!targetElement.closest('.side-bar') && !targetElement.closest('.toggle-menu')) {
-    this.isSidebarCollapsed = false; // Close sidebar if clicked outside
+  const target = event.target as HTMLElement;
+  
+  // If the clicked element is inside the sidebar and is an anchor tag
+  if (target.closest('.side-bar a')) {
+    if (window.innerWidth < 768) {
+      this.isSidebarCollapsed = false; // or true if 'true' means closed
+    }
   }
 }
+
+
 
 }
