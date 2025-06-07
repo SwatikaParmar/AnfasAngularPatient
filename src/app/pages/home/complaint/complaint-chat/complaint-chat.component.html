@@ -1,64 +1,83 @@
 <div class="dashboard-outer">
 
-    <section>
-      <div class="content-body">
-        <div class="container-fluid">
-          <div class="flex mb-2 items-center ml-1">
-            <!-- Back Arrow Button -->
-            <button class="flex items-center justify-center w-7 h-7 rounded-full mr-3 mb-2 text-white"
-              style="background-color: #726641;" (click)="backClicked()">
-              <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center;"></i>
+  <section>
+    <div class="content-body">
+      <div class="container-fluid">
+        <div class="flex mb-2 items-center ml-1">
+          <!-- Back Arrow Button -->
+          <button class="flex items-center justify-center w-7 h-7 rounded-full mr-3 mb-2 text-white"
+            style="background-color: #726641;" (click)="backClicked()">
+            <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center;"></i>
+          </button>
+
+
+        </div>
+        <div class="col-12 d-flex flex-wrap  align-items-start pb-4">
+
+          <!-- First part: Patient -->
+          <div class="flex-fill col-12 col-sm-6 col-md-4 p-0 ">
+            <strong style="color: #726641;">Patient Name:</strong> KHADIJAH ABDULAZIZ
+          </div>
+
+          <!-- Second part: Complaint Type -->
+          <div class="flex-fill col-12 col-sm-6 col-md-3 text-sm-center p-0">
+            <strong style="color: #726641;">Complaint Type Name:</strong> Other
+          </div>
+
+          <!-- Third part: Date -->
+          <div class="flex-fill col-12 col-sm-6 col-md-3 text-sm-center p-0">
+            <strong style="color: #726641;">Date:</strong> 2025-06-07T09:07:06.567
+          </div>
+
+          <!-- Fourth part: Status -->
+          <div class="flex-fill col-12 col-sm-6 col-md-2 text-sm-end p-0">
+            <strong style="color: #726641;">Status:</strong> <span style="color:#FFA529">Pending</span>
+          </div>
+
+        </div>
+
+        <div class="bg-gray-100 min-h-screen flex flex-col justify-between font-sans">
+
+          <!-- Header -->
+          <div class="bg-[#77734E] text-white text-center py-3 shadow">
+            <h2 class="text-lg font-semibold">{{ 'COMPLAINT Reply' | translate }}</h2>
+          </div>
+
+
+          <!-- Chat Messages -->
+          <div class="relative flex-1 overflow-y-auto px-4 py-6 space-y-4 bg-white/80"
+            style="background-color: #dfdfdf;">
+            <div class="relative z-10">
+              <ng-container *ngFor="let chat of replies">
+                <!-- Message from Receiver -->
+                <div *ngIf="chat.role === 'Receiver'" class="flex flex-col items-start">
+                  <div class="bg-white text-black px-4 py-2 rounded-lg shadow">{{ chat.reply }}</div>
+                  <span class="text-xs text-gray-500 mt-1">{{ chat.createdAt }}</span>
+                </div>
+
+                <!-- Message from Sender -->
+                <div *ngIf="chat.role === 'Admin'" class="flex flex-col items-end">
+                  <div class="bg-[#77734E] text-white px-4 py-2 rounded-lg shadow">{{ chat.reply }}</div>
+                  <span class="text-xs text-gray-500 mt-1">{{ chat.createdAt }}</span>
+                </div>
+              </ng-container>
+
+            </div>
+          </div>
+
+          <!-- Footer Input -->
+          <div class="bg-[#77734E] px-4 py-3 flex items-center">
+            <input type="text" placeholder="{{ 'WRITE_A_REPLY' | translate }}" [(ngModel)]="newMessage"
+              (keyup.enter)="sendMessage()"
+              class="flex-1 px-2 py-2 rounded-full bg-white text-black outline-none mr-2" />
+            <button (click)="sendMessage()"
+              class="text-white text-xl bg-[#FEC34F] rounded-full w-12 h-12 flex items-center justify-center">
+              ➤
             </button>
-  
           </div>
-          <div class="bg-gray-100 min-h-screen flex flex-col justify-between font-sans">
-  
-            <!-- Header -->
-            <div class="bg-[#77734E] text-white text-center py-3 shadow">
-              <h2 class="text-lg font-semibold">{{ 'COMPLAINT' | translate }}</h2>
-            </div>
-  
-  
-            <!-- Chat Messages -->
-            <div class="relative flex-1 overflow-y-auto px-4 py-6 space-y-4 bg-white/80"
-              style="background-color: #FEFEFF;">
-              <div class="relative z-10">
-                <ng-container *ngFor="let chat of replies">
-                  <!-- Message from Receiver -->
-                  <div *ngIf="chat.role === 'Receiver'" class="flex flex-col items-start">
-                    <div class="bg-white text-black px-4 py-2 rounded-lg shadow">{{ chat.reply }}</div>
-                    <span class="text-xs text-gray-500 mt-1">{{ chat.createdAt }}</span>
-                  </div>
-                
-                  <!-- Message from Sender -->
-                  <div *ngIf="chat.role === 'Admin'" class="flex flex-col items-end">
-                    <div class="bg-[#77734E] text-white px-4 py-2 rounded-lg shadow">{{ chat.reply }}</div>
-                    <span class="text-xs text-gray-500 mt-1">{{ chat.createdAt }}</span>
-                  </div>
-                </ng-container>
-                
-              </div>
-            </div>
-  
-            <!-- Footer Input -->
-            <div class="bg-[#77734E] px-4 py-3 flex items-center">
-              <input 
-                type="text" 
-                placeholder="{{ 'WRITE_A_REPLY' | translate }}"
-                [(ngModel)]="newMessage" 
-                (keyup.enter)="sendMessage()" 
-                class="flex-1 px-2 py-2 rounded-full bg-white text-black outline-none mr-2"
-              />
-              <button 
-                (click)="sendMessage()"  
-                class="text-white text-xl bg-[#FEC34F] rounded-full w-12 h-12 flex items-center justify-center"
-              >
-                ➤
-              </button>
-            </div>
-  
-          </div>
+
         </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
+</div>
