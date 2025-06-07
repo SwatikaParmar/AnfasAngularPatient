@@ -50,6 +50,8 @@ import { ChatListComponent } from 'src/app/doctor/chat/chat-list/chat-list.compo
 import { ChatBoxComponent } from 'src/app/doctor/chat/chat-box/chat-box.component';
 import { DoctorAddEducationalmaterialComponent } from 'src/app/doctor/doctor-add-educationalmaterial/doctor-add-educationalmaterial.component';
 import { DoctorAddmedicationComponent } from 'src/app/doctor/doctor-addmedication/doctor-addmedication.component';
+import { DoctorEducationalmaterialComponent } from 'src/app/doctor/doctor-educationalmaterial/doctor-educationalmaterial.component';
+import { AppointmentChatListComponent } from 'src/app/doctor/doctor-appointment/appointment-chat-list/appointment-chat-list.component';
 const routes: Routes = [
 
   {
@@ -101,15 +103,17 @@ const routes: Routes = [
       { path: 'doctor-patient/doctor-weight/:id', component: DoctorWeightComponent },
       { path: 'doctor-patient/doctor-labresults/:id', component: DoctorLabresultsComponent },
       { path: 'doctor-patient/doctor-steps/:id', component: DoctorStepsComponent },
-      { path: 'doctor-education', component: DoctorEducationComponent },
+      { path: 'doctor', component: DoctorEducationComponent },
       { path: 'terms', component: TermsConditionComponent },
       { path: 'doctor-profile', component: DoctorProfileComponent },
       { path: 'chat-list', component: ChatListComponent },
       { path: 'chat-list/chat/:id/:name', component: ChatBoxComponent },
+      { path: 'doctor/educational-detail/:id', component: DoctorEducationalmaterialComponent },
       { path: 'doctor/educational-material', component: DoctorAddEducationalmaterialComponent },
       { path: 'doctor/educational-material-edit/:id', component: DoctorAddEducationalmaterialComponent },
 
-      { path: 'doctor-patient/doctor/medication/:id', component: DoctorAddmedicationComponent }
+      { path: 'doctor-patient/doctor/medication/:id', component: DoctorAddmedicationComponent },
+      { path: 'doctor-appointment/appointment-list/chat', component: AppointmentChatListComponent }
 
     ]
   }

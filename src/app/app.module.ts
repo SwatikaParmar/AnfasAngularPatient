@@ -17,6 +17,8 @@ import { LayoutModule } from './layouts/layout.module';
 import { NgOtpInputModule } from 'ng-otp-input';
 
 
+
+
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader { 
   return new TranslateHttpLoader(http, './assets/i18n/', '.json'); 
 }
@@ -41,9 +43,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient] 
+        deps: [HttpClient]
       }
-    }),  
+    }),
     ToastrModule.forRoot({
       timeOut: 4000, 
       positionClass: 'toast-bottom-right',
