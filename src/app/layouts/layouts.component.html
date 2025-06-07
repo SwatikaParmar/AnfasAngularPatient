@@ -5,18 +5,52 @@
     <a class="brand-logo">
       <img class="logo-abbr" src="assets/images/logo-dashboard.png" alt="">
     </a>
-
-    <ul class="header-profile d-none xs-d-grid">
-      <li><a href="/" class=""><img src="assets/images/notification-i.svg" class="img-responsive"></a></li>
-      <li><a href="/" class=""><img src="assets/images/profile-i.svg" class="img-responsive"></a></li>
-      <!-- <li><a href="/" class="setting"><img src="assets/images/settings-i.svg" class="img-responsive"></a></li> -->
+   <ul class="headnav mr-auto xs-d-none">
+      <li><a href="javascript:void(0)"></a></li>
     </ul>
+    <ul class="header-profile">
+      <li><a class="setting" data-toggle="dropdown">
+          <img src="assets/images/profile-i.svg" class="img-responsive">
+        </a>
+        <ul class="dropdown-menu mt-10">
+          <li class="mb-2"><a class="dropdown-item " [routerLink]="['/profile']">{{ 'PROFILE' | translate }}</a></li>
+          <li><a class="dropdown-item">
+              {{ 'LOGOUT' | translate }}</a></li>
+
+        </ul>
+      </li>
+
+      <li class="language-dropdown"
+        [ngClass]="{'english-selected': currentLanguage === 'en', 'arabic-selected': currentLanguage === 'ar'}">
+        <a href="javascript:void(0)" class="language-icon" id="languageDropdown" (click)="toggleLanguageMenu()">
+          <img src="assets/images/language-icon.svg" class="img-responsive">
+        </a>
+        <ul class="dropdown-menu1 language-menu1" [ngClass]="{'show': isLanguageMenuOpen}">
+          <li class="mb-2">
+            <a class="down" href="javascript:void(0)" (click)="switchLanguage('en')"
+              [class.selected]="currentLanguage === 'en'"> {{
+              'ENGLISH' | translate }}</a>
+          </li>
+          <li>
+            <a class="down" href="javascript:void(0)" (click)="switchLanguage('ar')"
+              [class.selected]="currentLanguage === 'ar'"> {{
+              'ARABIC' | translate }}</a>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+    <!-- <ul class="header-profile d-none xs-d-grid">
+      <li><a class=""><img src="assets/images/notification-i.svg" class="img-responsive"></a></li>
+      <li><a class=""><img src="assets/images/profile-i.svg" class="img-responsive"></a></li>
+      <li><a href="/" class="setting"><img src="assets/images/settings-i.svg" class="img-responsive"></a></li>
+    </ul> -->
 
     <div class="nav-control">
-<div class="toggle-menu nav-toggle" (click)="toggleMenus()">
-    <img src="assets/images/menu-i.svg">
-  </div>
-</div>
+      <div class="toggle-menu nav-toggle" (click)="toggleMenus()">
+        <img src="assets/images/menu-i.svg">
+      </div>
+    </div>
 
 
   </div>
@@ -33,7 +67,7 @@
         </a>
         <ul class="dropdown-menu mt-10">
           <li class="mb-2"><a class="dropdown-item " [routerLink]="['/profile']">{{ 'PROFILE' | translate }}</a></li>
-          <li><a class="dropdown-item" [routerLink]="['/']">
+          <li><a class="dropdown-item">
               {{ 'LOGOUT' | translate }}</a></li>
 
         </ul>
@@ -53,7 +87,7 @@
       <li class="language-dropdown"
         [ngClass]="{'english-selected': currentLanguage === 'en', 'arabic-selected': currentLanguage === 'ar'}">
         <a href="javascript:void(0)" class="language-icon" id="languageDropdown" (click)="toggleLanguageMenu()">
-          <img src="assets/images/language-icon.svg" class="img-responsive" >
+          <img src="assets/images/language-icon.svg" class="img-responsive">
         </a>
         <ul class="dropdown-menu1 language-menu1" [ngClass]="{'show': isLanguageMenuOpen}">
           <li class="mb-2">
@@ -73,11 +107,11 @@
   </header>
 
   <!-- ---- -->
-<section >
-<aside class="side-bar" [ngClass]="{'show-sidebar': isSidebarCollapsed}">
-     <a class="aside-logo text-center" [ngClass]="{'hide-logo': isSidebarCollapsed}">
-  <img class="logo-abbr" src="assets/images/logo-dashboard.png" style="max-width: 120px; margin: auto;">
-</a>
+  <section>
+    <aside class="side-bar" [ngClass]="{'show-sidebar': isSidebarCollapsed}">
+      <a class="aside-logo text-center" [ngClass]="{'hide-logo': isSidebarCollapsed}">
+        <img class="logo-abbr" src="assets/images/logo-dashboard.png" style="max-width: 120px; margin: auto;">
+      </a>
 
 
       <div class="tab-content" id="myTabContent">
@@ -252,16 +286,53 @@
       <img class="logo-abbr" src="assets/images/logo-dashboard.png" alt="">
     </a>
 
-    <ul class="header-profile d-none xs-d-grid">
-      <li><a href="/" class=""><img src="assets/images/notification-i.svg" class="img-responsive"></a></li>
-      <li><a href="/" class=""><img src="assets/images/profile-i.svg" class="img-responsive"></a></li>
-      <!-- <li><a href="/" class="setting"><img src="assets/images/settings-i.svg" class="img-responsive"></a></li> -->
+       <ul class="headnav mr-auto xs-d-none">
+      <li><a href="javascript:void(0)"></a></li>
     </ul>
-     <div class="nav-control">
-<div class="toggle-menu nav-toggle" (click)="toggleMenus()">
-    <img src="assets/images/menu-i.svg">
-  </div>
-</div>
+    <ul class="header-profile">
+      <li><a class="setting" data-toggle="dropdown">
+          <img src="assets/images/profile-i.svg" class="img-responsive">
+        </a>
+        <ul class="dropdown-menu mt-10">
+          <li class="mb-2"><a class="dropdown-item " [routerLink]="['/profile']">{{ 'PROFILE' | translate }}</a></li>
+          <li><a class="dropdown-item">
+              {{ 'LOGOUT' | translate }}</a></li>
+
+        </ul>
+      </li>
+
+    
+      <li class="language-dropdown"
+        [ngClass]="{'english-selected': currentLanguage === 'en', 'arabic-selected': currentLanguage === 'ar'}">
+        <a href="javascript:void(0)" class="language-icon" id="languageDropdown" (click)="toggleLanguageMenu()">
+          <img src="assets/images/language-icon.svg" class="img-responsive">
+        </a>
+        <ul class="dropdown-menu1 language-menu1" [ngClass]="{'show': isLanguageMenuOpen}">
+          <li class="mb-2">
+            <a class="down" href="javascript:void(0)" (click)="switchLanguage('en')"
+              [class.selected]="currentLanguage === 'en'"> {{
+              'ENGLISH' | translate }}</a>
+          </li>
+          <li>
+            <a class="down" href="javascript:void(0)" (click)="switchLanguage('ar')"
+              [class.selected]="currentLanguage === 'ar'"> {{
+              'ARABIC' | translate }}</a>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+
+    <!-- <ul class="header-profile d-none xs-d-grid">
+      <li><a class=""><img src="assets/images/notification-i.svg" class="img-responsive"></a></li>
+      <li><a class=""><img src="assets/images/profile-i.svg" class="img-responsive"></a></li>
+      <li><a  class="setting"><img src="assets/images/settings-i.svg" class="img-responsive"></a></li>
+    </ul> -->
+    <div class="nav-control">
+      <div class="toggle-menu nav-toggle" (click)="toggleMenus()">
+        <img src="assets/images/menu-i.svg">
+      </div>
+    </div>
   </div>
   <!--**********************************
     Nav header end
@@ -276,23 +347,13 @@
         </a>
         <ul class="dropdown-menu mt-10">
           <li class="mb-2"><a class="dropdown-item " [routerLink]="['/profile']">{{ 'PROFILE' | translate }}</a></li>
-          <li><a class="dropdown-item" [routerLink]="['/']">
+          <li><a class="dropdown-item">
               {{ 'LOGOUT' | translate }}</a></li>
 
         </ul>
       </li>
 
-      <!-- <li class="dropdown">
-        <a class="setting " data-toggle="dropdown"><img src="assets/images/settings-i.svg" class="img-responsive"></a>
-        <ul class="dropdown-menu mt-10">
-          <li><a class="dropdown-item" [routerLink]="['/privacy-policy']">
-              {{ 'PRIVACY_POLICY' | translate }}</a></li>
-          <li><a class="dropdown-item" [routerLink]="['/terms-and-conditions']">
-              {{ 'TERMS_AND_CONDITIONS' | translate }}</a></li>
-          <li><a class="dropdown-item" [routerLink]="['/about-us']">
-              {{ 'ABOUT_US' | translate }}</a></li>
-        </ul>
-      </li> -->
+     
       <li class="language-dropdown"
         [ngClass]="{'english-selected': currentLanguage === 'en', 'arabic-selected': currentLanguage === 'ar'}">
         <a href="javascript:void(0)" class="language-icon" id="languageDropdown" (click)="toggleLanguageMenu()">
@@ -320,9 +381,9 @@
 <aside class="side-bar" [ngClass]="{'sidebar-collapsed': isSidebarCollapsed}">
       <a class="aside-logo text-center"> -->
 
-        <section >
-<aside class="side-bar" [ngClass]="{'show-sidebar': isSidebarCollapsed}">
-     <a class="aside-logo text-center" [ngClass]="{'hide-logo': isSidebarCollapsed}">
+  <section>
+    <aside class="side-bar" [ngClass]="{'show-sidebar': isSidebarCollapsed}">
+      <a class="aside-logo text-center" [ngClass]="{'hide-logo': isSidebarCollapsed}">
 
         <img class="logo-abbr" src="assets/images/logo-dashboard.png" style="max-width: 120px; margin: auto;">
       </a>
@@ -406,7 +467,7 @@
               <a [routerLink]="['/terms']">
                 <i class="fas fa-address-book" style="font-size: 20px;"></i>
                 <span style="font-size: 15px !important; font-weight: 600 !important;">
-                 {{ 'TERMS_&_CONDITIONS' | translate }}
+                  {{ 'TERMS_&_CONDITIONS' | translate }}
                 </span>
               </a>
             </div>
