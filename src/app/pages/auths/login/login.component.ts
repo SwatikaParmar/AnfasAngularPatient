@@ -84,59 +84,135 @@ export class LoginComponent implements OnInit {
   }
 
 
-  onLogin() {
-    this.spinner.show();
-    this.submitted = true;
+  // onLogin() {
+  //   this.spinner.show();
+  //   this.submitted = true;
   
-    if (!this.loginForm.get(this.selectedField)?.value) {
-      this.toasterService.error('Please enter correct value');
-      this.spinner.hide();
-      return;
-    }
+  //   if (!this.loginForm.get(this.selectedField)?.value) {
+  //     this.toasterService.error('Please enter correct value');
+  //     this.spinner.hide();
+  //     return;
+  //   }
   
-    const payload: any = {
-      isVerified: true,
-    };
-    payload[this.selectedField] = this.loginForm.get(this.selectedField)?.value;
+  //   const payload: any = {
+  //     isVerified: true,
+  //   };
+  //   payload[this.selectedField] = this.loginForm.get(this.selectedField)?.value;
   
-    this.authService.login(payload).subscribe({
-      next: (response) => {
-        if (response.status === true) {
-          this.toasterService.success('OTP sent to your phone number');
-          this.loginForm.reset();
-          this.router.navigateByUrl('/otp'); // Navigate immediately after successful login
-          // Optionally still fetch patient details in background
-          this.patientDetail(payload);
-        } else {
-          this.toasterService.error(response.message);
-        }
+  //   this.authService.login(payload).subscribe({
+  //     next: (response) => {
+  //       if (response.status === true) {
+  //         this.toasterService.success('OTP sent to your phone number');
+  //         this.loginForm.reset();
+  //         this.router.navigateByUrl('/otp'); // Navigate immediately after successful login
+  //         // Optionally still fetch patient details in background
+  //         this.patientDetail(payload);
+  //       } else {
+  //         this.toasterService.error(response.message);
+  //       }
         
-        this.spinner.hide();
-      },
-      error: (err) => {
-        this.toasterService.error('Login failed. Please try again.');
-        console.error('Login error:', err);
-        this.spinner.hide();
-      }
-    });
-  }
+  //       this.spinner.hide();
+  //     },
+  //     error: (err) => {
+  //       this.toasterService.error('Login failed. Please try again.');
+  //       console.error('Login error:', err);
+  //       this.spinner.hide();
+  //     }
+  //   });
+  // }
   
 
-  patientDetail(data: any) {
-    this.authService.patientDetails(data).subscribe({
-      next: (response) => {
-        if (response.status === true) {
-          this.router.navigateByUrl('/otp');
-        } else {
-          this.toasterService.error(response.message);
-        }
-        this.spinner.hide();
-      },
-      error: (err) => {
-        console.error('Patient details error:', err);
+  // patientDetail(data: any) {
+  //   this.authService.patientDetails(data).subscribe({
+  //     next: (response) => {
+  //       if (response.status === true) {
+  //         this.router.navigateByUrl('/otp');
+  //       } else {
+  //         this.toasterService.error(response.message);
+  //       }
+  //       this.spinner.hide();
+  //     },
+  //     error: (err) => {
+  //       console.error('Patient details error:', err);
+  //       this.spinner.hide();
+  //     }
+  //   });
+  // }
+  
+
+
+// login.component.ts
+onLogin() {
+  this.spinner.show();
+  this.submitted = true;
+
+  const value = this.loginForm.get(this.selectedField)?.value;
+
+  if (!value) {
+    this.toasterService.error('Please enter correct value');
+    this.spinner.hide();
+    return;
+  }
+
+  const payload: any = {
+    isVerified: true,
+  };
+  payload[this.selectedField] = value;
+
+  this.authService.login(payload).subscribe({
+    next: (loginResponse) => {
+      if (loginResponse.status === true || loginResponse.isSuccess === true) {
+
+        this.authService.sendotp(payload).subscribe({
+          next: (otpResponse) => {
+            if (otpResponse.status === true || otpResponse.isSuccess === true) {
+              this.toasterService.success('OTP sent to your phone number');
+
+              // Save phone number and MRN
+              const phoneNumber = otpResponse.data?.phoneNumber || '';
+              const mrn = otpResponse.data?.mrnNumber || '';
+              localStorage.setItem('phoneNumber', phoneNumber);
+              localStorage.setItem('mrnNumber', mrn);
+
+              this.router.navigateByUrl('/otp');
+            } else {
+              this.toasterService.error(otpResponse.message || 'OTP sending failed');
+            }
+          },
+          error: (err) => {
+            this.toasterService.error('Something went wrong while sending OTP.');
+            console.error('OTP error:', err);
+          }
+        });
+
+        this.authService.patientDetails(payload).subscribe({
+          next: (patientResponse) => {
+            if (patientResponse.status === true || patientResponse.isSuccess === true) {
+              this.loginForm.reset();
+            } else {
+              this.toasterService.error(patientResponse.message || 'Fetching patient details failed');
+            }
+            this.spinner.hide();
+          },
+          error: (err) => {
+            console.error('Patient details error:', err);
+            this.toasterService.error('Something went wrong while fetching patient details.');
+            this.spinner.hide();
+          }
+        });
+
+      } else {
+        this.toasterService.error(loginResponse.message || 'Login failed');
         this.spinner.hide();
       }
-    });
-  }
-  
+    },
+    error: (err) => {
+      console.error('Login error:', err);
+      this.toasterService.error('Login failed. Please try again.');
+      this.spinner.hide();
+    }
+  });
+}
+
+
 }

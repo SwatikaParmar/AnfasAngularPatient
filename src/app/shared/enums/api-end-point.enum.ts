@@ -38,7 +38,8 @@ export enum ApiEndPoint {
     satisfactionList = "api/User/GetPatientSatisfactionList",
     addUpdateSatisfaction = "api/User/AddOrUpdatePatientSatisfaction",
     satisfactionDetail = "api/User/GetPatientSatisfactionDetail",
-
+    sendPhoneOtp = "api/User/SendPhoneOtp",
+     verifyPhone = "api/User/VerifyPhone",
 
     // Doctor Login
 
@@ -54,8 +55,7 @@ export enum ApiEndPoint {
     addMedication = "api/User/AddOrUpdateMedication ",
     messageList = "api/Chat/chatUsers/",
     addEducationMaterial = "api/User/AddOrUpdateEducationMaterial",
-    vitalStatus = "api/User/SetVitalRecordStatus"
-
+    vitalStatus = "api/User/SetVitalRecordStatus",
 
 
 

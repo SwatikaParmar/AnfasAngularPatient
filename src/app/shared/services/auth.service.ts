@@ -89,4 +89,14 @@ export class AuthService {
   //   return this.http.post<any>(environment.apiUrl + ApiEndPoint. emailOtp,data)
   // }
 
+    sendotp(data: any) {
+  return this.http.post<any>(environment.apiUrl + ApiEndPoint.sendPhoneOtp, data);
+}
+
+verifyPhone(phoneNumber: string, code: string): Observable<any> {
+  const payload = { phoneNo: phoneNumber, code };
+  return this.http.post(`${environment.apiUrl}api/User/VerifyPhone`, payload);
+}
+
+
 }
