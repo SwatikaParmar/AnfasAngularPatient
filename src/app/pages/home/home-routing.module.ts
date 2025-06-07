@@ -52,6 +52,7 @@ import { DoctorAddEducationalmaterialComponent } from 'src/app/doctor/doctor-add
 import { DoctorAddmedicationComponent } from 'src/app/doctor/doctor-addmedication/doctor-addmedication.component';
 import { DoctorEducationalmaterialComponent } from 'src/app/doctor/doctor-educationalmaterial/doctor-educationalmaterial.component';
 import { AppointmentChatListComponent } from 'src/app/doctor/doctor-appointment/appointment-chat-list/appointment-chat-list.component';
+import { PatientChatlistComponent } from 'src/app/doctor/doctor-patient/patient-chatlist/patient-chatlist.component';
 const routes: Routes = [
 
   {
@@ -113,7 +114,8 @@ const routes: Routes = [
       { path: 'doctor/educational-material-edit/:id', component: DoctorAddEducationalmaterialComponent },
 
       { path: 'doctor-patient/doctor/medication/:id', component: DoctorAddmedicationComponent },
-      { path: 'doctor-appointment/appointment-list/chat', component: AppointmentChatListComponent }
+      { path: 'doctor-appointment/appointment-list/chat', component: AppointmentChatListComponent },
+      { path: 'doctor-patient/Patient/chat', component: PatientChatlistComponent},
 
     ]
   }

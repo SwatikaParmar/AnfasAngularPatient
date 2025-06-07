@@ -58,4 +58,22 @@ export class DoctorPatientComponent {
       }
     );
   }
+
+    editContent(patient: any): void {
+    const senderId = patient?.mrn;
+    const receiverId = localStorage.getItem('code'); // CareProviderCode comes from local storage
+    const receiverName = patient?.firstName;
+
+    if (senderId && receiverId) {
+      this.router.navigate(['/doctor-patient/Patient/chat'], {
+        queryParams: {
+          senderId,
+          receiverId,
+          receiverName
+        }
+      });
+    } else {
+      this.toastrService.error('Invalid sender or receiver information.');
+    }
+  }
 }
