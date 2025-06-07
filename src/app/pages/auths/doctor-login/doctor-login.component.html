@@ -47,7 +47,7 @@
 
 
             <div class="d-flex position-relative mb-10" >
-              <input class="form-control password" placeholder="Enter AMC"
+              <input class="form-control password" placeholder="Enter Signin Code"
                 formControlName="loginid" [ngClass]="{ 'is-invalid': submitted && f['loginid'].errors }">
               <div class="eye-icon"
                 [ngClass]="{'eye-icon-rtl': currentLanguage === 'ar', 'eye-icon-ltr': currentLanguage !== 'ar'}">
@@ -84,7 +84,7 @@
              <div class="view-more-top w-100" style="margin-top: 10px; text-align: end;">
               <button [routerLink]="'/login'" class="patient-btn"
                 style="background: none; border: none; color: #007AFF; text-decoration: underline; cursor: pointer; padding: 0;">
-                <span> {{ 'SIGN_AS_PATIENT' | translate }}</span>
+                <span> {{ 'SIGN_IN_AS_PATIENT' | translate }}</span>
               </button>
             </div>
           </div>
