@@ -211,3 +211,16 @@ h2 {
   color: transparent;
   text-shadow: 0 0 0 #FEC34F;
 }
+
+.visit-description {
+  margin-left: 169px;
+  font-size: 13px;
+  color: black;
+}
+
+/* For small screens (phones) */
+@media (max-width: 600px) {
+  .visit-description {
+    margin-left: 8px !important;
+  }
+}

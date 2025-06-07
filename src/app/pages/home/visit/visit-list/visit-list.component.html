@@ -34,17 +34,21 @@
                                         <span class="department-name">{{item.departmentName || 'N/A' }}</span>
                                     </div>
                                     <div class="info">
-                                        <p><span class="label" style="margin-left:10px; font-size:13px;">{{ 'VISIT_TYPE'
-                                                |
-                                                translate }}-</span><span
-                                                style="margin-left:169px; font-size:13px; color:black;">{{item.visitTypeDescription
-                                                || 'N/A' }}</span></p>
+                                        <p>
+                                            <span class="label" style="margin-left:10px; font-size:13px;">
+                                                {{ 'VISIT_TYPE' | translate }} -
+                                            </span>
+                                            <span class="visit-description">
+                                                {{item.visitTypeDescription || 'N/A' }}
+                                            </span>
+                                        </p>
+
                                         <p><span class="label" style="margin-left:10px; font-size:13px;">{{
-                                                'CARE_PROVIDER' | translate }}-</span> <span
+                                                'CARE_PROVIDER' | translate }} -</span> <span
                                                 style="margin-left:19px; font-size:13px;">{{item.careProviderName}}
                                                 {{item.careProviderLastName}}</span></p>
                                         <p><span class="label" style="margin-left:10px; font-size:13px;">{{ 'EN_TYPE' |
-                                                translate }}-</span> <span
+                                                translate }} -</span> <span
                                                 style="margin-left:137px; font-size:13px;">{{item.entypeValueDescription
                                                 || 'N/A'
                                                 }}</span></p>
