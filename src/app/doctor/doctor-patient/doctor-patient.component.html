@@ -3,36 +3,49 @@
     <div class="content-body">
       <div class="container-fluid">
         <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 10px;">
-          <div class=" mx-auto p-4">
+          <div class="mx-auto p-4">
             <div class="flex mb-2 items-center ml-1">
               <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">
                 {{ 'PATIENT_LIST' | translate }}
               </h1>
             </div>
+
             <div class="row">
               <div class="col-12 col-md-4 mb-4" *ngFor="let patient of patientlist">
-                <a [routerLink]="['/doctor-patient/doctor-records/' + patient.mrn]"
-                  style="text-decoration: none; color: inherit;">
-                  <div class="patient-card">
-                    <div class="patient-info d-flex justify-content-between">
-                      <div class="patient-details">
-                        <div style="color: #83764C;">{{ 'MR_NUMBER' | translate }} : {{ patient.mrn }}</div>
-                        <div style="color: #83764C;">{{ 'PHONE_NUMBER' | translate }} : {{ patient.phoneNumber }}</div>
+                <div class="patient-card">
+                  <div class="patient-info d-flex justify-content-between">
+                    <div class="patient-details">
+                      <div style="color: #83764C;">
+                        {{ 'MR_NUMBER' | translate }} : {{ patient.mrn }}
                       </div>
-                      <div class="chat-icon">
-                        <i class="fa-solid fa-comment-dots"></i>
+                      <div style="color: #83764C;">
+                        {{ 'PHONE_NUMBER' | translate }} : {{ patient.phoneNumber }}
                       </div>
                     </div>
-                    <div style="border-bottom: 1px solid gray; margin-top: 5px;"></div>
-                    <div class="patient-name d-flex justify-content-between align-items-center">
-                      {{ patient.firstName }} {{ patient.lastName }}
-                      <i class="fa-solid fa-arrow-right" style="color: #83764D!important;"></i>
+                    <div class="chat-icon" (click)="editContent(patient)">
+                      <i class="fa-solid fa-comment-dots"></i>
                     </div>
                   </div>
-                </a>
+
+                  <div style="border-bottom: 1px solid gray; margin-top: 5px;"></div>
+
+                  <a
+                    [routerLink]="['/doctor-patient/doctor-records', patient.mrn]"
+                    style="text-decoration: none; color: inherit;"
+                  >
+                    <div
+                      class="patient-name d-flex justify-content-between align-items-center mt-2"
+                    >
+                      {{ patient.firstName }} {{ patient.lastName }}
+                      <i
+                        class="fa-solid fa-arrow-right"
+                        style="color: #83764D !important;"
+                      ></i>
+                    </div>
+                  </a>
+                </div>
               </div>
             </div>
-
 
           </div>
         </div>
