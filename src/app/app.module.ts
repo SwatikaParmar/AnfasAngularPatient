@@ -15,6 +15,7 @@ import { JwtInterceptor } from './shared/helpers/jwt.interceptor';
 import { LayoutModule } from './layouts/layout.module';
 
 import { NgOtpInputModule } from 'ng-otp-input';
+import { PatientChatlistComponent } from './doctor/doctor-patient/patient-chatlist/patient-chatlist.component';
 
 
 
@@ -25,7 +26,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 
 @NgModule({  
   declarations: [ 
-    AppComponent, 
+    AppComponent, PatientChatlistComponent, 
   ],
   imports: [
     FormsModule, 
