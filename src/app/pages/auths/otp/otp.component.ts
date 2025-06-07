@@ -21,7 +21,8 @@ export class OtpComponent {
   error: string = '';
   phoneNumber: string = localStorage.getItem('phoneNumber') || '';
   role: string = localStorage.getItem('role') || '';
-
+ mrnNumber: string = localStorage.getItem('mrnNumber') || ''; // example default
+  nationalId: string = localStorage.getItem('nationalId') || ''; // or any default value
 constructor(
     private router: Router,
     private toastr: ToastrService,
@@ -83,20 +84,21 @@ constructor(
 
 
   Resendotp(data: any) {
-    this.authservice.sendotp(data).subscribe({
-      next: (response) => {
-        if (response.status === true) {
-  
-        } else {
-          this.toastr.error(response.message);
-        }
-       
-      },
-      error: (err) => {
-        console.error(' details error:', err);
-      
+  this.authservice.sendotp(data).subscribe({
+    next: (response) => {
+      // Use isSuccess and statusCode as per your API response
+      if (response.isSuccess === true && response.statusCode === 200) {
+        this.toastr.success(response.messages || 'OTP resent successfully.');
+      } else {
+        this.toastr.error(response.messages || 'Failed to resend OTP.');
       }
-    });
-  }
+    },
+    error: (err) => {
+      console.error('Resend OTP error:', err);
+      this.toastr.error('Something went wrong. Please try again.');
+    }
+  });
+}
+
   
 }
