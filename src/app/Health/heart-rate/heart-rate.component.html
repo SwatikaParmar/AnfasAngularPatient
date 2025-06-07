@@ -6,22 +6,24 @@
                 <div [dir]="isArabic ? 'rtl' : 'ltr'" class="flex items-center mb-3 ml-1 justify-between flex-wrap">
                     <div class="flex items-center w-full sm:w-auto mb-2">
                         <button class="flex items-center justify-center w-7 h-7 rounded-full text-white mr-2 ml-2 mt-2"
-                                style="background-color: #726641;" (click)="backClicked()">
+                            style="background-color: #726641;" (click)="backClicked()">
                             <i class="fas fa-arrow-left" style="font-size: 13px;"></i>
                         </button>
-                        <h1 class="text-lg font-semibold ml-2 text-center sm:text-left" style="font-size: 25px; color: #726641;">
+                        <h1 class="text-lg font-semibold ml-2 text-center sm:text-left"
+                            style="font-size: 25px; color: #726641;">
                             {{ 'HEART_RATE' | translate }}
                         </h1>
                     </div>
-                    
-                    <button class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full w-full sm:w-auto mt-2 sm:mt-0"
-                            data-bs-toggle="modal" data-bs-target="#heartRateModal">
+
+                    <button
+                        class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full w-full sm:w-auto mt-2 sm:mt-0"
+                        data-bs-toggle="modal" data-bs-target="#heartRateModal">
                         + {{ 'HEART_RATE' | translate }}
                     </button>
                 </div>
-                
-                  
-                  
+
+
+
                 <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
                     <div class="custom-container  mx-auto p-3">
                         <div class="container">
@@ -31,9 +33,12 @@
                                         <thead>
                                             <tr>
                                                 <th class="px-4 py-2 text-sm md:text-base">{{ 'MRN' | translate }}</th>
-                                                <th class="px-4 py-2 text-sm md:text-base">{{ 'BEATS_PER_MINUTE' | translate }}</th>
-                                                <th class="px-4 py-2 text-sm md:text-base">{{ 'NOTES' | translate }}</th>
-                                                <th class="px-4 py-2 text-sm md:text-base"> {{ 'DATE' | translate }}</th>
+                                                <th class="px-4 py-2 text-sm md:text-base">{{ 'BEATS_PER_MINUTE' |
+                                                    translate }}</th>
+                                                <th class="px-4 py-2 text-sm md:text-base">{{ 'NOTES' | translate }}
+                                                </th>
+                                                <th class="px-4 py-2 text-sm md:text-base"> {{ 'DATE' | translate }}
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -45,18 +50,21 @@
                                                                             id: '1'
                                                                           }">
                                                 <td class="px-4 py-2 text-sm md:text-base">{{item.mrn || 'N/A' }}</td>
-                                                <td class="px-4 py-2 text-sm md:text-base">{{item.beatsPerMinute || 'N/A' }}</td>
+                                                <td class="px-4 py-2 text-sm md:text-base">{{item.beatsPerMinute ||
+                                                    'N/A' }}</td>
                                                 <td class="px-4 py-2 text-sm md:text-base">{{item.notes || 'N/A' }}</td>
-                                                <td class="px-4 py-2 text-sm md:text-base">{{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : 'N/A' }}</td>
+                                                <td class="px-4 py-2 text-sm md:text-base">{{ item.createdAt ?
+                                                    (item.createdAt | date:'dd-MM-yyyy') : 'N/A' }}</td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
-                                
+
                                 <div class="no-data text-center" *ngIf="heartRateList && heartRateList.length === 0">
-                                    <img src="assets/images/ffffrq-removebg-preview.png" style="width: 50%; margin: auto; padding: 50px;">
+                                    <img src="assets/images/ffffrq-removebg-preview.png"
+                                        style="width: 50%; margin: auto; padding: 50px;">
                                 </div>
-                                
+
                                 <div class="pagination-container pt-3 pb-3">
                                     <pagination-controls (pageChange)="onPageChange($event)" id="1"
                                         class="paginate-doctor-list" queryParamsHandling="merge"></pagination-controls>
@@ -72,34 +80,37 @@
 </div>
 
 <!-- Heart Rate Modal -->
-<div class="modal fade" id="heartRateModal" tabindex="-1" aria-labelledby="heartRateModalLabel" aria-hidden="true" #heartRateModal>
-  <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-          <form [formGroup]="form" (ngSubmit)="addRecord()">
-              <div class="modal-header flex items-center justify-between">
-                  <div class="flex-1 text-center">
-                      <h5 class="modal-title text-xl font-semibold" id="bloodSugarModalLabel"> {{ 'HEART_RATE' | translate }}</h5>
-                  </div>
-                  <button type="button" class="btn-close ml-auto" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                  <div class="mb-3">
-                      <label for="beatsPerMinute" class="form-label">{{ 'BPM' | translate }} ({{ 'BEATS_PER_MINUTE' | translate }})</label>
-                      <input type="text" formControlName="beatsPerMinute" class="form-control" id="beatsPerMinute" placeholder="
-                       {{ 'ENTER_BEATS_PER_MINUTE' | translate }}" />
-                     
-                      <div class="flex justify-center">
-                          <button type="submit"
-                              class="w-80 bg-yellow-700 text-white py-2 rounded-full hover:bg-yellow-800 mt-3"
-                              style="color: #fde092!important;">
-                            {{ 'SAVE_HEART_RATE' | translate }}
-                          </button>
-                      </div>
-                  </div>
-              </div>
-          </form>
-      </div>
-  </div>
+<div class="modal fade" id="heartRateModal" tabindex="-1" aria-labelledby="heartRateModalLabel" aria-hidden="true"
+    #heartRateModal>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="width: 95%; margin: auto;">
+            <form [formGroup]="form" (ngSubmit)="addRecord()">
+                <div class="modal-header flex items-center justify-between">
+                    <div class="flex-1 text-center">
+                        <h5 class="modal-title text-xl font-semibold" id="bloodSugarModalLabel"> {{ 'HEART_RATE' |
+                            translate }}</h5>
+                    </div>
+                    <button type="button" class="btn-close ml-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="beatsPerMinute" class="form-label">{{ 'BPM' | translate }} ({{ 'BEATS_PER_MINUTE' |
+                            translate }})</label>
+                        <input type="text" formControlName="beatsPerMinute" class="form-control text-start"
+                            id="beatsPerMinute" placeholder="{{ 'ENTER_BEATS_PER_MINUTE' | translate }}"
+                            style="text-align: left;" />
+
+
+                        <div class="flex justify-center">
+                            <button type="submit"
+                                class="w-80 bg-yellow-700 text-white py-2 rounded-full hover:bg-yellow-800 mt-3"
+                                style="color: #fde092!important;">
+                                {{ 'SAVE_HEART_RATE' | translate }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
-
-
