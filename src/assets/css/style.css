@@ -1378,12 +1378,14 @@ ul.ngx-pagination li.pagination-next a {
 
 @media (max-width: 480px) {
     .content-body .container-fluid {
-        padding-right: 10px!important;
-        padding-left: 10px!important;
-        padding-bottom: 15px!important;
+        padding-right: 10px !important;
+        padding-left: 10px !important;
+        padding-bottom: 15px !important;
+        padding-top: 120px!important;
     }
-
 }
+
+
 
 
 .toggle-menu img {
@@ -1400,3 +1402,16 @@ ul.ngx-pagination li.pagination-next a {
 }
 
 
+/* Hide on screens wider than 768px */
+@media (min-width: 1200px) {
+  .mobile-only {
+    display: none !important;
+  }
+}
+
+/* Show on screens up to 768px (phones) */
+@media (max-width: 768px) {
+  .mobile-only {
+    display: block;
+  }
+}
