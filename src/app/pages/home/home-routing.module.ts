@@ -53,6 +53,7 @@ import { DoctorAddmedicationComponent } from 'src/app/doctor/doctor-addmedicatio
 import { DoctorEducationalmaterialComponent } from 'src/app/doctor/doctor-educationalmaterial/doctor-educationalmaterial.component';
 import { AppointmentChatListComponent } from 'src/app/doctor/doctor-appointment/appointment-chat-list/appointment-chat-list.component';
 import { PatientChatlistComponent } from 'src/app/doctor/doctor-patient/patient-chatlist/patient-chatlist.component';
+import { VisitDiagnoseComponent } from './visit/visit-list/visit-diagnose/visit-diagnose.component';
 const routes: Routes = [
 
   {
@@ -63,6 +64,7 @@ const routes: Routes = [
 
       { path: 'home', component: HomeComponent },
       { path: 'visit', component: VisitListComponent },
+      { path: 'visit/report', component:VisitDiagnoseComponent},
       { path: 'complaint', component: ComplaintListComponent },
       { path: 'visit/satisfaction-form', component: SatisfactionFormComponent },
       { path: 'about-Us', component: AboutUsComponent },

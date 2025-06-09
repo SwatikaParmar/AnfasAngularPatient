@@ -57,6 +57,16 @@
                                             </span>
                                         </p>
 
+                                             <p
+                                            style="display: flex; flex-wrap: wrap; align-items: center; font-size: 13px; gap: 8px;
+                                            color: red;">
+                                            <span class="label" style="color: red;">
+                                               Chronic Disease -
+                                            </span>
+                                            <span style="flex: 1; min-width: 62px; padding-left: 20px;" >
+{{ item.isChronicDisease === true ? 'Yes' : item.isChronicDisease === false ? 'No' : 'N/A' }}                                            </span>
+                                        </p>
+
                                     </div>
                                     <div class="rating-and-button">
                                         <div *ngFor="let visit of visitList" class="visit-item">
@@ -68,7 +78,7 @@
 
 
 
-                                        <button class="view-button" onclick="openPopup()">
+                                        <button class="view-button" [routerLink]="['/visit/report']">
                                             {{ 'VIEW_REPORTS' | translate }}
                                         </button>
                                     </div>
