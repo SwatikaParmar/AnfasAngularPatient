@@ -19,12 +19,12 @@ export class ContentService {
   }
 
   patientDetails(data: any) {
-    debugger
+    
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.patientDetail + '?Mrn=' + data)
   }
 
   getConsent(mrn: any) {
-    debugger
+    
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.consentForm + '?mrn=' + mrn.mrn + '&language=' + mrn.language)
   }
 
@@ -131,7 +131,7 @@ export class ContentService {
   }
 
   slotsAvaliable(data: any) {
-    debugger
+    
     return this.http.get<any>(
       `${environment.apiUrl}${ApiEndPoint.DoctorTimeSlot}?OrgCode=${data.OrgCode}&CareProviderCode=${data.CareProviderCode}&FromDate=${data.FromDate}&ToDate=${data.ToDate}`
     );
@@ -151,7 +151,7 @@ export class ContentService {
   }
 
   getRequestType() {
-    debugger
+    
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.requestType)
   }
 
@@ -261,7 +261,7 @@ export class ContentService {
   // doctor api's
 
  docAppointment(data:any){
-  debugger
+  
   return this.http.get<any>(environment.apiUrl + ApiEndPoint.doctorAppointment + '?CareProviderCode=' + data.careProviderCode 
 + '&FromDate=' + data.FromDate + '&ToDate=' + data.ToDate
   )

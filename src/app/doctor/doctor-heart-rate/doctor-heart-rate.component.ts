@@ -99,7 +99,7 @@ this.toastrService.error();
   console.log('Approved:', item);
   // Optionally update status
   item.status = 'Verified';
-debugger
+
   let payload = {
 id: item.id,
 type : 'heartrate',

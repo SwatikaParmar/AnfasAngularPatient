@@ -27,7 +27,7 @@ export class AuthService {
     return this.http.post<any>(environment.apiUrl + ApiEndPoint.login,user)
       .pipe(map(user => {
         if (user.data) {   
-          debugger  
+            
           localStorage.setItem('currentUser', JSON.stringify(user.data));
           localStorage.setItem('loginRole', user.data.role);
           localStorage.setItem('fname', user.data.patient.firstName);
@@ -47,7 +47,7 @@ export class AuthService {
     return this.http.post<any>(environment.apiUrl + ApiEndPoint.doctorLogin,user)
       .pipe(map(user => {
         if (user.data) {   
-          debugger  
+            
           localStorage.setItem('currentUser', JSON.stringify(user.data));    
                localStorage.setItem('dname', user.data.doctor.printName);  
                               localStorage.setItem('code', user.data.doctor.code);  

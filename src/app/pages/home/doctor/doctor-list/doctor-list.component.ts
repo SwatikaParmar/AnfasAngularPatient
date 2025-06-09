@@ -89,7 +89,7 @@ export class DoctorListComponent {
   
 
   edit(item: any): void {
-    debugger
+    
     const CareProviderCode = item.code;
     const receiverName = item.name;
   

@@ -42,7 +42,7 @@ export class HomeComponent {
 
   }
   ngOnInit() {
-    debugger
+    
     this.fname = localStorage.getItem('fname');
     this.lname = localStorage.getItem('lname');
 
@@ -87,7 +87,7 @@ export class HomeComponent {
   }
 
   goToDoctorList() {
-    debugger
+    
     this.router.navigate(['/doctor-list']);
   }
 

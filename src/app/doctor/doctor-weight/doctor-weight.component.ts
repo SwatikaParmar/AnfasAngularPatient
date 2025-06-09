@@ -97,7 +97,7 @@ export class DoctorWeightComponent {
     console.log('Approved:', item);
     // Optionally update status
     item.status = 'Verified';
-    debugger
+    
     let payload = {
       id: item.id,
       type: 'weightrecords',

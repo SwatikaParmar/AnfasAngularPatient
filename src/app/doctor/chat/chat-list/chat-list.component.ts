@@ -32,7 +32,7 @@ export class ChatListComponent {
   getmessagePerson(){
     
     const code = localStorage.getItem('code');
-debugger
+
     this.contentService.getMessageList(code).subscribe(response => {
 
       if(response.isSuccess == true){

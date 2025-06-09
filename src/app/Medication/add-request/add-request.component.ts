@@ -52,7 +52,7 @@ export class AddRequestComponent {
   }
 
   getRequestType() {
-    debugger
+    
     this.content.getRequestType().subscribe(response => {
       if (response.status) {
         this.requestTypeList = response.data;

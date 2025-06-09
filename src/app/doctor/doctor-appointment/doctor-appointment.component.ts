@@ -48,7 +48,7 @@ this.spinner.show();
     FromDate: fromDate.toISOString().split('T')[0], // e.g., "2025-05-01"
     ToDate: toDate.toISOString().split('T')[0]      // e.g., "2025-05-31"
   };
-debugger
+
   this.contentService.docAppointment(payload).subscribe(
     response => {
       if (response.status === true) {

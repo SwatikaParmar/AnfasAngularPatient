@@ -61,7 +61,7 @@ toggleMenus() {
     this.currentLanguage = lang;
     this.languageService.switchLanguage(lang);
     localStorage.setItem('language', lang); // Store selected language
-debugger
+
 
     if (lang === 'ar') {
       localStorage.setItem('arabicLanguage', 'Arabic');

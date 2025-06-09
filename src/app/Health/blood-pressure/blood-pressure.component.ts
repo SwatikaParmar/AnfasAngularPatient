@@ -101,7 +101,7 @@ export class BloodPressureComponent {
 
 
   addRecord(): void {
-    debugger
+    
     if (this.form.invalid) {
       this.toastrService.warning('Please fill out the form correctly.');
       return;

@@ -43,7 +43,7 @@ export class DoctorPatientComponent {
     const CareProviderCode = localStorage.getItem('code')
     this.contentService.docPatient(CareProviderCode).subscribe(response => {
       if (response.isSuccess == true) {
-          debugger
+          
           this.patientlist = response.data;
           this.spinner.hide();
         } else {

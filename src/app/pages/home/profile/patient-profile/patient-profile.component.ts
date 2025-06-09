@@ -30,7 +30,7 @@ export class PatientProfileComponent {
   ){ }
 
   ngOnInit(): void {
-    debugger
+    
     this.mrn = localStorage.getItem('mrn');
 
     this.rootUrl = environment.rootPathUrl;
@@ -41,11 +41,11 @@ export class PatientProfileComponent {
   }
 
   patientDetail(){
-debugger
+
     
     this.contentService.patientDetails(localStorage.getItem('mrn')).subscribe({
       next: (response) => {
-        debugger
+        
         if (response.status === true) {
           this.detail = response.data;
           this.gender  = response.data.gender;

@@ -39,7 +39,7 @@ export class AppointmentListComponent {
     this.contentService.getDoctors().subscribe(
       response => {
         if (response.status === true) {
-          debugger
+          
           this.doctorList = response.data;
         } else {
           this.toastrService.error('Failed to fetch  list.');

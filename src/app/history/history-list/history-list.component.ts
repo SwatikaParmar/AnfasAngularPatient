@@ -150,7 +150,7 @@ getStatusColor(status: string | undefined): string {
 // }
 
 rescheduleAppointment(item: any) {
-  debugger
+  
   const payload = {
     appointmentdate: new Date().toISOString(), // Ideally, allow user to pick a new date/time
     comment: 'reschedule',
@@ -183,7 +183,7 @@ rescheduleAppointment(item: any) {
 }
 
 cancelAppointment(item:any){
-  debugger
+  
   const payload = {
     comment: "Cancel",   // or any appropriate comment
     mrn: localStorage.getItem('mrn'),                      // Medical Record Number
@@ -195,7 +195,7 @@ cancelAppointment(item:any){
 
   this.contentService.cancelAppoint(payload).subscribe(response => {
     if(response.status == true) {
-debugger
+
       this.toastrService.success(response.message);
       window.location.reload();
     } else {

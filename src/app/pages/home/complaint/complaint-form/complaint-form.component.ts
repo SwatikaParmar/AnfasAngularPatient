@@ -98,7 +98,7 @@ this.typeList = response.data;
     }
   }
   onSubmit() {
-    debugger
+    
     if (this.complaintForm.invalid) {
       this.complaintForm.markAllAsTouched(); // 🔥 this triggers all validation messages
       return;

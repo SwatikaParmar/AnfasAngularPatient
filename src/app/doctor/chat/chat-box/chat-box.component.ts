@@ -41,7 +41,7 @@ this.name = this.route.snapshot.params['name'];
   }
   
  loadChatHistory(): void {
-  debugger
+  
   if (!this.senderId || !this.receiverId) {
     return;
   }
@@ -91,7 +91,7 @@ sendMessage(): void {
     this.toaster.warning('Message cannot be empty!');
     return;
   }
-  debugger
+  
 
   // Construct the payload with a formatted timestamp
   const payload = {

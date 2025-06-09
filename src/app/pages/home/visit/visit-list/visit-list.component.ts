@@ -37,7 +37,7 @@ export class VisitListComponent {
   
   vistList() {
 
-debugger
+
     this.contentService.getVisit(localStorage.getItem('mrn')).subscribe(
       response => {
         if (response.status === true) {
@@ -66,7 +66,7 @@ debugger
   
 
   lab(data:any){
-    debugger
+    
     let payload = {
       PatientUid : data.patientUid,
       PatientVisitUid :  data.patientVisitUId
@@ -98,7 +98,7 @@ debugger
   }
 
   ris(data:any){
-    debugger
+    
     let payload = {
       PatientUid : data.patientUid,
       PatientVisitUid :  data.patientVisitUId

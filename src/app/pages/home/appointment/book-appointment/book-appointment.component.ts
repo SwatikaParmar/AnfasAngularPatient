@@ -199,7 +199,7 @@ export class BookAppointmentComponent {
       FromDate: date,
       ToDate: date
     };
-  debugger
+  
     this.spinner.show();
     this.content.slotsAvaliable(payload).pipe(
       finalize(() => this.spinner.hide())
@@ -216,7 +216,7 @@ export class BookAppointmentComponent {
   
    // Filter by AM or PM
    filterSlotsByTime() {
-    debugger
+    
     if (this.selectedTime === 'morning') {
       this.filteredSlots = this.slots.filter(slot => slot.startTime.includes('AM'));
     } else {
@@ -226,7 +226,7 @@ export class BookAppointmentComponent {
 
   selectTime(time: 'morning' | 'evening') {
     this.selectedTime = time;
-  debugger
+  
     this.filteredSlots = this.slots.filter(slot => {
       const isMorning = slot.startTime.trim().toLowerCase().includes('am');
       return time === 'morning' ? isMorning : !isMorning;

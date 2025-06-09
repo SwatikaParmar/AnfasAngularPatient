@@ -68,7 +68,7 @@ this.spinner.hide();
 onCheckboxChange(event: Event, item: any): void {
   const input = event.target as HTMLInputElement;
   const newStatus = input.checked ? 'Active' : 'InActive';
-debugger
+
   const payload = {
     medicationId: item.medicationId,
     status: newStatus
