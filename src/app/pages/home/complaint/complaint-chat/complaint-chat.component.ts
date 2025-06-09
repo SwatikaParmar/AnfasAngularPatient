@@ -16,6 +16,7 @@ export class ComplaintChatComponent {
   complaintId: any;
   replies: any;
   newMessage!: string;
+  complaintDetails: any;
  
 
   constructor(
@@ -29,11 +30,39 @@ export class ComplaintChatComponent {
   ngOnInit(): void {
     this.rootUrl = environment.rootPathUrl;
     this.complaintId = this.route.snapshot.params['id'];
+
+   if (history.state.complaintData) {
+    this.complaintDetails = history.state.complaintData;
+  } else {
+    this.fetchComplaintDetails(); // Add this method
+  }
     this.complaintReply();
 
    
   }
 
+
+  fetchComplaintDetails(): void {
+  const mrn = localStorage.getItem('mrn');
+  const payload = {
+    mrn,
+    page: 1,
+    pageSize: 1000
+  };
+
+  this.contentService.getComplaint(payload).subscribe(
+    (response) => {
+      if (response.status && response.data?.complaints?.length) {
+        this.complaintDetails = response.data.complaints.find(
+          (c: any) => c.complaintId == this.complaintId
+        );
+      }
+    },
+    (error) => {
+      this.toastrService.error('Failed to load complaint details');
+    }
+  );
+}
   complaintReply(): void {
     this.spinner.show();  // Show loading spinner
     const payload = {

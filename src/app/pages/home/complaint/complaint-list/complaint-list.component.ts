@@ -81,7 +81,12 @@ export class ComplaintListComponent {
   }
   
  
-  
+  goToComplaintChat(complaint: any): void {
+  this.router.navigate(['/complaint/chat', complaint.complaintId], {
+    state: { complaintData: complaint }
+  });
+}
+
   
   
 }

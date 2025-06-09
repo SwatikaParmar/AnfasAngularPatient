@@ -16,22 +16,22 @@
 
           <!-- First part: Patient -->
           <div class="flex-fill col-12 col-sm-6 col-md-4 p-0 ">
-            <strong style="color: #726641;">Patient Name:</strong> KHADIJAH ABDULAZIZ
+            <strong style="color: #726641;">Patient Name:</strong>{{ complaintDetails?.patientName }}
           </div>
 
           <!-- Second part: Complaint Type -->
           <div class="flex-fill col-12 col-sm-6 col-md-3 text-sm-center p-0">
-            <strong style="color: #726641;">Complaint Type Name:</strong> Other
+            <strong style="color: #726641;">Complaint Type Name:</strong>{{ complaintDetails?.complaintTypeName }}
           </div>
 
           <!-- Third part: Date -->
           <div class="flex-fill col-12 col-sm-6 col-md-3 text-sm-center p-0">
-            <strong style="color: #726641;">Date:</strong> 2025-06-07T09:07:06.567
+            <strong style="color: #726641;">Date:</strong> {{ complaintDetails?.createdAt | date: 'dd-MM-yyyy' }}
           </div>
 
           <!-- Fourth part: Status -->
           <div class="flex-fill col-12 col-sm-6 col-md-2 text-sm-end p-0">
-            <strong style="color: #726641;">Status:</strong> <span style="color:#FFA529">Pending</span>
+            <strong style="color: #726641;">Status:</strong><span style="color:#FFA529">{{ complaintDetails?.status }}</span>
           </div>
 
         </div>
@@ -40,7 +40,7 @@
 
           <!-- Header -->
           <div class="bg-[#77734E] text-white text-center py-3 shadow">
-            <h2 class="text-lg font-semibold">{{ 'COMPLAINT Reply' | translate }}</h2>
+            <h2 class="text-lg font-semibold">{{ 'COMPLAINT_REPLY' | translate }}</h2>
           </div>
 
 

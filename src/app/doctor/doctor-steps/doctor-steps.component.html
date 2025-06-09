@@ -10,7 +10,7 @@
             <i class="fas fa-arrow-left text-xs text-center"></i>
           </button>
           <h1 class="text-lg font-semibold ml-2" style="font-size: 25px; color: #726641;">
-            Steps
+             {{ 'STEPS' | translate }}
           </h1>
         </div>
         <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 10px;">
@@ -18,12 +18,12 @@
             <form class="p-5 mt-2 mb-3">
               <div class="row g-2">
                 <div class="container">
-                  <div class="title">Steps</div>
+                  <div class="title">  {{ 'STEPS' | translate }}</div>
                   <img src="/assets/images/run.png" alt="Runner" class="runner" />
 
                   <!-- Show today's steps dynamically -->
                   <div class="steps-count">{{ todaySteps }}</div>
-                  <div class="steps-label">Today Steps</div>
+                  <div class="steps-label"> {{ 'TODAY_STEPS' | translate }}</div>
 
                   <div class="chart-container" style="display: flex; position: relative; height: 220px;">
 
@@ -66,7 +66,7 @@
                     <!-- Target line and label -->
                     <div class="target-line" style="position: absolute; left: 50px; top: 50px; width: calc(100% - 60px); border-top: 1px dashed #ccc;"></div>
                     <div class="target-label" style="position: absolute; left: 0; top: 45px; font-size: 12px; color: #999;">
-                      Target
+                    {{ 'TARGET' | translate }}
                     </div>
 
                   </div> <!-- end chart-container -->

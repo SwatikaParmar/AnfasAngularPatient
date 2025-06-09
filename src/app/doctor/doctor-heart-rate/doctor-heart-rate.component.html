@@ -8,7 +8,7 @@
             <i class="fas fa-arrow-left text-xs text-center"></i>
           </button>
           <h1 class="text-lg font-semibold ml-2" style="font-size: 25px; color: #726641;">
-             {{ 'HEART_RATE' | translate }}
+            {{ 'HEART_RATE' | translate }}
           </h1>
         </div>
         <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 10px;">
@@ -53,8 +53,10 @@
                     <div style="display: flex; justify-content: flex-end; margin-top: 5px;">
                       <ng-container *ngIf="item.status === 'Pending'; else statusBadge">
                         <!-- Buttons for pending status -->
-                        <button class="btn btn-success btn-sm me-2" (click)="approveItem(item)">{{ 'APPROVE' | translate }}</button>
-                        <button class="btn btn-danger btn-sm" (click)="rejectItem(item)">{{ 'REJECT' | translate }}</button>
+                        <button class="btn btn-success btn-sm me-2" (click)="approveItem(item)">{{ 'APPROVE' | translate
+                          }}</button>
+                        <button class="btn btn-danger btn-sm" (click)="rejectItem(item)">{{ 'REJECT' | translate
+                          }}</button>
                       </ng-container>
 
                       <!-- Badge for statuses other than Pending -->

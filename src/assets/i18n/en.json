@@ -383,5 +383,10 @@
   "APPROVE": "Approve",
   "REJECT": "Reject",
   "VIEW_IMAGE": "View Image",
-  "REJECTED": "Rejected"
+  "REJECTED": "Rejected",
+  "VIEW_LAB_REPORT": "View Lab Report",
+  "VIEW_RIS_REPORT": "View RIS Report",
+  "TODAY_STEPS": "Today Steps",
+  "TARGET": "Target",
+  "COMPLAINT_REPLY":"Complaint Reply"
 }

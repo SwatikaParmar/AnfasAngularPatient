@@ -369,7 +369,7 @@
   "ADD_EDUCATIONAL": "إضافة التعليمية",
   "ASSIGN_MATERIAL_TO_PATIENT": "تعيين المواد للمريض",
   "ADD_EDUCATIONAL_MATERIAL": "إضافة المواد التعليمية",
-   "EDIT_EDUCATIONAL_MATERIAL": "تحرير المواد التعليمية",
+  "EDIT_EDUCATIONAL_MATERIAL": "تحرير المواد التعليمية",
   "UPLOAD_PDF": "تحميل ملف PDF",
   "SELECTED_FILE": "الملف المحدد",
   "PDF_FILE_IS_REQUIRED": "ملف PDF مطلوب",
@@ -383,6 +383,11 @@
   "SEARCH": "يبحث",
   "APPROVE": "يعتمد",
   "REJECT": "يرفض",
-   "VIEW_IMAGE": "عرض الصورة",
-  "REJECTED": "مرفوض"
+  "VIEW_IMAGE": "عرض الصورة",
+  "REJECTED": "مرفوض",
+  "VIEW_LAB_REPORT": "عرض تقرير المختبر",
+  "VIEW_RIS_REPORT": "عرض تقرير RIS",
+  "TODAY_STEPS": "خطوات اليوم",
+  "TARGET": "هدف",
+  "COMPLAINT_REPLY":"الرد على الشكوى"
 }

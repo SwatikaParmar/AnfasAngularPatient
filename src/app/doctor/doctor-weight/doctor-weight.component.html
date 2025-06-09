@@ -8,7 +8,7 @@
                         <i class="fas fa-arrow-left text-xs text-center"></i>
                     </button>
                     <h1 class="text-lg font-semibold ml-2" style="font-size: 25px; color: #726641;">
-                        Weight
+                          {{ 'WEIGHT' | translate }}
                     </h1>
                 </div>
                 <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 10px;">
@@ -17,20 +17,21 @@
               <div class="row g-2">
                 <div class="col-12 col-md-6 col-lg-4">
                   <div class="mt-3">
-                    <label class="form-label" style="font-weight: 600;">From Date:</label>
+                    <label class="form-label" style="font-weight: 600;">{{ 'FROM_DATE' | translate }}:</label>
                     <input type="date" class="form-control" formControlName="FromDate">
                   </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-4">
                   <div class="mt-3">
-                    <label class="form-label" style="font-weight: 600;">To Date:</label>
+                    <label class="form-label" style="font-weight: 600;">{{ 'TO_DATE' | translate }}:</label>
                     <input type="date" class="form-control" formControlName="ToDate">
                   </div>
                 </div>
 
                 <!-- Button aligned right -->
                 <div class="col-12 col-md-12 col-lg-4 text-end d-flex align-items-end justify-content-end">
-                  <button type="button" class="btn  mt-3 w-50" (click)="getBlood()" style="background-color: #FEC34F;">Search</button>
+                  <button type="button" class="btn  mt-3 w-50" (click)="getBlood()" style="background-color: #FEC34F;">
+                    {{ 'SEARCH' | translate }}</button>
                 </div>
               </div>
             </form>
@@ -46,7 +47,7 @@
           <i class="fas fa-heartbeat" style="color: #9baec8; font-size: 22px;"></i>
         </div>
         <div class="card-text" style="margin-left: 10px;">
-          <div class="code">{{ item.weights }} Kg</div>
+          <div class="code">{{ item.weights }} {{ 'KG' | translate }}</div>
           <div class="date">{{ item.createdAt | date: 'fullDate' }} {{ item.createdAt | date: 'shortTime' }}</div>
         </div>
       </div>
