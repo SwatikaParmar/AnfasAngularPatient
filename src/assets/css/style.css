@@ -1403,15 +1403,9 @@ ul.ngx-pagination li.pagination-next a {
 
 
 /* Hide on screens wider than 768px */
-@media (min-width: 1200px) {
+@media (min-width: 768px) {
   .mobile-only {
     display: none !important;
   }
 }
 
-/* Show on screens up to 768px (phones) */
-@media (max-width: 768px) {
-  .mobile-only {
-    display: block;
-  }
-}
