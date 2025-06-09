@@ -21,7 +21,7 @@
                     <div class="container mt-4">
                         <div class="row">
                             <!-- Card 1 -->
-                            <div class="col-md-4 mb-4 mt-3" *ngFor="let item of visitList  | paginate
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4 mt-3" *ngFor="let item of visitList  | paginate
                             : {
                                 itemsPerPage: 6,
                                 currentPage: page,
@@ -47,11 +47,16 @@
                                                 'CARE_PROVIDER' | translate }} -</span> <span
                                                 style="margin-left:19px; font-size:13px;">{{item.careProviderName}}
                                                 {{item.careProviderLastName}}</span></p>
-                                        <p><span class="label" style="margin-left:10px; font-size:13px;">{{ 'EN_TYPE' |
-                                                translate }} -</span> <span
-                                                style="margin-left:137px; font-size:13px;">{{item.entypeValueDescription
-                                                || 'N/A'
-                                                }}</span></p>
+                                        <p
+                                            style="display: flex; flex-wrap: wrap; align-items: center; font-size: 13px; gap: 8px;">
+                                            <span class="label">
+                                                {{ 'EN_TYPE' | translate }} -
+                                            </span>
+                                            <span style="flex: 1; min-width: 62px;">
+                                                {{ item.entypeValueDescription || 'N/A' }}
+                                            </span>
+                                        </p>
+
                                     </div>
                                     <div class="rating-and-button">
                                         <div *ngFor="let visit of visitList" class="visit-item">
