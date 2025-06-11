@@ -21,7 +21,7 @@ export class DoctorRecordsComponent {
   medicationList: any;
   educationMaterial: any;
   visitList: any;
-
+  activeTab: string = 'carrier';
     constructor(
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService,
@@ -139,5 +139,9 @@ this.educationMaterial = response.data.dataList
       backClicked() {
         this._location.back();
       }  
+
+      setActiveTab(tab: string): void {
+    this.activeTab = tab;
+  }
 
 }
