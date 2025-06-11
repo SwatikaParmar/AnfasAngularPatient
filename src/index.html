@@ -121,7 +121,38 @@ window.onclick = function(event) {
   }
 };
 </script>
+<script>
+  function showOnly(event, id) {
+    // Remove 'active' class from all tab buttons
+    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
 
+    // Add 'active' class to clicked button
+    event.target.classList.add('active');
+
+    // Hide all tab contents
+    document.querySelectorAll('.tab-content').forEach(div => div.classList.remove('active'));
+
+    // Show selected tab content
+    document.getElementById(id).classList.add('active');
+  }
+</script>
+<script>
+    function showPDF(button, pdfId) {
+      // Remove 'active' from all buttons
+      const buttons = document.querySelectorAll('.tab-button');
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      // Add 'active' to the clicked button
+      button.classList.add('active');
+
+      // Hide all PDF containers
+      const pdfs = document.querySelectorAll('.pdf-container');
+      pdfs.forEach(pdf => pdf.style.display = 'none');
+
+      // Show the selected PDF
+      document.getElementById(pdfId).style.display = 'block';
+    }
+  </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <app-root></app-root>

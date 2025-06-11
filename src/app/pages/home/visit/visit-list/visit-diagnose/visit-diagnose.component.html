@@ -1,1 +1,55 @@
-<p>visit-diagnose works!</p>
+<div class="dashboard-outer">
+    <section>
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="flex mb-4 items-center ml-1">
+                    <button class="flex items-center justify-center w-8 h-8 rounded-full text-white"
+                        style="background-color: #726641;">
+                        <i class="fas fa-arrow-left text-xs text-center"></i>
+                    </button>
+                    <h1 class="text-lg font-semibold ml-2" style="font-size: 25px; color: #726641;">
+                        Visit Diagnose
+                    </h1>
+                </div>
+                <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 10px;">
+                    <div class=" mx-auto">
+                        <form class="px-4 mt-2 mb-3">
+                            <div class="row ">
+                                <div class="button-container mb-2 mt-3">
+                                    <button class="tab-button active" onclick="showOnly(event, 'carrier')">Lab</button>
+                                    <button class="tab-button" onclick="showOnly(event, 'shipper')">Report</button>
+                                </div>
+
+                                <!-- LAB TAB CONTENT -->
+                                <div id="carrier" class="tab-content active">
+                                    <div class="button-container-top">
+                                        <button class="tab-button active" onclick="showPDF(this, 'pdf1')">Test
+                                            1</button>
+                                        <button class="tab-button" onclick="showPDF(this, 'pdf2')">Test 2</button>
+                                    </div>
+                                    <div id="pdf1" class="pdf-container" style="display: block;">
+                                        <iframe
+                                            src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"></iframe>
+                                    </div>
+
+                                    <div id="pdf2" class="pdf-container">
+                                        <iframe src="https://www.orimi.com/pdf-test.pdf"></iframe>
+                                    </div>
+                                </div>
+
+                                <!-- REPORT TAB CONTENT -->
+                                <div id="shipper" class="tab-content">
+                                    <div class="row">
+                                        <div class="col-4 card">Dummy Report Card 1</div>
+                                        <div class="col-4 card">Dummy Report Card 2</div>
+                                        <div class="col-4 card">Dummy Report Card 3</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
