@@ -59,6 +59,7 @@ export enum ApiEndPoint {
     messageList = "api/Chat/chatUsers/",
     addEducationMaterial = "api/User/AddOrUpdateEducationMaterial",
     vitalStatus = "api/User/SetVitalRecordStatus",
+    visitDetail = "api/User/GetVisitDetail"
 
 
 

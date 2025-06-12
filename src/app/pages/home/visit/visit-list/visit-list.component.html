@@ -69,8 +69,8 @@
                                         </p>
 
                                     </div>
-                                    <div class="rating-and-button">
-                                        <div *ngFor="let visit of visitList" class="visit-item">
+                                    <div class="rating-and-button" *ngFor="let visit of visitList">
+                                        <div  class="visit-item">
                                             <div class="rating-stars"
                                                 (click)="openSatisfactionForm(visit.satisfactionFormId, visit.visitId)">
                                                 {{ getStars(visit.overallRating || 0) }}
@@ -79,7 +79,7 @@
 
 
 
-                                        <button class="view-button" [routerLink]="['/visit/report']">
+                                        <button class="view-button" [routerLink]="['/visit/report/' + visit.visitId]">
                                             {{ 'VIEW_REPORTS' | translate }}
                                         </button>
                                     </div>

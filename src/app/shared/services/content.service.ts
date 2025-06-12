@@ -385,4 +385,8 @@ requestDetail(id: number): Observable<any> {
   );
 }
 
+
+visitDetail(data:any){
+  return this.http.get<any>(environment.apiUrl + ApiEndPoint.visitDetail + '?mrn=' + data.mrn + '&visitId=' + data.visitId)
+}
 }

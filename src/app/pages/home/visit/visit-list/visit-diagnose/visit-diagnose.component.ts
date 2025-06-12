@@ -19,7 +19,11 @@ export class VisitDiagnoseComponent {
   rootUrl: any;
   labpdf: any;
   rispdf: any;
-
+  diagnose: any;
+  id: any;
+ page: number = 0;
+  itemsPerPage!: number;
+  totalItems!: number;
   constructor(
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService,
@@ -30,12 +34,14 @@ export class VisitDiagnoseComponent {
   ) {}
 
   ngOnInit(): void {
+        this.id = this.route.snapshot.params['id'];
+
     this.rootUrl = environment.rootPathUrl;
 
     // Set dummy patientData for now (replace with actual API data)
     this.patientData = {
       patientUid: '123456',
-      patientVisitUId: 'abc123'
+    patientVisitUId: 'abc123'
     };
   }
 
@@ -91,6 +97,37 @@ export class VisitDiagnoseComponent {
     const blobUrl = URL.createObjectURL(blob);
     window.open(blobUrl, '_blank');
   }
+
+
+  
+getVisitDetail(){
+
+  let payload = {
+    visitId : this.id,
+    mrn: localStorage.getItem('mrn')
+  }
+debugger
+  this.contentService.visitDetail(payload).subscribe(response => {
+    if(response.status == true){
+ this.diagnose = response.data.diagnoses;
+ 
+    }else {
+     this.toastrService.error(response.message)
+    }
+  })
+}
+
+
+onPageChange(page: number): void {
+    // Update query parameters for pagination
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { page: page },
+      queryParamsHandling: 'merge',
+    });
+  }
+
+  
 
 }
 
