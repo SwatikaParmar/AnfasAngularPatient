@@ -393,5 +393,7 @@
   "REQUEST_DETAIL": "تفاصيل الطلب",
   "REPORT_URL": "عنوان التقرير",
   "REPORT": "تقرير",
-  "DIAGNOSIS": "تشخبص"
+  "DIAGNOSES": "التشخيصات",
+  "CHRONIC_DISEASE":"مرض مزمن",
+   "VIEW_REPORT_&_DIAGNOSES":"عرض التقرير والتشخيص"
 }

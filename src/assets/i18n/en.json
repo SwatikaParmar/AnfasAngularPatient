@@ -388,9 +388,11 @@
   "VIEW_RIS_REPORT": "View RIS Report",
   "TODAY_STEPS": "Today Steps",
   "TARGET": "Target",
-  "COMPLAINT_REPLY":"Complaint Reply",
-  "REQUEST_DETAIL":"Request Detail",
-  "REPORT_URL":"Report Url",
-  "REPORT":"Report",
-  "DIAGNOSIS":"Diagnosis"
+  "COMPLAINT_REPLY": "Complaint Reply",
+  "REQUEST_DETAIL": "Request Detail",
+  "REPORT_URL": "Report Url",
+  "REPORT": "Report",
+  "DIAGNOSES": "Diagnoses",
+  "CHRONIC_DISEASE": "Chronic Disease",
+  "VIEW_REPORT_&_DIAGNOSES":"View Report & Diagnoses"
 }
