@@ -36,20 +36,32 @@ export class VisitListComponent {
   }
   
   vistList() {
+  const mrn = localStorage.getItem('mrn');
 
+  if (!mrn) {
+    this.toastrService.error('MRN not found in local storage.');
+    return;
+  }
 
-    this.contentService.getVisit(localStorage.getItem('mrn')).subscribe(
-      response => {
-        if (response.status === true) {
-          this.visitList = response.data;
-        } else {
-          this.toastrService.error(response.message);
-        }
-      },
-      error => {
+  this.spinner.show(); // Start spinner
+
+  this.contentService.getVisit(mrn).subscribe(
+    response => {
+      this.spinner.hide(); // Stop spinner
+
+      if (response?.status === true) {
+        this.visitList = response.data;
+      } else {
+        this.toastrService.error(response?.message || 'Failed to fetch visit list.');
       }
-    );
-  }    
+    },
+    error => {
+      this.spinner.hide(); // Stop spinner on error
+      this.toastrService.error('An error occurred while fetching the visit list.');
+      console.error(error);
+    }
+  );
+}
 
   onPageChange(page: number): void {
     // Update query parameters for pagination

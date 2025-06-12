@@ -35,23 +35,28 @@ export class AppointmentListComponent {
     this.doctorLists();  
   }
 
-  doctorLists() {
-    this.contentService.getDoctors().subscribe(
-      response => {
-        if (response.status === true) {
-          
-          this.doctorList = response.data;
-        } else {
-          this.toastrService.error('Failed to fetch  list.');
-          console.error('API returned failure:', response);
-        }
-      },
-      error => {
-        this.toastrService.error('Error fetching  list.');
-        console.error('Error fetching  list:', error);
+ doctorLists() {
+  this.spinner.show(); // Show spinner before API call
+
+  this.contentService.getDoctors().subscribe(
+    response => {
+      this.spinner.hide(); // Hide spinner after response
+
+      if (response.status === true) {
+        this.doctorList = response.data;
+      } else {
+        this.toastrService.error('Failed to fetch doctor list.');
+        console.error('API returned failure:', response);
       }
-    );
-  }    
+    },
+    error => {
+      this.spinner.hide(); // Hide spinner even if there's an error
+      this.toastrService.error('Error fetching doctor list.');
+      console.error('Error fetching doctor list:', error);
+    }
+  );
+}
+ 
 
     
       onPageChange(page: number): void {

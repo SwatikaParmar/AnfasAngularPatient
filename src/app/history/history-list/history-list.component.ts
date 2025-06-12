@@ -14,7 +14,7 @@ export class HistoryListComponent {
   page: number = 0;
   itemsPerPage!: number;
   totalItems!: number;
-  item:any;
+  item: any;
   rootUrl: any;
   isArabic: boolean = false; // set this to true if the current language is Arabic
   historyListOriginal: any[] = []; // the full original list
@@ -22,6 +22,8 @@ export class HistoryListComponent {
   selectedStatus: string = 'All';  // dropdown selection
   showAppointmentButton = true;
   selectedAppointment: any = null;
+  isHistoryDataLoaded = false;
+
   constructor(
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService,
@@ -29,40 +31,44 @@ export class HistoryListComponent {
     private router: Router,
     private route: ActivatedRoute,
     private translateService: TranslateService,
-  ){  this.isArabic = this.translateService.currentLang === 'ar';}
+  ) { this.isArabic = this.translateService.currentLang === 'ar'; }
 
   ngOnInit(): void {
     this.rootUrl = environment.rootPathUrl;
     this.route.queryParams.subscribe((params) => {
       this.page = +params['page'] || 0;
     });
-    this.appointment();  
+    this.appointment();
 
     const currentUrl = this.router.url;
     if (currentUrl.includes('history-list')) {
       this.showAppointmentButton = false;
     }
   }
-  
-  
-  appointment() {
-    this.contentService.getAppointment(localStorage.getItem('mrn')).subscribe(
-      response => {
-        if (response.status === true) {
-          this.historyListOriginal = response.data; // <- store original
-          this.historyList = [...this.historyListOriginal]; // <- copy for display
-        } else {
-          this.toastrService.error('Failed to fetch  list.');
-          console.error('API returned failure:', response);
-        }
-      },
-      error => {
-        this.toastrService.error('Error fetching  list.');
-        console.error('Error fetching  list:', error);
+
+
+appointment() {
+  this.spinner.show(); // Optional spinner
+  this.contentService.getAppointment(localStorage.getItem('mrn')).subscribe(
+    response => {
+      this.spinner.hide();
+      this.isHistoryDataLoaded = true; // <-- important
+      if (response.status === true) {
+        this.historyListOriginal = response.data;
+        this.historyList = [...this.historyListOriginal];
+      } else {
+        this.toastrService.error('Failed to fetch list.');
       }
-    );
-  }
-  
+    },
+    error => {
+      this.spinner.hide();
+      this.isHistoryDataLoaded = true; // <-- important
+      this.toastrService.error('Error fetching list.');
+    }
+  );
+}
+
+
 
   onPageChange(page: number): void {
     // Update query parameters for pagination
@@ -73,8 +79,8 @@ export class HistoryListComponent {
     });
   }
 
-  
- 
+
+
   filterHistoryList() {
     if (this.selectedStatus === 'All' || !this.selectedStatus) {
       this.historyList = [...this.historyListOriginal];
@@ -84,16 +90,16 @@ export class HistoryListComponent {
       );
     }
   }
-  
+
   editContent(item: any): void {
     const senderId = localStorage.getItem('mrn'); // senderId comes from localStorage
     const slot = item.slots; // Get the first slot from the array
-  
+
     if (!slot || !item.careProviderUid) {
       this.toastrService.error('Invalid appointment slot or provider data.');
       return;
     }
-  
+
     const receiverId = item.careProviderUid.code; // Doctor code as receiverId
     const receiverName = item.careProviderUid.name; // Doctor's name as receiverName
     const receiverLastName = item.careProviderUid.lastName;
@@ -104,106 +110,106 @@ export class HistoryListComponent {
           senderId: senderId,
           receiverId: receiverId,
           receiverName: receiverName,
-          receiverLastName:receiverLastName
+          receiverLastName: receiverLastName
         }
       });
     } else {
       this.toastrService.error('Invalid sender or receiver information.');
     }
   }
-  
 
 
-closeOnOutsideClick(event: MouseEvent): void {
-  this.selectedAppointment = null;
-}
 
-
-getStatusColor(status: string | undefined): string {
-  switch (status) {
-    case 'No Show': return 'orange';
-    case 'Booked': return 'blue';
-    case 'Confirmed': return 'green';
-    case 'Cancelled': return 'red';
-    default: return 'inherit';
-  }
-}
-
-// edit(item: any): void {
-//   const CareProviderCode = item.careProviderUid.code;
-//   const receiverName = item.careProviderUid.name;
-//   const receiverLastName = item.careProviderUid.lastName;
-
-//   console.log('Navigating with:', CareProviderCode, receiverName, receiverLastName);
-
-//   if (CareProviderCode && receiverName && receiverLastName) {
-//     this.router.navigate(['/appointment-list/appointment/book'], {
-//       queryParams: {
-//         CareProviderCode,
-//         receiverName,
-//         receiverLastName
-//       }
-//     });
-//   } else {
-//     this.toastrService.error('Invalid sender or receiver information.');
-//   }
-// }
-
-rescheduleAppointment(item: any) {
-  
-  const payload = {
-    appointmentdate: new Date().toISOString(), // Ideally, allow user to pick a new date/time
-    comment: 'reschedule',
-    mrn: localStorage.getItem('mrn'),
-    orgcode: 'AMC', // Replace with dynamic value if needed
-    appointmentnumber: item.slots[0]?.appointmentNumber,
-    status: 'BOKSTS2', // Assuming this is the new "Rescheduled" status
-    slotId: item.slots[0]?.id
-  };
-
-  if (!payload.appointmentnumber || !payload.slotId) {
-    this.toastrService.error('Missing appointment information.');
-    return;
+  closeOnOutsideClick(event: MouseEvent): void {
+    this.selectedAppointment = null;
   }
 
-  this.contentService.rescheduleAppointment(payload).subscribe({
-    next: (response) => {
-      if (response.status) {
-        this.toastrService.success(response.message || 'Appointment rescheduled successfully.');
+
+  getStatusColor(status: string | undefined): string {
+    switch (status) {
+      case 'No Show': return 'orange';
+      case 'Booked': return 'blue';
+      case 'Confirmed': return 'green';
+      case 'Cancelled': return 'red';
+      default: return 'inherit';
+    }
+  }
+
+  // edit(item: any): void {
+  //   const CareProviderCode = item.careProviderUid.code;
+  //   const receiverName = item.careProviderUid.name;
+  //   const receiverLastName = item.careProviderUid.lastName;
+
+  //   console.log('Navigating with:', CareProviderCode, receiverName, receiverLastName);
+
+  //   if (CareProviderCode && receiverName && receiverLastName) {
+  //     this.router.navigate(['/appointment-list/appointment/book'], {
+  //       queryParams: {
+  //         CareProviderCode,
+  //         receiverName,
+  //         receiverLastName
+  //       }
+  //     });
+  //   } else {
+  //     this.toastrService.error('Invalid sender or receiver information.');
+  //   }
+  // }
+
+  rescheduleAppointment(item: any) {
+
+    const payload = {
+      appointmentdate: new Date().toISOString(), // Ideally, allow user to pick a new date/time
+      comment: 'reschedule',
+      mrn: localStorage.getItem('mrn'),
+      orgcode: 'AMC', // Replace with dynamic value if needed
+      appointmentnumber: item.slots[0]?.appointmentNumber,
+      status: 'BOKSTS2', // Assuming this is the new "Rescheduled" status
+      slotId: item.slots[0]?.id
+    };
+
+    if (!payload.appointmentnumber || !payload.slotId) {
+      this.toastrService.error('Missing appointment information.');
+      return;
+    }
+
+    this.contentService.rescheduleAppointment(payload).subscribe({
+      next: (response) => {
+        if (response.status) {
+          this.toastrService.success(response.message || 'Appointment rescheduled successfully.');
+          window.location.reload();
+        } else {
+          this.toastrService.error(response.message || 'Failed to reschedule appointment.');
+        }
+      },
+      error: (error) => {
+        this.toastrService.error('Error while rescheduling appointment.');
+        console.error('Reschedule error:', error);
+      }
+    });
+  }
+
+  cancelAppointment(item: any) {
+
+    const payload = {
+      comment: "Cancel",   // or any appropriate comment
+      mrn: localStorage.getItem('mrn'),                      // Medical Record Number
+      orgcode: "AMC",                        // Organization code
+      appointmentnumber: item.slots[0].appointmentNumber,       // Unique appointment ID
+      status: "BOKSTS3"                    // Status update
+    };
+
+
+    this.contentService.cancelAppoint(payload).subscribe(response => {
+      if (response.status == true) {
+
+        this.toastrService.success(response.message);
         window.location.reload();
       } else {
-        this.toastrService.error(response.message || 'Failed to reschedule appointment.');
+
+        this.toastrService.error(response.message)
+
       }
-    },
-    error: (error) => {
-      this.toastrService.error('Error while rescheduling appointment.');
-      console.error('Reschedule error:', error);
-    }
-  });
-}
-
-cancelAppointment(item:any){
-  
-  const payload = {
-    comment: "Cancel",   // or any appropriate comment
-    mrn: localStorage.getItem('mrn'),                      // Medical Record Number
-    orgcode: "AMC",                        // Organization code
-    appointmentnumber: item.slots[0].appointmentNumber,       // Unique appointment ID
-    status: "BOKSTS3"                    // Status update
-  };
-  
-
-  this.contentService.cancelAppoint(payload).subscribe(response => {
-    if(response.status == true) {
-
-      this.toastrService.success(response.message);
-      window.location.reload();
-    } else {
-
-      this.toastrService.error(response.message)
-
-    }
-  })
-}
+    })
+  }
 
 }
