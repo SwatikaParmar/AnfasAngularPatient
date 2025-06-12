@@ -265,3 +265,17 @@ h2 {
     margin-left: 10px;
   }
 }
+
+.no-data-fullpage {
+  min-height: 70vh; /* adjust as needed for your layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+}
+
+
+
