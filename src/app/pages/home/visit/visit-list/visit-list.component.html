@@ -19,9 +19,9 @@
 
                 <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 10px;">
                     <div class="container mt-4">
-                        <div class="row">
-                            <!-- Card 1 -->
-                            <ng-container *ngIf="visitList && visitList.length > 0; else noDataTemplate">
+                        <div *ngIf="visitList && visitList.length > 0; else noDataTemplate">
+                            <div class="row">
+                                <!-- Card 1 -->
                                 <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4 mt-3" *ngFor="let item of visitList  | paginate
                             : {
                                 itemsPerPage: 6,
@@ -109,8 +109,12 @@
                                     </div>
 
                                 </div>
-                            </ng-container>
-                            <!-- No Data Template -->
+
+
+                            </div>
+                        </div>
+
+                          <!-- No Data Template -->
                             <ng-template #noDataTemplate>
                                 <div class="no-data-fullpage">
                                     <img src="assets/images/ffffrq-removebg-preview.png" alt="No Data Found"
@@ -118,8 +122,6 @@
                                     <p class="no-data-text"></p>
                                 </div>
                             </ng-template>
-
-                        </div>
 
                         <div class="pagination-container pb-3">
                             <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"

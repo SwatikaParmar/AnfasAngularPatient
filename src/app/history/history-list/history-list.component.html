@@ -34,68 +34,83 @@
                 </select>
               </div>
 
-              <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let item of historyList | paginate
+
+              <div *ngIf="historyList && historyList.length > 0; else noDataTemplate">
+                <div class="row">
+                  <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let item of historyList | paginate
                                 : {
                                     itemsPerPage: 6,
                                     currentPage: page,
                                     totalItems: totalItems,
                                     id: '1'
                                   }">
-                  <div class="appointment-card">
-                    <div class="d-flex justify-content-between align-items-start mb-2"
-                      style="border-bottom: 1px solid gray; padding-bottom: 10px;">
-                      <!-- Left Side: Text + Date -->
-                      <div class="appointment-header">
-                        {{ 'APPOINTMENT_DATE' | translate }}<br>
-                        <strong>
-                          {{ item.slots[0]?.start ? (item.slots[0].start | date: 'medium') : 'N/A' }}
-                        </strong>
-                      </div>
+                    <div class="appointment-card">
+                      <div class="d-flex justify-content-between align-items-start mb-2"
+                        style="border-bottom: 1px solid gray; padding-bottom: 10px;">
+                        <!-- Left Side: Text + Date -->
+                        <div class="appointment-header">
+                          {{ 'APPOINTMENT_DATE' | translate }}<br>
+                          <strong>
+                            {{ item.slots[0]?.start ? (item.slots[0].start | date: 'medium') : 'N/A' }}
+                          </strong>
+                        </div>
 
 
-                      <!-- Right Side: Chat Icon -->
-                      <div class="chat-icon-box d-flex justify-content-center align-items-center pt-2">
-                        <i class="bi bi-chat-dots-fill" (click)="editContent(item)"></i>
+                        <!-- Right Side: Chat Icon -->
+                        <div class="chat-icon-box d-flex justify-content-center align-items-center pt-2">
+                          <i class="bi bi-chat-dots-fill" (click)="editContent(item)"></i>
+                        </div>
                       </div>
-                    </div>
-                    <!-- <div class="chat-icon-box d-flex justify-content-center align-items-center pt-2">
+                      <!-- <div class="chat-icon-box d-flex justify-content-center align-items-center pt-2">
                                           <i class="bi bi-chat-dots-fill"></i>
                                         </div> -->
 
 
-                    <!-- Doctor Info -->
-                    <div class="d-flex align-items-center mb-2">
-                      <img src="assets/images/logo-dashboard.png" alt="Doctor" class="doctor-img me-3"
-                        style="background-color: rgb(221, 221, 221); border-radius: 50%;">
-                      <div>
-                        <p class="doctor-name mb-1">
-                          Dr. {{ item.careProviderUid?.name }} {{ item.careProviderUid?.lastName }}
-                        </p>
-                        <p class="department mb-1">
-                          {{ item.departmentUid?.name || 'N/A' }}
-                        </p>
-                        <p class="status-booked mb-0"
-                          [ngStyle]="{ color: getStatusColor(item.slots[0]?.statusUid?.valueDescription) }">
-                          {{ item.slots[0]?.statusUid?.valueDescription || 'N/A' }}
-                        </p>
+                      <!-- Doctor Info -->
+                      <div class="d-flex align-items-center mb-2">
+                        <img src="assets/images/logo-dashboard.png" alt="Doctor" class="doctor-img me-3"
+                          style="background-color: rgb(221, 221, 221); border-radius: 50%;">
+                        <div>
+                          <p class="doctor-name mb-1">
+                            Dr. {{ item.careProviderUid?.name }} {{ item.careProviderUid?.lastName }}
+                          </p>
+                          <p class="department mb-1">
+                            {{ item.departmentUid?.name || 'N/A' }}
+                          </p>
+                          <p class="status-booked mb-0"
+                            [ngStyle]="{ color: getStatusColor(item.slots[0]?.statusUid?.valueDescription) }">
+                            {{ item.slots[0]?.statusUid?.valueDescription || 'N/A' }}
+                          </p>
+                        </div>
+                      </div>
+
+                      <!-- Footer Button -->
+                      <div class="d-flex justify-content-end">
+                        <button class="appointment-btn d-flex align-items-center gap-1"
+                          (click)="selectedAppointment = item">
+                          <span style="font-size: 15px; color: #FEC34F;">{{ 'APPOINTMENTS' | translate }}</span>
+                          <i class="fas fa-chevron-down" style="font-size: 10px; color: #FEC34F;"></i>
+                        </button>
                       </div>
                     </div>
-
-                    <!-- Footer Button -->
-                    <div class="d-flex justify-content-end">
-                      <button class="appointment-btn d-flex align-items-center gap-1"
-                        (click)="selectedAppointment = item">
-                        <span style="font-size: 15px; color: #FEC34F;">{{ 'APPOINTMENTS' | translate }}</span>
-                        <i class="fas fa-chevron-down" style="font-size: 10px; color: #FEC34F;"></i>
-                      </button>
-                    </div>
                   </div>
+
+
+
                 </div>
+
+
               </div>
-
-
+              <!-- No Data Template -->
+              <ng-template #noDataTemplate>
+                <div class="text-center py-10">
+                  <img src="assets/images/ffffrq-removebg-preview.png" alt="No Data Found" class="mx-auto mb-4"
+                    style="max-width: 250px;" />
+                  <p class="text-gray-600"></p>
+                </div>
+              </ng-template>
             </div>
+
 
             <div class="pagination-container ml-3">
               <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
