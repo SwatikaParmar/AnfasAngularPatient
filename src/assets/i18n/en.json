@@ -394,5 +394,6 @@
   "REPORT": "Report",
   "DIAGNOSES": "Diagnoses",
   "CHRONIC_DISEASE": "Chronic Disease",
-  "VIEW_REPORT_&_DIAGNOSES":"View Report & Diagnoses"
+  "VIEW_REPORT_&_DIAGNOSES":"View Report & Diagnoses",
+  "PROBLEM":"Problem"
 }

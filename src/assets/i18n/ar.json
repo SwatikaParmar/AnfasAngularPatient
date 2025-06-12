@@ -394,6 +394,7 @@
   "REPORT_URL": "عنوان التقرير",
   "REPORT": "تقرير",
   "DIAGNOSES": "التشخيصات",
-  "CHRONIC_DISEASE":"مرض مزمن",
-   "VIEW_REPORT_&_DIAGNOSES":"عرض التقرير والتشخيص"
+  "CHRONIC_DISEASE": "مرض مزمن",
+  "VIEW_REPORT_&_DIAGNOSES": "عرض التقرير والتشخيص",
+  "PROBLEM": "مشكلة"
 }
