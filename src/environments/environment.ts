@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://192.168.1.17:5001/",
+  apiUrl: "https://swagger.amchealthgroup.com/",
   rootPathUrl: "https://swagger.amchealthgroup.com/",
 };
 /*
