@@ -10,53 +10,66 @@
                   style="color:#726641; padding-top: 7px;"></i>
               </div>
               <div>
-                <p>
-                  <span class="black-home">{{ 'REQUEST_DETAIL' | translate }}</span>
-                </p>
+                <p><span class="black-home">{{ 'REQUEST_DETAIL' | translate }}</span></p>
               </div>
             </div>
 
             <ul class="list-group list-group-flush">
-              <li class="list-group-item d-flex row align-items-center">
-                <p class="col-5">{{ 'userName' | translate }}</p>
+              <li class="list-group-item d-flex align-items-center">
+                <p class="col-5">{{ 'USER_NAME' | translate }}</p>
                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                <p class="col-5">
-                  <label class="address-texts">{{ detail?.userName || 'N/A' }}</label>
-                </p>
+                <p class="col-5"><label class="address-texts">{{ detail?.userName || 'N/A' }}</label></p>
               </li>
 
-              <li class="list-group-item d-flex row align-items-center">
-                <p class="col-5">{{ 'requestTypeName' | translate }}</p>
+              <li class="list-group-item d-flex align-items-center">
+                <p class="col-5">{{ 'REQUEST_TYPE_NAME' | translate }}</p>
                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                <p class="col-5">
-                  <label class="address-texts">{{ detail?.requestTypeName || 'N/A' }}</label>
-                </p>
+                <p class="col-5"><label class="address-texts">{{ detail?.requestTypeName || 'N/A' }}</label></p>
               </li>
 
-              <li class="list-group-item d-flex row align-items-center">
-                <p class="col-5">{{ 'status' | translate }}</p>
+              <li class="list-group-item d-flex align-items-center">
+                <p class="col-5">{{ 'STATUS' | translate }}</p>
                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                <p class="col-5">
-                  <label class="address-texts">{{ detail?.status || 'N/A' }}</label>
-                </p>
+                <p class="col-5"><label class="address-texts">{{ detail?.status || 'N/A' }}</label></p>
               </li>
 
-              <li class="list-group-item d-flex row align-items-center">
-                <p class="col-5">{{ 'CREATED_AT' | translate }}</p>
-                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+              <li class="list-group-item d-flex align-items-center">
+                <p class="col-5">{{ 'REPORT_URL' | translate }}</p>
+                <p class="col-2 text-center">
+                  <a class="text-primary" *ngIf="detail?.reportUrl" [href]="rootUrl + detail.reportUrl" target="_blank"
+                    rel="noopener noreferrer">
+                    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                  </a>
+
+                </p>
                 <p class="col-5">
                   <label class="address-texts">
-                  {{ detail?.createdAt ? (detail.createdAt | date: 'dd-MM-yyyy') : 'N/A' }}
+                    <ng-container *ngIf="detail?.reportUrl; else noReport">
+                      <a class="text-primary" [href]="rootUrl + detail.reportUrl" target="_blank"
+                        rel="noopener noreferrer">
+                        {{ detail.reportUrl }}
+                      </a>
+
+                    </ng-container>
+                    <ng-template #noReport>N/A</ng-template>
                   </label>
                 </p>
               </li>
 
-              <li class="list-group-item d-flex row align-items-center">
-                <p class="col-5">{{ 'DESCRIPTION1' | translate }}</p>
+              <li class="list-group-item d-flex align-items-center">
+                <p class="col-5">{{ 'CREATED_AT' | translate }}</p>
                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
                 <p class="col-5">
-                  <label class="address-texts">{{ detail?.discretion || 'N/A' }}</label>
+                  <label class="address-texts">
+                    {{ detail?.createdAt ? (detail.createdAt | date: 'dd-MM-yyyy') : 'N/A' }}
+                  </label>
                 </p>
+              </li>
+
+              <li class="list-group-item d-flex align-items-center">
+                <p class="col-5">{{ 'DESCRIPTION1' | translate }}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5"><label class="address-texts">{{ detail?.discretion || 'N/A' }}</label></p>
               </li>
             </ul>
           </div>

@@ -43,13 +43,10 @@ export class VisitListComponent {
         if (response.status === true) {
           this.visitList = response.data;
         } else {
-          this.toastrService.error('Failed to fetch  list.');
-          console.error('API returned failure:', response);
+          this.toastrService.error(response.message);
         }
       },
       error => {
-        this.toastrService.error('Error fetching  list.');
-        console.error('Error fetching  list:', error);
       }
     );
   }    

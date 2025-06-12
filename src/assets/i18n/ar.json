@@ -389,5 +389,9 @@
   "VIEW_RIS_REPORT": "عرض تقرير RIS",
   "TODAY_STEPS": "خطوات اليوم",
   "TARGET": "هدف",
-  "COMPLAINT_REPLY":"الرد على الشكوى"
+  "COMPLAINT_REPLY": "الرد على الشكوى",
+  "REQUEST_DETAIL": "تفاصيل الطلب",
+  "REPORT_URL": "عنوان التقرير",
+  "REPORT": "تقرير",
+  "DIAGNOSIS": "تشخبص"
 }

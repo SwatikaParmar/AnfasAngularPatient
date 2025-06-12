@@ -22,11 +22,11 @@
                 <div class="button-container mb-3">
                   <button type="button" class="tab-button"
                           [ngClass]="{ 'active': selectedTab === 'report' }"
-                          (click)="setTab('report')">Report</button>
+                          (click)="setTab('report')">  {{ 'REPORT' | translate }}</button>
 
                   <button type="button" class="tab-button"
                           [ngClass]="{ 'active': selectedTab === 'diagnoses' }"
-                          (click)="setTab('diagnoses')">Diagnoses</button>
+                          (click)="setTab('diagnoses')">  {{ 'DIAGNOSIS' | translate }}</button>
                 </div>
 
                 <!-- Report Tab -->
