@@ -40,6 +40,9 @@ export enum ApiEndPoint {
     satisfactionDetail = "api/User/GetPatientSatisfactionDetail",
     sendPhoneOtp = "api/User/SendPhoneOtp",
      verifyPhone = "api/User/VerifyPhone",
+     requestDetail = "api/User/GetRequestDetail",
+
+    
 
     // Doctor Login
 

@@ -379,5 +379,10 @@ getMessageList(userName :any){
   }
 
 
- 
+requestDetail(id: number): Observable<any> {
+  return this.http.get<any>(
+    `${environment.apiUrl}${ApiEndPoint.requestDetail}?id=${id}`
+  );
+}
+
 }

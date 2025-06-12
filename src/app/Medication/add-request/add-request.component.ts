@@ -28,20 +28,36 @@ export class AddRequestComponent {
   ) { }
   
 
-  ngOnInit(): void {
-    this.initializeForm();
-    this.getRequestType();
+ ngOnInit(): void {
+  this.id = this.route.snapshot.paramMap.get('id');
+  this.initializeForm();
+  this.getRequestType();
+
+  if (this.id) {
+    this.getRequestDetails(this.id);
   }
+}
+
+
   
   initializeForm() {
     this.requestForm = this.formBuilder.group({
-      username: ['', Validators.required],
+       username: [localStorage.getItem('mrn') || '', Validators.required],
       requestTypeId: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
       discretion: ['', Validators.required]
     });
   }
   
+getRequestDetails(id: number) {
+  this.content.requestDetail(id).subscribe((response: any) => {
+    if (response.status) {
+      this.requestForm.patchValue({
+        requestTypeId: response.data.requestTypeId,
+        discretion: response.data.discretion
+      });
+    }
+  });
+}
 
   get f() {
     return this.requestForm.controls;
@@ -60,39 +76,45 @@ export class AddRequestComponent {
     });
   }
   
-  onSubmit() {
-    this.submitted = true;
-  
-    if (this.requestForm.invalid) {
-      return;
-    }
-  
-    this.spinner.show();
-  
-    const addData = {
-      id: 0,
-      username: this.requestForm.value.username,
-      requestTypeId: this.requestForm.value.requestTypeId,
-      phoneNumber: this.requestForm.value.phoneNumber,
-      discretion: this.requestForm.value.discretion,
-    };
-  
-    this.content.addRequest(addData).subscribe(
-      response => {
-        this.spinner.hide();
-        if (response.status) {
-          // this.toaster.success(response.message);
-          this.router.navigate(['/request-list']);
-        } else {
-          this.toaster.error(response.message || 'Failed to save request');
-        }
-      },
-      error => {
-        this.spinner.hide();
-        this.toaster.error('Something went wrong');
-      }
-    );
+ onSubmit() {
+  debugger
+  this.submitted = true;
+
+  if (this.requestForm.invalid) {
+    return;
   }
+
+  this.spinner.show();
+
+  const requestData = {
+    id: this.id ? Number(this.id) : 0,
+    username: localStorage.getItem('mrn'),
+    requestTypeId: this.requestForm.value.requestTypeId,
+    discretion: this.requestForm.value.discretion
+  };
+
+  const requestCall = this.id
+    ? this.content.addRequest(requestData)
+    : this.content.addRequest(requestData);
+
+  requestCall.subscribe(
+    response => {
+      this.spinner.hide();
+      if (response.status) {
+        const message = this.id ? 'Updated successfully' : 'Added successfully';
+        this.toaster.success(message);
+        this.router.navigate(['/request-list']);
+      } else {
+        this.toaster.error(response.message || 'Failed to save request');
+      }
+    },
+    error => {
+      this.spinner.hide();
+      this.toaster.error('Something went wrong');
+    }
+  );
+}
+
   
  
 }

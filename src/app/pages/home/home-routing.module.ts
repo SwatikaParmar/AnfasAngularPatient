@@ -54,6 +54,7 @@ import { DoctorEducationalmaterialComponent } from 'src/app/doctor/doctor-educat
 import { AppointmentChatListComponent } from 'src/app/doctor/doctor-appointment/appointment-chat-list/appointment-chat-list.component';
 import { PatientChatlistComponent } from 'src/app/doctor/doctor-patient/patient-chatlist/patient-chatlist.component';
 import { VisitDiagnoseComponent } from './visit/visit-list/visit-diagnose/visit-diagnose.component';
+import { RequestDetailComponent } from 'src/app/Medication/request-detail/request-detail.component';
 const routes: Routes = [
 
   {
@@ -64,7 +65,7 @@ const routes: Routes = [
 
       { path: 'home', component: HomeComponent },
       { path: 'visit', component: VisitListComponent },
-      { path: 'visit/report', component:VisitDiagnoseComponent},
+      { path: 'visit/report', component: VisitDiagnoseComponent },
       { path: 'complaint', component: ComplaintListComponent },
       { path: 'visit/satisfaction-form', component: SatisfactionFormComponent },
       { path: 'about-Us', component: AboutUsComponent },
@@ -84,6 +85,7 @@ const routes: Routes = [
       { path: 'Health-Tracker', component: HealthTrackingComponent },
       { path: 'medication-list', component: MedicationListComponent },
       { path: 'request-list', component: RequestListComponent },
+      { path: 'request-list/detail/:id', component: RequestDetailComponent },
       { path: 'Health-Tracker/Blood-Pressure', component: BloodPressureComponent },
       { path: 'Health-Tracker/Blood-Sugar', component: BloodSugarComponent },
       { path: 'Health-Tracker/Heart-Rate', component: HeartRateComponent },
@@ -93,6 +95,7 @@ const routes: Routes = [
       { path: 'educational-Material', component: EducationalMaterialComponent },
       { path: 'educational-Material/educational-detail/:id', component: EducationalMaterialDetailComponent },
       { path: 'request-list/request-add', component: AddRequestComponent },
+       { path: 'request-list/update/:id', component: AddRequestComponent },
 
       // Doctor Routes
 
@@ -117,7 +120,7 @@ const routes: Routes = [
 
       { path: 'doctor-patient/doctor/medication/:id', component: DoctorAddmedicationComponent },
       { path: 'doctor-appointment/appointment-list/chat', component: AppointmentChatListComponent },
-      { path: 'doctor-patient/Patient/chat', component: PatientChatlistComponent},
+      { path: 'doctor-patient/Patient/chat', component: PatientChatlistComponent },
 
     ]
   }

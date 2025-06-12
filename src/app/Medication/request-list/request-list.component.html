@@ -1,73 +1,81 @@
 <div class="dashboard-outer px-2 sm:px-4">
-
   <section>
     <div class="content-body">
       <div class="container-fluid">
 
-        <!-- Header and Button -->
+        <!-- Header and Add Button -->
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
           <h1 class="text-xl sm:text-2xl font-semibold text-[#726641]">
             {{ 'REQUEST_LIST' | translate }}
           </h1>
-
-          <button class="appointment-btn text-white px-5 py-2 rounded-full w-full sm:w-auto"
+          <button
+            class="appointment-btn bg-[#726641] hover:bg-[#5e5434] text-white px-5 py-2 rounded-full w-full sm:w-auto"
             [routerLink]="['/request-list/request-add']">
             + {{ 'ADD_REQUEST' | translate }}
           </button>
         </div>
 
         <!-- Table Wrapper -->
-        <div class="bg-gray-50 text-gray-800 rounded-[15px]  overflow-x-auto" style="border-radius: 15px;">
-            <div class="custom-container  mx-auto p-3">
-            <div class="container">
-              <div class="table-container">
-                <div class="table-responsive">
-          <div class="min-w-[640px]"> <!-- Force horizontal scroll on small screens -->
+        <div class="bg-gray-50 text-gray-800 rounded-[15px] overflow-x-auto">
+          <div class="min-w-[640px] p-3">
+
+            <!-- Table -->
             <table class="w-full border-collapse">
               <thead>
                 <tr class="bg-[#fde092] text-left">
                   <th class="p-3 text-sm font-semibold">{{ 'USER_NAME' | translate }}</th>
-                  <th class="p-3 text-sm font-semibold">{{ 'REQUEST_TYPE_NAME' | translate }}</th>
-                  <th class="p-3 text-sm font-semibold">{{ 'PHONE_NUMBER' | translate }}</th>
-                  <th class="p-3 text-sm font-semibold">{{ 'STATUS' | translate }}</th>
                   <th class="p-3 text-sm font-semibold">{{ 'DESCRIPTION1' | translate }}</th>
+                  <th class="p-3 text-sm font-semibold">{{ 'REQUEST_TYPE_NAME' | translate }}</th>
+                  <th class="p-3 text-sm font-semibold">{{ 'STATUS' | translate }}</th>
+                  <th class="p-3 text-sm font-semibold">{{ 'ACTION' | translate }}</th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="bg-white" *ngFor="let item of requestList | paginate : {
-                    itemsPerPage: 5,
-                    currentPage: page,
-                    totalItems: totalItems,
-                    id: '1'
-                  }">
+                <tr class="bg-white"
+                  *ngFor="let item of requestList | paginate: { itemsPerPage: 5, currentPage: page, totalItems: totalItems, id: '1' }">
                   <td class="p-3 text-sm">{{ item.userName || 'N/A' }}</td>
+                  <td class="p-3 text-sm">
+                    {{
+                      item.discretion
+                        ? (item.discretion.split(' ').slice(0, 3).join(' ') +
+                          (item.discretion.split(' ').length > 3 ? '...' : ''))
+                        : 'N/A'
+                    }}
+                  </td>
                   <td class="p-3 text-sm">{{ item.requestTypeName || 'N/A' }}</td>
-                  <td class="p-3 text-sm">{{ item.phoneNumber || 'N/A' }}</td>
                   <td class="p-3 text-sm">{{ item.status || 'N/A' }}</td>
                   <td class="p-3 text-sm">
-                    {{ item.discretion ? (item.discretion.split(' ').slice(0, 3).join(' ') + (item.discretion.split(' ').length > 3 ? '...' : '')) : 'N/A' }}
+                    <div class="flex gap-3">
+                      <a [routerLink]="['/request-list/detail', item.id]" class="text-yellow-600 hover:text-yellow-800">
+                        <i class="fa fa-eye" aria-hidden="true" title="View"></i>
+                      </a>
+                      <a [routerLink]="['/request-list/update', item.id]" class="text-yellow-600 hover:text-yellow-800">
+                        <i class="fa fa-edit" aria-hidden="true" title="Edit"></i>
+                      </a>
+                    </div>
                   </td>
                 </tr>
               </tbody>
             </table>
-          </div>
 
-          <!-- No Data Image -->
-          <div class="no-data text-center" *ngIf="requestList && requestList.length === 0">
-            <img src="assets/images/ffffrq-removebg-preview.png"
-              class="w-1/2 mx-auto py-12" alt="No Data" />
-          </div>
+            <!-- No Data Image -->
+            <div *ngIf="requestList && requestList.length === 0" class="text-center">
+              <img src="assets/images/ffffrq-removebg-preview.png" class="w-1/2 mx-auto py-12" alt="No Data" />
+            </div>
 
-          <!-- Pagination -->
-          <div class="pagination-container pt-3 pb-3">
-            <pagination-controls (pageChange)="onPageChange($event)" id="1"
-              class="paginate-doctor-list" queryParamsHandling="merge"></pagination-controls>
+            <!-- Pagination -->
+            <div class="pt-3 pb-3">
+              <pagination-controls
+                (pageChange)="onPageChange($event)"
+                id="1"
+                class="paginate-doctor-list"
+                queryParamsHandling="merge">
+              </pagination-controls>
+            </div>
+
           </div>
         </div>
-      </div>
-      </div>
-      </div>
-      </div>
+
       </div>
     </div>
   </section>

@@ -11,10 +11,10 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./request-list.component.css']
 })
 export class RequestListComponent {
-page: number = 0;
-  itemsPerPage!: number;
-  totalItems!: number;
- requestList: any;
+  page: number = 1;
+  itemsPerPage: number = 10;
+  totalItems: number = 0;
+  requestList: any[] = [];
   rootUrl: any;
 
   constructor(
@@ -23,30 +23,32 @@ page: number = 0;
     private contentService: ContentService,
     private router: Router,
     private route: ActivatedRoute,
-  ){ }
+  ) { }
 
   ngOnInit(): void {
     this.rootUrl = environment.rootPathUrl;
+
     this.route.queryParams.subscribe((params) => {
-      this.page = +params['page'] || 0;
+      this.page = +params['page'] || 1;
+      this.RequestList(); // ✅ Corrected method name
     });
-    this.RequestList();  
   }
-  
+
   RequestList(): void {
     this.spinner.show();
-  
+
     const mrn = localStorage.getItem('mrn') || '';
     const payload = {
       userName: mrn,
-      pageNumber: 1,
-      pageSize: 10
+      pageNumber: this.page,
+      pageSize: this.itemsPerPage
     };
-  
+
     this.contentService.getRequestList(payload).subscribe({
       next: (response: any) => {
         if (response?.status) {
           this.requestList = response.data || [];
+          this.totalItems = response.data?.length || 0; // ✅ Corrected assignment
         } else {
           this.toastrService.error('Failed to fetch request list.');
           console.error('API returned failure:', response);
@@ -61,17 +63,14 @@ page: number = 0;
       }
     });
   }
-  
 
   onPageChange(page: number): void {
-    // Update query parameters for pagination
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { page: page },
       queryParamsHandling: 'merge',
     });
   }
-
 }
 
 
