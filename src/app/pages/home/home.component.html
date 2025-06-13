@@ -18,7 +18,7 @@
 
               <!-- Search Box -->
               <div
-                class="flex items-center border border-yellow-300 px-3 py-1 rounded-full shadow-sm focus-within:ring w-full sm:w-auto">
+                class="flex items-center border border-yellow-500 px-3 py-1 rounded-full shadow-sm focus-within:ring w-full sm:w-auto">
                 <input type="text" placeholder="{{ 'FIND_A_DOCTOR' | translate }}"
                   class="flex-grow focus:outline-none bg-gray-50" (click)="goToDoctorList()" />
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 cursor-pointer text-yellow-400"
@@ -32,9 +32,9 @@
 
 
             <!-- Banner Image -->
-            <div class="carousel-container relative mt-6 max-h-[300px] rounded-xl overflow-hidden">
+            <div class="carousel-container relative mt-6 max-h-[500px] rounded-xl overflow-hidden">
               <!-- Carousel Images -->
-              <div class="carousel-images relative h-[300px]">
+              <div class="carousel-images relative h-[500px]">
                 <div *ngFor="let image of images; let i = index">
                   <img [src]="image" class="carousel-img w-full h-full  absolute"
                     [ngClass]="{'opacity-100': i === currentIndex, 'opacity-0': i !== currentIndex}" />
