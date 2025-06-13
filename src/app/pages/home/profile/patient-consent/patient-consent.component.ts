@@ -38,7 +38,7 @@ export class PatientConsentComponent {
     ) { }
 
     ngOnInit(): void {
-        this.mrn = localStorage.getItem('mrn');
+        this.mrn = localStorage.getItem('mrnNumber');
         this.route.queryParams.subscribe(params => {
             this.Mrn = params['mrn'];
             if (this.Mrn) {
