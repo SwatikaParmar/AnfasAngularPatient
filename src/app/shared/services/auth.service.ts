@@ -32,7 +32,6 @@ export class AuthService {
           localStorage.setItem('loginRole', user.data.role);
           localStorage.setItem('fname', user.data.patient.firstName);
           localStorage.setItem('lname', user.data.patient.lastName);
-          localStorage.setItem('mrn', user.data.patient.mrn);
           localStorage.setItem('role', 'Patient')
           //   localStorage.setItem('distributorId', user.data.distributorId);
           this.currentUserSubject.next(user);

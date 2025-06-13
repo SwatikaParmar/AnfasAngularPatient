@@ -60,10 +60,10 @@ export class HomeComponent {
   }
 
   startAutoSlide() {
-    this.intervalId = setInterval(() => {
-      this.currentIndex = (this.currentIndex + 1) % this.images.length;
-      this.updateCarousel();
-    }, 3000);  // Change every 3 seconds
+    // this.intervalId = setInterval(() => {
+    //   this.currentIndex = (this.currentIndex + 1) % this.images.length;
+    //   this.updateCarousel();
+    // }, 3000);  // Change every 3 seconds
   }
 
   prevSlide() {

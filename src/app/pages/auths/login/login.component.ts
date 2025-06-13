@@ -241,6 +241,7 @@ onLogin() {
         const mrn = otpResponse.data?.mrnNumber || '';
         localStorage.setItem('phoneNumber', phoneNumber);
         localStorage.setItem('mrnNumber', mrn);
+          localStorage.setItem('mrn', mrn);
 
         this.router.navigateByUrl('/otp');
       } else {
