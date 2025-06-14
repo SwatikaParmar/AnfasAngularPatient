@@ -27,6 +27,7 @@
                                                 <!-- <th>{{ 'IMAGE' | translate }}</th> -->
                                                 <th>{{ 'DESCRIPTION1' | translate }}</th>
                                                 <th>{{ 'CARE_PROVIDER_CODE' | translate }}</th>
+<th *ngIf="role === 'Doctor'">{{ 'IS_APPROVED' | translate }}</th>
                                                 <th>{{ 'CREATED_AT' | translate }}</th>
                                                 <th>{{ 'ACTION' | translate }}</th>
                                             </tr>
@@ -55,6 +56,7 @@
                                                 </td>
 
                                                 <td>{{ item.careProviderCode || 'N/A' }}</td>
+<td *ngIf="role === 'Doctor'">{{ item.isApproved || 'N/A' }}</td>
                                                 <td>{{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : 'N/A' }}
                                                 </td>
                                                 <td>

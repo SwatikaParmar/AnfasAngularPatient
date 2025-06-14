@@ -15,6 +15,7 @@ export class DoctorEducationComponent {
   totalItems!: number;
   materialList: any;
   rootUrl: any;
+role: string = '';
 
   constructor(
     private toastrService: ToastrService,
@@ -25,6 +26,9 @@ export class DoctorEducationComponent {
   ){ }
 
   ngOnInit(): void {
+    debugger
+      this.role = localStorage.getItem('role') || '';
+
     this.rootUrl = environment.rootPathUrl;
     this.route.queryParams.subscribe((params) => {
       this.page = +params['page'] || 0;
