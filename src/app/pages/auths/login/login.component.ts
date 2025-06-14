@@ -230,7 +230,7 @@ onLogin() {
   };
   payload[this.selectedField] = value;
 
-  // Send OTP
+  // Step 1: Send OTP
   this.authService.sendotp(payload).subscribe({
     next: (otpResponse) => {
       if (otpResponse.status === true || otpResponse.isSuccess === true) {
@@ -239,38 +239,48 @@ onLogin() {
         // Save phone number and MRN
         const phoneNumber = otpResponse.data?.phoneNumber || '';
         const mrn = otpResponse.data?.mrnNumber || '';
+
         localStorage.setItem('phoneNumber', phoneNumber);
         localStorage.setItem('mrnNumber', mrn);
-          localStorage.setItem('mrn', mrn);
+        localStorage.setItem('mrn', mrn);
+        localStorage.setItem('role', 'Patient');
 
-        this.router.navigateByUrl('/otp');
+        // Step 2: Fetch Patient Details
+        this.authService.patientDetails(payload).subscribe({
+          next: (patientResponse) => {
+            if (patientResponse.status === true || patientResponse.isSuccess === true) {
+              localStorage.setItem('loginRole', patientResponse.data.role);
+              localStorage.setItem('fname', patientResponse.data.firstName);
+              localStorage.setItem('lname', patientResponse.data.lastName);
+            this.spinner.hide();
+
+              // ✅ Navigate only after both calls are successful
+              this.router.navigateByUrl('/otp');
+            } else {
+              this.toasterService.error(patientResponse.message || 'Fetching patient details failed');
+            }
+            this.spinner.hide();
+          },
+          error: (err) => {
+            console.error('Patient details error:', err);
+            this.toasterService.error('Something went wrong while fetching patient details.');
+            this.spinner.hide();
+          }
+        });
+
       } else {
         this.toasterService.error(otpResponse.message || 'OTP sending failed');
+        this.spinner.hide();
       }
     },
     error: (err) => {
-      this.toasterService.error('Something went wrong while sending OTP.');
       console.error('OTP error:', err);
-    }
-  });
-
-  // Fetch patient details
-  this.authService.patientDetails(payload).subscribe({
-    next: (patientResponse) => {
-      if (patientResponse.status === true || patientResponse.isSuccess === true) {
-        this.loginForm.reset();
-      } else {
-        this.toasterService.error(patientResponse.message || 'Fetching patient details failed');
-      }
-      this.spinner.hide();
-    },
-    error: (err) => {
-      console.error('Patient details error:', err);
-      this.toasterService.error('Something went wrong while fetching patient details.');
+      this.toasterService.error('Something went wrong while sending OTP.');
       this.spinner.hide();
     }
   });
 }
+
 
 
 }
