@@ -93,36 +93,29 @@
 
                   <div class="table-container">
                     <div class="table-responsive">
-                      <table class="medication-table">
-                        <thead>
-                          <tr>
-                            <th>{{ 'NAME' | translate }}</th>
+                    <table class="medication-table">
+  <thead>
+    <tr>
+      <th>{{ 'NAME' | translate }}</th>
+      <th>{{ 'PHONE_NUMBER' | translate }}</th>
+      <th>{{ 'MRN_NO.' | translate }}</th>
+      <th>{{ 'ACTION' | translate }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="row-light" *ngFor="let item of patientList">
+      <td>{{ item.firstName }} {{ item.lastName }}</td>
+      <td>{{ item.phonenumber }}</td>
+      <td>{{ item.mrn }}</td>
+      <td>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" [checked]="item.isAssigned" />
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-                            <th>{{ 'PHONE_NUMBER' | translate }}</th>
-                            <th>{{ 'MRN_NO.' | translate }}</th>
-                            <th>{{ 'ACTION' | translate }}</th>
-
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr class="row-light">
-                            <td>KHADIJAH ABDULAZIZ</td>
-
-                            <td>
-                              2587412547
-                            </td>
-
-                            <td>36985214785</td>
-                            <td>
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="exampleCheck" />
-                              
-                              </div>
-                            </td>
-
-                          </tr>
-                        </tbody>
-                      </table>
                     </div>
                   </div>
                 </div>

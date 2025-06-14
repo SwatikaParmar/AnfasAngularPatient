@@ -41,6 +41,7 @@ export class DoctorPatientComponent {
 
     this.spinner.show();
     const CareProviderCode = localStorage.getItem('code')
+    debugger
     this.contentService.docPatient(CareProviderCode).subscribe(response => {
       if (response.isSuccess == true) {
           

@@ -40,6 +40,7 @@ export class DoctorEducationalmaterialComponent {
     this.contentService.geteducationalMaterialDetail(this.id).subscribe({
       next: (response) => {
         if (response.isSuccess) {
+          debugger
           this.detail = response.data.educationMaterialDetail;
           this.patientList = response.data.patients || [];
           this.totalItems = this.patientList.length;
