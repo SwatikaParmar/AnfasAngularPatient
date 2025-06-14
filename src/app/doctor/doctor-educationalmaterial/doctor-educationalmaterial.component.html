@@ -108,9 +108,15 @@
       <td>{{ item.phonenumber }}</td>
       <td>{{ item.mrn }}</td>
       <td>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" [checked]="item.isAssigned" />
-        </div>
+      <div class="form-check">
+  <input
+    class="form-check-input"
+    type="checkbox"
+    [checked]="item.isAssigned"
+    (change)="onAssignToggle($event, item)"
+  />
+</div>
+
       </td>
     </tr>
   </tbody>

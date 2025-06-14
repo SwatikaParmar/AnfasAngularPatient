@@ -14,30 +14,39 @@
                 <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 10px;">
                     <div class=" mx-auto">
                         <form class="px-4 mt-2 mb-3">
-                            <div class="row g-2">
-                                <div class="button-container mb-3">
-                                    <button class="tab-button active" onclick="showOnly(event, 'carrier')">{{
-                                        'LAB_REPORT' | translate }}</button>
-                                    <button (click)="getRis()" class="tab-button"
-                                        onclick="showOnly(event, 'shipper')">{{ 'RIS_REPORT' | translate }}</button>
-                                </div>
-                                <div id="carrier" class="tab-detail mb-3" *ngIf="pdfUrl">
-                                    <a [href]="pdfUrl" target="_blank" class="pdf-link">
-                                        <i class="fas fa-file-pdf"></i>{{ 'VIEW_LAB_REPORT' | translate }}
-                                    </a>
-                                </div>
+                         <div class="row g-2">
+  <div class="button-container mb-3">
+    <button
+      class="tab-button"
+      [class.active]="selectedTab === 'lab'"
+      (click)="selectedTab = 'lab'"
+    >
+      {{ 'LAB_REPORT' | translate }}
+    </button>
+    <button
+      class="tab-button"
+      [class.active]="selectedTab === 'ris'"
+      (click)="selectedTab = 'ris'; getRis()"
+    >
+      {{ 'RIS_REPORT' | translate }}
+    </button>
+  </div>
 
-                                <div id="shipper" class="tab-detail mb-3" style="display:none;">
+  <!-- LAB REPORT SECTION -->
+  <div *ngIf="selectedTab === 'lab' && pdfUrl" class="tab-detail mb-3">
+    <a [href]="pdfUrl" target="_blank" class="pdf-link">
+      <i class="fas fa-file-pdf"></i> {{ 'VIEW_LAB_REPORT' | translate }}
+    </a>
+  </div>
 
-                                    <a [href]="pdfUrls" target="_blank" class="pdf-link">
-                                        <i class="fas fa-file-pdf"></i>{{ 'VIEW_RIS_REPORT' | translate }}
-                                    </a>
+  <!-- RIS REPORT SECTION -->
+  <div *ngIf="selectedTab === 'ris' && pdfUrls" class="tab-detail mb-3">
+    <a [href]="pdfUrls" target="_blank" class="pdf-link">
+      <i class="fas fa-file-pdf"></i> {{ 'VIEW_RIS_REPORT' | translate }}
+    </a>
+  </div>
+</div>
 
-                                </div>
-
-
-
-                            </div>
                         </form>
                     </div>
                 </div>

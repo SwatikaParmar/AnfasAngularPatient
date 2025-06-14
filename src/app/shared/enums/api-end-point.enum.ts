@@ -41,7 +41,7 @@ export enum ApiEndPoint {
     sendPhoneOtp = "api/User/SendPhoneOtp",
      verifyPhone = "api/User/VerifyPhone",
      requestDetail = "api/User/GetRequestDetail",
-
+     patientAssign = "api/User/AssignMaterialToPatient",
     
 
     // Doctor Login

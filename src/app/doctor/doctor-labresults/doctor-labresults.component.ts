@@ -18,6 +18,7 @@ export class DoctorLabresultsComponent {
   pdfUrl!: string;
     pdfUrls!: string;
   risData: any;
+selectedTab: 'lab' | 'ris' = 'lab'; // Default tab
 
 
 

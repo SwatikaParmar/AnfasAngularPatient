@@ -64,6 +64,36 @@ export class DoctorEducationalmaterialComponent {
   onPageChange(event: number): void {
     this.page = event;
   }
+
+onAssignToggle(event: Event, item: any): void {
+  const target = event.target as HTMLInputElement;
+  const status = target.checked;
+
+  const payload = {
+    materialId: Number(this.id), // Ensure materialId is a number
+    mrn: item.mrn,
+    status: status // true for assign, false for unassign
+  };
+
+  this.contentService.patientAssignd(payload).subscribe({
+    next: (response: { isSuccess: boolean; messages?: string }) => {
+      if (response.isSuccess) {
+        this.toastrService.success(status ? 'Assigned successfully' : 'Unassigned successfully');
+        item.isAssigned = status; // Update checkbox state locally
+      } else {
+        this.toastrService.error(response.messages || 'Assignment failed');
+        item.isAssigned = !status; // Revert checkbox UI if API fails
+      }
+    },
+    error: (err) => {
+      console.error('Assignment API error:', err);
+      this.toastrService.error('Something went wrong during assignment');
+      item.isAssigned = !status; // Revert checkbox UI on error
+    }
+  });
+}
+
+
 }
 
 

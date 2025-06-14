@@ -28,6 +28,9 @@ export class ContentService {
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.consentForm + '?mrn=' + mrn.mrn + '&language=' + mrn.language)
   }
 
+  patientAssignd(data:any){
+return this.http.post<any>(environment.apiUrl + ApiEndPoint.patientAssign,data)
+  }
 
   getVisit(data: any) {
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.visitList + '?mrn=' + data + '&forPatient=true' + '&forDoctor=false')
