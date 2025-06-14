@@ -57,16 +57,18 @@
                       </div> -->
           <div class="consent-button-top mt-3 pl-5" *ngIf="detail.isConsentSinged == true"
             (click)="navigateToPreview()">
-            <a style="color: blue; font-weight: 400;">{{ 'REVIEW_YOUR_CONSENT_FORM' | translate }}</a>
+            <a style="color: blue; font-weight: 400; text-decoration: underline !important;">{{ 'REVIEW_YOUR_CONSENT_FORM' | translate }}</a>
           </div>
 
-          <div class="consent-button-top mt-3 pb-10 pl-5" *ngIf="detail.isConsentSinged == false" (click)="navigateToPreview()">
-            <a  style="color: red; font-weight: 400;">
-              {{
-              'YOU_HAVE_NOT_YET_SIGNED_THE_CONSENT_FORM_TO_PROCEED_WITH_FUTURE_BOOKINGS_PLEASE_SIGN_THE_CONSENT_FORM_NOW'
-              | translate }}
-            </a>
-          </div>
+         <div class="consent-button-top mt-3 pb-10 pl-5" *ngIf="detail.isConsentSinged == false" (click)="navigateToPreview()">
+  <a class="consent-link">
+    {{
+      'YOU_HAVE_NOT_YET_SIGNED_THE_CONSENT_FORM_TO_PROCEED_WITH_FUTURE_BOOKINGS_PLEASE_SIGN_THE_CONSENT_FORM_NOW'
+      | translate
+    }}
+  </a>
+</div>
+
 
 
 

@@ -108,6 +108,46 @@ export class PatientConsentComponent {
             margin: 0;
         }
 
+               .bg {
+            width: 100%;
+            height: auto;
+            display: block;
+            overflow: hidden;
+            margin-bottom: 7%;
+        }
+
+        .backgroung {
+            width: 50%;
+            height: auto;
+            float: left;
+            position: relative;
+        }
+
+        .backgroung img {
+            width: 100%!important;
+            height: auto;
+        }
+
+        .king {
+            position: absolute;
+            top: 44%;
+            left: 32%;
+            /* Adjust horizontal position */
+            transform: translate(-50%, -50%);
+            /* Center the text */
+            color: white;
+            /* Change text color for better visibility */
+            text-align: center;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .hr {
+            font-size: 23px!important;
+            padding-left: 30px;
+            color: #F9BC34;
+        }
 
 
         .toggle-menu {

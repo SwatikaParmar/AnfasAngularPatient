@@ -31,3 +31,16 @@
     align-items: center;
   }
   
+  .consent-link {
+  color: red;
+  font-weight: 400;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.consent-link:hover {
+  text-decoration: underline!important;
+}
+
+
+
