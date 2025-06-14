@@ -57,7 +57,7 @@
                       </div> -->
           <div class="consent-button-top mt-3 pl-5" *ngIf="detail.isConsentSinged == true"
             (click)="navigateToPreview()">
-            <a style="color: blue; font-weight: 400; text-decoration: underline !important;">{{ 'REVIEW_YOUR_CONSENT_FORM' | translate }}</a>
+            <a style="color: blue; font-weight: 400;" class="consent-lin">{{ 'REVIEW_YOUR_CONSENT_FORM' | translate }}</a>
           </div>
 
          <div class="consent-button-top mt-3 pb-10 pl-5" *ngIf="detail.isConsentSinged == false" (click)="navigateToPreview()">
