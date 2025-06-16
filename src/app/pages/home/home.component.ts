@@ -99,12 +99,12 @@ export class HomeComponent {
           this.historyListOriginal = response.data;
           this.historyList = this.historyListOriginal.length > 0 ? [this.historyListOriginal[0]] : [];
         } else {
-          this.toastrService.error('Failed to fetch  list.');
+       //   this.toastrService.error('Failed to fetch  list.');
           console.error('API returned failure:', response);
         }
       },
       error => {
-        this.toastrService.error('Error fetching  list.');
+      //  this.toastrService.error('Error fetching  list.');
         console.error('Error fetching  list:', error);
       }
     );

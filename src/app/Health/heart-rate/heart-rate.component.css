@@ -54,6 +54,18 @@
     font-size: 18px;
     cursor: pointer;
   }
+
+      .status-pending {
+  color: #994747;
+}
+
+.status-verified {
+  color: #0cdd3d;
+}
+
+.status-rejected {
+  color: #e4061d;
+}
   
 
 

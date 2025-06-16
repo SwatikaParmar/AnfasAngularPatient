@@ -21,6 +21,7 @@ export class BloodPressureComponent {
   form!: FormGroup;
   showModal: boolean = false; // controls modal visibility
   isLTR = true;
+  bloodID: any;
   constructor(
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService,
@@ -95,6 +96,11 @@ export class BloodPressureComponent {
     this.showModal = true;
   }
 
+    openModals(id:any): void {
+      this.bloodID = id;
+    this.showModal = true;
+  }
+
   closeModal(): void {
     this.showModal = false;
   }
@@ -108,12 +114,12 @@ export class BloodPressureComponent {
     }
 
     const payload = {
-      id: 0,
-      mrn: localStorage.getItem('mrn'),
-      systolic: this.form.value.systolic,
-      diastolic: this.form.value.diastolic,
-      notes: this.form.value.notes
-    };
+  id: this.bloodID ? this.bloodID : 0,
+  mrn: localStorage.getItem('mrn'),
+  systolic: this.form.value.systolic,
+  diastolic: this.form.value.diastolic,
+  notes: this.form.value.notes
+};
 
     this.spinner.show();
 

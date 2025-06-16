@@ -1,119 +1,133 @@
 <div class="dashboard-outer">
 
-    <section>
-        <div class="content-body">
-            <div class="container-fluid">
-              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 ml-1"
-              [ngClass]="{'sm:flex-row': isLTR, 'sm:flex-row-reverse': !isLTR}">
-           
-           <!-- Left Group: Back Button + Title -->
-           <div class="flex items-center mb-2 sm:mb-0"
-                [ngClass]="{'flex-row': isLTR, 'flex-row-reverse': !isLTR}">
-             
-             <!-- Back Button -->
-             <button class="flex items-center justify-center w-8 h-8 rounded-full text-white"
-                     style="background-color: #726641;" (click)="backClicked()">
-               <i class="fas fa-arrow-left text-xs text-center"></i>
-             </button>
-         
-             <!-- Title -->
-             <h1 class="text-xl sm:text-2xl font-semibold mx-3 mt-1 text-[#726641]">
+  <section>
+    <div class="content-body">
+      <div class="container-fluid">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 ml-1"
+          [ngClass]="{'sm:flex-row': isLTR, 'sm:flex-row-reverse': !isLTR}">
+
+          <!-- Left Group: Back Button + Title -->
+          <div class="flex items-center mb-2 sm:mb-0" [ngClass]="{'flex-row': isLTR, 'flex-row-reverse': !isLTR}">
+
+            <!-- Back Button -->
+            <button class="flex items-center justify-center w-8 h-8 rounded-full text-white"
+              style="background-color: #726641;" (click)="backClicked()">
+              <i class="fas fa-arrow-left text-xs text-center"></i>
+            </button>
+
+            <!-- Title -->
+            <h1 class="text-xl sm:text-2xl font-semibold mx-3 mt-1 text-[#726641]">
               {{ 'BLOOD_PRESSURE' | translate }}
-             </h1>
-           </div>
-         
-           <!-- Right: Book Appointment Button -->
-           <button (click)="openModal()" 
-                   class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full w-full sm:w-auto">
-             + {{ 'BLOOD_PRESSURE' | translate }}
-           </button>
-         
-         </div>
-         
-                  
-                <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
-                    <div class="custom-container  mx-auto p-3">
-                        <div class="container">
-                            <div class="table-container">
-                              <div class="table-responsive">
-                                <table class="blood-pressure-table">
-                                  <thead>
-                                    <tr>
-                                      <th>{{ 'MRN' | translate }}</th>
-                                      <th>{{ 'SYSTOLIC' | translate }}</th>
-                                      <th>{{ 'DIASTOLIC' | translate }}</th>
-                                      <th>{{ 'NOTES' | translate }}</th>
-                                      <th>{{ 'DATE' | translate }}</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr class="row-light" *ngFor="let item of bloodPressureList | paginate : {
+            </h1>
+          </div>
+
+          <!-- Right: Book Appointment Button -->
+          <button (click)="openModal()"
+            class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full w-full sm:w-auto">
+            + {{ 'BLOOD_PRESSURE' | translate }}
+          </button>
+
+        </div>
+
+
+        <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
+          <div class="custom-container  mx-auto p-3">
+            <div class="container">
+              <div class="table-container">
+                <div class="table-responsive">
+                  <table class="blood-pressure-table">
+                    <thead>
+                      <tr>
+                        <th>{{ 'MRN' | translate }}</th>
+                        <th>{{ 'SYSTOLIC' | translate }}</th>
+                        <th>{{ 'DIASTOLIC' | translate }}</th>
+                        <th>{{ 'NOTES' | translate }}</th>
+                        <th>{{ 'DATE' | translate }}</th>
+                        <th>{{ 'STATUS' | translate}}</th>
+                        <th>{{'ACTION' | translate}}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="row-light" *ngFor="let item of bloodPressureList | paginate : {
                                         itemsPerPage: 5,
                                         currentPage: page,
                                         totalItems: totalItems,
                                         id: '1'
                                       }">
-                                      <td>{{ item.mrn || 'N/A' }}</td>
-                                      <td>{{ item.systolic || 'N/A' }}</td>
-                                      <td>{{ item.diastolic || 'N/A' }}</td>
-                                      <td>{{ item.notes || 'N/A' }}</td>
-                                      <td>{{ item.createdAt ? (item.createdAt | date: 'dd-MM-yyyy') : 'N/A' }}</td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </div>
-                              
-                              <div class="no-data text-center" *ngIf="bloodPressureList && bloodPressureList.length === 0">
-                                <img src="assets/images/ffffrq-removebg-preview.png" style="width: 50%; margin: auto; padding: 50px;">
-                              </div>
-                              
+                        <td>{{ item.mrn || 'N/A' }}</td>
+                        <td>{{ item.systolic || 'N/A' }}</td>
+                        <td>{{ item.diastolic || 'N/A' }}</td>
+                        <td>{{ item.notes || 'N/A' }}</td>
+                        <td>{{ item.createdAt ? (item.createdAt | date: 'dd-MM-yyyy') : 'N/A' }}</td>
+                        <td [ngClass]="{
+  'status-pending': item.status === 'Pending',
+  'status-verified': item.status === 'Verified',
+  'status-rejected': item.status === 'Rejected'
+}" >
+                          {{ item.status }}
+                        </td>
+                        <td (click)="openModals(item.id)">
+                          <i class="fa fa-pencil" style="cursor: pointer;"></i>
+                        </td>
 
-                                <div class="pagination-container pt-3 pb-3">
-                                    <pagination-controls (pageChange)="onPageChange($event)" id="1"
-                                        class="paginate-doctor-list" queryParamsHandling="merge"></pagination-controls>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
+
+                <div class="no-data text-center" *ngIf="bloodPressureList && bloodPressureList.length === 0">
+                  <img src="assets/images/ffffrq-removebg-preview.png" style="width: 50%; margin: auto; padding: 50px;">
+                </div>
+
+
+                <div class="pagination-container pt-3 pb-3">
+                  <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
+                    queryParamsHandling="merge"></pagination-controls>
+                </div>
+              </div>
             </div>
+          </div>
+
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 </div>
 
 <!-- Modal -->
-<div *ngIf="showModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50" (click)="closeModal()">
-  <div class="popup-container bg-white p-6 rounded shadow w-full max-w-[95%] sm:max-w-[90%] md:max-w-[460px]" (click)="$event.stopPropagation()">
-      <!-- Modal Header -->
-      <div class="modal-header flex items-center justify-between mb-4">
-          <div class="flex-1 text-center">
-            <h5 class="modal-title text-lg sm:text-xl font-semibold">{{ 'BLOOD_PRESSURE' | translate }}</h5>
-          </div>
-        
-          <button
-            type="button"
-            class="btn-close text-xl ml-auto"
-            aria-label="Close"
-            (click)="closeModal()"
-          ></button>
+<div *ngIf="showModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+  (click)="closeModal()">
+  <div class="popup-container bg-white p-6 rounded shadow w-full max-w-[95%] sm:max-w-[90%] md:max-w-[460px]"
+    (click)="$event.stopPropagation()">
+    <!-- Modal Header -->
+    <div class="modal-header flex items-center justify-between mb-4">
+      <div class="flex-1 text-center">
+        <h5 class="modal-title text-lg sm:text-xl font-semibold">{{ 'BLOOD_PRESSURE' | translate }}</h5>
       </div>
 
-      <!-- Modal Body -->
-      <div class="modal-body">
-        <form [formGroup]="form" (ngSubmit)="addRecord()">
-          <div class="mb-4">
-            <label for="systolic" class="block text-sm font-semibold">{{ 'SYSTOLIC' | translate }}({{ 'MMGG' | translate }})</label>
-            <input type="text" id="systolic" placeholder="{{ 'ENTER_SYSTOLIC_VALUE' | translate }}" formControlName="systolic" class="w-full px-4 py-2 border border-gray-300 rounded-md mt-2">
-          </div>
+      <button type="button" class="btn-close text-xl ml-auto" aria-label="Close" (click)="closeModal()"></button>
+    </div>
 
-          <div class="mb-4">
-            <label for="diastolic" class="block text-sm font-semibold">{{ 'DIASTOLIC' | translate }}({{ 'MMGG' | translate }})</label>
-            <input type="text" id="diastolic" placeholder="{{ 'ENTER_DIASTOLIC_VALUE' | translate }}" formControlName="diastolic" class="w-full px-4 py-2 border border-gray-300 rounded-md mt-2">
-          </div>
+    <!-- Modal Body -->
+    <div class="modal-body">
+      <form [formGroup]="form" (ngSubmit)="addRecord()">
+        <div class="mb-4">
+          <label for="systolic" class="block text-sm font-semibold">{{ 'SYSTOLIC' | translate }}({{ 'MMGG' | translate
+            }})</label>
+          <input type="text" id="systolic" placeholder="{{ 'ENTER_SYSTOLIC_VALUE' | translate }}"
+            formControlName="systolic" class="w-full px-4 py-2 border border-gray-300 rounded-md mt-2">
+        </div>
 
-          <button type="submit" class="end bg-blue-500 text-white px-4 py-2 rounded-full mt-4">{{ 'SAVE_BLOOD_PRESSURE' | translate }}</button>
-        </form>
-      </div>
+        <div class="mb-4">
+          <label for="diastolic" class="block text-sm font-semibold">{{ 'DIASTOLIC' | translate }}({{ 'MMGG' | translate
+            }})</label>
+          <input type="text" id="diastolic" placeholder="{{ 'ENTER_DIASTOLIC_VALUE' | translate }}"
+            formControlName="diastolic" class="w-full px-4 py-2 border border-gray-300 rounded-md mt-2">
+        </div>
+
+        <button type="submit" class="end bg-blue-500 text-white px-4 py-2 rounded-full mt-4">{{ 'SAVE_BLOOD_PRESSURE' |
+          translate }}</button>
+      </form>
+    </div>
   </div>
 </div>
