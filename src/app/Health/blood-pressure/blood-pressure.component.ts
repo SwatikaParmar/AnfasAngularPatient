@@ -96,6 +96,7 @@ closeImagePreview(): void {
 
   backClicked() {
     this._location.back();
+    
   }
   
   initForm(): void {
