@@ -153,6 +153,20 @@ window.onclick = function(event) {
       document.getElementById(pdfId).style.display = 'block';
     }
   </script>
+<script>
+  function showPreview(event) {
+    const file = event.target.files[0];
+    const preview = document.getElementById('previewImage');
+    const content = document.querySelector('.upload-content');
+
+    if (file) {
+      preview.src = URL.createObjectURL(file);
+      preview.style.display = 'block';
+      content.style.display = 'none';
+    }
+  }
+</script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <app-root></app-root>

@@ -106,6 +106,16 @@
                     <button type="button" class="btn-close ml-auto" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <label class="upload-box mb-2" for="fileInput">
+                    <div class="upload-content">
+                        <div class="upload-icon">📁</div>
+                        <div class="upload-label">Click to upload image</div>
+                    </div>
+                    <input type="file" id="fileInput" accept="image/*" onchange="showPreview(event)">
+                    <img id="previewImage" class="preview-img" alt="Image Preview">
+                </label>
+
+
                     <div class="mb-3">
                         <label for="beatsPerMinute" class="form-label">{{ 'BPM' | translate }} ({{ 'BEATS_PER_MINUTE' |
                             translate }})</label>
