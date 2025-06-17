@@ -13,6 +13,9 @@
   "FOUNDER": "Founder",
   "TERMS_AND_CONDITIONS": "Terms and Conditions",
   "PRIVACY_POLICY": "Privacy Policy",
+  "PATIENT_EDUCATION" : "Patient Education",
+  "Requested_Date" : "Requested Date",
+  "Uploaded_Date" : "Uploaded Date",
   "TOTAL_DOCTORS": "Total Doctors",
   "TOTAL_APPOINTMENTS": "Total Appointments",
   "SCHEDULED_APPOINTMENTS": "Scheduled Appointments",
@@ -159,7 +162,7 @@
   "FEEDBACK": "Feedback",
   "FEEDBACK_LIST": "Feedback List",
   "COMPLAINT_DETAILS": "Complaint details",
-  "COMPLAINT_TYPENAME": "Complaint TypeName",
+  "COMPLAINT_TYPE": "Complaint Type",
   "SIGNATURE": " Signature",
   "UPLOAD": " Upload",
   "SELECT_BANNER_TYPE": " Select Banner Type",
@@ -297,7 +300,6 @@
   "INTRUCTIONS": "Instructions",
   "REQUEST_LIST": "Request List",
   "USER_NAME": "User Name",
-  "REQUEST_TYPE_NAME": "Request Type Name",
   "LAST_MESSAGE": "Last Message",
   "LAST_MESSAGE_TIME": "Last Message Time",
   "WRITE_A_REPLY": "Write a reply",
@@ -395,5 +397,6 @@
   "DIAGNOSES": "Diagnoses",
   "CHRONIC_DISEASE": "Chronic Disease",
   "VIEW_REPORT_&_DIAGNOSES":"View Report & Diagnoses",
-  "PROBLEM":"Problem"
+  "PROBLEM":"Problem",
+    "COMPLAINTS_&_SUGGESTIONS": "Complaints & Suggestions"
 }

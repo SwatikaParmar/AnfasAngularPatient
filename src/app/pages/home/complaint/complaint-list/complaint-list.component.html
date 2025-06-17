@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="flex items-center justify-between mb-2 ml-1">
           <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">
-            {{ 'COMPLAINT_LIST' | translate }}
+          {{ 'COMPLAINTS_&_SUGGESTIONS' | translate }}
           </h1>
 
           <button class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full sm:w-auto"
@@ -24,7 +24,7 @@
                     <thead>
                       <tr>
                         <th>{{ 'PATIENT_NAME' | translate }}</th>
-                        <th>{{ 'COMPLAINT_TYPE_NAME' | translate }}</th>
+                        <th>{{ 'COMPLAINT_TYPE' | translate }}</th>
                         <th>{{ 'DATE' | translate }}</th>
                         <th>{{ 'STATUS' | translate }}</th>
                         <th>{{ 'ACTION' | translate }}</th>
@@ -39,7 +39,7 @@
     }" (click)="goToComplaintChat(item)">
                         <td>{{ item.patientName || 'N/A' }}</td>
                         <td>{{ item.complaintTypeName || 'N/A' }}</td>
-                        <td>{{ item.createdAt || 'N/A' }}</td>
+                        <td>{{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : 'N/A' }}</td>
                         <td [ngStyle]="{ 'color': getStatusColor(item.status) }">
                           {{ item.status || 'N/A' }}
                         </td>

@@ -160,7 +160,7 @@
   "FEEDBACK": "تعليق",
   "FEEDBACK_LIST": "قائمة التعليقات",
   "COMPLAINT_DETAILS": "تفاصيل الشكوى",
-  "COMPLAINT_TYPENAME": "اسم نوع الشكوى",
+  "COMPLAINT_TYPE": "نوع الشكوى",
   "SIGNATURE": " إمضاء",
   "UPLOAD": " رفع",
   "SELECT_BANNER_TYPE": "اختر نوع الشعار",
@@ -269,6 +269,10 @@
   "PATIENT_SIGN_IN": "تسجيل دخول المريض",
   "EN": "الإنجليزية",
   "AR": "عربي",
+    "PATIENT_EDUCATION" : "تثقيف المريض",
+"Requested_Date": "تاريخ الطلب",
+"Uploaded_Date": "تاريخ التحميل",
+
   "SELECT": "يختار",
   "MR_NUMBER": "رقم السيد",
   "PHONE_NUMBER": "رقم التليفون",
@@ -298,7 +302,6 @@
   "INTRUCTIONS": "تعليمات",
   "REQUEST_LIST": "قائمة الطلبات",
   "USER_NAME": "اسم المستخدم",
-  "REQUEST_TYPE_NAME": "اسم نوع الطلب",
   "LAST_MESSAGE": "الرسالة الأخيرة",
   "LAST_MESSAGE_TIME": "وقت آخر رسالة",
   "WRITE_A_REPLY": "اكتب ردا",
@@ -396,5 +399,6 @@
   "DIAGNOSES": "التشخيصات",
   "CHRONIC_DISEASE": "مرض مزمن",
   "VIEW_REPORT_&_DIAGNOSES": "عرض التقرير والتشخيص",
-  "PROBLEM": "مشكلة"
+  "PROBLEM": "مشكلة",
+   "COMPLAINTS_&_SUGGESTIONS":"الشكاوى والاقتراحات"
 }
