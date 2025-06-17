@@ -52,7 +52,7 @@
                       <div class="ml-2">
                         <div class="card-title">{{ item.typeName }}: {{ item.value }}</div>
                         <div class="card-time">
-                          {{ item.createdAt | date: 'fullDate' }} {{ item.createdAt | date: 'shortTime' }}
+                          {{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : 'N/A' }}{{ item.createdAt | date: 'shortTime' }}
                         </div>
                         <div class="view-link" *ngIf="item.image" (click)="openPopup(item.image)"
                           style="cursor: pointer;">
