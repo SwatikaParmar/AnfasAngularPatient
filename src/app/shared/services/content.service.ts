@@ -32,6 +32,16 @@ export class ContentService {
 return this.http.post<any>(environment.apiUrl + ApiEndPoint.patientAssign,data)
   }
 
+ uploadVitalPicture(file: File, id: number, type: string): Observable<any> {
+  const formData = new FormData();
+  formData.append('File', file);       // "File" must match the backend field name
+  formData.append('Id', id.toString()); 
+  formData.append('Type', type);        // e.g., 'BloodPressure', 'HeartRate', etc.
+
+  return this.http.post('/api/User/UploadVitalPicture', formData);
+}
+
+
   getVisit(data: any) {
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.visitList + '?mrn=' + data + '&forPatient=true' + '&forDoctor=false')
   }
