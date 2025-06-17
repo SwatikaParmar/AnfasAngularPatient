@@ -21,7 +21,7 @@
                   <div class=" items-center space-x-3">
                     <!-- <img src="/assets/images/icon01.png" alt="User" class="w-10 h-10 rounded-full" /> -->
                     <div>
-                      <h2 class="text-lg font-semibold" style="text-align: center;">{{receiverName}}</h2>
+                      <h2 class="text-lg font-semibold" style="text-align: center;">{{receiverName}} {{lastName}}</h2>
 
                     </div>
                   </div>
@@ -34,13 +34,13 @@
                   <div class="relative z-10">
                     <ng-container *ngFor="let chat of chatHistory">
                       <!-- Message from Receiver -->
-                      <div *ngIf="chat.senderUserName === receiverId" class="flex flex-col items-start">
+                      <div *ngIf="chat.senderUserName === senderId" class="flex flex-col items-start">
                         <div class="bg-white text-black px-4 py-2 rounded-lg shadow">{{ chat.messageContent }}</div>
                         <span class="text-xs text-gray-500 mt-1">{{ chat.timestamp }}</span>
                       </div>
 
                       <!-- Message from Sender -->
-                      <div *ngIf="chat.senderUserName === senderId" class="flex flex-col items-end">
+                      <div *ngIf="chat.senderUserName ===  receiverId" class="flex flex-col items-end">
                         <div class="bg-[#77734E] text-white px-4 py-2 rounded-lg shadow">{{ chat.messageContent }}</div>
                         <span class="text-xs text-gray-500 mt-1">{{ chat.timestamp }}</span>
                       </div>
