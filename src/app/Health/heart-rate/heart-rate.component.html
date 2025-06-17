@@ -17,7 +17,7 @@
 
                     <button
                         class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full w-full sm:w-auto mt-2 sm:mt-0"
-                        data-bs-toggle="modal" data-bs-target="#heartRateModal">
+                       (click)="openModal()">
                         + {{ 'HEART_RATE' | translate }}
                     </button>
                 </div>
@@ -32,6 +32,7 @@
                                     <table class="min-w-full table-auto">
                                         <thead>
                                             <tr>
+                                                  <th class="px-4 py-2 text-sm md:text-base">{{'IMAGE' | translate}}</th>
                                                 <th class="px-4 py-2 text-sm md:text-base">{{ 'MRN' | translate }}</th>
                                                 <th class="px-4 py-2 text-sm md:text-base">{{ 'BEATS_PER_MINUTE' |
                                                     translate }}</th>
@@ -52,6 +53,26 @@
                                                                             totalItems: totalItems,
                                                                             id: '1'
                                                                           }">
+                                                                                                          <td>
+    <a style="color: blue; text-decoration: underline;" *ngIf="item.image; else noImage"
+      (click)="openImagePreview(rootUrl + item.image)">View</a>
+  <!-- <img *ngIf="item.image; else noImage"
+       [src]="rootUrl + item.image"
+       alt="Image"
+       (click)="openImagePreview(rootUrl + item.image)"
+       class="w-12 h-12 object-cover rounded border border-gray-300 cursor-pointer hover:opacity-80" /> -->
+  <ng-template #noImage>N/A</ng-template>
+  <!-- Image Preview Modal -->
+<div *ngIf="previewImageUrl" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+  <div class="relative bg-white p-4 rounded-lg shadow-lg">
+    <button (click)="closeImagePreview()" class="absolute top-2 right-2 text-gray-700 text-xl">&times;</button>
+    <img [src]="previewImageUrl"
+         alt="Preview"
+         class="max-w-[90vw] max-h-[80vh] rounded border border-gray-300" />
+  </div>
+</div>
+
+</td>             
                                                 <td class="px-4 py-2 text-sm md:text-base">{{item.mrn || 'N/A' }}</td>
                                                 <td class="px-4 py-2 text-sm md:text-base">{{item.beatsPerMinute ||
                                                     'N/A' }}</td>
@@ -65,7 +86,7 @@
 }" >
                           {{ item.status }}
                         </td>
-                        <td >
+                      <td  (click)="openModals(item.id)">
                           <i class="fa fa-pencil" style="cursor: pointer;"></i>
                         </td>
                                             </tr>
@@ -103,14 +124,43 @@
                         <h5 class="modal-title text-xl font-semibold" id="bloodSugarModalLabel"> {{ 'HEART_RATE' |
                             translate }}</h5>
                     </div>
-                    <button type="button" class="btn-close ml-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close ml-auto" data-bs-dismiss="modal" aria-label="Close"
+                     (click)="closeModal()"></button>
                 </div>
                 <div class="modal-body">
                      <div class="esc mb-3">
           <label class="block text-sm font-semibold mb-3">Upload file</label>
-          <input type="file" id="fileInput" accept="image/*" class="end-end block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4
-                file:rounded-full file:border-0 file:text-sm file:font-semibold
-                file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+          <input
+            type="file"
+            id="fileInput"
+              #fileInputRef
+
+            accept="image/*"
+            (change)="onFileChange($event)"
+            class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4
+                   file:rounded-full file:border-0 file:text-sm file:font-semibold
+                   file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+          <a
+            *ngIf="imagePreview"
+            (click)="openPreview()"
+            class="text-blue-600 underline cursor-pointer text-sm mt-1 inline-block">
+            Preview Image
+          </a>
+        </div>
+
+        <!-- Image Preview Modal -->
+        <div
+          *ngIf="showPopup"
+          class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+          <div class="bg-white p-4 rounded shadow-lg relative">
+            <button
+              (click)="closePreview()"
+              class="absolute top-2 right-2 text-xl text-gray-600">&times;</button>
+            <img
+              [src]="imagePreview"
+              alt="Full Preview"
+              class="max-w-[90vw] max-h-[80vh] rounded" />
+          </div>
         </div>
 
 

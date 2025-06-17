@@ -19,10 +19,12 @@
                     </div>
 
                     <!-- Action Button -->
-                    <button class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full w-full sm:w-auto"
-                        data-bs-toggle="modal" data-bs-target="#bloodSugarModal">
-                        + {{ 'BLOOD_SUGAR' | translate }}
-                    </button>
+                <!-- Trigger Button -->
+<button
+  class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full w-full sm:w-auto"
+  (click)="openModal()">
+  + {{ 'BLOOD_SUGAR' | translate }}
+</button>
                 </div>
 
 
@@ -36,6 +38,8 @@
                                     <table class="min-w-full table-auto">
                                         <thead>
                                             <tr>
+                                                                        <th class="px-4 py-2 text-sm md:text-base">{{'IMAGE' | translate}}</th>
+
                                                 <th class="px-4 py-2 text-sm md:text-base">{{ 'MRN' | translate }}</th>
                                                 <th class="px-4 py-2 text-sm md:text-base">{{ 'TYPE_NAME' | translate }}
                                                 </th>
@@ -56,6 +60,26 @@
                                                                             totalItems: totalItems,
                                                                             id: '1'
                                                                           }">
+                                                                            <td>
+    <a style="color: blue; text-decoration: underline;" *ngIf="item.image; else noImage"
+      (click)="openImagePreview(rootUrl + item.image)">View</a>
+  <!-- <img *ngIf="item.image; else noImage"
+       [src]="rootUrl + item.image"
+       alt="Image"
+       (click)="openImagePreview(rootUrl + item.image)"
+       class="w-12 h-12 object-cover rounded border border-gray-300 cursor-pointer hover:opacity-80" /> -->
+  <ng-template #noImage>N/A</ng-template>
+  <!-- Image Preview Modal -->
+<div *ngIf="previewImageUrl" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+  <div class="relative bg-white p-4 rounded-lg shadow-lg">
+    <button (click)="closeImagePreview()" class="absolute top-2 right-2 text-gray-700 text-xl">&times;</button>
+    <img [src]="previewImageUrl"
+         alt="Preview"
+         class="max-w-[90vw] max-h-[80vh] rounded border border-gray-300" />
+  </div>
+</div>
+
+</td>
                                                 <td class="px-4 py-2 text-sm md:text-base">{{item.mrn || 'N/A' }}</td>
                                                 <td class="px-4 py-2 text-sm md:text-base">{{item.typeName || 'N/A' }}
                                                 </td>
@@ -71,9 +95,9 @@
 }">
                                                     {{ item.status }}
                                                 </td>
-                                                <td>
-                                                    <i class="fa fa-pencil" style="cursor: pointer;"></i>
-                                                </td>
+                                                  <td  (click)="openModals(item.id)">
+                          <i class="fa fa-pencil" style="cursor: pointer;"></i>
+                        </td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -102,56 +126,108 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="bloodSugarModal" #bloodSugarModal tabindex="-1" aria-labelledby="bloodSugarModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <form [formGroup]="form" (ngSubmit)="addRecord()" class="modal-content" style="border-radius: 25px;">
-            <div class="modal-header flex items-center justify-between">
-                <div class="flex-1 text-center">
-                    <h5 class="modal-title text-xl font-semibold" id="bloodSugarModalLabel">{{ 'BLOOD_SUGAR' | translate
-                        }}</h5>
-                </div>
-                <button type="button" class="btn-close ml-auto" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+<div
+  class="modal fade"
+  id="bloodSugarModal"
+  #bloodSugarModal
+  tabindex="-1"
+  aria-labelledby="bloodSugarModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <form
+      [formGroup]="form"
+      (ngSubmit)="addRecord()"
+      class="modal-content p-4"
+      style="border-radius: 25px;">
+      
+      <div class="modal-header flex items-center justify-between">
+        <div class="flex-1 text-center">
+          <h5 class="modal-title text-xl font-semibold" id="bloodSugarModalLabel">
+            {{ 'BLOOD_SUGAR' | translate }}
+          </h5>
+        </div>
+        <button
+          type="button"
+          class="btn-close ml-auto"
+          (click)="closeModal()"
+          aria-label="Close"></button>
+      </div>
 
-            <div class="modal-body">
+      <div class="modal-body">
+        <!-- File Upload -->
+        <div class="esc mb-4">
+          <label class="block text-sm font-semibold mb-2">Upload file</label>
+          <input
+            type="file"
+            id="fileInput"
+              #fileInputRef
 
-
-            <div class="esc mb-3">
-          <label class="block text-sm font-semibold mb-3">Upload file</label>
-          <input type="file" id="fileInput" accept="image/*" class="end-end block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4
-                file:rounded-full file:border-0 file:text-sm file:font-semibold
-                file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+            accept="image/*"
+            (change)="onFileChange($event)"
+            class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4
+                   file:rounded-full file:border-0 file:text-sm file:font-semibold
+                   file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+          <a
+            *ngIf="imagePreview"
+            (click)="openPreview()"
+            class="text-blue-600 underline cursor-pointer text-sm mt-1 inline-block">
+            Preview Image
+          </a>
         </div>
 
+        <!-- Image Preview Modal -->
+        <div
+          *ngIf="showPopup"
+          class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+          <div class="bg-white p-4 rounded shadow-lg relative">
+            <button
+              (click)="closePreview()"
+              class="absolute top-2 right-2 text-xl text-gray-600">&times;</button>
+            <img
+              [src]="imagePreview"
+              alt="Full Preview"
+              class="max-w-[90vw] max-h-[80vh] rounded" />
+          </div>
+        </div>
 
+        <!-- Radio Buttons -->
+        <div class="flex gap-4 mb-4">
+          <label class="flex items-center space-x-2 cursor-pointer">
+            <input
+              type="radio"
+              formControlName="type"
+              [value]="1"
+              class="accent-yellow-700" />
+            <span class="text-sm">{{ 'FASTING' | translate }}</span>
+          </label>
+          <label class="flex items-center space-x-2 cursor-pointer">
+            <input
+              type="radio"
+              formControlName="type"
+              [value]="2"
+              class="accent-yellow-700" />
+            <span class="text-sm">{{ 'POST_MEAL' | translate }}</span>
+          </label>
+        </div>
 
+        <!-- Sugar Input -->
+        <label class="block text-sm text-gray-700 mb-1" for="sugarInput">
+          {{ 'BLOOD_SUGAR' | translate }} ({{ 'MG_DL' | translate }})
+        </label>
+        <input
+          type="text"
+          id="sugarInput"
+          formControlName="value"
+          placeholder="{{ 'ENTER_BLOOD_SUGAR_LEVEL' | translate }}"
+          class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-600 mb-4" />
 
-
-                  <div class="flex gap-4 mb-2">           
-
-                    <label class="flex items-center space-x-2 cursor-pointer">
-                        <input type="radio" formControlName="type" [value]="1" class="accent-yellow-700" />
-                        <span class="text-sm">{{ 'FASTING' | translate }}</span>
-                    </label>
-                    <label class="flex items-center space-x-2 cursor-pointer">
-                        <input type="radio" formControlName="type" [value]="2" class="accent-yellow-700" />
-                        <span class="text-sm">{{ 'POST_MEAL' | translate }}</span>
-                    </label>
-                </div>
-
-
-                <label class="block text-sm text-gray-700 mb-1" for="sugarInput">{{ 'BLOOD_SUGAR' | translate }}({{
-                    'MG_DL' | translate }})</label>
-                <input type="text" id="sugarInput" formControlName="value"
-                    placeholder="{{ 'ENTER_BLOOD_SUGAR_LEVEL' | translate }}"
-                    class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-600 mb-4" />
-
-                <button type="submit" class="w-full bg-yellow-700 text-white py-2 rounded-full hover:bg-yellow-800"
-                    style="color: #fde092!important;">
-                    {{ 'SAVE_BLOOD_SUGAR' | translate }}
-                </button>
-            </div>
-        </form>
-    </div>
+        <button
+          type="submit"
+          class="w-full bg-yellow-700 text-white py-2 rounded-full hover:bg-yellow-800"
+          style="color: #fde092 !important;">
+          {{ 'SAVE_BLOOD_SUGAR' | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
