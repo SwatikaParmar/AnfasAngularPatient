@@ -270,6 +270,8 @@
   "EN": "الإنجليزية",
   "AR": "عربي",
     "PATIENT_EDUCATION" : "تثقيف المريض",
+"Requested_Date": "تاريخ الطلب",
+"Uploaded_Date": "تاريخ التحميل",
 
   "SELECT": "يختار",
   "MR_NUMBER": "رقم السيد",

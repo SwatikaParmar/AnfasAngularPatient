@@ -49,11 +49,21 @@
               </li>
 
               <li class="list-group-item d-flex row align-items-center">
-                <p class="col-5">{{ 'CREATED_AT' | translate }}</p>
+                <p class="col-5">{{ 'Requested_Date' | translate }}</p>
                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
                 <p class="col-5">
                   <label class="address-texts">
                     {{ detail.createdAt ? (detail.createdAt | date:'dd-MM-yyyy') : 'N/A' }}
+                  </label>
+                </p>
+              </li>
+
+                 <li class="list-group-item d-flex row align-items-center">
+                <p class="col-5">{{ 'Uploaded_Date' | translate }}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5">
+                  <label class="address-texts">
+                    {{ detail.UploadedAt ? (detail.UploadedAt | date:'dd-MM-yyyy') : 'N/A' }}
                   </label>
                 </p>
               </li>
