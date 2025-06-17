@@ -35,4 +35,12 @@ images: string[] = [
     this.updateCarousel();
   }
   
+constructor(private router : Router){
+
+}
+
+    goToPatientList() {
+    
+    this.router.navigate(['/doctor-patient']);
+  }
 }
