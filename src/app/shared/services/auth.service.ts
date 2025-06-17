@@ -74,13 +74,7 @@ export class AuthService {
   
 
  
-  logout() {
-    localStorage.clear();
-    this.router.navigate(['/home-page'])
-      .then(() => {      
-        window.location.reload();
-      });
-  }
+ 
   // otp(data:any){
   //   return this.http.post<any>(environment.apiUrl + ApiEndPoint. emailOtp,data)
   // }
