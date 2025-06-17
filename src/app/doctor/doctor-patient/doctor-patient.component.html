@@ -10,7 +10,7 @@
               </h1>
             </div>
 
-            <div class="row">
+            <div class="row" *ngIf="patientlist?.length > 0">
               <div class="col-12 col-md-4 mb-4" *ngFor="let patient of patientlist">
                 <div class="patient-card">
                   <div class="patient-info d-flex justify-content-between">
@@ -29,23 +29,25 @@
 
                   <div style="border-bottom: 1px solid gray; margin-top: 5px;"></div>
 
-                  <a
-                    [routerLink]="['/doctor-patient/doctor-records', patient.mrn]"
-                    style="text-decoration: none; color: inherit;"
-                  >
-                    <div
-                      class="patient-name d-flex justify-content-between align-items-center mt-2"
-                    >
+                  <a [routerLink]="['/doctor-patient/doctor-records', patient.mrn]"
+                    style="text-decoration: none; color: inherit;">
+                    <div class="patient-name d-flex justify-content-between align-items-center mt-2">
                       {{ patient.firstName }} {{ patient.lastName }}
-                      <i
-                        class="fa-solid fa-arrow-right"
-                        style="color: #83764D !important;"
-                      ></i>
+                      <i class="fa-solid fa-arrow-right" style="color: #83764D !important;"></i>
                     </div>
                   </a>
                 </div>
               </div>
             </div>
+
+            <!-- No Patient Data Image -->
+            <div *ngIf="patientlist?.length === 0">
+              <div class="no-data-fullpage">
+                <img src="assets/images/ffffrq-removebg-preview.png" alt="No Data Found" class="no-data-image" />
+                <p class="no-data-text"></p>
+              </div>
+            </div>
+
 
           </div>
         </div>
