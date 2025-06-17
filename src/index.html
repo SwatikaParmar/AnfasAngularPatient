@@ -154,17 +154,33 @@ window.onclick = function(event) {
     }
   </script>
 <script>
-  function showPreview(event) {
-    const file = event.target.files[0];
-    const preview = document.getElementById('previewImage');
-    const content = document.querySelector('.upload-content');
+  const fileInput = document.getElementById('fileInput');
+  const popup = document.getElementById('imagePopup');
+  const popupImage = document.getElementById('popupImage');
+  const closePopup = document.getElementById('closePopup');
 
-    if (file) {
-      preview.src = URL.createObjectURL(file);
-      preview.style.display = 'block';
-      content.style.display = 'none';
+  fileInput.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    if (file && file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        popupImage.src = e.target.result;
+        popup.classList.remove('hidden');
+      };
+      reader.readAsDataURL(file);
     }
-  }
+  });
+
+  closePopup.addEventListener('click', () => {
+    popup.classList.add('hidden');
+  });
+
+  // Optional: close popup on background click
+  popup.addEventListener('click', (e) => {
+    if (e.target === popup) {
+      popup.classList.add('hidden');
+    }
+  });
 </script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

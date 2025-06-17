@@ -147,3 +147,13 @@
       padding: 30px 15px;
     }
   }
+
+    .end-end{
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+    box-sizing: border-box;
+}
