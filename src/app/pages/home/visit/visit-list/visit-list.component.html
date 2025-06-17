@@ -126,7 +126,7 @@
                                 <p class="no-data-text"></p>
                             </div>
                         </div>
-                        <div class="pagination-container pb-3">
+                        <div class="pagination-container pb-3"*ngIf="visitList && visitList.length > 0">
                             <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
                                 queryParamsHandling="merge"></pagination-controls>
                         </div>
