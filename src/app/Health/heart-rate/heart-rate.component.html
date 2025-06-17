@@ -6,7 +6,7 @@
                 <div [dir]="isArabic ? 'rtl' : 'ltr'" class="flex items-center mb-3 ml-1 justify-between flex-wrap">
                     <div class="flex items-center w-full sm:w-auto mb-2">
                         <button class="flex items-center justify-center w-7 h-7 rounded-full text-white mr-2 ml-2 mt-2"
-                            style="background-color: #726641;" (click)="backClicked()">
+                            style="background-color: #726641;" [routerLink]="['/Health-Tracker']">
                             <i class="fas fa-arrow-left" style="font-size: 13px;"></i>
                         </button>
                         <h1 class="text-lg font-semibold ml-2 text-center sm:text-left"
