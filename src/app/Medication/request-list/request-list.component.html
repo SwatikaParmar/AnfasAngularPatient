@@ -36,10 +36,10 @@
                   <td class="p-3 text-sm">{{ item.userName || 'N/A' }}</td>
                   <td class="p-3 text-sm">
                     {{
-                      item.discretion
-                        ? (item.discretion.split(' ').slice(0, 3).join(' ') +
-                          (item.discretion.split(' ').length > 3 ? '...' : ''))
-                        : 'N/A'
+                    item.discretion
+                    ? (item.discretion.split(' ').slice(0, 3).join(' ') +
+                    (item.discretion.split(' ').length > 3 ? '...' : ''))
+                    : 'N/A'
                     }}
                   </td>
                   <td class="p-3 text-sm">{{ item.requestTypeName || 'N/A' }}</td>
@@ -64,11 +64,8 @@
             </div>
 
             <!-- Pagination -->
-            <div class="pt-3 pb-3">
-              <pagination-controls
-                (pageChange)="onPageChange($event)"
-                id="1"
-                class="paginate-doctor-list"
+            <div class="pt-3 pb-3"*ngIf="requestList && requestList.length > 0">
+              <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
                 queryParamsHandling="merge">
               </pagination-controls>
             </div>
