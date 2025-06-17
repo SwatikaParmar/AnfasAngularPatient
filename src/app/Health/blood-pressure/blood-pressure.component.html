@@ -11,7 +11,7 @@
 
             <!-- Back Button -->
             <button class="flex items-center justify-center w-8 h-8 rounded-full text-white"
-              style="background-color: #726641;" (click)="backClicked()">
+              style="background-color: #726641;" [routerLink]="['/Health-Tracker']">
               <i class="fas fa-arrow-left text-xs text-center"></i>
             </button>
 
@@ -44,6 +44,8 @@
                         <th>{{ 'NOTES' | translate }}</th>
                         <th>{{ 'DATE' | translate }}</th>
                         <th>{{ 'STATUS' | translate}}</th>
+                                                <th>{{'IMAGE' | translate}}</th>
+
                         <th>{{'ACTION' | translate}}</th>
                       </tr>
                     </thead>
@@ -54,6 +56,8 @@
                                         totalItems: totalItems,
                                         id: '1'
                                       }">
+
+
                         <td>{{ item.mrn || 'N/A' }}</td>
                         <td>{{ item.systolic || 'N/A' }}</td>
                         <td>{{ item.diastolic || 'N/A' }}</td>
@@ -66,6 +70,26 @@
 }">
                           {{ item.status }}
                         </td>
+                           <td>
+    <a style="color: blue; text-decoration: underline;" *ngIf="item.image; else noImage"
+      (click)="openImagePreview(rootUrl + item.image)">View</a>
+  <!-- <img *ngIf="item.image; else noImage"
+       [src]="rootUrl + item.image"
+       alt="Image"
+       (click)="openImagePreview(rootUrl + item.image)"
+       class="w-12 h-12 object-cover rounded border border-gray-300 cursor-pointer hover:opacity-80" /> -->
+  <ng-template #noImage>N/A</ng-template>
+  <!-- Image Preview Modal -->
+<div *ngIf="previewImageUrl" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+  <div class="relative bg-white p-4 rounded-lg shadow-lg">
+    <button (click)="closeImagePreview()" class="absolute top-2 right-2 text-gray-700 text-xl">&times;</button>
+    <img [src]="previewImageUrl"
+         alt="Preview"
+         class="max-w-[90vw] max-h-[80vh] rounded border border-gray-300" />
+  </div>
+</div>
+
+</td>
                         <td (click)="openModals(item.id)">
                           <i class="fa fa-pencil" style="cursor: pointer;"></i>
                         </td>

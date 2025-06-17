@@ -26,6 +26,7 @@ export class BloodPressureComponent {
 imagePreview: string | ArrayBuffer | null = null;
 showPopup: boolean = false;
 imageFile: File | null = null;
+previewImageUrl: string | null = null;
 
   constructor(
     private toastrService: ToastrService,
@@ -49,6 +50,15 @@ imageFile: File | null = null;
     const lang = document.documentElement.lang || 'en'; // get lang from <html lang="en">
     this.isLTR = lang !== 'ar'; // or however you detect RTL languages
   }
+
+  openImagePreview(fullImageUrl: string): void {
+  this.previewImageUrl = fullImageUrl;
+}
+
+closeImagePreview(): void {
+  this.previewImageUrl = null;
+}
+
   
   BloodPressureList() {
     let payload = {
@@ -86,6 +96,7 @@ imageFile: File | null = null;
 
   backClicked() {
     this._location.back();
+    
   }
   
   initForm(): void {
@@ -131,7 +142,7 @@ imageFile: File | null = null;
     next: (res) => {
       if (res.isSuccess) {
         this.toastrService.success('Blood Pressure Record Added Successfully');
-
+debugger
         // 🟢 Now upload image if file is selected
         if (this.imageFile) {
           const newRecordId = res.data?.id || payload.id; // Assuming ID comes back in `res.data.id`
@@ -174,7 +185,7 @@ uploadVitalPictureAfterRecord(recordId: number): void {
 
   this.contentService.uploadVitalPicture(this.imageFile, recordId, 'BloodPressure').subscribe({
     next: () => {
-      this.toastrService.success('Image uploaded successfully.');
+ //     this.toastrService.success('Image uploaded successfully.');
       this.postUploadCleanup();
     },
     error: (err) => {

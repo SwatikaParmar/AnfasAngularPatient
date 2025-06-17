@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component ,ElementRef, ViewChild} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
@@ -20,6 +20,16 @@ export class BloodSugarComponent {
   rootUrl: any;
   form!: FormGroup;
   modalInstance: any;
+  fileName: string = '';
+imagePreview: string | ArrayBuffer | null = null;
+showPopup: boolean = false;
+imageFile: File | null = null;
+previewImageUrl: string | null = null;
+  showModal: boolean = false; // controls modal visibility
+  isLTR = true;
+  bloodID: any;
+  @ViewChild('bloodSugarModal', { static: true }) modalElement!: ElementRef;
+@ViewChild('fileInputRef') fileInputRef!: ElementRef<HTMLInputElement>;
 
   constructor(
     private toastrService: ToastrService,
@@ -38,8 +48,17 @@ export class BloodSugarComponent {
       this.page = +params['page'] || 0;
     });
     this.BloodSugarList();
-  }
+    // Initialize Bootstrap modal manually
+    this.modalInstance = new bootstrap.Modal(this.modalElement.nativeElement);
 
+  }
+  openImagePreview(fullImageUrl: string): void {
+  this.previewImageUrl = fullImageUrl;
+}
+
+closeImagePreview(): void {
+  this.previewImageUrl = null;
+}
 
   BloodSugarList() {
     this.spinner.show();
@@ -93,45 +112,155 @@ export class BloodSugarComponent {
   }
 
 
-  addRecord(): void {
-    if (this.form.invalid) {
-      this.toastrService.warning('Please fill out the form correctly.');
-      return;
-    }
-  
-    const payload = {
-      id: 0,
-      mrn: localStorage.getItem('mrn'),
-      type: this.form.value.type,
-      value: this.form.value.value,
-      notes: this.form.value.notes
-    };
-  
-    this.spinner.show();
-  
-    this.contentService.addBloodSugar(payload).subscribe({
-      next: (res) => {
-        this.spinner.hide();
-        if (res.isSuccess) {
-          this.toastrService.success('Blood Sugar Record Added Successfully');
-          this.form.reset();
-          this.BloodSugarList();
-         
-          // Delay the page reload for 3 seconds
-          setTimeout(() => {
-            window.location.reload();
-          }, 1000);  // 3000ms = 3 seconds
-        } else {
-          this.toastrService.error('Failed to add blood Sugar record');
-        }
-      },
-      error: (err) => {
-        this.spinner.hide();
-        this.toastrService.error('Error adding blood Sugar record');
-        console.error('Error:', err);
-      }
-    });
+ addRecord(): void {
+  if (this.form.invalid) {
+    this.toastrService.warning('Please fill out the form correctly.');
+    return;
   }
+
+  const payload = {
+      id: this.bloodID ? this.bloodID : 0,
+    mrn: localStorage.getItem('mrn'),
+    type: this.form.value.type,
+    value: this.form.value.value,
+    notes: this.form.value.notes
+  };
+
+  this.spinner.show();
+
+  this.contentService.addBloodSugar(payload).subscribe({
+    next: (res) => {
+      if (res.isSuccess) {
+        this.toastrService.success('Blood Sugar Record Added Successfully');
+
+        // Upload image if selected
+        if (this.imageFile) {
+          const newRecordId = res.data?.id || payload.id; // Assuming ID comes back in `res.data.id`
+          this.uploadVitalPictureAfterRecord(newRecordId);
+        } else {
+          this.postUploadCleanup(); // No image, just cleanup
+        }
+      } else {
+        this.spinner.hide();
+        this.toastrService.error('Failed to add blood sugar record');
+      }
+    },
+    error: (err) => {
+      this.spinner.hide();
+      this.toastrService.error('Error adding blood sugar record');
+      console.error('Error:', err);
+    }
+  });
+}
+
   
+
+  // openModal(): void {
+  //   this.form.reset();
+  //   this.showModal = true;
+  // }
+
+    openModals(id:any): void {
+      debugger
+      this.bloodID = id;
+   this.form.reset();
+
+  // Clear file input
+  if (this.fileInputRef) {
+    this.fileInputRef.nativeElement.value = '';
+  }
+
+  // Clear image preview if needed
+  this.imagePreview = null;
+  this.showPopup = false;
+
+  // Show modal
+  if (this.modalInstance) {
+    this.modalInstance.show();
+  }
+  }
+
+  // closeModal(): void {
+  //   this.showModal = false;
+  // }
+
+openModal() {
+  this.form.reset();
+
+  // Clear file input
+  if (this.fileInputRef) {
+    this.fileInputRef.nativeElement.value = '';
+  }
+
+  // Clear image preview if needed
+  this.imagePreview = null;
+  this.showPopup = false;
+
+  // Show modal
+  if (this.modalInstance) {
+    this.modalInstance.show();
+  }
+}
+
+
+  closeModal() {
+    this.modalInstance.hide();
+  }
+
+  
+onFileChange(event: Event): void {
+  const input = event.target as HTMLInputElement;
+  const file = input.files?.[0];
+
+  if (file) {
+    this.fileName = file.name;
+    this.imageFile = file;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+uploadVitalPictureAfterRecord(recordId: number): void {
+  if (!this.imageFile) return;
+
+  this.contentService.uploadVitalPicture(this.imageFile, recordId, 'BloodSugar').subscribe({
+    next: () => {
+ //     this.toastrService.success('Image uploaded successfully.');
+      this.postUploadCleanup();
+    },
+    error: (err) => {
+      this.spinner.hide();
+      this.toastrService.error('Image upload failed.');
+      console.error('Upload Error:', err);
+    }
+  });
+}
+
+postUploadCleanup(): void {
+  this.spinner.hide();
+  this.form.reset();
+  this.imageFile = null;
+  this.imagePreview = null;
+  this.fileName = '';
+  this.BloodSugarList(); // Refresh list
+  this.closeModal();
+}
+
+
+
+openPreview(): void {
+  this.showPopup = true;
+}
+
+closePreview(): void {
+  this.showPopup = false;
+}
+
+
+
 
 }

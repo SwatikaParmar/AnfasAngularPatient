@@ -38,7 +38,7 @@ return this.http.post<any>(environment.apiUrl + ApiEndPoint.patientAssign,data)
   formData.append('Id', id.toString()); 
   formData.append('Type', type);        // e.g., 'BloodPressure', 'HeartRate', etc.
 
-  return this.http.post('/api/User/UploadVitalPicture', formData);
+  return this.http.post(environment.apiUrl + 'api/User/UploadVitalPicture', formData);
 }
 
 

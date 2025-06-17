@@ -90,7 +90,13 @@ toggleMenus() {
 
   logouts() {
     localStorage.clear();
-    this.auth.logout();
+  this.router.navigateByUrl('/login')
+  }
+
+   logout() {
+    debugger
+    localStorage.clear();
+  this.router.navigateByUrl('/doctor-login');
   }
 closeSidebar() {
   this.isSidebarCollapsed = false;

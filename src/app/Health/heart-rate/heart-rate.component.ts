@@ -25,6 +25,18 @@ export class HeartRateComponent {
 
   @ViewChild('heartRateModal', { static: true }) heartRateModal!: ElementRef;  // Non-null assertion
 
+  previewImageUrl: string | null = null;
+  bloodID: any;
+  @ViewChild('heartRateModal', { static: true }) modalElement!: ElementRef;
+@ViewChild('fileInputRef') fileInputRef!: ElementRef<HTMLInputElement>;
+
+imagePreview: string | ArrayBuffer | null = null;
+  showModal: boolean = false; // controls modal visibility
+  modalInstance: any;
+  fileName: string = '';
+showPopup: boolean = false;
+imageFile: File | null = null;
+
   constructor(
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService,
@@ -43,6 +55,8 @@ export class HeartRateComponent {
       this.page = +params['page'] || 0;
     });
     this.HeartRateList();
+        this.modalInstance = new bootstrap.Modal(this.modalElement.nativeElement);
+
   }
 
   HeartRateList() {
@@ -96,7 +110,7 @@ export class HeartRateComponent {
     }
   
     const payload = {
-      id: 0,
+      id: this.bloodID ? this.bloodID : 0,
       mrn: localStorage.getItem('mrn'),
       beatsPerMinute: this.form.value.beatsPerMinute,
       notes: this.form.value.notes
@@ -110,7 +124,6 @@ export class HeartRateComponent {
         if (res.isSuccess) {
           this.toastrService.success('Heart Rate Record Added Successfully');
           this.form.reset();
-          this.HeartRateList(); // refresh list
           // ✅ Close the modal
           const modalInstance = bootstrap.Modal.getInstance(this.heartRateModal.nativeElement);
           modalInstance?.hide();
@@ -118,6 +131,15 @@ export class HeartRateComponent {
           setTimeout(() => {
             window.location.reload();
           }, 1000);
+
+              // Upload image if selected
+        if (this.imageFile) {
+          const newRecordId = res.data?.id || payload.id; // Assuming ID comes back in `res.data.id`
+          this.uploadVitalPictureAfterRecord(newRecordId);
+        } else {
+          this.postUploadCleanup(); // No image, just cleanup
+        }
+        
         } else {
           this.toastrService.error('Failed to add Heart Rate record');
         }
@@ -129,5 +151,112 @@ export class HeartRateComponent {
       }
     });
   }
+
+
+    openImagePreview(fullImageUrl: string): void {
+  this.previewImageUrl = fullImageUrl;
+}
+
+closeImagePreview(): void {
+  this.previewImageUrl = null;
+}
+
+openModal() {
+  this.form.reset();
+
+  // Clear file input
+  if (this.fileInputRef) {
+    this.fileInputRef.nativeElement.value = '';
+  }
+
+  // Clear image preview if needed
+  this.imagePreview = null;
+  this.showPopup = false;
+
+  // Show modal
+  if (this.modalInstance) {
+    this.modalInstance.show();
+  }
+}
+
+    openModals(id:any): void {
+      debugger
+      this.bloodID = id;
+   this.form.reset();
+
+  // Clear file input
+  if (this.fileInputRef) {
+    this.fileInputRef.nativeElement.value = '';
+  }
+
+  // Clear image preview if needed
+  this.imagePreview = null;
+  this.showPopup = false;
+
+  // Show modal
+  if (this.modalInstance) {
+    this.modalInstance.show();
+  }
+  }
+
+  closeModal() {
+    this.modalInstance.hide();
+  }
+
+
+    
+onFileChange(event: Event): void {
+  const input = event.target as HTMLInputElement;
+  const file = input.files?.[0];
+
+  if (file) {
+    this.fileName = file.name;
+    this.imageFile = file;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+uploadVitalPictureAfterRecord(recordId: number): void {
+  if (!this.imageFile) return;
+
+  this.contentService.uploadVitalPicture(this.imageFile, recordId, 'HeartRate').subscribe({
+    next: () => {
+ //     this.toastrService.success('Image uploaded successfully.');
+      this.postUploadCleanup();
+    },
+    error: (err) => {
+      this.spinner.hide();
+      this.toastrService.error('Image upload failed.');
+      console.error('Upload Error:', err);
+    }
+  });
+}
+
+postUploadCleanup(): void {
+  this.spinner.hide();
+  this.form.reset();
+  this.imageFile = null;
+  this.imagePreview = null;
+  this.fileName = '';
+  this.HeartRateList(); // Refresh list
+  this.closeModal();
+}
+
+
+
+openPreview(): void {
+  this.showPopup = true;
+}
+
+closePreview(): void {
+  this.showPopup = false;
+}
+
+
   
 }

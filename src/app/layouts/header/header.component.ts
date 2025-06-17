@@ -16,9 +16,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  logout() {
-    this.auth.logout();
-  }
+
   switchLanguage(lang: string) {
     this.languageService.switchLanguage(lang);
   }
