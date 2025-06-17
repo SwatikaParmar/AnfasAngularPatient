@@ -42,7 +42,7 @@
               </div>
 
               <!-- Doctor List -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2" *ngIf="filteredDoctorList?.length > 0">
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 mb-4" *ngIf="filteredDoctorList?.length > 0">
                 <div
                   *ngFor="let item of filteredDoctorList | paginate : { itemsPerPage: 6, currentPage: page, totalItems: totalItems, id: '1' }">
                   <div class="card d-flex flex-row align-items-center p-2 shadow-sm rounded">
