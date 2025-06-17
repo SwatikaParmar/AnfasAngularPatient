@@ -4,11 +4,12 @@
             <div class="container-fluid">
                 <div class="flex mb-2 items-center ml-1">
                     <!-- Back Arrow Button -->
-                    <button class="flex items-center justify-center w-7 h-7 rounded-full mr-3 mb-2 text-white"
-                        style="background-color: #726641;" (click)="backClicked()">
-                        <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center;"></i>
+                    <button class="back-btn-left-circle flex items-center justify-center w-7 h-7 rounded-full mr-3  mb-2 text-white"
+                        (click)="backClicked()">
+                       <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center; color: black;"></i>
+
                     </button>
-                    <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">
+                    <h1 class="text-lg font-semibold ml-3" style="font-size: 25px; color: #726641;">
                         {{ 'BOOK_APPOINTMENT' | translate }}
                     </h1>
                 </div>

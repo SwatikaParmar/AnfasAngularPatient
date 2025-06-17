@@ -1409,3 +1409,14 @@ ul.ngx-pagination li.pagination-next a {
   }
 }
 
+.back-btn-left-circle {
+    background:linear-gradient(180deg, rgba(255, 239, 177, 1) 0%, rgba(254, 195, 79, 1) 100%)!important;
+    width: 30px!important;
+    height: 30px!important;
+    border-radius: 100%!important;
+    display: flex!important;
+    justify-content: center!important;
+    align-items: center!important;
+    margin: 0px 0px 0px 10px!important;
+    color:black;
+}

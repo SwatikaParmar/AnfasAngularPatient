@@ -21,6 +21,7 @@ export class PatientChatlistComponent {
   receiverName: any;
   newMessage: string = '';
   receiverLastName:any;
+  lastName!: string | null;
   constructor(
     private contentService: ContentService,
     private route: ActivatedRoute,
@@ -36,6 +37,7 @@ export class PatientChatlistComponent {
       this.senderId = params.get('senderId') || '';
       this.receiverId = params.get('receiverId') || '';
       this.receiverName = params.get('receiverName') || 'Unknown Receiver';
+      this.lastName = params.get('lastName');
       this.loadChatHistory();
     });
   }

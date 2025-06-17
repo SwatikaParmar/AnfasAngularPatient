@@ -64,13 +64,14 @@ export class DoctorPatientComponent {
     const senderId = patient?.mrn;
     const receiverId = localStorage.getItem('code'); // CareProviderCode comes from local storage
     const receiverName = patient?.firstName;
-
+    const lastName = patient?.lastName
     if (senderId && receiverId) {
       this.router.navigate(['/doctor-patient/Patient/chat'], {
         queryParams: {
           senderId,
           receiverId,
-          receiverName
+          receiverName,
+          lastName
         }
       });
     } else {
