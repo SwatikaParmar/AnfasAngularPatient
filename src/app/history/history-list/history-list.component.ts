@@ -57,13 +57,13 @@ appointment() {
         this.historyListOriginal = response.data;
         this.historyList = [...this.historyListOriginal];
       } else {
-        this.toastrService.error('Failed to fetch list.');
+        
       }
     },
     error => {
       this.spinner.hide();
       this.isHistoryDataLoaded = true; // <-- important
-      this.toastrService.error('Error fetching list.');
+      
     }
   );
 }
