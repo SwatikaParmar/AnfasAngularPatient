@@ -269,6 +269,8 @@
   "PATIENT_SIGN_IN": "تسجيل دخول المريض",
   "EN": "الإنجليزية",
   "AR": "عربي",
+    "PATIENT_EDUCATION" : "تثقيف المريض",
+
   "SELECT": "يختار",
   "MR_NUMBER": "رقم السيد",
   "PHONE_NUMBER": "رقم التليفون",
