@@ -117,15 +117,14 @@
                         </div>
 
 
+                        <div *ngIf="visitList?.length === 0" class="no-data-fullpage"
+                            style="text-align: center; padding: 30px;">
+                            <img src="assets/images/ffffrq-removebg-preview.png" alt="No Data Found"
+                                class="no-data-image" style="width: 500px; height: auto;" />
+                            <p class="no-data-text" style="color: #726641; font-weight: bold;"></p>
+                        </div>
 
-                        <!-- When no data is found -->
-                        <ng-template [ngIf]="visitList?.length === 0">
-                            <div class="no-data-fullpage" style="text-align: center; padding: 30px;">
-                                <img src="assets/images/ffffrq-removebg-preview.png" alt="No Data Found"
-                                    class="no-data-image" style="width: 200px; height: auto;" />
-                                <p class="no-data-text" style="color: #726641; font-weight: bold;"></p>
-                            </div>
-                        </ng-template>
+
                         <div class="pagination-container pb-3" *ngIf="visitList && visitList.length > 0">
                             <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
                                 queryParamsHandling="merge"></pagination-controls>

@@ -35,7 +35,7 @@ export class VisitListComponent {
     this.vistList();  
   }
   
-  vistList() {
+ vistList() {
   const mrn = localStorage.getItem('mrn');
 
   if (!mrn) {
@@ -49,19 +49,22 @@ export class VisitListComponent {
     response => {
       this.spinner.hide(); // Stop spinner
 
-      if (response?.status === true) {
+      if (response?.status === true && Array.isArray(response.data)) {
         this.visitList = response.data;
       } else {
+        this.visitList = []; // Ensure it's an empty array so *ngIf works
         this.toastrService.error(response?.message || 'Failed to fetch visit list.');
       }
     },
     error => {
       this.spinner.hide(); // Stop spinner on error
+      this.visitList = []; // Handle error case too
       this.toastrService.error('An error occurred while fetching the visit list.');
       console.error(error);
     }
   );
 }
+
 
   onPageChange(page: number): void {
     // Update query parameters for pagination
