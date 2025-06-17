@@ -19,10 +19,8 @@
                                 <table class="message-table">
                                   <thead>
                                     <tr>
-                                      <th>{{ 'FIRST_NAME' | translate }}</th>
-                                      <th>{{ 'LAST_NAME' | translate }}</th>
+                                      <th>{{ 'NAME' | translate }}</th>
                                       <th>{{ 'LAST_MESSAGE' | translate }}</th>
-                                      <th>{{ 'LAST_MESSAGE_TIME' | translate }}</th>
                                       <th>{{ 'STATUS' | translate }}</th>
                                       <th>{{ 'ACTION' | translate }}</th>
                                     </tr>
@@ -34,10 +32,8 @@
                                         totalItems: totalItems,
                                         id: '1'
                                       }">
-                                      <td>{{ item.firstName || 'N/A' }}</td>
-                                      <td>{{ item.lastName || 'N/A' }}</td>
+                                      <td>Dr. {{ item.firstName + ' ' + item.lastName || 'N/A' }}</td>
                                       <td>{{ item.lastMessage || 'N/A' }}</td>
-                                      <td>{{ item.lastMessageTime || 'N/A' }}</td>
                                       <td [style.color]="item.status ? 'green' : 'red'">
                                         {{ item.status ? 'Online' : 'Offline' }}
                                       </td>
