@@ -22,6 +22,11 @@ export class BloodPressureComponent {
   showModal: boolean = false; // controls modal visibility
   isLTR = true;
   bloodID: any;
+  fileName: string = '';
+imagePreview: string | ArrayBuffer | null = null;
+showPopup: boolean = false;
+imageFile: File | null = null;
+
   constructor(
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService,
@@ -107,41 +112,99 @@ export class BloodPressureComponent {
 
 
   addRecord(): void {
-    
-    if (this.form.invalid) {
-      this.toastrService.warning('Please fill out the form correctly.');
-      return;
-    }
-
-    const payload = {
-  id: this.bloodID ? this.bloodID : 0,
-  mrn: localStorage.getItem('mrn'),
-  systolic: this.form.value.systolic,
-  diastolic: this.form.value.diastolic,
-  notes: this.form.value.notes
-};
-
-    this.spinner.show();
-
-    this.contentService.addBloodPressure(payload).subscribe({
-      next: (res) => {
-        this.spinner.hide();
-        if (res.isSuccess) {
-          this.toastrService.success('Blood Pressure Record Added Successfully');
-          this.form.reset();
-          this.BloodPressureList(); // Refresh list
-          this.closeModal();
-        } else {
-          this.toastrService.error('Failed to add blood pressure record');
-        }
-      },
-      error: (err) => {
-        this.spinner.hide();
-        this.toastrService.error('Error adding blood pressure record');
-        console.error('Error:', err);
-      }
-    });
+  if (this.form.invalid) {
+    this.toastrService.warning('Please fill out the form correctly.');
+    return;
   }
+
+  const payload = {
+    id: this.bloodID ? this.bloodID : 0,
+    mrn: localStorage.getItem('mrn'),
+    systolic: this.form.value.systolic,
+    diastolic: this.form.value.diastolic,
+    notes: this.form.value.notes
+  };
+
+  this.spinner.show();
+
+  this.contentService.addBloodPressure(payload).subscribe({
+    next: (res) => {
+      if (res.isSuccess) {
+        this.toastrService.success('Blood Pressure Record Added Successfully');
+
+        // 🟢 Now upload image if file is selected
+        if (this.imageFile) {
+          const newRecordId = res.data?.id || payload.id; // Assuming ID comes back in `res.data.id`
+          this.uploadVitalPictureAfterRecord(newRecordId);
+        } else {
+          this.postUploadCleanup();
+        }
+      } else {
+        this.spinner.hide();
+        this.toastrService.error('Failed to add blood pressure record');
+      }
+    },
+    error: (err) => {
+      this.spinner.hide();
+      this.toastrService.error('Error adding blood pressure record');
+      console.error('Error:', err);
+    }
+  });
+}
+
+
+onFileChange(event: Event): void {
+  const input = event.target as HTMLInputElement;
+  const file = input.files?.[0];
+
+  if (file) {
+    this.fileName = file.name;
+    this.imageFile = file;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+uploadVitalPictureAfterRecord(recordId: number): void {
+  if (!this.imageFile) return;
+
+  this.contentService.uploadVitalPicture(this.imageFile, recordId, 'BloodPressure').subscribe({
+    next: () => {
+      this.toastrService.success('Image uploaded successfully.');
+      this.postUploadCleanup();
+    },
+    error: (err) => {
+      this.spinner.hide();
+      this.toastrService.error('Image upload failed.');
+      console.error('Upload Error:', err);
+    }
+  });
+}
+
+postUploadCleanup(): void {
+  this.spinner.hide();
+  this.form.reset();
+  this.imageFile = null;
+  this.imagePreview = null;
+  this.fileName = '';
+  this.BloodPressureList(); // Refresh list
+  this.closeModal();        // Close modal if any
+}
+
+
+
+openPreview(): void {
+  this.showPopup = true;
+}
+
+closePreview(): void {
+  this.showPopup = false;
+}
+
 }
 
 
