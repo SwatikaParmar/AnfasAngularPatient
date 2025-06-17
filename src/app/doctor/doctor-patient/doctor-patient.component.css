@@ -35,3 +35,19 @@
   align-items: center;
   font-size: 16px;
 }
+.no-data-fullpage {
+  display: flex;
+  justify-content: center;
+  /* Horizontal centering */
+  align-items: center;
+  /* Vertical centering */
+  flex-direction: column;
+  /* Stack image and text vertically */
+  text-align: center;
+  height: 50vh;
+}
+
+.no-data-image {
+  max-width: 100%;
+  height: auto;
+}
