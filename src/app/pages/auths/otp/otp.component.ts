@@ -83,22 +83,22 @@ constructor(
 
 
 
-//   Resendotp(data: any) {
-//   this.authservice.sendotp(data).subscribe({
-//     next: (response) => {
-//       // Use isSuccess and statusCode as per your API response
-//       if (response.isSuccess === true && response.statusCode === 200) {
-//         this.toastr.success(response.messages || 'OTP resent successfully.');
-//       } else {
-//         this.toastr.error(response.messages || 'Failed to resend OTP.');
-//       }
-//     },
-//     error: (err) => {
-//       console.error('Resend OTP error:', err);
-//       this.toastr.error('Something went wrong. Please try again.');
-//     }
-//   });
-// }
+  Resendotp(data: any) {
+  this.authservice.sendotp(data).subscribe({
+    next: (response) => {
+      // Use isSuccess and statusCode as per your API response
+      if (response.isSuccess === true && response.statusCode === 200) {
+        this.toastr.success(response.messages || 'OTP resent successfully.');
+      } else {
+        this.toastr.error(response.messages || 'Failed to resend OTP.');
+      }
+    },
+    error: (err) => {
+      console.error('Resend OTP error:', err);
+      this.toastr.error('Something went wrong. Please try again.');
+    }
+  });
+}
 
   
 }
