@@ -4,9 +4,10 @@
             <div class="container-fluid">
                 <div class="flex mb-2 items-center ml-1">
                     <!-- Back Arrow Button -->
-                    <button class="back-btn-left-circle flex items-center justify-center w-7 h-7 rounded-full mr-3  mb-2 text-white"
+                    <button
+                        class="back-btn-left-circle flex items-center justify-center w-7 h-7 rounded-full mr-3  mb-2 text-white"
                         (click)="backClicked()">
-                       <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center; color: black;"></i>
+                        <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center; color: black;"></i>
 
                     </button>
                     <h1 class="text-lg font-semibold ml-3" style="font-size: 25px; color: #726641;">
@@ -23,31 +24,32 @@
                         <!-- Check if doctorList has data -->
                         <div *ngIf="doctorList && doctorList.length > 0; else noDataTemplate">
                             <div class="container mt-4">
-                                <div class="row" *ngFor="let item of doctorList | paginate : {
-                                    itemsPerPage: 6,
-                                    currentPage: page,
-                                    totalItems: totalItems,
-                                    id: '1'
-                                  }">
-                                    <div class="col-md-4 mb-4" (click)="editContent(item)">
-                                        <div class="card p-2 shadow-sm rounded">
+                                <div class="row">
+                                    <div class="col-md-4 mb-4" *ngFor="let item of doctorList | paginate : {
+      itemsPerPage: 6,
+      currentPage: page,
+      totalItems: totalItems,
+      id: '1'
+    }" (click)="editContent(item)">
+                                        <div class="card p-2 shadow-sm rounded h-100">
                                             <h6 class="mb-1 mt-1 fw-bold" style="font-size: 14px;">
-                                                {{item.title}} {{item.printName}}
+                                                {{ item.title }} {{ item.printName }}
                                             </h6>
-                                            <p class="mb-2 text-muted small" *ngFor="let dept of item.departments">
-                                                - {{ dept }}
+                                            <p class="mb-2 text-muted small" *ngIf="item.departments?.length">
+                                                - {{ item.departments[0]?.split(' ').slice(0, 2).join(' ') }}
                                             </p>
-                                            <div class="flex justify-end">
+
+                                            <div class="d-flex justify-content-end">
                                                 <button
-                                                    class="flex items-center justify-center w-7 h-7 rounded-full mr-3 text-white"
+                                                    class="d-flex align-items-center justify-content-center w-7 h-7 rounded-circle text-white"
                                                     style="background-color: #726641;">
-                                                    <i class="fas fa-arrow-right"
-                                                        style="font-size: 13px; text-align: center;"></i>
+                                                    <i class="fas fa-arrow-right" style="font-size: 13px;"></i>
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
 
                             <!-- Pagination -->
