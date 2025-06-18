@@ -1,56 +1,49 @@
 <div class="dashboard-outer">
-    <section>
-        <div class="content-body">
-            <div class="container-fluid">
-                <div class="flex mb-4 items-center ml-1">
-                    <button class="flex items-center justify-center w-8 h-8 rounded-full text-white"
-                        style="background-color: #726641;" (click)="backClicked()">
-                        <i class="fas fa-arrow-left text-xs text-center"></i>
-                    </button>
-                    <h1 class="text-lg font-semibold ml-2" style="font-size: 25px; color: #726641;">
-                        {{ 'LAB_RESULTS' | translate }}
-                    </h1>
-                </div>
-                <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 10px;">
-                    <div class=" mx-auto">
-                        <form class="px-4 mt-2 mb-3">
-                         <div class="row g-2">
-  <div class="button-container mb-3">
-    <button
-      class="tab-button"
-      [class.active]="selectedTab === 'lab'"
-      (click)="selectedTab = 'lab'"
-    >
-      {{ 'LAB_REPORT' | translate }}
-    </button>
-    <button
-      class="tab-button"
-      [class.active]="selectedTab === 'ris'"
-      (click)="selectedTab = 'ris'; getRis()"
-    >
-      {{ 'RIS_REPORT' | translate }}
-    </button>
-  </div>
-
-  <!-- LAB REPORT SECTION -->
-  <div *ngIf="selectedTab === 'lab' && pdfUrl" class="tab-detail mb-3">
-    <a [href]="pdfUrl" target="_blank" class="pdf-link">
-      <i class="fas fa-file-pdf"></i> {{ 'VIEW_LAB_REPORT' | translate }}
-    </a>
-  </div>
-
-  <!-- RIS REPORT SECTION -->
-  <div *ngIf="selectedTab === 'ris' && pdfUrls" class="tab-detail mb-3">
-    <a [href]="pdfUrls" target="_blank" class="pdf-link">
-      <i class="fas fa-file-pdf"></i> {{ 'VIEW_RIS_REPORT' | translate }}
-    </a>
-  </div>
-</div>
-
-                        </form>
-                    </div>
-                </div>
-            </div>
+  <section>
+    <div class="content-body">
+      <div class="container-fluid">
+        <div class="flex mb-4 items-center ml-1">
+          <button class="back-btn-left-circle flex items-center justify-center w-8 h-8 rounded-full text-white"
+             (click)="backClicked()">
+            <i class="fas fa-arrow-left text-xs text-center" style="color: #726641; font-size: 15px;"></i>
+          </button>
+          <h1 class="text-lg font-semibold ml-2" style="font-size: 25px; color: #726641;">
+            {{ 'LAB_RESULTS' | translate }}
+          </h1>
         </div>
-    </section>
+        <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 10px;">
+          <div class=" mx-auto">
+            <form class="px-4 mt-2 mb-3">
+              <div class="row g-2">
+                <div class="button-container mb-3">
+                  <button class="tab-button" [class.active]="selectedTab === 'lab'" (click)="selectedTab = 'lab'">
+                    {{ 'LAB_REPORT' | translate }}
+                  </button>
+                  <button class="tab-button" [class.active]="selectedTab === 'ris'"
+                    (click)="selectedTab = 'ris'; getRis()">
+                    {{ 'RIS_REPORT' | translate }}
+                  </button>
+                </div>
+
+                <!-- LAB REPORT SECTION -->
+                <div *ngIf="selectedTab === 'lab' && pdfUrl" class="tab-detail mb-3">
+                  <a [href]="pdfUrl" target="_blank" class="pdf-link">
+                    <i class="fas fa-file-pdf"></i> {{ 'VIEW_LAB_REPORT' | translate }}
+                  </a>
+                </div>
+
+                <!-- RIS REPORT SECTION -->
+                <div *ngIf="selectedTab === 'ris' && pdfUrls" class="tab-detail mb-3">
+                  <a [href]="pdfUrls" target="_blank" class="pdf-link">
+                    <i class="fas fa-file-pdf"></i> {{ 'VIEW_RIS_REPORT' | translate }}
+                  </a>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
