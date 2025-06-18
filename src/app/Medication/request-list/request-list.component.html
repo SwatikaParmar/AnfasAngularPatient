@@ -46,13 +46,15 @@
                   <td class="p-3 text-sm">{{ item.status || 'N/A' }}</td>
                   <td class="p-3 text-sm">
                     <div class="flex gap-3">
-                      <a [routerLink]="['/request-list/detail', item.id]" class="text-yellow-600 hover:text-yellow-800">
-                        <i class="fa fa-eye" aria-hidden="true" title="View"></i>
-                      </a>
-                      <a [routerLink]="['/request-list/update', item.id]" class="text-yellow-600 hover:text-yellow-800">
-                        <i class="fa fa-edit" aria-hidden="true" title="Edit"></i>
-                      </a>
-                    </div>
+  <a [routerLink]="['/request-list/detail', item.id]" style="color: #726641; font-weight: bold; ">
+    <i class="fas fa-eye"></i>
+  </a>
+  <a [routerLink]="['/request-list/update', item.id]" style="color: #726641; font-weight: bold;">
+    <i class="fa fa-pen" aria-hidden="true" title="Edit"></i>
+  </a>
+</div>
+
+
                   </td>
                 </tr>
               </tbody>
@@ -64,7 +66,7 @@
             </div>
 
             <!-- Pagination -->
-            <div class="pt-3 pb-3"*ngIf="requestList && requestList.length > 0">
+            <div class="pt-3 pb-3" *ngIf="requestList && requestList.length > 0">
               <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
                 queryParamsHandling="merge">
               </pagination-controls>

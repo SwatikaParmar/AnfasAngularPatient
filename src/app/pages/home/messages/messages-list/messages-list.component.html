@@ -1,63 +1,73 @@
 <div class="dashboard-outer">
 
-    <section>
-        <div class="content-body">
-            <div class="container-fluid">
-                <div class="flex mb-2 items-center ml-1">
-                    <!-- Back Arrow Button -->
-                    <!-- <button class="flex items-center justify-center w-7 h-7 rounded-full mr-3 mb-2 text-white"
+  <section>
+    <div class="content-body">
+      <div class="container-fluid">
+        <div class="flex mb-2 items-center ml-1">
+          <!-- Back Arrow Button -->
+          <!-- <button class="flex items-center justify-center w-7 h-7 rounded-full mr-3 mb-2 text-white"
                         style="background-color: #726641;">
                         <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center;"></i>
                     </button> -->
-                    <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">{{ 'MESSAGES' | translate }}</h1>
-                </div>
-                <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
-                    <div class="custom-container mx-auto p-3">
-                        <div class="container">
-                            <div class="table-container">
-                              <div class="table-responsive">
-                                <table class="message-table">
-                                  <thead>
-                                    <tr>
-                                      <th>{{ 'NAME' | translate }}</th>
-                                      <th>{{ 'LAST_MESSAGE' | translate }}</th>
-                                      <th>{{ 'STATUS' | translate }}</th>
-                                      <th>{{ 'ACTION' | translate }}</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr class="row-light" *ngFor="let item of messageList | paginate : {
+          <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">{{ 'MESSAGES' | translate }}</h1>
+        </div>
+        <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
+          <div class="custom-container mx-auto p-3">
+            <div class="container">
+              <div class="table-container">
+                <div class="table-responsive">
+                  <table class="message-table">
+                    <thead>
+                      <tr>
+                        <th>{{ 'NAME' | translate }}</th>
+                        <th>{{ 'LAST_MESSAGE' | translate }}</th>
+                        <th>{{ 'STATUS' | translate }}</th>
+                        <th>{{ 'ACTION' | translate }}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="row-light" *ngFor="let item of messageList | paginate : {
                                         itemsPerPage: 5,
                                         currentPage: page,
                                         totalItems: totalItems,
                                         id: '1'
                                       }">
-                                      <td>Dr. {{ item.firstName + ' ' + item.lastName || 'N/A' }}</td>
-                                      <td>{{ item.lastMessage || 'N/A' }}</td>
-                                      <td [style.color]="item.status ? 'green' : 'red'">
-                                        {{ item.status ? 'Online' : 'Offline' }}
-                                      </td>
-                                      <td (click)="editContent(item)">
-                                        <i class="fa fa-eye"></i>
-                                      </td>
-                                    </tr>
-                                   
-                                  </tbody>
-                                </table>
-                                </div>
-                                <div class="no-data text-center" *ngIf="messageList && messageList.length === 0">
-                                  <img src="assets/images/ffffrq-removebg-preview.png" style="width: 50%; margin: auto; padding: 50px;">
-                                </div>
-                                
-                        <div class="pagination-container pt-3 pb-3"*ngIf="messageList && messageList.length > 0">
-                          <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
-                            queryParamsHandling="merge"></pagination-controls>
-                        </div>
-                              </div>
-                        </div>
-                    </div>
+                        <td>Dr. {{ item.firstName + ' ' + item.lastName || 'N/A' }}</td>
+                        <td>{{ item.lastMessage || 'N/A' }}</td>
+                        <td [style.color]="item.status ? 'green' : 'red'">
+                          {{ item.status ? 'Online' : 'Offline' }}
+                        </td>
+                        <td (click)="editContent(item)">
+                          <i class="fas fa-eye" style="color: #726641; font-weight: bold; "></i>
+                        </td>
+                      </tr>
+                      <!-- <tr class="row-dark">
+                                        <td>MOHAMMED</td>
+                                        <td>ELAWADLY</td>
+                                        <td>thank you so much</td>
+                                        <td>
+                                          2025-04-15T04:55:52.067
+                                        </td>
+                                       <td style="color: red;">Offline</td>
+                                        <td [routerLink]="['/messages/chat']"><i class="fa fa-eye"></i></td>
+
+                                    </tr> -->
+                    </tbody>
+                  </table>
                 </div>
+                <div class="no-data text-center" *ngIf="messageList && messageList.length === 0">
+                  <img src="assets/images/ffffrq-removebg-preview.png" style="width: 50%; margin: auto; padding: 50px;">
+                </div>
+
+                <div class="pagination-container pt-3 pb-3" *ngIf="messageList && messageList.length > 0">
+                  <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
+                    queryParamsHandling="merge"></pagination-controls>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 </div>
