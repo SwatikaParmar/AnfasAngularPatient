@@ -126,7 +126,7 @@ export class ComplaintChatComponent {
       complaintId: this.complaintId, // The current complaint ID
       description: this.newMessage.trim(), // The reply message
       mrn: mrn, // Medical record number (assuming this is needed for identification)
-      role: 'Admin', // User role (assuming this is admin)
+      role: 'Patient', // User role (assuming this is admin)
     };
   
     // Show the spinner while sending the reply
