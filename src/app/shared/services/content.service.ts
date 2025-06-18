@@ -317,7 +317,7 @@ return this.http.post<any>(environment.apiUrl + ApiEndPoint.patientAssign,data)
   // }
 
   terms(): Observable<any> {
-  return this.http.get('https://81.208.171.189/api/Admin/GetTermsHtml', {
+  return this.http.get( environment.apiUrl + 'api/Admin/GetTermsHtml', {
     responseType: 'text' as 'json' // This is the key fix
   });
 }
