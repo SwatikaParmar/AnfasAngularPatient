@@ -73,13 +73,11 @@ closeImagePreview(): void {
         if (response.isSuccess) {
           this.bloodPressureList = response.data.dataList;
         } else {
-          this.toastrService.error('Failed to fetch bloodPressure list.');
-          console.error('API returned failure:', response);
+        
         }
       },
       error => {
-        this.toastrService.error('Error fetching bloodPressure list.');
-        console.error('Error fetching bloodPressure list:', error);
+       
       }
     );
   }    
@@ -158,7 +156,7 @@ debugger
     error: (err) => {
       this.spinner.hide();
       this.toastrService.error('Error adding blood pressure record');
-      console.error('Error:', err);
+  
     }
   });
 }
@@ -191,7 +189,7 @@ uploadVitalPictureAfterRecord(recordId: number): void {
     error: (err) => {
       this.spinner.hide();
       this.toastrService.error('Image upload failed.');
-      console.error('Upload Error:', err);
+
     }
   });
 }

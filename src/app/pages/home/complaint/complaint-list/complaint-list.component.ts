@@ -47,13 +47,11 @@ export class ComplaintListComponent {
         if (response.status === true) {
           this.complaintList = response.data.complaints;
         } else {
-          this.toastrService.error('Failed to fetch  list.');
-          console.error('API returned failure:', response);
+  
         }
       },
       error => {
-        this.toastrService.error('Error fetching  list.');
-        console.error('Error fetching  list:', error);
+      
       }
     );
   }    

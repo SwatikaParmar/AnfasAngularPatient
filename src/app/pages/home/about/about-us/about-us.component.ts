@@ -40,7 +40,7 @@ export class AboutUsComponent {
       },
       (error) => {
       this.spinner.hide();
-        this.toastrService.error('Failed to load terms and conditions content.');
+       
       }
     );
   }

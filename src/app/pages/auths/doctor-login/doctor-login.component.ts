@@ -91,7 +91,6 @@ loginForm!: FormGroup;
     this.authService.Doctorlogin(this.loginForm.value).subscribe({
       next: (response) => {
         if (response.status === true) {
-          this.toasterService.success(response.message);
           this.loginForm.reset();
          this.router.navigate(['/doctor-dashboard']); // replace with your actual route
           // Optionally still fetch patient details in background
@@ -103,7 +102,7 @@ loginForm!: FormGroup;
       },
       error: (err) => {
         this.toasterService.error('Login failed. Please try again.');
-        console.error('Login error:', err);
+      
         this.spinner.hide();
       }
     });

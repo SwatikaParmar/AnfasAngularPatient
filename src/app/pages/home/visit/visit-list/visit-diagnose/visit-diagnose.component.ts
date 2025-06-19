@@ -61,10 +61,10 @@ export class VisitDiagnoseComponent {
     this.contentService.getLab(payload).subscribe(response => {
       if (response.status === true) {
         this.labpdf = response.data.file;
-        this.toastrService.success(response.message);
+ 
         this.openBase64Pdf(this.labpdf);
       } else {
-        this.toastrService.error(response.message);
+    
       }
     });
   }
@@ -77,10 +77,10 @@ export class VisitDiagnoseComponent {
     this.contentService.getRis(payload).subscribe(response => {
       if (response.status === true) {
         this.rispdf = response.data.file;
-        this.toastrService.success(response.message);
+  
         this.openBase64Pdf(this.rispdf);
       } else {
-        this.toastrService.error(response.message);
+  
       }
     });
   }
@@ -112,7 +112,7 @@ debugger
  this.diagnose = response.data.diagnoses;
  
     }else {
-     this.toastrService.error(response.message)
+    
     }
   })
 }

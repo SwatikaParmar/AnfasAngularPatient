@@ -115,7 +115,7 @@ export class LoginComponent implements OnInit {
   //     },
   //     error: (err) => {
   //       this.toasterService.error('Login failed. Please try again.');
-  //       console.error('Login error:', err);
+  //  
   //       this.spinner.hide();
   //     }
   //   });
@@ -207,7 +207,7 @@ export class LoginComponent implements OnInit {
 //       }
 //     },
 //     error: (err) => {
-//       console.error('Login error:', err);
+//  
 //       this.toasterService.error('Login failed. Please try again.');
 //       this.spinner.hide();
 //     }
@@ -257,13 +257,13 @@ onLogin() {
               // ✅ Navigate only after both calls are successful
               this.router.navigateByUrl('/otp');
             } else {
-              this.toasterService.error(patientResponse.message || 'Fetching patient details failed');
+            
             }
             this.spinner.hide();
           },
           error: (err) => {
-            console.error('Patient details error:', err);
-            this.toasterService.error('Something went wrong while fetching patient details.');
+          
+          
             this.spinner.hide();
           }
         });
@@ -274,7 +274,7 @@ onLogin() {
       }
     },
     error: (err) => {
-      console.error('OTP error:', err);
+
       this.toasterService.error('Something went wrong while sending OTP.');
       this.spinner.hide();
     }

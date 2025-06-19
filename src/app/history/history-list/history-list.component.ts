@@ -168,7 +168,6 @@ appointment() {
     };
 
     if (!payload.appointmentnumber || !payload.slotId) {
-      this.toastrService.error('Missing appointment information.');
       return;
     }
 
@@ -182,8 +181,7 @@ appointment() {
         }
       },
       error: (error) => {
-        this.toastrService.error('Error while rescheduling appointment.');
-        console.error('Reschedule error:', error);
+      
       }
     });
   }
@@ -202,11 +200,11 @@ appointment() {
     this.contentService.cancelAppoint(payload).subscribe(response => {
       if (response.status == true) {
 
-        this.toastrService.success(response.message);
+
         window.location.reload();
       } else {
 
-        this.toastrService.error(response.message)
+
 
       }
     })

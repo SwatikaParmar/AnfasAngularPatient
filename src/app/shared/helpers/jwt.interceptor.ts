@@ -28,8 +28,7 @@ export class JwtInterceptor implements HttpInterceptor {
         error => {
           // 401 means Unauthorised
           if (error.status === '401' || error.status === 401) {
-            console.error(error.status);
-            console.error(error.message);
+         
             localStorage.removeItem('currentUser');
             location.reload();
           }   

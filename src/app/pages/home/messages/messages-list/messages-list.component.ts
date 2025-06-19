@@ -44,13 +44,11 @@ export class MessagesListComponent {
               firstName: user.firstName || 'Unknown'  // Add firstName here
             }));
           } else {
-            this.toastrService.error('Failed to fetch messages list.');
-            console.error('API returned failure:', response);
+       
           }
         },
         error => {
-          this.toastrService.error('Error fetching messages list.');
-          console.error('Error fetching messages list:', error);
+       
         }
       );
     }      
@@ -70,7 +68,7 @@ export class MessagesListComponent {
           }
         });
       } else {
-        this.toastrService.error('Invalid sender or receiver information.');
+       
       }
     }
     

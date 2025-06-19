@@ -42,13 +42,11 @@ export class DoctorListComponent {
         if (response.status === true) {
           this.doctorList = response.data;
         } else {
-          this.toastrService.error('Failed to fetch  list.');
-          console.error('API returned failure:', response);
+        
         }
       },
       error => {
-        this.toastrService.error('Error fetching  list.');
-        console.error('Error fetching  list:', error);
+       
       }
     );
   }    
@@ -101,7 +99,7 @@ export class DoctorListComponent {
         }
       });
     } else {
-      this.toastrService.error('Invalid sender or receiver information.');
+   
     }
   }
 }

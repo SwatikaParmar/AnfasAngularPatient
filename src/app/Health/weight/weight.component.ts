@@ -54,13 +54,11 @@ export class WeightComponent {
         if (response.isSuccess) {
           this.weightList = response.data.dataList;
         } else {
-          this.toastrService.error('Failed to fetch weightrecords list.');
-          console.error('API returned failure:', response);
+   
         }
       },
       error => {
-        this.toastrService.error('Error fetching weightrecords list.');
-        console.error('Error fetching weightrecords list:', error);
+
       }
     );
   }
@@ -125,7 +123,7 @@ export class WeightComponent {
       error: (err) => {
         this.spinner.hide();
         this.toastrService.error('Error adding weight record');
-        console.error('Error:', err);
+    
       }
     });
   }
