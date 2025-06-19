@@ -41,6 +41,7 @@ totalItemsMap: { [key: string]: number } = {
   history: 0
 };
   RisData: any;
+  mrn: any;
 
 
 
@@ -59,7 +60,7 @@ totalItemsMap: { [key: string]: number } = {
                 this.patientUid = this.route.snapshot.params['id2'];
 
                         this.patientVisitUId = this.route.snapshot.params['id3'];
-
+this.mrn = this.route.snapshot.params['id4'];
 
     this.rootUrl = environment.rootPathUrl;
 
@@ -175,7 +176,7 @@ getVisitDetail(){
 this.spinner.show();
   let payload = {
     visitId : this.id,
-    mrn: localStorage.getItem('mrn')
+    mrn: this.mrn
   }
 debugger
   this.contentService.visitDetail(payload).subscribe(response => {

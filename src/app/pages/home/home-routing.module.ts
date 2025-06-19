@@ -65,7 +65,7 @@ const routes: Routes = [
 
       { path: 'home', component: HomeComponent },
       { path: 'visit', component: VisitListComponent },
-      { path: 'visit/report/:id/:id2/:id3', component: VisitDiagnoseComponent },
+      { path: 'visit/report/:id/:id2/:id3/:id4', component: VisitDiagnoseComponent },
       { path: 'complaint', component: ComplaintListComponent },
       { path: 'visit/satisfaction-form', component: SatisfactionFormComponent },
       { path: 'about-Us', component: AboutUsComponent },
@@ -107,7 +107,7 @@ const routes: Routes = [
       { path: 'doctor-patient/doctor-bloodSugar/:id', component: DoctorBloodsugarComponent },
       { path: 'doctor-patient/doctor-HeartRate/:id', component: DoctorHeartRateComponent },
       { path: 'doctor-patient/doctor-weight/:id', component: DoctorWeightComponent },
-      { path: 'doctor-patient/doctor-labresults/:id', component: DoctorLabresultsComponent },
+      { path: 'doctor-patient/doctor-labresults/:id/:id2/:id3', component: DoctorLabresultsComponent },
       { path: 'doctor-patient/doctor-steps/:id', component: DoctorStepsComponent },
       { path: 'doctor', component: DoctorEducationComponent },
       { path: 'terms', component: TermsConditionComponent },
