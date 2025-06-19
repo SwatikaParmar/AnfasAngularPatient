@@ -43,7 +43,7 @@
               
 
                     <button type="button" class="pdf-link"  *ngFor="let item of RisData | paginate: {
-        itemsPerPage: 6,
+        itemsPerPage: 5,
         currentPage: pageMap['summary'],
         totalItems: totalItemsMap['summary'],
         id: 'summary-pagination'
@@ -82,7 +82,7 @@
     type="button"
     class="pdf-link"
     *ngFor="let item of labdata | paginate: { 
-      itemsPerPage: 6, 
+      itemsPerPage: 5, 
       currentPage: pageMap['report'], 
       id: 'report-pagination' 
     }"
