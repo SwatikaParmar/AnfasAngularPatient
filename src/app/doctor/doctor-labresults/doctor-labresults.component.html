@@ -15,7 +15,7 @@
           <div class=" mx-auto">
             <form class="px-4 mt-2 mb-3">
               <div class="row g-2">
-                <div class="button-container mb-3">
+                <!-- <div class="button-container mb-3">
                   <button class="tab-button" [class.active]="selectedTab === 'lab'" (click)="selectedTab = 'lab'">
                     {{ 'LAB_REPORT' | translate }}
                   </button>
@@ -23,21 +23,95 @@
                     (click)="selectedTab = 'ris'; getRis()">
                     {{ 'RIS_REPORT' | translate }}
                   </button>
-                </div>
+                </div> -->
 
                 <!-- LAB REPORT SECTION -->
-                <div *ngIf="selectedTab === 'lab' && pdfUrl" class="tab-detail mb-3">
+                <!-- <div *ngIf="selectedTab === 'lab' && pdfUrl" class="tab-detail mb-3">
                   <a [href]="pdfUrl" target="_blank" class="pdf-link">
                     <i class="fas fa-file-pdf"></i> {{ 'VIEW_LAB_REPORT' | translate }}
                   </a>
-                </div>
+                </div> -->
 
                 <!-- RIS REPORT SECTION -->
-                <div *ngIf="selectedTab === 'ris' && pdfUrls" class="tab-detail mb-3">
+                <!-- <div *ngIf="selectedTab === 'ris' && pdfUrls" class="tab-detail mb-3">
                   <a [href]="pdfUrls" target="_blank" class="pdf-link">
                     <i class="fas fa-file-pdf"></i> {{ 'VIEW_RIS_REPORT' | translate }}
                   </a>
+                </div> -->
+
+                  <div class="button-container mb-3">
+                  <button type="button" class="tab-button" [ngClass]="{ 'active': selectedTab === 'report' }"
+                    (click)="setTab('report')"> {{ 'view lab REPORT' | translate }}</button>
+                  <button type="button" class="tab-button" [ngClass]="{ 'active': selectedTab === 'summary' }"
+                    (click)="setTab('summary')">
+                    {{ 'view RIS Report' | translate }}
+                  </button>
+                 
                 </div>
+
+                 <div class="tab-detail mb-3" *ngIf="selectedTab === 'summary'">
+                  <div class="d-flex flex-wrap gap-2 mt-2 mb-5"> <!-- Flexbox with gap -->
+                    <button type="button" class="pdf-link" >
+                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_RIS_REPORT' | translate }}
+                    </button>
+
+                    <button type="button" class="pdf-link" >
+                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_RIS_REPORT' | translate }}
+                    </button>
+
+                    <button type="button" class="pdf-link" >
+                      <i class="fas fa-file-pdf"></i>  {{ 'VIEW_RIS_REPORT' | translate }}
+                    </button>
+
+                    <button type="button" class="pdf-link" >
+                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_RIS_REPORT' | translate }}
+                    </button>
+                    <button type="button" class="pdf-link" >
+                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_RIS_REPORT' | translate }}
+                    </button>
+
+                    <button type="button" class="pdf-link" >
+                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_RIS_REPORT' | translate }}
+                    </button>
+                  </div>
+                </div>
+
+                <div class="tab-detail mb-3" *ngIf="selectedTab === 'report'">
+                  <div class="flex flex-wrap gap-2 mt-2 mb-5">
+                    <button type="button" class="pdf-link" >
+                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_LAB_REPORT' | translate }}
+                    </button>
+
+                    <button type="button" class="pdf-link" >
+                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_LAB_REPORT' | translate }}
+                    </button>
+
+                    <button type="button" class="pdf-link" >
+                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_LAB_REPORT' | translate }}
+                    </button>
+
+                    <button type="button" class="pdf-link" >
+                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_LAB_REPORT' | translate }}
+                    </button>
+                    <button type="button" class="pdf-link" >
+                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_LAB_REPORT' | translate }}
+                    </button>
+
+                    <button type="button" class="pdf-link" >
+                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_LAB_REPORT' | translate }}
+                    </button>
+                  </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
               </div>
 
             </form>

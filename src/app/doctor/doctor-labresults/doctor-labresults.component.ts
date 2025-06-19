@@ -18,8 +18,8 @@ export class DoctorLabresultsComponent {
   pdfUrl!: string;
     pdfUrls!: string;
   risData: any;
-selectedTab: 'lab' | 'ris' = 'lab'; // Default tab
 
+ selectedTab: string = 'report';
 
 
     constructor(
@@ -93,4 +93,8 @@ this.toastrService.error(response.messages)
         this._location.back();
       }  
 
+
+        setTab(tab: string) {
+    this.selectedTab = tab;
+  }
 }
