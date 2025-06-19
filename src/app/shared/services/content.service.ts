@@ -234,6 +234,8 @@ return this.http.post<any>(environment.apiUrl + ApiEndPoint.patientAssign,data)
     );
   }
 
+  
+
   geteducationalMaterialDetail(id: any): Observable<any> {
     return this.http.get<any>(
       `${environment.apiUrl}${ApiEndPoint.educationalMaterialDetail}?id=${id}`
@@ -306,6 +308,12 @@ return this.http.post<any>(environment.apiUrl + ApiEndPoint.patientAssign,data)
     );
   }
 
+
+  getPatientReport(data:any){
+    return this.http.get<any>(environment.apiUrl +  ApiEndPoint.patientReport + '?PatientUid=' + data.PatientUid 
+      + '&PatientVisitUid=' + data.PatientVisitUid + '&ReportType=' + data.ReportType
+    )
+  }
 
   getDoctorVisit(data:any){
         return this.http.get<any>(environment.apiUrl + ApiEndPoint.visitList + '?mrn=' + data + '&forPatient=false' + '&forDoctor=true')

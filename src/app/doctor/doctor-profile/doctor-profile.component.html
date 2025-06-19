@@ -15,21 +15,21 @@
                 <img src="/assets/images/icon01.png" alt="User Photo" class="profile-photo" />
 
                 <div class="profile-details">
-                  <div class="profile-title">{{ profileData.printName }}</div>
+                  <div class="profile-title">{{ profileData?.printName }}</div>
 
 
 
 
                   <div class="profile-section">
                     <div class="profile-label">{{ 'DEFAULT_DEPARTMENT' | translate }}</div>
-                    <div class="profile-info">{{ profileData.defaultDepartment?.name }}</div>
+                    <div class="profile-info">{{ profileData?.defaultDepartment?.name }}</div>
                   </div>
 
                   <div class="profile-section">
                     <div class="profile-label">{{ 'USER_DEPARTMENTS' | translate }}</div>
                     <ul class="bullet-list">
-                      <li *ngFor="let dept of profileData.userDepartments">
-                        {{ dept.id }}
+                      <li *ngFor="let dept of profileData?.userDepartments">
+                        {{ dept?.id }}
                       </li>
                     </ul>
                   </div>
