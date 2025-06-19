@@ -43,7 +43,7 @@ selectedTab: 'lab' | 'ris' = 'lab'; // Default tab
 
 
   getLab(){
-this.spinner.show();
+  // this.spinner.show();
     this.contentService.getDocLab(this.patientVisitUId).subscribe(response => {
       if(response.status ==true){
 this.labData = response.data.file;
