@@ -49,13 +49,13 @@ return this.http.post<any>(environment.apiUrl + ApiEndPoint.patientAssign,data)
 
   getLab(data: any) {
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.LabReport + '?PatientUid=' + data.PatientUid
-      + '&PatientVisitUid=' + data.PatientVisitUid
+      + '&PatientVisitUid=' + data.PatientVisitUid + '&orderUid=' + data.orderUid
     )
   }
 
   getRis(data: any) {
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.RisReport + '?PatientUid=' + data.PatientUid
-      + '&PatientVisitUid=' + data.PatientVisitUid
+      + '&PatientVisitUid=' + data.PatientVisitUid + '&orderUid=' + data.orderUid
     )
   }
 

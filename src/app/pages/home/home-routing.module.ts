@@ -65,7 +65,7 @@ const routes: Routes = [
 
       { path: 'home', component: HomeComponent },
       { path: 'visit', component: VisitListComponent },
-      { path: 'visit/report/:id', component: VisitDiagnoseComponent },
+      { path: 'visit/report/:id/:id2/:id3', component: VisitDiagnoseComponent },
       { path: 'complaint', component: ComplaintListComponent },
       { path: 'visit/satisfaction-form', component: SatisfactionFormComponent },
       { path: 'about-Us', component: AboutUsComponent },
