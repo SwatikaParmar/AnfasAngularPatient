@@ -75,4 +75,18 @@
       width: 80% !important;
     }
   }
-  
+  /* Buttons */
+.appointment-btn {
+  background-color: #a68c4d;
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.appointment-btn:hover {
+  background-color: #8e773f;
+}

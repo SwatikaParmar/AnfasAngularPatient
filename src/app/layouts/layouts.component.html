@@ -1,56 +1,59 @@
 <div class="dashboard-outer" *ngIf="role == 'Patient'">
 
- <div class="nav-header  mobile-only" style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+  <div class="nav-header  mobile-only"
+    style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
 
-  <a class="brand-logo">
-    <img class="logo-abbr" src="assets/images/logo-dashboard.png" alt="">
-  </a>
+    <a class="brand-logo">
+      <img class="logo-abbr" src="assets/images/logo-dashboard.png" alt="">
+    </a>
 
-  <ul class="headnav mr-auto xs-d-none">
-    <li><a href="javascript:void(0)"></a></li>
-  </ul>
+    <ul class="headnav mr-auto xs-d-none">
+      <li><a href="javascript:void(0)"></a></li>
+    </ul>
 
-  <ul class="header-profile">
-    <li>
-      <a class="setting" data-toggle="dropdown">
-        <img src="assets/images/profile-i.svg" class="img-responsive">
-      </a>
-      <ul class="dropdown-menu mt-10">
-        <li class="mb-2">
-          <a class="dropdown-item" [routerLink]="['/profile']">{{ 'PROFILE' | translate }}</a>
-        </li>
-        <li>
-          <a class="dropdown-item" (click)="logouts()">{{ 'LOGOUT' | translate }}</a>
-        </li>
-      </ul>
-    </li>
+    <ul class="header-profile">
+      <li>
+        <a class="setting" data-toggle="dropdown">
+          <img src="assets/images/profile-i.svg" class="img-responsive">
+        </a>
+        <ul class="dropdown-menu mt-10">
+          <li class="mb-2">
+            <a class="dropdown-item" [routerLink]="['/profile']">{{ 'PROFILE' | translate }}</a>
+          </li>
+          <li>
+            <a class="dropdown-item" (click)="logouts()">{{ 'LOGOUT' | translate }}</a>
+          </li>
+        </ul>
+      </li>
 
-    <li class="language-dropdown"
-      [ngClass]="{'english-selected': currentLanguage === 'en', 'arabic-selected': currentLanguage === 'ar'}">
-      <a href="javascript:void(0)" class="language-icon" id="languageDropdown" (click)="toggleLanguageMenu()">
-        <img src="assets/images/language-icon.svg" class="img-responsive">
-      </a>
-      <ul class="dropdown-menu1 language-menu1" [ngClass]="{'show': isLanguageMenuOpen}">
-        <li class="mb-2">
-          <a class="down" href="javascript:void(0)" (click)="switchLanguage('en')" [class.selected]="currentLanguage === 'en'">
-            {{ 'ENGLISH' | translate }}
-          </a>
-        </li>
-        <li>
-          <a class="down" href="javascript:void(0)" (click)="switchLanguage('ar')" [class.selected]="currentLanguage === 'ar'">
-            {{ 'ARABIC' | translate }}
-          </a>
-        </li>
-      </ul>
-    </li>
-  </ul>
+      <li class="language-dropdown"
+        [ngClass]="{'english-selected': currentLanguage === 'en', 'arabic-selected': currentLanguage === 'ar'}">
+        <a href="javascript:void(0)" class="language-icon" id="languageDropdown" (click)="toggleLanguageMenu()">
+          <img src="assets/images/language-icon.svg" class="img-responsive">
+        </a>
+        <ul class="dropdown-menu1 language-menu1" [ngClass]="{'show': isLanguageMenuOpen}">
+          <li class="mb-2">
+            <a class="down" href="javascript:void(0)" (click)="switchLanguage('en')"
+              [class.selected]="currentLanguage === 'en'">
+              {{ 'ENGLISH' | translate }}
+            </a>
+          </li>
+          <li>
+            <a class="down" href="javascript:void(0)" (click)="switchLanguage('ar')"
+              [class.selected]="currentLanguage === 'ar'">
+              {{ 'ARABIC' | translate }}
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
 
-  <div class="nav-control">
-    <div class="toggle-menu nav-toggle" (click)="toggleMenus()">
-      <img src="assets/images/menu-i.svg">
+    <div class="nav-control">
+      <div class="toggle-menu nav-toggle" (click)="toggleMenus()">
+        <img src="assets/images/menu-i.svg">
+      </div>
     </div>
   </div>
-</div>
 
   <!--**********************************
     Nav header end
@@ -134,17 +137,24 @@
             </div>
 
 
-               <div class="item one" routerLinkActive="active">
+            
+             <div class="item one" routerLinkActive="active">
               <a class="sub-btn" [routerLink]="['/doctor-list']">
-                <i class="fas fa-calendar-check" style="font-size: 20px;"></i> <span
-                  style="font-size: 15px !important; font-weight: 600 !important;">{{ 'DOCTORS' | translate }}</span>
+              <svg
+                  xmlns=" http://www.w3.org/2000/svg " viewBox="0 0 448 512">
+                  <path
+                    d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-96 55.2C54 332.9 0 401.3 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7c0-81-54-149.4-128-171.1V362c27.6 7.1 48 32.2 48 62v40c0 8.8-7.2 16-16 16H336c-8.8 0-16-7.2-16-16s7.2-16 16-16V424c0-17.7-14.3-32-32-32s-32 14.3-32 32v24c8.8 0 16 7.2 16 16s-7.2 16-16 16H256c-8.8 0-16-7.2-16-16V424c0-29.8 20.4-54.9 48-62V304.9c-6-.6-12.1-.9-18.3-.9H178.3c-6.2 0-12.3 .3-18.3 .9v65.4c23.1 6.9 40 28.3 40 53.7c0 30.9-25.1 56-56 56s-56-25.1-56-56c0-25.4 16.9-46.8 40-53.7V311.2zM144 448a24 24 0 1 0 0-48 24 24 0 1 0 0 48z">
+                  </path>
+                </svg><span style="font-size: 15px !important; font-weight: 600 !important;">{{ 'DOCTORS' | translate }}</span>
 
               </a>
             </div>
+            
             <div class="item shw one" routerLinkActive="active">
               <a [routerLink]="['/complaint']">
                 <i class="fas fa-exclamation-circle" style="font-size: 20px;"></i> <span
-                  style="font-size: 15px !important; font-weight: 600 !important;">{{ 'COMPLAINTS_&_SUGGESTIONS' | translate }}</span>
+                  style="font-size: 15px !important; font-weight: 600 !important;">{{ 'COMPLAINTS_&_SUGGESTIONS' |
+                  translate }}</span>
               </a>
             </div>
 
@@ -218,8 +228,8 @@
               <a class="sub-btn" [routerLink]="['/educational-Material']">
                 <i class="fas fa-book" style="font-size: 20px; margin-right: 5px;"></i> <!-- Book icon -->
                 <span style="font-size: 15px !important; font-weight: 600 !important;">
-                 {{ 'PATIENT_EDUCATION'
-                        | translate }}
+                  {{ 'PATIENT_EDUCATION'
+                  | translate }}
                 </span>
               </a>
             </div>
@@ -286,13 +296,14 @@
 
 <div class="dashboard-outer" *ngIf="role == 'Doctor'">
 
-  <div class="nav-header mobile-only" style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+  <div class="nav-header mobile-only"
+    style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
 
     <a class="brand-logo">
       <img class="logo-abbr" src="assets/images/logo-dashboard.png" alt="">
     </a>
 
-       <ul class="headnav mr-auto xs-d-none">
+    <ul class="headnav mr-auto xs-d-none">
       <li><a href="javascript:void(0)"></a></li>
     </ul>
     <ul class="header-profile">
@@ -300,14 +311,15 @@
           <img src="assets/images/profile-i.svg" class="img-responsive">
         </a>
         <ul class="dropdown-menu mt-10">
-          <li class="mb-2"><a class="dropdown-item " [routerLink]="['/doctor-profile']">{{ 'PROFILE' | translate }}</a></li>
+          <li class="mb-2"><a class="dropdown-item " [routerLink]="['/doctor-profile']">{{ 'PROFILE' | translate }}</a>
+          </li>
           <li><a class="dropdown-item" (click)="logout()">
               {{ 'LOGOUT' | translate }}</a></li>
 
         </ul>
       </li>
 
-    
+
       <li class="language-dropdown"
         [ngClass]="{'english-selected': currentLanguage === 'en', 'arabic-selected': currentLanguage === 'ar'}">
         <a href="javascript:void(0)" class="language-icon" id="languageDropdown" (click)="toggleLanguageMenu()">
@@ -352,14 +364,15 @@
           <img src="assets/images/profile-i.svg" class="img-responsive">
         </a>
         <ul class="dropdown-menu mt-10">
-          <li class="mb-2"><a class="dropdown-item " [routerLink]="['/doctor-profile']">{{ 'PROFILE' | translate }}</a></li>
+          <li class="mb-2"><a class="dropdown-item " [routerLink]="['/doctor-profile']">{{ 'PROFILE' | translate }}</a>
+          </li>
           <li><a class="dropdown-item" (click)="logout()">
               {{ 'LOGOUT' | translate }}</a></li>
 
         </ul>
       </li>
 
-     
+
       <li class="language-dropdown"
         [ngClass]="{'english-selected': currentLanguage === 'en', 'arabic-selected': currentLanguage === 'ar'}">
         <a href="javascript:void(0)" class="language-icon" id="languageDropdown" (click)="toggleLanguageMenu()">
@@ -433,8 +446,8 @@
               <a class="sub-btn" [routerLink]="['/doctor']">
                 <i class="fas fa-book" style="font-size: 20px; margin-right: 10px;"></i> <!-- Book icon -->
                 <span style="font-size: 15px !important; font-weight: 600 !important;">
-                 {{ 'PATIENT_EDUCATION'
-                        | translate }}
+                  {{ 'PATIENT_EDUCATION'
+                  | translate }}
                 </span>
               </a>
             </div>
