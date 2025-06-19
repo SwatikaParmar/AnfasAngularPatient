@@ -1,30 +1,34 @@
 <div class="dashboard-outer">
 
-  <section>
+   <section>
     <div class="content-body">
       <div class="container-fluid">
+        <!-- Header & Button -->
         <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-3 ml-1 sm:ml-0">
-          <h1 class="text-lg sm:text-xl font-semibold text-[#726641]" style="font-size: 25px; color: #726641;">
+          <h1 class="text-lg sm:text-xl font-semibold text-[#726641]" style="font-size: 25px;">
             {{ 'MY_APPOINTMENTS' | translate }}
           </h1>
 
           <!-- Book Appointment Button -->
           <button *ngIf="showAppointmentButton"
             class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full w-full sm:w-auto sm:ml-auto"
-            [ngClass]="{'sm:ml-0': isArabic, 'sm:ml-auto': !isArabic}" [routerLink]="['/appointment-list/appointment']">
+            [ngClass]="{ 'sm:ml-0': isArabic, 'sm:ml-auto': !isArabic }"
+            [routerLink]="['/appointment-list/appointment']">
             + {{ 'BOOK_APPOINTMENT' | translate }}
           </button>
         </div>
 
-
-
-
-        <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;" *ngIf="isHistoryDataLoaded">
-          <div class="custom-container  mx-auto p-3">
+        <!-- Main Card -->
+        <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
+          <div class="custom-container mx-auto p-3">
             <div class="container">
-              <div class="col-lg-4 col-md-6 col-sm-12 mb-3 p-0" *ngIf="historyList.length > 0">
-                <select class="bg-white border border-gray-300 text-gray-700 py-2 px-2 rounded w-100"
-                  style="font-size: 16px; color: #726641; padding-right: 50px!important;" [(ngModel)]="selectedStatus"
+
+              <!-- ✅ Filter Dropdown always visible -->
+              <div class="col-lg-4 col-md-6 col-sm-12 mb-3 p-0">
+                <select
+                  class="bg-white border border-gray-300 text-gray-700 py-2 px-2 rounded w-100"
+                  style="font-size: 16px; color: #726641; padding-right: 50px!important;"
+                  [(ngModel)]="selectedStatus"
                   (change)="filterHistoryList()">
                   <option value="" disabled>{{ 'SELECT_OPTION' | translate }}</option>
                   <option value="All">{{ 'ALL' | translate }}</option>
@@ -34,42 +38,29 @@
                 </select>
               </div>
 
-
-
+              <!-- Appointments List -->
               <div class="row" *ngIf="historyList.length > 0">
-                <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let item of historyList | paginate
-                                : {
-                                    itemsPerPage: 6,
-                                    currentPage: page,
-                                    totalItems: totalItems,
-                                    id: '1'
-                                  }">
+                <div
+                  class="col-lg-4 col-md-6 col-sm-12"
+                  *ngFor="let item of historyList | paginate : { itemsPerPage: 6, currentPage: page, totalItems: totalItems, id: '1' }">
                   <div class="appointment-card">
                     <div class="d-flex justify-content-between align-items-start mb-2"
                       style="border-bottom: 1px solid gray; padding-bottom: 10px;">
-                      <!-- Left Side: Text + Date -->
+                      <!-- Left Side -->
                       <div class="appointment-header">
-                        {{ 'APPOINTMENT_DATE' | translate }}<br>
-                        <strong>
-                          {{ item.slots[0]?.start ? (item.slots[0].start | date: 'medium') : 'N/A' }}
-                        </strong>
+                        {{ 'APPOINTMENT_DATE' | translate }}<br />
+                        <strong>{{ item.slots[0]?.start ? (item.slots[0].start | date: 'medium') : 'N/A' }}</strong>
                       </div>
-
-
-                      <!-- Right Side: Chat Icon -->
+                      <!-- Right Side -->
                       <div class="chat-icon-box d-flex justify-content-center align-items-center pt-2">
                         <i class="bi bi-chat-dots-fill" (click)="editContent(item)"></i>
                       </div>
                     </div>
-                    <!-- <div class="chat-icon-box d-flex justify-content-center align-items-center pt-2">
-                                          <i class="bi bi-chat-dots-fill"></i>
-                                        </div> -->
-
 
                     <!-- Doctor Info -->
                     <div class="d-flex align-items-center mb-2">
                       <img src="assets/images/logo-dashboard.png" alt="Doctor" class="doctor-img me-3"
-                        style="background-color: rgb(221, 221, 221); border-radius: 50%;">
+                        style="background-color: rgb(221, 221, 221); border-radius: 50%;" />
                       <div>
                         <p class="doctor-name mb-1">
                           Dr. {{ item.careProviderUid?.name }} {{ item.careProviderUid?.lastName }}
@@ -94,33 +85,30 @@
                     </div>
                   </div>
                 </div>
-
-
-
               </div>
 
-
-
-              <!-- No Data Image -->
+              <!-- ✅ No Data Image -->
               <div *ngIf="historyList.length === 0">
                 <div class="no-data-fullpage">
                   <img src="assets/images/ffffrq-removebg-preview.png" alt="No Data Found" class="no-data-image" />
                   <p class="no-data-text"></p>
                 </div>
               </div>
-
             </div>
 
-
-            <div class="pagination-container ml-3"*ngIf="historyList.length > 0">
-              <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
-                queryParamsHandling="merge"></pagination-controls>
+            <!-- Pagination -->
+            <div class="pagination-container ml-3" *ngIf="historyList.length > 0">
+              <pagination-controls
+                (pageChange)="onPageChange($event)"
+                id="1"
+                class="paginate-doctor-list"
+                queryParamsHandling="merge">
+              </pagination-controls>
             </div>
           </div>
         </div>
       </div>
     </div>
-
   </section>
 </div>
 <!-- Popup Overlay (Angular Bound) -->
