@@ -22,41 +22,53 @@
                 <!-- Tab Buttons -->
                 <div class="button-container mb-3">
                   <button type="button" class="tab-button" [ngClass]="{ 'active': selectedTab === 'report' }"
-                    (click)="setTab('report')"> {{ 'view lab REPORT' | translate }}</button>
+                    (click)="setTab('report')" (click)="getPatietReport()"> {{ 'View lab REPORT' | translate }}</button>
                   <button type="button" class="tab-button" [ngClass]="{ 'active': selectedTab === 'summary' }"
-                    (click)="setTab('summary')">
-                    {{ 'view RIS Report' | translate }}
+                    (click)="setTab('summary')" (click)="getPatietRISReport()">
+                    {{ 'View RIS Report' | translate }}
                   </button>
                   <button type="button" class="tab-button" (click)="getVisitDetail()"
                     [ngClass]="{ 'active': selectedTab === 'diagnoses' }" (click)="setTab('diagnoses')"> {{ 'DIAGNOSES'
-                    | translate }}</button>
+                    | translate }}</button> 
                 </div>
 
                 <div class="tab-detail mb-3" *ngIf="selectedTab === 'summary'">
-                  <div class="d-flex flex-wrap gap-2 mt-2 mb-5"> <!-- Flexbox with gap -->
-                    <button type="button" class="pdf-link" (click)="lab(patientData)">
-                      <i class="fas fa-file-pdf"></i> dgfcgvhbjnlkm
-                    </button>
+                  <div class="d-flex flex-wrap gap-2 mt-2 mb-5" *ngIf="RisData && RisData.length > 0"> <!-- Flexbox with gap -->
+                  
 
-                    <button type="button" class="pdf-link" (click)="ris(patientData)">
-                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_RIS_REPORT' | translate }}
-                    </button>
+                 
+              
 
-                    <button type="button" class="pdf-link" (click)="lab(patientData)">
-                      <i class="fas fa-file-pdf"></i>  {{ 'VIEW_RIS_REPORT' | translate }}
-                    </button>
+                
+              
 
-                    <button type="button" class="pdf-link" (click)="ris(patientData)">
-                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_RIS_REPORT' | translate }}
-                    </button>
-                    <button type="button" class="pdf-link" (click)="lab(patientData)">
-                      <i class="fas fa-file-pdf"></i> dgfcgvhbjnlkm
-                    </button>
-
-                    <button type="button" class="pdf-link" (click)="ris(patientData)">
-                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_RIS_REPORT' | translate }}
+                    <button type="button" class="pdf-link"  *ngFor="let item of RisData | paginate: {
+        itemsPerPage: 6,
+        currentPage: pageMap['summary'],
+        totalItems: totalItemsMap['summary'],
+        id: 'summary-pagination'
+      }" (click)="ris(item)">
+                      <i class="fas fa-file-pdf" ></i>{{ item?.ordernumber }}
                     </button>
                   </div>
+
+                   <div class="pagination-container pb-3">
+    <pagination-controls
+      (pageChange)="onPageChanges($event, 'summary')"
+      [id]="'summary-pagination'"
+      class="paginate-doctor-list"
+      queryParamsHandling="merge"
+    ></pagination-controls>
+  </div>
+       <!-- No Data Image -->
+                    <div *ngIf="RisData && RisData.length === 0">
+                      <div class="no-data-fullpage">
+                        <img src="assets/images/ffffrq-removebg-preview.png" alt="No Data Found"
+                          class="no-data-image" />
+                        <p class="no-data-text"></p>
+                      </div>
+                    </div>
+
                 </div>
 
 
@@ -64,32 +76,42 @@
 
 
                 <!-- Report Tab -->
-                <div class="tab-detail mb-3" *ngIf="selectedTab === 'report'">
-                  <div class="flex flex-wrap gap-2 mt-2 mb-5">
-                    <button type="button" class="pdf-link" (click)="lab(patientData)">
-                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_LAB_REPORT' | translate }}
-                    </button>
+         <div class="tab-detail mb-3" *ngIf="selectedTab === 'report'">
+ <div class="flex flex-wrap gap-2 mt-2 mb-5" *ngIf="labdata && labdata.length > 0">
+  <button
+    type="button"
+    class="pdf-link"
+    *ngFor="let item of labdata | paginate: { 
+      itemsPerPage: 6, 
+      currentPage: pageMap['report'], 
+      id: 'report-pagination' 
+    }"
+    (click)="lab(item)"
+  >
+    <i class="fas fa-file-pdf"></i> {{ item?.ordernumber }}
+  </button>
+</div>
 
-                    <button type="button" class="pdf-link" (click)="ris(patientData)">
-                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_RIS_REPORT' | translate }}
-                    </button>
 
-                    <button type="button" class="pdf-link" (click)="lab(patientData)">
-                      <i class="fas fa-file-pdf"></i> dgfcgvhbjnlkm
-                    </button>
+  <div class="pagination-container pb-3">
+    <pagination-controls
+      (pageChange)="onPageChanges($event, 'report')"
+      [id]="'report-pagination'"
+      class="paginate-doctor-list"
+      queryParamsHandling="merge"
+    ></pagination-controls>
+  </div>
 
-                    <button type="button" class="pdf-link" (click)="ris(patientData)">
-                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_RIS_REPORT' | translate }}
-                    </button>
-                    <button type="button" class="pdf-link" (click)="lab(patientData)">
-                      <i class="fas fa-file-pdf"></i> dgfcgvhbjnlkm
-                    </button>
+     <!-- No Data Image -->
+                    <div *ngIf="labdata && labdata.length === 0">
+                      <div class="no-data-fullpage">
+                        <img src="assets/images/ffffrq-removebg-preview.png" alt="No Data Found"
+                          class="no-data-image" />
+                        <p class="no-data-text"></p>
+                      </div>
+                    </div>
+</div>
 
-                    <button type="button" class="pdf-link" (click)="ris(patientData)">
-                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_RIS_REPORT' | translate }}
-                    </button>
-                  </div>
-                </div>
 
 
                 <!-- Diagnoses Tab -->
