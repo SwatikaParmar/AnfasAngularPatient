@@ -5,12 +5,12 @@
       <div class="container-fluid">
         <div class="flex mb-4 items-center ml-1">
           <button class=" back-btn-left-circle flex items-center justify-center w-8 h-8 rounded-full text-white"
-                  style="background-color: #726641;" (click)="backClicked()">
-           <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center; color: black;"></i>
+            style="background-color: #726641;" (click)="backClicked()">
+            <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center; color: black;"></i>
 
           </button>
           <h1 class="text-lg font-semibold ml-2" style="font-size: 25px; color: #726641;">
-           {{ 'VIEW_REPORT_&_DIAGNOSES' | translate }}
+            {{ 'VIEW_REPORT_&_DIAGNOSES' | translate }}
           </h1>
         </div>
 
@@ -21,59 +21,109 @@
 
                 <!-- Tab Buttons -->
                 <div class="button-container mb-3">
-                  <button type="button" class="tab-button"
-                          [ngClass]="{ 'active': selectedTab === 'report' }"
-                          (click)="setTab('report')">  {{ 'REPORT' | translate }}</button>
-
+                  <button type="button" class="tab-button" [ngClass]="{ 'active': selectedTab === 'report' }"
+                    (click)="setTab('report')"> {{ 'view lab REPORT' | translate }}</button>
+                  <button type="button" class="tab-button" [ngClass]="{ 'active': selectedTab === 'summary' }"
+                    (click)="setTab('summary')">
+                    {{ 'view RIS Report' | translate }}
+                  </button>
                   <button type="button" class="tab-button" (click)="getVisitDetail()"
-                          [ngClass]="{ 'active': selectedTab === 'diagnoses' }"
-                          (click)="setTab('diagnoses')">  {{ 'DIAGNOSES' | translate }}</button>
+                    [ngClass]="{ 'active': selectedTab === 'diagnoses' }" (click)="setTab('diagnoses')"> {{ 'DIAGNOSES'
+                    | translate }}</button>
                 </div>
+
+                <div class="tab-detail mb-3" *ngIf="selectedTab === 'summary'">
+                  <div class="d-flex flex-wrap gap-2 mt-2 mb-5"> <!-- Flexbox with gap -->
+                    <button type="button" class="pdf-link" (click)="lab(patientData)">
+                      <i class="fas fa-file-pdf"></i> dgfcgvhbjnlkm
+                    </button>
+
+                    <button type="button" class="pdf-link" (click)="ris(patientData)">
+                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_RIS_REPORT' | translate }}
+                    </button>
+
+                    <button type="button" class="pdf-link" (click)="lab(patientData)">
+                      <i class="fas fa-file-pdf"></i> dgfcgvhbjnlkm
+                    </button>
+
+                    <button type="button" class="pdf-link" (click)="ris(patientData)">
+                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_RIS_REPORT' | translate }}
+                    </button>
+                    <button type="button" class="pdf-link" (click)="lab(patientData)">
+                      <i class="fas fa-file-pdf"></i> dgfcgvhbjnlkm
+                    </button>
+
+                    <button type="button" class="pdf-link" (click)="ris(patientData)">
+                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_RIS_REPORT' | translate }}
+                    </button>
+                  </div>
+                </div>
+
+
+
+
 
                 <!-- Report Tab -->
                 <div class="tab-detail mb-3" *ngIf="selectedTab === 'report'">
-                  <button type="button" class="pdf-link" (click)="lab(patientData)">
-                    <i class="fas fa-file-pdf"></i> {{ 'VIEW_LAB_REPORT' | translate }}
-                  </button>&nbsp;
+                  <div class="flex flex-wrap gap-2 mt-2 mb-5">
+                    <button type="button" class="pdf-link" (click)="lab(patientData)">
+                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_LAB_REPORT' | translate }}
+                    </button>
 
-                  <button type="button" class="pdf-link" (click)="ris(patientData)">
-                    <i class="fas fa-file-pdf"></i> {{ 'VIEW_RIS_REPORT' | translate }}
-                  </button>
+                    <button type="button" class="pdf-link" (click)="ris(patientData)">
+                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_RIS_REPORT' | translate }}
+                    </button>
+
+                    <button type="button" class="pdf-link" (click)="lab(patientData)">
+                      <i class="fas fa-file-pdf"></i> dgfcgvhbjnlkm
+                    </button>
+
+                    <button type="button" class="pdf-link" (click)="ris(patientData)">
+                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_RIS_REPORT' | translate }}
+                    </button>
+                    <button type="button" class="pdf-link" (click)="lab(patientData)">
+                      <i class="fas fa-file-pdf"></i> dgfcgvhbjnlkm
+                    </button>
+
+                    <button type="button" class="pdf-link" (click)="ris(patientData)">
+                      <i class="fas fa-file-pdf"></i> {{ 'VIEW_RIS_REPORT' | translate }}
+                    </button>
+                  </div>
                 </div>
 
-                <!-- Diagnoses Tab -->
-                  <div class="tab-detail mb-3" *ngIf="selectedTab === 'diagnoses'">
-              <div class="container mt-2">
 
-                        <div class="row" *ngIf="diagnose && diagnose.length > 0">
-                            <!-- Card 1 -->
-                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4 " *ngFor="let item of diagnose  | paginate
+                <!-- Diagnoses Tab -->
+                <div class="tab-detail mb-3" *ngIf="selectedTab === 'diagnoses'">
+                  <div class="container mt-2">
+
+                    <div class="row" *ngIf="diagnose && diagnose.length > 0">
+                      <!-- Card 1 -->
+                      <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4 " *ngFor="let item of diagnose  | paginate
                             : {
                                 itemsPerPage: 6,
                                 currentPage: page,
                                 totalItems: totalItems,
                                 id: '1'
                               }">
-                                <div class="physician-card ">
-                                  
-                                    <div class="info">
-                                      
+                        <div class="physician-card ">
 
-                                        <p><span class="label" style="margin-left:10px; font-size:13px;">{{
-                                                'CARE_PROVIDER' | translate }} -</span> <span
-                                                style="margin-left:19px; font-size:13px;">{{item?.careProviderUid?.name || 'N/A'}}
-                                                {{item?.careProviderLastName}}</span></p>
-                                        <p
-                                            style="display: flex; flex-wrap: wrap; align-items: center; font-size: 13px; gap: 8px;">
-                                            <span class="label">
-                                               {{ 'PROBLEM' | translate }} -
-                                            </span>
-                                            <span style="flex: 1; min-width: 62px; padding-left: 20px;">
-                                                {{ item?.problemUid?.name || 'N/A' }}
-                                            </span>
-                                        </p>
+                          <div class="info">
 
-                                           <!-- <p
+
+                            <p><span class="label" style="margin-left:10px; font-size:13px;">{{
+                                'CARE_PROVIDER' | translate }} -</span> <span
+                                style="margin-left:19px; font-size:13px;">{{item?.careProviderUid?.name || 'N/A'}}
+                                {{item?.careProviderLastName}}</span></p>
+                            <p style="display: flex; flex-wrap: wrap; align-items: center; font-size: 13px; gap: 8px;">
+                              <span class="label">
+                                {{ 'PROBLEM' | translate }} -
+                              </span>
+                              <span style="flex: 1; min-width: 62px; padding-left: 20px;">
+                                {{ item?.problemUid?.name || 'N/A' }}
+                              </span>
+                            </p>
+
+                            <!-- <p
                                             style="display: flex; flex-wrap: wrap; align-items: center; font-size: 13px; gap: 8px;">
                                             <span class="label">
                                                Date -
@@ -83,62 +133,62 @@
                                             </span>
                                         </p> -->
 
-                                        <p style="display: flex; flex-wrap: wrap; align-items: center; font-size: 13px; gap: 8px;
+                            <p style="display: flex; flex-wrap: wrap; align-items: center; font-size: 13px; gap: 8px;
                                             color: red;">
-                                            <span class="label" style="color: red;">
-                                                {{ 'CHRONIC_DISEASE' | translate }} -
-                                            </span>
-                                            <span style="flex: 1; min-width: 62px; padding-left: 20px;">
-                                                {{ item?.isChronicDiagnoses === true ? 'Yes' : item?.isChronicDiagnoses
-                                                === false ? 'No' : 'N/A' }} </span>
-                                        </p>
+                              <span class="label" style="color: red;">
+                                {{ 'CHRONIC_DISEASE' | translate }} -
+                              </span>
+                              <span style="flex: 1; min-width: 62px; padding-left: 20px;">
+                                {{ item?.isChronicDiagnoses === true ? 'Yes' : item?.isChronicDiagnoses
+                                === false ? 'No' : 'N/A' }} </span>
+                            </p>
 
-                                    </div>
-                                  
-                                </div>
+                          </div>
 
-                                <!-- Popup -->
-                                <div id="popup">
-                                    <div id="popup-content">
-                                        <div class="top-bar">
-                                            <h2 style="color:#726641;">{{ 'REPORTS' | translate }}</h2>
-                                            <i class="fa fa-times close-icon " id="close" onclick="closePopup()"></i>
-                                        </div>
+                        </div>
 
-
-                                        <div class="report-card" (click)="lab(item)">
-                                            <span>{{ 'LAB_REPORT' | translate }}</span>
-                                            <span>➔</span>
-                                        </div>
-
-                                        <div class="report-card" (click)="ris(item)">
-                                            <span>{{ 'RIS_REPORT' | translate }}</span>
-                                            <span>➔</span>
-                                        </div>
-                                    </div>
-                                </div>
-
+                        <!-- Popup -->
+                        <div id="popup">
+                          <div id="popup-content">
+                            <div class="top-bar">
+                              <h2 style="color:#726641;">{{ 'REPORTS' | translate }}</h2>
+                              <i class="fa fa-times close-icon " id="close" onclick="closePopup()"></i>
                             </div>
 
 
-                        </div>
-
-
-
-                        <!-- No Data Image -->
-                        <div *ngIf="diagnose && diagnose.length === 0">
-                            <div class="no-data-fullpage">
-                                <img src="assets/images/ffffrq-removebg-preview.png" alt="No Data Found"
-                                    class="no-data-image" />
-                                <p class="no-data-text"></p>
+                            <div class="report-card" (click)="lab(item)">
+                              <span>{{ 'LAB_REPORT' | translate }}</span>
+                              <span>➔</span>
                             </div>
+
+                            <div class="report-card" (click)="ris(item)">
+                              <span>{{ 'RIS_REPORT' | translate }}</span>
+                              <span>➔</span>
+                            </div>
+                          </div>
                         </div>
-                        <div class="pagination-container pb-3">
-                            <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
-                                queryParamsHandling="merge"></pagination-controls>
-                        </div>
+
+                      </div>
+
+
                     </div>
-    </div>
+
+
+
+                    <!-- No Data Image -->
+                    <div *ngIf="diagnose && diagnose.length === 0">
+                      <div class="no-data-fullpage">
+                        <img src="assets/images/ffffrq-removebg-preview.png" alt="No Data Found"
+                          class="no-data-image" />
+                        <p class="no-data-text"></p>
+                      </div>
+                    </div>
+                    <div class="pagination-container pb-3">
+                      <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
+                        queryParamsHandling="merge"></pagination-controls>
+                    </div>
+                  </div>
+                </div>
 
               </div>
             </form>
