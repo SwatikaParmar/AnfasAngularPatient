@@ -15,27 +15,32 @@
         <div class="col-12 d-flex flex-wrap  align-items-start pb-4">
 
           <!-- First part: Patient -->
-          <div class="flex-fill col-12 col-sm-6 col-md-4 p-0 ">
-            <strong style="color: #726641;">{{ 'PATIENT_NAME' | translate }}:</strong>{{ complaintDetails?.patientName }}
+          <div class="flex-fill col-12 col-sm-6 col-md-4 p-0 mb-2">
+            <strong style="color: #726641;">{{ 'PATIENT_NAME' | translate }}:</strong> {{ complaintDetails?.patientName }}
           </div>
 
           <!-- Second part: Complaint Type -->
-          <div class="flex-fill col-12 col-sm-6 col-md-3 text-sm-center p-0">
-            <strong style="color: #726641;">{{ 'COMPLAINT_TYPE' | translate }}:</strong>{{ complaintDetails?.complaintTypeName }}
+          <div class="flex-fill col-12 col-sm-6 col-md-3 text-sm-center p-0 mb-2">
+            <strong style="color: #726641;">{{ 'COMPLAINT_TYPE' | translate }}:</strong> {{ complaintDetails?.complaintTypeName }}
           </div>
 
           <!-- Third part: Date -->
-          <div class="flex-fill col-12 col-sm-6 col-md-3 text-sm-center p-0">
+          <div class="flex-fill col-12 col-sm-6 col-md-3 text-sm-center p-0 mb-2">
             <strong style="color: #726641;">{{ 'DATE' | translate }}:</strong> {{ complaintDetails?.createdAt | date: 'dd-MM-yyyy' }}
           </div>
 
           <!-- Fourth part: Status -->
-          <div class="flex-fill col-12 col-sm-6 col-md-2 text-sm-end p-0">
-            <strong style="color: #726641;">{{ 'STATUS' | translate }}:</strong><span style="color:#FFA529">{{ complaintDetails?.status }}</span>
+          <div class="flex-fill col-12 col-sm-6 col-md-2 text-sm-end p-0 mb-2">
+            <strong style="color: #726641;">{{ 'STATUS' | translate }}: </strong><span style="color:#FFA529">{{ complaintDetails?.status }}</span>
           </div>
 
+              <div class="flex-fill col-12 col-sm-6 col-md-3 text-sm-end p-0 mb-2">
+            <strong style="color: #726641; ">{{'DESCRIPTION1' | translate }}:</strong><span style="color:#FFA529"> {{ complaintDetails?.description }}</span>
+          </div>
+            
         </div>
 
+  
         <div class="bg-gray-100 min-h-screen flex flex-col justify-between font-sans">
 
           <!-- Header -->

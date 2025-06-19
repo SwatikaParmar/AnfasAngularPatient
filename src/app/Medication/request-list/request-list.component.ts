@@ -16,6 +16,7 @@ export class RequestListComponent {
   totalItems: number = 0;
   requestList: any[] = [];
   rootUrl: any;
+  currentLang = 'en'; // default
 
   constructor(
     private toastrService: ToastrService,

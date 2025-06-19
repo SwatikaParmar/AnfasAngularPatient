@@ -45,14 +45,15 @@
                   <td class="p-3 text-sm">{{ item.requestTypeName || 'N/A' }}</td>
                   <td class="p-3 text-sm">{{ item.status || 'N/A' }}</td>
                   <td class="p-3 text-sm">
-                    <div class="flex gap-3">
-  <a [routerLink]="['/request-list/detail', item.id]" style="color: #726641; font-weight: bold; ">
+                   <div [dir]="currentLang === 'ar' ? 'rtl' : 'ltr'" class="d-flex gap-3">
+  <a [routerLink]="['/request-list/detail', item.id]" class="action-link">
     <i class="fas fa-eye"></i>
   </a>
-  <a [routerLink]="['/request-list/update', item.id]" style="color: #726641; font-weight: bold;">
-    <i class="fa fa-pen" aria-hidden="true" title="Edit"></i>
+  <a [routerLink]="['/request-list/update', item.id]" class="action-link" title="Edit">
+    <i class="fa fa-pen" aria-hidden="true"></i>
   </a>
 </div>
+
 
 
                   </td>

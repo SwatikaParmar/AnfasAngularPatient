@@ -85,7 +85,7 @@ getRequestDetails(id: number) {
   }
 
   this.spinner.show();
-
+debugger
   const requestData = {
     id: this.id ? Number(this.id) : 0,
     username: localStorage.getItem('mrn'),
