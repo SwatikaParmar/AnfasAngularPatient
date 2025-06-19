@@ -127,7 +127,7 @@ onPageChange(page: number): void {
     });
   }
 
-  
+
 
 }
 
