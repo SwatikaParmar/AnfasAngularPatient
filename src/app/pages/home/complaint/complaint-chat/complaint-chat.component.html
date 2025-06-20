@@ -16,31 +16,36 @@
 
           <!-- First part: Patient -->
           <div class="flex-fill col-12 col-sm-6 col-md-4 p-0 mb-2">
-            <strong style="color: #726641;">{{ 'PATIENT_NAME' | translate }}:</strong> {{ complaintDetails?.patientName }}
+            <strong style="color: #726641;">{{ 'PATIENT_NAME' | translate }}:</strong> {{ complaintDetails?.patientName
+            }}
           </div>
 
           <!-- Second part: Complaint Type -->
           <div class="flex-fill col-12 col-sm-6 col-md-3 text-sm-center p-0 mb-2">
-            <strong style="color: #726641;">{{ 'COMPLAINT_TYPE' | translate }}:</strong> {{ complaintDetails?.complaintTypeName }}
+            <strong style="color: #726641;">{{ 'COMPLAINT_TYPE' | translate }}:</strong> {{
+            complaintDetails?.complaintTypeName }}
           </div>
 
           <!-- Third part: Date -->
           <div class="flex-fill col-12 col-sm-6 col-md-3 text-sm-center p-0 mb-2">
-            <strong style="color: #726641;">{{ 'DATE' | translate }}:</strong> {{ complaintDetails?.createdAt | date: 'dd-MM-yyyy' }}
+            <strong style="color: #726641;">{{ 'DATE' | translate }}:</strong> {{ complaintDetails?.createdAt | date:
+            'dd-MM-yyyy' }}
           </div>
 
           <!-- Fourth part: Status -->
           <div class="flex-fill col-12 col-sm-6 col-md-2 text-sm-end p-0 mb-2">
-            <strong style="color: #726641;">{{ 'STATUS' | translate }}: </strong><span style="color:#FFA529">{{ complaintDetails?.status }}</span>
+            <strong style="color: #726641;">{{ 'STATUS' | translate }}: </strong><span style="color:#FFA529">{{
+              complaintDetails?.status }}</span>
           </div>
 
-              <div class="flex-fill col-12 col-sm-6 col-md-3 text-sm-end p-0 mb-2">
-            <strong style="color: #726641; ">{{'DESCRIPTION1' | translate }}:</strong><span style="color:#FFA529"> {{ complaintDetails?.description }}</span>
+          <div class="flex-fill col-12 col-sm-6 col-md-3 text-sm-end p-0 mb-2">
+            <strong style="color: #726641; ">{{'DESCRIPTION1' | translate }}:</strong><span style="color:#FFA529"> {{
+              complaintDetails?.description }}</span>
           </div>
-            
+
         </div>
 
-  
+
         <div class="bg-gray-100 min-h-screen flex flex-col justify-between font-sans">
 
           <!-- Header -->
@@ -55,19 +60,19 @@
             <div class="relative z-10">
               <ng-container *ngFor="let chat of replies">
                 <!-- Message from Receiver -->
-                <div *ngIf="chat.role === 'Patient'" class="flex flex-col items-start">
-                  <div class="bg-white text-black px-4 py-2 rounded-lg shadow">{{ chat.reply }}</div>
-                  <span class="text-xs text-gray-500 mt-1">{{ chat.createdAt }}</span>
-                </div>
-
-                <!-- Message from Sender -->
-                <div *ngIf="chat.role === 'Admin'" class="flex flex-col items-end">
+                <div *ngIf="chat.role === 'Admin'" class="flex flex-col items-start">
                   <div class="bg-[#77734E] text-white px-4 py-2 rounded-lg shadow">{{ chat.reply }}</div>
                   <span class="text-xs text-gray-500 mt-1">{{ chat.createdAt }}</span>
                 </div>
 
 
-                
+                <!-- Message from Sender -->
+                <div *ngIf="chat.role === 'Patient'" class="flex flex-col items-end">
+                  <div class="bg-white text-black px-4 py-2 rounded-lg shadow">{{ chat.reply }}</div>
+                  <span class="text-xs text-gray-500 mt-1">{{ chat.createdAt }}</span>
+                </div>
+
+
               </ng-container>
 
             </div>

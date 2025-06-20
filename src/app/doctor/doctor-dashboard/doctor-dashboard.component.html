@@ -29,34 +29,35 @@
                                 </svg>
                             </div>
                         </div>
-                     <!-- Banner Image -->
-            <div class="carousel-container relative mt-6 max-h-[500px] rounded-xl overflow-hidden">
-              <!-- Carousel Images -->
-              <div class="carousel-images relative h-[500px]">
-                <div *ngFor="let image of images; let i = index">
-                  <img [src]="image" class="carousel-img w-full h-full  absolute"
-                    [ngClass]="{'opacity-100': i === currentIndex, 'opacity-0': i !== currentIndex}" />
-                </div>
-              </div>
+                        <!-- Banner Image -->
+                        <div class="carousel-container relative mt-6 max-h-[500px] rounded-xl overflow-hidden">
+                            <!-- Carousel Images -->
+                            <div class="carousel-images relative h-[500px]">
+                                <div *ngFor="let image of images; let i = index">
+                                    <img [src]="image" class="carousel-img w-full h-full  absolute"
+                                        [ngClass]="{'opacity-100': i === currentIndex, 'opacity-0': i !== currentIndex}" />
+                                </div>
+                            </div>
 
-              <!-- Navigation Arrows -->
-              <button id="prev" (click)="prevSlide()"
-                class="absolute top-1/2 left-3 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/70 z-10 font-bold text-2xl">
-                &lt;
-              </button>
-              <button id="next" (click)="nextSlide()"
-                class="absolute top-1/2 right-3 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/70 z-10 font-bold text-2xl">
-                &gt;
-              </button>
+                            <!-- Navigation Arrows -->
+                            <button id="prev" (click)="prevSlide()"
+                                class="absolute top-1/2 left-3 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/70 z-10 font-bold text-2xl">
+                                &lt;
+                            </button>
+                            <button id="next" (click)="nextSlide()"
+                                class="absolute top-1/2 right-3 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/70 z-10 font-bold text-2xl">
+                                &gt;
+                            </button>
 
-              <!-- Dots -->
-              <div class="carousel-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                <button *ngFor="let image of images; let index = index"
-                  class="dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all" (click)="goToSlide(index)"
-                  [ngClass]="{'bg-white': index === currentIndex}"></button>
+                            <!-- Dots -->
+                            <div class="carousel-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                                <button *ngFor="let image of images; let index = index"
+                                    class="dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all"
+                                    (click)="goToSlide(index)"
+                                    [ngClass]="{'bg-white': index === currentIndex}"></button>
 
-              </div>
-            </div>
+                            </div>
+                        </div>
                         <!-- Welcome Card -->
                         <div class="bg-white rounded-xl shadow-md p-4 mt-4 text-center"
                             style="background-color: azure;">
@@ -83,8 +84,9 @@
                                 class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 text-center hover:scale-105 transition-transform duration-300 ease-in-out"
                                 style="border:1px solid #FEC34F!important;">
                                 <i class="fa-solid fa-book text-blue-600 text-2xl" style="color: #77734E;"></i>
-                                <span style="color:#77734E; font-weight: 600;">{{ 'EDUCATIONAL_MATERIAL' | translate
-                                    }}</span>
+                                <span style="color:#77734E; font-weight: 600;"> {{ 'PATIENT_EDUCATION'
+                                    | translate }}
+                                </span>
                             </button>
 
                             <button [routerLink]="['/doctor-patient']"
