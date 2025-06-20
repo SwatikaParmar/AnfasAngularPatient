@@ -86,50 +86,45 @@ export class PatientChatlistComponent {
 }
 
 sendMessage(): void {
-  // Ensure the message content is not empty
   if (!this.newMessage.trim()) {
     this.toaster.warning('Message cannot be empty!');
     return;
   }
 
-  // Construct the payload with a formatted timestamp
   const payload = {
-    senderUserName: this.senderId,  // The sender's ID
-    id: 0,  // ID can be dynamically assigned if necessary
-    receiverUserName: this.receiverId,  // The receiver's ID
-    messageContent: this.newMessage.trim(),  // The content of the message
-    messageType: '',  // Message type (you can adjust this based on your needs)
-    timestamp: this.getCurrentLocalDateTime()  // Get the timestamp in ISO format
+    senderUserName: this.senderId,
+    id: 0,
+    receiverUserName: this.receiverId,
+    messageContent: this.newMessage.trim(),
+    messageType: '',
+    timestamp: this.getCurrentLocalDateTime()
   };
 
-  this.spinner.show();  // Show loading spinner while sending
+  this.spinner.show();
 
-  // Make the service call to send the message
   this.contentService.sendMessage(payload).subscribe(
     (response) => {
-      this.spinner.hide();  // Hide loading spinner once response is received
+      this.spinner.hide();
 
-      // Check if the response is successful
       if (response.isSuccess) {
-        // Optionally, add the sent message to the chat history
         const newMessage = {
           senderUserName: this.senderId,
           receiverUserName: this.receiverId,
           messageContent: payload.messageContent,
           messageType: payload.messageType,
-          timestamp: payload.timestamp  // Use the ISO timestamp
+          timestamp: this.convertToLocalTime(payload.timestamp)
         };
-        this.chatHistory.push(newMessage);  // Add message to chat history
-        this.newMessage = '';  // Clear the input field
+        this.chatHistory.push(newMessage);
+        this.newMessage = '';
       } else {
-        // Show error message if something goes wrong
-        this.toaster.error(response.messages || 'Failed to send message');
+        // ✅ Show only backend message
+        this.toaster.error(response.messages);
       }
     },
     (error) => {
-      // Hide the spinner and show an error message if there's an issue with the request
       this.spinner.hide();
-      this.toaster.error('Error sending message');
+      // ✅ If backend sends a message in error response
+      this.toaster.error(error?.error?.messages || 'Unexpected error occurred.');
     }
   );
 }

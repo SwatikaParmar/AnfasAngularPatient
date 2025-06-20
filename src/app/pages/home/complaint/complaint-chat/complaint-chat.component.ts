@@ -111,6 +111,7 @@ export class ComplaintChatComponent {
   
 
   sendMessage(): void {
+    debugger
     // Check if the message is not empty
     if (!this.newMessage.trim()) {
       this.toastrService.warning('Message cannot be empty!');
@@ -146,6 +147,7 @@ export class ComplaintChatComponent {
             createdAt: this.getCurrentLocalDateTime(), // Generate current local timestamp
             role: payload.role, // The role from the payload (admin)
           };
+          
   
           // Add the new reply to the list of replies
           this.replies.push(newReply);
