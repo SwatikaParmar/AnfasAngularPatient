@@ -54,13 +54,11 @@ role: string = '';
           this.spinner.hide();
         } else {
           this.spinner.hide();
-          this.toastrService.error('Failed to fetch medication list.');
-          console.error('API returned failure:', response);
+       
         }
       },
       error => {
-        this.toastrService.error('Error fetching medication list.');
-        console.error('Error fetching medication list:', error);
+        
       }
     );
   }    

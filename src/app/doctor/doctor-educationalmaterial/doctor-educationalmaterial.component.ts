@@ -50,7 +50,7 @@ export class DoctorEducationalmaterialComponent {
         this.spinner.hide();
       },
       error: (err) => {
-        console.error(err);
+  
         this.spinner.hide();
         this.toastrService.error('An error occurred while fetching details.');
       }
@@ -86,7 +86,7 @@ onAssignToggle(event: Event, item: any): void {
       }
     },
     error: (err) => {
-      console.error('Assignment API error:', err);
+   
       this.toastrService.error('Something went wrong during assignment');
       item.isAssigned = !status; // Revert checkbox UI on error
     }

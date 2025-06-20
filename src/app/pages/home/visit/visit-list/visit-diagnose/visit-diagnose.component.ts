@@ -128,11 +128,10 @@ this.totalItemsMap['report'] = this.labdata.length;
       if (response.status === true) {
         this.spinner.hide();
         this.labpdf = response.data.file;
-        this.toastrService.success(response.message);
+ 
         this.openBase64Pdf(this.labpdf);
       } else {
-        this.spinner.hide();
-        this.toastrService.error(response.message);
+    
       }
     });
   }
@@ -148,7 +147,7 @@ this.totalItemsMap['report'] = this.labdata.length;
       if (response.status === true) {
         this.spinner.hide();
         this.rispdf = response.data.file;
-        this.toastrService.success(response.message);
+  
         this.openBase64Pdf(this.rispdf);
       } else {
         this.spinner.hide();
@@ -187,7 +186,6 @@ debugger
     }else {
             this.spinner.hide();
 
-     this.toastrService.error(response.message)
     }
   })
 }

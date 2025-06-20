@@ -48,13 +48,11 @@ export class StepsComponent {
         if (response.isSuccess) {
           this.stepsList = response.data.dataList;
         } else {
-          this.toastrService.error('Failed to fetch steprecords list.');
-          console.error('API returned failure:', response);
+        
         }
       },
       error => {
-        this.toastrService.error('Error fetching steprecords list.');
-        console.error('Error fetching steprecords list:', error);
+       
       }
     );
   }    

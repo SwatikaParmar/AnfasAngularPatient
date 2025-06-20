@@ -49,13 +49,12 @@ export class DoctorPatientComponent {
           this.spinner.hide();
         } else {
           this.spinner.hide();
-          this.toastrService.error('Failed to fetch  list.');
-          console.error('API returned failure:', response);
+      
+       
         }
       },
       error => {
-        this.toastrService.error('Error fetching  list.');
-        console.error('Error fetching  list:', error);
+  
       }
     );
   }

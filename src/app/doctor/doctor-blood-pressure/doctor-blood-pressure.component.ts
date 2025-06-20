@@ -94,7 +94,7 @@ export class DoctorBloodPressureComponent {
 
   approveItem(item: any) {
     // Your logic to approve
-    console.log('Approved:', item);
+
     // Optionally update status
     item.status = 'Verified';
     
@@ -115,7 +115,7 @@ export class DoctorBloodPressureComponent {
 
   rejectItem(item: any) {
     // Your logic to reject
-    console.log('Rejected:', item);
+ 
     item.status = 'Rejected';
 
     let payload = {

@@ -152,7 +152,7 @@ export class SatisfactionFormComponent {
 
   rate(rating: number) {
     this.selectedRating = rating;
-    console.log("Rated:", rating);
+
   }
   backClicked() {
     this._location.back();

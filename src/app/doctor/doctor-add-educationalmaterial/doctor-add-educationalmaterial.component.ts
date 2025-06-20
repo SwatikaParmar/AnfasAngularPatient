@@ -120,14 +120,14 @@ this.existingFileName = this.detail?.contentUrl || ''; // Adjust key as per API
         // If the file is from server and you want to display it, store its name/path for reference (not patch into form directly)
      //   this.selectedFileFromServer = this.detail.file; // Optional for display
       } else {
-        this.toastrService.warning('No data found.');
+  
       }
       this.spinner.hide();
     },
     error: (err) => {
-      console.error(err);
+
       this.spinner.hide();
-      this.toastrService.error('An error occurred while fetching details.');
+    
     }
   });
 }
