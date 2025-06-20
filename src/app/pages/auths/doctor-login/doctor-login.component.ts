@@ -1,3 +1,4 @@
+import { validateVerticalPosition } from '@angular/cdk/overlay';
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -78,14 +79,23 @@ loginForm!: FormGroup;
 
   onLogin() {
     this.spinner.show();
-    this.submitted = true;
-  
-     if (this.loginForm.invalid) {
-      this.toasterService.error('Please enter correct value');
-      this.spinner.hide();
-      return;
-    }
-  
+this.submitted = true;
+debugger
+const formValues = this.loginForm.value;
+const fieldsToCheck = ['orgCode', 'loginid'];
+
+// Check if any required field is empty
+const isAnyRequiredFieldEmpty = fieldsToCheck.some(field => {
+  const value = formValues[field];
+  return !value || value.toString().trim() === '';
+});
+
+if (this.loginForm.invalid || isAnyRequiredFieldEmpty) {
+  this.toasterService.error('Please enter correct value');
+  this.spinner.hide();
+  return;
+}
+
    
   
     this.authService.Doctorlogin(this.loginForm.value).subscribe({
