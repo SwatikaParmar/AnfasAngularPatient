@@ -214,22 +214,34 @@ export class LoginComponent implements OnInit {
 //   });
 // }
 onLogin() {
-  this.spinner.show();
-  this.submitted = true;
+ this.submitted = true;
+this.spinner.show();
 
-  const value = this.loginForm.get(this.selectedField)?.value;
+// List of valid fields
+const validFields = ['mrn', 'mobilePhone', 'nationalId'];
 
-  if (!value) {
-    this.toasterService.error('Please enter correct value');
-    this.spinner.hide();
-    return;
-  }
+// Step 1: Check if any option is selected from the dropdown
+if (!this.selectedField || !validFields.includes(this.selectedField)) {
+  this.toasterService.error('Please select a valid login option');
+  this.spinner.hide();
+  return;
+}
 
-  const payload: any = {
-    isVerified: false,
-  };
-  payload[this.selectedField] = value;
+// Step 2: Get value from selected field
+const value = this.loginForm.get(this.selectedField)?.value;
 
+// Step 3: Check if the value is empty or whitespace
+if (!value || value.toString().trim() === '') {
+  this.toasterService.error('Please enter correct value');
+  this.spinner.hide();
+  return;
+}
+
+// Step 4: Build payload
+const payload: any = {
+  isVerified: false,
+};
+payload[this.selectedField] = value;
   // Step 1: Send OTP
   this.authService.sendotp(payload).subscribe({
     next: (otpResponse) => {

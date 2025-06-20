@@ -39,8 +39,8 @@
             <!-- <input type="email" class="form-control user" placeholder="Email or Phone"
                             formControlName="email"> -->
             <div class="form-group">
-              <select id="mrNumber" class="form-control custom-select-align-end" (change)="onSelectChange($event)">
-                <option value="" disabled selected>{{ 'SELECT' | translate }}</option>
+              <select id="mrNumber"  class="form-control custom-select-align-end" (change)="onSelectChange($event)">
+                <option value="" disabled [selected]="!selectedField">{{ 'SELECT' | translate }}</option>
                 <option value="mrn">{{ 'MR_NUMBER' | translate }}</option>
                 <option value="mobilePhone">{{ 'PHONE_NUMBER' | translate }}</option>
                 <option value="nationalId">{{ 'NATIONAL_ID' | translate }}</option>

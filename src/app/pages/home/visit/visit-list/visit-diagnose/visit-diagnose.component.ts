@@ -156,18 +156,27 @@ this.totalItemsMap['report'] = this.labdata.length;
     });
   }
 
-  openBase64Pdf(base64: string) {
-    const base64Data = base64.split(',')[1];
-    const byteCharacters = atob(base64Data);
-    const byteNumbers = new Array(byteCharacters.length);
-    for (let i = 0; i < byteCharacters.length; i++) {
-      byteNumbers[i] = byteCharacters.charCodeAt(i);
-    }
-    const byteArray = new Uint8Array(byteNumbers);
-    const blob = new Blob([byteArray], { type: 'application/pdf' });
-    const blobUrl = URL.createObjectURL(blob);
-    window.open(blobUrl, '_blank');
+openBase64Pdf(base64: string) {
+  const base64Data = base64.split(',')[1];
+  const byteCharacters = atob(base64Data);
+  const byteNumbers = new Array(byteCharacters.length);
+  for (let i = 0; i < byteCharacters.length; i++) {
+    byteNumbers[i] = byteCharacters.charCodeAt(i);
   }
+  const byteArray = new Uint8Array(byteNumbers);
+  const blob = new Blob([byteArray], { type: 'application/pdf' });
+  const blobUrl = URL.createObjectURL(blob);
+
+  // Use this method for better iOS support
+  const link = document.createElement('a');
+  link.href = blobUrl;
+  link.target = '_blank';
+  link.download = 'lab-report.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
 
 
   
