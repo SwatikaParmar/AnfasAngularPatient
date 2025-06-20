@@ -12,11 +12,12 @@
     </ul> -->
 
     <ul class="header-profile">
-      <li >
-        <a class="setting" data-toggle="dropdown" (click)="toggleProfileMenuMobile()">
+      <li class="language-dropdown"
+        [ngClass]="{'english-selected': currentLanguage === 'en', 'arabic-selected': currentLanguage === 'ar'}">
+        <a href="javascript:void(0)" class="language-icon" id="languageDropdown" (click)="toggleProfileMenuMobile()">
           <img src="assets/images/profile-i.svg" class="img-responsive">
         </a>
-        <ul class="dropdown-menu mt-10" [ngClass]="{'show': isProfileMenuOpenMobile}">
+        <ul  class="dropdown-menu1 language-menu1" [ngClass]="{'show': isProfileMenuOpenMobile}">
           <li class="mb-2">
             <a class="dropdown-item" [routerLink]="['/profile']">{{ 'PROFILE' | translate }}</a>
           </li>
@@ -63,7 +64,8 @@
       <li><a href="javascript:void(0)"></a></li>
     </ul>
     <ul class="header-profile" >
-      <li >
+      <li  class="language-dropdown"
+        [ngClass]="{'english-selected': currentLanguage === 'en', 'arabic-selected': currentLanguage === 'ar'}">
         <a href="javascript:void(0)" class="language-icon" id="languageDropdown" (click)="toggleProfileMenuWeb()">
           <img src="assets/images/profile-i.svg" class="img-responsive">
         </a>
@@ -298,10 +300,12 @@
       <li><a href="javascript:void(0)"></a></li>
     </ul>
     <ul class="header-profile">
-      <li><a class="setting" data-toggle="dropdown" (click)="toggleProfileMenuMobile()">
+      <li class="language-dropdown"
+        [ngClass]="{'english-selected': currentLanguage === 'en', 'arabic-selected': currentLanguage === 'ar'}">
+        <a href="javascript:void(0)" class="language-icon" id="languageDropdown" (click)="toggleProfileMenuMobile()">
           <img src="assets/images/profile-i.svg" class="img-responsive">
         </a>
-        <ul class="dropdown-menu mt-10" [ngClass]="{'show': isProfileMenuOpenMobile}">
+        <ul  class="dropdown-menu1 language-menu1" [ngClass]="{'show': isProfileMenuOpenMobile}">
           <li class="mb-2"><a class="dropdown-item " [routerLink]="['/doctor-profile']">{{ 'PROFILE' | translate }}</a>
           </li>
           <li><a class="dropdown-item" (click)="logout()">
@@ -351,10 +355,12 @@
       <li><a href="javascript:void(0)"></a></li>
     </ul>
     <ul class="header-profile">
-      <li><a class="setting" data-toggle="dropdown" (click)="toggleProfileMenuWeb()">
+      <li class="language-dropdown"
+        [ngClass]="{'english-selected': currentLanguage === 'en', 'arabic-selected': currentLanguage === 'ar'}">
+        <a href="javascript:void(0)" class="language-icon" id="languageDropdown" (click)="toggleProfileMenuWeb()">
           <img src="assets/images/profile-i.svg" class="img-responsive">
         </a>
-        <ul class="dropdown-menu mt-10" [ngClass]="{'show': isProfileMenuOpenWeb}">
+        <ul class="dropdown-menu1 language-menu1" [ngClass]="{'show': isProfileMenuOpenWeb}">
           <li class="mb-2"><a class="dropdown-item " [routerLink]="['/doctor-profile']">{{ 'PROFILE' | translate }}</a>
           </li>
           <li><a class="dropdown-item" (click)="logout()">
