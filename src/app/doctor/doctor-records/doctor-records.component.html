@@ -30,7 +30,7 @@
                             </button>
                         </div>
 
-                        <div  *ngIf="activeTab === 'carrier'" id="carrier" class="tab-detail">
+                        <div *ngIf="activeTab === 'carrier'" id="carrier" class="tab-detail">
                             <div class="num">
                                 <!-- <div class="flex mb-2 items-center ml-1 mb-3">
 
@@ -78,7 +78,8 @@
                                                                     : '' }}
                                                                 </td>
 
-                                                                <td>{{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : 'N/A' }}
+                                                                <td>{{ item.createdAt ? (item.createdAt |
+                                                                    date:'dd-MM-yyyy') : 'N/A' }}
                                                                 </td>
                                                                 <td>
                                                                     <div class="form-check form-switch">
@@ -101,11 +102,15 @@
 
                                                 </div>
 
-                                             <div class="no-data text-center" *ngIf="medicationList && medicationList.length === 0">
-                  <img src="assets/images/ffffrq-removebg-preview.png" style="width: 50%; margin: auto; padding: 50px;">
-                </div>
+                                                <div class="no-data text-center"
+                                                    *ngIf="medicationList && medicationList.length === 0">
+                                                    <img src="assets/images/ffffrq-removebg-preview.png"
+                                                        style="width: 50%; margin: auto; padding: 50px;">
+                                                </div>
                                                 <div class="pagination-container pt-3 pb-3">
-                                                    <pagination-controls *ngIf="medicationList && medicationList.length > 0" (pageChange)="onPageChange($event)" id="1"
+                                                    <pagination-controls
+                                                        *ngIf="medicationList && medicationList.length > 0"
+                                                        (pageChange)="onPageChange($event)" id="1"
                                                         class="paginate-doctor-list"
                                                         queryParamsHandling="merge"></pagination-controls>
                                                 </div>
@@ -228,7 +233,8 @@
                                                         </a>
                                                     </td>
                                                     <td>{{ item.isApproved }}</td>
-                                                    <td>{{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : 'N/A' }}</td>
+                                                    <td>{{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : 'N/A'
+                                                        }}</td>
                                                     <td>
                                                         <a class="list-icon"><i class="fa fa-eye"
                                                                 aria-hidden="true"></i></a>
@@ -239,19 +245,22 @@
 
                                     </div>
 
-                                    <div class="no-data text-center" *ngIf="educationMaterial && educationMaterial.length === 0">
-                                    <img src="assets/images/ffffrq-removebg-preview.png"
-                                        style="width: 50%; margin: auto; padding: 50px;">
-                                </div>
+                                    <div class="no-data text-center"
+                                        *ngIf="educationMaterial && educationMaterial.length === 0">
+                                        <img src="assets/images/ffffrq-removebg-preview.png"
+                                            style="width: 50%; margin: auto; padding: 50px;">
+                                    </div>
 
-                                    <div class="pagination-container pt-3 pb-3" *ngIf="educationMaterial && educationMaterial.length > 0">
-                                    <pagination-controls (pageChange)="onPageChange($event)" id="1"
-                                        class="paginate-doctor-list" queryParamsHandling="merge"></pagination-controls>
-                                </div>
+                                    <div class="pagination-container pt-3 pb-3"
+                                        *ngIf="educationMaterial && educationMaterial.length > 0">
+                                        <pagination-controls (pageChange)="onPageChange($event)" id="1"
+                                            class="paginate-doctor-list"
+                                            queryParamsHandling="merge"></pagination-controls>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div *ngIf="activeTab === 'route'" id="route" class="tab-detail" >
+                        <div *ngIf="activeTab === 'route'" id="route" class="tab-detail">
                             <div class="card-grid">
 
                                 <!-- Card 1 -->

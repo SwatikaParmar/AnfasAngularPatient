@@ -62,10 +62,14 @@
             </table>
 
             <!-- No Data Image -->
-            <div *ngIf="requestList && requestList.length === 0" class="text-center">
+            <!-- <div *ngIf="requestList && requestList.length === 0" class="text-center">
               <img src="assets/images/ffffrq-removebg-preview.png" class="w-1/2 mx-auto py-12" alt="No Data" />
-            </div>
-
+            </div> -->
+            <div *ngIf="requestList && requestList.length === 0" class="no-data-fullpage"
+                            style="text-align: center; padding: 30px;">
+                            <img src="assets/images/ffffrq-removebg-preview.png" alt="No Data Found"
+                                class="no-data-image" style="width: 50%; height: auto; margin: auto;" />
+                        </div>
             <!-- Pagination -->
             <div class="pt-3 pb-3" *ngIf="requestList && requestList.length > 0">
               <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
