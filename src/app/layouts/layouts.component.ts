@@ -24,12 +24,19 @@ export class LayoutsComponent {
   distributorcartCount: any;
   // currentLanguage: any;
   currentLanguage: string = 'en';
+  isLanguageMenuOpen: boolean = false;
   role = localStorage.getItem('role');
   isSidebarCollapsed = false;
 
-  isProfileMenuOpen: boolean = false;
-  isLanguageMenuOpen: boolean = false;
+isProfileMenuOpen:boolean = false;
 
+// Web View
+isProfileMenuOpenWeb = false;
+isLanguageMenuOpenWeb = false;
+
+// Mobile View
+isProfileMenuOpenMobile = false;
+isLanguageMenuOpenMobile = false;
 
   
   constructor(
@@ -61,8 +68,6 @@ toggleMenus() {
 }
   switchLanguage(lang: string) {
     this.currentLanguage = lang;
-            this.isLanguageMenuOpen = false;
-
     this.languageService.switchLanguage(lang);
     localStorage.setItem('language', lang); // Store selected language
 
@@ -74,7 +79,6 @@ toggleMenus() {
     }
 
     window.location.reload();
-
   }
 
   public openSection(selectedRoute: any) {
@@ -85,39 +89,48 @@ toggleMenus() {
     });
   }
 
-  // toggleLanguageMenu() {
-  //   this.isLanguageMenuOpen = !this.isLanguageMenuOpen;
-  // }
-
-  // Toggle Profile Menu
-  toggleProfileMenu(event: MouseEvent): void {
-    event.stopPropagation();
-    this.isProfileMenuOpen = !this.isProfileMenuOpen;
-
-    // Close language menu if profile opens
-    if (this.isProfileMenuOpen) {
-      this.isLanguageMenuOpen = false;
-    }
+  
+// Web toggles
+toggleProfileMenuWeb() {
+  this.isProfileMenuOpenWeb = !this.isProfileMenuOpenWeb;
+  if (this.isProfileMenuOpenWeb) {
+    this.isLanguageMenuOpenWeb = false;
   }
+}
 
-  // Toggle Language Menu
-  toggleLanguageMenu(event: MouseEvent): void {
-    event.stopPropagation();
-    this.isLanguageMenuOpen = !this.isLanguageMenuOpen;
-
-    // Close profile menu if language opens
-    if (this.isLanguageMenuOpen) {
-      this.isProfileMenuOpen = false;
-    }
+toggleLanguageMenuWeb() {
+  this.isLanguageMenuOpenWeb = !this.isLanguageMenuOpenWeb;
+  if (this.isLanguageMenuOpenWeb) {
+    this.isProfileMenuOpenWeb = false;
   }
+}
+
+// Mobile toggles
+toggleProfileMenuMobile() {
+  this.isProfileMenuOpenMobile = !this.isProfileMenuOpenMobile;
+  if (this.isProfileMenuOpenMobile) {
+    this.isLanguageMenuOpenMobile = false;
+  }
+}
+
+toggleLanguageMenuMobile() {
+  this.isLanguageMenuOpenMobile = !this.isLanguageMenuOpenMobile;
+  if (this.isLanguageMenuOpenMobile) {
+    this.isProfileMenuOpenMobile = false;
+  }
+}
 
 
 
-  @HostListener('document:click')
-  handleOutsideClick() {
+@HostListener('document:click', ['$event.target'])
+onClickOutside(target: HTMLElement) {
+  const clickedInsideProfile = target.closest('.header-profile');
+  if (!clickedInsideProfile) {
     this.isProfileMenuOpen = false;
     this.isLanguageMenuOpen = false;
   }
+}
+
 
 
   classActive(data: any) {
@@ -125,10 +138,7 @@ toggleMenus() {
   }
 
   logouts() {
-        this.isProfileMenuOpen = false;
-
     localStorage.clear();
-
   this.router.navigateByUrl('/login')
   }
 
@@ -147,14 +157,18 @@ onMenuClick() {
 }
 
 
-  // Auto-close dropdowns on outside click
-  @HostListener('document:click')
-  onDocumentClick(): void {
-    this.isProfileMenuOpen = false;
-    this.isLanguageMenuOpen = false;
+ @HostListener('document:click', ['$event'])
+onDocumentClick(event: MouseEvent): void {
+  const target = event.target as HTMLElement;
+  
+  // If the clicked element is inside the sidebar and is an anchor tag
+  if (target.closest('.side-bar a')) {
+    if (window.innerWidth < 768) {
+      this.isSidebarCollapsed = false; // or true if 'true' means closed
+    }
   }
 }
 
 
 
-
+}
