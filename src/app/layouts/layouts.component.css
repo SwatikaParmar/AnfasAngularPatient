@@ -18,6 +18,25 @@
 
 }
 
+.dropdown-menu,
+.dropdown-menu1.language-menu1 {
+  display: none;
+  position: absolute;
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.dropdown-menu.show,
+.dropdown-menu1.language-menu1.show {
+  display: block;
+}
+
+.language-dropdown a.down.selected {
+  font-weight: bold;
+  color: #007bff;
+}
 
 .side-bar .item {
     margin-bottom: 4px; 
