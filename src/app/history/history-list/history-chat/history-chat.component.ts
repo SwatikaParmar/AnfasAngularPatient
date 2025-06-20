@@ -122,13 +122,13 @@ sendMessage(): void {
         this.newMessage = '';  // Clear the input field
       } else {
         // Show error message if something goes wrong
-        this.toaster.error(response.messages || 'Failed to send message');
+        this.toaster.error(response.messages);
       }
     },
     (error) => {
       // Hide the spinner and show an error message if there's an issue with the request
       this.spinner.hide();
-      this.toaster.error('Error sending message');
+ this.toaster.error(error?.error?.messages || 'Unexpected error occurred.');
     }
   );
 }
