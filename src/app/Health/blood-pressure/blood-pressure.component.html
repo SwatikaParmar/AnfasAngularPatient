@@ -11,8 +11,8 @@
 
             <!-- Back Button -->
             <button class="back-btn-left-circle flex items-center justify-center w-8 h-8 rounded-full text-white"
-               [routerLink]="['/Health-Tracker']">
-            <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center; color: black;"></i>
+              [routerLink]="['/Health-Tracker']">
+              <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center; color: black;"></i>
 
             </button>
 
@@ -45,7 +45,7 @@
                         <th>{{ 'NOTES' | translate }}</th>
                         <th>{{ 'DATE' | translate }}</th>
                         <th>{{ 'STATUS' | translate}}</th>
-                                                <th>{{'IMAGE' | translate}}</th>
+                        <th>{{'IMAGE' | translate}}</th>
 
                         <th>{{'ACTION' | translate}}</th>
                       </tr>
@@ -71,26 +71,27 @@
 }">
                           {{ item.status }}
                         </td>
-                           <td>
-    <a style="color: blue; text-decoration: underline;" *ngIf="item.image; else noImage"
-      (click)="openImagePreview(rootUrl + item.image)">View</a>
-  <!-- <img *ngIf="item.image; else noImage"
+                        <td>
+                          <a style="color: blue; text-decoration: underline;" *ngIf="item.image; else noImage"
+                            (click)="openImagePreview(rootUrl + item.image)">View</a>
+                          <!-- <img *ngIf="item.image; else noImage"
        [src]="rootUrl + item.image"
        alt="Image"
        (click)="openImagePreview(rootUrl + item.image)"
        class="w-12 h-12 object-cover rounded border border-gray-300 cursor-pointer hover:opacity-80" /> -->
-  <ng-template #noImage>N/A</ng-template>
-  <!-- Image Preview Modal -->
-<div *ngIf="previewImageUrl" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-  <div class="relative bg-white p-4 rounded-lg shadow-lg">
-    <button (click)="closeImagePreview()" class="absolute top-2 right-2 text-gray-700 text-xl">&times;</button>
-    <img [src]="previewImageUrl"
-         alt="Preview"
-         class="max-w-[90vw] max-h-[80vh] rounded border border-gray-300" />
-  </div>
-</div>
+                          <ng-template #noImage>N/A</ng-template>
+                          <!-- Image Preview Modal -->
+                          <div *ngIf="previewImageUrl"
+                            class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+                            <div class="relative bg-white p-4 rounded-lg shadow-lg">
+                              <button (click)="closeImagePreview()"
+                                class="absolute top-2 right-2 text-gray-700 text-xl">&times;</button>
+                              <img [src]="previewImageUrl" alt="Preview"
+                                class="max-w-[90vw] max-h-[80vh] rounded border border-gray-300" />
+                            </div>
+                          </div>
 
-</td>
+                        </td>
                         <td (click)="openModals(item.id)">
                           <i class="fa fa-pencil" style="cursor: pointer;"></i>
                         </td>
@@ -106,7 +107,8 @@
 
 
                 <div class="pagination-container pt-3 pb-3">
-                  <pagination-controls  *ngIf="bloodPressureList && bloodPressureList.length > 0"(pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
+                  <pagination-controls *ngIf="bloodPressureList && bloodPressureList.length > 0"
+                    (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
                     queryParamsHandling="merge"></pagination-controls>
                 </div>
               </div>
@@ -137,34 +139,31 @@
     <div class="modal-body">
       <form [formGroup]="form" (ngSubmit)="addRecord()">
 
-       <div class="esc">
-  <label class="block text-sm font-semibold mb-3">Upload file</label>
-  
-  <input type="file" id="fileInput" accept="image/*"
-         (change)="onFileChange($event)"
-         class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4
+        <div class="esc">
+          <label class="block text-sm font-semibold mb-3">Upload file</label>
+
+          <input type="file" id="fileInput" accept="image/*" (change)="onFileChange($event)" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4
                 file:rounded-full file:border-0 file:text-sm file:font-semibold
                 file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
-  
-  <!-- Show file name -->
-  <!-- <p *ngIf="fileName" class="mt-2 text-sm text-gray-700">Selected: {{ fileName }}</p> -->
 
-  <!-- Image preview -->
-  <!-- Show anchor-style preview text -->
-  <a *ngIf="imagePreview"
-     (click)="openPreview()"
-     class="text-blue-600 underline cursor-pointer text-sm mt-1 inline-block">
-    Preview Image
-  </a>
-</div>
+          <!-- Show file name -->
+          <!-- <p *ngIf="fileName" class="mt-2 text-sm text-gray-700">Selected: {{ fileName }}</p> -->
 
-<!-- Modal popup for full image view -->
-<div *ngIf="showPopup" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-  <div class="bg-white p-4 rounded shadow-lg relative">
-    <button (click)="closePreview()" class="absolute top-2 right-2 text-xl text-gray-600">&times;</button>
-    <img [src]="imagePreview" alt="Full Preview" class="max-w-[90vw] max-h-[80vh] rounded" />
-  </div>
-</div>
+          <!-- Image preview -->
+          <!-- Show anchor-style preview text -->
+          <a *ngIf="imagePreview" (click)="openPreview()"
+            class="text-blue-600 underline cursor-pointer text-sm mt-1 inline-block">
+            Preview Image
+          </a>
+        </div>
+
+        <!-- Modal popup for full image view -->
+        <div *ngIf="showPopup" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+          <div class="bg-white p-4 rounded shadow-lg relative">
+            <button (click)="closePreview()" class="absolute top-2 right-2 text-xl text-gray-600">&times;</button>
+            <img [src]="imagePreview" alt="Full Preview" class="max-w-[90vw] max-h-[80vh] rounded" />
+          </div>
+        </div>
 
 
 
@@ -189,6 +188,3 @@
     </div>
   </div>
 </div>
-
-
-
