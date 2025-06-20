@@ -22,10 +22,10 @@
                 <!-- Tab Buttons -->
                 <div class="button-container mb-3">
                   <button type="button" class="tab-button" [ngClass]="{ 'active': selectedTab === 'report' }"
-                    (click)="setTab('report')" (click)="getPatietReport()"> {{ 'View Lab REPORT' | translate }}</button>
+                    (click)="setTab('report')" (click)="getPatietReport()"> {{ 'VIEW_LAB_REPORT' | translate }}</button>
                   <button type="button" class="tab-button" [ngClass]="{ 'active': selectedTab === 'summary' }"
                     (click)="setTab('summary')" (click)="getPatietRISReport()">
-                    {{ 'View RIS Report' | translate }}
+                    {{ 'VIEW_RIS_REPORT' | translate }}
                   </button>
                   <button type="button" class="tab-button" (click)="getVisitDetail()"
                     [ngClass]="{ 'active': selectedTab === 'diagnoses' }" (click)="setTab('diagnoses')"> {{ 'DIAGNOSES'
