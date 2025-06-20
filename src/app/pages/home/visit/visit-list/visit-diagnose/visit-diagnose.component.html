@@ -22,7 +22,7 @@
                 <!-- Tab Buttons -->
                 <div class="button-container mb-3">
                   <button type="button" class="tab-button" [ngClass]="{ 'active': selectedTab === 'report' }"
-                    (click)="setTab('report')" (click)="getPatietReport()"> {{ 'View lab REPORT' | translate }}</button>
+                    (click)="setTab('report')" (click)="getPatietReport()"> {{ 'View Lab REPORT' | translate }}</button>
                   <button type="button" class="tab-button" [ngClass]="{ 'active': selectedTab === 'summary' }"
                     (click)="setTab('summary')" (click)="getPatietRISReport()">
                     {{ 'View RIS Report' | translate }}
@@ -43,7 +43,7 @@
               
 
                     <button type="button" class="pdf-link"  *ngFor="let item of RisData | paginate: {
-        itemsPerPage: 5,
+        itemsPerPage: 15,
         currentPage: pageMap['summary'],
         totalItems: totalItemsMap['summary'],
         id: 'summary-pagination'
@@ -82,7 +82,7 @@
     type="button"
     class="pdf-link"
     *ngFor="let item of labdata | paginate: { 
-      itemsPerPage: 5, 
+      itemsPerPage: 15, 
       currentPage: pageMap['report'], 
       id: 'report-pagination' 
     }"
