@@ -167,15 +167,26 @@ openBase64Pdf(base64: string) {
   const blob = new Blob([byteArray], { type: 'application/pdf' });
   const blobUrl = URL.createObjectURL(blob);
 
-  // Use this method for better iOS support
+  // For iOS: Use a secure click-triggered anchor to avoid popup block
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !navigator.userAgent.includes('Macintosh');
+
   const link = document.createElement('a');
   link.href = blobUrl;
   link.target = '_blank';
   link.download = 'lab-report.pdf';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+
+  // For iOS Safari, we avoid download and force it to open
+  if (isIOS) {
+    link.setAttribute('rel', 'noopener'); // helps on iOS to open in a new context
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  } else {
+    // Other platforms
+    window.open(blobUrl, '_blank');
+  }
 }
+
 
 
 
