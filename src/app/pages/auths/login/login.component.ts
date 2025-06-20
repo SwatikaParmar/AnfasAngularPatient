@@ -269,7 +269,7 @@ onLogin() {
         });
 
       } else {
-        this.toasterService.error(otpResponse.message || 'OTP sending failed');
+        this.toasterService.error(otpResponse.messages || 'OTP sending failed');
         this.spinner.hide();
       }
     },

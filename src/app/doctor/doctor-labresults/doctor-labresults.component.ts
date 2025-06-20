@@ -18,8 +18,9 @@ export class DoctorLabresultsComponent {
   pdfUrl!: string;
     pdfUrls!: string;
   risData: any;
-selectedTab: 'lab' | 'ris' = 'lab'; // Default tab
 
+ selectedTab: string = 'report';
+  patientUid: any;
 
 
     constructor(
@@ -37,13 +38,16 @@ selectedTab: 'lab' | 'ris' = 'lab'; // Default tab
 
   ngOnInit(): void {
     this.patientVisitUId = this.route.snapshot.params['id'];
-
+this.patientUid = this.route.snapshot.params['id2'];
      this.getLab();
   }
 
 
   getLab(){
-this.spinner.show();
+  // this.spinner.show();
+  let payload  ={
+    
+  }
     this.contentService.getDocLab(this.patientVisitUId).subscribe(response => {
       if(response.status ==true){
 this.labData = response.data.file;
@@ -93,4 +97,8 @@ this.toastrService.error(response.messages)
         this._location.back();
       }  
 
+
+        setTab(tab: string) {
+    this.selectedTab = tab;
+  }
 }
