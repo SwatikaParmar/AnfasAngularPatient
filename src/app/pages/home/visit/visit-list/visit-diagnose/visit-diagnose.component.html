@@ -49,7 +49,7 @@
                           class="fas fa-file-pdf mr-1"></i>
 
                         <div class="text-sm text-gray-700">
-                          {{ formatTests(item.orderDetails) }}
+                          {{ getTestNames(item.orderDetails) }}
                         </div>
                       </button>
 
@@ -89,7 +89,7 @@
                       Order Number: <span class="font-semibold">{{ item?.ordernumber }}</span>  <i class="fas fa-file-pdf mr-1"></i>
                       
                         <div class="text-sm text-gray-700 ">
-                        {{ formatTests(item.orderDetails) }}
+                        {{ getTestNames(item.orderDetails) }}
                       </div>
                       </button>
 

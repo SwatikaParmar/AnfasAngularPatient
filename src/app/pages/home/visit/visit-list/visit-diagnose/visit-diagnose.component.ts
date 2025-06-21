@@ -246,12 +246,11 @@ onPageChanges(page: number, tab: string): void {
   }
 }
 
-
-
-formatTests(orderDetails: any[]): string {
-  if (!orderDetails || orderDetails.length === 0) return '';
-  return orderDetails.map(test => test.name).join('\n'); // line break between names
+getTestNames(details: any[]): string {
+  return details?.map(test => test.name).join('; ');
 }
+
+
 
 }
 
