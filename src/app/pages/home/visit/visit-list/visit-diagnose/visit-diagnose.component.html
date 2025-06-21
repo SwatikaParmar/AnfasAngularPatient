@@ -35,28 +35,29 @@
 
                 <!-- Report Tab -->
                 <div class="tab-detail mb-3" *ngIf="selectedTab === 'report'">
-                  <div class="flex flex-col gap-3 mt-2 mb-5" *ngIf="labdata?.length > 0">
+                  <div class="flex flex-col gap-3 mt-2 mb-5 w-full" *ngIf="labdata?.length > 0">
                     <div *ngFor="let item of labdata | paginate: {
-        itemsPerPage: 15,
-        currentPage: pageMap['report'],
-        totalItems: totalItemsMap['report'],
-        id: 'report-pagination'
-      }" class=" p-3 rounded">
-
+      itemsPerPage: 15,
+      currentPage: pageMap['report'],
+      totalItems: totalItemsMap['report'],
+      id: 'report-pagination'
+    }" class="w-full p-3 rounded bg-white shadow">
                       <!-- PDF Button with Order Number -->
-                      <button type="button" class="pdf-link mb-2 font-bold" (click)="lab(item)">
-                        Order Number: <span class="font-semibold">{{ item?.ordernumber }}</span> <i
-                          class="fas fa-file-pdf mr-1"></i>
+                      <button type="button" class="pdf-link mb-2 font-bold text-left w-full" (click)="lab(item)">
+                        <div>
+                          <i class="fas fa-file-pdf mr-1"></i>
+                          Order Number:
+                          <span class="font-semibold">{{ item?.ordernumber }}</span>
+
+                        </div>
 
                         <div class="text-sm text-gray-700">
                           {{ getTestNames(item.orderDetails) }}
                         </div>
                       </button>
-
-
-
                     </div>
                   </div>
+
 
                   <div class="pagination-container pb-3" *ngIf="labdata?.length > 0">
                     <pagination-controls (pageChange)="onPageChanges($event, 'report')" [id]="'report-pagination'"
@@ -76,27 +77,29 @@
 
                 <!-- Summary Tab -->
                 <div class="tab-detail mb-3" *ngIf="selectedTab === 'summary'">
-                  <div class="flex flex-col gap-3 mt-2 mb-5" *ngIf="RisData?.length > 0">
+                  <div class="flex flex-col gap-3 mt-2 mb-5 w-full" *ngIf="RisData?.length > 0">
                     <div *ngFor="let item of RisData | paginate: {
-        itemsPerPage: 15,
-        currentPage: pageMap['summary'],
-        totalItems: totalItemsMap['summary'],
-        id: 'summary-pagination'
-      }" class=" p-3 rounded">
-
+      itemsPerPage: 15,
+      currentPage: pageMap['summary'],
+      totalItems: totalItemsMap['summary'],
+      id: 'summary-pagination'
+    }" class="w-full p-3 rounded bg-white shadow">
                       <!-- PDF Button with Order Number -->
-                      <button type="button" class="pdf-link mb-2 font-bold" (click)="ris(item)">
-                      Order Number: <span class="font-semibold">{{ item?.ordernumber }}</span>  <i class="fas fa-file-pdf mr-1"></i>
-                      
-                        <div class="text-sm text-gray-700 ">
-                        {{ getTestNames(item.orderDetails) }}
-                      </div>
-                      </button>
+                      <button type="button" class="pdf-link mb-2 font-bold text-left w-full" (click)="ris(item)">
+                        <div>
+                           <i class="fas fa-file-pdf mr-1"></i>
+                          Order Number:
+                          <span class="font-semibold">{{ item?.ordernumber }}</span>
+                         
+                        </div>
 
-                     
-                    
+                        <div class="text-sm text-gray-700">
+                          {{ getTestNames(item.orderDetails) }}
+                        </div>
+                      </button>
                     </div>
                   </div>
+
 
                   <div class="pagination-container pb-3" *ngIf="RisData?.length > 0">
                     <pagination-controls (pageChange)="onPageChanges($event, 'summary')" [id]="'summary-pagination'"
