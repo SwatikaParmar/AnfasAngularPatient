@@ -49,7 +49,7 @@
         </div>
         <div class="card-text" style="margin-left: 10px;">
           <div class="code">{{ item.weights }} {{ 'KG' | translate }}</div>
-          <div class="date">{{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : 'N/A' }} {{ item.createdAt | date: 'shortTime' }}</div>
+          <div class="date">  {{ convertToLocalTime(item.createdAt) }}</div>
         </div>
       </div>
     </div>

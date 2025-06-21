@@ -162,5 +162,26 @@ get yAxisLines(): number[] {
   }
 
 
+convertToLocalTime(utcDate: string | Date): string {
+  if (!utcDate) return 'N/A';
+
+  // Convert to Date object if it's a string
+  const utcDateObj = typeof utcDate === 'string' ? new Date(utcDate + 'Z') : new Date(utcDate);
+
+  if (isNaN(utcDateObj.getTime())) return 'Invalid Date';
+
+  const day = String(utcDateObj.getDate()).padStart(2, '0');
+  const month = String(utcDateObj.getMonth() + 1).padStart(2, '0');
+  const year = utcDateObj.getFullYear();
+
+  const hours = utcDateObj.getHours();
+  const minutes = String(utcDateObj.getMinutes()).padStart(2, '0');
+
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  const formattedHour = String(hours % 12 || 12).padStart(2, '0');
+
+  return `${day}-${month}-${year} ${formattedHour}:${minutes} ${ampm}`;
+}
+
 
 }

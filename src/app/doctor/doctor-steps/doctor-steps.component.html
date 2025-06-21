@@ -57,7 +57,7 @@
 
                         <!-- Date label below bar -->
                         <div class="date-label" style="font-size: 10px; margin-top: 6px; color: #888; white-space: nowrap; ">
-                          {{ item.date | date: 'MMM d' }}
+                        {{ convertToLocalTime(item.date) }}
                         </div>
                       </div>
 
