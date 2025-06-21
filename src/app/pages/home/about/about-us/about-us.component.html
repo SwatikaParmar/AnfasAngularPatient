@@ -2,20 +2,153 @@
     <div class="container-fluid">
       <div class="white-box table-box bg-white mt-25">
         <section class="address-info-form">
-          <form [formGroup]="aboutusForm">
-            <!-- About Us Display Section -->
+          <!-- <form [formGroup]="aboutusForm">
+           
             <div  style="background-color: #f3f3f3; padding: 15px;">
-              <!-- <h4>About Us</h4> -->
+            
             </div>
   
-            <!-- Injected HTML Content -->
+        
             <div class="mt-20" [innerHTML]="aboutUsContent"></div>
   
-            <!-- Submit Button -->
+          
             <div class="info-per-btn mt-20" style="padding-bottom: 20px;">
-              <!-- <button type="submit" class="btn gold-btn-submit">Update</button> -->
+             
             </div>
-          </form>
+          </form> -->
+
+
+
+           <div class="container" *ngIf="languageMode === '1'">
+          <div class="content-wrapper">
+            <div class="left">
+              <h4 style="text-align: center;">About Us</h4>
+              <h4>Anfas Medical Care Hospital</h4>
+              <p style="margin-bottom: 30px;">
+                We at Anfas are focused on the treatment of patients with long-term pulmonary problems who require
+                mechanical
+                ventilation and provide them with high level, quality treatment. We are also eager to take advantage of
+                the
+                latest medical technologies in serving our patients.
+              </p>
+              <h4>Our Mission</h4>
+              <p style="margin-bottom: 30px;">
+                Providing our patients with the highest quality of care in a safe and innovative environment.
+              </p>
+              <h4>Our Vision</h4>
+              <p style="margin-bottom: 30px;">
+                To be globally recognized as a leader in caring for those with chronic and long-term conditions.
+              </p>
+              <h4>Our Values</h4>
+              <p style="margin-bottom: 30px;">
+                Our core values and the foundation on which all our work is based are:
+              </p>
+              <div class="value-icons">
+                <div class="value-container">
+                  <div class="value-icon">
+                    <img src="assets/images/icon01.png" alt="Ambition" width="60" height="60">
+                    <div class="text">Ambition</div>
+                  </div>
+                  <div class="value-icon">
+                    <img src="assets/images/icon02.png" alt="Nobility" width="60" height="60">
+                    <div class="text">Nobility</div>
+                  </div>
+                  <div class="value-icon">
+                    <img src="assets/images/icon03.svg" alt="Focused Care" width="60" height="60">
+                    <div class="text">Focused Care</div>
+                  </div>
+                  <div class="value-icon">
+                    <img src="assets/images/icon04.png" alt="Accountability" width="60" height="60">
+                    <div class="text">Accountability</div>
+                  </div>
+                  <div class="value-icon">
+                    <img src="assets/images/icon05.png" alt="Safety" width="60" height="60">
+                    <div class="text">Safety</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="right">
+              <h4>Services Provided:</h4>
+              <ul>
+                <li>Respiratory Therapy Services</li>
+                <li>Physiotherapy and Rehabilitation Services</li>
+                <li>Radiology Services</li>
+                <li>Long Term Care Services</li>
+                <li>Laboratory Services</li>
+                <li>Intensive Care Unit</li>
+              </ul>
+              <h4>Address and Location</h4>
+              <p style="color: blue;">
+                2296 Prince Saad bin Abdul Rahman I Road, As Suwaidi, Riyadh 14587 7182
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="container" *ngIf="languageMode === '2'">
+          <div class="content-wrapper">
+            <div class="left">
+              <h4 style="text-align: center;">من نحن</h4>
+              <h4>مستشفى أنفاس للرعاية الطبية</h4>
+              <p style="margin-bottom: 30px;">
+                نحن في أنفاس نركز على علاج المرضى الذين يعانون من مشاكل تنفسية مزمنة ويحتاجون إلى التهوية الميكانيكية،
+                ونوفر لهم رعاية علاجية عالية الجودة. كما نحرص على الاستفادة من أحدث التقنيات الطبية في خدمة مرضانا.
+              </p>
+              <h4>مهمتنا</h4>
+              <p style="margin-bottom: 30px;">
+                تقديم أعلى مستويات الرعاية لمرضانا في بيئة آمنة ومبتكرة.
+              </p>
+              <h4>رؤيتنا</h4>
+              <p style="margin-bottom: 30px;">
+                أن نكون معترفًا بنا عالميًا كرواد في رعاية الحالات المزمنة وطويلة الأمد.
+              </p>
+              <h4>قيمنا</h4>
+              <p style="margin-bottom: 30px;">
+                قيمنا الأساسية التي نبني عليها جميع أعمالنا هي:
+              </p>
+              <div class="value-icons">
+                <div class="value-container">
+                  <div class="value-icon">
+                    <img src="assets/images/icon01.png" alt="الطموح" width="60" height="60">
+                    <div class="text">الطموح</div>
+                  </div>
+                  <div class="value-icon">
+                    <img src="assets/images/icon02.png" alt="النزاهة" width="60" height="60">
+                    <div class="text">النزاهة</div>
+                  </div>
+                  <div class="value-icon">
+                    <img src="assets/images/icon03.svg" alt="الرعاية المركزة" width="60" height="60">
+                    <div class="text">الرعاية المركزة</div>
+                  </div>
+                  <div class="value-icon">
+                    <img src="assets/images/icon04.png" alt="المسؤولية" width="60" height="60">
+                    <div class="text">المسؤولية</div>
+                  </div>
+                  <div class="value-icon">
+                    <img src="assets/images/icon05.png" alt="السلامة" width="60" height="60">
+                    <div class="text">السلامة</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="right">
+              <h4>الخدمات المقدمة:</h4>
+              <ul>
+                <li>خدمات العلاج التنفسي</li>
+                <li>خدمات العلاج الطبيعي وإعادة التأهيل</li>
+                <li>خدمات الأشعة</li>
+                <li>خدمات الرعاية طويلة الأمد</li>
+                <li>خدمات المختبر</li>
+                <li>وحدة العناية المركزة</li>
+              </ul>
+              <h4>العنوان والموقع</h4>
+              <p style="color: blue;">
+                2296 طريق الأمير سعد بن عبد الرحمن الأول، السويدي، الرياض 14587 7182
+              </p>
+            </div>
+          </div>
+        </div>
         </section>
       </div>
     </div>

@@ -68,8 +68,10 @@
                         <td class="px-4 py-2 text-sm md:text-base">{{item.value || 'N/A' }}
                         </td>
                         <td class="px-4 py-2 text-sm md:text-base">{{item.notes || 'N/A' }}</td>
-                        <td class="px-4 py-2 text-sm md:text-base">{{ item.createdAt ?
-                          (item.createdAt | date:'dd-MM-yyyy') : 'N/A' }}</td>
+                      <td class="px-4 py-2 text-sm md:text-base">
+  {{ convertToLocalTime(item.createdAt) }}
+</td>
+
                         <td [ngClass]="{
   'status-pending': item.status === 'Pending',
   'status-verified': item.status === 'Verified',

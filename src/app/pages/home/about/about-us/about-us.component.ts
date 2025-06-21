@@ -15,14 +15,19 @@ export class AboutUsComponent {
   Id: string = '';
   terms:any;
   aboutUsContent: any;
-  
+   languageMode: string = '1';
   constructor(
     private toastrService: ToastrService,
     private contentService: ContentService,
     private sanitizer: DomSanitizer,
         private spinner: NgxSpinnerService,
     
-  ){ }
+  ){  const role = localStorage.getItem('languageMode'); // or however you store it
+    if (role === '2') {
+      this.languageMode = '2';
+    } else {
+      this.languageMode = '1';
+    }}
   
 
   ngOnInit(): void {

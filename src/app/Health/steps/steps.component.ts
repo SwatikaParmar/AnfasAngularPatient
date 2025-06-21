@@ -70,4 +70,25 @@ export class StepsComponent {
   backClicked() {
     this._location.back();
   }
+
+
+  convertToLocalTime(utcDate: string): string {
+  if (!utcDate) return 'N/A'; // Handle missing dates
+
+  const utcDateObj = new Date(utcDate + 'Z'); // Ensure it's treated as UTC
+  if (isNaN(utcDateObj.getTime())) return 'Invalid Date'; // Handle invalid date
+
+  const day = String(utcDateObj.getDate()).padStart(2, '0');
+  const month = String(utcDateObj.getMonth() + 1).padStart(2, '0');
+  const year = utcDateObj.getFullYear();
+
+  const hours = utcDateObj.getHours();
+  const minutes = String(utcDateObj.getMinutes()).padStart(2, '0');
+
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  const formattedHour = String(hours % 12 || 12).padStart(2, '0');
+
+  return `${day}-${month}-${year} ${formattedHour}:${minutes} ${ampm}`;
+}
+
 }
