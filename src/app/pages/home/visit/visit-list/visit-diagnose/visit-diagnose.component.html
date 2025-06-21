@@ -37,23 +37,31 @@
                 <div class="tab-detail mb-3" *ngIf="selectedTab === 'report'">
                   <div class="flex flex-col gap-3 mt-2 mb-5" *ngIf="labdata?.length > 0">
                     <div *ngFor="let item of labdata | paginate: {
-          itemsPerPage: 15,
-          currentPage: pageMap['report'],
-          totalItems: totalItemsMap['report'],
-          id: 'report-pagination'
-        }" class="bg-white shadow p-3 rounded">
-                      <button type="button" class="pdf-link mb-2" (click)="lab(item)">
-                        <i class="fas fa-file-pdf"></i> {{ item?.ordernumber }}
+        itemsPerPage: 15,
+        currentPage: pageMap['report'],
+        totalItems: totalItemsMap['report'],
+        id: 'report-pagination'
+      }" class=" p-3 rounded">
+
+                      <!-- PDF Button with Order Number -->
+                      <button type="button" class="pdf-link mb-2 font-bold" (click)="lab(item)">
+                        Order Number: <span class="font-semibold">{{ item?.ordernumber }}</span> <i
+                          class="fas fa-file-pdf mr-1"></i>
+
+                        <div class="text-sm text-gray-700">
+                          {{ formatTests(item.orderDetails) }}
+                        </div>
                       </button>
-                      <ul class="pl-4 list-disc text-sm text-gray-700">
-                        <li *ngFor="let test of item.orderDetails">{{ test.name }}</li>
-                      </ul>
+
+
+
                     </div>
                   </div>
 
                   <div class="pagination-container pb-3" *ngIf="labdata?.length > 0">
                     <pagination-controls (pageChange)="onPageChanges($event, 'report')" [id]="'report-pagination'"
-                      class="paginate-doctor-list" queryParamsHandling="merge"></pagination-controls>
+                      class="paginate-doctor-list" queryParamsHandling="merge">
+                    </pagination-controls>
                   </div>
 
                   <div *ngIf="labdata && labdata.length === 0">
@@ -65,26 +73,35 @@
                 </div>
 
 
+
+                <!-- Summary Tab -->
                 <div class="tab-detail mb-3" *ngIf="selectedTab === 'summary'">
                   <div class="flex flex-col gap-3 mt-2 mb-5" *ngIf="RisData?.length > 0">
                     <div *ngFor="let item of RisData | paginate: {
-          itemsPerPage: 15,
-          currentPage: pageMap['summary'],
-          totalItems: totalItemsMap['summary'],
-          id: 'summary-pagination'
-        }" class="bg-white shadow p-3 rounded">
-                      <button type="button" class="pdf-link mb-2" (click)="ris(item)">
-                        <i class="fas fa-file-pdf"></i> {{ item?.ordernumber }}
+        itemsPerPage: 15,
+        currentPage: pageMap['summary'],
+        totalItems: totalItemsMap['summary'],
+        id: 'summary-pagination'
+      }" class=" p-3 rounded">
+
+                      <!-- PDF Button with Order Number -->
+                      <button type="button" class="pdf-link mb-2 font-bold" (click)="ris(item)">
+                      Order Number: <span class="font-semibold">{{ item?.ordernumber }}</span>  <i class="fas fa-file-pdf mr-1"></i>
+                      
+                        <div class="text-sm text-gray-700 ">
+                        {{ formatTests(item.orderDetails) }}
+                      </div>
                       </button>
-                      <ul class="pl-4 list-disc text-sm text-gray-700">
-                        <li *ngFor="let test of item.orderDetails">{{ test.name }}</li>
-                      </ul>
+
+                     
+                    
                     </div>
                   </div>
 
                   <div class="pagination-container pb-3" *ngIf="RisData?.length > 0">
                     <pagination-controls (pageChange)="onPageChanges($event, 'summary')" [id]="'summary-pagination'"
-                      class="paginate-doctor-list" queryParamsHandling="merge"></pagination-controls>
+                      class="paginate-doctor-list" queryParamsHandling="merge">
+                    </pagination-controls>
                   </div>
 
                   <div *ngIf="RisData && RisData.length === 0">

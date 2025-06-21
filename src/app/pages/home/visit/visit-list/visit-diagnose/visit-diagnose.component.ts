@@ -73,7 +73,7 @@ this.mrn = this.route.snapshot.params['id4'];
     this._location.back();
   }
 
- getPatietReport(): void {
+getPatietReport(): void {
   const payload = {
     PatientUid: this.patientUid,
     PatientVisitUid: this.patientVisitUId,
@@ -82,13 +82,22 @@ this.mrn = this.route.snapshot.params['id4'];
     PageSize: 15
   };
 
-  this.contentService.getPatientReport(payload).subscribe(response => {
-    if (response.isSuccess) {
-      this.labdata = response.data || [];
-      this.totalItemsMap['report'] = response.data.length;
-    } else {
-      this.labdata = [];
-      this.totalItemsMap['report'] = 0;
+  this.spinner.show(); // ⏳ Show spinner
+
+  this.contentService.getPatientReport(payload).subscribe({
+    next: (response) => {
+      if (response.isSuccess) {
+        this.labdata = response.data || [];
+        this.totalItemsMap['report'] = response.data.length;
+      } else {
+        this.labdata = [];
+        this.totalItemsMap['report'] = 0;
+      }
+    },
+    error: (err) => {   
+    },
+    complete: () => {
+      this.spinner.hide(); // ✅ Hide spinner in all cases
     }
   });
 }
@@ -102,16 +111,26 @@ getPatietRISReport(): void {
     PageSize: 15
   };
 
-  this.contentService.getPatientReport(payload).subscribe(response => {
-    if (response.isSuccess) {
-      this.RisData = response.data || [];
-      this.totalItemsMap['summary'] = response.data.length; // ✅ Corrected here
-    } else {
-      this.RisData = [];
-      this.totalItemsMap['summary'] = 0;
+  this.spinner.show(); // ⏳ Show spinner
+
+  this.contentService.getPatientReport(payload).subscribe({
+    next: (response) => {
+      if (response.isSuccess) {
+        this.RisData = response.data || [];
+        this.totalItemsMap['summary'] = response.data.length;
+      } else {
+        this.RisData = [];
+        this.totalItemsMap['summary'] = 0;
+      }
+    },
+    error: (err) => {
+    },
+    complete: () => {
+      this.spinner.hide(); // ✅ Hide spinner in all cases
     }
   });
 }
+
 
   lab(data: any) {
     debugger
@@ -227,6 +246,12 @@ onPageChanges(page: number, tab: string): void {
   }
 }
 
+
+
+formatTests(orderDetails: any[]): string {
+  if (!orderDetails || orderDetails.length === 0) return '';
+  return orderDetails.map(test => test.name).join('\n'); // line break between names
+}
 
 }
 
