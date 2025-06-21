@@ -27,24 +27,21 @@ export class VisitDiagnoseComponent {
   patientUid: any;
   patientVisitUId: any;
  page1: number = 0;
-labdata: any[] = []; // ensure it's always an array
+labdata: any; // ensure it's always an array
 
 pageMap: { [key: string]: number } = {
   report: 1,
-  lab: 1,
+  summary: 1,
   history: 1
 };
 
 totalItemsMap: { [key: string]: number } = {
   report: 0,
-  lab: 0,
+  summary: 0,
   history: 0
 };
   RisData: any;
   mrn: any;
-
-
-
 
   constructor(
     private toastrService: ToastrService,
@@ -76,45 +73,45 @@ this.mrn = this.route.snapshot.params['id4'];
     this._location.back();
   }
 
-  getPatietReport(){
-debugger
-    let payload = {
-      PatientUid : this.patientUid,
-      PatientVisitUid : this.patientVisitUId,
-ReportType : "LAB"
+ getPatietReport(): void {
+  const payload = {
+    PatientUid: this.patientUid,
+    PatientVisitUid: this.patientVisitUId,
+    ReportType: 'LAB',
+    PageNumber: this.pageMap['report'],
+    PageSize: 15
+  };
 
+  this.contentService.getPatientReport(payload).subscribe(response => {
+    if (response.isSuccess) {
+      this.labdata = response.data || [];
+      this.totalItemsMap['report'] = response.data.length;
+    } else {
+      this.labdata = [];
+      this.totalItemsMap['report'] = 0;
     }
+  });
+}
 
-    this.contentService.getPatientReport(payload).subscribe(response => {
-      if(response.isSuccess == true) {
-this.labdata = response.data || [];
-this.totalItemsMap['report'] = this.labdata.length;
+getPatietRISReport(): void {
+  const payload = {
+    PatientUid: this.patientUid,
+    PatientVisitUid: this.patientVisitUId,
+    ReportType: 'RADIOLOGY',
+    PageNumber: this.pageMap['summary'],
+    PageSize: 15
+  };
 
-      } else {
-
-      }
-    })
-  }
-
-    getPatietRISReport(){
-debugger
-    let payload = {
-      PatientUid : this.patientUid,
-      PatientVisitUid : this.patientVisitUId,
-ReportType : "RADIOLOGY"
-
+  this.contentService.getPatientReport(payload).subscribe(response => {
+    if (response.isSuccess) {
+      this.RisData = response.data || [];
+      this.totalItemsMap['summary'] = response.data.length; // ✅ Corrected here
+    } else {
+      this.RisData = [];
+      this.totalItemsMap['summary'] = 0;
     }
-
-    this.contentService.getPatientReport(payload).subscribe(response => {
-      if(response.isSuccess == true) {
-this.RisData = response.data || [];
-this.totalItemsMap['report'] = this.labdata.length;
-
-      } else {
-
-      }
-    })
-  }
+  });
+}
 
   lab(data: any) {
     debugger
@@ -221,10 +218,14 @@ debugger
   }
 
  
-onPageChanges(pageNumber: number, tab: string) {
-  this.pageMap[tab] = pageNumber;
+onPageChanges(page: number, tab: string): void {
+  this.pageMap[tab] = page;
+  if (tab === 'report') {
+    this.getPatietReport();
+  } else if (tab === 'summary') {
+    this.getPatietRISReport();
+  }
 }
-
 
 
 }

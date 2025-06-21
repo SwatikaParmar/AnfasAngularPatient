@@ -32,64 +32,30 @@
                     | translate }}</button>
                 </div>
 
-                <div class="tab-detail mb-3" *ngIf="selectedTab === 'summary'">
-                  <div class="d-flex flex-wrap gap-2 mt-2 mb-5" *ngIf="RisData && RisData.length > 0">
-                    <!-- Flexbox with gap -->
-
-
-
-
-
-
-
-
-                    <button type="button" class="pdf-link" *ngFor="let item of RisData | paginate: {
-        itemsPerPage: 15,
-        currentPage: pageMap['summary'],
-        totalItems: totalItemsMap['summary'],
-        id: 'summary-pagination'
-      }" (click)="ris(item)">
-                      <i class="fas fa-file-pdf"></i>{{ item?.ordernumber }}
-                    </button>
-                  </div>
-
-                  <div class="pagination-container pb-3">
-                    <pagination-controls (pageChange)="onPageChanges($event, 'summary')" [id]="'summary-pagination'"
-                      class="paginate-doctor-list" queryParamsHandling="merge"></pagination-controls>
-                  </div>
-                  <!-- No Data Image -->
-                  <div *ngIf="RisData && RisData.length === 0">
-                    <div class="no-data-fullpage">
-                      <img src="assets/images/ffffrq-removebg-preview.png" alt="No Data Found" class="no-data-image" />
-                      <p class="no-data-text"></p>
-                    </div>
-                  </div>
-
-                </div>
-
-
-
-
 
                 <!-- Report Tab -->
                 <div class="tab-detail mb-3" *ngIf="selectedTab === 'report'">
-                  <div class="flex flex-wrap gap-2 mt-2 mb-5" *ngIf="labdata && labdata.length > 0">
-                    <button type="button" class="pdf-link" *ngFor="let item of labdata | paginate: { 
-      itemsPerPage: 15, 
-      currentPage: pageMap['report'], 
-      id: 'report-pagination' 
-    }" (click)="lab(item)">
-                      <i class="fas fa-file-pdf"></i> {{ item?.ordernumber }}
-                    </button>
+                  <div class="flex flex-col gap-3 mt-2 mb-5" *ngIf="labdata?.length > 0">
+                    <div *ngFor="let item of labdata | paginate: {
+          itemsPerPage: 15,
+          currentPage: pageMap['report'],
+          totalItems: totalItemsMap['report'],
+          id: 'report-pagination'
+        }" class="bg-white shadow p-3 rounded">
+                      <button type="button" class="pdf-link mb-2" (click)="lab(item)">
+                        <i class="fas fa-file-pdf"></i> {{ item?.ordernumber }}
+                      </button>
+                      <ul class="pl-4 list-disc text-sm text-gray-700">
+                        <li *ngFor="let test of item.orderDetails">{{ test.name }}</li>
+                      </ul>
+                    </div>
                   </div>
 
-
-                  <div class="pagination-container pb-3">
+                  <div class="pagination-container pb-3" *ngIf="labdata?.length > 0">
                     <pagination-controls (pageChange)="onPageChanges($event, 'report')" [id]="'report-pagination'"
                       class="paginate-doctor-list" queryParamsHandling="merge"></pagination-controls>
                   </div>
 
-                  <!-- No Data Image -->
                   <div *ngIf="labdata && labdata.length === 0">
                     <div class="no-data-fullpage">
                       <img src="assets/images/ffffrq-removebg-preview.png" alt="No Data Found" class="no-data-image" />
@@ -98,6 +64,36 @@
                   </div>
                 </div>
 
+
+                <div class="tab-detail mb-3" *ngIf="selectedTab === 'summary'">
+                  <div class="flex flex-col gap-3 mt-2 mb-5" *ngIf="RisData?.length > 0">
+                    <div *ngFor="let item of RisData | paginate: {
+          itemsPerPage: 15,
+          currentPage: pageMap['summary'],
+          totalItems: totalItemsMap['summary'],
+          id: 'summary-pagination'
+        }" class="bg-white shadow p-3 rounded">
+                      <button type="button" class="pdf-link mb-2" (click)="ris(item)">
+                        <i class="fas fa-file-pdf"></i> {{ item?.ordernumber }}
+                      </button>
+                      <ul class="pl-4 list-disc text-sm text-gray-700">
+                        <li *ngFor="let test of item.orderDetails">{{ test.name }}</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="pagination-container pb-3" *ngIf="RisData?.length > 0">
+                    <pagination-controls (pageChange)="onPageChanges($event, 'summary')" [id]="'summary-pagination'"
+                      class="paginate-doctor-list" queryParamsHandling="merge"></pagination-controls>
+                  </div>
+
+                  <div *ngIf="RisData && RisData.length === 0">
+                    <div class="no-data-fullpage">
+                      <img src="assets/images/ffffrq-removebg-preview.png" alt="No Data Found" class="no-data-image" />
+                      <p class="no-data-text"></p>
+                    </div>
+                  </div>
+                </div>
 
 
                 <!-- Diagnoses Tab -->
