@@ -58,15 +58,13 @@ this.spinner.show();
       } else {
         this.spinner.hide();
 
-        this.toastrService.error('Failed to fetch list.');
-        console.error('API returned failure:', response);
+
       }
     },
     error => {
               this.spinner.hide();
 
-      this.toastrService.error('Error fetching list.');
-      console.error('Error fetching list:', error);
+  
     }
   );
 }
@@ -88,7 +86,7 @@ this.spinner.show();
       }
     });
   } else {
-    this.toastrService.error('Invalid sender or receiver information.');
+
   }
 }
 

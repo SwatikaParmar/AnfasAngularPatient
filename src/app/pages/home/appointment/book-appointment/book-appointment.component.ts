@@ -159,7 +159,7 @@ export class BookAppointmentComponent {
 
   // onDateChange(event: Date) {
   //   this.selectedDate = event;
-  //   console.log('Selected date:', event);
+ 
   //   // You can fetch your slots here
   // }
 
@@ -207,7 +207,7 @@ export class BookAppointmentComponent {
       if (resp && resp.data) {
         this.slots = resp.data.freeSlots;
         this.filterSlotsByTime(); // Filter when data is loaded
-        console.log('Slots:', this.slots);
+
       } else {
         this.toasterService.warning('No slots available.');
       }
@@ -277,7 +277,7 @@ export class BookAppointmentComponent {
     }, (error) => {
       this.spinner.hide();
       this.toasterService.error('Something went wrong. Please try again.');
-      console.error('Error booking appointment:', error);
+
     });
   }
   
@@ -289,7 +289,7 @@ export class BookAppointmentComponent {
         queryParams: { mrn }
       });
     } else {
-      this.toasterService.warning('MRN is missing.');
+      
     }
   }
   selectSlot(slot: any): void {

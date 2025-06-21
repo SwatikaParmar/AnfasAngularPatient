@@ -76,7 +76,7 @@ constructor(
       },
       error: (err) => {
         this.error = 'Something went wrong. Please try again.';
-        console.error(err);
+
       }
     });
   }
@@ -94,7 +94,7 @@ constructor(
       }
     },
     error: (err) => {
-      console.error('Resend OTP error:', err);
+  
       this.toastr.error('Something went wrong. Please try again.');
     }
   });

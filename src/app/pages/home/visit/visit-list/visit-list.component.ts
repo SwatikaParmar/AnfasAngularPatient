@@ -39,7 +39,6 @@ export class VisitListComponent {
   const mrn = localStorage.getItem('mrn');
 
   if (!mrn) {
-    this.toastrService.error('MRN not found in local storage.');
     return;
   }
 
@@ -53,14 +52,14 @@ export class VisitListComponent {
         this.visitList = response.data;
       } else {
         this.visitList = []; // Ensure it's an empty array so *ngIf works
-        this.toastrService.error(response?.message || 'Failed to fetch visit list.');
+
       }
     },
     error => {
       this.spinner.hide(); // Stop spinner on error
       this.visitList = []; // Handle error case too
-      this.toastrService.error('An error occurred while fetching the visit list.');
-      console.error(error);
+     
+
     }
   );
 }
@@ -86,7 +85,7 @@ export class VisitListComponent {
     this.contentService.getLab(payload).subscribe(response => {
       if (response.status === true) {
         this.labpdf = response.data.file;  // Get the base64 string from the "file" key
-        this.toastrService.success(response.message);
+
       
         // Convert base64 to Blob and open
         const base64Data = this.labpdf.split(',')[1]; // Remove the "data:application/pdf;base64," prefix
@@ -102,7 +101,7 @@ export class VisitListComponent {
         const blobUrl = URL.createObjectURL(blob);
         window.open(blobUrl, '_blank');
       } else {
-        this.toastrService.error(response.message);
+      
       }
       
       
@@ -118,7 +117,7 @@ export class VisitListComponent {
     this.contentService.getRis(payload).subscribe(response => {
       if (response.status === true) {
         this.rispdf = response.data.file;  // Get the base64 string from the "file" key
-        this.toastrService.success(response.message);
+    
       
         // Convert base64 to Blob and open
         const base64Data = this.rispdf.split(',')[1]; // Remove the "data:application/pdf;base64," prefix
@@ -134,7 +133,7 @@ export class VisitListComponent {
         const blobUrl = URL.createObjectURL(blob);
         window.open(blobUrl, '_blank');
       } else {
-        this.toastrService.error(response.message);
+      
       }
       
       

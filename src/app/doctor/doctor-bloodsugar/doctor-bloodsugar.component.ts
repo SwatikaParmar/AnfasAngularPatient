@@ -96,7 +96,7 @@ this.toastrService.error();
 
       approveItem(item: any) {
   // Your logic to approve
-  console.log('Approved:', item);
+
   // Optionally update status
   item.status = 'Verified';
 
@@ -117,7 +117,7 @@ this.toastrService.error(response.messages);
 
 rejectItem(item: any) {
   // Your logic to reject
-  console.log('Rejected:', item);
+
   item.status = 'Rejected';
 
   let payload = {

@@ -45,14 +45,12 @@ export class AppointmentListComponent {
       if (response.status === true) {
         this.doctorList = response.data;
       } else {
-        this.toastrService.error('Failed to fetch doctor list.');
-        console.error('API returned failure:', response);
+
       }
     },
     error => {
       this.spinner.hide(); // Hide spinner even if there's an error
-      this.toastrService.error('Error fetching doctor list.');
-      console.error('Error fetching doctor list:', error);
+   
     }
   );
 }
@@ -85,7 +83,7 @@ export class AppointmentListComponent {
             }
           });
         } else {
-          this.toastrService.error('Invalid sender or receiver information.');
+        
         }
       }
 }

@@ -27,23 +27,21 @@ export class VisitDiagnoseComponent {
   patientUid: any;
   patientVisitUId: any;
  page1: number = 0;
-labdata: any[] = []; // ensure it's always an array
+labdata: any; // ensure it's always an array
 
 pageMap: { [key: string]: number } = {
   report: 1,
-  lab: 1,
+  summary: 1,
   history: 1
 };
 
 totalItemsMap: { [key: string]: number } = {
   report: 0,
-  lab: 0,
+  summary: 0,
   history: 0
 };
   RisData: any;
-
-
-
+  mrn: any;
 
   constructor(
     private toastrService: ToastrService,
@@ -59,7 +57,7 @@ totalItemsMap: { [key: string]: number } = {
                 this.patientUid = this.route.snapshot.params['id2'];
 
                         this.patientVisitUId = this.route.snapshot.params['id3'];
-
+this.mrn = this.route.snapshot.params['id4'];
 
     this.rootUrl = environment.rootPathUrl;
 
@@ -75,45 +73,64 @@ totalItemsMap: { [key: string]: number } = {
     this._location.back();
   }
 
-  getPatietReport(){
-debugger
-    let payload = {
-      PatientUid : this.patientUid,
-      PatientVisitUid : this.patientVisitUId,
-ReportType : "LAB"
+getPatietReport(): void {
+  const payload = {
+    PatientUid: this.patientUid,
+    PatientVisitUid: this.patientVisitUId,
+    ReportType: 'LAB',
+    PageNumber: this.pageMap['report'],
+    PageSize: 15
+  };
 
-    }
+  this.spinner.show(); // ⏳ Show spinner
 
-    this.contentService.getPatientReport(payload).subscribe(response => {
-      if(response.isSuccess == true) {
-this.labdata = response.data || [];
-this.totalItemsMap['report'] = this.labdata.length;
-
+  this.contentService.getPatientReport(payload).subscribe({
+    next: (response) => {
+      if (response.isSuccess) {
+        this.labdata = response.data || [];
+        this.totalItemsMap['report'] = response.data.length;
       } else {
-
+        this.labdata = [];
+        this.totalItemsMap['report'] = 0;
       }
-    })
-  }
-
-    getPatietRISReport(){
-debugger
-    let payload = {
-      PatientUid : this.patientUid,
-      PatientVisitUid : this.patientVisitUId,
-ReportType : "RADIOLOGY"
-
+    },
+    error: (err) => {   
+    },
+    complete: () => {
+      this.spinner.hide(); // ✅ Hide spinner in all cases
     }
+  });
+}
 
-    this.contentService.getPatientReport(payload).subscribe(response => {
-      if(response.isSuccess == true) {
-this.RisData = response.data || [];
-this.totalItemsMap['report'] = this.labdata.length;
+getPatietRISReport(): void {
+  const payload = {
+    PatientUid: this.patientUid,
+    PatientVisitUid: this.patientVisitUId,
+    ReportType: 'RADIOLOGY',
+    PageNumber: this.pageMap['summary'],
+    PageSize: 15
+  };
 
+  this.spinner.show(); // ⏳ Show spinner
+
+  this.contentService.getPatientReport(payload).subscribe({
+    next: (response) => {
+      if (response.isSuccess) {
+        this.RisData = response.data || [];
+        this.totalItemsMap['summary'] = response.data.length;
       } else {
-
+        this.RisData = [];
+        this.totalItemsMap['summary'] = 0;
       }
-    })
-  }
+    },
+    error: (err) => {
+    },
+    complete: () => {
+      this.spinner.hide(); // ✅ Hide spinner in all cases
+    }
+  });
+}
+
 
   lab(data: any) {
     debugger
@@ -127,11 +144,10 @@ this.totalItemsMap['report'] = this.labdata.length;
       if (response.status === true) {
         this.spinner.hide();
         this.labpdf = response.data.file;
-        this.toastrService.success(response.message);
+ 
         this.openBase64Pdf(this.labpdf);
       } else {
-        this.spinner.hide();
-        this.toastrService.error(response.message);
+    
       }
     });
   }
@@ -147,7 +163,7 @@ this.totalItemsMap['report'] = this.labdata.length;
       if (response.status === true) {
         this.spinner.hide();
         this.rispdf = response.data.file;
-        this.toastrService.success(response.message);
+  
         this.openBase64Pdf(this.rispdf);
       } else {
         this.spinner.hide();
@@ -156,18 +172,38 @@ this.totalItemsMap['report'] = this.labdata.length;
     });
   }
 
-  openBase64Pdf(base64: string) {
-    const base64Data = base64.split(',')[1];
-    const byteCharacters = atob(base64Data);
-    const byteNumbers = new Array(byteCharacters.length);
-    for (let i = 0; i < byteCharacters.length; i++) {
-      byteNumbers[i] = byteCharacters.charCodeAt(i);
-    }
-    const byteArray = new Uint8Array(byteNumbers);
-    const blob = new Blob([byteArray], { type: 'application/pdf' });
-    const blobUrl = URL.createObjectURL(blob);
+openBase64Pdf(base64: string) {
+  const base64Data = base64.split(',')[1];
+  const byteCharacters = atob(base64Data);
+  const byteNumbers = new Array(byteCharacters.length);
+  for (let i = 0; i < byteCharacters.length; i++) {
+    byteNumbers[i] = byteCharacters.charCodeAt(i);
+  }
+  const byteArray = new Uint8Array(byteNumbers);
+  const blob = new Blob([byteArray], { type: 'application/pdf' });
+  const blobUrl = URL.createObjectURL(blob);
+
+  // For iOS: Use a secure click-triggered anchor to avoid popup block
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !navigator.userAgent.includes('Macintosh');
+
+  const link = document.createElement('a');
+  link.href = blobUrl;
+  link.target = '_blank';
+  link.download = 'lab-report.pdf';
+
+  // For iOS Safari, we avoid download and force it to open
+  if (isIOS) {
+    link.setAttribute('rel', 'noopener'); // helps on iOS to open in a new context
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  } else {
+    // Other platforms
     window.open(blobUrl, '_blank');
   }
+}
+
+
 
 
   
@@ -175,7 +211,7 @@ getVisitDetail(){
 this.spinner.show();
   let payload = {
     visitId : this.id,
-    mrn: localStorage.getItem('mrn')
+    mrn: this.mrn
   }
 debugger
   this.contentService.visitDetail(payload).subscribe(response => {
@@ -186,7 +222,6 @@ debugger
     }else {
             this.spinner.hide();
 
-     this.toastrService.error(response.message)
     }
   })
 }
@@ -202,8 +237,17 @@ debugger
   }
 
  
-onPageChanges(pageNumber: number, tab: string) {
-  this.pageMap[tab] = pageNumber;
+onPageChanges(page: number, tab: string): void {
+  this.pageMap[tab] = page;
+  if (tab === 'report') {
+    this.getPatietReport();
+  } else if (tab === 'summary') {
+    this.getPatietRISReport();
+  }
+}
+
+getTestNames(details: any[]): string {
+  return details?.map(test => test.name).join('; ');
 }
 
 

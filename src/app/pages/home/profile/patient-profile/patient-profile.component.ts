@@ -35,7 +35,7 @@ export class PatientProfileComponent implements OnInit {
 
     this.mrn = localStorage.getItem('mrnNumber');
     if (!this.mrn) {
-      this.toastrService.error('MRN not found in localStorage.');
+
       this.spinner.hide();
       return;
     }
@@ -54,14 +54,14 @@ export class PatientProfileComponent implements OnInit {
           this.detail = response.data;
           this.gender = response.data.gender;
         } else {
-          this.toastrService.error(response.message);
+  
         }
         this.spinner.hide();
       },
       error: (err) => {
-        this.toastrService.error('Failed to fetch patient details.');
+      
         this.spinner.hide();
-        console.error('Error fetching patient details:', err);
+       
       }
     });
   }
@@ -72,7 +72,7 @@ export class PatientProfileComponent implements OnInit {
         queryParams: { mrn: this.detail.mrn }
       });
     } else {
-      this.toastrService.warning('Consent form ID is missing.');
+
     }
   }
 }

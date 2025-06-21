@@ -75,14 +75,12 @@ closeImagePreview(): void {
         if (response?.isSuccess) {
           this.bloodSugarList = response.data?.dataList || [];
         } else {
-          this.toastrService.error('Failed to fetch blood sugar list.');
-          console.error('API returned failure:', response);
+   
         }
         this.spinner.hide();
       },
       error: (error) => {
-        this.toastrService.error('Error fetching blood sugar list.');
-        console.error('Error fetching blood sugar list:', error);
+      
         this.spinner.hide();
       }
     });
@@ -148,7 +146,7 @@ closeImagePreview(): void {
     error: (err) => {
       this.spinner.hide();
       this.toastrService.error('Error adding blood sugar record');
-      console.error('Error:', err);
+
     }
   });
 }
@@ -235,7 +233,7 @@ uploadVitalPictureAfterRecord(recordId: number): void {
     error: (err) => {
       this.spinner.hide();
       this.toastrService.error('Image upload failed.');
-      console.error('Upload Error:', err);
+ 
     }
   });
 }

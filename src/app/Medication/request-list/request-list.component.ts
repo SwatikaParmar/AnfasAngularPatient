@@ -51,13 +51,11 @@ export class RequestListComponent {
           this.requestList = response.data || [];
           this.totalItems = response.data?.length || 0; // ✅ Corrected assignment
         } else {
-          this.toastrService.error('Failed to fetch request list.');
-          console.error('API returned failure:', response);
+      
         }
       },
       error: (error) => {
-        this.toastrService.error('Error fetching request list.');
-        console.error('Error fetching request list:', error);
+       
       },
       complete: () => {
         this.spinner.hide();

@@ -81,7 +81,7 @@ onCheckboxChange(event: Event, item: any): void {
         this.getMedicationRecord();
     },
     error: (err) => {
-      console.error('Error updating status:', err);
+
       this.toastrService.error('Failed to update status');
     }
   });
@@ -115,13 +115,11 @@ this.educationMaterial = response.data.dataList
         if (response.status === true) {
           this.visitList = response.data;
         } else {
-          this.toastrService.error('Failed to fetch  list.');
-          console.error('API returned failure:', response);
+         
         }
       },
       error => {
-        this.toastrService.error('Error fetching  list.');
-        console.error('Error fetching  list:', error);
+      
       }
     );
  }

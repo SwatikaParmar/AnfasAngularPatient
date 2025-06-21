@@ -115,7 +115,7 @@ export class LoginComponent implements OnInit {
   //     },
   //     error: (err) => {
   //       this.toasterService.error('Login failed. Please try again.');
-  //       console.error('Login error:', err);
+  //  
   //       this.spinner.hide();
   //     }
   //   });
@@ -207,29 +207,41 @@ export class LoginComponent implements OnInit {
 //       }
 //     },
 //     error: (err) => {
-//       console.error('Login error:', err);
+//  
 //       this.toasterService.error('Login failed. Please try again.');
 //       this.spinner.hide();
 //     }
 //   });
 // }
 onLogin() {
-  this.spinner.show();
-  this.submitted = true;
+ this.submitted = true;
+this.spinner.show();
 
-  const value = this.loginForm.get(this.selectedField)?.value;
+// List of valid fields
+const validFields = ['mrn', 'mobilePhone', 'nationalId'];
 
-  if (!value) {
-    this.toasterService.error('Please enter correct value');
-    this.spinner.hide();
-    return;
-  }
+// Step 1: Check if any option is selected from the dropdown
+if (!this.selectedField || !validFields.includes(this.selectedField)) {
+  this.toasterService.error('Please select a valid login option');
+  this.spinner.hide();
+  return;
+}
 
-  const payload: any = {
-    isVerified: false,
-  };
-  payload[this.selectedField] = value;
+// Step 2: Get value from selected field
+const value = this.loginForm.get(this.selectedField)?.value;
 
+// Step 3: Check if the value is empty or whitespace
+if (!value || value.toString().trim() === '') {
+  this.toasterService.error('Please enter correct value');
+  this.spinner.hide();
+  return;
+}
+
+// Step 4: Build payload
+const payload: any = {
+  isVerified: false,
+};
+payload[this.selectedField] = value;
   // Step 1: Send OTP
   this.authService.sendotp(payload).subscribe({
     next: (otpResponse) => {
@@ -257,24 +269,24 @@ onLogin() {
               // ✅ Navigate only after both calls are successful
               this.router.navigateByUrl('/otp');
             } else {
-              this.toasterService.error(patientResponse.message || 'Fetching patient details failed');
+            
             }
             this.spinner.hide();
           },
           error: (err) => {
-            console.error('Patient details error:', err);
-            this.toasterService.error('Something went wrong while fetching patient details.');
+          
+          
             this.spinner.hide();
           }
         });
 
       } else {
-        this.toasterService.error(otpResponse.message || 'OTP sending failed');
+        this.toasterService.error(otpResponse.messages || 'OTP sending failed');
         this.spinner.hide();
       }
     },
     error: (err) => {
-      console.error('OTP error:', err);
+
       this.toasterService.error('Something went wrong while sending OTP.');
       this.spinner.hide();
     }

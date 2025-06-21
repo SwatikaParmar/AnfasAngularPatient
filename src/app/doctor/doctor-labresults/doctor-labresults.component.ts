@@ -20,6 +20,7 @@ export class DoctorLabresultsComponent {
   risData: any;
 
  selectedTab: string = 'report';
+  patientUid: any;
 
 
     constructor(
@@ -37,13 +38,16 @@ export class DoctorLabresultsComponent {
 
   ngOnInit(): void {
     this.patientVisitUId = this.route.snapshot.params['id'];
-
+this.patientUid = this.route.snapshot.params['id2'];
      this.getLab();
   }
 
 
   getLab(){
   // this.spinner.show();
+  let payload  ={
+    
+  }
     this.contentService.getDocLab(this.patientVisitUId).subscribe(response => {
       if(response.status ==true){
 this.labData = response.data.file;

@@ -12,41 +12,55 @@ import { Location } from '@angular/common';
 })
 export class DoctorProfileComponent {
 
-    rootUrl: any;
+  rootUrl: any;
   profileData: any;
 
-    constructor(
+  constructor(
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService,
     private contentService: ContentService,
     private router: Router,
     private route: ActivatedRoute,
     private _location: Location,
-  ){ }
+  ) { }
 
   ngOnInit(): void {
     this.rootUrl = environment.rootPathUrl;
-  this.getDoctorDetail();
+    this.getDoctorDetail();
   }
 
 
-  getDoctorDetail(){
-this.spinner.show();
-    let payload = {
-      OrgCode : 'AMC',
-      ShowInPatientPortal : true,
-      loginid : localStorage.getItem('code')
-    }
-    this.contentService.getDoctorDeatail(payload).subscribe(response => {
-      if(response.status == true) {
-this.spinner.hide();
-        this.profileData = response.data
+ getDoctorDetail() {
+  const loginId = localStorage.getItem('code');
+
+  if (!loginId) {
+    this.toastrService.error('Login ID is missing. Cannot fetch profile.');
+    return;
+  }
+
+  this.spinner.show();
+
+  const payload = {
+    OrgCode: 'AMC',
+    ShowInPatientPortal: true,
+    loginid: loginId
+  };
+
+  this.contentService.getDoctorDeatail(payload).subscribe({
+    next: (response) => {
+      this.spinner.hide();
+      if (response.status === true) {
+        this.profileData = response.data;
       } else {
-        this.spinner.hide();
-        this.toastrService.error(response.messages);
+        this.toastrService.error(response.messages || 'Doctor profile not found.');
       }
-    })
+    },
+    error: (err) => {
+      this.spinner.hide();
+      this.toastrService.error('Doctor data not found.');
+    }
+  });
+}
 
-  }
 
 }

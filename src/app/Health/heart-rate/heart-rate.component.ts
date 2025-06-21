@@ -72,13 +72,11 @@ imageFile: File | null = null;
         if (response.isSuccess) {
           this.heartRateList = response.data.dataList;
         } else {
-          this.toastrService.error('Failed to fetch heartrate list.');
-          console.error('API returned failure:', response);
+         
         }
       },
       (error) => {
-        this.toastrService.error('Error fetching heartrate list.');
-        console.error('Error fetching heartrate list:', error);
+       
       }
     );
   }
@@ -147,7 +145,7 @@ imageFile: File | null = null;
       error: (err) => {
         this.spinner.hide();
         this.toastrService.error('Error adding Heart Rate record');
-        console.error('Error:', err);
+    
       }
     });
   }
@@ -232,7 +230,7 @@ uploadVitalPictureAfterRecord(recordId: number): void {
     error: (err) => {
       this.spinner.hide();
       this.toastrService.error('Image upload failed.');
-      console.error('Upload Error:', err);
+
     }
   });
 }

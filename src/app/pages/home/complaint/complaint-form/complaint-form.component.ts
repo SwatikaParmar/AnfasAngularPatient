@@ -97,25 +97,25 @@ this.typeList = response.data;
       feedbackCtrl?.reset();    // Optional: Clear textarea when unchecked
     }
   }
-  onSubmit() {
-    
-    if (this.complaintForm.invalid) {
-      this.complaintForm.markAllAsTouched(); // 🔥 this triggers all validation messages
-      return;
-    }
+onSubmit() {
+  debugger
+  if (this.complaintForm.invalid) {
+    this.complaintForm.markAllAsTouched(); 
+    return;
+  }
 
-      // 2️⃣ Build your base payload
+  this.spinner.show(); // 🔄 Show spinner
+
   const payload: any = {
-    mrn:localStorage.getItem('mrn'),
+    mrn: localStorage.getItem('mrn'),
     complaint: {
-      complaintId: 0, // or pull from form if dynamic
+      complaintId: 0,
       complaintTypeId: this.complaintForm.get('complaint.complaintTypeId')!.value,
       description: this.complaintForm.get('complaint.description')!.value
     },
-    feedbackDetails: null  // default
+    feedbackDetails: null
   };
 
-  // 3️⃣ Only include feedbackDetails if the toggle was on AND there's text
   const feedbackGroup = this.complaintForm.get('feedbackDetails')!;
   const enabled = feedbackGroup.get('enableFeedback')!.value;
   const feedbackText = feedbackGroup.get('feedback')!.value?.trim();
@@ -124,17 +124,24 @@ this.typeList = response.data;
     payload.feedbackDetails = { feedback: feedbackText };
   }
 
+  this.content.addComplaint(payload).subscribe({
+    next: (response) => {
+      this.spinner.hide(); // ✅ Hide spinner on response
 
-  this.content.addComplaint(payload).subscribe(resposne => {
-    if(resposne.status == true) {
-      this.toasterService.success(resposne.message);
-      this.router.navigateByUrl('/complaint')
-    } else {
-      this.toasterService.error(resposne.message);
+      if (response.status === true) {
+        this.toasterService.success(response.message);
+        this.router.navigateByUrl('/complaint');
+      } else {
+        this.toasterService.error(response.message);
+      }
+    },
+    error: (err) => {
+      this.spinner.hide(); // ✅ Hide spinner on error
+      this.toasterService.error('Something went wrong.');
     }
   });
+}
 
-  }
   backClicked() {
     this._location.back();
   }

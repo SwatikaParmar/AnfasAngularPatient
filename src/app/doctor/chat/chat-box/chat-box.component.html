@@ -3,9 +3,9 @@
     <div class="content-body">
       <div class="container-fluid">
         <div class="flex mb-2 items-center ml-1">
-          <button (click)="backClicked()" class="back-btn-left-circle flex items-center justify-center w-8 h-8 rounded-full text-white"
-         >
-             <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center; color: black;"></i>
+          <button (click)="backClicked()"
+            class="back-btn-left-circle flex items-center justify-center w-8 h-8 rounded-full text-white">
+            <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center; color: black;"></i>
           </button>
           <!-- <h1 class="text-lg font-semibold ml-2" style="font-size: 25px; color: #726641;">
                         Chat
@@ -29,39 +29,40 @@
 
                 <!-- Messages -->
                 <!-- Chat Messages -->
-            <!-- Chat Body -->
-<div class="relative flex-1 overflow-y-auto px-4 py-6 space-y-4 bg-white/80" style="background-color: #FEFEFF;">
-  <div class="relative z-10 space-y-2">
-    <ng-container *ngFor="let chat of chatHistory">
-      <!-- Receiver Message (Left) -->
-      <div *ngIf="chat.senderUserName === senderId" class="flex justify-start">
-        <div class="bg-white text-black px-4 py-2 rounded-2xl shadow max-w-xs break-words">
-          {{ chat.messageContent }}
-          <div class="text-[10px] text-gray-500 mt-1 text-right">{{ chat.timestamp }}</div>
-        </div>
-      </div>
+                <!-- Chat Body -->
+                <div class="relative flex-1 overflow-y-auto px-4 py-6 space-y-4 bg-white/80"
+                  style="background-color: #FEFEFF;">
+                  <div class="relative z-10 space-y-2">
+                    <ng-container *ngFor="let chat of chatHistory">
+                      <!-- Receiver Message (Left) -->
+                      <div *ngIf="chat.senderUserName === receiverId" class="flex justify-start">
+                        <div class="bg-white text-black px-4 py-2 rounded-2xl shadow max-w-xs break-words">
+                          {{ chat.messageContent }}
+                          <div class="text-[10px] text-gray-500 mt-1 text-right">{{ chat.timestamp }}</div>
+                        </div>
+                      </div>
 
-      <!-- Sender Message (Right) -->
-      <div *ngIf="chat.senderUserName ===  receiverId" class="flex justify-end">
-        <div class="bg-[#77734E] text-white px-4 py-2 rounded-2xl shadow max-w-xs break-words">
-          {{ chat.messageContent }}
-          <div class="text-[10px] text-gray-300 mt-1 text-right">{{ chat.timestamp }}</div>
-        </div>
-      </div>
-    </ng-container>
-  </div>
-</div>
+                      <!-- Sender Message (Right) -->
+                      <div *ngIf="chat.senderUserName === senderId" class="flex justify-end">
+                        <div class="bg-[#77734E] text-white px-4 py-2 rounded-2xl shadow max-w-xs break-words">
+                          {{ chat.messageContent }}
+                          <div class="text-[10px] text-gray-300 mt-1 text-right">{{ chat.timestamp }}</div>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
 
-<!-- Footer Input -->
-<div class="bg-[#77734E] px-2 py-3 flex items-center">
-  <input type="text" placeholder="{{ 'WRITE_A_REPLY' | translate }}" [(ngModel)]="newMessage"
-    (keyup.enter)="sendMessage()"
-    class="flex-1 px-4 py-2 rounded-full bg-white text-black outline-none mr-2" />
-  <button (click)="sendMessage()"
-    class="text-white text-xl bg-[#FEC34F] rounded-full w-12 h-12 flex items-center justify-center">
-    ➤
-  </button>
-</div>
+                <!-- Footer Input -->
+                <div class="bg-[#77734E] px-2 py-3 flex items-center">
+                  <input type="text" placeholder="{{ 'WRITE_A_REPLY' | translate }}" [(ngModel)]="newMessage"
+                    (keyup.enter)="sendMessage()"
+                    class="flex-1 px-4 py-2 rounded-full bg-white text-black outline-none mr-2" />
+                  <button (click)="sendMessage()"
+                    class="text-white text-xl bg-[#FEC34F] rounded-full w-12 h-12 flex items-center justify-center">
+                    ➤
+                  </button>
+                </div>
 
               </div>
             </div>

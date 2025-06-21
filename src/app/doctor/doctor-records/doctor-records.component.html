@@ -18,7 +18,7 @@
                             </button>
                             <button class="tab-button" [class.active]="activeTab === 'shipper'"
                                 (click)="setActiveTab('shipper')">
-                                {{ 'HEALTH_TRACKING' | translate }}
+                               {{ 'HEALTH_TRACKER' | translate }}
                             </button>
                             <button class="tab-button" [class.active]="activeTab === 'driver'"
                                 (click)="setActiveTab('driver'); getPatientEducation()">
@@ -299,9 +299,11 @@
                                             <i class="fa-regular fa-star"></i>
                                             <i class="fa-regular fa-star"></i>
                                         </div> -->
-                                        <button class="view-button"
-                                            [routerLink]="['/doctor-patient/doctor-labresults/' + visit.patientVisitUId]">
-                                            {{ 'VIEW_REPORTS' | translate }}</button>
+                               <button class="view-button"
+ [routerLink]="['/visit/report/' + visit.visitId + '/' + visit.patientUid + '/' + visit.patientVisitUId + '/' + visit.mrn]">
+  {{ 'VIEW_REPORTS' | translate }}
+</button>
+
                                     </div>
                                 </div>
 

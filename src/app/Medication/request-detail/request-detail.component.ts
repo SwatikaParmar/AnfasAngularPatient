@@ -46,14 +46,13 @@ Detail(id: number): void {
       if (response.status || response.isSuccess) {
         this.detail = response.data;
       } else {
-        this.toastrService.warning('No data found.');
+    
       }
       this.spinner.hide();
     },
     error: (err) => {
-      console.error(err);
       this.spinner.hide();
-      this.toastrService.error('An error occurred while fetching details.');
+    
     }
   });
 }

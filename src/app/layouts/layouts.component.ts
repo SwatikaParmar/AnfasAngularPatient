@@ -28,6 +28,15 @@ export class LayoutsComponent {
   role = localStorage.getItem('role');
   isSidebarCollapsed = false;
 
+isProfileMenuOpen:boolean = false;
+
+// Web View
+isProfileMenuOpenWeb = false;
+isLanguageMenuOpenWeb = false;
+
+// Mobile View
+isProfileMenuOpenMobile = false;
+isLanguageMenuOpenMobile = false;
 
   
   constructor(
@@ -80,9 +89,49 @@ toggleMenus() {
     });
   }
 
-  toggleLanguageMenu() {
-    this.isLanguageMenuOpen = !this.isLanguageMenuOpen;
+  
+// Web toggles
+toggleProfileMenuWeb() {
+  this.isProfileMenuOpenWeb = !this.isProfileMenuOpenWeb;
+  if (this.isProfileMenuOpenWeb) {
+    this.isLanguageMenuOpenWeb = false;
   }
+}
+
+toggleLanguageMenuWeb() {
+  this.isLanguageMenuOpenWeb = !this.isLanguageMenuOpenWeb;
+  if (this.isLanguageMenuOpenWeb) {
+    this.isProfileMenuOpenWeb = false;
+  }
+}
+
+// Mobile toggles
+toggleProfileMenuMobile() {
+  this.isProfileMenuOpenMobile = !this.isProfileMenuOpenMobile;
+  if (this.isProfileMenuOpenMobile) {
+    this.isLanguageMenuOpenMobile = false;
+  }
+}
+
+toggleLanguageMenuMobile() {
+  this.isLanguageMenuOpenMobile = !this.isLanguageMenuOpenMobile;
+  if (this.isLanguageMenuOpenMobile) {
+    this.isProfileMenuOpenMobile = false;
+  }
+}
+
+
+
+@HostListener('document:click', ['$event.target'])
+onClickOutside(target: HTMLElement) {
+  const clickedInsideProfile = target.closest('.header-profile');
+  if (!clickedInsideProfile) {
+    this.isProfileMenuOpen = false;
+    this.isLanguageMenuOpen = false;
+  }
+}
+
+
 
   classActive(data: any) {
     this.classActives = data;

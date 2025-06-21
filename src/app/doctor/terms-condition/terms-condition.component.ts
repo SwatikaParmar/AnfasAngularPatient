@@ -43,8 +43,8 @@ getterms() {
     },
     (error) => {
       this.spinner.hide();
-      this.toastrService.error('Failed to load terms and conditions content.');
-      console.error(error);
+     
+    
     }
   );
 }

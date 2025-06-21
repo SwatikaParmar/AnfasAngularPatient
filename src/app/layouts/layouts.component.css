@@ -19,6 +19,15 @@
 }
 
 
+.dropdown-menu1.language-menu1 {
+  display: none;
+}
+
+.dropdown-menu1.language-menu1.show {
+  display: block;
+}
+
+
 .side-bar .item {
     margin-bottom: 4px; 
 }

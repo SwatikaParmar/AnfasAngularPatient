@@ -48,13 +48,11 @@ export class EducationalMaterialComponent {
         if (response.isSuccess) {
           this.materialList = response.data.dataList;
         } else {
-          this.toastrService.error('Failed to fetch medication list.');
-          console.error('API returned failure:', response);
+   
         }
       },
       error => {
-        this.toastrService.error('Error fetching medication list.');
-        console.error('Error fetching medication list:', error);
+     
       }
     );
   }    

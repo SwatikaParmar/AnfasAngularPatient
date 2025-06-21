@@ -44,7 +44,7 @@ export class PatientConsentComponent {
             if (this.Mrn) {
                 this.getConsentForm();
             } else {
-                console.error('MRN is missing');
+             
             }
         });
     }
@@ -79,11 +79,11 @@ export class PatientConsentComponent {
                 this.mrnUrl = this.sanitizer.bypassSecurityTrustHtml(htmlData);
               }
             } else {
-              console.error('Failed to fetch consent form');
+           
             }
           },
           error => {
-            console.error('Error fetching consent form', error);
+           
           }
         );
       }
@@ -1518,14 +1518,13 @@ export class PatientConsentComponent {
                     this.router.navigate(['/profile']);
                 } else {
                     this.toastr.error('Failed to submit consent form.');
-                    console.error('Failed to submit consent form');
+                   
                 }
             },
             error => {
                 // Hide spinner if there is an error
                 this.spinner.hide();
-                this.toastr.error('Error submitting consent form');
-                console.error('Error submitting consent form', error);
+             
             }
         );
     }
