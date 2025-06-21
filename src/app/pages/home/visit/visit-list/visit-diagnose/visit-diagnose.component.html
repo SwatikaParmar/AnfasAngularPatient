@@ -44,11 +44,18 @@
     }" class="w-full  rounded">
                       <!-- PDF Button with Order Number -->
                       <button type="button" class="pdf-link mb-2 font-bold text-left w-full" (click)="lab(item)">
-                        <div>
-                          <i class="fas fa-file-pdf mr-1"></i>
-                          Order Number:
-                          <span class="font-semibold">{{ item?.ordernumber }}</span>
+                        <div class="flex justify-between items-center w-full">
+                          <div>
+                            <i class="fas fa-file-pdf mr-1"></i>
+                            Order Number:
+                            <span class="font-semibold">{{ item?.ordernumber }}</span>
+                          </div>
 
+                          <div class="text-right">
+                            Order Date:
+                          <span class="font-semibold">{{ item?.orderdate | date:'dd-MM-yyyy' }}</span>
+
+                          </div>
                         </div>
 
                         <div class="text-sm text-gray-700">
@@ -86,11 +93,18 @@
     }" class="w-full  rounded">
                       <!-- PDF Button with Order Number -->
                       <button type="button" class="pdf-link mb-2 font-bold text-left w-full" (click)="ris(item)">
-                        <div>
-                           <i class="fas fa-file-pdf mr-1"></i>
-                          Order Number:
-                          <span class="font-semibold">{{ item?.ordernumber }}</span>
-                         
+                        <div class="flex justify-between items-center w-full">
+                          <div>
+                            <i class="fas fa-file-pdf mr-1"></i>
+                            Order Number:
+                            <span class="font-semibold">{{ item?.ordernumber }}</span>
+                          </div>
+
+                          <div class="text-right">
+                            Order Date:
+                           <span class="font-semibold">{{ item?.orderdate | date:'dd-MM-yyyy' }}</span>
+
+                          </div>
                         </div>
 
                         <div class="text-sm text-gray-700">
