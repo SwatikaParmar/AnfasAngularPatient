@@ -12,9 +12,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./doctor-addmedication.component.css']
 })
 export class DoctorAddmedicationComponent {
-
-  medicationForm!: FormGroup;
+ medicationForm!: FormGroup;
   mrn: any;
+  medicationId: any;
+  isEditMode = false;
 
     constructor(
     private toastrService: ToastrService,
@@ -29,7 +30,7 @@ export class DoctorAddmedicationComponent {
 
     ngOnInit(): void {
       this.mrn = this.route.snapshot.params['id'];
-
+      this.medicationId = this.route.snapshot.params['id2'];
        this.medicationForm = this.fb.group({
       mrn: this.mrn,
       careProviderCode: [localStorage.getItem('code'),],

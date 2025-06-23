@@ -55,6 +55,7 @@ import { AppointmentChatListComponent } from 'src/app/doctor/doctor-appointment/
 import { PatientChatlistComponent } from 'src/app/doctor/doctor-patient/patient-chatlist/patient-chatlist.component';
 import { VisitDiagnoseComponent } from './visit/visit-list/visit-diagnose/visit-diagnose.component';
 import { RequestDetailComponent } from 'src/app/Medication/request-detail/request-detail.component';
+import { ConnectedDevicesComponent } from 'src/app/connected-devices/connected-devices.component';
 const routes: Routes = [
 
   {
@@ -95,7 +96,7 @@ const routes: Routes = [
       { path: 'educational-Material', component: EducationalMaterialComponent },
       { path: 'educational-Material/educational-detail/:id', component: EducationalMaterialDetailComponent },
       { path: 'request-list/request-add', component: AddRequestComponent },
-       { path: 'request-list/update/:id', component: AddRequestComponent },
+      { path: 'request-list/update/:id', component: AddRequestComponent },
 
       // Doctor Routes
 
@@ -117,10 +118,11 @@ const routes: Routes = [
       { path: 'doctor/educational-detail/:id', component: DoctorEducationalmaterialComponent },
       { path: 'doctor/educational-material', component: DoctorAddEducationalmaterialComponent },
       { path: 'doctor/educational-material-edit/:id', component: DoctorAddEducationalmaterialComponent },
-
       { path: 'doctor-patient/doctor/medication/:id', component: DoctorAddmedicationComponent },
+      { path: 'doctor-patient/doctor/medication/update/:id/:id2', component: DoctorAddmedicationComponent },
       { path: 'doctor-appointment/appointment-list/chat', component: AppointmentChatListComponent },
       { path: 'doctor-patient/Patient/chat', component: PatientChatlistComponent },
+       { path: 'connected-Devices', component: ConnectedDevicesComponent },
 
     ]
   }

@@ -269,10 +269,9 @@
   "PATIENT_SIGN_IN": "تسجيل دخول المريض",
   "EN": "EN",
   "AR": "عربي",
-    "PATIENT_EDUCATION" : "تثقيف المريض",
-"Requested_Date": "تاريخ الطلب",
-"Uploaded_Date": "تاريخ التحميل",
-
+  "PATIENT_EDUCATION": "تثقيف المريض",
+  "Requested_Date": "تاريخ الطلب",
+  "Uploaded_Date": "تاريخ التحميل",
   "SELECT": "يختار",
   "MR_NUMBER": "رقم السيد",
   "PHONE_NUMBER": "رقم التليفون",
@@ -400,5 +399,6 @@
   "CHRONIC_DISEASE": "مرض مزمن",
   "VIEW_REPORT_&_DIAGNOSES": "عرض التقرير والتشخيص",
   "PROBLEM": "مشكلة",
-   "COMPLAINTS_&_SUGGESTIONS":"الشكاوى والاقتراحات"
+  "COMPLAINTS_&_SUGGESTIONS": "الشكاوى والاقتراحات",
+  "DEVICES": "الأجهزة"
 }

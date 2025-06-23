@@ -250,7 +250,6 @@
 
 
     .list-icon {
-    background-color: #FCC555;
     padding: 6px 10px;        /* some padding for nice shape */
     margin-right: 10px;       /* gap between icons */
     border-radius: 4px;       /* optional, rounded corners */
@@ -263,7 +262,7 @@
     margin-right: 0;
   }
    .list-icon i {
-    color: white; /* icon color white */
+    color: black; /* icon color white */
   }
 
 

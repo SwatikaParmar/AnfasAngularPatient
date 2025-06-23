@@ -359,6 +359,11 @@ addMedication(data:any){
   return this.http.post<any>(environment.apiUrl + ApiEndPoint.addMedication,data)
 }
 
+medicationDetail(data:any){
+  return this.http.get<any>(environment.apiUrl + ApiEndPoint.medicationDetail + '?id=' + data.id 
+  )
+}
+
 
 addEduMaterial(data: any) {
   const formData = new FormData();

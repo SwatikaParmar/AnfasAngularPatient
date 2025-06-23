@@ -18,7 +18,7 @@
                             </button>
                             <button class="tab-button" [class.active]="activeTab === 'shipper'"
                                 (click)="setActiveTab('shipper')">
-                               {{ 'HEALTH_TRACKER' | translate }}
+                                {{ 'HEALTH_TRACKER' | translate }}
                             </button>
                             <button class="tab-button" [class.active]="activeTab === 'driver'"
                                 (click)="setActiveTab('driver'); getPatientEducation()">
@@ -73,9 +73,12 @@
                                                                 <td>{{ item.frequency }}</td>
                                                                 <td>
                                                                     {{
-                                                                    item.instructions.split(' ').slice(0, 3).join(' ')
-                                                                    }}{{ item.instructions.split(' ').length > 3 ? '...'
-                                                                    : '' }}
+                                                                    item.instructions
+                                                                    ? item.instructions.split(' ').slice(0, 3).join(' ')
+                                                                    + (item.instructions.split(' ').length > 3 ? '...' :
+                                                                    '')
+                                                                    : 'N/A'
+                                                                    }}
                                                                 </td>
 
                                                                 <td>{{ item.createdAt ? (item.createdAt |
@@ -92,9 +95,14 @@
                                                                 </td>
                                                                 <td>
                                                                     <!-- <a class="list-icon"><i class="fa fa-eye"
-                                                                            aria-hidden="true"></i></a> -->
-                                                                    <a class="list-icon"><i class="fa fa-edit"
-                                                                            aria-hidden="true"></i></a>
+                                                            [routerLink]="['/doctor/educational-detail', item?.id]"
+                                                            aria-hidden="true"></i></a>&nbsp; -->
+
+                                                                    <a class="list-icon"
+                                                                        [routerLink]="['/doctor-patient/doctor/medication/update', mrn, item?.medicationId]">
+                                                                        <i class="fa fa-pencil"></i>
+                                                                    </a>
+
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -299,10 +307,10 @@
                                             <i class="fa-regular fa-star"></i>
                                             <i class="fa-regular fa-star"></i>
                                         </div> -->
-                               <button class="view-button"
- [routerLink]="['/visit/report/' + visit.visitId + '/' + visit.patientUid + '/' + visit.patientVisitUId + '/' + visit.mrn]">
-  {{ 'VIEW_REPORTS' | translate }}
-</button>
+                                        <button class="view-button"
+                                            [routerLink]="['/visit/report/' + visit.visitId + '/' + visit.patientUid + '/' + visit.patientVisitUId + '/' + visit.mrn]">
+                                            {{ 'VIEW_REPORTS' | translate }}
+                                        </button>
 
                                     </div>
                                 </div>

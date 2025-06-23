@@ -57,11 +57,12 @@ export enum ApiEndPoint {
     recordType ="api/User/GetHealthRecordsByType",
     doctorDetail = "api/User/GetDoctorDetails",
     addMedication = "api/User/AddOrUpdateMedication ",
+    medicationDetail = "api/User/GetMedicationDetail",
     messageList = "api/Chat/chatUsers/",
     addEducationMaterial = "api/User/AddOrUpdateEducationMaterial",
     vitalStatus = "api/User/SetVitalRecordStatus",
     visitDetail = "api/User/GetVisitDetail"
-
+    
 
 
     
