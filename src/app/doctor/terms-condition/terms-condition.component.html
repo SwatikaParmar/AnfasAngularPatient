@@ -2,20 +2,226 @@
   <div class="container-fluid">
     <div class="white-box table-box bg-white mt-25">
       <section class="address-info-form">
-        <form [formGroup]="termsForm">
-          <!-- About Us Display Section -->
+        <!-- <form [formGroup]="termsForm">
+      
           <div style="background-color: #f3f3f3; padding: 15px;">
-            <!-- <h4>About Us</h4> -->
+
           </div>
 
-          <!-- Injected HTML Content -->
+         
           <div class="terms-html" [innerHTML]="termsText"></div>
 
-          <!-- Submit Button -->
+       
           <div class="info-per-btn mt-20" style="padding-bottom: 20px;">
-            <!-- <button type="submit" class="btn gold-btn-submit">Update</button> -->
+         
           </div>
-        </form>
+        </form> -->
+
+
+        <div class="container" *ngIf="languageMode === '1'">
+          <header>
+            <h1>Terms and Conditions</h1>
+          </header>
+
+          <section>
+            <h2>1. Introduction</h2>
+            <p>
+              These Terms and Conditions ("Terms") govern your use of the ANFAS platform and services ("Service"). By
+              using our
+              Service, you agree to these Terms. If you do not agree, do not use our Service.
+            </p>
+          </section>
+
+          <section>
+            <h2>2. User Responsibilities</h2>
+            <p>As a user of ANFAS, you agree to:</p>
+            <ul>
+              <li>Provide accurate and up-to-date personal information.</li>
+              <li>Be responsible for any activities that occur under your account.</li>
+              <li>Comply with all applicable laws and regulations when using the platform.</li>
+              <li>Not use the Service for any fraudulent, harmful, or illegal activities.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>3. Medical Disclaimer</h2>
+            <p>ANFAS is a healthcare platform that provides information and services related to healthcare and wellness.
+              However:</p>
+            <ul>
+              <li>The information is for informational purposes only and not a substitute for professional medical
+                advice.</li>
+              <li>You should consult with a qualified healthcare provider for any concerns.</li>
+              <li>We are not responsible for medical decisions made based on information from ANFAS.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>4. Privacy and Data Protection</h2>
+            <p>
+              Your privacy is important to us. Please review our
+              <a href="/privacy-policy" target="_blank">Privacy Policy</a>
+              for details on how we handle your data.
+            </p>
+          </section>
+
+          <section>
+            <h2>5. User Account</h2>
+            <p>
+              By registering, you agree to keep your account secure. You are responsible for all activity under your
+              account and
+              must notify us of any unauthorized use.
+            </p>
+          </section>
+
+          <section>
+            <h2>6. Intellectual Property</h2>
+            <p>
+              All content on ANFAS (text, images, logos, software) is owned by ANFAS or its licensors and protected by
+              law. You
+              may not use it without permission.
+            </p>
+          </section>
+
+          <section>
+            <h2>7. Changes to Terms</h2>
+            <p>
+              We may update these Terms at any time. Changes will be posted here. Continued use of the Service indicates
+              your
+              acceptance of the updated Terms.
+            </p>
+          </section>
+
+          <section>
+            <h2>8. Limitation of Liability</h2>
+            <p>
+              ANFAS is not liable for any damages resulting from your use or inability to use the Service, including
+              medical
+              issues or delays based on provided information.
+            </p>
+          </section>
+
+          <section>
+            <h2>9. Termination</h2>
+            <p>
+              We may suspend or terminate access at any time without notice if you violate these Terms or harm the
+              platform or
+              others.
+            </p>
+          </section>
+
+          <section>
+            <h2>10. Governing Law</h2>
+            <p>
+              These Terms are governed by the laws of [Your Jurisdiction]. Disputes will be resolved in the courts of
+              [Your
+              Jurisdiction].
+            </p>
+          </section>
+
+          <section>
+            <h2>11. Contact Information</h2>
+            <p>If you have any questions, please contact us at:</p>
+            <p><strong>Email:</strong> support@anfashis.com</p>
+          </section>
+
+          <footer>
+            <p>&copy; 2025 ANFAS. All rights reserved.</p>
+          </footer>
+        </div>
+
+
+        <div class="container" *ngIf="languageMode === '2'">
+          <header>
+            <h1>الشروط والأحكام</h1>
+          </header>
+
+          <section>
+            <h2>١. المقدمة</h2>
+            <p>تحكم هذه الشروط والأحكام ("الشروط") استخدامك لمنصة وخدمات ANFAS ("الخدمة"). باستخدامك لخدماتنا، فإنك
+              توافق
+              على هذه الشروط. إذا لم توافق، يرجى عدم استخدام الخدمة.</p>
+          </section>
+
+          <section>
+            <h2>٢. مسؤوليات المستخدم</h2>
+            <p>بصفتك مستخدمًا لمنصة ANFAS، فإنك توافق على:</p>
+            <ul>
+              <li>تقديم معلومات شخصية دقيقة ومحدثة.</li>
+              <li>تحمل المسؤولية عن جميع الأنشطة التي تحدث تحت حسابك.</li>
+              <li>الامتثال لجميع القوانين واللوائح المعمول بها عند استخدام المنصة.</li>
+              <li>عدم استخدام الخدمة لأي أنشطة احتيالية أو ضارة أو غير قانونية.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>٣. إخلاء المسؤولية الطبية</h2>
+            <p>ANFAS هي منصة رعاية صحية تقدم معلومات وخدمات متعلقة بالصحة والرفاهية. من المهم ملاحظة ما يلي:</p>
+            <ul>
+              <li>المعلومات المقدمة من ANFAS هي لأغراض معلوماتية فقط ولا يجب اعتبارها بديلاً عن الاستشارة الطبية أو
+                التشخيص أو العلاج.</li>
+              <li>يجب عليك استشارة مقدم رعاية صحية مؤهل لأي استفسار طبي.</li>
+              <li>لا نتحمل أي مسؤولية عن القرارات الطبية التي تتخذها بناءً على المعلومات المقدمة من المنصة.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>٤. الخصوصية وحماية البيانات</h2>
+            <p>خصوصيتك مهمة بالنسبة لنا. نحن ملتزمون بحماية بياناتك الشخصية. يرجى مراجعة <a href="/privacy-policy">سياسة
+                الخصوصية</a> الخاصة بنا لمعرفة كيفية جمعنا واستخدامنا وحمايتنا لمعلوماتك.</p>
+          </section>
+
+          <section>
+            <h2>٥. حساب المستخدم</h2>
+            <p>بتسجيلك في ANFAS، فإنك توافق على إنشاء حساب آمن. أنت مسؤول عن الحفاظ على سرية معلومات حسابك وجميع الأنشطة
+              التي تتم من خلاله. يجب عليك إخطارنا فورًا بأي استخدام غير مصرح به لحسابك.</p>
+          </section>
+
+          <section>
+            <h2>٦. الملكية الفكرية</h2>
+            <p>جميع المحتويات الموجودة على ANFAS، بما في ذلك النصوص والصور والشعارات والعلامات التجارية والبرمجيات، هي
+              ملك
+              لـ ANFAS أو المرخصين لها، وهي محمية بموجب قوانين الملكية الفكرية. لا يجوز لك استخدام أو إعادة إنتاج هذه
+              المحتويات دون إذن صريح منا.</p>
+          </section>
+
+          <section>
+            <h2>٧. تغييرات على الشروط</h2>
+            <p>نحتفظ بالحق في تعديل أو تحديث هذه الشروط في أي وقت. سيتم نشر أي تغييرات على هذه الصفحة مع التاريخ
+              المحدّث.
+              استمرارك في استخدام الخدمة بعد التغييرات يعني موافقتك على الشروط الجديدة.</p>
+          </section>
+
+          <section>
+            <h2>٨. تحديد المسؤولية</h2>
+            <p>لا تتحمل ANFAS أي مسؤولية عن أي أضرار مباشرة أو غير مباشرة أو عرضية أو تبعية ناتجة عن استخدامك أو عدم
+              قدرتك
+              على استخدام الخدمة، بما في ذلك الأخطاء الطبية أو التأخيرات أو الخسائر الناتجة عن الاعتماد على المعلومات
+              المقدمة من المنصة.</p>
+          </section>
+
+          <section>
+            <h2>٩. إنهاء الاستخدام</h2>
+            <p>يجوز لنا تعليق أو إنهاء وصولك إلى ANFAS في أي وقت دون إشعار مسبق إذا اعتقدنا أنك انتهكت هذه الشروط أو
+              شاركت
+              في أنشطة ضارة بالمنصة أو المستخدمين.</p>
+          </section>
+
+          <section>
+            <h2>١٠. القانون المعمول به</h2>
+            <p>تخضع هذه الشروط وتُفسر وفقًا لقوانين [سلطتك القضائية]. وأي نزاعات تنشأ عنها ستكون خاضعة للاختصاص القضائي
+              الحصري لمحاكم [سلطتك القضائية].</p>
+          </section>
+
+          <section>
+            <h2>١١. معلومات التواصل</h2>
+            <p>إذا كانت لديك أي أسئلة أو استفسارات بخصوص هذه الشروط والأحكام، يرجى التواصل معنا عبر:</p>
+            <p>البريد الإلكتروني: support@anfashis.com</p>
+          </section>
+
+          <footer>
+            <p>© 2025 ANFAS. جميع الحقوق محفوظة.</p>
+          </footer>
+        </div>
       </section>
     </div>
   </div>

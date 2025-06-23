@@ -15,6 +15,7 @@ export class TermsConditionComponent {
   aboutUsContent: any;
 termsForm!:FormGroup;
 termsText!: SafeHtml;
+  languageMode: string = '1';
 constructor(
       private fb: FormBuilder,
 
@@ -28,6 +29,12 @@ constructor(
       this.termsForm = this.fb.group({
       termsText: ['']  // form control to hold your terms HTML
     });
+     const role = localStorage.getItem('languageMode'); // or however you store it
+    if (role === '2') {
+      this.languageMode = '2';
+    } else {
+      this.languageMode = '1';
+    }
 
    }
 
