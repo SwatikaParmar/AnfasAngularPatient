@@ -56,7 +56,8 @@ loginForm!: FormGroup;
     this.loginForm = this.formBuilder.group({
       orgCode: [''],
       loginid: [''],
-      showInPatientPortal: [true]
+      showInPatientPortal: [true],
+      deviceType: ['Web']
     });
   }
   
