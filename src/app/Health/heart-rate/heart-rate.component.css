@@ -157,3 +157,37 @@
     background-color: #f7f7f7;
     box-sizing: border-box;
 }
+
+
+.status-box {
+  background-color: #fff7e8;
+  border-radius: 12px;
+  padding: 7px 8px;
+  display: flex;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.status-box strong {
+  font-weight: 600;
+  margin-right: 5px;
+}
+
+.status-box .date {
+  color: #007bff;
+  margin-left: 4px;
+}
+
+.refresh-icon {
+  margin-left: auto;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  padding: 4px 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
