@@ -420,4 +420,9 @@ visitDetail(data:any){
 onlineStatusManually(data:any){
   return this.http.post<any>(environment.apiUrl + ApiEndPoint.onlineStatus,data)
 }
+
+visitupdation(data: any) {
+  return this.http.post<any>(`${environment.apiUrl}${ApiEndPoint.visitupdation}`, data);
+}
+
 }

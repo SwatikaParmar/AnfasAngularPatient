@@ -62,7 +62,8 @@ export enum ApiEndPoint {
     addEducationMaterial = "api/User/AddOrUpdateEducationMaterial",
     vitalStatus = "api/User/SetVitalRecordStatus",
     visitDetail = "api/User/GetVisitDetail",
-    onlineStatus ="api/Chat/updateOnlineStatusManually"
+    onlineStatus ="api/Chat/updateOnlineStatusManually",
+    visitupdation = "api/Admin/UpdateVisitSection"
     
 
 

@@ -5,6 +5,18 @@ import { AuthService } from '../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { LanguageSwitcherServiceService } from '../shared/services/language-switcher.service.service';
 import { TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
+
+export enum VisitSectionType {
+  Dashboard = 1,
+  Medication = 2,
+  Appointment = 3,
+  EducationMaterial = 4,
+  Visit = 5,
+  Report = 6,
+  Request = 7,
+  HealthTracking = 8
+}
 
 @Component({
   selector: 'app-layouts',
@@ -27,7 +39,7 @@ export class LayoutsComponent {
   isLanguageMenuOpen: boolean = false;
   role = localStorage.getItem('role');
   isSidebarCollapsed = false;
-
+ public VisitSectionType = VisitSectionType;
 isProfileMenuOpen:boolean = false;
 
 // Web View
@@ -41,12 +53,13 @@ isLanguageMenuOpenMobile = false;
   
   constructor(
     private spinner: NgxSpinnerService,
-    private contentServices: ContentService,
+    private contentService: ContentService,
     private auth: AuthService,
     private el: ElementRef,
     private router: Router,
     private translate: TranslateService,
-    private languageService: LanguageSwitcherServiceService
+    private languageService: LanguageSwitcherServiceService,
+    private toastr :ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -170,5 +183,43 @@ onDocumentClick(event: MouseEvent): void {
 }
 
 
+updateVisitSection(type: VisitSectionType): void {
+    const payload = {
+      username: localStorage.getItem('mrn'),
+      type: VisitSectionType[type]
+    };
+
+    this.contentService.visitupdation(payload).subscribe({
+      next: (res) => {
+        if (res?.isSuccess) {
+       
+        } else {
+          
+        }
+      },
+      error: (err) => {     
+      }
+    });
+  }
+
+
+  updatedoctorVisitSection(type: VisitSectionType): void {
+    const payload = {
+      username: localStorage.getItem('code'),
+      type: VisitSectionType[type]
+    };
+
+    this.contentService.visitupdation(payload).subscribe({
+      next: (res) => {
+        if (res?.isSuccess) {
+       
+        } else {
+          
+        }
+      },
+      error: (err) => {     
+      }
+    });
+  }
 
 }

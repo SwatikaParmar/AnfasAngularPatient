@@ -112,7 +112,8 @@
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
           <div class="menu">
             <div class="item one">
-              <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><svg
+              <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+                (click)="updateVisitSection(VisitSectionType.Dashboard)"><svg
                   xmlns=" http://www.w3.org/2000/svg " viewBox="0 0 576 512">
                   <path
                     d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z">
@@ -122,7 +123,8 @@
             </div>
 
             <div class="item one" routerLinkActive="active">
-              <a class="sub-btn" [routerLink]="['/visit']">
+              <a class="sub-btn" [routerLink]="['/visit']"
+                (click)="updateVisitSection(VisitSectionType.Visit)">
                  <i class="fa-solid fa-file-medical  text-2xl" style="font-size: 20px;"></i> <span
                   style="font-size: 15px !important; font-weight: 600 !important;">{{ 'MY_VISITS' | translate }}</span>
 
@@ -132,7 +134,8 @@
 
             
              <div class="item one" routerLinkActive="active">
-              <a class="sub-btn" [routerLink]="['/doctor-list']">
+              <a class="sub-btn" [routerLink]="['/doctor-list']"
+               >
               <svg
                   xmlns=" http://www.w3.org/2000/svg " viewBox="0 0 448 512">
                   <path
@@ -144,7 +147,8 @@
             </div>
             
             <div class="item shw one" routerLinkActive="active">
-              <a [routerLink]="['/complaint']">
+              <a [routerLink]="['/complaint']"
+              >
                <i class="fa-solid fa-comment-dots text-2xl" style="font-size: 20px;"></i> <span
                   style="font-size: 15px !important; font-weight: 600 !important;">{{ 'COMPLAINTS_&_SUGGESTIONS' |
                   translate }}</span>
@@ -152,7 +156,8 @@
             </div>
 
             <div class="item shw one" routerLinkActive="active">
-              <a [routerLink]="['/appointment-list']">
+              <a [routerLink]="['/appointment-list']"
+                (click)="updateVisitSection(VisitSectionType.Appointment)">
                  <i class="fa-solid fa-calendar-days text-2xl" style="font-size: 20px;"></i>
 
                 <span style="font-size: 15px !important; font-weight: 600 !important;">{{ 'MY_APPOINTMENTS' | translate
@@ -163,7 +168,8 @@
 
             
             <div class="item shw one" routerLinkActive="active">
-              <a [routerLink]="['/connected-Devices']">
+              <a [routerLink]="['/connected-Devices']"
+                >
                  <i class="fa-solid fa-calendar-days text-2xl" style="font-size: 20px;"></i>
 
                 <span style="font-size: 15px !important; font-weight: 600 !important;">{{ 'DEVICES' | translate
@@ -183,7 +189,8 @@
 
 
             <div class="item shw one" routerLinkActive="active">
-              <a class="sub-btn" [routerLink]="['/medication-list']">
+              <a class="sub-btn" [routerLink]="['/medication-list']"
+                (click)="updateVisitSection(VisitSectionType.Medication)">
                 <i class="fas fa-pills" style="font-size: 20px;"></i>
                 <span style="font-size: 15px !important; font-weight: 600 !important;">
                   {{ 'MEDICATION' | translate }}
@@ -192,7 +199,8 @@
             </div>
 
             <div class="item shw one" routerLinkActive="active">
-              <a class="sub-btn" [routerLink]="['/request-list']">
+              <a class="sub-btn" [routerLink]="['/request-list']"
+                (click)="updateVisitSection(VisitSectionType.Request)">
                 <i class="fas fa-user-plus" style="font-size: 20px;"></i>
                 <span style="font-size: 15px !important; font-weight: 600 !important;">
                   {{ 'REQUEST' | translate }}
@@ -204,7 +212,8 @@
 
 
             <div class="item shw one" routerLinkActive="active">
-              <a class="sub-btn" [routerLink]="['/messages']">
+              <a class="sub-btn" [routerLink]="['/messages']"
+              >
                 <i class="fas fa-comment-dots" style="font-size: 20px;"></i>
                 <span style="font-size: 15px !important; font-weight: 600 !important;"> {{ 'MESSAGES' | translate
                   }}</span>
@@ -220,7 +229,8 @@
             </div> -->
 
             <div class="item shw one" routerLinkActive="active">
-              <a class="sub-btn" [routerLink]="['/Health-Tracker']">
+              <a class="sub-btn" [routerLink]="['/Health-Tracker']"
+                (click)="updateVisitSection(VisitSectionType.HealthTracking)">
                 <i class="fas fa-heartbeat" style="font-size: 20px; margin-right: 5px;"></i> <!-- NEW icon -->
                 <span style="font-size: 15px !important; font-weight: 600 !important;">
                   {{ 'HEALTH_TRACKER' | translate }}
@@ -229,7 +239,8 @@
             </div>
 
             <div class="item shw one" routerLinkActive="active">
-              <a class="sub-btn" [routerLink]="['/educational-Material']">
+              <a class="sub-btn" [routerLink]="['/educational-Material']"
+                (click)="updateVisitSection(VisitSectionType.EducationMaterial)">
                 <i class="fas fa-book" style="font-size: 20px; margin-right: 5px;"></i> <!-- Book icon -->
                 <span style="font-size: 15px !important; font-weight: 600 !important;">
                   {{ 'PATIENT_EDUCATION'
@@ -420,6 +431,7 @@
           <div class="menu">
             <div class="item one">
               <a [routerLink]="['/doctor-dashboard']" routerLinkActive="active"
+               (click)="updatedoctorVisitSection(VisitSectionType.Dashboard)"
                 [routerLinkActiveOptions]="{exact:true}"><svg xmlns=" http://www.w3.org/2000/svg "
                   viewBox="0 0 576 512">
                   <path
@@ -431,7 +443,8 @@
 
 
             <div class="item shw one" routerLinkActive="active">
-              <a [routerLink]="['/doctor-appointment']">
+              <a [routerLink]="['/doctor-appointment']"
+               (click)="updatedoctorVisitSection(VisitSectionType.Appointment)">
                <i class="fa-solid fa-calendar-days text-2xl" style="font-size: 20px;"></i>
                 <span style="font-size: 15px !important; font-weight: 600 !important;">
                   {{ 'MY_APPOINTMENTS' | translate }}
@@ -442,7 +455,8 @@
 
 
             <div class="item shw one" routerLinkActive="active">
-              <a class="sub-btn" [routerLink]="['/doctor-patient']">
+              <a class="sub-btn" [routerLink]="['/doctor-patient']"
+              >
                 <i class="fas fa-user-injured" style="font-size: 20px;"></i>
                 <span style="font-size: 15px; font-weight: 600; ">{{ 'MY_PATIENT' | translate }}</span>
               </a>
@@ -451,7 +465,8 @@
 
 
             <div class="item shw one" routerLinkActive="active">
-              <a class="sub-btn" [routerLink]="['/doctor']">
+              <a class="sub-btn" [routerLink]="['/doctor']"
+                (click)="updatedoctorVisitSection(VisitSectionType.EducationMaterial)">
                 <i class="fas fa-book" style="font-size: 20px; margin-right: 10px;"></i> <!-- Book icon -->
                 <span style="font-size: 15px !important; font-weight: 600 !important;">
                   {{ 'PATIENT_EDUCATION'
