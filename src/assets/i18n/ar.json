@@ -401,5 +401,21 @@
   "PROBLEM": "مشكلة",
   "COMPLAINTS_&_SUGGESTIONS": "الشكاوى والاقتراحات",
   "DEVICES": "الأجهزة",
-  "DEVICE_STATUS": "حالة الجهاز"
+  "DEVICE_STATUS": "حالة الجهاز",
+  "EDIT_MEDICATION_MATERIAL": "تحرير مادة الدواء",
+  "ADD_MEDICATION_MATERIAL": "إضافة مادة الدواء",
+  "ENTER_MEDICATION_NAME": "أدخل اسم الدواء",
+  "MEDICATION_NAME_IS_REQUIRED": "اسم الدواء مطلوب",
+  "ENTER_DOSAGE": "أدخل الجرعة",
+  "DOSAGE_IS_REQUIRED": "الجرعة مطلوبة",
+  "ENTER_FREQUENCY": "أدخل التكرار",
+  "FREQUENCY_IS_REQUIRED": "التكرار مطلوب",
+  "ENTER_INSTRUCTIONS": "أدخل التعليمات",
+  "INSTRUCTIONS_IS_REQUIRED": "التعليمات مطلوبة",
+  "ENTER_START_DATE": "أدخل تاريخ البدء",
+  "START_DATE_IS_REQUIRED": "تاريخ البدء مطلوب",
+  "ENTER_END_DATE": "أدخل تاريخ الانتهاء",
+  "END_DATE_IS_REQUIRED": "تاريخ الانتهاء مطلوب",
+  "START_DATE": "تاريخ البدء",
+  "END_DATE": "تاريخ الانتهاء"
 }
