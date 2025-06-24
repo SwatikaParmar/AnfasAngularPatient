@@ -11,8 +11,8 @@
             {{ 'HEART_RATE' | translate }}
           </h1>
          <div class="status-box ml-3" *ngIf="statusMessage.deviceStatus">
-                            <strong>Device Status:</strong>  <span class="date">{{statusMessage?.message}}</span>
-                         
+                            <strong> {{ 'DEVICE_STATUS' | translate }}:</strong>  <span class="date">{{statusMessage?.message}}</span>
+
                         </div>
         </div>
         <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 10px;">

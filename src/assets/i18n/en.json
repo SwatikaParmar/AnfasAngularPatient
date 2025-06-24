@@ -399,5 +399,6 @@
   "VIEW_REPORT_&_DIAGNOSES":"View Report & Diagnoses",
   "PROBLEM":"Problem",
     "COMPLAINTS_&_SUGGESTIONS": "Complaints & Suggestions",
-    "DEVICES":"Devices"
+    "DEVICES":"Devices",
+    "DEVICE_STATUS":"Device Status"
 }
