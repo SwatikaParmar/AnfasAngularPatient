@@ -360,7 +360,7 @@ addMedication(data:any){
 }
 
 medicationDetail(data:any){
-  return this.http.get<any>(environment.apiUrl + ApiEndPoint.medicationDetail + '?id=' + data.id 
+  return this.http.get<any>(environment.apiUrl + ApiEndPoint.medicationDetail + '?medicationId=' + data.medicationId 
   )
 }
 
@@ -424,5 +424,7 @@ onlineStatusManually(data:any){
 visitupdation(data: any) {
   return this.http.post<any>(`${environment.apiUrl}${ApiEndPoint.visitupdation}`, data);
 }
+
+
 
 }

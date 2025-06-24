@@ -29,37 +29,79 @@ export class DoctorAddmedicationComponent {
 
 
     ngOnInit(): void {
-      this.mrn = this.route.snapshot.params['id'];
-      this.medicationId = this.route.snapshot.params['id2'];
-       this.medicationForm = this.fb.group({
-      mrn: this.mrn,
-      careProviderCode: [localStorage.getItem('code'),],
-      medicationName: ['', Validators.required],
-      dosage: ['', Validators.required],
-      frequency: ['', Validators.required],
-      instructions: [''],
-      startDate: ['', Validators.required],
-      endDate: ['', Validators.required],
-    });
+  this.mrn = this.route.snapshot.params['id'];
+  this.medicationId = this.route.snapshot.params['id2'];
+
+  this.medicationForm = this.fb.group({
+    medicationId: [0], // default 0; used in update
+    mrn: [this.mrn],
+    careProviderCode: [localStorage.getItem('code')],
+    medicationName: ['', Validators.required],
+    dosage: ['', Validators.required],
+    frequency: ['', Validators.required],
+    instructions: [''],
+    startDate: ['', Validators.required],
+    endDate: ['', Validators.required],
+  });
+
+  // If medicationId is present, we're in edit mode
+  if (this.medicationId) {
+    this.isEditMode = true;
+    this.getMedicationDetails();
   }
+}
 
 
-  addMedication(){
+getMedicationDetails(): void {
+  this.spinner.show();
+  this.contentService.medicationDetail({ medicationId: this.medicationId }).subscribe(
+    (response) => {
+      this.spinner.hide();
+      if (response?.isSuccess && response?.data) {
+        this.medicationForm.patchValue(response.data);
+      } else {
+        this.toastrService.error(response?.messages || 'Failed to fetch medication details.');
+      }
+    },
+    (error) => {
+      this.spinner.hide();
+      this.toastrService.error('Error fetching medication details.');
+    }
+  );
+}
+
+
+ addMedication(): void {
   if (this.medicationForm.invalid) {
-    this.medicationForm.markAllAsTouched(); // 👈 This will trigger validation messages
+    this.medicationForm.markAllAsTouched();
     return;
   }
-   
-    this.contentService.addMedication(this.medicationForm.value).subscribe( resposne => {
-      if(resposne.isSuccess == true){
-        this.toastrService.success(resposne.messages);
-  this._location.back();
-     } else {
-        this.toastrService.error(resposne.messages);
+
+  this.spinner.show();
+
+  const formData = this.medicationForm.value;
+
+  const request$ = this.isEditMode
+    ? this.contentService.addMedication(formData) // 🔁 make sure to implement this
+    : this.contentService.addMedication(formData);
+
+  request$.subscribe(
+    (response) => {
+      this.spinner.hide();
+      if (response?.isSuccess) {
+        this.toastrService.success(response.messages);
+        this._location.back();
+      } else {
+        this.toastrService.error(response?.messages || 'Something went wrong.');
       }
-    })
-    
-  }
+    },
+    (error) => {
+      this.spinner.hide();
+      this.toastrService.error('Server error occurred.');
+    }
+  );
+}
+
 
 
 
