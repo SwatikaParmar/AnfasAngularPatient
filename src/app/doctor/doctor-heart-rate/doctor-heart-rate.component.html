@@ -10,8 +10,8 @@
           <h1 class="text-lg font-semibold ml-2" style="font-size: 25px; color: #726641;">
             {{ 'HEART_RATE' | translate }}
           </h1>
-          <div class="status-box ml-3">
-                            <strong>Device Status:</strong> Last Synced at <span class="date">23-06-2025 01:45 PM</span>
+         <div class="status-box ml-3" *ngIf="statusMessage.deviceStatus">
+                            <strong>Device Status:</strong>  <span class="date">{{statusMessage?.message}}</span>
                          
                         </div>
         </div>

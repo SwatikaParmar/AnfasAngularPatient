@@ -36,6 +36,7 @@ imagePreview: string | ArrayBuffer | null = null;
   fileName: string = '';
 showPopup: boolean = false;
 imageFile: File | null = null;
+  statusMessage!: any;
 
   constructor(
     private toastrService: ToastrService,
@@ -56,7 +57,11 @@ imageFile: File | null = null;
     });
     this.HeartRateList();
         this.modalInstance = new bootstrap.Modal(this.modalElement.nativeElement);
-
+        this.onlineStatus();
+  // Repeat API call every 1 minute (60000 ms)
+  setInterval(() => {
+    this.onlineStatus();
+  }, 60000); // 60,000 ms = 1 minute
   }
 
   HeartRateList() {
@@ -274,5 +279,22 @@ convertToLocalTime(utcDate: string): string {
   return `${day}-${month}-${year} ${formattedHour}:${minutes} ${ampm}`;
 }
 
+
+onlineStatus(){
+
+  let payload = {
+    userName: localStorage.getItem('mrn'),
+    onlineStatus : true
+  }
+
+  this.contentService.onlineStatusManually(payload).subscribe(response => {
+    if(response.isSuccess == true){
+
+      this.statusMessage = response.data;
+    }else {
+
+    }
+  })
+}
   
 }

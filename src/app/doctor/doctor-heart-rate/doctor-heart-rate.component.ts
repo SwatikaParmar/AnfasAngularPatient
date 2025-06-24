@@ -22,6 +22,7 @@ export class DoctorHeartRateComponent {
   data: any;
 bloodForm!: FormGroup;
 selectedImage: string | null = null;
+  statusMessage: any;
 
     constructor(
           private formBuilder: FormBuilder,
@@ -47,8 +48,30 @@ selectedImage: string | null = null;
       this.page = +params['page'] || 0;
     });
     this.getBloodSugar();
+ this.onlineStatus();
+      // Repeat API call every 1 minute (60000 ms)
+  setInterval(() => {
+    this.onlineStatus();
+  }, 60000); // 60,000 ms = 1 minute
+  }
+  
+  onlineStatus(){
+
+  let payload = {
+    userName: localStorage.getItem('code'),
+    onlineStatus : true
   }
 
+  this.contentService.onlineStatusManually(payload).subscribe(response => {
+    if(response.isSuccess == true){
+
+      this.statusMessage = response.data;
+    }else {
+
+    }
+  })
+}
+  
 
   getBloodSugar(){
 const formValues = this.bloodForm.value;
