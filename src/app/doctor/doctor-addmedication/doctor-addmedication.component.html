@@ -9,7 +9,7 @@
             <i class="fas fa-arrow-left" style="color: #726641;"></i>
           </button>
           <h1 class="h4 mb-0 ml-3" style="color: #726641;">
-     {{ (isEditMode ? 'EDIT_MEDICATION_MATERIAL' : 'ADD_MEDICATION_MATERIAL') | translate }}
+            {{ (isEditMode ? 'EDIT_MEDICATION_MATERIAL' : 'ADD_MEDICATION_MATERIAL') | translate }}
 
           </h1>
 
@@ -23,9 +23,10 @@
               <div class="row gy-3">
                 <!-- Medication Name -->
                 <div class="col-12 col-md-6 col-lg-4">
-                  <label for="medicationName">{{ 'MEDICATION_NAME' | translate }} <span class="text-danger">*</span></label>
-                  <input type="text" id="medicationName" class="form-control" placeholder="{{ 'ENTER_MEDICATION_NAME' | translate }}"
-                    formControlName="medicationName" />
+                  <label for="medicationName">{{ 'MEDICATION_NAME' | translate }} <span
+                      class="text-danger">*</span></label>
+                  <input type="text" id="medicationName" class="form-control"
+                    placeholder="{{ 'ENTER_MEDICATION_NAME' | translate }}" formControlName="medicationName" />
                   <small class="text-danger"
                     *ngIf="medicationForm.get('medicationName')?.touched && medicationForm.get('medicationName')?.invalid">
                     {{ 'MEDICATION_NAME_IS_REQUIRED' | translate }}
@@ -46,8 +47,8 @@
                 <!-- Frequency -->
                 <div class="col-12 col-md-6 col-lg-4">
                   <label for="frequency">{{ 'FREQUENCY' | translate }} <span class="text-danger">*</span></label>
-                  <input type="text" id="frequency" class="form-control" placeholder="{{ 'ENTER_FREQUENCY' | translate }}"
-                    formControlName="frequency" />
+                  <input type="text" id="frequency" class="form-control"
+                    placeholder="{{ 'ENTER_FREQUENCY' | translate }}" formControlName="frequency" />
                   <small class="text-danger"
                     *ngIf="medicationForm.get('frequency')?.touched && medicationForm.get('frequency')?.invalid">
                     {{ 'FREQUENCY_IS_REQUIRED' | translate }}
@@ -77,8 +78,8 @@
                 <!-- Instructions -->
                 <div class="col-12">
                   <label for="instructions">{{ 'INSTRUCTIONS' | translate }}</label>
-                  <textarea id="instructions" rows="4" class="form-control" placeholder="{{ 'ENTER_INSTRUCTIONS' | translate }}"
-                    formControlName="instructions"></textarea>
+                  <textarea id="instructions" rows="4" class="form-control"
+                    placeholder="{{ 'ENTER_INSTRUCTIONS' | translate }}" formControlName="instructions"></textarea>
                 </div>
 
                 <!-- Submit Button -->
