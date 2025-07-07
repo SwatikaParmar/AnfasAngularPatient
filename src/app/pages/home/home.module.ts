@@ -70,6 +70,8 @@ import { VisitDiagnoseComponent } from './visit/visit-list/visit-diagnose/visit-
 import { RequestDetailComponent } from 'src/app/Medication/request-detail/request-detail.component';
 import { ConnectedDevicesComponent } from 'src/app/connected-devices/connected-devices.component';
 import { NotificationComponent } from 'src/app/notification/notification.component';
+import { XrayReportComponent } from 'src/app/Health/health-tracking/xray-report/xray-report.component';
+
 
 // export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 //   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -131,7 +133,8 @@ import { NotificationComponent } from 'src/app/notification/notification.compone
     VisitDiagnoseComponent,
     RequestDetailComponent,
     ConnectedDevicesComponent,
-    NotificationComponent
+    NotificationComponent,
+    XrayReportComponent
 
   ],
   imports: [
