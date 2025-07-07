@@ -56,6 +56,7 @@ import { PatientChatlistComponent } from 'src/app/doctor/doctor-patient/patient-
 import { VisitDiagnoseComponent } from './visit/visit-list/visit-diagnose/visit-diagnose.component';
 import { RequestDetailComponent } from 'src/app/Medication/request-detail/request-detail.component';
 import { ConnectedDevicesComponent } from 'src/app/connected-devices/connected-devices.component';
+import { XrayReportComponent } from 'src/app/Health/health-tracking/xray-report/xray-report.component';
 const routes: Routes = [
 
   {
@@ -93,6 +94,7 @@ const routes: Routes = [
       { path: 'Health-Tracker/Weight', component: WeightComponent },
       { path: 'Health-Tracker/Lab-Results', component: LabResultsComponent },
       { path: 'Health-Tracker/Steps', component: StepsComponent },
+      { path: 'Health-Tracker/xray', component: XrayReportComponent},
       { path: 'educational-Material', component: EducationalMaterialComponent },
       { path: 'educational-Material/educational-detail/:id', component: EducationalMaterialDetailComponent },
       { path: 'request-list/request-add', component: AddRequestComponent },
