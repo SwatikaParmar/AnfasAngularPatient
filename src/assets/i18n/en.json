@@ -415,6 +415,17 @@
   "END_DATE_IS_REQUIRED": "End date is required",
   "START_DATE": "Start Date",
   "END_DATE": "End Date",
-  "NOTIFICATION":"Notification",
-  "NOTIFICATION_LIST":"Notification List"
+  "NOTIFICATION": "Notification",
+  "NOTIFICATION_LIST": "Notification List",
+  "X-RAY_REPORTS": "X-rays Reports",
+  "X-RAY":"X-ray",
+  "NOTIFICATION_TYPE":"Notification Type",
+  "PROCEDURE_NAME":"Procedure Name",
+  "X-RAY_DETAIL":"X-ray Detail",
+  "PROCEDURE_CODE":"Procedure Code",
+  "MEDICAL_QUESTION":"Medical Question",
+  "CLINICAL_COMMENT":"Clinical Comment",
+  "APPROVED_BY":"Approved By",
+  "APPROVAL_DATE":"Approval Date"
+  
 }

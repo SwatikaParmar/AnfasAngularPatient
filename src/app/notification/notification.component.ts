@@ -36,7 +36,8 @@ export class NotificationComponent {
  NotificationList() {
   let payload = {
     pageNumber: 1,
-    pageSize: 10
+    pageSize: 10,
+    userName:localStorage.getItem('mrn')
   };
 
   this.spinner.show();

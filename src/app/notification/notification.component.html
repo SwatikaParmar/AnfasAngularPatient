@@ -21,6 +21,7 @@
                                                 <th>{{ 'MRN' | translate }}</th>
                                                 <th>{{ 'TITLE1' | translate }}</th>
                                                 <th>{{ 'DESCRIPTION1' | translate }}</th>
+                                                <th>{{ 'NOTIFICATION_TYPE' | translate }}</th>
                                                 <th>{{ 'STATUS' | translate }}</th>
                                                 <th>{{ 'DATE' | translate }}</th>
                                             </tr>
@@ -34,7 +35,7 @@
                                       }">
                                                 <td>{{ item.mrn || 'N/A' }}</td>
                                                 <td>{{ item.title || 'N/A' }}</td>
-                                                <td>{{ item.description || 'N/A' }}</td>
+                                            <td>{{ (item.description?.split(' ').slice(0, 4).join(' ')) || 'N/A' }}...</td>
                                                 <td>{{ item.notificationType || 'N/A' }}</td>
                                                 <td>{{ item.isNotificationRead || 'N/A' }}</td>
                                                 <td>{{ item.createDate ? (item.createDate | date:'dd-MM-yyyy') : 'N/A'

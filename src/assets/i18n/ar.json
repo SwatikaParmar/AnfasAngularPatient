@@ -419,5 +419,15 @@
   "START_DATE": "تاريخ البدء",
   "END_DATE": "تاريخ الانتهاء",
   "NOTIFICATION": "إشعار",
-  "NOTIFICATION_LIST": "قائمة الإشعارات"
+  "NOTIFICATION_LIST": "قائمة الإشعارات",
+  "X-RAY_REPORTS": "تقارير الأشعة السينية",
+  "X-RAY": "الأشعة السينية",
+  "NOTIFICATION_TYPE": "نوع الإشعار",
+  "PROCEDURE_NAME": "اسم الإجراء",
+  "X-RAY_DETAIL": "تفاصيل الأشعة السينية",
+  "PROCEDURE_CODE": "رمز الإجراء",
+  "MEDICAL_QUESTION": "سؤال طبي",
+  "CLINICAL_COMMENT": "تعليق سريري",
+  "APPROVED_BY": "تمت الموافقة عليه من قبل",
+  "APPROVAL_DATE": "تاريخ الموافقة"
 }

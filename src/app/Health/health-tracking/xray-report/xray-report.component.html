@@ -9,13 +9,13 @@
                         (click)="backClicked()">
                         <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center; color: black;"></i>
                     </button>
-                    <h1 class="text-lg font-semibold ml-3" style="font-size: 25px; color: #726641;">X-ray</h1>
+                    <h1 class="text-lg font-semibold ml-3" style="font-size: 25px; color: #726641;">{{ 'X-RAY' | translate }}</h1>
 
                 
                     <button
                         class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full w-full sm:w-auto mt-2 sm:mt-0"
                         (click)="openModal()">
-                        + {{ 'x-ray' | translate }}
+                        + {{ 'X-RAY' | translate }}
                     </button>
 
                 </div>
@@ -28,10 +28,10 @@
                                         <thead>
                                             <tr>
                                                 <th class="px-4 py-2 text-sm md:text-base">{{ 'MRN' | translate }}</th>
-                                                <th class="px-4 py-2 text-sm md:text-base">Name</th>
-                                                <th class="px-4 py-2 text-sm md:text-base">Procedure Name</th>
+                                                <th class="px-4 py-2 text-sm md:text-base">{{ 'NAME' | translate }}</th>
+                                                <th class="px-4 py-2 text-sm md:text-base">{{ 'PROCEDURE_NAME' | translate }}</th>
                                                 <th class="px-4 py-2 text-sm md:text-base">{{ 'DATE' | translate }}</th>
-                                                <th class="px-4 py-2 text-sm md:text-base">{{ 'Action' | translate }}
+                                                <th class="px-4 py-2 text-sm md:text-base">{{ 'ACTION' | translate }}
                                                 </th>
                                             </tr>
                                         </thead>
