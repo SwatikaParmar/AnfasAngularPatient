@@ -23,7 +23,9 @@ reportId: number = 1; // or get dynamically if needed
 imagePreview: string | ArrayBuffer | null = null;
 showUploadModal: boolean = false;
 showPopup: boolean = false;
+
   form: any;
+  mrn: string = ''; 
   constructor(
       private fb: FormBuilder,
     private toastrService: ToastrService,
@@ -38,26 +40,32 @@ showPopup: boolean = false;
     this.rootUrl = environment.rootPathUrl;
     this.route.queryParams.subscribe((params) => {
       this.page = +params['page'] || 0;
+      this.mrn = localStorage.getItem('mrn') || '';
+
     });
     this.xrayList();  
   }
   
   xrayList() {
- 
-
-    this.contentService.getXray().subscribe(
+    if (!this.mrn) {
+      this.toastrService.error('MRN is required to fetch X-ray reports.');
+      return;
+    }
+  
+    this.contentService.getXray(this.mrn).subscribe(
       response => {
         if (response.isSuccess) {
           this.xrayLists = response.data;
         } else {
-        
+      
         }
       },
       error => {
-       
+
       }
     );
-  }    
+  }
+  
 
   onPageChange(page: number): void {
     // Update query parameters for pagination

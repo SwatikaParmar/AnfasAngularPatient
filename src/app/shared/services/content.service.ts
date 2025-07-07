@@ -181,9 +181,10 @@ return this.http.post<any>(environment.apiUrl + ApiEndPoint.patientAssign,data)
   }
 
 
-  getXray(){
-    return this,this.http.get<any>(environment.apiUrl + ApiEndPoint.xray)
+  getXray(mrn: string) {
+    return this.http.get<any>(`${environment.apiUrl + ApiEndPoint.xray}?mrn=${mrn}`);
   }
+  
   addBloodPressure(data: any) {
     return this.http.post<any>(
       environment.apiUrl + ApiEndPoint.addBloodPressure,
