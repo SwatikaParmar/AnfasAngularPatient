@@ -435,4 +435,18 @@ visitupdation(data: any) {
     );
   }
 
+
+  xrayDetail(data:any){
+  return this.http.get<any>(environment.apiUrl + ApiEndPoint.xrayDetail + '?reportId=' + data.reportId )
+}
+
+
+ uploadXrayReport(reportId: number, file: File) {
+  const formData = new FormData();
+  formData.append('ReportId', reportId.toString()); // key must match backend expectation
+  formData.append('File', file);                   // 'File' is required by the API
+
+  return this.http.post<any>(`${environment.apiUrl}${ApiEndPoint.uploadXray}`, formData);
+}
+
 }

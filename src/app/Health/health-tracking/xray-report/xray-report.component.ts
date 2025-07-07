@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ContentService } from 'src/app/shared/services/content.service';
 import { environment } from 'src/environments/environment';
 import { Location } from '@angular/common';
+import { FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-xray-report',
   templateUrl: './xray-report.component.html',
@@ -17,15 +18,21 @@ page: number = 0;
   stepsList: any;
   rootUrl: any;
   xrayLists: any;
-
+selectedFile!: File;
+reportId: number = 1; // or get dynamically if needed
+imagePreview: string | ArrayBuffer | null = null;
+showUploadModal: boolean = false;
+showPopup: boolean = false;
+  form: any;
   constructor(
+      private fb: FormBuilder,
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService,
     private contentService: ContentService,
     private router: Router,
     private route: ActivatedRoute,
     private _location: Location,
-  ){ }
+  ){  this.form = this.fb.group({}); }
 
   ngOnInit(): void {
     this.rootUrl = environment.rootPathUrl;
@@ -86,4 +93,55 @@ page: number = 0;
   return `${day}-${month}-${year} ${formattedHour}:${minutes} ${ampm}`;
 }
 
+
+
+onFileChange(event: any) {
+  if (event.target.files.length > 0) {
+    this.selectedFile = event.target.files[0];
+
+    // For preview
+    const reader = new FileReader();
+    reader.onload = (e) => this.imagePreview = reader.result;
+    reader.readAsDataURL(this.selectedFile);
+  }
+}
+
+uploadXray() {
+  if (!this.selectedFile) {
+    this.toastrService.error('Please select a file');
+    return;
+  }
+
+  this.spinner.show();
+
+  this.contentService.uploadXrayReport(this.reportId, this.selectedFile).subscribe({
+    next: (res) => {
+      this.spinner.hide();
+      this.toastrService.success('X-ray report uploaded successfully');
+      this.xrayList(); // refresh list
+      this.closeModal(); // ✅ Close modal after upload success
+    },
+    error: (err) => {
+      this.spinner.hide();
+      this.toastrService.error('Upload failed');
+    }
+  });
+}
+
+
+openModal() {
+  this.showUploadModal = true;
+}
+
+closeModal() {
+  this.showUploadModal = false;
+}
+
+openPreview() {
+  this.showPopup = true;
+}
+
+closePreview() {
+  this.showPopup = false;
+}
 }

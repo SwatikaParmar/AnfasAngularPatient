@@ -4,15 +4,19 @@
         <div class="content-body">
             <div class="container-fluid">
                 <div class="flex items-center mb-3 ml-1">
-                    <button class="back-btn-left-circle flex items-center justify-center w-7 h-7 rounded-full mr-3 mb-2 text-white ml-2 mt-2"
-                         (click)="backClicked()">
-                      <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center; color: black;"></i>
+                    <button
+                        class="back-btn-left-circle flex items-center justify-center w-7 h-7 rounded-full mr-3 mb-2 text-white ml-2 mt-2"
+                        (click)="backClicked()">
+                        <i class="fas fa-arrow-left" style="font-size: 13px; text-align: center; color: black;"></i>
                     </button>
                     <h1 class="text-lg font-semibold ml-3" style="font-size: 25px; color: #726641;">X-ray</h1>
 
-                    <!-- Book Appointment Button -->
-                    <!-- <button class="appointment-btn ml-auto bg-blue-500 text-white px-4 py-2 rounded-full">+ Steps
-                    </button> -->
+                
+                    <button
+                        class="appointment-btn bg-blue-500 text-white px-4 py-2 rounded-full w-full sm:w-auto mt-2 sm:mt-0"
+                        (click)="openModal()">
+                        + {{ 'x-ray' | translate }}
+                    </button>
 
                 </div>
                 <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
@@ -27,7 +31,8 @@
                                                 <th class="px-4 py-2 text-sm md:text-base">Name</th>
                                                 <th class="px-4 py-2 text-sm md:text-base">Procedure Name</th>
                                                 <th class="px-4 py-2 text-sm md:text-base">{{ 'DATE' | translate }}</th>
-                                                  <th class="px-4 py-2 text-sm md:text-base">{{ 'Action' | translate }}</th>
+                                                <th class="px-4 py-2 text-sm md:text-base">{{ 'Action' | translate }}
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -39,27 +44,33 @@
                                                                             id: '1'
                                                                           }">
                                                 <td class="px-4 py-2 text-sm md:text-base">{{item.mrn || 'N/A' }}</td>
-                                                <td class="px-4 py-2 text-sm md:text-base">{{item.patientFirstName + ' ' + item.patientLastName }}</td>
-                                                <td class="px-4 py-2 text-sm md:text-base">{{item.procedureName || 'N/A' }}</td>
-                                               <td class="px-4 py-2 text-sm md:text-base">
-  {{ convertToLocalTime(item.approvalDate) }}
-</td>
+                                                <td class="px-4 py-2 text-sm md:text-base">{{item.patientFirstName + ' '
+                                                    + item.patientLastName }}</td>
+                                                <td class="px-4 py-2 text-sm md:text-base">{{item.procedureName || 'N/A'
+                                                    }}</td>
+                                                <td class="px-4 py-2 text-sm md:text-base">
+                                                    {{ convertToLocalTime(item.approvalDate) }}
+                                                </td>
 
-<td class="px-4 py-2 text-sm md:text-base">
-    
-</td>
+                                                <td class="px-4 py-2 text-sm md:text-base"> <a
+                                                        [routerLink]="['/Health-Tracker/xray/detail', item.reportId]"
+                                                        class="action-link">
+                                                        <i class="fas fa-eye"></i>
+                                                    </a></td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
-                                
+
                                 <div class="no-data text-center" *ngIf="stepsList && stepsList.length === 0">
-                                    <img src="assets/images/ffffrq-removebg-preview.png" style="width: 50%; margin: auto; padding: 50px;">
+                                    <img src="assets/images/ffffrq-removebg-preview.png"
+                                        style="width: 50%; margin: auto; padding: 50px;">
                                 </div>
-                                
+
                                 <div class="pagination-container pt-3 pb-3">
-                                    <pagination-controls *ngIf="stepsList && stepsList.length > 0" (pageChange)="onPageChange($event)" id="1"
-                                        class="paginate-doctor-list" queryParamsHandling="merge"></pagination-controls>
+                                    <pagination-controls *ngIf="stepsList && stepsList.length > 0"
+                                        (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
+                                        queryParamsHandling="merge"></pagination-controls>
                                 </div>
                             </div>
                         </div>
@@ -70,3 +81,76 @@
         </div>
     </section>
 </div>
+
+
+<!-- X-ray Upload Modal -->
+<div
+  class="modal fade show d-block"
+  tabindex="-1"
+  style="background-color: rgba(0, 0, 0, 0.3);"
+  *ngIf="showUploadModal"
+  (click)="closeModal()" 
+>
+  <div
+    class="modal-dialog modal-dialog-centered"
+    (click)="$event.stopPropagation()" 
+  >
+    <div class="modal-content" style="width: 95%; margin: auto;">
+      <form (ngSubmit)="uploadXray()">
+        <!-- Modal Header -->
+        <div class="modal-header flex items-center justify-between">
+          <div class="flex-1 text-center">
+            <h5 class="modal-title text-xl font-semibold">Upload X-ray Report</h5>
+          </div>
+          <button
+            type="button"
+            class="btn-close ml-auto"
+            aria-label="Close"
+            (click)="closeModal()"
+          ></button>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="block text-sm font-semibold mb-2">Upload File</label>
+            <input
+              type="file"
+              accept="image/*"
+              (change)="onFileChange($event)"
+              class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4
+              file:rounded-full file:border-0 file:text-sm file:font-semibold
+              file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+            />
+            <a
+              *ngIf="imagePreview"
+              (click)="openPreview()"
+              class="text-blue-600 underline cursor-pointer text-sm mt-1 inline-block"
+              >Preview Image</a
+            >
+          </div>
+
+          <!-- Preview Image Modal -->
+          <div *ngIf="showPopup" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+            <div class="bg-white p-4 rounded shadow-lg relative">
+              <button (click)="closePreview()" class="absolute top-2 right-2 text-xl text-gray-600">&times;</button>
+              <img [src]="imagePreview" alt="Full Preview" class="max-w-[90vw] max-h-[80vh] rounded" />
+            </div>
+          </div>
+
+          <div class="flex justify-center">
+            <button
+              type="submit"
+              class="w-80 bg-blue-600 text-white py-2 rounded-full hover:bg-blue-700 mt-3"
+              style="color: #ffffff!important;"
+            >
+              Save Xray Report
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+

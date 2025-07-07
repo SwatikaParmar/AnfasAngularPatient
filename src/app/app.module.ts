@@ -22,6 +22,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
 import { MessagingService } from './shared/services/messaging-service';
 import { AsyncPipe, DatePipe } from '@angular/common';
+import { XrayDetailComponent } from './Health/health-tracking/xray-report/xray-detail/xray-detail.component';
 
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {

@@ -71,6 +71,7 @@ import { RequestDetailComponent } from 'src/app/Medication/request-detail/reques
 import { ConnectedDevicesComponent } from 'src/app/connected-devices/connected-devices.component';
 import { NotificationComponent } from 'src/app/notification/notification.component';
 import { XrayReportComponent } from 'src/app/Health/health-tracking/xray-report/xray-report.component';
+import { XrayDetailComponent } from 'src/app/Health/health-tracking/xray-report/xray-detail/xray-detail.component';
 
 
 // export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -134,7 +135,8 @@ import { XrayReportComponent } from 'src/app/Health/health-tracking/xray-report/
     RequestDetailComponent,
     ConnectedDevicesComponent,
     NotificationComponent,
-    XrayReportComponent
+    XrayReportComponent,
+    XrayDetailComponent
 
   ],
   imports: [

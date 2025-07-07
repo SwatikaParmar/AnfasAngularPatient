@@ -45,14 +45,14 @@
                   <td class="p-3 text-sm">{{ item.requestTypeName || 'N/A' }}</td>
                   <td class="p-3 text-sm">{{ item.status || 'N/A' }}</td>
                   <td class="p-3 text-sm">
-                   <div [dir]="currentLang === 'ar' ? 'rtl' : 'ltr'" class="d-flex gap-3">
-  <a [routerLink]="['/request-list/detail', item.id]" class="action-link">
-    <i class="fas fa-eye"></i>
-  </a>
-  <a [routerLink]="['/request-list/update', item.id]" class="action-link" title="Edit">
-    <i class="fa fa-pen" aria-hidden="true"></i>
-  </a>
-</div>
+                    <div [dir]="currentLang === 'ar' ? 'rtl' : 'ltr'" class="d-flex gap-3">
+                      <a [routerLink]="['/request-list/detail', item.id]" class="action-link">
+                        <i class="fas fa-eye"></i>
+                      </a>
+                      <a [routerLink]="['/request-list/update', item.id]" class="action-link" title="Edit">
+                        <i class="fa fa-pen" aria-hidden="true"></i>
+                      </a>
+                    </div>
 
 
 
@@ -66,10 +66,10 @@
               <img src="assets/images/ffffrq-removebg-preview.png" class="w-1/2 mx-auto py-12" alt="No Data" />
             </div> -->
             <div *ngIf="requestList && requestList.length === 0" class="no-data-fullpage"
-                            style="text-align: center; padding: 30px;">
-                            <img src="assets/images/ffffrq-removebg-preview.png" alt="No Data Found"
-                                class="no-data-image" style="width: 50%; height: auto; margin: auto;" />
-                        </div>
+              style="text-align: center; padding: 30px;">
+              <img src="assets/images/ffffrq-removebg-preview.png" alt="No Data Found" class="no-data-image"
+                style="width: 50%; height: auto; margin: auto;" />
+            </div>
             <!-- Pagination -->
             <div class="pt-3 pb-3" *ngIf="requestList && requestList.length > 0">
               <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"

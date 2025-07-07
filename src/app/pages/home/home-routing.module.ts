@@ -58,6 +58,7 @@ import { RequestDetailComponent } from 'src/app/Medication/request-detail/reques
 import { ConnectedDevicesComponent } from 'src/app/connected-devices/connected-devices.component';
 import { NotificationComponent } from 'src/app/notification/notification.component';
 import { XrayReportComponent } from 'src/app/Health/health-tracking/xray-report/xray-report.component';
+import { XrayDetailComponent } from 'src/app/Health/health-tracking/xray-report/xray-detail/xray-detail.component';
 const routes: Routes = [
 
   {
@@ -95,7 +96,8 @@ const routes: Routes = [
       { path: 'Health-Tracker/Weight', component: WeightComponent },
       { path: 'Health-Tracker/Lab-Results', component: LabResultsComponent },
       { path: 'Health-Tracker/Steps', component: StepsComponent },
-      { path: 'Health-Tracker/xray', component: XrayReportComponent},
+      { path: 'Health-Tracker/xray', component: XrayReportComponent },
+      { path: 'Health-Tracker/xray/detail/:id', component: XrayDetailComponent },
       { path: 'educational-Material', component: EducationalMaterialComponent },
       { path: 'educational-Material/educational-detail/:id', component: EducationalMaterialDetailComponent },
       { path: 'request-list/request-add', component: AddRequestComponent },

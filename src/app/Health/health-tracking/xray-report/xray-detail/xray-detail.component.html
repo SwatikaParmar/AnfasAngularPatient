@@ -1,0 +1,119 @@
+<section>
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="input-form">
+                <div class="row justify-content-start align-items-start g-0">
+                    <div class=" col-md-12">
+                        <div class="card-shipper">
+                            <div class="back-btn-left-circle mt-1">
+                                <i class="fi fi-rr-arrow-small-left" (click)="backClicked()"
+                                    style="color:#726641; padding-top: 7px; font-size: 13px;"></i>
+                            </div>
+                            <div>
+                                <p><span class="black-home">{{ 'XRAY_DETAIL' | translate }}</span></p>
+                            </div>
+                        </div>
+
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex align-items-center">
+                                <p class="col-5">{{ 'MRN' | translate}}</p>
+                                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                                <p class="col-5"><label class="address-texts">{{ detail?.mrn || 'N/A' }}</label></p>
+                            </li>
+
+                            <li class="list-group-item d-flex align-items-center">
+                                <p class="col-5">{{ 'name' | translate }}</p>
+                                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                                <p class="col-5"><label class="address-texts">{{ detail?.patientFirstName || 'N/A' }}{{
+                                        detail?.patientLastName || 'N/A' }}</label></p>
+                            </li>
+
+
+                            <li class="list-group-item d-flex align-items-center">
+                                <p class="col-5">{{ 'procedureName' | translate }}</p>
+                                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                                <p class="col-5"><label class="address-texts">{{ detail?.procedureName || 'N/A'
+                                        }}</label></p>
+                            </li>
+                            
+                            <li class="list-group-item d-flex align-items-center">
+                                <p class="col-5">{{ 'procedureCode' | translate }}</p>
+                                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                                <p class="col-5"><label class="address-texts">{{ detail?.procedureCode || 'N/A'
+                                        }}</label></p>
+                            </li>
+
+                              <li class="list-group-item d-flex align-items-center">
+                                <p class="col-5">{{ 'medicalQuestion' | translate }}</p>
+                                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                                <p class="col-5"><label class="address-texts">{{ detail?.medicalQuestion || 'N/A'
+                                        }}</label></p>
+                            </li>
+
+                            <li class="list-group-item d-flex align-items-center">
+                                <p class="col-5">{{ 'clinicalComment' | translate }}</p>
+                                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                                <p class="col-5"><label class="address-texts">{{ detail?.clinicalComment || 'N/A'
+                                        }}</label></p>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <p class="col-5">{{ 'dateOfBirth' | translate }}</p>
+                                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                                <p class="col-5">
+                                    <label class="address-texts">
+                                        {{ detail?.dateOfBirth ? (detail.dateOfBirth | date: 'dd-MM-yyyy') : 'N/A' }}
+                                    </label>
+                                </p>
+                            </li>
+
+
+                            <li class="list-group-item d-flex align-items-center">
+                                <p class="col-5">{{ 'REPORT_URL' | translate }}</p>
+                                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                                <a class="text-primary" *ngIf="detail?.xreportUrl" [href]="rootUrl + detail.xreportUrl"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <!-- <i class="fa fa-chevron-circle-right" aria-hidden="true"></i> -->
+                                </a>
+                                <p class="col-5">
+                                    <label class="address-texts">
+                                        <ng-container *ngIf="detail?.xreportUrl; else noReport">
+                                            <a class="text-primary" [href]="rootUrl + detail.xreportUrl" target="_blank"
+                                                rel="noopener noreferrer">
+                                                {{ detail.xreportUrl }}
+                                            </a>
+
+                                        </ng-container>
+                                        <ng-template #noReport>N/A</ng-template>
+                                    </label>
+                                </p>
+                            </li>
+
+                            <li class="list-group-item d-flex align-items-center">
+                                <p class="col-5">{{ 'approvedBy' | translate }}</p>
+                                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                                <p class="col-5"> {{ detail?.approvedBy || 'N/A' }}</p>
+                            </li>
+
+                            <li class="list-group-item d-flex align-items-center">
+                                <p class="col-5">{{ 'approvalDate' | translate }}</p>
+                                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                                <p class="col-5"><label class="address-texts"> {{ detail.approvalDate ?
+                                        (detail.approvalDate | date:'dd-MM-yyyy') : 'N/A' }}</label></p>
+                            </li>
+
+
+
+
+                            <li class="list-group-item d-flex align-items-center">
+                                <p class="col-5">{{ 'DESCRIPTION1' | translate }}</p>
+                                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                                <p class="col-5"><label class="address-texts">{{ detail?.reportText || 'N/A' }}</label>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

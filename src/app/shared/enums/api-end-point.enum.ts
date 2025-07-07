@@ -40,10 +40,10 @@ export enum ApiEndPoint {
     addUpdateSatisfaction = "api/User/AddOrUpdatePatientSatisfaction",
     satisfactionDetail = "api/User/GetPatientSatisfactionDetail",
     sendPhoneOtp = "api/User/SendPhoneOtp",
-     verifyPhone = "api/User/VerifyPhone",
-     requestDetail = "api/User/GetRequestDetail",
-     patientAssign = "api/User/AssignMaterialToPatient",
-     healthImage = "api/User/UploadVitalPicture",
+    verifyPhone = "api/User/VerifyPhone",
+    requestDetail = "api/User/GetRequestDetail",
+    patientAssign = "api/User/AssignMaterialToPatient",
+    healthImage = "api/User/UploadVitalPicture",
     patientReport = "api/User/GetPatientReport",
 
     // Doctor Login
@@ -55,7 +55,7 @@ export enum ApiEndPoint {
     medicationStatus = "api/User/SetMedicationStatus",
     doctorVisit = "api/User/GetAllVisits",
     getterms = "api/Admin/GetTermsHtml",
-    recordType ="api/User/GetHealthRecordsByType",
+    recordType = "api/User/GetHealthRecordsByType",
     doctorDetail = "api/User/GetDoctorDetails",
     addMedication = "api/User/AddOrUpdateMedication ",
     medicationDetail = "api/User/GetMedicationDetail",
@@ -63,11 +63,12 @@ export enum ApiEndPoint {
     addEducationMaterial = "api/User/AddOrUpdateEducationMaterial",
     vitalStatus = "api/User/SetVitalRecordStatus",
     visitDetail = "api/User/GetVisitDetail",
-    onlineStatus ="api/Chat/updateOnlineStatusManually",
+    onlineStatus = "api/Chat/updateOnlineStatusManually",
     visitupdation = "api/Admin/UpdateVisitSection",
     Notification = "api/Notification/getNotificationList",
-   tockenFcm = 'api/Notification/updateFCMToken',
+    tockenFcm = 'api/Notification/updateFCMToken',
+    xrayDetail = "api/User/GetXrayReportDetail",
+    uploadXray = "api/User/UploadXrayReport",
 
-    
 }
 
