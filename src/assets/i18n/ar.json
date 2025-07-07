@@ -420,7 +420,7 @@
   "END_DATE": "تاريخ الانتهاء",
   "NOTIFICATION": "إشعار",
   "NOTIFICATION_LIST": "قائمة الإشعارات",
-  "X-RAY_REPORTS": "تقارير الأشعة السينية",
+   "RADIOLOGY_IMAGES": "صور الأشعة",
   "X-RAY": "الأشعة السينية",
   "NOTIFICATION_TYPE": "نوع الإشعار",
   "PROCEDURE_NAME": "اسم الإجراء",
