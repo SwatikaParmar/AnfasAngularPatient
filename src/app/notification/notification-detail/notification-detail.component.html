@@ -1,0 +1,65 @@
+
+<section>
+  <div class="content-body">
+    <div class="container-fluid">
+      <div class="input-form">
+        <div class="row justify-content-start align-items-start g-0">
+          <div class=" col-md-12">
+            <div class="card-shipper">
+              <div class="back-btn-left-circle mt-1">
+                <i class="fi fi-rr-arrow-small-left" (click)="backClicked()"
+                  style="color:#726641; padding-top: 7px; font-size: 13px;"></i>
+              </div>
+              <div>
+                <p><span class="black-home">{{ 'NOTIFICATION_DETAIL' | translate }}</span></p>
+              </div>
+            </div>
+
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex align-items-center">
+                <p class="col-5">{{ 'MRN' | translate}}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5"><label class="address-texts">{{ detail?.mrn || 'N/A' }}</label></p>
+              </li>
+
+              <li class="list-group-item d-flex align-items-center">
+                <p class="col-5">{{ 'TITLE1' | translate }}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5"><label class="address-texts">{{ detail?.title || 'N/A' }}</label></p>
+              </li>
+
+              <li class="list-group-item d-flex align-items-center">
+                <p class="col-5">{{ 'STATUS' | translate }}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5"><label class="address-texts">{{ detail?.isNotificationRead || 'N/A' }}</label></p>
+              </li>
+
+           
+      <li class="list-group-item d-flex align-items-center">
+              <p class="col-5">{{ 'NOTIFICATION_TYPE' | translate }}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5">{{ detail?.notificationType || 'N/A' }} </p>
+              </li>
+
+                  <li class="list-group-item d-flex align-items-center">
+              <p class="col-5">{{ 'DATE' | translate }}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5">  {{ detail.createDate ? (detail.createDate | date:'dd-MM-yyyy') : 'N/A' }}</p>
+              </li>
+
+               
+
+                
+
+              <li class="list-group-item d-flex align-items-center">
+                <p class="col-5">{{ 'DESCRIPTION1' | translate }}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5"><label class="address-texts">{{ detail?.description || 'N/A' }}</label></p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

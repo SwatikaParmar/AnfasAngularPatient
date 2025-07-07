@@ -430,5 +430,7 @@
   "UPLOAD_X-RAY_REPORT": "Upload X-ray Report",
   "UPLOAD_FILE": "Upload File",
   "PREVIEW_IMAGE": "Preview Image",
-  "SAVE_X-RAY_REPORT": "Save X-ray Report"
+  "SAVE_X-RAY_REPORT": "Save X-ray Report",
+  "NOTIFICATION_DETAIL": "Notification Detail",
+  "MEDICATION_DETAIL":"Medication Detail"
 }
