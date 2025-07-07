@@ -25,6 +25,8 @@ import { AsyncPipe, DatePipe } from '@angular/common';
 
 
 
+
+
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }

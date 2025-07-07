@@ -24,6 +24,7 @@
                                                 <th>{{ 'NOTIFICATION_TYPE' | translate }}</th>
                                                 <th>{{ 'STATUS' | translate }}</th>
                                                 <th>{{ 'DATE' | translate }}</th>
+                                                <th>{{ 'ACTION' | translate }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -35,12 +36,28 @@
                                       }">
                                                 <td>{{ item.mrn || 'N/A' }}</td>
                                                 <td>{{ item.title || 'N/A' }}</td>
-                                            <td>{{ (item.description?.split(' ').slice(0, 4).join(' ')) || 'N/A' }}...</td>
+                                                <td>{{ (item.description?.split(' ').slice(0, 4).join(' ')) || 'N/A'
+                                                    }}...</td>
                                                 <td>{{ item.notificationType || 'N/A' }}</td>
                                                 <td>{{ item.isNotificationRead || 'N/A' }}</td>
                                                 <td>{{ item.createDate ? (item.createDate | date:'dd-MM-yyyy') : 'N/A'
                                                     }}
                                                 </td>
+                                                <td>
+                                                    <a [routerLink]="['/notification/detail']" [queryParams]="{
+      title: item.title,
+      description: item.description,
+      mrn: item.mrn,
+      createDate: item.createDate,
+      notificationType: item.notificationType,
+      isNotificationRead: item.isNotificationRead
+    }" class="action-link">
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>
+                                                </td>
+
+
+
                                             </tr>
                                         </tbody>
                                     </table>

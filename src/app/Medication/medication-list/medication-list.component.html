@@ -22,6 +22,7 @@
                         <th>{{ 'FREQUENCY' | translate }}</th>
                         <th>{{ 'INTRUCTIONS' | translate }}</th>
                         <th>{{ 'CREATED_AT' | translate }}</th>
+                        <th>{{ 'ACTION' | translate }}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -36,12 +37,17 @@
                         <td>{{ item.frequency || 'N/A' }}</td>
                         <td>
                           {{
-                            (item.instructions ? item.instructions.split(' ').slice(0, 2).join(' ') + 
-                              (item.instructions.split(' ').length > 2 ? '...' : '') : 'N/A')
+                          (item.instructions ? item.instructions.split(' ').slice(0, 2).join(' ') +
+                          (item.instructions.split(' ').length > 2 ? '...' : '') : 'N/A')
                           }}
                         </td>
-                        
+
                         <td>{{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : 'N/A' }}</td>
+                        <td>
+                          <a [routerLink]="['/medication-list/detail', item.medicationId]" class="action-link">
+                            <i class="fas fa-eye"></i>
+                          </a>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -51,7 +57,7 @@
                   <img src="assets/images/ffffrq-removebg-preview.png" style="width: 50%; margin: auto; padding: 50px;">
                 </div>
 
-                <div class="pagination-container pt-3 pb-3"*ngIf="medicationList && medicationList.length > 0">
+                <div class="pagination-container pt-3 pb-3" *ngIf="medicationList && medicationList.length > 0">
                   <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
                     queryParamsHandling="merge"></pagination-controls>
                 </div>
