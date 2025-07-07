@@ -24,6 +24,7 @@ export enum ApiEndPoint {
     requestType = "api/User/GetAllRequestTypes",
     requestList = "api/User/GetAllRequests",
     healthTracker = "api/User/GetHealthRecordsByType",
+    xray = "api/User/GetXrayReports",
     addBloodPressure = "api/User/AddOrUpdateBloodPressureRecord",
     addBloodSugar = "api/User/AddOrUpdateBloodSugarRecord",
     addHeartRate = "api/User/AddOrUpdateHeartRateRecord",

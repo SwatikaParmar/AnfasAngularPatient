@@ -16,7 +16,6 @@ import { LayoutModule } from './layouts/layout.module';
 
 import { NgOtpInputModule } from 'ng-otp-input';
 import { ConnectedDevicesComponent } from './connected-devices/connected-devices.component';
-import { XrayReportComponent } from './Health/health-tracking/xray-report/xray-report.component';
 
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader { 
@@ -25,7 +24,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 
 @NgModule({  
   declarations: [ 
-    AppComponent, XrayReportComponent, 
+    AppComponent, 
   ],
   imports: [
     FormsModule, 
