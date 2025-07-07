@@ -22,7 +22,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
 import { MessagingService } from './shared/services/messaging-service';
 import { AsyncPipe, DatePipe } from '@angular/common';
-import { XrayDetailComponent } from './Health/health-tracking/xray-report/xray-detail/xray-detail.component';
+
 
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -59,16 +59,16 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     }),
     AngularFireAuthModule,
     AngularFireModule.initializeApp({
-      apiKey: "AIzaSyDAv0cpNLxGNzD1viqjAsWe0ktoidMuego",
-      authDomain: "anfas-7a927.firebaseapp.com",
-      databaseURL: "https://anfas-7a927-default-rtdb.firebaseio.com",
-      projectId: "anfas-7a927",
-      storageBucket: "anfas-7a927.firebasestorage.app",
-      messagingSenderId: "1078172885688",
-      appId: "1:1078172885688:web:bd0848b228c9357bee8a4d",
-      measurementId: "G-B3D35H5S50"
+     apiKey: "AIzaSyDAv0cpNLxGNzD1viqjAsWe0ktoidMuego",
+  authDomain: "anfas-7a927.firebaseapp.com",
+  databaseURL: "https://anfas-7a927-default-rtdb.firebaseio.com",
+  projectId: "anfas-7a927",
+  storageBucket: "anfas-7a927.firebasestorage.app",
+  messagingSenderId: "1078172885688",
+  appId: "1:1078172885688:web:bd0848b228c9357bee8a4d",
+  measurementId: "G-B3D35H5S50"
     }),
-    AngularFireMessagingModule,
+    AngularFireMessagingModule,  
   ],
   providers: [MessagingService, AsyncPipe, DatePipe,
     {
