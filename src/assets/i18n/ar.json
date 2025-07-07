@@ -424,7 +424,7 @@
   "X-RAY": "الأشعة السينية",
   "NOTIFICATION_TYPE": "نوع الإشعار",
   "PROCEDURE_NAME": "اسم الإجراء",
-  "X-RAY_DETAIL": "تفاصيل الأشعة السينية",
+   "RADIOLOGY_IMAGE_DETAIL": "تفاصيل صورة الأشعة",
   "PROCEDURE_CODE": "رمز الإجراء",
   "MEDICAL_QUESTION": "سؤال طبي",
   "CLINICAL_COMMENT": "تعليق سريري",
@@ -435,5 +435,6 @@
   "PREVIEW_IMAGE": "معاينة الصورة",
   "SAVE_X-RAY_REPORT": "حفظ تقرير الأشعة السينية",
   "NOTIFICATION_DETAIL": "تفاصيل الإشعار",
-   "MEDICATION_DETAIL":"تفاصيل الدواء"
+   "MEDICATION_DETAIL":"تفاصيل الدواء",
+   "IMAGE_URL":"رابط الصورة"
 }
