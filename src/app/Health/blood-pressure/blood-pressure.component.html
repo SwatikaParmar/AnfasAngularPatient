@@ -76,7 +76,7 @@
                         </td>
                         <td>
                           <a style="color: blue; text-decoration: underline;" *ngIf="item.image; else noImage"
-                            (click)="openImagePreview(rootUrl + item.image)">View</a>
+                            (click)="openImagePreview(rootUrl + item.image)">{{ 'VIEW' | translate }}</a>
                           <!-- <img *ngIf="item.image; else noImage"
        [src]="rootUrl + item.image"
        alt="Image"
@@ -143,7 +143,7 @@
       <form [formGroup]="form" (ngSubmit)="addRecord()">
 
         <div class="esc">
-          <label class="block text-sm font-semibold mb-3">Upload file</label>
+          <label class="block text-sm font-semibold mb-3">{{ 'UPLOAD_FILE' | translate }}</label>
 
           <input type="file" id="fileInput" accept="image/*" (change)="onFileChange($event)" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4
                 file:rounded-full file:border-0 file:text-sm file:font-semibold
@@ -156,7 +156,7 @@
           <!-- Show anchor-style preview text -->
           <a *ngIf="imagePreview" (click)="openPreview()"
             class="text-blue-600 underline cursor-pointer text-sm mt-1 inline-block">
-            Preview Image
+        {{ 'PREVIEW_IMAGE' | translate }}
           </a>
         </div>
 

@@ -418,14 +418,17 @@
   "NOTIFICATION": "Notification",
   "NOTIFICATION_LIST": "Notification List",
   "X-RAY_REPORTS": "X-rays Reports",
-  "X-RAY":"X-ray",
-  "NOTIFICATION_TYPE":"Notification Type",
-  "PROCEDURE_NAME":"Procedure Name",
-  "X-RAY_DETAIL":"X-ray Detail",
-  "PROCEDURE_CODE":"Procedure Code",
-  "MEDICAL_QUESTION":"Medical Question",
-  "CLINICAL_COMMENT":"Clinical Comment",
-  "APPROVED_BY":"Approved By",
-  "APPROVAL_DATE":"Approval Date"
-  
+  "X-RAY": "X-ray",
+  "NOTIFICATION_TYPE": "Notification Type",
+  "PROCEDURE_NAME": "Procedure Name",
+  "X-RAY_DETAIL": "X-ray Detail",
+  "PROCEDURE_CODE": "Procedure Code",
+  "MEDICAL_QUESTION": "Medical Question",
+  "CLINICAL_COMMENT": "Clinical Comment",
+  "APPROVED_BY": "Approved By",
+  "APPROVAL_DATE": "Approval Date",
+  "UPLOAD_X-RAY_REPORT": "Upload X-ray Report",
+  "UPLOAD_FILE": "Upload File",
+  "PREVIEW_IMAGE": "Preview Image",
+  "SAVE_X-RAY_REPORT": "Save X-ray Report"
 }

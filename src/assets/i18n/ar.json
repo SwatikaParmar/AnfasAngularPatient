@@ -429,5 +429,10 @@
   "MEDICAL_QUESTION": "سؤال طبي",
   "CLINICAL_COMMENT": "تعليق سريري",
   "APPROVED_BY": "تمت الموافقة عليه من قبل",
-  "APPROVAL_DATE": "تاريخ الموافقة"
+  "APPROVAL_DATE": "تاريخ الموافقة",
+   "UPLOAD_X-RAY_REPORT":"تحميل تقرير الأشعة السينية",
+    "UPLOAD_FILE":"تحميل الملف",
+     "PREVIEW_IMAGE":"معاينة الصورة",
+      "SAVE_X-RAY_REPORT":"Save X-ray Report"
+  
 }
