@@ -10,7 +10,7 @@
                                     style="color:#726641; padding-top: 7px; font-size: 13px;"></i>
                             </div>
                             <div>
-                                <p><span class="black-home">{{ 'X-RAY_DETAIL' | translate }}</span></p>
+                                <p><span class="black-home">{{ 'RADIOLOGY_IMAGE_DETAIL' | translate }}</span></p>
                             </div>
                         </div>
 
@@ -68,7 +68,7 @@
 
 
                             <li class="list-group-item d-flex align-items-center">
-                                <p class="col-5">{{ 'REPORT_URL' | translate }}</p>
+                                <p class="col-5">{{ 'IMAGE_URL' | translate }}</p>
                                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
                                 <a class="text-primary" *ngIf="detail?.xreportUrl" [href]="rootUrl + detail.xreportUrl"
                                     target="_blank" rel="noopener noreferrer">

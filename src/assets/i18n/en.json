@@ -421,7 +421,7 @@
   "X-RAY": "X-ray",
   "NOTIFICATION_TYPE": "Notification Type",
   "PROCEDURE_NAME": "Procedure Name",
-  "X-RAY_DETAIL": "X-ray Detail",
+  "RADIOLOGY_IMAGE_DETAIL": "Radiology Image Detail",
   "PROCEDURE_CODE": "Procedure Code",
   "MEDICAL_QUESTION": "Medical Question",
   "CLINICAL_COMMENT": "Clinical Comment",
@@ -432,5 +432,6 @@
   "PREVIEW_IMAGE": "Preview Image",
   "SAVE_X-RAY_REPORT": "Save X-ray Report",
   "NOTIFICATION_DETAIL": "Notification Detail",
-  "MEDICATION_DETAIL":"Medication Detail"
+  "MEDICATION_DETAIL":"Medication Detail",
+   "IMAGE_URL":"Image Url"
 }
