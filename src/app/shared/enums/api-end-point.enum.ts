@@ -58,14 +58,14 @@ export enum ApiEndPoint {
     doctorDetail = "api/User/GetDoctorDetails",
     addMedication = "api/User/AddOrUpdateMedication ",
     medicationDetail = "api/User/GetMedicationDetail",
-    messageList = "api/Chat/chatUsers/",
+    messageList = "api/Chat/chatUsers",
     addEducationMaterial = "api/User/AddOrUpdateEducationMaterial",
     vitalStatus = "api/User/SetVitalRecordStatus",
     visitDetail = "api/User/GetVisitDetail",
     onlineStatus ="api/Chat/updateOnlineStatusManually",
-    visitupdation = "api/Admin/UpdateVisitSection"
-    
-
+    visitupdation = "api/Admin/UpdateVisitSection",
+    Notification = "api/Notification/getNotificationList",
+   tockenFcm = 'api/Notification/updateFCMToken',
 
     
 }

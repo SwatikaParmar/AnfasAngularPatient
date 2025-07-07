@@ -69,6 +69,7 @@ import { PatientChatlistComponent } from 'src/app/doctor/doctor-patient/patient-
 import { VisitDiagnoseComponent } from './visit/visit-list/visit-diagnose/visit-diagnose.component';
 import { RequestDetailComponent } from 'src/app/Medication/request-detail/request-detail.component';
 import { ConnectedDevicesComponent } from 'src/app/connected-devices/connected-devices.component';
+import { NotificationComponent } from 'src/app/notification/notification.component';
 
 // export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 //   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -129,7 +130,8 @@ import { ConnectedDevicesComponent } from 'src/app/connected-devices/connected-d
     PatientChatlistComponent,
     VisitDiagnoseComponent,
     RequestDetailComponent,
-    ConnectedDevicesComponent
+    ConnectedDevicesComponent,
+    NotificationComponent
 
   ],
   imports: [

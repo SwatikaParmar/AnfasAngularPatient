@@ -56,6 +56,7 @@ import { PatientChatlistComponent } from 'src/app/doctor/doctor-patient/patient-
 import { VisitDiagnoseComponent } from './visit/visit-list/visit-diagnose/visit-diagnose.component';
 import { RequestDetailComponent } from 'src/app/Medication/request-detail/request-detail.component';
 import { ConnectedDevicesComponent } from 'src/app/connected-devices/connected-devices.component';
+import { NotificationComponent } from 'src/app/notification/notification.component';
 const routes: Routes = [
 
   {
@@ -122,7 +123,8 @@ const routes: Routes = [
       { path: 'doctor-patient/doctor/medication/update/:id/:id2', component: DoctorAddmedicationComponent },
       { path: 'doctor-appointment/appointment-list/chat', component: AppointmentChatListComponent },
       { path: 'doctor-patient/Patient/chat', component: PatientChatlistComponent },
-       { path: 'connected-Devices', component: ConnectedDevicesComponent },
+      { path: 'connected-Devices', component: ConnectedDevicesComponent },
+      { path: 'notification', component: NotificationComponent },
 
     ]
   }

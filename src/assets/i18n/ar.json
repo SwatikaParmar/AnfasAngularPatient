@@ -417,5 +417,7 @@
   "ENTER_END_DATE": "أدخل تاريخ الانتهاء",
   "END_DATE_IS_REQUIRED": "تاريخ الانتهاء مطلوب",
   "START_DATE": "تاريخ البدء",
-  "END_DATE": "تاريخ الانتهاء"
+  "END_DATE": "تاريخ الانتهاء",
+  "NOTIFICATION": "إشعار",
+  "NOTIFICATION_LIST": "قائمة الإشعارات"
 }

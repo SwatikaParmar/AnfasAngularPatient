@@ -1,0 +1,64 @@
+<div class="dashboard-outer">
+
+    <section>
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="flex mb-2 items-center ml-1">
+
+                    <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">{{ 'NOTIFICATION_LIST' |
+                        translate }}
+                    </h1>
+                </div>
+                <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
+                    <div class="custom-container mx-auto p-3">
+                        <div class="container">
+
+                            <div class="table-container">
+                                <div class="table-responsive">
+                                    <table class="medication-table">
+                                        <thead>
+                                            <tr>
+                                                <th>{{ 'MRN' | translate }}</th>
+                                                <th>{{ 'TITLE1' | translate }}</th>
+                                                <th>{{ 'DESCRIPTION1' | translate }}</th>
+                                                <th>{{ 'STATUS' | translate }}</th>
+                                                <th>{{ 'DATE' | translate }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="row-light" *ngFor="let item of list | paginate : {
+                                        itemsPerPage: 5,
+                                        currentPage: page,
+                                        totalItems: totalItems,
+                                        id: '1'
+                                      }">
+                                                <td>{{ item.mrn || 'N/A' }}</td>
+                                                <td>{{ item.title || 'N/A' }}</td>
+                                                <td>{{ item.description || 'N/A' }}</td>
+                                                <td>{{ item.notificationType || 'N/A' }}</td>
+                                                <td>{{ item.isNotificationRead || 'N/A' }}</td>
+                                                <td>{{ item.createDate ? (item.createDate | date:'dd-MM-yyyy') : 'N/A'
+                                                    }}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="no-data text-center" *ngIf="list && list.length === 0">
+                                    <img src="assets/images/ffffrq-removebg-preview.png"
+                                        style="width: 50%; margin: auto; padding: 50px;">
+                                </div>
+
+                                <div class="pagination-container pt-3 pb-3" *ngIf="list && list.length > 0">
+                                    <pagination-controls (pageChange)="onPageChange($event)" id="1"
+                                        class="paginate-doctor-list" queryParamsHandling="merge"></pagination-controls>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

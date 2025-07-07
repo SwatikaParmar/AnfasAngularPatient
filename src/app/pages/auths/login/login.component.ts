@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Login } from 'src/app/shared/models/login';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { LanguageSwitcherServiceService } from 'src/app/shared/services/language-switcher.service.service';
+import { MessagingService } from 'src/app/shared/services/messaging-service';
 
 @Component({
   selector: 'app-login',
@@ -31,7 +32,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private translate: TranslateService,
     private spinner: NgxSpinnerService,
-    private languageService: LanguageSwitcherServiceService
+    private languageService: LanguageSwitcherServiceService,
+    private messagingService : MessagingService
   ) {
   
   }
@@ -40,6 +42,7 @@ export class LoginComponent implements OnInit {
     this.setConfigurationOfLoginForm();
     this.currentLanguage = localStorage.getItem('language') || 'en';
     this.languageService.switchLanguage(this.currentLanguage);
+    this.messagingService.requestPermission();
   }
 
   switchLanguage(lang: string) {
@@ -264,6 +267,8 @@ payload[this.selectedField] = value;
               localStorage.setItem('loginRole', patientResponse.data.role);
               localStorage.setItem('fname', patientResponse.data.firstName);
               localStorage.setItem('lname', patientResponse.data.lastName);
+
+              this.updateToken(); 
             this.spinner.hide();
 
               // ✅ Navigate only after both calls are successful
@@ -289,6 +294,35 @@ payload[this.selectedField] = value;
 
       this.toasterService.error('Something went wrong while sending OTP.');
       this.spinner.hide();
+    }
+  });
+}
+
+
+
+updateToken() {
+  
+  const token = localStorage.getItem('token');
+  const mrn = localStorage.getItem('mrn');
+
+
+  const payload = {
+    username: mrn,
+    fcmToken: token
+  };
+
+  console.log('📤 Sending FCM update payload:', payload);
+
+  this.authService.fcmToken(payload).subscribe({
+    next: (response: any) => {
+      if (response.isSuccess) {
+        console.log('✅ FCM token updated successfully');
+      } else {
+        console.warn('⚠️ FCM token update failed:', response.messages);
+      }
+    },
+    error: (err) => {
+      console.error('❌ FCM token update error:', err);
     }
   });
 }

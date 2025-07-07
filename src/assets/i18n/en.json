@@ -414,5 +414,7 @@
   "START_DATE_IS_REQUIRED": "Start date is required",
   "END_DATE_IS_REQUIRED": "End date is required",
   "START_DATE": "Start Date",
-  "END_DATE": "End Date"
+  "END_DATE": "End Date",
+  "NOTIFICATION":"Notification",
+  "NOTIFICATION_LIST":"Notification List"
 }

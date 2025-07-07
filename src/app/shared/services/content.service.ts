@@ -425,6 +425,10 @@ visitupdation(data: any) {
   return this.http.post<any>(`${environment.apiUrl}${ApiEndPoint.visitupdation}`, data);
 }
 
-
+ getNotification(data: any) {
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.Notification + '?pageNumber=' + data.pageNumber + '&pageSize=' + data.pageSize
+    
+    );
+  }
 
 }

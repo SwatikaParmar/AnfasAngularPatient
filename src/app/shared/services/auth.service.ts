@@ -88,5 +88,11 @@ verifyPhone(phoneNumber: string, code: string): Observable<any> {
   return this.http.post(`${environment.apiUrl}api/User/VerifyPhone`, payload);
 }
 
+  fcmToken(data: any) {
+    return this.http.post<any>(environment.apiUrl + ApiEndPoint.tockenFcm, data).pipe(map((data: any) => {
+      return data;
+    }));
+  }
+
 
 }
