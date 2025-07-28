@@ -89,33 +89,43 @@ export class BookAppointmentComponent {
  
   
 
-  getAvailableDate(): void {
-    this.spinner.show();  // 👈 Start spinner
-    const today = new Date();
-    const after30 = new Date(today);
-    after30.setDate(today.getDate() + 30);
+ getAvailableDate(): void {
+  this.spinner.show();  // 👈 Start spinner
+  const today = new Date();
+  const after30 = new Date(today);
+  after30.setDate(today.getDate() + 30);
 
-    const payload = {
-      OrgCode: 'AMC',
-      CareProviderCode: this.CareProviderCode,
-      FromDate: this.formatDate(today),
-      ToDate: this.formatDate(after30),
-    };
-    this.content.getAvailableDate(payload).subscribe((resp: { data: string[] }) => {
-      this.availableDates = [...resp.data.map((d) => this.formatDate(new Date(d)))];
+  const payload = {
+    OrgCode: 'AMC',
+    CareProviderCode: this.CareProviderCode,
+    FromDate: this.formatDate(today),
+    ToDate: this.formatDate(after30),
+  };
 
-      this.cdr.detectChanges();
-      // Trigger re-render of dateClass logic
-      if (this.calendar) {
-        this.calendar.updateTodaysDate();
-        this.calendar.stateChanges.next();
-        this.spinner.hide(); // 👈 Stop spinner
+  this.content.getAvailableDate(payload).subscribe({
+    next: (resp: any) => {
+      if (resp?.isSuccess && resp.data?.length) {
+        this.availableDates = [...resp.data.map((d: string | number | Date) => this.formatDate(new Date(d)))];
 
+        this.cdr.detectChanges();
+        if (this.calendar) {
+          this.calendar.updateTodaysDate();
+          this.calendar.stateChanges.next();
+        }
+      } else {
+        this.availableDates = [];
+        this.toasterService.warning('No dates available');
       }
-  
 
-    });
-  }
+      this.spinner.hide();  // ✅ Always stop spinner
+    },
+    error: (err) => {
+      this.spinner.hide();
+      this.toasterService.error('No dates available');
+    }
+  });
+}
+
 
   formatDate(d: Date): string {
     return [
@@ -270,8 +280,10 @@ export class BookAppointmentComponent {
     ).subscribe((response: any) => {
       if (response.status) {
         this.toasterService.success('Appointment booked successfully.');
+            this.spinner.hide(); // 👈 Stop spinner
         this.router.navigate(['/appointment-list'], { queryParams: { referenceId: response.data.referenceid } });
       } else {
+            this.spinner.hide(); // 👈 Stop spinner
         this.toasterService.error('Failed to book appointment.');
       }
     }, (error) => {
