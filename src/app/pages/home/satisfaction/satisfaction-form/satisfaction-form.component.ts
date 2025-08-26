@@ -150,7 +150,7 @@ debugger
     guestId: this.data.subject.id,
     filledBy: Number(this.form.value.filledBy || 0),
     name: this.form.value.name,
-    visitId: this.form.value.visitId,
+    visitId: this.visitId,
     mrn: this.form.value.mrn,
     mobileNumber: this.form.value.mobileNumber,
     gender: Number(this.form.value.gender || 0),
@@ -159,7 +159,7 @@ debugger
     ratings,
     comments
   };
-
+debugger
   this.spinner.show();
   this.content.postSatisfaction(submission).subscribe({
     next: (res: any) => {
