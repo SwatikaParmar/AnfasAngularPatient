@@ -69,11 +69,11 @@
                                         </p>
 
                                     </div>
-                                    <div class="rating-and-button" *ngFor="let visit of visitList">
+                                    <div class="rating-and-button">
                                         <div class="visit-item">
                                             <div class="rating-stars"
-                                                (click)="openSatisfactionForm(visit.satisfactionFormId, visit.visitId)">
-                                                {{ getStars(visit.overallRating || 0) }}
+                                                (click)="openSatisfactionForm(item.satisfactionFormId, item.visitId)">
+                                                {{ getStars(item.overallRating || 0) }}
                                             </div>
                                         </div>
 
@@ -84,7 +84,7 @@
                                         </button> -->
 
                                         <a style="color: #726641;"
-                                            [routerLink]="['/visit/report/' + visit.visitId + '/' + visit.patientUid + '/' + visit.patientVisitUId + '/' + visit.mrn]">
+                                            [routerLink]="['/visit/report/' + item.visitId + '/' + item.patientUid + '/' + item.patientVisitUId + '/' + item.mrn]">
                                             <i class="fas fa-eye"></i>
                                         </a>
                                     </div>
