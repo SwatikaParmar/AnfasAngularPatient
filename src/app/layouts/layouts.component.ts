@@ -91,8 +91,39 @@ toggleMenus() {
       localStorage.setItem('englishLanguage', 'English');
     }
 
-    window.location.reload();
+  this.updateLanguagePreference(lang); // ✅ Call function to save preference
   }
+
+
+  updateLanguagePreference(lang: string) {
+  const mrn = localStorage.getItem('mrn');
+
+  if (!mrn) {
+    console.error('MRN not found in localStorage');
+    return;
+  }
+
+  const payload = {
+    language: lang,
+    mrn: mrn,
+       // Or false based on role
+  };
+
+  this.spinner.show();
+  this.contentService.getPrefrence(payload).subscribe({
+    next: (res: any) => {
+      this.spinner.hide();
+      if (res.isSuccess) {
+         window.location.reload(); // ✅ Refresh after update
+      } else {
+      }
+    },
+    error: (err) => {
+      this.spinner.hide();
+      console.error(err);
+    }
+  });
+}
 
   public openSection(selectedRoute: any) {
     this.routes = this.routes.map((item) => {

@@ -129,39 +129,55 @@ get commentsFG(): FormGroup {
   return this.form.get('comments') as FormGroup;
 }
 
-  exportJSON() {
-    const ratings = this.ratingsTable.map(q => {
-      const val = this.form.get(['ratings', q.key])?.value || 0;
-      return { key: q.key, value: Number(val) };
-    });
-
-    const submission = {
-      id: this.data.subject.id,
-      lang: 'en',
-      guestId: this.data.subject.id,
-      filledBy: Number(this.form.value.filledBy || 0),
-      name: this.form.value.name,
-      visitId: this.form.value.visitId,
-      mrn: this.form.value.fileNumber,
-      mobileNumber: this.form.value.mobileNumber,
-      gender: Number(this.form.value.gender || 0),
-      ageBracket: Number(this.form.value.ageBracket || 0),
-      residence: Number(this.form.value.residence || 0),
-      ratings: ratings,
-      comments: [
-        { key: 'C1', value: this.comments.C1 },
-        { key: 'C2', value: this.comments.C2 }
-      ]
-    };
-
-    const blob = new Blob([JSON.stringify(submission, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'submission.json';
-    a.click();
-    URL.revokeObjectURL(url);
+exportJSON() {
+  if (this.form.invalid) {
+    this.toasterService.error('Please fill all required fields.');
+    return;
   }
+debugger
+  const ratings = this.ratingsTable.map(q => ({
+    key: q.key,
+    value: Number(this.form.get(['ratings', q.key])?.value || 0)
+  }));
+
+  const comments = [
+    { key: 'C1', value: this.form.value.comments.C1 || '' },
+    { key: 'C2', value: this.form.value.comments.C2 || '' }
+  ];
+
+  const submission = {
+    id: this.data.subject.id,
+    guestId: this.data.subject.id,
+    filledBy: Number(this.form.value.filledBy || 0),
+    name: this.form.value.name,
+    visitId: this.form.value.visitId,
+    mrn: this.form.value.mrn,
+    mobileNumber: this.form.value.mobileNumber,
+    gender: Number(this.form.value.gender || 0),
+    ageBracket: Number(this.form.value.ageBracket || 0),
+    residence: Number(this.form.value.residence || 0),
+    ratings,
+    comments
+  };
+
+  this.spinner.show();
+  this.content.postSatisfaction(submission).subscribe({
+    next: (res: any) => {
+      this.spinner.hide();
+      if (res.isSuccess) {
+        this.toasterService.success('Form submitted successfully!');
+        this.router.navigate(['/thank-you']); // or back to listing page
+      } else {
+        this.toasterService.error(res.message || 'Submission failed.');
+      }
+    },
+    error: () => {
+      this.spinner.hide();
+      this.toasterService.error('Something went wrong.');
+    }
+  });
+}
+
 
   backClicked() {
     this._location.back();
