@@ -15,7 +15,7 @@ export class ContentService {
 
 
   getDoctors() {
-    return this.http.get<any>(environment.apiUrl + ApiEndPoint.doctors)
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.doctor + '?OrgCode=AMC' + '&ShowInPatientPortal=true')
   }
 
   patientDetails(data: any) {

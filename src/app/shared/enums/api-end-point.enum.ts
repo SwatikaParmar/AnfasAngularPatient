@@ -2,6 +2,7 @@ export enum ApiEndPoint {
     login = "api/User/PatientLogin",
     patientDetail = "api/User/GetPatientDetails",
     doctors = "api/Admin/GetDoctorList",
+    doctor  = "api/User/GetDoctors",
     consentForm = "api/User/GetConsentForm",
     visitList = "api/User/GetAllVisits",
     LabReport = "api/User/LabReport",
