@@ -43,6 +43,7 @@
     .anfasi-logo img {
       max-width: 80px;
       height: auto;
+      margin: auto;
     }
 
     .anfasi-text-ar {
@@ -239,3 +240,8 @@
       height: 22px;
       margin-bottom: 8px;
     }
+
+
+    .form-check-label{
+  margin-right: 20px;
+}
