@@ -101,8 +101,8 @@
           <table class="feedback-table" [formGroup]="form">
   <thead>
     <tr>
-      <th>No.</th>
-      <th>Question</th>
+   <th>{{ 'NO' | translate }}</th>
+<th>{{ 'QUESTION' | translate }}</th>
       <th *ngFor="let s of ratingScale">{{ s.label }}</th>
     </tr>
   </thead>

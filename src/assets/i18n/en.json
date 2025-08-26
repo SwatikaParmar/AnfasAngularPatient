@@ -433,5 +433,7 @@
   "SAVE_X-RAY_REPORT": "Save X-ray Report",
   "NOTIFICATION_DETAIL": "Notification Detail",
   "MEDICATION_DETAIL":"Medication Detail",
-   "IMAGE_URL":"Image Url"
+   "IMAGE_URL":"Image Url",
+    "NO": "No.",
+  "QUESTION": "Question"
 }

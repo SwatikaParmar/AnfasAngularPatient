@@ -436,5 +436,7 @@
   "SAVE_X-RAY_REPORT": "حفظ تقرير الأشعة السينية",
   "NOTIFICATION_DETAIL": "تفاصيل الإشعار",
    "MEDICATION_DETAIL":"تفاصيل الدواء",
-   "IMAGE_URL":"رابط الصورة"
+   "IMAGE_URL":"رابط الصورة",
+     "NO": "الرقم",
+  "QUESTION": "السؤال"
 }
