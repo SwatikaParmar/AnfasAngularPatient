@@ -1,5 +1,5 @@
-import { Component, Renderer2 } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -8,30 +8,34 @@ import { LanguageSwitcherServiceService } from 'src/app/shared/services/language
 import { ContentService } from 'src/app/shared/services/content.service';
 import { Location } from '@angular/common';
 import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-satisfaction-form',
   templateUrl: './satisfaction-form.component.html',
   styleUrls: ['./satisfaction-form.component.css']
-
 })
-export class SatisfactionFormComponent {
-  rating1 = 0;
-  rating2 = 1; // prefilled like in your image
-  rating3 = 0;
-  selectedRating = 0;
-  Form!: FormGroup;
-  submitted = false;
-  rootUrl: any;
-  id: any;
-  isEditMode!: boolean;
-  Data: any;
-  selectedRatings: { [key: string]: number } = {};
+export class SatisfactionFormComponent implements OnInit {
+
+  form!: FormGroup;
+  data: any;
+  ratingsTable: any[] = [];
+  ratingScale: any[] = [];
+
+  // Enums
+  filledByOptions: any[] = [];
+  genderOptions: any[] = [];
+  residenceOptions: any[] = [];
+  ageOptions: any[] = [];
+
+  comments:any;
   visitId: any;
+  id: any;
+  isEditMode = false;
+  rootUrl: string = environment.rootPathUrl;
+  FALLBACK: any = null; // Optional fallback JSON
 
   constructor(
     private fb: FormBuilder,
-    private renderer: Renderer2,
-    private formBuilder: FormBuilder,
     private content: ContentService,
     private toasterService: ToastrService,
     private route: ActivatedRoute,
@@ -40,122 +44,126 @@ export class SatisfactionFormComponent {
     private languageService: LanguageSwitcherServiceService,
     private _location: Location,
     private router: Router
-  ) {
+  ) { }
 
-  }
   ngOnInit(): void {
-    this.initForm();
-    this.rootUrl = environment.rootPathUrl;
-
-    this.route.queryParams.subscribe((params) => {
+    // Capture route query params
+    this.route.queryParams.subscribe(params => {
       this.id = params['id'];
-      this.visitId = params['visitId']; // ✅ Capture visitId
-
-      if (this.id) {
-        this.isEditMode = true;
-        this.getDetail();
-      } else {
-        // If it's a new form, patch visitId directly
-        this.Form.patchValue({ visitId: this.visitId });
-      }
-    });
-  }
-
-
-  initForm() {
-    this.Form = this.fb.group({
-      dateOfVisit: [''],
-      appointmentEase: [0],
-      appointmentWaitTime: [0],
-      frontDeskFriendliness: [0],
-      facilityCleanliness: [0],
-      parkingAvailability: [0],
-      waitingAreaComfort: [0],
-      doctorFriendliness: [0],
-      doctorExplanation: [0],
-      doctorTimeSpent: [0],
-      treatmentQuality: [0],
-      medicationAvailability: [0],
-      treatmentExplanation: [0],
-        overallSatisfaction: [0, [Validators.required, Validators.min(1)]], // Require at least 1 star
-    recommendationLikelihood: [0, [Validators.required, Validators.min(1)]], // Require at least 1 star
-      additionalComments: [''],
+      this.visitId = params['visitId'];
+      this.isEditMode = !!this.id;
     });
 
-  }
-
-  getDetail() {
-    this.content.satisfactionDetail(this.id).subscribe((res: any) => {
-      if (res.isSuccess && res.data) {
-        const data = res.data;
-        this.Form.patchValue({
-          dateOfVisit: data.dateOfVisit.split('T')[0], // Format to 'YYYY-MM-DD' for input[type="date"]
-          appointmentEase: data.appointmentEase,
-          appointmentWaitTime: data.appointmentWaitTime,
-          frontDeskFriendliness: data.frontDeskFriendliness,
-          facilityCleanliness: data.facilityCleanliness,
-          parkingAvailability: data.parkingAvailability,
-          waitingAreaComfort: data.waitingAreaComfort,
-          doctorFriendliness: data.doctorFriendliness,
-          doctorExplanation: data.doctorExplanation,
-          doctorTimeSpent: data.doctorTimeSpent,
-          treatmentQuality: data.treatmentQuality,
-          medicationAvailability: data.medicationAvailability,
-          treatmentExplanation: data.treatmentExplanation,
-          overallSatisfaction: data.overallSatisfaction,
-          recommendationLikelihood: data.recommendationLikelihood,
-          additionalComments: data.additionalComments
-        });
-      }
+    // Initialize form
+    this.form = this.fb.group({
+      name: [''],
+      mrn: [''],
+      mobileNumber: [''],
+      filledBy: [''],
+      gender: [''],
+      residence: [''],
+      ageBracket: [''],
+     ratings: this.fb.group({}),
+  comments: this.fb.group({
+    C1: [''],
+    C2: ['']
+  }),
+  visitId: [this.visitId]
     });
+
+    this.loadData();
   }
 
-  submit() {
-    this.submitted = true;
-    if (this.Form.invalid) return;
+loadData() {
+  this.content.getSatisfactionForm(localStorage.getItem('mrn')).subscribe(response => {
+    if (response.isSuccess && response.data) {
+      this.data = response.data; // ✅ Store the data for later use (like exportJSON)
 
-    const payload = {
-      ...this.Form.value,
-      id: this.id || 0,
-      mrn: localStorage.getItem('mrn') || '',
-      visitId: this.Form.get('visitId')?.value || this.visitId || '',
+      const subj = this.data.subject;
+debugger
+      // Patch guest info
+      this.form.patchValue({
+        name: subj.name || '',
+        mrn: subj.mrn || '',
+        mobileNumber: subj.mobileNumber || '',
+        filledBy: subj.filledBy?.code || '',
+        gender: subj.gender?.code || '',
+        residence: subj.residence?.code || '',
+        ageBracket: subj.ageBracket?.code || '',
+        visitId: this.visitId || ''
+      });
+
+      // Populate Enums
+      this.filledByOptions = this.data.enums.filledBy || [];
+      this.genderOptions = this.data.enums.gender || [];
+      this.residenceOptions = this.data.enums.residence || [];
+      this.ageOptions = this.data.enums.ageBracket || [];
+
+      // Ratings Table
+      this.ratingsTable = this.data.ratings.items || [];
+      this.ratingScale = this.data.ratingScale || [];
+
+      // Build FormGroup for ratings dynamically with existing values
+      const ratingsGroup: any = {};
+      this.ratingsTable.forEach(q => {
+        ratingsGroup[q.key] = [q.value !== null ? q.value : null];
+      });
+      this.form.setControl('ratings', this.fb.group(ratingsGroup));
+
+this.comments = this.data.comments.items || [];
+
+this.form.get('comments')?.patchValue({
+  C1: this.comments.find((c: { key: string; }) => c.key === 'C1')?.value || '',
+  C2: this.comments.find((c: { key: string; }) => c.key === 'C2')?.value || ''
+});
+
+    }
+  });
+}
+
+getCommentLabel(key: string): string {
+  return this.data?.comments?.items?.find((c: { key: string; }) => c.key === key)?.label || '';
+}
+
+get commentsFG(): FormGroup {
+  return this.form.get('comments') as FormGroup;
+}
+
+  exportJSON() {
+    const ratings = this.ratingsTable.map(q => {
+      const val = this.form.get(['ratings', q.key])?.value || 0;
+      return { key: q.key, value: Number(val) };
+    });
+
+    const submission = {
+      id: this.data.subject.id,
+      lang: 'en',
+      guestId: this.data.subject.id,
+      filledBy: Number(this.form.value.filledBy || 0),
+      name: this.form.value.name,
+      visitId: this.form.value.visitId,
+      mrn: this.form.value.fileNumber,
+      mobileNumber: this.form.value.mobileNumber,
+      gender: Number(this.form.value.gender || 0),
+      ageBracket: Number(this.form.value.ageBracket || 0),
+      residence: Number(this.form.value.residence || 0),
+      ratings: ratings,
+      comments: [
+        { key: 'C1', value: this.comments.C1 },
+        { key: 'C2', value: this.comments.C2 }
+      ]
     };
 
-    this.spinner.show();
-
-    this.content.addUpdateSatisfaction(payload).subscribe(
-      response => {
-        this.spinner.hide();
-        if (response.isSuccess) {
-          this.toasterService.success(` ${this.isEditMode ? 'updated' : 'added'} successfully.`);
-          this.router.navigate(['/visit']);
-        } else {
-          this.toasterService.error(response.messages);
-        }
-      },
-      error => {
-        this.spinner.hide();
-
-      }
-    );
+    const blob = new Blob([JSON.stringify(submission, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'submission.json';
+    a.click();
+    URL.revokeObjectURL(url);
   }
 
-  setRating(controlName: string, value: number): void {
-    this.Form.get(controlName)?.setValue(value);
-  }
-
-  // setRating(field: number, value: number) {
-  //   if (field === 1) this.rating1 = value;
-  //   else if (field === 2) this.rating2 = value;
-  //   else if (field === 3) this.rating3 = value;
-  // }
-
-  rate(rating: number) {
-    this.selectedRating = rating;
-
-  }
   backClicked() {
     this._location.back();
   }
-
 }

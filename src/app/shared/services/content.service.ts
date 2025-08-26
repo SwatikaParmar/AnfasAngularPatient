@@ -450,4 +450,13 @@ visitupdation(data: any) {
   return this.http.post<any>(`${environment.apiUrl}${ApiEndPoint.uploadXray}`, formData);
 }
 
+
+getSatisfactionData(){
+  return this.http.get<any>(environment.apiUrl + ApiEndPoint.getSatisfaction)
+}
+
+
+getSatisfactionForm(visitId:any){
+  return this.http.get<any>(environment.apiUrl + ApiEndPoint.getSatisfactionForm + '?mrn=' + visitId)
+}
 }

@@ -69,6 +69,12 @@ export enum ApiEndPoint {
     tockenFcm = 'api/Notification/updateFCMToken',
     xrayDetail = "api/User/GetXrayReportDetail",
     uploadXray = "api/User/UploadXrayReport",
+
+
+    // satisfaction
+
+    getSatisfaction = "api/PatientSatisfaction/GetPatientSatisfactionList",
+    getSatisfactionForm = "api/PatientSatisfaction/GetPatientSatisfactionForm"
     
 }
 
