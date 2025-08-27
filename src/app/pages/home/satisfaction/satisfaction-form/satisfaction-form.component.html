@@ -97,27 +97,27 @@
           </div>
 
           <!-- Ratings Table -->
-          <div class="table-responsive mt-4">
-          <table class="feedback-table" [formGroup]="form">
-  <thead>
-    <tr>
-   <th>{{ 'NO' | translate }}</th>
-<th>{{ 'QUESTION' | translate }}</th>
-      <th *ngFor="let s of ratingScale">{{ s.label }}</th>
-    </tr>
-  </thead>
-  <tbody formGroupName="ratings">
-    <tr *ngFor="let q of ratingsTable; let i = index">
-      <td>{{ i + 1 }}</td>
-      <td>{{ q.label }}</td>
-      <td *ngFor="let s of ratingScale">
-        <input type="radio" [formControlName]="q.key" [value]="s.code">
-      </td>
-    </tr>
-  </tbody>
-</table>
+    <div class="table-responsive mt-4">
+  <table class="feedback-table" [formGroup]="form">
+    <thead>
+      <tr>
+        <th>{{ 'NO' | translate }}</th>
+        <th>{{ 'QUESTION' | translate }}</th>
+        <th *ngFor="let s of ratingScale">{{ s.label }}</th>
+      </tr>
+    </thead>
+    <tbody formGroupName="ratings">
+      <tr *ngFor="let q of ratingsTable; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ q.label }}</td>
+        <td *ngFor="let s of ratingScale">
+          <input type="radio" [formControlName]="q.key" [value]="s.code">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-          </div>
 
 <div class="mt-4" [formGroup]="commentsFG">
   <p>{{ getCommentLabel('C1') }}</p>

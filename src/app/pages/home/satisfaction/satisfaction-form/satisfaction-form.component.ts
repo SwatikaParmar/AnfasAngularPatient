@@ -19,7 +19,7 @@ export class SatisfactionFormComponent implements OnInit {
   form!: FormGroup;
   data: any;
   ratingsTable: any[] = [];
-  ratingScale: any[] = [];
+  ratingScale: any;
 
   // Enums
   filledByOptions: any[] = [];
