@@ -81,10 +81,7 @@
       .anfasi-banner {
         font-size: 0.9rem;
         padding: 10px 15px;
-        text-align: center;
-        clip-path: none; /* simplify for small screens */
-        border-radius: 6px;
-        width: 100%;
+                width: 64%;
       }
       .anfasi-logo img {
         max-width: 100px;
@@ -193,45 +190,7 @@
       height: 18px;
     }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .feedback-table, .feedback-table thead, .feedback-table tbody, .feedback-table th, .feedback-table td, .feedback-table tr {
-        display: block;
-      }
-      .feedback-table thead tr {
-        display: none;
-      }
-      .feedback-table tr {
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        padding: 10px;
-        border-radius: 6px;
-      }
-      .feedback-table td {
-        text-align: left;
-        position: relative;
-        padding-left: 50%;
-        border: none;
-        border-bottom: 1px solid #ddd;
-      }
-      .feedback-table td:first-child {
-        font-weight: bold;
-        background: #ffc107;
-        padding-left: 10px;
-      }
-      .feedback-table td:before {
-        position: absolute;
-        left: 10px;
-        width: 45%;
-        white-space: nowrap;
-        font-weight: bold;
-      }
-      .feedback-table td:nth-child(2):before { content: "Function"; }
-      .feedback-table td:nth-child(3):before { content: "Very Good"; }
-      .feedback-table td:nth-child(4):before { content: "Good"; }
-      .feedback-table td:nth-child(5):before { content: "Needs Improvement"; }
-      .feedback-table td:nth-child(6):before { content: "Not Applicable"; }
-    }
+
 	
 	    /* unique class name that will never exist anywhere else */
     .line_x9a7f4p_qwerty12345 {
@@ -245,3 +204,152 @@
     .form-check-label{
   margin-right: 20px;
 }
+
+
+
+
+
+
+@media (max-width: 768px) {
+  .form-label {
+    font-size: 14px;
+  }
+}
+
+
+
+
+
+/* Default table look (desktop & tablet) */
+.feedback-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.feedback-table th,
+.feedback-table td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+/* ✅ Mobile Responsive */
+@media (max-width: 768px) {
+  .feedback-table,
+  .feedback-table thead,
+  .feedback-table tbody,
+  .feedback-table th,
+  .feedback-table td,
+  .feedback-table tr {
+    display: block;
+  }
+
+  /* Hide table headers */
+  .feedback-table thead {
+    display: none;
+  }
+
+  .feedback-table tr {
+    margin-bottom: 1.5rem;
+    background: #fff;
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    position: relative;
+  }
+
+  /* Number (circle, centered top) */
+  .feedback-table .number-col {
+    background: #FEC34F;
+    color: #0e0e0e;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 10px auto; /* center on top */
+  }
+
+  /* Question left | detail right */
+  .feedback-table .question-col {
+    font-weight: 600;
+    color: #333;
+    padding: 8px 0;
+  }
+
+  /* Each option label left, radio right */
+  .feedback-table .option-col {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border: none;
+  }
+
+  .feedback-table .option-col label {
+           width: 94%;
+        margin: auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+
+  }
+
+  .feedback-table .option-col input[type="radio"] {
+    margin-left: 10px;
+  }
+}
+/* Hide text by default (desktop & tablet) */
+.rating-text {
+  display: none;
+}
+
+/* Show text only on mobile */
+@media (max-width: 768px) {
+  .rating-text {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 14px;
+    color: #333;
+            font-weight: 600;
+  }
+}
+
+
+ 
+.btn-custom {
+  padding: 10px;
+  background: #a48f64;
+  color: #FEC34F;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+  width: 100%; /* default full width on very small screens */
+  max-width: 200px;
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+/* Hover effect */
+.btn-custom:hover {
+  background: #8a774e;
+}
+
+/* Small devices (≥576px) */
+@media (min-width: 576px) {
+  .btn-custom {
+    width: 50% !important;
+  }
+}
+
+/* Medium devices (≥768px) */
+@media (min-width: 768px) {
+  .btn-custom {
+    width: 25% !important;
+  }
+
+}
+
+
