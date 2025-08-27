@@ -15,11 +15,7 @@ import { environment } from 'src/environments/environment';
 export class HomeComponent {
   currentLanguage: string = 'en';
   currentIndex: number = 0;
-  images: string[] = [
-    'assets/images/Photo3.jpg',
-    'assets/images/Photo2.jpg',
-
-  ];
+  images:any
   dots: any;
   intervalId: any;
   storedUser!: any;
@@ -29,6 +25,7 @@ export class HomeComponent {
   historyListOriginal: any[] = []; // the full original list
   historyList: any[] = [];         // the filtered list
   selectedStatus: string = 'All';  // dropdown selection
+  rootUrl!: string;
 
   constructor(
     private translateService: TranslateService,
@@ -42,7 +39,7 @@ export class HomeComponent {
 
   }
   ngOnInit() {
-    
+      this.rootUrl = environment.root;
     this.fname = localStorage.getItem('fname');
     this.lname = localStorage.getItem('lname');
 
@@ -50,6 +47,7 @@ export class HomeComponent {
     this.updateCarousel();
     this.startAutoSlide();
     this.appointment();
+    this.getBanner();
   }
 
   ngOnDestroy() {
@@ -108,6 +106,17 @@ export class HomeComponent {
         
       }
     );
+  }
+
+  getBanner(){
+
+    this.contentService.getBannerList().subscribe(response => {
+      if(response.status == true){
+this.images = response.data
+      } else {
+
+      }
+    })
   }
 
 

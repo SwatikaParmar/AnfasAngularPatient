@@ -77,7 +77,8 @@ export enum ApiEndPoint {
     getSatisfaction = "api/PatientSatisfaction/GetPatientSatisfactionList",
     getSatisfactionForm = "api/PatientSatisfaction/GetPatientSatisfactionForm",
     addUpdateSatisfactionform ="api/PatientSatisfaction/AddUpdatePatientSatisfactionForm",
-    getLanguagePrefrence = "api/User/AddOrUpdateLanguagePreferences"
+    getLanguagePrefrence = "api/User/AddOrUpdateLanguagePreferences",
+    getBannerList = "api/Admin/GetBannerList"
     
 }
 
