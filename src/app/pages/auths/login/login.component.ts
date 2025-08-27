@@ -267,6 +267,7 @@ payload[this.selectedField] = value;
               localStorage.setItem('loginRole', patientResponse.data.role);
               localStorage.setItem('fname', patientResponse.data.firstName);
               localStorage.setItem('lname', patientResponse.data.lastName);
+              localStorage.setItem('language', patientResponse.data.language)
 
               this.updateToken(); 
             this.spinner.hide();
