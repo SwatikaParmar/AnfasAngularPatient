@@ -55,6 +55,8 @@
                             <!-- Pagination -->
                             <div class="pagination-container">
                                 <pagination-controls (pageChange)="onPageChange($event)" id="1"
+                                   [previousLabel]="'PREVIOUS' | translate"
+    [nextLabel]="'NEXT' | translate">
                                     class="paginate-doctor-list" queryParamsHandling="merge">
                                 </pagination-controls>
                             </div>

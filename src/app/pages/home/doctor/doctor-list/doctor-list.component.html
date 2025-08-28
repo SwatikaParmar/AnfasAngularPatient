@@ -70,6 +70,8 @@
               <!-- Pagination -->
               <div *ngIf="filteredDoctorList?.length > 0" class="pagination-container">
                 <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
+                   [previousLabel]="'PREVIOUS' | translate"
+    [nextLabel]="'NEXT' | translate">
                   queryParamsHandling="merge">
                 </pagination-controls>
               </div>

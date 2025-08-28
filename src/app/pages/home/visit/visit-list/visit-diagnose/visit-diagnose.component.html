@@ -71,6 +71,8 @@
 
                   <div class="pagination-container pb-3" *ngIf="labdata?.length > 0">
                     <pagination-controls (pageChange)="onPageChanges($event, 'report')" [id]="'report-pagination'"
+                       [previousLabel]="'PREVIOUS' | translate"
+    [nextLabel]="'NEXT' | translate">
                       class="paginate-doctor-list" queryParamsHandling="merge">
                     </pagination-controls>
                   </div>
@@ -123,6 +125,8 @@
 
                   <div class="pagination-container pb-3" *ngIf="RisData?.length > 0">
                     <pagination-controls (pageChange)="onPageChanges($event, 'summary')" [id]="'summary-pagination'"
+                       [previousLabel]="'PREVIOUS' | translate"
+    [nextLabel]="'NEXT' | translate">
                       class="paginate-doctor-list" queryParamsHandling="merge">
                     </pagination-controls>
                   </div>
@@ -229,6 +233,8 @@
                     </div>
                     <div class="pagination-container pb-3">
                       <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
+                         [previousLabel]="'PREVIOUS' | translate"
+    [nextLabel]="'NEXT' | translate">
                         queryParamsHandling="merge"></pagination-controls>
                     </div>
                   </div>

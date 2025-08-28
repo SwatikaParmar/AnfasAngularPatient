@@ -117,7 +117,9 @@
                                 <div class="pagination-container pt-3 pb-3">
                                     <pagination-controls *ngIf="heartRateList && heartRateList.length > 0"
                                         (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
-                                        queryParamsHandling="merge"></pagination-controls>
+                                        queryParamsHandling="merge"
+                                           [previousLabel]="'PREVIOUS' | translate"
+    [nextLabel]="'NEXT' | translate">></pagination-controls>
                                 </div>
                             </div>
                         </div>

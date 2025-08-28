@@ -120,7 +120,9 @@
                                                         *ngIf="medicationList && medicationList.length > 0"
                                                         (pageChange)="onPageChange($event)" id="1"
                                                         class="paginate-doctor-list"
-                                                        queryParamsHandling="merge"></pagination-controls>
+                                                        queryParamsHandling="merge"
+                                                           [previousLabel]="'PREVIOUS' | translate"
+    [nextLabel]="'NEXT' | translate">></pagination-controls>
                                                 </div>
                                             </div>
                                         </div>
@@ -263,7 +265,9 @@
                                         *ngIf="educationMaterial && educationMaterial.length > 0">
                                         <pagination-controls (pageChange)="onPageChange($event)" id="1"
                                             class="paginate-doctor-list"
-                                            queryParamsHandling="merge"></pagination-controls>
+                                            queryParamsHandling="merge"
+                                               [previousLabel]="'PREVIOUS' | translate"
+    [nextLabel]="'NEXT' | translate">></pagination-controls>
                                     </div>
                                 </div>
                             </div>

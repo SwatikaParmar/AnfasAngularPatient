@@ -102,7 +102,9 @@
                 (pageChange)="onPageChange($event)"
                 id="1"
                 class="paginate-doctor-list"
-                queryParamsHandling="merge">
+                queryParamsHandling="merge"
+                   [previousLabel]="'PREVIOUS' | translate"
+    [nextLabel]="'NEXT' | translate">>
               </pagination-controls>
             </div>
           </div>
