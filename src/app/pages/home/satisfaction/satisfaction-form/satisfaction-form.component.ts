@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -59,10 +59,10 @@ export class SatisfactionFormComponent implements OnInit {
       name: [''],
       mrn: [''],
       mobileNumber: [''],
-      filledBy: [''],
-      gender: [''],
-      residence: [''],
-      ageBracket: [''],
+      filledBy: ['',Validators.required],
+      gender: ['', Validators.required],
+      residence: ['',Validators.required],
+      ageBracket: ['',Validators.required],
       ratings: this.fb.group({}),
       comments: this.fb.group({
         C1: [''],
