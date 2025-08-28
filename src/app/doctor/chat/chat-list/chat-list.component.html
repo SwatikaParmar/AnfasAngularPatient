@@ -55,7 +55,9 @@
 
                                 <div class="pagination-container pt-3 pb-3" *ngIf="data && data.length > 0">
                                     <pagination-controls (pageChange)="onPageChange($event)" id="1"
-                                        class="paginate-doctor-list" queryParamsHandling="merge"></pagination-controls>
+                                        class="paginate-doctor-list" queryParamsHandling="merge"
+                                         [previousLabel]="'PREVIOUS' | translate"
+    [nextLabel]="'NEXT' | translate"></pagination-controls>
                                 </div>
 
                         </div>
