@@ -72,8 +72,9 @@ export class AppointmentListComponent {
 
 
       editContent(item: any): void {
+        debugger
         const CareProviderCode = item.code; 
-        const receiverName = item.name; 
+        const receiverName = item.printName; 
         
         if (CareProviderCode && receiverName) {
           this.router.navigate(['/appointment-list/appointment/book'], {

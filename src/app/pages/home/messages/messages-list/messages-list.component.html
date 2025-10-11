@@ -32,7 +32,7 @@
                                         totalItems: totalItems,
                                         id: '1'
                                       }">
-                        <td>Dr. {{ item.firstName + ' ' + item.lastName || 'N/A' }}</td>
+                        <td> {{ item.firstName + ' ' + item.lastName || 'N/A' }}</td>
                         <td>{{ item.lastMessage || 'N/A' }}</td>
                         <td [style.color]="item.status ? 'green' : 'red'">
                           {{ item.status ? 'Online' : 'Offline' }}
