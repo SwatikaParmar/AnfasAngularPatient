@@ -217,6 +217,7 @@ debugger
   this.contentService.visitDetail(payload).subscribe(response => {
     if(response.status == true){
       this.spinner.hide();
+      debugger
  this.diagnose = response.data.diagnoses;
  
     }else {
