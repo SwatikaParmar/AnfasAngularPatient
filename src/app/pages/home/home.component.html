@@ -36,7 +36,7 @@
               <!-- Carousel Images -->
               <div class="carousel-images relative h-[500px]">
                 <div *ngFor="let image of images; let i = index">
-                  <img  [src]="rootUrl + image.bannerUrl"  class="carousel-img w-full h-full  absolute"
+                  <img [src]="rootUrl + image.bannerUrl" class="carousel-img w-full h-full  absolute"
                     [ngClass]="{'opacity-100': i === currentIndex, 'opacity-0': i !== currentIndex}" />
                 </div>
               </div>
@@ -111,7 +111,7 @@
                 class="bg-white shadow p-4 rounded-lg flex flex-col items-center gap-1 text-center hover:scale-105 transition-transform duration-300 ease-in-out"
                 style="border:1px solid #FEC34F!important;" [routerLink]="['/request-list']">
                 <!-- Modern Clipboard Icon -->
-                 <i class="fas fa-user-plus text-red-500 text-2xl" style="color: #77734E;"></i>
+                <i class="fas fa-user-plus text-red-500 text-2xl" style="color: #77734E;"></i>
                 <span style="color:#77734E; font-weight: 600;">{{ 'REQUEST' | translate }}</span>
               </button>
 
@@ -123,6 +123,9 @@
             <div class=" mt-8" *ngIf="historyList?.length">
               <h4 class="text-lg font-semibold mb-4" style="color: #77734E; font-size: 25px;">{{ 'MY_APPOINTMENTS' |
                 translate }}</h4>
+
+          
+
               <div class="row" *ngFor="let item of historyList">
                 <div class="col-12 ">
                   <div class="appointment-card" [routerLink]="['/appointment-list']">
@@ -139,8 +142,19 @@
                   </div>
                 </div>
               </div>
-            </div>
 
+              
+            </div>
+    <div class="col-12 mb-3 p-0 ">
+                <div class="appointment-card" style="background-color: white; border:1px solid #ffed91">
+                  <div class="doctor-info">
+                    <div class="consent-button-top" (click)="navigateToPreview()">
+                      <a style="color: rgb(138, 117, 253); font-weight: 600; text-decoration: underline;" class="consent-lin">{{ 'REVIEW_YOUR_CONSENT_FORM' |
+                        translate }}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
             <!-- Medical File Section -->
             <!-- <div class="mt-8">

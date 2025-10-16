@@ -26,6 +26,10 @@ export class HomeComponent {
   historyList: any[] = [];         // the filtered list
   selectedStatus: string = 'All';  // dropdown selection
   rootUrl!: string;
+  mrn: any;
+  detail: any;
+  gender: any;
+hover: any;
 
   constructor(
     private translateService: TranslateService,
@@ -48,6 +52,10 @@ export class HomeComponent {
     this.startAutoSlide();
     this.appointment();
     this.getBanner();
+        this.mrn = localStorage.getItem('mrnNumber');
+            this.patientDetail();
+
+
   }
 
   ngOnDestroy() {
@@ -119,5 +127,33 @@ this.images = response.data
     })
   }
 
+  patientDetail(): void {
+    this.contentService.patientDetails(this.mrn).subscribe({
+      next: (response) => {
+        if (response.status === true) {
+          this.detail = response.data;
+          this.gender = response.data.gender;
+        } else {
+  
+        }
+        this.spinner.hide();
+      },
+      error: (err) => {
+      
+        this.spinner.hide();
+       
+      }
+    });
+  }
+
+    navigateToPreview(): void {
+    if (this.detail?.mrn) {
+      this.router.navigate(['/profile/consent'], {
+        queryParams: { mrn: this.detail.mrn }
+      });
+    } else {
+
+    }
+  }
 
 }
