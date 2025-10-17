@@ -90,7 +90,7 @@ toggleMenus() {
     } else if (lang === 'en') {
       localStorage.setItem('englishLanguage', 'English');
     }
-
+debugger
   this.updateLanguagePreference(lang); // ✅ Call function to save preference
   }
 

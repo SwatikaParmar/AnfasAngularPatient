@@ -472,4 +472,6 @@ getPrefrence(data:any){
 getBannerList(){
   return this.http.get<any>(environment.apiUrl + ApiEndPoint.getBannerList)
 }
+
+
 }

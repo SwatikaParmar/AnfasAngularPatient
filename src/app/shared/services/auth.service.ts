@@ -95,4 +95,7 @@ verifyPhone(phoneNumber: string, code: string): Observable<any> {
   }
 
 
+  getPrefrence(mrn:any){
+return this.http.get<any>(environment.apiUrl + ApiEndPoint.getPrefrence + '?mrn=' + mrn)
+  }
 }

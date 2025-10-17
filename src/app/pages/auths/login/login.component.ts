@@ -259,7 +259,7 @@ payload[this.selectedField] = value;
         localStorage.setItem('mrnNumber', mrn);
         localStorage.setItem('mrn', mrn);
         localStorage.setItem('role', 'Patient');
-
+this.getPrefrence(mrn)
         // Step 2: Fetch Patient Details
         this.authService.patientDetails(payload).subscribe({
           next: (patientResponse) => {
@@ -329,5 +329,15 @@ updateToken() {
 }
 
 
+getPrefrence(mrn:any){
+
+  this.authService.getPrefrence(mrn).subscribe(response => {
+    if(response.isSuccess) {
+
+    } else {
+
+    }
+  });
+}
 
 }
