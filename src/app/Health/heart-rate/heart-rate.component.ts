@@ -64,6 +64,18 @@ imageFile: File | null = null;
   }, 60000); // 60,000 ms = 1 minute
   }
 
+    getStatusColor(status: any): string {
+    switch (status) {
+      case 1:
+        return 'orange';  // Yellow or Orange
+      case 2:
+        return 'green';
+      case 3:
+        return 'red';
+      default:
+        return 'black';  // Default color
+    }
+  }
   HeartRateList() {
     let payload = {
       mrn: localStorage.getItem('mrn'),

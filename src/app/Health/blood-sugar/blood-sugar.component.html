@@ -72,11 +72,7 @@
   {{ convertToLocalTime(item.createdAt) }}
 </td>
 
-                        <td [ngClass]="{
-  'status-pending': item.status === 'Pending',
-  'status-verified': item.status === 'Verified',
-  'status-rejected': item.status === 'Rejected'
-}">
+                        <td [ngStyle]="{ 'color': getStatusColor(item.statusId) }">
                           {{ item.status }}
                         </td>
                         <td>
