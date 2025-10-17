@@ -43,7 +43,7 @@
                     }}
                   </td>
                   <td class="p-3 text-sm">{{ item.requestTypeName || 'N/A' }}</td>
-                  <td class="p-3 text-sm">{{ item.status || 'N/A' }}</td>
+                  <td class="p-3 text-sm" [ngStyle]="{ 'color': getStatusColor(item.statusId) }">{{ item.status || 'N/A' }}</td>
                   <td class="p-3 text-sm">
                     <div [dir]="currentLang === 'ar' ? 'rtl' : 'ltr'" class="d-flex gap-3">
                       <a [routerLink]="['/request-list/detail', item.id]" class="action-link">

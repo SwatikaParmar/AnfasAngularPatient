@@ -35,7 +35,7 @@
 
           <!-- Fourth part: Status -->
           <div class="flex-fill col-12 col-sm-6 col-md-2 text-sm-end p-0 mb-2">
-            <strong style="color: #726641;">{{ 'STATUS' | translate }}: </strong><span style="color:#FFA529">{{
+            <strong style="color: #726641;">{{ 'STATUS' | translate }}: </strong><span [ngStyle]="{ 'color': getStatusColor(complaintDetails.statusId) }">{{
               complaintDetails?.status }}</span>
           </div>
 

@@ -35,6 +35,19 @@ export class RequestListComponent {
     });
   }
 
+    getStatusColor(status: any): string {
+    switch (status) {
+      case 1:
+        return 'orange';  // Yellow or Orange
+      case 2:
+        return 'green';
+      case 3:
+        return 'red';
+      default:
+        return 'black';  // Default color
+    }
+  }
+  
   RequestList(): void {
     this.spinner.show();
 

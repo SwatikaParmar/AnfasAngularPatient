@@ -40,7 +40,7 @@
                         <td>{{ item.patientName || 'N/A' }}</td>
                         <td>{{ item.complaintTypeName || 'N/A' }}</td>
                         <td>{{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : 'N/A' }}</td>
-                        <td [ngStyle]="{ 'color': getStatusColor(item.status) }">
+                        <td [ngStyle]="{ 'color': getStatusColor(item.statusId) }">
                           {{ item.status || 'N/A' }}
                         </td>
                         <td>
