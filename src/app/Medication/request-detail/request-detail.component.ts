@@ -40,19 +40,21 @@ detail: any;
 }
 
 Detail(id: number): void {
+  const mrn = localStorage.getItem('mrn') || ''; // get MRN safely
   this.spinner.show();
-  this.contentService.requestDetail(id).subscribe({
+
+  this.contentService.requestDetail(id, mrn).subscribe({
     next: (response) => {
       if (response.status || response.isSuccess) {
         this.detail = response.data;
       } else {
-    
+        // handle false status if needed
       }
       this.spinner.hide();
     },
     error: (err) => {
       this.spinner.hide();
-    
+      // handle error if needed
     }
   });
 }

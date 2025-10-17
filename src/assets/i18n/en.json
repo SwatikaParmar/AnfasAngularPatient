@@ -3,6 +3,8 @@
   "DESCRIPTION": "Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy..",
   "TITLE1": "Title",
   "DESCRIPTION1": "Description",
+    "DESCRIPTION2": "Descretion",
+
   "DASHBOARD": "Dashboard",
   "APPOINTMENTS": "Appointments",
   "DOCTORS": "Doctors",
@@ -436,5 +438,15 @@
     "NO": "No.",
   "QUESTION": "Question",
    "PREVIOUS": "Previous",
-  "NEXT": "Next"
+  "NEXT": "Next",
+   "COMPANION_NAME": "Companion Name",
+  "ENTER_COMPANION_NAME": "Enter companion name",
+  "COMPANION_NATIONAL_ID": "Companion National ID",
+  "ENTER_COMPANION_NATIONAL_ID": "Enter national ID",
+  "PHONE_NUMBER": "Phone Number",
+  "ENTER_PHONE_NUMBER": "Enter phone number",
+  "DATE_OF_BIRTH": "Date of Birth",
+  "DESCRIPTION2": "Description",
+  "ENTER_DESCRIPTION": "Enter description",
+  "DESCRIPTION_IS_REQUIRED": "Description is required"
 }

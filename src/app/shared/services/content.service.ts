@@ -102,8 +102,8 @@ return this.http.post<any>(environment.apiUrl + ApiEndPoint.patientAssign,data)
     return this.http.get<any>(url);
   }
 
-  getComplaintType() {
-    return this.http.get<any>(environment.apiUrl + ApiEndPoint.complaintType)
+  getComplaintType(mrn:any) {
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.complaintType + '?mrn=' + mrn)
   }
 
   addComplaint(data: any) {
@@ -163,9 +163,9 @@ return this.http.post<any>(environment.apiUrl + ApiEndPoint.patientAssign,data)
     );
   }
 
-  getRequestType() {
+  getRequestType(mrn:any) {
     
-    return this.http.get<any>(environment.apiUrl + ApiEndPoint.requestType)
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.requestType + '?mrn=' +mrn)
   }
 
   getRequestList(data: any) {
@@ -410,11 +410,12 @@ getMessageList(userName :any){
   }
 
 
-requestDetail(id: number): Observable<any> {
+requestDetail(id: number, mrn: string): Observable<any> {
   return this.http.get<any>(
-    `${environment.apiUrl}${ApiEndPoint.requestDetail}?id=${id}`
+    `${environment.apiUrl}${ApiEndPoint.requestDetail}?id=${id}&mrn=${mrn}`
   );
 }
+
 
 
 visitDetail(data:any){

@@ -440,5 +440,15 @@
      "NO": "الرقم",
   "QUESTION": "السؤال",
    "PREVIOUS": "السابق​",
-  "NEXT": "التالي​"
+  "NEXT": "التالي​",
+    "COMPANION_NAME": "اسم المرافق",
+  "ENTER_COMPANION_NAME": "أدخل اسم المرافق",
+  "COMPANION_NATIONAL_ID": "الرقم الوطني للمرافق",
+  "ENTER_COMPANION_NATIONAL_ID": "أدخل الرقم الوطني",
+  "PHONE_NUMBER": "رقم الهاتف",
+  "ENTER_PHONE_NUMBER": "أدخل رقم الهاتف",
+  "DATE_OF_BIRTH": "تاريخ الميلاد",
+  "DESCRIPTION2": "الوصف",
+  "ENTER_DESCRIPTION": "أدخل الوصف",
+  "DESCRIPTION_IS_REQUIRED": "الوصف مطلوب"
 }

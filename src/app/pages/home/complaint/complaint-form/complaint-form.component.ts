@@ -66,8 +66,8 @@ export class ComplaintFormComponent {
   }
 
   getComplaint(){
-
-    this.content.getComplaintType().subscribe(response => {
+let mrn = localStorage.getItem('mrn')
+    this.content.getComplaintType(mrn).subscribe(response => {
       if(response.status ===true) {
 this.typeList = response.data;
       } else {
