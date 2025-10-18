@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ContentService } from 'src/app/shared/services/content.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-doctor-dashboard',
@@ -7,13 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./doctor-dashboard.component.css']
 })
 export class DoctorDashboardComponent {
-images: string[] = [
-    'assets/images/Photo3.jpg',
-    'assets/images/Photo2.jpg',
-
-  ];
+images: any;
     currentIndex: number = 0;
   fname = localStorage.getItem('dname')
+  rootUrl: any;
 
    prevSlide() {
     this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
@@ -35,12 +34,34 @@ images: string[] = [
     this.updateCarousel();
   }
   
-constructor(private router : Router){
+constructor(private router : Router,
+      private contentService: ContentService,
+  
+){
 
 }
+
+  ngOnInit() {
+      this.rootUrl = environment.root;
+    this.getBanner();
+
+  }
 
     goToPatientList() {
     
     this.router.navigate(['/doctor-patient']);
   }
+
+    getBanner(){
+debugger
+    this.contentService.getBannerList().subscribe(response => {
+      if(response.status == true){
+this.images = response.data
+      } else {
+
+      }
+    })
+  }
+
+
 }

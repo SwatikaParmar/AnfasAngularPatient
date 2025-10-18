@@ -80,6 +80,7 @@ toggleMenus() {
   this.isSidebarCollapsed = !this.isSidebarCollapsed;
 }
   switchLanguage(lang: string) {
+    debugger
     this.currentLanguage = lang;
     this.languageService.switchLanguage(lang);
     localStorage.setItem('language', lang); // Store selected language
@@ -252,5 +253,55 @@ updateVisitSection(type: VisitSectionType): void {
       }
     });
   }
+
+
+
+   switchLanguageDoctor(lang: string) {
+    debugger
+    this.currentLanguage = lang;
+    this.languageService.switchLanguage(lang);
+    localStorage.setItem('language', lang); // Store selected language
+
+
+    if (lang === 'ar') {
+      localStorage.setItem('arabicLanguage', 'Arabic');
+    } else if (lang === 'en') {
+      localStorage.setItem('englishLanguage', 'English');
+    }
+debugger
+  this.updateLanguagePreferenceDoctor(lang); // ✅ Call function to save preference
+  }
+
+
+  updateLanguagePreferenceDoctor(lang: string) {
+  const mrn = localStorage.getItem('mrn');
+
+  if (!mrn) {
+    console.error('MRN not found in localStorage');
+    return;
+  }
+debugger
+  const payload = {
+    language: lang,
+    careProviderCode: mrn,
+    isAdmin : false
+       // Or false based on role
+  };
+
+  this.spinner.show();
+  this.contentService.addUpdatePrefrence(payload).subscribe({
+    next: (res: any) => {
+      this.spinner.hide();
+      if (res.isSuccess) {
+         window.location.reload(); // ✅ Refresh after update
+      } else {
+      }
+    },
+    error: (err) => {
+      this.spinner.hide();
+      console.error(err);
+    }
+  });
+}
 
 }

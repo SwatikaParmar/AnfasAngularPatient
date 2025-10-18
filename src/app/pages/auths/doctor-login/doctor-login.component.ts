@@ -152,5 +152,15 @@ updateToken(mrn: string, token: string) {
   });
 }
 
+getPrefrence(mrn:any){
+
+  this.authService.getPrefrenceDoctor(mrn).subscribe(response => {
+    if(response.isSuccess) {
+
+    } else {
+
+    }
+  });
+}
 
 }

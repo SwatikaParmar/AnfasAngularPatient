@@ -34,7 +34,7 @@
                             <!-- Carousel Images -->
                             <div class="carousel-images relative h-[500px]">
                                 <div *ngFor="let image of images; let i = index">
-                                    <img [src]="image" class="carousel-img w-full h-full  absolute"
+                                    <img [src]="rootUrl + image.bannerUrl" class="carousel-img w-full h-full  absolute"
                                         [ngClass]="{'opacity-100': i === currentIndex, 'opacity-0': i !== currentIndex}" />
                                 </div>
                             </div>

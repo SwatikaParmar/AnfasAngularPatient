@@ -136,7 +136,7 @@ export class DoctorBloodPressureComponent {
 
 
   convertToLocalTime(utcDate: string): string {
-  if (!utcDate) return '--'; // Handle missing dates
+  if (!utcDate) return 'N/A'; // Handle missing dates
 
   const utcDateObj = new Date(utcDate + 'Z'); // Ensure it's treated as UTC
   if (isNaN(utcDateObj.getTime())) return 'Invalid Date'; // Handle invalid date

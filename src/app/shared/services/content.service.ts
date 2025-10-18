@@ -470,6 +470,10 @@ getPrefrence(data:any){
   return this.http.post<any>(environment.apiUrl + ApiEndPoint.getLanguagePrefrence,data)
 }
 
+addUpdatePrefrence(data:any){
+    return this.http.post<any>(environment.apiUrl + ApiEndPoint.addupdatePrefrence,data)
+
+}
 getBannerList(){
   return this.http.get<any>(environment.apiUrl + ApiEndPoint.getBannerList)
 }

@@ -451,7 +451,7 @@
   "DESCRIPTION2": "الوصف",
   "ENTER_DESCRIPTION": "أدخل الوصف",
   "DESCRIPTION_IS_REQUIRED": "الوصف مطلوب",
-  {
+  
   "REQUEST_TYPE": "نوع الطلب",
   "SELECT": "اختر",
   "REQUEST_TYPE_IS_REQUIRED": "نوع الطلب مطلوب",
@@ -469,4 +469,3 @@
   "SUBMIT": "إرسال"
 }
 
-}
