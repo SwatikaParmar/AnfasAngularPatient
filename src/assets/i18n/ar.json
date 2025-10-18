@@ -450,5 +450,23 @@
   "DATE_OF_BIRTH": "تاريخ الميلاد",
   "DESCRIPTION2": "الوصف",
   "ENTER_DESCRIPTION": "أدخل الوصف",
-  "DESCRIPTION_IS_REQUIRED": "الوصف مطلوب"
+  "DESCRIPTION_IS_REQUIRED": "الوصف مطلوب",
+  {
+  "REQUEST_TYPE": "نوع الطلب",
+  "SELECT": "اختر",
+  "REQUEST_TYPE_IS_REQUIRED": "نوع الطلب مطلوب",
+  "COMPANION_NAME": "اسم المرافق",
+  "COMPANION_NAME_IS_REQUIRED": "اسم المرافق مطلوب",
+  "COMPANION_NATIONAL_ID": "الرقم الوطني للمرافق",
+  "COMPANION_NATIONAL_ID_IS_REQUIRED": "الرقم الوطني للمرافق مطلوب",
+  "PHONE_NUMBER": "رقم الهاتف",
+  "PHONE_NUMBER_IS_REQUIRED": "رقم الهاتف مطلوب",
+  "DATE_OF_BIRTH": "تاريخ الميلاد",
+  "DATE_OF_BIRTH_IS_REQUIRED": "تاريخ الميلاد مطلوب",
+  "DESCRIPTION": "الوصف",
+  "ENTER_DESCRIPTION": "أدخل الوصف",
+  "DESCRIPTION_IS_REQUIRED": "الوصف مطلوب",
+  "SUBMIT": "إرسال"
+}
+
 }

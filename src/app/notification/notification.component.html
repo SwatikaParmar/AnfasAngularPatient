@@ -33,11 +33,11 @@
                                         totalItems: totalItems,
                                         id: '1'
                                       }">
-                                                <td>{{ item.mrn || 'N/A' }}</td>
-                                                <td>{{ item.title || 'N/A' }}</td>
-                                                <td>{{ (item.description?.split(' ').slice(0, 4).join(' ')) || 'N/A'
+                                                <td>{{ item.mrn || '--' }}</td>
+                                                <td>{{ item.title || '--' }}</td>
+                                                <td>{{ (item.description?.split(' ').slice(0, 4).join(' ')) || '--'
                                                     }}...</td>
-                                                <td>{{ item.notificationType || 'N/A' }}</td>
+                                                <td>{{ item.notificationType || '--' }}</td>
                                                 <td>{{ item.createDate ? (item.createDate | date:'dd-MM-yyyy') : 'N/A'
                                                     }}
                                                 </td>

@@ -32,9 +32,9 @@
                                         totalItems: totalItems,
                                         id: '1'
                                       }">
-                        <td>{{ item.medicationName || 'N/A' }}</td>
-                        <td>{{ item.dosage || 'N/A' }}</td>
-                        <td>{{ item.frequency || 'N/A' }}</td>
+                        <td>{{ item.medicationName || '--' }}</td>
+                        <td>{{ item.dosage || '--' }}</td>
+                        <td>{{ item.frequency || '--' }}</td>
                         <td>
                           {{
                           (item.instructions ? item.instructions.split(' ').slice(0, 2).join(' ') +

@@ -18,19 +18,19 @@
               <li class="list-group-item d-flex align-items-center">
                 <p class="col-5">{{ 'MRN' | translate}}</p>
                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                <p class="col-5"><label class="address-texts">{{ detail?.userName || 'N/A' }}</label></p>
+                <p class="col-5"><label class="address-texts">{{ detail?.userName || '--' }}</label></p>
               </li>
 
               <li class="list-group-item d-flex align-items-center">
                 <p class="col-5">{{ 'REQUEST_TYPE' | translate }}</p>
                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                <p class="col-5"><label class="address-texts">{{ detail?.requestTypeName || 'N/A' }}</label></p>
+                <p class="col-5"><label class="address-texts">{{ detail?.requestTypeName || '--' }}</label></p>
               </li>
 
               <li class="list-group-item d-flex align-items-center">
                 <p class="col-5">{{ 'STATUS' | translate }}</p>
                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                <p class="col-5"><label [ngStyle]="{ 'color': getStatusColor(detail.statusId) }">{{ detail?.status || 'N/A' }}</label></p>
+                <p class="col-5"><label [ngStyle]="{ 'color': getStatusColor(detail.statusId) }">{{ detail?.status || '--' }}</label></p>
               </li>
 
               <li class="list-group-item d-flex align-items-center">
@@ -81,32 +81,32 @@
                  <li class="list-group-item d-flex align-items-center" *ngIf="detail.requestTypeId == 6">
                 <p class="col-5">{{ 'COMPANION_NAME' | translate }}</p>
                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                <p class="col-5"><label class="address-texts">{{ detail?.companionName || 'N/A' }}</label></p>
+                <p class="col-5"><label class="address-texts">{{ detail?.companionName || '--' }}</label></p>
               </li>
 
                  <li class="list-group-item d-flex align-items-center"  *ngIf="detail.requestTypeId == 6">
                 <p class="col-5">{{ 'COMPANION_NATIONAL_ID' | translate }}</p>
                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                <p class="col-5"><label class="address-texts">{{ detail?.companionNationalId || 'N/A' }}</label></p>
+                <p class="col-5"><label class="address-texts">{{ detail?.companionNationalId || '--' }}</label></p>
               </li>
 
                  <li class="list-group-item d-flex align-items-center"  *ngIf="detail.requestTypeId == 6">
                 <p class="col-5">{{ 'PHONE_NUMBER' | translate }}</p>
                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                <p class="col-5"><label class="address-texts">{{ detail?.phoneNumber || 'N/A' }}</label></p>
+                <p class="col-5"><label class="address-texts">{{ detail?.phoneNumber || '--' }}</label></p>
               </li>
                 
 
               <li class="list-group-item d-flex align-items-center"  *ngIf="detail.requestTypeId == 6">
                 <p class="col-5">{{ 'DATE_OF_BIRTH' | translate }}</p>
                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                <p class="col-5"><label class="address-texts">{{ detail?.dob || 'N/A' }}</label></p>
+                <p class="col-5"><label class="address-texts">{{ detail?.dob || '--' }}</label></p>
               </li>
 
                  <li class="list-group-item d-flex align-items-center">
                 <p class="col-5">{{ 'DESCRIPTION1' | translate }}</p>
                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                <p class="col-5"><label class="address-texts">{{ detail?.discretion || 'N/A' }}</label></p>
+                <p class="col-5"><label class="address-texts">{{ detail?.discretion || '--' }}</label></p>
               </li>
             </ul>
           </div>

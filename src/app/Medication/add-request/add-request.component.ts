@@ -42,7 +42,7 @@ export class AddRequestComponent implements OnInit {
     this.requestForm = this.formBuilder.group({
       username: [localStorage.getItem('mrn') || '', Validators.required],
       requestTypeId: ['', Validators.required],
-      discretion: [''], // required only if medical type
+      discretion: ['', Validators.required], // required only if medical type
       companionName: [''], // shown only if companion type
       companionNationalId: [''],
       phoneNumber: [''],
@@ -126,43 +126,47 @@ onRequestTypeChange() {
 
 
 
-  onSubmit() {
-    this.submitted = true;
+ onSubmit() {
+  this.submitted = true;
 
-    if (this.requestForm.invalid) {
-      return;
-    }
-
-    this.spinner.show();
-
-    const requestData = {
-      id: this.id ? Number(this.id) : 0,
-      username: localStorage.getItem('mrn'),
-      requestTypeId: this.requestForm.value.requestTypeId,
-      discretion: this.requestForm.value.discretion,
-      companionName: this.requestForm.value.companionName,
-      companionNationalId: this.requestForm.value.companionNationalId,
-      phoneNumber: this.requestForm.value.phoneNumber,
-      dob: this.requestForm.value.dob
-    };
-
-    const requestCall = this.content.addRequest(requestData);
-
-    requestCall.subscribe(
-      response => {
-        this.spinner.hide();
-        if (response.status) {
-          const message = this.id ? 'Updated successfully' : 'Added successfully';
-          this.toaster.success(message);
-          this.router.navigate(['/request-list']);
-        } else {
-          this.toaster.error(response.message || 'Failed to save request');
-        }
-      },
-      error => {
-        this.spinner.hide();
-        this.toaster.error('Something went wrong');
-      }
-    );
+  // If invalid, stop and highlight errors
+  if (this.requestForm.invalid) {
+    Object.keys(this.requestForm.controls).forEach(key => {
+      const control = this.requestForm.get(key);
+      control?.markAsTouched();
+      control?.updateValueAndValidity();
+    });
+    return;
   }
+
+  this.spinner.show();
+
+  const requestData = {
+    id: this.id ? Number(this.id) : 0,
+    username: localStorage.getItem('mrn'),
+    requestTypeId: this.requestForm.value.requestTypeId,
+    discretion: this.requestForm.value.discretion,
+    companionName: this.requestForm.value.companionName,
+    companionNationalId: this.requestForm.value.companionNationalId,
+    phoneNumber: this.requestForm.value.phoneNumber,
+    dob: this.requestForm.value.dob
+  };
+
+  this.content.addRequest(requestData).subscribe({
+    next: (response) => {
+      this.spinner.hide();
+      if (response.status) {
+        const message = this.id ? 'Updated successfully' : 'Added successfully';
+        this.toaster.success(message);
+        this.router.navigate(['/request-list']);
+      } else {
+        this.toaster.error(response.message || 'Failed to save request');
+      }
+    },
+    error: () => {
+      this.spinner.hide();
+      this.toaster.error('Something went wrong');
+    }
+  });
+}
 }

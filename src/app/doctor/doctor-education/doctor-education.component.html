@@ -39,7 +39,7 @@
                                         totalItems: totalItems,
                                         id: '1'
                                       }">
-                                                <td>{{ item.title || 'N/A' }}</td>
+                                                <td>{{ item.title || '--' }}</td>
                                                 <!-- <td>
                                                     <img *ngIf="item.contentUrl; else noUrl"
                                                         [src]="rootUrl + item.contentUrl" alt="Content" width="50"
@@ -51,13 +51,13 @@
                                                     {{
                                                     (item.description ? item.description.split(' ').slice(0, 2).join('
                                                     ') +
-                                                    (item.description.split(' ').length > 2 ? '...' : '') : 'N/A')
+                                                    (item.description.split(' ').length > 2 ? '...' : '') : '--')
                                                     }}
                                                 </td>
 
-                                                <td>{{ item.careProviderCode || 'N/A' }}</td>
-                                                <td *ngIf="role === 'Doctor'" [ngStyle]="{ 'color': getStatusColor(item.statusId) }">{{ item.isApproved || 'N/A' }}</td>
-                                                <td>{{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : 'N/A' }}
+                                                <td>{{ item.careProviderCode || '--' }}</td>
+                                                <td *ngIf="role === 'Doctor'" [ngStyle]="{ 'color': getStatusColor(item.statusId) }">{{ item.isApproved || '--' }}</td>
+                                                <td>{{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : '--' }}
                                                 </td>
                                                 <td>
                                                     <a class="list-icon"><i class="fa fa-eye"

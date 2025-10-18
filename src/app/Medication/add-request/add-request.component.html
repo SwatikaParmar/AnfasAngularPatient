@@ -62,6 +62,11 @@
           formControlName="companionName"
             placeholder="{{ 'ENTER_COMPANION_NAME' | translate }}"
         />
+        <div *ngIf="submitted && f['companionName'].errors" class="text-danger">
+      <div *ngIf="f['companionName'].errors['required']">
+        {{ 'COMPANION_NAME_IS_REQUIRED' | translate }}
+      </div>
+    </div>
       </div>
 
       <div class="col-12 col-md-3 mb-3">
@@ -74,6 +79,11 @@
           formControlName="companionNationalId"
          placeholder="{{ 'ENTER_COMPANION_NATIONAL_ID' | translate }}"
         />
+          <div *ngIf="submitted && f['companionNationalId'].errors" class="text-danger">
+      <div *ngIf="f['companionNationalId'].errors['required']">
+        {{ 'COMPANION_NATIONAL_ID_IS_REQUIRED' | translate }}
+      </div>
+    </div>
       </div>
 
       <div class="col-12 col-md-3 mb-3">
@@ -85,6 +95,12 @@
           formControlName="phoneNumber"
           placeholder="{{ 'ENTER_PHONE_NUMBER' | translate }}"
         />
+            <div *ngIf="submitted && f['phoneNumber'].errors" class="text-danger">
+      <div *ngIf="f['phoneNumber'].errors['required']">
+        {{ 'PHONE_NUMBER_IS_REQUIRED' | translate }}
+      </div>
+    </div>
+
       </div>
 
       <div class="col-12 col-md-3 mb-3">
@@ -96,22 +112,27 @@
           formControlName="dob"
            placeholder="{{ 'ENTER_PHONE_NUMBER' | translate }}"
         />
+          <div *ngIf="submitted && f['dob'].errors" class="text-danger">
+      <div *ngIf="f['dob'].errors['required']">
+        {{ 'DATE_OF_BIRTH_IS_REQUIRED' | translate }}
+      </div>
+    </div>
       </div>
 
-       <div class="col-12">
-        <label for="description" class="form-label">{{ 'DESCRIPTION2' | translate }}</label>
+      <div class="col-12">
+        <label for="description" class="form-label">{{ 'DESCRIPTION1' | translate }}</label>
         <textarea
           class="form-control"
           id="description"
           name="description"
           rows="3"
-          placeholder="{{ 'ENTER_DESCRETION' | translate }}"
+          placeholder="{{ 'ENTER_DESCRIPTION' | translate }}"
           formControlName="discretion"
         ></textarea>
 
         <div *ngIf="submitted && f['discretion'].errors" class="text-danger">
           <div *ngIf="f['discretion'].errors['required']">
-            {{ 'DISCRETION_IS_REQUIRED' | translate }}
+            {{ 'DESCRIPTION_IS_REQUIRED' | translate }}
           </div>
         </div>
       </div>
@@ -120,19 +141,19 @@
     <!-- ✅ Description (only for medical) -->
     <div class="row mb-3 mt-1" *ngIf="selectedRequestType === 'medicalreport'">
       <div class="col-12">
-        <label for="description" class="form-label">{{ 'DESCRIPTION2' | translate }}</label>
+        <label for="description" class="form-label">{{ 'DESCRIPTION1' | translate }}</label>
         <textarea
           class="form-control"
           id="description"
           name="description"
           rows="3"
-          placeholder="{{ 'ENTER_DESCRETION' | translate }}"
+          placeholder="{{ 'ENTER_DESCRIPTION' | translate }}"
           formControlName="discretion"
         ></textarea>
 
         <div *ngIf="submitted && f['discretion'].errors" class="text-danger">
           <div *ngIf="f['discretion'].errors['required']">
-            {{ 'DISCRETION_IS_REQUIRED' | translate }}
+            {{ 'DESCRIPTION_IS_REQUIRED' | translate }}
           </div>
         </div>
       </div>

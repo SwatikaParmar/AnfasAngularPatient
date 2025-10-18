@@ -18,42 +18,42 @@
                             <li class="list-group-item d-flex align-items-center">
                                 <p class="col-5">{{ 'MRN' | translate}}</p>
                                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                                <p class="col-5"><label class="address-texts">{{ detail?.mrn || 'N/A' }}</label></p>
+                                <p class="col-5"><label class="address-texts">{{ detail?.mrn || '--' }}</label></p>
                             </li>
 
                             <li class="list-group-item d-flex align-items-center">
                                 <p class="col-5">{{ 'NAME' | translate }}</p>
                                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                                <p class="col-5"><label class="address-texts">{{ detail?.patientFirstName || 'N/A' }}{{
-                                        detail?.patientLastName || 'N/A' }}</label></p>
+                                <p class="col-5"><label class="address-texts">{{ detail?.patientFirstName || '--' }}{{
+                                        detail?.patientLastName || '--' }}</label></p>
                             </li>
 
 
                             <li class="list-group-item d-flex align-items-center">
                                 <p class="col-5">{{ 'PROCEDURE_NAME' | translate }}</p>
                                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                                <p class="col-5"><label class="address-texts">{{ detail?.procedureName || 'N/A'
+                                <p class="col-5"><label class="address-texts">{{ detail?.procedureName || '--'
                                         }}</label></p>
                             </li>
                             
                             <li class="list-group-item d-flex align-items-center">
                                 <p class="col-5">{{ 'PROCEDURE_CODE' | translate }}</p>
                                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                                <p class="col-5"><label class="address-texts">{{ detail?.procedureCode || 'N/A'
+                                <p class="col-5"><label class="address-texts">{{ detail?.procedureCode || '--'
                                         }}</label></p>
                             </li>
 
                               <li class="list-group-item d-flex align-items-center">
                                 <p class="col-5">{{ 'MEDICAL_QUESTION' | translate }}</p>
                                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                                <p class="col-5"><label class="address-texts">{{ detail?.medicalQuestion || 'N/A'
+                                <p class="col-5"><label class="address-texts">{{ detail?.medicalQuestion || '--'
                                         }}</label></p>
                             </li>
 
                             <li class="list-group-item d-flex align-items-center">
                                 <p class="col-5">{{ 'CLINICAL_COMMENT' | translate }}</p>
                                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                                <p class="col-5"><label class="address-texts">{{ detail?.clinicalComment || 'N/A'
+                                <p class="col-5"><label class="address-texts">{{ detail?.clinicalComment || '--'
                                         }}</label></p>
                             </li>
                             <li class="list-group-item d-flex align-items-center">
@@ -91,7 +91,7 @@
                             <li class="list-group-item d-flex align-items-center">
                                 <p class="col-5">{{ 'APPROVED_BY' | translate }}</p>
                                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                                <p class="col-5"> {{ detail?.approvedBy || 'N/A' }}</p>
+                                <p class="col-5"> {{ detail?.approvedBy || '--' }}</p>
                             </li>
 
                             <li class="list-group-item d-flex align-items-center">
@@ -107,7 +107,7 @@
                             <li class="list-group-item d-flex align-items-center">
                                 <p class="col-5">{{ 'DESCRIPTION1' | translate }}</p>
                                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                                <p class="col-5"><label class="address-texts">{{ detail?.reportText || 'N/A' }}</label>
+                                <p class="col-5"><label class="address-texts">{{ detail?.reportText || '--' }}</label>
                                 </p>
                             </li>
                         </ul>

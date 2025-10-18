@@ -32,7 +32,7 @@
                                 <div class="physician-card ">
                                     <div class="header">
                                         <img src="assets/images/logo-dashboard.png" alt="Logo" class="logo">
-                                        <span class="department-name">{{item.departmentName || 'N/A' }}</span>
+                                        <span class="department-name">{{item.departmentName || '--' }}</span>
                                     </div>
                                     <div class="info">
                                         <p>
@@ -40,7 +40,7 @@
                                                 {{ 'VISIT_TYPE' | translate }} -
                                             </span>
                                             <span class="visit-description">
-                                                {{item.visitTypeDescription || 'N/A' }}
+                                                {{item.visitTypeDescription || '--' }}
                                             </span>
                                         </p>
 
@@ -54,7 +54,7 @@
                                                 {{ 'EN_TYPE' | translate }} -
                                             </span>
                                             <span style="flex: 1; min-width: 62px; padding-left: 20px;">
-                                                {{ item.entypeValueDescription || 'N/A' }}
+                                                {{ item.entypeValueDescription || '--' }}
                                             </span>
                                         </p>
 
