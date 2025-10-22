@@ -138,7 +138,7 @@
   "RELIGION": "Religion",
   "PREFERRED_LANGUAGE": " Preferred Language",
   "MARITAL_STATUS": "  Marital Status",
-  "NATIONAL_ID": "National ID",
+  "NATIONAL_ID": "National ID/Iqama",
   "CONTACT_NUMBER": "Contact Number",
   "REGISTERED_DATE": "  Registered Date",
   "ORGANIZATION": "Organization",
@@ -276,7 +276,7 @@
   "PHONE_NUMBER": "Phone Number",
   "ENTER_MR_NUMBER": "Enter MR Number",
   "ENTER_PHONE_NUMBER": "Enter Phone Number",
-  "ENTER_NATIONAL_ID": "Enter National Id",
+  "ENTER_NATIONAL_ID": "Enter National ID/Iqama",
   "FIND_A_DOCTOR": "Find a Doctor",
   "MIDDLE_NAME": "Middle Name",
   "YOU_HAVE_NOT_YET_SIGNED_THE_CONSENT_FORM_TO_PROCEED_WITH_FUTURE_BOOKINGS_PLEASE_SIGN_THE_CONSENT_FORM_NOW": "You have not yet signed the consent form. To proceed with future bookings, please sign the consent form now.",
@@ -463,5 +463,8 @@
   "DESCRIPTION": "Description",
   "ENTER_DESCRIPTION": "Enter description",
   "DESCRIPTION_IS_REQUIRED": "Description is required",
-  "SUBMIT": "Submit"
+  "SUBMIT": "Submit",
+  "doctor_sign_in" : "Doctor Sign In",
+  "amc": "AMC",
+  "enter_sign_in_code" : "Enter Sign in Code"
 }

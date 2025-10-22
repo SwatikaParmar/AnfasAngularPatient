@@ -20,7 +20,7 @@
           <div class="login-forms">
             <h2 style="color: #77734E; margin-bottom: 30px; font-size: 30px; font-weight: 600;">{{ 'WELCOME_BACK' | translate }}!</h2>
             <div style="display: flex; justify-content: space-between; align-items: center;">
-              <h6 style="font-size: 20px; margin: 0;">Doctor Sign In</h6>
+              <h6 style="font-size: 20px; margin: 0;">{{'doctor_sign_in' | translate}}</h6>
               <div class="lang-container">
                 <div class="lang-toggle">
                   <div class="lang-option" [class.active]="currentLang === 'en'" (click)="switchLanguage('en')">
@@ -40,14 +40,14 @@
             <div class="form-group">
               <select id="mrNumber" class="form-control custom-select-align-end" formControlName="orgCode">
                 <option value="" disabled selected>{{ 'SELECT' | translate }}</option>
-                <option value="AMC">{{ 'AMC' | translate }}</option>
+                <option value="AMC">{{ 'amc' | translate }}</option>
                
               </select>
             </div>
 
 
             <div class="d-flex position-relative mb-10" >
-              <input class="form-control password" placeholder="Enter Signin Code"
+              <input class="form-control password"   [placeholder]="'enter_sign_in_code' | translate"
                 formControlName="loginid" [ngClass]="{ 'is-invalid': submitted && f['loginid'].errors }">
               <div class="eye-icon"
                 [ngClass]="{'eye-icon-rtl': currentLanguage === 'ar', 'eye-icon-ltr': currentLanguage !== 'ar'}">
