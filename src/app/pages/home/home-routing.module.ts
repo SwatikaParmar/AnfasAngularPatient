@@ -68,7 +68,6 @@ const routes: Routes = [
     component: LayoutsComponent,
     canActivate: [AuthGuard],
     children: [
-
       { path: 'home', component: HomeComponent },
       { path: 'visit', component: VisitListComponent },
       { path: 'visit/report/:id/:id2/:id3/:id4', component: VisitDiagnoseComponent },
@@ -132,7 +131,7 @@ const routes: Routes = [
       { path: 'connected-Devices', component: ConnectedDevicesComponent },
       { path: 'notification', component: NotificationComponent },
       { path: 'notification/detail', component: NotificationDetailComponent },
-       { path: 'medication-list/detail/:id', component: MedicationDetailComponent },
+      { path: 'medication-list/detail/:id', component: MedicationDetailComponent },
 
     ]
   }

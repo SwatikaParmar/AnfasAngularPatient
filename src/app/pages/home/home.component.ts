@@ -15,7 +15,7 @@ import { environment } from 'src/environments/environment';
 export class HomeComponent {
   currentLanguage: string = 'en';
   currentIndex: number = 0;
-  images:any
+  images: any
   dots: any;
   intervalId: any;
   storedUser!: any;
@@ -29,7 +29,7 @@ export class HomeComponent {
   mrn: any;
   detail: any;
   gender: any;
-hover: any;
+  hover: any;
 
   constructor(
     private translateService: TranslateService,
@@ -43,7 +43,7 @@ hover: any;
 
   }
   ngOnInit() {
-      this.rootUrl = environment.root;
+    this.rootUrl = environment.root;
     this.fname = localStorage.getItem('fname');
     this.lname = localStorage.getItem('lname');
 
@@ -52,10 +52,8 @@ hover: any;
     this.startAutoSlide();
     this.appointment();
     this.getBanner();
-        this.mrn = localStorage.getItem('mrnNumber');
-            this.patientDetail();
-
-
+    this.mrn = localStorage.getItem('mrnNumber');
+    this.patientDetail();
   }
 
   ngOnDestroy() {
@@ -93,7 +91,7 @@ hover: any;
   }
 
   goToDoctorList() {
-    
+
     this.router.navigate(['/doctor-list']);
   }
 
@@ -105,26 +103,26 @@ hover: any;
           this.historyListOriginal = response.data;
           this.historyList = this.historyListOriginal.length > 0 ? [this.historyListOriginal[0]] : [];
         } else {
-       //   this.toastrService.error('Failed to fetch  list.');
-        
+          //   this.toastrService.error('Failed to fetch  list.');
+
         }
       },
       error => {
-      //  this.toastrService.error('Error fetching  list.');
-        
+        //  this.toastrService.error('Error fetching  list.');
+
       }
     );
   }
 
-  getBanner(){
+  getBanner() {
 
     this.contentService.getBannerList().subscribe(response => {
-      if(response.status == true){
-this.images = response.data
+      if (response.status == true) {
+        this.images = response.data
       } else {
 
       }
-    })
+    });
   }
 
   patientDetail(): void {
@@ -134,19 +132,19 @@ this.images = response.data
           this.detail = response.data;
           this.gender = response.data.gender;
         } else {
-  
+
         }
         this.spinner.hide();
       },
       error: (err) => {
-      
+
         this.spinner.hide();
-       
+
       }
     });
   }
 
-    navigateToPreview(): void {
+  navigateToPreview(): void {
     if (this.detail?.mrn) {
       this.router.navigate(['/profile/consent'], {
         queryParams: { mrn: this.detail.mrn }
