@@ -137,9 +137,7 @@ export class HomeComponent {
         this.spinner.hide();
       },
       error: (err) => {
-
         this.spinner.hide();
-
       }
     });
   }
