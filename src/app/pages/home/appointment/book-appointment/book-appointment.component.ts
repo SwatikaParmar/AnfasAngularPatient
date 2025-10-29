@@ -104,7 +104,7 @@ export class BookAppointmentComponent {
 
   this.content.getAvailableDate(payload).subscribe({
     next: (resp: any) => {
-      if (resp?.isSuccess && resp.data?.length) {
+      if (resp?.status && resp.data?.length) {
         this.availableDates = [...resp.data.map((d: string | number | Date) => this.formatDate(new Date(d)))];
 
         this.cdr.detectChanges();
