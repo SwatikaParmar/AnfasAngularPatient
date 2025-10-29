@@ -74,7 +74,10 @@ import { XrayReportComponent } from 'src/app/Health/health-tracking/xray-report/
 import { XrayDetailComponent } from 'src/app/Health/health-tracking/xray-report/xray-detail/xray-detail.component';
 import { NotificationDetailComponent } from 'src/app/notification/notification-detail/notification-detail.component';
 import { MedicationDetailComponent } from 'src/app/Medication/medication-list/medication-detail/medication-detail.component';
-
+import { ComplaintListDetailComponent } from 'src/app/doctor/complaint-suggestion/complaint-list-detail/complaint-list-detail.component';
+import { ComplaintListDoctorComponent } from 'src/app/doctor/complaint-suggestion/complaint-list-doctor/complaint-list-doctor.component';
+import { DoctorReqstDetailComponent } from 'src/app/doctor/doctor-reqst/doctor-reqst-detail/doctor-reqst-detail.component';
+import { DoctorReqstComponent } from 'src/app/doctor/doctor-reqst/doctor-reqst.component';
 
 // export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 //   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -140,7 +143,11 @@ import { MedicationDetailComponent } from 'src/app/Medication/medication-list/me
     XrayReportComponent,
     XrayDetailComponent,
     NotificationDetailComponent,
-    MedicationDetailComponent
+    MedicationDetailComponent,
+    ComplaintListDetailComponent,
+    ComplaintListDoctorComponent,
+    DoctorReqstDetailComponent,
+    DoctorReqstComponent
 
   ],
   imports: [

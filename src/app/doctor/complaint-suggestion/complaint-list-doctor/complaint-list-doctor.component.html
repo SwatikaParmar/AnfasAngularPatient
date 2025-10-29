@@ -1,0 +1,70 @@
+<p>complaint-list-doctor works!</p>
+<div class="dashboard-outer">
+
+  <section>
+    <div class="content-body">
+      <div class="container-fluid">
+        <div class="flex items-center justify-between mb-2 ml-1">
+          <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">
+            {{ 'COMPLAINTS_&_SUGGESTIONS' | translate }}
+          </h1>
+
+        </div>
+
+        <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
+          <div class="custom-container  mx-auto p-3">
+            <div class="container">
+
+              <div class="table-container">
+                <div class="table-responsive">
+                  <table class="complaint-table">
+                    <thead>
+                      <tr>
+                        <th>{{ 'PATIENT_NAME' | translate }}</th>
+                        <th>{{ 'COMPLAINT_TYPE' | translate }}</th>
+                        <th>{{ 'DATE' | translate }}</th>
+                        <th>{{ 'STATUS' | translate }}</th>
+                        <th>{{ 'ACTION' | translate }}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="row-light" *ngFor="let item of complaintList | paginate : {
+      itemsPerPage: 5,
+      currentPage: page,
+      totalItems: totalItems,
+      id: '1'
+    }" (click)="goToComplaintChat(item)">
+                        <td>{{ item.patientName || '--' }}</td>
+                        <td>{{ item.complaintTypeName || '--' }}</td>
+                        <td>{{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : 'N/A' }}</td>
+                        <td [ngStyle]="{ 'color': getStatusColor(item.statusId) }">
+                          {{ item.status || '--' }}
+                        </td>
+                        <td>
+                          <i class="fas fa-eye" (click)="goToComplaintChat(item); $event.stopPropagation()"
+                            style="cursor: pointer; color: #726641; font-weight: bold; "></i>
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="no-data text-center" *ngIf="complaintList && complaintList.length === 0">
+                  <img src="assets/images/ffffrq-removebg-preview.png" style="width: 50%; margin: auto; padding: 50px;">
+                </div>
+
+                <div class="pagination-container pb-3 pt-3" *ngIf="complaintList && complaintList.length > 0">
+                  <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
+                     [previousLabel]="'PREVIOUS' | translate"
+    [nextLabel]="'NEXT' | translate">
+                    queryParamsHandling="merge"></pagination-controls>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

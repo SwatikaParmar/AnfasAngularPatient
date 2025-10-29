@@ -1,0 +1,117 @@
+<section>
+  <div class="content-body">
+    <div class="container-fluid">
+      <div class="input-form">
+        <div class="row justify-content-start align-items-start g-0">
+          <div class=" col-md-12">
+            <div class="card-shipper">
+              <div class="back-btn-left-circle mt-1">
+                <i class="fi fi-rr-arrow-small-left" (click)="backClicked()"
+                  style="color:#726641; padding-top: 7px; font-size: 13px;"></i>
+              </div>
+              <div>
+                <p><span class="black-home">{{ 'REQUEST_DETAIL' | translate }}</span></p>
+              </div>
+            </div>
+
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex align-items-center">
+                <p class="col-5">{{ 'MRN' | translate}}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5"><label class="address-texts">{{ detail?.userName || '--' }}</label></p>
+              </li>
+
+              <li class="list-group-item d-flex align-items-center">
+                <p class="col-5">{{ 'REQUEST_TYPE' | translate }}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5"><label class="address-texts">{{ detail?.requestTypeName || '--' }}</label></p>
+              </li>
+
+              <li class="list-group-item d-flex align-items-center">
+                <p class="col-5">{{ 'STATUS' | translate }}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5"><label [ngStyle]="{ 'color': getStatusColor(detail.statusId) }">{{ detail?.status || '--' }}</label></p>
+              </li>
+
+              <li class="list-group-item d-flex align-items-center">
+                <p class="col-5">{{ 'REPORT_URL' | translate }}</p>
+                    <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                  <a class="text-primary" *ngIf="detail?.reportUrl" [href]="rootUrl + detail.reportUrl" target="_blank"
+                    rel="noopener noreferrer">
+                    <!-- <i class="fa fa-chevron-circle-right" aria-hidden="true"></i> -->
+                  </a>
+                <p class="col-5">
+                  <label class="address-texts">
+                    <ng-container *ngIf="detail?.reportUrl; else noReport">
+                      <a class="text-primary" [href]="rootUrl + detail.reportUrl" target="_blank"
+                        rel="noopener noreferrer">
+                        {{ detail.reportUrl }}
+                      </a>
+
+                    </ng-container>
+                    <ng-template #noReport>N/A</ng-template>
+                  </label>
+                </p>
+              </li>
+
+              <!-- <li class="list-group-item d-flex align-items-center">
+                <p class="col-5">{{ 'CREATED_AT' | translate }}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5">
+                  <label class="address-texts">
+                    {{ detail?.createdAt ? (detail.createdAt | date: 'dd-MM-yyyy') : 'N/A' }}
+                  </label>
+                </p>
+              </li> -->
+
+                  <li class="list-group-item d-flex align-items-center">
+              <p class="col-5">{{ 'Requested_Date' | translate }}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5">  {{ detail.createdAt ? (detail.createdAt | date:'dd-MM-yyyy') : 'N/A' }}</p>
+              </li>
+
+                  <li class="list-group-item d-flex align-items-center">
+                <p class="col-5">{{ 'Uploaded_Date' | translate }}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5"><label class="address-texts"> {{ detail.uploadedAt ? (detail.uploadedAt | date:'dd-MM-yyyy') : 'N/A' }}</label></p>
+              </li>
+
+
+
+                 <li class="list-group-item d-flex align-items-center" *ngIf="detail.requestTypeId == 6">
+                <p class="col-5">{{ 'COMPANION_NAME' | translate }}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5"><label class="address-texts">{{ detail?.companionName || '--' }}</label></p>
+              </li>
+
+                 <li class="list-group-item d-flex align-items-center"  *ngIf="detail.requestTypeId == 6">
+                <p class="col-5">{{ 'COMPANION_NATIONAL_ID' | translate }}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5"><label class="address-texts">{{ detail?.companionNationalId || '--' }}</label></p>
+              </li>
+
+                 <li class="list-group-item d-flex align-items-center"  *ngIf="detail.requestTypeId == 6">
+                <p class="col-5">{{ 'PHONE_NUMBER' | translate }}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5"><label class="address-texts">{{ detail?.phoneNumber || '--' }}</label></p>
+              </li>
+                
+
+              <li class="list-group-item d-flex align-items-center"  *ngIf="detail.requestTypeId == 6">
+                <p class="col-5">{{ 'DATE_OF_BIRTH' | translate }}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5"><label class="address-texts">{{ detail?.dob || '--' }}</label></p>
+              </li>
+
+                 <li class="list-group-item d-flex align-items-center">
+                <p class="col-5">{{ 'DESCRIPTION1' | translate }}</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5"><label class="address-texts">{{ detail?.discretion || '--' }}</label></p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

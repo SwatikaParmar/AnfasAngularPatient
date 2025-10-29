@@ -61,6 +61,10 @@ import { XrayReportComponent } from 'src/app/Health/health-tracking/xray-report/
 import { XrayDetailComponent } from 'src/app/Health/health-tracking/xray-report/xray-detail/xray-detail.component';
 import { NotificationDetailComponent } from 'src/app/notification/notification-detail/notification-detail.component';
 import { MedicationDetailComponent } from 'src/app/Medication/medication-list/medication-detail/medication-detail.component';
+import { ComplaintListDetailComponent } from 'src/app/doctor/complaint-suggestion/complaint-list-detail/complaint-list-detail.component';
+import { ComplaintListDoctorComponent } from 'src/app/doctor/complaint-suggestion/complaint-list-doctor/complaint-list-doctor.component';
+import { DoctorReqstDetailComponent } from 'src/app/doctor/doctor-reqst/doctor-reqst-detail/doctor-reqst-detail.component';
+import { DoctorReqstComponent } from 'src/app/doctor/doctor-reqst/doctor-reqst.component';
 const routes: Routes = [
 
   {
@@ -132,6 +136,10 @@ const routes: Routes = [
       { path: 'notification', component: NotificationComponent },
       { path: 'notification/detail', component: NotificationDetailComponent },
       { path: 'medication-list/detail/:id', component: MedicationDetailComponent },
+      { path: 'doctor-complaint', component:ComplaintListDoctorComponent},
+      { path: 'doctor-complaint/detail',component:ComplaintListDetailComponent},
+      { path: 'doctor-reqst', component:DoctorReqstComponent},
+      { path: 'doctor-reqst/detail',component:DoctorReqstDetailComponent}
 
     ]
   }

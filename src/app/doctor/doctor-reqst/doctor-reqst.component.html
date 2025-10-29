@@ -1,0 +1,84 @@
+<div class="dashboard-outer px-2 sm:px-4">
+  <section>
+    <div class="content-body">
+      <div class="container-fluid">
+
+        <!-- Header and Add Button -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 gap-3">
+          <h1 class="text-xl sm:text-2xl font-semibold text-[#726641]">
+            {{ 'REQUEST_LIST' | translate }}
+          </h1>
+   
+        </div>
+
+        <!-- Table Wrapper -->
+        <div class="bg-gray-50 text-gray-800 rounded-[15px] overflow-x-auto">
+          <div class="min-w-[640px] p-3">
+
+            <!-- Table -->
+            <table class="w-full border-collapse">
+              <thead>
+                <tr class="bg-[#fde092] text-left">
+                  <th class="p-3 text-sm font-semibold">{{ 'MRN' | translate}}</th>
+                  <th class="p-3 text-sm font-semibold">{{ 'DESCRIPTION1' | translate }}</th>
+                  <th class="p-3 text-sm font-semibold">{{ 'REQUEST_TYPE' | translate }}</th>
+                  <th class="p-3 text-sm font-semibold">{{ 'STATUS' | translate }}</th>
+                  <th class="p-3 text-sm font-semibold">{{ 'ACTION' | translate }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="bg-white"
+                  *ngFor="let item of requestList | paginate: { itemsPerPage: 5, currentPage: page, totalItems: totalItems, id: '1' }">
+                  <td class="p-3 text-sm">{{ item.userName || '--' }}</td>
+                  <td class="p-3 text-sm">
+                    {{
+                    item.discretion
+                    ? (item.discretion.split(' ').slice(0, 3).join(' ') +
+                    (item.discretion.split(' ').length > 3 ? '...' : ''))
+                    : 'N/A'
+                    }}
+                  </td>
+                  <td class="p-3 text-sm">{{ item.requestTypeName || '--' }}</td>
+                  <td class="p-3 text-sm" [ngStyle]="{ 'color': getStatusColor(item.statusId) }">{{ item.status || '--' }}</td>
+                  <td class="p-3 text-sm">
+                    <div [dir]="currentLang === 'ar' ? 'rtl' : 'ltr'" class="d-flex gap-3">
+                      <a [routerLink]="['/request-list/detail', item.id]" class="action-link">
+                        <i class="fas fa-eye"></i>
+                      </a>
+                      <a [routerLink]="['/request-list/update', item.id]" class="action-link" title="Edit">
+                        <i class="fa fa-pen" aria-hidden="true"></i>
+                      </a>
+                    </div>
+
+
+
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- No Data Image -->
+            <!-- <div *ngIf="requestList && requestList.length === 0" class="text-center">
+              <img src="assets/images/ffffrq-removebg-preview.png" class="w-1/2 mx-auto py-12" alt="No Data" />
+            </div> -->
+            <div *ngIf="requestList && requestList.length === 0" class="no-data-fullpage"
+              style="text-align: center; padding: 30px;">
+              <img src="assets/images/ffffrq-removebg-preview.png" alt="No Data Found" class="no-data-image"
+                style="width: 50%; height: auto; margin: auto;" />
+            </div>
+            <!-- Pagination -->
+            <div class="pt-3 pb-3" *ngIf="requestList && requestList.length > 0">
+              <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
+                 [previousLabel]="'PREVIOUS' | translate"
+    [nextLabel]="'NEXT' | translate">
+                queryParamsHandling="merge">
+              </pagination-controls>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>

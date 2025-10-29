@@ -52,7 +52,7 @@
                       <h6 class="mb-3 mt-1 fw-bold" style="font-size: 14px;">
                         {{item.title}} {{item.printName}}
                       </h6>
-                      <p class="mb-2 text-muted small" *ngFor="let dept of item.departments | slice:0:1">
+                      <p class="mb-2 text-muted small" *ngFor="let dept of item.departments">
                         - {{ dept }}
                       </p>
                       <div class="flex justify-end">
