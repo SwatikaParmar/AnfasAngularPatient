@@ -23,7 +23,7 @@
                   <th class="p-3 text-sm font-semibold">{{ 'DESCRIPTION1' | translate }}</th>
                   <th class="p-3 text-sm font-semibold">{{ 'REQUEST_TYPE' | translate }}</th>
                   <th class="p-3 text-sm font-semibold">{{ 'STATUS' | translate }}</th>
-                  <!-- <th class="p-3 text-sm font-semibold">{{ 'ACTION' | translate }}</th> -->
+                  <th class="p-3 text-sm font-semibold">{{ 'ACTION' | translate }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -40,19 +40,19 @@
                   </td>
                   <td class="p-3 text-sm">{{ item.requestTypeName || '--' }}</td>
                   <td class="p-3 text-sm" [ngStyle]="{ 'color': getStatusColor(item.statusId) }">{{ item.status || '--' }}</td>
-                  <!-- <td class="p-3 text-sm">
+                  <td class="p-3 text-sm">
                     <div [dir]="currentLang === 'ar' ? 'rtl' : 'ltr'" class="d-flex gap-3">
-                      <a [routerLink]="['/request-list/detail', item.id]" class="action-link">
+                      <a [routerLink]="['/doctor-reqst/detail', item.id]" class="action-link">
                         <i class="fas fa-eye"></i>
                       </a>
-                      <a [routerLink]="['/request-list/update', item.id]" class="action-link" title="Edit">
+                      <!-- <a [routerLink]="['/request-list/update', item.id]" class="action-link" title="Edit">
                         <i class="fa fa-pen" aria-hidden="true"></i>
-                      </a>
+                      </a> -->
                     </div>
 
 
 
-                  </td> -->
+                  </td>
                 </tr>
               </tbody>
             </table>

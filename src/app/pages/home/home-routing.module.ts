@@ -139,7 +139,7 @@ const routes: Routes = [
       { path: 'doctor-complaint', component:ComplaintListDoctorComponent},
       { path: 'doctor-complaint/detail/:id',component:ComplaintListDetailComponent},
       { path: 'doctor-reqst', component:DoctorReqstComponent},
-      { path: 'doctor-reqst/detail',component:DoctorReqstDetailComponent}
+      { path: 'doctor-reqst/detail/:id',component:DoctorReqstDetailComponent}
 
     ]
   }
