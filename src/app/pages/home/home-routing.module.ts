@@ -137,7 +137,7 @@ const routes: Routes = [
       { path: 'notification/detail', component: NotificationDetailComponent },
       { path: 'medication-list/detail/:id', component: MedicationDetailComponent },
       { path: 'doctor-complaint', component:ComplaintListDoctorComponent},
-      { path: 'doctor-complaint/detail',component:ComplaintListDetailComponent},
+      { path: 'doctor-complaint/detail/:id',component:ComplaintListDetailComponent},
       { path: 'doctor-reqst', component:DoctorReqstComponent},
       { path: 'doctor-reqst/detail',component:DoctorReqstDetailComponent}
 

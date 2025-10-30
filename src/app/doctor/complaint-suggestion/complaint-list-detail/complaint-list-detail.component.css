@@ -1,0 +1,8 @@
+.flex-fill{
+    font-size: 14px;
+}
+@media (min-width: 576px) {
+  .text-sm-end {
+    text-align: left!important;
+  }
+}

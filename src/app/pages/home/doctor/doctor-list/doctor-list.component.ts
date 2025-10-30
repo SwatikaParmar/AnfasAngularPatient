@@ -1,68 +1,100 @@
-import { Component, NgZone } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { ContentService } from 'src/app/shared/services/content.service';
 import { environment } from 'src/environments/environment';
 import { Location } from '@angular/common';
+
 @Component({
   selector: 'app-doctor-list',
   templateUrl: './doctor-list.component.html',
   styleUrls: ['./doctor-list.component.css']
 })
 export class DoctorListComponent {
-  page: number = 0;
-  itemsPerPage!: number;
-  totalItems!: number;
-  doctorList: any;
+  page: number = 1;
+  itemsPerPage: number = 6;
+  totalItems: number = 0;
+  doctorList: any[] = [];
   rootUrl: any;
-  searchTerm: string = '';  // Search term for filtering doctors
+  searchTerm: string = '';
+  selectedTab: string = 'All'; // ✅ Default tab
+
   constructor(
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService,
     private contentService: ContentService,
     private router: Router,
     private route: ActivatedRoute,
-    private _location: Location,
-  ){ }
+    private _location: Location
+  ) {}
 
   ngOnInit(): void {
     this.rootUrl = environment.rootPathUrl;
     this.route.queryParams.subscribe((params) => {
-      this.page = +params['page'] || 0;
+      this.page = +params['page'] || 1;
     });
-    this.doctorLists();  
+    this.getDoctorList(); // ✅ initial load
   }
-  
-  doctorLists() {
 
+  // ✅ Fetch doctors list by DepartmentName (tab)
+  getDoctorList(): void {
+    this.spinner.show();
 
-    this.contentService.getDoctors().subscribe(
-      response => {
+    const payload: any = {
+      DepartmentName: this.selectedTab === 'All' ? '' : this.selectedTab
+    };
+
+    this.contentService.getDoctorss(payload).subscribe({
+      next: (response: any) => {
+        this.spinner.hide();
         if (response.status === true) {
-          this.doctorList = response.data;
+          this.doctorList = response.data || [];
+          this.totalItems = this.doctorList.length;
         } else {
-        
+          this.doctorList = [];
+          this.totalItems = 0;
+          this.toastrService.warning('No doctors found');
         }
       },
-      error => {
-       
+      error: () => {
+        this.spinner.hide();
+        this.toastrService.error('Error fetching doctor list');
       }
-    );
-  }    
-
-  get filteredDoctorList() {
-    if (!this.doctorList || this.doctorList.length === 0) {
-      return [];
-    }
-    return this.doctorList.filter((doctor: any) =>
-      doctor.printName.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
+    });
   }
-  
 
+  // ✅ Handle Tab Change → Fetch data again
+  onTabChange(tabName: string): void {
+    if (this.selectedTab !== tabName) {
+      this.selectedTab = tabName;
+      this.page = 1;
+      this.getDoctorList(); // ✅ fetch by department
+    }
+  }
+
+  // ✅ Frontend Search & Pagination
+  get filteredDoctorList() {
+    let filtered = [...this.doctorList];
+
+    // 🔍 Apply frontend search
+    if (this.searchTerm.trim()) {
+      const term = this.searchTerm.toLowerCase();
+      filtered = filtered.filter((doc: any) =>
+        doc.printName?.toLowerCase().includes(term)
+      );
+    }
+
+    // 🔢 Calculate pagination
+    this.totalItems = filtered.length;
+    const start = (this.page - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    return filtered.slice(start, end);
+  }
+
+  // ✅ Pagination click
   onPageChange(page: number): void {
-    // Update query parameters for pagination
+    this.page = page;
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { page: page },
@@ -70,36 +102,21 @@ export class DoctorListComponent {
     });
   }
 
-  
-  editContent(item: any): void {
-    this.router.navigate(['/doctors-list/doctor-details'], {
-      queryParams: {
-        OrgCode: item?.OrgCode || 'AMC',  // Default to 'AMC' if not provided
-        ShowInPatientPortal: item?.ShowInPatientPortal !== undefined ? item?.ShowInPatientPortal : true,  // Default to true if not provided
-        loginid: item?.loginId  // Ensure this is passed correctly
-      }
-    });
-  }
-  
-  backClicked() {
-    this._location.back();
-  }
-  
-
+  // ✅ Book appointment
   edit(item: any): void {
-    
     const CareProviderCode = item.code;
     const receiverName = item.printName;
-  
+
     if (CareProviderCode && receiverName) {
       this.router.navigate(['/appointment-list/appointment/book'], {
-        queryParams: {
-          CareProviderCode,
-          receiverName
-        }
+        queryParams: { CareProviderCode, receiverName }
       });
     } else {
-   
+      this.toastrService.warning('Invalid doctor data');
     }
+  }
+
+  backClicked(): void {
+    this._location.back();
   }
 }

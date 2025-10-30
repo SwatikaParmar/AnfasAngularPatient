@@ -18,6 +18,9 @@ export class ContentService {
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.doctor + '?OrgCode=AMC' + '&ShowInPatientPortal=true')
   }
 
+    getDoctorss(data:any) {
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.doctor + '?OrgCode=AMC' + '&ShowInPatientPortal=true' + '&DepartmentName=' + data.DepartmentName)
+  }
   patientDetails(data: any) {
     
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.patientDetail + '?Mrn=' + data)
@@ -97,6 +100,12 @@ return this.http.post<any>(environment.apiUrl + ApiEndPoint.patientAssign,data)
   }
 
 
+    getComplaintdoctor(data: any) {
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.complaintList + '?careProviderCode=' + data.careProviderCode +
+      '&page=' + data.page + '&pageSize=' + data.pageSize
+    )
+  }
+
   getMessagesList(userName: any) {
     const url = `${environment.apiUrl}${ApiEndPoint.messagesList}/${userName}`;
     return this.http.get<any>(url);
@@ -170,6 +179,13 @@ return this.http.post<any>(environment.apiUrl + ApiEndPoint.patientAssign,data)
 
   getRequestList(data: any) {
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.requestList + '?userName=' + data.userName + '&pageNumber=' + data.pageNumber
+      + '&pageSize=' + data.pageSize
+    );
+  }
+
+  
+  getRequestListdoctor(data: any) {
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.requestList + '?careProviderCode=' + data.userName + '&pageNumber=' + data.pageNumber
       + '&pageSize=' + data.pageSize
     );
   }

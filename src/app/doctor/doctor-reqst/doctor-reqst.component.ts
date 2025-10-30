@@ -51,14 +51,14 @@ export class DoctorReqstComponent {
   RequestList(): void {
     this.spinner.show();
 
-    const mrn = localStorage.getItem('mrn') || '';
+    const mrn = localStorage.getItem('code') || '';
     const payload = {
       userName: mrn,
       pageNumber: this.page,
       pageSize: this.itemsPerPage
     };
 
-    this.contentService.getRequestList(payload).subscribe({
+    this.contentService.getRequestListdoctor(payload).subscribe({
       next: (response: any) => {
         if (response?.status) {
           this.requestList = response.data || [];

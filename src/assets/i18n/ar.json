@@ -469,6 +469,10 @@
   "SUBMIT": "إرسال",
   "doctor_sign_in" : "تسجيل دخول الأطباء",
   "amc" : "مستشفى أنفاس الراحة الطبية ",
-  "enter_sign_in_code" : "أدخل رمز التحقق"
+  "enter_sign_in_code" : "أدخل رمز التحقق",
+   "ALL": "الكل",
+    "FAMILY_CONSULTATION_CLINIC": "عيادة الاستشارات الأسرية",
+    "DREAM_ON_CLINIC": "عيادة دريم أون",
+    "UROLOGY": "المسالك البولية"
 }
 

@@ -466,5 +466,9 @@
   "SUBMIT": "Submit",
   "doctor_sign_in" : "Doctor Sign In",
   "amc": "AMC",
-  "enter_sign_in_code" : "Enter Sign in Code"
+  "enter_sign_in_code" : "Enter Sign in Code",
+     "ALL": "All",
+    "FAMILY_CONSULTATION_CLINIC": "Family Consultation Clinic",
+    "DREAM_ON_CLINIC": "Dream On Clinic",
+    "UROLOGY": "Urology"
 }

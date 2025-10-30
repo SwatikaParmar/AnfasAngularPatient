@@ -37,12 +37,12 @@ page: number = 0;
   ComplaintList() {
 
     let payload = {
-      mrn : localStorage.getItem('mrn'),
+      careProviderCode : localStorage.getItem('code'),
       page : 1,
       pageSize : 1000
     }
 
-    this.contentService.getComplaint(payload).subscribe(
+    this.contentService.getComplaintdoctor(payload).subscribe(
       response => {
         if (response.status === true) {
           this.complaintList = response.data.complaints;
@@ -80,7 +80,7 @@ page: number = 0;
   
  
   goToComplaintChat(complaint: any): void {
-  this.router.navigate(['/complaint/chat', complaint.complaintId], {
+  this.router.navigate(['/doctor-complaint/detail', complaint.complaintId], {
     state: { complaintData: complaint }
   });
 }
