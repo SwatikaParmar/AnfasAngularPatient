@@ -17,7 +17,8 @@ export class AppointmentListComponent {
   appointmentList: any;
   rootUrl: any;
   doctorList: any;
- 
+   filteredDoctors: any = [];
+  searchText: string = '';
   constructor(
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService,
@@ -44,6 +45,8 @@ export class AppointmentListComponent {
 
       if (response.status === true) {
         this.doctorList = response.data;
+                  this.filteredDoctors = this.doctorList; // ✅ initialize filtered list
+
       } else {
 
       }
@@ -87,4 +90,18 @@ export class AppointmentListComponent {
         
         }
       }
+
+
+  filterDoctors() {
+    const searchTerm = this.searchText.toLowerCase().trim();
+    if (!searchTerm) {
+      this.filteredDoctors = this.doctorList;
+    } else {
+      this.filteredDoctors = this.doctorList.filter((doctor: any) => {
+        const name = `${doctor.title || ''} ${doctor.printName || ''}`.toLowerCase();
+        return name.includes(searchTerm);
+      });
+    }
+  }
+
 }

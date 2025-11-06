@@ -20,12 +20,22 @@
                         <h1 class="text-lg font-semibold" style="font-size: 20px; color: #726641; padding-left: 10px;">
                             {{ 'DOCTORS' | translate }}
                         </h1>
-
+                        <div class="row justify-content-start mt-2" style="padding-left: 10px;">
+      <div class="col-4">
+       <input
+      type="text"
+      class="form-control search-bar"
+      placeholder="Search doctor..."
+      [(ngModel)]="searchText"
+      (input)="filterDoctors()"
+    />
+      </div>
+    </div>
                         <!-- Check if doctorList has data -->
-                        <div *ngIf="doctorList && doctorList.length > 0; else noDataTemplate">
+                        <div *ngIf="filteredDoctors  && filteredDoctors .length > 0; else noDataTemplate">
                             <div class="container mt-4">
                                 <div class="row">
-                                    <div class="col-md-4 mb-4" *ngFor="let item of doctorList | paginate : {
+                                    <div class="col-md-4 mb-4" *ngFor="let item of filteredDoctors  | paginate : {
       itemsPerPage: 6,
       currentPage: page,
       totalItems: totalItems,
@@ -48,6 +58,7 @@
                                             </div>
                                         </div>
                                     </div>
+        
                                 </div>
 
                             </div>
@@ -55,8 +66,7 @@
                             <!-- Pagination -->
                             <div class="pagination-container">
                                 <pagination-controls (pageChange)="onPageChange($event)" id="1"
-                                   [previousLabel]="'PREVIOUS' | translate"
-    [nextLabel]="'NEXT' | translate">
+                                    [previousLabel]="'PREVIOUS' | translate" [nextLabel]="'NEXT' | translate">
                                     class="paginate-doctor-list" queryParamsHandling="merge">
                                 </pagination-controls>
                             </div>
