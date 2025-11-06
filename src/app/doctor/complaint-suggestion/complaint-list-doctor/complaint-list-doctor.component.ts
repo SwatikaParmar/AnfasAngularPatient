@@ -37,7 +37,7 @@ page: number = 0;
   ComplaintList() {
 
     let payload = {
-      careProviderCode : localStorage.getItem('code'),
+      careProviderCode : localStorage.getItem('loginId'),
       page : 1,
       pageSize : 1000
     }

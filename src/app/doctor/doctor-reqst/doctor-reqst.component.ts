@@ -51,7 +51,7 @@ export class DoctorReqstComponent {
   RequestList(): void {
     this.spinner.show();
 
-    const mrn = localStorage.getItem('code') || '';
+    const mrn = localStorage.getItem('loginId') || '';
     const payload = {
       userName: mrn,
       pageNumber: this.page,

@@ -46,7 +46,9 @@ export class AuthService {
          debugger   
           localStorage.setItem('currentUser', JSON.stringify(user.data));    
                localStorage.setItem('dname', user.data.doctor.printName);  
-                              localStorage.setItem('code', user.data.doctor.code);  
+                              localStorage.setItem('code', user.data.doctor.loginId);  
+                               localStorage.setItem('loginId', user.data.doctor.loginId);  
+
 
           localStorage.setItem('role', 'Doctor')
           //   localStorage.setItem('distributorId', user.data.distributorId);
