@@ -21,6 +21,21 @@
                 <p class="col-5"><label class="address-texts">{{ detail?.userName || '--' }}</label></p>
               </li>
 
+               <li class="list-group-item d-flex align-items-center">
+                <p class="col-5">                                {{ 'PATIENT_NAME' | translate }}
+</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5"><label class="address-texts">{{ detail?.patientFullName || 'N/A' }}</label></p>
+              </li>
+
+               <li class="list-group-item d-flex align-items-center">
+                <p class="col-5">                                    {{ 'CREATE_DATE' | translate }}
+</p>
+                <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
+                <p class="col-5"><label class="address-texts">{{ detail?.createdAt| date:'dd-MM-yyyy' }}</label></p>
+              </li>
+
+
               <li class="list-group-item d-flex align-items-center">
                 <p class="col-5">{{ 'REQUEST_TYPE' | translate }}</p>
                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
