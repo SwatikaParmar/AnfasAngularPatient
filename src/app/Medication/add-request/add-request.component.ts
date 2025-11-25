@@ -50,17 +50,28 @@ export class AddRequestComponent implements OnInit {
     });
   }
 
-  getRequestDetails(id: number) {
-    const mrn = localStorage.getItem('mrn') || ''; // get MRN safely
-    this.content.requestDetail(id,mrn).subscribe((response: any) => {
-      if (response.status) {
-        this.requestForm.patchValue({
-          requestTypeId: response.data.requestTypeId,
-          discretion: response.data.discretion
-        });
-      }
-    });
-  }
+getRequestDetails(id: number) {
+  const mrn = localStorage.getItem('mrn') || '';
+
+  this.content.requestDetail(id, mrn).subscribe((response: any) => {
+    if (response.status) {
+      const r = response.data;
+
+      this.requestForm.patchValue({
+        requestTypeId: r.requestTypeId,
+        discretion: r.discretion,
+        companionName: r.companionName,
+        companionNationalId: r.companionNationalId,
+        phoneNumber: r.phoneNumber,
+        dob: r.dob
+      });
+
+      // 🔥 IMPORTANT: Now update UI + validators based on type
+      this.onRequestTypeChange();
+    }
+  });
+}
+
 
   get f() {
     return this.requestForm.controls;
@@ -102,7 +113,7 @@ onRequestTypeChange() {
       this.selectedRequestType = 'companion';
 
       // Apply validators
-      this.requestForm.get('discretion')?.clearValidators();
+      this.requestForm.get('discretion')?.setValidators([Validators.required]);
       this.requestForm.get('companionName')?.setValidators([Validators.required]);
       this.requestForm.get('companionNationalId')?.setValidators([Validators.required]);
       this.requestForm.get('phoneNumber')?.setValidators([Validators.required]);

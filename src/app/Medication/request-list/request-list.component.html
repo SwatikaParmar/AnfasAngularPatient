@@ -24,7 +24,7 @@
               <thead>
                 <tr class="bg-[#fde092] text-left">
                   <th class="p-3 text-sm font-semibold">{{ 'MRN' | translate}}</th>
-                  <th class="p-3 text-sm font-semibold">{{ 'DESCRIPTION1' | translate }}</th>
+                  <th class="p-3 text-sm font-semibold">{{ 'NAME' | translate }}</th>
                   <th class="p-3 text-sm font-semibold">{{ 'REQUEST_TYPE' | translate }}</th>
                   <th class="p-3 text-sm font-semibold">{{ 'STATUS' | translate }}</th>
                   <th class="p-3 text-sm font-semibold">{{ 'ACTION' | translate }}</th>
@@ -36,10 +36,8 @@
                   <td class="p-3 text-sm">{{ item.userName || '--' }}</td>
                   <td class="p-3 text-sm">
                     {{
-                    item.discretion
-                    ? (item.discretion.split(' ').slice(0, 3).join(' ') +
-                    (item.discretion.split(' ').length > 3 ? '...' : ''))
-                    : 'N/A'
+                    item.patientFullName
+                   ||'--'
                     }}
                   </td>
                   <td class="p-3 text-sm">{{ item.requestTypeName || '--' }}</td>
