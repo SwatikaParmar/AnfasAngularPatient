@@ -79,7 +79,7 @@ getPatietReport(): void {
     PatientVisitUid: this.patientVisitUId,
     ReportType: 'LAB',
     PageNumber: this.pageMap['report'],
-    PageSize: 15
+    PageSize: 50
   };
 
   this.spinner.show(); // ⏳ Show spinner
@@ -108,7 +108,7 @@ getPatietRISReport(): void {
     PatientVisitUid: this.patientVisitUId,
     ReportType: 'RADIOLOGY',
     PageNumber: this.pageMap['summary'],
-    PageSize: 15
+    PageSize: 50
   };
 
   this.spinner.show(); // ⏳ Show spinner

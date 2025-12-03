@@ -332,7 +332,7 @@ return this.http.post<any>(environment.apiUrl + ApiEndPoint.patientAssign,data)
 
   getPatientReport(data:any){
     return this.http.get<any>(environment.apiUrl +  ApiEndPoint.patientReport + '?PatientUid=' + data.PatientUid 
-      + '&PatientVisitUid=' + data.PatientVisitUid + '&ReportType=' + data.ReportType  + '&PageNumber=' + data.PageNumber  + '&PageSize=' + data.PageSize
+      + '&PatientVisitUid=' + data.PatientVisitUid + '&ReportType=' + data.ReportType  + '&PageNumber=1'  + '&PageSize=1000'
     )
   }
 
