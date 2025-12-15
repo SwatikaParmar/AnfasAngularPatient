@@ -3,39 +3,49 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpResponse } fr
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService) { }
+
+  constructor(private authService: AuthService, private router: Router) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+debugger
+    // ❗ Ignore preflight OPTIONS requests
+    if (request.method === 'OPTIONS') {
+      return next.handle(request);
+    }
+
     const currentUser = this.authService.currentUserValue;
 
-if (currentUser?.token) {
-  request = request.clone({
-    setHeaders: {
-      Authorization: `Bearer ${currentUser.token}`
+    // Add Bearer Token if logged in
+    if (currentUser?.token) {
+      request = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${currentUser.token}`
+        }
+      });
     }
-  });
-}
-                                        
-                                      
+debugger
     return next.handle(request).pipe(
       tap(
-        event => {
-          if (event instanceof HttpResponse) {
-          }  
-        },
-        error => {
-          // 401 means Unauthorised
-          if (error.status === '401' || error.status === 401) {
-         
+        () => {},
+        (error) => {
+
+          // Unauthorized (login expired)
+          if (error.status === 401) {
             localStorage.removeItem('currentUser');
             location.reload();
-          }   
+          }
+
+          // ⭐ Redirect to maintenance page for API outage errors
+          if ([404, 502, 503, 500].includes(error.status)) {
+            this.router.navigate(['/maintenance']);
+          }
+
         }
       )
     );
   }
-
 }

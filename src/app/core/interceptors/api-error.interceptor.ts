@@ -1,25 +1,31 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
-import { environment } from 'src/environments/environment';
+
 @Injectable()
 export class ApiErrorInterceptor implements HttpInterceptor {
+
   constructor(private router: Router) {}
 
-  intercept(req: HttpRequest<any>, next: HttpHandler) {
-
-    // ✔ Only intercept API calls (URLs starting with environment.apiUrl)
-    if (!req.url.startsWith(environment.apiUrl)) {
-      return next.handle(req); // Ignore non-API requests
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+debugger
+    // ❗ Ignore OPTIONS requests (CORS preflight)
+    if (request.method === 'OPTIONS') {
+      return next.handle(request);
     }
 
-    return next.handle(req).pipe(
+    return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
 
-        // ✔ If API returns 404 or API domain unreachable → maintenance
-        if (error.status === 404 || error.status === 503) {
+        // ❗ Avoid infinite navigation loops
+        if (this.router.url === '/maintenance') {
+          return throwError(() => error);
+        }
+
+        // ⭐ Redirect to maintenance only for real API failures
+        if ([404, 502, 503, 500].includes(error.status)) {
           this.router.navigate(['/maintenance']);
         }
 
@@ -28,5 +34,3 @@ export class ApiErrorInterceptor implements HttpInterceptor {
     );
   }
 }
-
-

@@ -80,16 +80,19 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   ],
   providers: [MessagingService, AsyncPipe, DatePipe,
       // 🔥 API error handling interceptor (MUST COME BEFORE JwtInterceptor)
+  // ⭐ API Error Interceptor FIRST
   {
     provide: HTTP_INTERCEPTORS,
     useClass: ApiErrorInterceptor,
     multi: true
   },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: JwtInterceptor,
-      multi: true
-    }
+
+  // ⭐ JWT Token Interceptor SECOND
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptor,
+    multi: true
+  }
   ],
 
   bootstrap: [AppComponent]
