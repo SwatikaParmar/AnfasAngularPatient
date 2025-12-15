@@ -144,6 +144,17 @@
               </a>
             </div>
 
+
+                     <div class="item shw one" routerLinkActive="active">
+              <a [routerLink]="['/appointment-list']" (click)="updateVisitSection(VisitSectionType.Appointment)">
+                <i class="fa-solid fa-calendar-days text-2xl" style="font-size: 20px;"></i>
+
+                <span style="font-size: 15px !important; font-weight: 600 !important;">{{ 'MY_APPOINTMENTS' | translate
+                  }}</span>
+              </a>
+            </div>
+
+
             <div class="item shw one" routerLinkActive="active">
               <a [routerLink]="['/complaint']">
                 <i class="fa-solid fa-comment-dots text-2xl" style="font-size: 20px;"></i> <span
@@ -152,14 +163,15 @@
               </a>
             </div>
 
-            <div class="item shw one" routerLinkActive="active">
-              <a [routerLink]="['/appointment-list']" (click)="updateVisitSection(VisitSectionType.Appointment)">
-                <i class="fa-solid fa-calendar-days text-2xl" style="font-size: 20px;"></i>
-
-                <span style="font-size: 15px !important; font-weight: 600 !important;">{{ 'MY_APPOINTMENTS' | translate
-                  }}</span>
+       <div class="item shw one" routerLinkActive="active">
+              <a [routerLink]="['/monthly-satisfaction']">
+    <i class="fa-solid fa-calendar-days text-2xl" style="font-size: 20px;"></i>
+                 <span
+                  style="font-size: 15px !important; font-weight: 600 !important;">{{ 'Monthly_Satisfaction' | translate }}
+</span>
               </a>
             </div>
+
 
 
 

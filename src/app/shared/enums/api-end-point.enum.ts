@@ -80,6 +80,9 @@ export enum ApiEndPoint {
     getLanguagePrefrence = "api/User/AddOrUpdateLanguagePreferences",
     getBannerList = "api/Admin/GetBannerList",
     addupdatePrefrence = "api/User/AddOrUpdateLanguagePreferences",
-    getPrefrence = "api/User/GetLanguagePreferences"
+    getPrefrence = "api/User/GetLanguagePreferences",
+    getMonthlySatisfaction  = "api/Satisfaction/GetMonthlySatisfactionForm",
+        addUpdateMonthSatisfactionform ="api/Satisfaction/AddUpdateMonthlySatisfactionForm",
+
 }
 

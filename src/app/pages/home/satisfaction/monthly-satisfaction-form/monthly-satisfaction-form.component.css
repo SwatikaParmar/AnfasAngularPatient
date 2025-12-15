@@ -1,0 +1,355 @@
+
+
+     body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+    }
+
+    /* Section wrapper */
+    .anfasi-section {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    /* Banner */
+    .anfasi-banner {
+	width: 30%;
+    background: #9B9773;
+    color: #FEC34F;
+    font-weight: bold;
+    padding: 12px 20px;
+    font-size: 19px;
+    line-height: 1.5;
+    display: inline-block;
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+    text-align: left;
+    max-width: 100%;
+    }
+
+    .anfasi-banner span {
+      display: block;
+      white-space: nowrap;
+    }
+
+    /* Logo block */
+    .anfasi-logo {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .anfasi-logo img {
+      max-width: 80px;
+      height: auto;
+      margin: auto;
+    }
+
+    .anfasi-text-ar {
+      margin-top: 5px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #9B9773;
+    }
+
+    .anfasi-text-en {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #9B9773;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 992px) {
+      .anfasi-banner {
+	          width: 40%;
+        font-size: 0.95rem;
+        padding: 10px 18px;
+      }
+      .anfasi-logo img {
+        max-width: 80px;
+      }
+      .anfasi-text-ar {
+        font-size: 1.3rem;
+      }
+      .anfasi-text-en {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .anfasi-banner {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+                width: 64%;
+      }
+      .anfasi-logo img {
+        max-width: 100px;
+      }
+      .anfasi-text-ar {
+        font-size: 1.1rem;
+      }
+      .anfasi-text-en {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .anfasi-banner {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+      }
+      .anfasi-logo img {
+        max-width: 85px;
+      }
+      .anfasi-text-ar {
+        font-size: 1rem;
+      }
+      .anfasi-text-en {
+        font-size: 0.9rem;
+      }
+    }
+	
+	 .survey-section {
+      margin: 30px auto;
+    }
+	
+	.survey-section h6 {
+     font-weight: 600;
+	  font-size:20px;
+      margin-bottom: 8px;
+	  color:#83764C;
+	  
+    }
+
+    .survey-section p {
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0;
+	 
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 576px) {
+      .survey-section {
+        padding: 10px;
+      }
+      .survey-section p {
+        font-size: 13px;
+        text-align: justify;
+      }
+    }
+	
+	  .form-section {
+      border-radius: 12px;
+      margin: auto;
+    }
+    .form-section h4 {
+      font-weight: 600;
+      margin-bottom: 20px;
+   color:#83764C;
+    }
+    .form-label {
+      font-weight: 500;
+      margin-top: 8px;
+    }
+    .btn-custom {
+      border-radius: 8px;
+      font-weight: 500;
+      padding: 10px;
+    }
+	
+	
+	
+	
+	
+	 .feedback-table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 14px;
+      text-align: center;
+    }
+    .feedback-table th, .feedback-table td {
+      border: 1px solid #000;
+      padding: 6px;
+      vertical-align: middle;
+    }
+    .feedback-table th {
+      background: #f8f8f8;
+      font-weight: bold;
+      text-align: center;
+    }
+    .feedback-table td:first-child {
+      text-align: center;
+      min-width:53px;
+    }
+
+    /* Checkbox styling */
+    .feedback-table input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+    }
+
+
+	
+	    /* unique class name that will never exist anywhere else */
+    .line_x9a7f4p_qwerty12345 {
+      border-bottom: 1px dotted #000;
+      width: 100%;
+      height: 22px;
+      margin-bottom: 8px;
+    }
+
+
+    .form-check-label{
+  margin-right: 20px;
+}
+
+
+
+
+
+
+@media (max-width: 768px) {
+  .form-label {
+    font-size: 14px;
+  }
+}
+
+
+
+
+
+/* Default table look (desktop & tablet) */
+.feedback-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.feedback-table th,
+.feedback-table td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+/* ✅ Mobile Responsive */
+@media (max-width: 768px) {
+  .feedback-table,
+  .feedback-table thead,
+  .feedback-table tbody,
+  .feedback-table th,
+  .feedback-table td,
+  .feedback-table tr {
+    display: block;
+  }
+
+  /* Hide table headers */
+  .feedback-table thead {
+    display: none;
+  }
+
+  .feedback-table tr {
+    margin-bottom: 1.5rem;
+    background: #fff;
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    position: relative;
+  }
+
+  /* Number (circle, centered top) */
+  .feedback-table .number-col {
+    background: #FEC34F;
+    color: #0e0e0e;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 10px auto; /* center on top */
+  }
+
+  /* Question left | detail right */
+  .feedback-table .question-col {
+    font-weight: 600;
+    color: #333;
+    padding: 8px 0;
+  }
+
+  /* Each option label left, radio right */
+  .feedback-table .option-col {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border: none;
+  }
+
+  .feedback-table .option-col label {
+           width: 94%;
+        margin: auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+
+  }
+
+  .feedback-table .option-col input[type="radio"] {
+    margin-left: 10px;
+  }
+}
+/* Hide text by default (desktop & tablet) */
+.rating-text {
+  display: none;
+}
+
+/* Show text only on mobile */
+@media (max-width: 768px) {
+  .rating-text {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 14px;
+    color: #333;
+            font-weight: 600;
+  }
+}
+
+
+ 
+.btn-custom {
+  padding: 10px;
+  background: #a48f64;
+  color: #FEC34F;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+  width: 100%; /* default full width on very small screens */
+  max-width: 200px;
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+/* Hover effect */
+.btn-custom:hover {
+  background: #8a774e;
+}
+
+/* Small devices (≥576px) */
+@media (min-width: 576px) {
+  .btn-custom {
+    width: 50% !important;
+  }
+}
+
+/* Medium devices (≥768px) */
+@media (min-width: 768px) {
+  .btn-custom {
+    width: 25% !important;
+  }
+
+}
+
+

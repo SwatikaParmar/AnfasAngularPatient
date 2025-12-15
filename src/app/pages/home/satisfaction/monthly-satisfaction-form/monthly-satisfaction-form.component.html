@@ -1,0 +1,174 @@
+<div class="dashboard-outer">
+  <section>
+    <div class="content-body">
+      <div class="container-fluid">
+        <!-- Back Button and Title -->
+        <div class="flex mb-2 items-center ml-1">
+          <button class="flex items-center justify-center w-7 h-7 rounded-full mr-3 mb-2 text-black"
+            style="background-color: #FCC34F; color:black;" (click)="backClicked()">
+            <i class="fas fa-arrow-left" style="font-size: 13px;"></i>
+          </button>
+          <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">
+            MONTHLY SATISFACTION FORM
+          </h1>
+        </div>
+
+        <div class="container anfasi-section">
+          <!-- Banner -->
+          <div class="anfasi-banner">
+            Kingdom of Saudi Arabia – Anfas Medical Care
+          </div>
+
+          <!-- Logo -->
+          <div class="anfasi-logo">
+            <img src="assets/images/anfas-logo 12.png" alt="Anfas Logo">
+                 <img src="assets/images/Text copy.png" alt="Anfas Logo">
+
+          </div>
+
+          <!-- Survey Section -->
+          <div class="survey-section">
+            <h6>{{ data?.satisfactionLabel?.form?.title }}</h6>
+            <p>{{ data?.satisfactionLabel?.form?.intro }}</p>
+          </div>
+
+          <!-- Guest Form -->
+          <div class="form-section">
+            <h4> {{ data?.satisfactionLabel?.form?.subtitle }}</h4>
+            <form [formGroup]="form">
+              <div class="row">
+                <!-- Filled By -->
+       <div class="col-12 mb-3">
+  
+  <!-- Filled By -->
+  <label class="form-label">{{ data?.satisfactionLabel?.fields?.filledBy }}</label>
+  <div class="d-flex gap-3 flex-wrap">
+    <div *ngFor="let option of filledByOptions" class="form-check">
+      <input 
+        class="form-check-input" 
+        type="radio" 
+        [formControlName]="'filledBy'" 
+        [value]="option.code"
+        [id]="option.code"
+      >
+      <label class="form-check-label" [for]="option.code">
+        {{ option.label }}
+      </label>
+    </div>
+  </div>
+
+   <!-- Month Dropdown (NEW) -->
+  <div class="mt-3">
+    <label class="form-label">Month:</label>
+    <select class="form-select" formControlName="monthId">
+      <option *ngFor="let m of monthOptions" [value]="m.code">
+        {{ m.label }}
+      </option>
+    </select>
+  </div>
+
+</div>
+
+
+                <!-- Guest Info -->
+                <div class="col-12 col-md-4  mb-3">
+                  <label class="form-label">{{ data?.satisfactionLabel?.fields?.name }}:</label>
+                  <input type="text" class="form-control" formControlName="name" readonly>
+                </div>
+                <div class="col-12 col-md-4 mb-3">
+                  <label class="form-label">{{ data?.satisfactionLabel?.fields?.mrn }}:</label>
+                  <input type="text" class="form-control" formControlName="mrn" readonly>
+                </div>
+                <div class="col-12 col-md-4 mb-3">
+                  <label class="form-label">{{ data?.satisfactionLabel?.fields?.mobileNumber }}:</label>
+                  <input type="tel" class="form-control" formControlName="mobileNumber" readonly>
+                </div>
+
+                <!-- Age -->
+                <div class="col-12 col-md-4 mb-3">
+                  <label class="form-label">{{ data?.satisfactionLabel?.fields?.ageBracket }}:</label>
+                  <select class="form-select" formControlName="ageBracket">
+                    <option *ngFor="let age of ageOptions" [value]="age.code">{{ age.label }}</option>
+                  </select>
+                </div>
+
+                <!-- Gender -->
+                <div class="col-12 col-md-3 mb-3">
+                  <label class="form-label">{{ data?.satisfactionLabel?.fields?.gender }}:</label>
+                  <div class="d-flex gap-2">
+                    <div *ngFor="let g of genderOptions" class="form-check me-2">
+                      <input class="form-check-input" type="radio" [formControlName]="'gender'" [value]="g.code"
+                        [id]="g.code">
+                      <label class="form-check-label" [for]="g.code">{{ g.label }}</label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Residence -->
+                <div class="col-12 col-md-5 mb-3">
+                  <label class="form-label">{{ data?.satisfactionLabel?.fields?.residence }}:</label>
+                  <div class="d-flex gap-2">
+                    <div *ngFor="let r of residenceOptions" class="form-check me-2">
+                      <input class="form-check-input" type="radio" [formControlName]="'residence'" [value]="r.code"
+                        [id]="r.code">
+                      <label class="form-check-label" [for]="r.code">{{ r.label }}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Ratings Table -->
+         <!-- Ratings Table -->
+<div class="table-responsive mt-4">
+  <table class="feedback-table" [formGroup]="form">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Question</th>
+        <th *ngFor="let s of ratingScale">{{ s.label }}</th>
+      </tr>
+    </thead>
+    <tbody formGroupName="ratings">
+      <tr *ngFor="let q of ratingsTable; let i = index">
+        <td class="number-col">{{ i + 1 }}</td>
+        <td class="question-col">{{ q.label }}</td>
+        <td *ngFor="let s of ratingScale" class="option-col">
+        <label>
+  <span class="rating-text">{{ s.label }}</span>
+  <input type="radio" [formControlName]="q.key" [value]="s.code">
+</label>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+          <div class="mt-4" [formGroup]="commentsFG">
+            <p>{{ getCommentLabel('C1') }}</p>
+            <textarea class="form-control" formControlName="C1" rows="3"></textarea>
+
+            <p class="mt-3">{{ getCommentLabel('C2') }}</p>
+            <textarea class="form-control" formControlName="C2" rows="3"></textarea>
+          </div>
+
+
+
+
+          <!-- <div class="mt-4">
+            <button class="btn btn-primary btn-sm" type="button" (click)="exportJSON()">Submit</button>
+          </div> -->
+
+           <div class="d-flex justify-content-center mb-4">
+                  <button type="submit" class="btn btn-custom  w-sm-50 w-md-25 mt-2" (click)="exportJSON()" style="color: white;">
+                   Submit
+                  </button>
+                </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

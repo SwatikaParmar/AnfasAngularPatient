@@ -478,8 +478,16 @@ getSatisfactionForm(visitId:any){
 }
 
 
+getSatisfactionMonthlyForm(visitId:any){
+  return this.http.get<any>(environment.apiUrl + ApiEndPoint.getMonthlySatisfaction + '?mrn=' + visitId)
+}
+
 postSatisfaction(data:any){
 return this.http.post<any>(environment.apiUrl + ApiEndPoint.addUpdateSatisfactionform,data)
+}
+
+postSatisfactionMonth(data:any){
+return this.http.post<any>(environment.apiUrl + ApiEndPoint.addUpdateMonthSatisfactionform,data)
 }
 
 getPrefrence(data:any){
