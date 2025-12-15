@@ -63,7 +63,7 @@ export class MonthlySatisfactionFormComponent {
       filledBy: ['',Validators.required],
       gender: ['', Validators.required],
       residence: ['',Validators.required],
-      monthId: ['', Validators.required],
+      code: ['', Validators.required],
       ageBracket: ['',Validators.required],
       ratings: this.fb.group({}),
       comments: this.fb.group({
@@ -92,7 +92,7 @@ export class MonthlySatisfactionFormComponent {
           gender: subj.gender?.code || '',
           residence: subj.residence?.code || '',
           ageBracket: subj.ageBracket?.code || '',
-             monthId: subj.monthId || '',
+             code: subj.code || subj.code,
           visitId: this.visitId || ''
         });
 
@@ -161,7 +161,7 @@ export class MonthlySatisfactionFormComponent {
       gender: Number(this.form.value.gender || 0),
       ageBracket: Number(this.form.value.ageBracket || 0),
       residence: Number(this.form.value.residence || 0),
-            monthId: Number(this.form.value.monthId),
+            code: Number(this.form.value.code),
 
       ratings,
       comments
