@@ -6,10 +6,10 @@ export const environment = {
   production: false,
   // apiUrl: "https://swagger.amchealthgroup.com/",
   // rootPathUrl: "https://swagger.amchealthgroup.com/",
-   root : "http://192.168.1.13:5001",
+   root : "http://192.168.1.5:5001/",
 
-  apiUrl: "http://192.168.1.13:5001/",
-  rootPathUrl: "http://192.168.1.13:5001/",
+  apiUrl: "http://192.168.1.5:5001/",
+  rootPathUrl: "http://192.168.1.5:5001/",
 
   firebase: {
    apiKey: "AIzaSyDAv0cpNLxGNzD1viqjAsWe0ktoidMuego",
