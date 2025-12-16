@@ -494,7 +494,8 @@
     "MONTHLY_FORM":"نموذج الرضا الشهري",
     "Month":"شهر",
   "Year":"سنة",
-   "SELECT_AMC":"حدد AMC"
+   "SELECT_AMC":"حدد AMC",
+      "SEARCH_BY_PATIENT_MRN":"البحث باستخدام رقم السجل الطبي واسم المريض"
 
 
 

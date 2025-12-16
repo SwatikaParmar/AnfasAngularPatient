@@ -489,7 +489,8 @@
   "MONTHLY_FORM":"MONTHLY SATISFACTION FORM",
   "Month":"Month",
   "Year":"Year",
-  "SELECT_AMC":"Select AMC"
+  "SELECT_AMC":"Select AMC",
+    "SEARCH_BY_PATIENT_MRN":"Search by Mrn & Patient Name"
 
 
 }
