@@ -488,7 +488,8 @@
   "BULK_ACTION":"Bulk Action",
   "MONTHLY_FORM":"MONTHLY SATISFACTION FORM",
   "Month":"Month",
-  "Year":"Year"
+  "Year":"Year",
+  "SELECT_AMC":"Select AMC"
 
 
 }

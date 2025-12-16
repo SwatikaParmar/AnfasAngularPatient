@@ -493,7 +493,9 @@
   "BULK_ACTION":"الإجراءات الجماعية",
     "MONTHLY_FORM":"نموذج الرضا الشهري",
     "Month":"شهر",
-  "Year":"سنة"
+  "Year":"سنة",
+   "SELECT_AMC":"حدد AMC"
+
 
 
 }
