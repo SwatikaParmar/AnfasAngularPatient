@@ -34,6 +34,7 @@ export class MonthlySatisfactionFormComponent {
   isEditMode = false;
   rootUrl: string = environment.rootPathUrl;
   FALLBACK: any = null; // Optional fallback JSON
+  selectedMonth!: number;   // ⭐ IMPORTANT
 
   constructor(
     private fb: FormBuilder,
@@ -73,58 +74,99 @@ export class MonthlySatisfactionFormComponent {
       visitId: [this.visitId]
     });
 
-    this.loadData();
-  }
-
-  loadData() {
-    this.content.getSatisfactionMonthlyForm(localStorage.getItem('mrn')).subscribe(response => {
-      if (response.isSuccess && response.data) {
-        this.data = response.data; // ✅ Store the data for later use (like exportJSON)
-
-        const subj = this.data.subject;
-        debugger
-        // Patch guest info
-        this.form.patchValue({
-          name: subj.name || '',
-          mrn: subj.mrn || '',
-          mobileNumber: subj.mobileNumber || '',
-          filledBy: subj.filledBy?.code || '',
-          gender: subj.gender?.code || '',
-          residence: subj.residence?.code || '',
-          ageBracket: subj.ageBracket?.code || '',
-             code: subj.code || subj.code,
-          visitId: this.visitId || ''
-        });
-
-        // Populate Enums
-        this.filledByOptions = this.data.enums.filledBy || [];
-        this.genderOptions = this.data.enums.gender || [];
-        this.residenceOptions = this.data.enums.residence || [];
-        this.ageOptions = this.data.enums.ageBracket || [];
-                this.monthOptions = this.data.enums.month || [];
-
-
-        // Ratings Table
-        this.ratingsTable = this.data.ratings.items || [];
-        this.ratingScale = this.data.ratingScale || [];
-
-        // Build FormGroup for ratings dynamically with existing values
-        const ratingsGroup: any = {};
-        this.ratingsTable.forEach(q => {
-          ratingsGroup[q.key] = [q.value !== null ? q.value : null];
-        });
-        this.form.setControl('ratings', this.fb.group(ratingsGroup));
-
-        this.comments = this.data.comments.items || [];
-
-        this.form.get('comments')?.patchValue({
-          C1: this.comments.find((c: { key: string; }) => c.key === 'C1')?.value || '',
-          C2: this.comments.find((c: { key: string; }) => c.key === 'C2')?.value || ''
-        });
-
+       // 🔥 LISTEN TO MONTH CHANGE
+    this.form.get('code')?.valueChanges.subscribe(month => {
+      if (month && month !== this.selectedMonth) {
+        this.selectedMonth = month;
+        this.loadDataByMonth(month);
       }
     });
+
+
+    this.loadInitialData();
   }
+
+// ================= INITIAL LOAD =================
+  loadInitialData() {
+    const defaultMonth = 0; // backend default
+    this.selectedMonth = defaultMonth;
+    this.form.patchValue({ code: defaultMonth }, { emitEvent: false });
+    this.loadDataByMonth(defaultMonth);
+  }
+
+  // ================= MONTH BASED LOAD =================
+  loadDataByMonth(month: number) {
+    const mrn = localStorage.getItem('mrn');
+    if (!mrn) return;
+
+    this.spinner.show();
+
+    this.content.getMonthlySatisfactionData(mrn, month)
+      .subscribe({
+        next: (res) => {
+          this.spinner.hide();
+          if (res.isSuccess && res.data) {
+            this.bindData(res.data);
+          } else {
+            this.toasterService.error('No data found for selected month');
+          }
+        },
+        error: () => {
+          this.spinner.hide();
+          this.toasterService.error('Failed to load data');
+        }
+      });
+  }
+
+  // ================= BIND DATA =================
+bindData(data: any) {
+  this.data = data;
+  const subj = data.subject;
+
+  // ✅ PATCH MONTH ON FIRST LOAD ONLY
+  if (!this.form.value.code && subj.code) {
+    this.selectedMonth = subj.code;
+    this.form.patchValue({ code: subj.code }, { emitEvent: false });
+  }
+
+  // PATCH REST (DO NOT TOUCH MONTH AGAIN)
+  this.form.patchValue({
+    name: subj.name,
+    mrn: subj.mrn,
+    mobileNumber: subj.mobileNumber,
+    filledBy: subj.filledBy?.code,
+    gender: subj.gender?.code,
+    residence: subj.residence?.code,
+    ageBracket: subj.ageBracket?.code,
+    visitId: this.visitId
+  }, { emitEvent: false });
+
+  // ENUMS
+  this.monthOptions = data.enums.month || [];
+  this.filledByOptions = data.enums.filledBy || [];
+  this.genderOptions = data.enums.gender || [];
+  this.residenceOptions = data.enums.residence || [];
+  this.ageOptions = data.enums.ageBracket || [];
+
+  // RATINGS
+  this.ratingsTable = data.ratings.items || [];
+  this.ratingScale = data.ratingScale || [];
+
+  const ratingsGroup: any = {};
+  this.ratingsTable.forEach(q => {
+    ratingsGroup[q.key] = [q.value];
+  });
+  this.form.setControl('ratings', this.fb.group(ratingsGroup));
+
+  // COMMENTS
+  this.comments = data.comments.items || [];
+  this.form.get('comments')?.patchValue({
+    C1: this.comments.find((c: { key: string }) => c.key === 'C1')?.value || '',
+    C2: this.comments.find((c: { key: string }) => c.key === 'C2')?.value || ''
+  }, { emitEvent: false });
+}
+
+
 
   getCommentLabel(key: string): string {
     return this.data?.comments?.items?.find((c: { key: string; }) => c.key === key)?.label || '';

@@ -482,6 +482,27 @@ getSatisfactionMonthlyForm(visitId:any){
   return this.http.get<any>(environment.apiUrl + ApiEndPoint.getMonthlySatisfaction + '?mrn=' + visitId)
 }
 
+// content.service.ts
+getSatisfactionMonthlyForms(mrn: string | null, month: number) {
+  return this.http.get<any>(
+    `${environment.apiUrl}}api/Satisfaction/GetMonthlySatisfactionForm
+?mrn=${mrn}&code=${month}`
+  );
+}
+
+getMonthlySatisfactionData( mrn: any, month: any) {
+
+  let url = `${environment.apiUrl}api/Satisfaction/GetMonthlySatisfactionForm?mrn=${mrn}`;
+
+  if (month) {
+    url += `&code=${month}`;
+  }
+
+  return this.http.get<any>(url);
+}
+
+
+
 postSatisfaction(data:any){
 return this.http.post<any>(environment.apiUrl + ApiEndPoint.addUpdateSatisfactionform,data)
 }
