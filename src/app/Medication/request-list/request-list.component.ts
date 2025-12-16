@@ -117,6 +117,7 @@ clearFilters(): void {
   this.fromDate = '';
   this.toDate = '';
   this.statusId = '';
+  this.selectedRequestType = ''; // ✅ add
   this.page = 1;
   this.RequestList();
 }
