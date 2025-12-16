@@ -47,12 +47,12 @@
                         <div class="flex justify-between items-center w-full">
                           <div>
                             <i class="fas fa-file-pdf mr-1"></i>
-                            Order Number:
+                             {{ 'ORDER_NUMBER' | translate }}:
                             <span class="font-semibold">{{ item?.ordernumber }}</span>
                           </div>
 
                           <div class="text-right">
-                            Order Date:
+                             {{ 'ORDER_DATE' | translate }}:
                             <span class="font-semibold">
                               {{ item?.orderdate | date: 'dd-MM-yyyy, hh:mm a' }}
                             </span>
@@ -72,7 +72,7 @@
                   <div class="pagination-container pb-3" *ngIf="labdata?.length > 0">
                     <pagination-controls (pageChange)="onPageChanges($event, 'report')" [id]="'report-pagination'"
                        [previousLabel]="'PREVIOUS' | translate"
-    [nextLabel]="'NEXT' | translate">
+    [nextLabel]="'NEXT' | translate"
                       class="paginate-doctor-list" queryParamsHandling="merge">
                     </pagination-controls>
                   </div>
@@ -101,12 +101,12 @@
                         <div class="flex justify-between items-center w-full">
                           <div>
                             <i class="fas fa-file-pdf mr-1"></i>
-                            Order Number:
+                           {{ 'ORDER_NUMBER' | translate }}:
                             <span class="font-semibold">{{ item?.ordernumber }}</span>
                           </div>
 
                           <div class="text-right">
-                            Order Date:
+                           {{ 'ORDER_DATE' | translate }}:
                             <span class="font-semibold">
                               {{ item?.orderdate | date: 'dd-MM-yyyy, hh:mm a' }}
                             </span>
@@ -126,7 +126,7 @@
                   <div class="pagination-container pb-3" *ngIf="RisData?.length > 0">
                     <pagination-controls (pageChange)="onPageChanges($event, 'summary')" [id]="'summary-pagination'"
                        [previousLabel]="'PREVIOUS' | translate"
-    [nextLabel]="'NEXT' | translate">
+    [nextLabel]="'NEXT' | translate"
                       class="paginate-doctor-list" queryParamsHandling="merge">
                     </pagination-controls>
                   </div>
@@ -234,7 +234,7 @@
                     <div class="pagination-container pb-3">
                       <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
                          [previousLabel]="'PREVIOUS' | translate"
-    [nextLabel]="'NEXT' | translate">
+    [nextLabel]="'NEXT' | translate"
                         queryParamsHandling="merge"></pagination-controls>
                     </div>
                   </div>

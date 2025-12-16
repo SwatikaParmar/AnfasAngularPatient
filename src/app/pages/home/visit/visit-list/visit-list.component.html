@@ -125,16 +125,12 @@
                         </div>
 
 
-                      <div class="pagination-container pb-3" *ngIf="visitList && visitList.length > 0">
-   <pagination-controls
-    id="1"
-    (pageChange)="onPageChange($event)"
-    class="paginate-doctor-list"
-    queryParamsHandling="merge"
-    [previousLabel]="'PREVIOUS' | translate"
-    [nextLabel]="'NEXT' | translate">
-  </pagination-controls>
-</div>
+                        <div class="pagination-container pb-3" *ngIf="visitList && visitList.length > 0">
+                            <pagination-controls id="1" (pageChange)="onPageChange($event)" class="paginate-doctor-list"
+                                queryParamsHandling="merge" [previousLabel]="'PREVIOUS' | translate"
+                                [nextLabel]="'NEXT' | translate">
+                            </pagination-controls>
+                        </div>
 
                     </div>
                 </div>

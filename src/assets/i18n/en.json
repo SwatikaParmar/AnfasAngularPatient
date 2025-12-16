@@ -463,7 +463,7 @@
   "DESCRIPTION": "Description",
   "ENTER_DESCRIPTION": "Enter description",
   "DESCRIPTION_IS_REQUIRED": "Description is required",
-  "SUBMIT": "Submit",
+
   "doctor_sign_in" : "Doctor Sign In",
   "amc": "AMC",
   "enter_sign_in_code" : "Enter Sign in Code",
@@ -472,7 +472,23 @@
     "DREAM_ON_CLINIC": "Dream On Clinic",
     "UROLOGY": "Urology",
       "WE_CARE_FOR_YOU": "We care for you from the heart",
-        "Monthly_Satisfaction": "Monthly Satisfaction"
+        "Monthly_Satisfaction": "Monthly Satisfaction",
+        "ORDER_NUMBER":"Order Number",
+        "ORDER_DATE":"Order Date",
+  "ALL_STATUS":"All Status",
+  "Approved":"Approved",
+  "Rejected":"Rejected",
+  "Uploaded":"Uploaded",
+  "CLEAR_FILTERS":"Clear Filters",
+  "Approve":"Approve",
+  "Reject":"Reject",
+  "PATIENT_FORM":"PATIENT SATISFACTION FORM",
+  "KINGDOM":"Kingdom of Saudi Arabia",
+  "ANFAS_MED":"Anfas Medical Care",
+  "BULK_ACTION":"Bulk Action",
+  "MONTHLY_FORM":"MONTHLY SATISFACTION FORM",
+  "Month":"Month",
+  "Year":"Year"
 
 
 }

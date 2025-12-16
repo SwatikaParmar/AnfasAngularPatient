@@ -475,7 +475,25 @@
     "DREAM_ON_CLINIC": "عيادة دريم أون",
     "UROLOGY": "المسالك البولية",
       "WE_CARE_FOR_YOU": "نرعاكم من القلب",
-        "Monthly_Satisfaction": "الرضا الشهري"
+        "Monthly_Satisfaction": "الرضا الشهري",
+
+            "ORDER_NUMBER":"رقم الطلب",
+        "ORDER_DATE":"تاريخ الطلب",
+          "ALL_STATUS":"جميع الحالات",
+  "Approved":"موافقة",
+  "Rejected":"مرفوض",
+  "Uploaded":"تم الرفع",
+  "CLEAR_FILTERS":"مسح المرشحات",
+  "Approve":"يعتمد",
+  "Reject":"يرفض",
+
+  "PATIENT_FORM":"نموذج رضا المريض",
+  "KINGDOM":"المملكة العربية السعودية",
+  "ANFAS_MED":"أنفاس للرعاية الطبية",
+  "BULK_ACTION":"الإجراءات الجماعية",
+    "MONTHLY_FORM":"نموذج الرضا الشهري",
+    "Month":"شهر",
+  "Year":"سنة"
 
 
 }
