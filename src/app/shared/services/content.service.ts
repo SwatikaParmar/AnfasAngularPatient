@@ -200,6 +200,10 @@ getRequestList(data: any) {
     url += `&statusId=${data.statusId}`;
   }
 
+  
+    if (data.requestTypeId) {
+    url += `&requestTypeId=${data.requestTypeId}`;
+  }
   return this.http.get<any>(url);
 }
 
@@ -547,5 +551,9 @@ getBannerList(){
   return this.http.get<any>(environment.apiUrl + ApiEndPoint.getBannerList)
 }
 
+    getRequestTypeAdmin(mrn:any) {
+    
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.requestType + '?mrn=' + mrn)
+  }
 
 }

@@ -37,19 +37,37 @@
           </div> -->
 
           <!-- From Date -->
-          <div class="col-md-4">
+           <div class="col-md-3">
+  <label class="form-label">{{ 'REQUEST_TYPE' | translate }}</label>
+  <select
+    class="form-select"
+    [(ngModel)]="selectedRequestType"
+    (change)="onFilterChange()"
+  >
+    <option value="">{{ 'ALL_REQUEST_TYPE' | translate }}</option>
+
+    <option
+      *ngFor="let type of reqstTypeList"
+      [value]="type.requestTypeID"
+    >
+      {{ type.requestTypeName }}
+    </option>
+  </select>
+</div>
+
+          <div class="col-md-3">
             <label class="form-label">{{ 'FROM_DATE' | translate }}</label>
             <input type="date" class="form-control" [(ngModel)]="fromDate" (change)="onFilterChange()" />
           </div>
 
           <!-- To Date -->
-          <div class="col-md-4">
+          <div class="col-md-3">
             <label class="form-label">{{ 'TO_DATE' | translate }}</label>
             <input type="date" class="form-control" [(ngModel)]="toDate" (change)="onFilterChange()" />
           </div>
 
           <!-- Status -->
-          <div class="col-md-4">
+          <div class="col-md-3">
             <label class="form-label">{{ 'STATUS' | translate }}</label>
             <select class="form-select" [(ngModel)]="statusId" (change)="onFilterChange()">
               <option value="">{{ 'ALL_STATUS' | translate }}</option>

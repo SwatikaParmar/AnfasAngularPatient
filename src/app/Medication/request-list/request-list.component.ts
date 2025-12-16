@@ -22,6 +22,9 @@ filterPatientName: string = '';
 fromDate: string = '';
 toDate: string = '';
 statusId: string | number = '';
+selectedRequestType: number | '' = '';
+  reqstTypeList: any;
+
   constructor(
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService,
@@ -32,6 +35,7 @@ statusId: string | number = '';
 
   ngOnInit(): void {
     this.rootUrl = environment.rootPathUrl;
+  this.getReqstTypeList(); // ✅ add this
 
     this.route.queryParams.subscribe((params) => {
       this.page = +params['page'] || 1;
@@ -70,6 +74,13 @@ statusId: string | number = '';
 
   // 📌 Status Filter
   if (this.statusId) payload.statusId = this.statusId;
+
+  
+    // ✅ REQUEST TYPE FILTER
+  if (this.selectedRequestType) {
+    payload.requestTypeId = this.selectedRequestType;
+  }
+
 
   this.contentService.getRequestList(payload).subscribe({
     next: (response: any) => {
@@ -148,6 +159,19 @@ getBadgeClass(statusId: number): string {
     default: return 'bg-secondary text-white';
   }
 }
+
+getReqstTypeList() {
+  this.contentService.getRequestTypeAdmin(localStorage.getItem('mrn')).subscribe(response => {
+    if (response?.status) {
+      debugger
+      this.reqstTypeList = response.data || [];
+    } else {
+      this.reqstTypeList = [];
+    }
+  });
+}
+
+
 
 }
 
