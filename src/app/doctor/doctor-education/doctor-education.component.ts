@@ -53,7 +53,7 @@ role: string = '';
     this.spinner.show();
     let payload = {
       pageNumber : 1,
-      pageSize : 10,
+      pageSize : 100000,
       // isApproved : true,
       careProviderCode : localStorage.getItem('code'),
      

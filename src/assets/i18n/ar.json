@@ -265,7 +265,7 @@
   "SLOTS_AVAILABLE": "الفتحات المتاحة.",
   "REVIEW_YOUR_CONSENT_FORM": "مراجعة نموذج موافقتك",
   "BOOK_AN_APPOINTMENT": "حجز موعد",
-  "WELCOME_BACK": "العزيز أهلاً ",
+  "WELCOME_BACK": "أهلا عزيزي",
   "PATIENT_SIGN_IN": "تسجيل دخول المريض",
   "EN": "EN",
   "AR": "عربي",
@@ -473,6 +473,10 @@
    "ALL": "الكل",
     "FAMILY_CONSULTATION_CLINIC": "عيادة الاستشارات الأسرية",
     "DREAM_ON_CLINIC": "عيادة دريم أون",
-    "UROLOGY": "المسالك البولية"
+    "UROLOGY": "المسالك البولية",
+      "WE_CARE_FOR_YOU": "نرعاكم من القلب",
+        "Monthly_Satisfaction": "الرضا الشهري"
+
+
 }
 

@@ -22,6 +22,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
 import { MessagingService } from './shared/services/messaging-service';
 import { AsyncPipe, DatePipe } from '@angular/common';
+import { MaintenanceComponent } from './maintenance/maintenance.component';
+import { ApiErrorInterceptor } from './core/interceptors/api-error.interceptor';
 
 
 
@@ -36,6 +38,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 @NgModule({
   declarations: [
     AppComponent,
+    MaintenanceComponent,
 
   ],
   imports: [
@@ -76,11 +79,20 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     AngularFireMessagingModule,  
   ],
   providers: [MessagingService, AsyncPipe, DatePipe,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: JwtInterceptor,
-      multi: true
-    }
+      // 🔥 API error handling interceptor (MUST COME BEFORE JwtInterceptor)
+  // ⭐ API Error Interceptor FIRST
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: ApiErrorInterceptor,
+    multi: true
+  },
+
+  // ⭐ JWT Token Interceptor SECOND
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptor,
+    multi: true
+  }
   ],
 
   bootstrap: [AppComponent]

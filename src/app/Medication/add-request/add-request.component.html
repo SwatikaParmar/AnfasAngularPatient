@@ -130,6 +130,7 @@
           formControlName="discretion"
         ></textarea>
 
+     
         <div *ngIf="submitted && f['discretion'].errors" class="text-danger">
           <div *ngIf="f['discretion'].errors['required']">
             {{ 'DESCRIPTION_IS_REQUIRED' | translate }}

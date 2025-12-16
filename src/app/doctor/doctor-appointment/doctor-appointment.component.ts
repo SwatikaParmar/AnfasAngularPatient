@@ -44,7 +44,7 @@ this.spinner.show();
   const toDate = new Date(now.getFullYear(), now.getMonth() + 1, 0); // Last day of current month
 
   const payload = {
-    careProviderCode:  localStorage.getItem('code'),
+    careProviderCode:  localStorage.getItem('loginId'),
     FromDate: fromDate.toISOString().split('T')[0], // e.g., "2025-05-01"
     ToDate: toDate.toISOString().split('T')[0]      // e.g., "2025-05-31"
   };

@@ -52,34 +52,41 @@ constructor(
   //   }
   // }
 
-  verifyOtp() {
-    if (!this.otp || this.otp.length !== 5) {
-      this.error = 'Please enter a valid OTP.';
-      return;
-    }
-
-    this.authservice.verifyPhone(this.phoneNumber, this.otp).subscribe({
-      next: (res) => {
-        if ((res?.status === true || res?.isSuccess === true) && (res?.code === 200 || res?.statusCode === 200)) {
-          this.toastr.success(res.message || 'OTP verified successfully');
-
-          if (this.role === 'Patient') {
-            this.router.navigate(['/home']);
-          } else if (this.role === 'Doctor') {
-            this.router.navigate(['/doctor-dashboard']);
-          } else {
-            this.router.navigate(['/home']); // fallback
-          }
-        } else {
-          this.error = res?.message || 'OTP verification failed.';
-        }
-      },
-      error: (err) => {
-        this.error = 'Something went wrong. Please try again.';
-
-      }
-    });
+verifyOtp() {
+  if (!this.otp || this.otp.length !== 5) {
+    this.error = 'Please enter a valid OTP.';
+    return;
   }
+
+  this.authservice.verifyPhone(this.phoneNumber, this.otp).subscribe({
+    next: (res) => {
+      if ((res?.status === true || res?.isSuccess === true) &&
+          (res?.code === 200 || res?.statusCode === 200)) {
+
+        this.toastr.success(res.message || 'OTP verified successfully');
+
+        // Token already saved inside AuthService.verifyPhone()
+        // No need to save again here
+
+        if (this.role === 'Patient') {
+          this.router.navigate(['/home']);
+        } else if (this.role === 'Doctor') {
+          this.router.navigate(['/doctor-dashboard']);
+        } else {
+          this.router.navigate(['/home']);
+        }
+
+      } else {
+        this.error = res?.message || 'OTP verification failed.';
+      }
+    },
+    error: () => {
+      this.error = 'Something went wrong. Please try again.';
+    }
+  });
+}
+
+
 
 
 

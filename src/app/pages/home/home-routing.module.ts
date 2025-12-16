@@ -65,6 +65,7 @@ import { ComplaintListDetailComponent } from 'src/app/doctor/complaint-suggestio
 import { ComplaintListDoctorComponent } from 'src/app/doctor/complaint-suggestion/complaint-list-doctor/complaint-list-doctor.component';
 import { DoctorReqstDetailComponent } from 'src/app/doctor/doctor-reqst/doctor-reqst-detail/doctor-reqst-detail.component';
 import { DoctorReqstComponent } from 'src/app/doctor/doctor-reqst/doctor-reqst.component';
+import { MonthlySatisfactionFormComponent } from './satisfaction/monthly-satisfaction-form/monthly-satisfaction-form.component';
 const routes: Routes = [
 
   {
@@ -77,6 +78,7 @@ const routes: Routes = [
       { path: 'visit/report/:id/:id2/:id3/:id4', component: VisitDiagnoseComponent },
       { path: 'complaint', component: ComplaintListComponent },
       { path: 'visit/satisfaction-form', component: SatisfactionFormComponent },
+      { path: 'monthly-satisfaction', component: MonthlySatisfactionFormComponent},
       { path: 'about-Us', component: AboutUsComponent },
       { path: 'messages', component: MessagesListComponent },
       { path: 'appointment-list/appointment', component: AppointmentListComponent },

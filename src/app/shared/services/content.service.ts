@@ -332,7 +332,7 @@ return this.http.post<any>(environment.apiUrl + ApiEndPoint.patientAssign,data)
 
   getPatientReport(data:any){
     return this.http.get<any>(environment.apiUrl +  ApiEndPoint.patientReport + '?PatientUid=' + data.PatientUid 
-      + '&PatientVisitUid=' + data.PatientVisitUid + '&ReportType=' + data.ReportType  + '&PageNumber=' + data.PageNumber  + '&PageSize=' + data.PageSize
+      + '&PatientVisitUid=' + data.PatientVisitUid + '&ReportType=' + data.ReportType  + '&PageNumber=1'  + '&PageSize=1000'
     )
   }
 
@@ -478,8 +478,41 @@ getSatisfactionForm(visitId:any){
 }
 
 
+getSatisfactionMonthlyForm(visitId:any){
+  return this.http.get<any>(environment.apiUrl + ApiEndPoint.getMonthlySatisfaction + '?mrn=' + visitId)
+}
+
+// content.service.ts
+getSatisfactionMonthlyForms(mrn: string | null, month: number) {
+  return this.http.get<any>(
+    `${environment.apiUrl}}api/Satisfaction/GetMonthlySatisfactionForm
+?mrn=${mrn}&code=${month}`
+  );
+}
+
+getMonthlySatisfactionData(mrn: any, month: any, year: any) {
+
+  let url = `${environment.apiUrl}api/Satisfaction/GetMonthlySatisfactionForm?mrn=${mrn}`;
+
+  if (month) {
+    url += `&code=${month}`;
+  }
+
+  if (year) {
+    url += `&yearCode=${year}`;
+  }
+
+  return this.http.get<any>(url);
+}
+
+
+
 postSatisfaction(data:any){
 return this.http.post<any>(environment.apiUrl + ApiEndPoint.addUpdateSatisfactionform,data)
+}
+
+postSatisfactionMonth(data:any){
+return this.http.post<any>(environment.apiUrl + ApiEndPoint.addUpdateMonthSatisfactionform,data)
 }
 
 getPrefrence(data:any){
