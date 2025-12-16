@@ -38,54 +38,54 @@
             <form [formGroup]="form">
               <div class="row">
                 <!-- Filled By -->
-       <div class="col-12 mb-3">
-  
-  <!-- Filled By -->
-  <label class="form-label">{{ data?.satisfactionLabel?.fields?.filledBy }}</label>
-  <div class="d-flex gap-3 flex-wrap">
-    <div *ngFor="let option of filledByOptions" class="form-check">
-      <input 
-        class="form-check-input" 
-        type="radio" 
-        [formControlName]="'filledBy'" 
-        [value]="option.code"
-        [id]="option.code"
-      >
-      <label class="form-check-label" [for]="option.code">
-        {{ option.label }}
-      </label>
-    </div>
-  </div>
+             <div class="col-md-4 col-12 mb-3">
+              
+              <!-- Filled By -->
+              <label class="form-label">{{ data?.satisfactionLabel?.fields?.filledBy }}</label>
+              <div class="d-flex gap-3 flex-wrap">
+                <div *ngFor="let option of filledByOptions" class="form-check">
+                  <input 
+                    class="form-check-input" 
+                    type="radio" 
+                    [formControlName]="'filledBy'" 
+                    [value]="option.code"
+                    [id]="option.code"
+                  >
+                  <label class="form-check-label" [for]="option.code">
+                    {{ option.label }}
+                  </label>
+                </div>
+              </div>
+              </div>
+              <!-- Month Dropdown (NEW) -->
+              <div class="col-md-4 col-12 mb-3">
+                <label class="form-label"> {{ 'Month' | translate }} :</label>
+                <select class="form-select" formControlName="code">
+                  <option *ngFor="let m of monthOptions" [value]="m.code">
+                    {{ m.label }}
+                  </option>
+                </select>
+              </div>
 
-   <!-- Month Dropdown (NEW) -->
-  <div class="mt-3">
-    <label class="form-label"> {{ 'Month' | translate }} :</label>
-    <select class="form-select" formControlName="code">
-      <option *ngFor="let m of monthOptions" [value]="m.code">
-        {{ m.label }}
-      </option>
-    </select>
-  </div>
+              <div class="col-md-4 col-12 mb-3">
+              <label class="form-label"> {{ 'Year' | translate }} :</label>
+              <select class="form-select" formControlName="yearCode">
+                <option *ngFor="let y of yearOptions" [value]="y.yearCode">
+                  {{ y.label }}
+                </option>
+              </select>
+            </div>
 
-  <div class="col-md-2 col-12 mb-3">
-  <label class="form-label"> {{ 'Year' | translate }} :</label>
-  <select class="form-select" formControlName="yearCode">
-    <option *ngFor="let y of yearOptions" [value]="y.yearCode">
-      {{ y.label }}
-    </option>
-  </select>
-</div>
-
-  <!-- Month Dropdown (NEW) -->
-  <!-- <div class="mt-3">
-    <label class="form-label">Month:</label>
-    <select class="form-select" formControlName="monthId">
-      <option *ngFor="let m of monthOptions" [value]="m.code">
-        {{ m.label }}
-      </option>
-    </select>
-  </div> -->
-</div>
+            <!-- Month Dropdown (NEW) -->
+            <!-- <div class="mt-3">
+              <label class="form-label">Month:</label>
+              <select class="form-select" formControlName="monthId">
+                <option *ngFor="let m of monthOptions" [value]="m.code">
+                  {{ m.label }}
+                </option>
+              </select>
+            </div> -->
+           
 
 
                 <!-- Guest Info -->
