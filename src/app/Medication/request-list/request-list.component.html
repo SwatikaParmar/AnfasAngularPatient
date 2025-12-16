@@ -15,7 +15,7 @@
           </button>
         </div>
 
-          <div class="row g-3 align-items-end">
+        <div class="row g-3 align-items-end">
 
           <!-- MRN -->
           <!-- <div class="col-md-3">
@@ -93,11 +93,12 @@
                   <td class="p-3 text-sm">
                     {{
                     item.patientFullName
-                   ||'--'
+                    ||'--'
                     }}
                   </td>
                   <td class="p-3 text-sm">{{ item.requestTypeName || '--' }}</td>
-                  <td class="p-3 text-sm" [ngStyle]="{ 'color': getStatusColor(item.statusId) }">{{ item.status || '--' }}</td>
+                  <td class="p-3 text-sm" [ngStyle]="{ 'color': getStatusColor(item.statusId) }">{{ item.status || '--'
+                    }}</td>
                   <td class="p-3 text-sm">
                     <div [dir]="currentLang === 'ar' ? 'rtl' : 'ltr'" class="d-flex gap-3">
                       <a [routerLink]="['/request-list/detail', item.id]" class="action-link">
@@ -127,8 +128,7 @@
             <!-- Pagination -->
             <div class="pt-3 pb-3" *ngIf="requestList && requestList.length > 0">
               <pagination-controls (pageChange)="onPageChange($event)" id="1" class="paginate-doctor-list"
-                 [previousLabel]="'PREVIOUS' | translate"
-    [nextLabel]="'NEXT' | translate">
+                [previousLabel]="'PREVIOUS' | translate" [nextLabel]="'NEXT' | translate">
                 queryParamsHandling="merge">
               </pagination-controls>
             </div>
