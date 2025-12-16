@@ -35,6 +35,7 @@ export class MonthlySatisfactionFormComponent {
   rootUrl: string = environment.rootPathUrl;
   FALLBACK: any = null; // Optional fallback JSON
   selectedMonth!: number;   // ⭐ IMPORTANT
+  yearOptions: any;
 
   constructor(
     private fb: FormBuilder,
@@ -65,6 +66,8 @@ export class MonthlySatisfactionFormComponent {
       gender: ['', Validators.required],
       residence: ['',Validators.required],
       code: ['', Validators.required],
+        yearCode: ['', Validators.required],  // ⭐ ADD THIS
+
       ageBracket: ['',Validators.required],
       ratings: this.fb.group({}),
       comments: this.fb.group({
@@ -82,6 +85,11 @@ export class MonthlySatisfactionFormComponent {
       }
     });
 
+this.form.get('yearCode')?.valueChanges.subscribe(year => {
+  if (year) {
+    this.loadDataByMonth(this.form.value.code);
+  }
+});
 
     this.loadInitialData();
   }
@@ -101,8 +109,11 @@ export class MonthlySatisfactionFormComponent {
 
     this.spinner.show();
 
-    this.content.getMonthlySatisfactionData(mrn, month)
-      .subscribe({
+this.content.getMonthlySatisfactionData(
+  mrn,
+  this.form.value.code,
+  this.form.value.yearCode
+)      .subscribe({
         next: (res) => {
           this.spinner.hide();
           if (res.isSuccess && res.data) {
@@ -129,6 +140,15 @@ bindData(data: any) {
     this.form.patchValue({ code: subj.code }, { emitEvent: false });
   }
 
+  // Patch YEAR only once
+if (!this.form.value.yearCode && data.subject?.yearCode) {
+  this.form.patchValue(
+    { yearCode: data.subject.yearCode },
+    { emitEvent: false }
+  );
+}
+
+
   // PATCH REST (DO NOT TOUCH MONTH AGAIN)
   this.form.patchValue({
     name: subj.name,
@@ -143,6 +163,8 @@ bindData(data: any) {
 
   // ENUMS
   this.monthOptions = data.enums.month || [];
+  this.yearOptions = data.enums.years || [];
+
   this.filledByOptions = data.enums.filledBy || [];
   this.genderOptions = data.enums.gender || [];
   this.residenceOptions = data.enums.residence || [];

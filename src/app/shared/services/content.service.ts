@@ -490,12 +490,16 @@ getSatisfactionMonthlyForms(mrn: string | null, month: number) {
   );
 }
 
-getMonthlySatisfactionData( mrn: any, month: any) {
+getMonthlySatisfactionData(mrn: any, month: any, year: any) {
 
   let url = `${environment.apiUrl}api/Satisfaction/GetMonthlySatisfactionForm?mrn=${mrn}`;
 
   if (month) {
     url += `&code=${month}`;
+  }
+
+  if (year) {
+    url += `&yearCode=${year}`;
   }
 
   return this.http.get<any>(url);
