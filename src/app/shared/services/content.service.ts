@@ -177,11 +177,31 @@ return this.http.post<any>(environment.apiUrl + ApiEndPoint.patientAssign,data)
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.requestType + '?mrn=' +mrn)
   }
 
-  getRequestList(data: any) {
-    return this.http.get<any>(environment.apiUrl + ApiEndPoint.requestList + '?userName=' + data.userName + '&pageNumber=' + data.pageNumber
-      + '&pageSize=' + data.pageSize
-    );
+getRequestList(data: any) {
+  let url = `${environment.apiUrl}${ApiEndPoint.requestList}?pageNumber=${data.pageNumber}&pageSize=${data.pageSize}`;
+
+  if (data.searchQuery) {
+    url += `&searchQuery=${encodeURIComponent(data.searchQuery)}`;
   }
+
+  if (data.mrn) {
+    url += `&mrn=${encodeURIComponent(data.mrn)}`;
+  }
+
+  if (data.fromDate) {
+    url += `&fromDate=${data.fromDate}`;
+  }
+
+  if (data.toDate) {
+    url += `&toDate=${data.toDate}`;
+  }
+
+  if (data.statusId) {
+    url += `&statusId=${data.statusId}`;
+  }
+
+  return this.http.get<any>(url);
+}
 
   
   getRequestListdoctor(data: any) {

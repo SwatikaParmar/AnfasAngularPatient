@@ -17,7 +17,11 @@ export class RequestListComponent {
   requestList: any[] = [];
   rootUrl: any;
   currentLang = 'en'; // default
-
+filterMRN: string = '';
+filterPatientName: string = '';
+fromDate: string = '';
+toDate: string = '';
+statusId: string | number = '';
   constructor(
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService,
@@ -48,34 +52,44 @@ export class RequestListComponent {
     }
   }
   
-  RequestList(): void {
-    this.spinner.show();
+ RequestList(): void {
+  this.spinner.show();
 
-    const mrn = localStorage.getItem('mrn') || '';
-    const payload = {
-      userName: mrn,
-      pageNumber: this.page,
-      pageSize: this.itemsPerPage
-    };
+  const payload: any = {
+    pageNumber: this.page,
+    pageSize: this.itemsPerPage
+  };
 
-    this.contentService.getRequestList(payload).subscribe({
-      next: (response: any) => {
-        if (response?.status) {
-          this.requestList = response.data || [];
-          this.totalItems = response.data?.length || 0; // ✅ Corrected assignment
-        } else {
-      
-        }
-      },
-      error: (error) => {
-       
-      },
-      complete: () => {
-        this.spinner.hide();
+  // 🔍 Text Filters
+  if (this.filterMRN) payload.mrn = this.filterMRN;
+  if (this.filterPatientName) payload.searchQuery = this.filterPatientName;
+
+  // 📅 Date Filters
+  if (this.fromDate) payload.fromDate = this.fromDate;
+  if (this.toDate) payload.toDate = this.toDate;
+
+  // 📌 Status Filter
+  if (this.statusId) payload.statusId = this.statusId;
+
+  this.contentService.getRequestList(payload).subscribe({
+    next: (response: any) => {
+      if (response?.status) {
+        this.requestList = response.data?.items || response.data || [];
+        this.totalItems = response.data?.totalCount || 0;
+      } else {
+        this.requestList = [];
+        this.totalItems = 0;
       }
-    });
-  }
-
+    },
+    error: () => {
+      this.requestList = [];
+      this.totalItems = 0;
+    },
+    complete: () => {
+      this.spinner.hide();
+    }
+  });
+}
   onPageChange(page: number): void {
     this.router.navigate([], {
       relativeTo: this.route,
@@ -83,6 +97,58 @@ export class RequestListComponent {
       queryParamsHandling: 'merge',
     });
   }
+
+
+  
+clearFilters(): void {
+  this.filterMRN = '';
+  this.filterPatientName = '';
+  this.fromDate = '';
+  this.toDate = '';
+  this.statusId = '';
+  this.page = 1;
+  this.RequestList();
+}
+
+
+onFilterChange(): void {
+  this.page = 1; // reset pagination
+  this.RequestList();
+}
+
+
+
+
+
+
+
+
+ 
+
+
+// Convert numeric statusId to readable text
+// Convert numeric statusId to text
+getStatusText(statusId: number): string {
+  switch (statusId) {
+    case 1: return 'Pending';
+    case 2: return 'Approved';
+    case 3: return 'Rejected';
+    case 4: return 'Other';
+    default: return 'N/A';
+  }
+}
+
+// Badge class
+getBadgeClass(statusId: number): string {
+  switch (statusId) {
+    case 1: return 'bg-warning text-dark';
+    case 2: return 'bg-success text-white';
+    case 3: return 'bg-danger text-white';
+    case 4: return 'bg-primary text-white';
+    default: return 'bg-secondary text-white';
+  }
+}
+
 }
 
 
