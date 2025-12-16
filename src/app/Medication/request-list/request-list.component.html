@@ -15,6 +15,62 @@
           </button>
         </div>
 
+          <div class="row g-3 align-items-end">
+
+          <!-- MRN -->
+          <!-- <div class="col-md-3">
+        <label class="form-label">{{ 'SEARCH_BY_MRN' | translate }}</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="filterMRN"
+          (input)="onFilterChange()"
+          placeholder="{{ 'SEARCH_BY_MRN' | translate }}"
+        />
+      </div> -->
+
+          <!-- Patient Name -->
+          <div class="col-md-6">
+            <label class="form-label">{{ 'SEARCH_BY_PATIENT_MRN' | translate }}</label>
+            <input type="text" class="form-control" [(ngModel)]="filterPatientName" (input)="onFilterChange()"
+              placeholder="{{ 'SEARCH_BY_PATIENT_MRN' | translate }}" />
+          </div>
+
+          <!-- From Date -->
+          <div class="col-md-2">
+            <label class="form-label">{{ 'FROM_DATE' | translate }}</label>
+            <input type="date" class="form-control" [(ngModel)]="fromDate" (change)="onFilterChange()" />
+          </div>
+
+          <!-- To Date -->
+          <div class="col-md-2">
+            <label class="form-label">{{ 'TO_DATE' | translate }}</label>
+            <input type="date" class="form-control" [(ngModel)]="toDate" (change)="onFilterChange()" />
+          </div>
+
+          <!-- Status -->
+          <div class="col-md-2">
+            <label class="form-label">{{ 'STATUS' | translate }}</label>
+            <select class="form-select" [(ngModel)]="statusId" (change)="onFilterChange()">
+              <option value="">{{ 'ALL_STATUS' | translate }}</option>
+              <option [value]="1">{{ 'PENDING' | translate }}</option>
+              <option [value]="2">{{ 'Approved' | translate }}</option>
+              <option [value]="3">{{ 'Rejected' | translate }}</option>
+              <option [value]="4">{{ 'Uploaded' | translate }}</option>
+            </select>
+          </div>
+
+          <!-- Clear Button -->
+          <div class="col-md-2 ms-auto mb-3">
+            <button class="btn btn-outline-secondary w-100" (click)="clearFilters()">
+              <i class="fa fa-refresh me-1"></i>
+              {{ 'CLEAR_FILTERS' | translate }}
+            </button>
+          </div>
+
+        </div>
+
+
         <!-- Table Wrapper -->
         <div class="bg-gray-50 text-gray-800 rounded-[15px] overflow-x-auto">
           <div class="min-w-[640px] p-3">
