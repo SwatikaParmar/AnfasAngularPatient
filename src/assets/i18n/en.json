@@ -490,7 +490,8 @@
   "Month":"Month",
   "Year":"Year",
   "SELECT_AMC":"Select AMC",
-    "SEARCH_BY_PATIENT_MRN":"Search by Mrn & Patient Name"
+    "SEARCH_BY_PATIENT_MRN":"Search by Mrn & Patient Name",
+      "ALL_REQUEST_TYPE":"All Request Type"
 
 
 }
