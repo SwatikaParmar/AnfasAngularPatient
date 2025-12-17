@@ -82,7 +82,7 @@ selectedRequestType: number | '' = '';
   }
 
 
-  this.contentService.getRequestList(payload).subscribe({
+  this.contentService.getRequestLists(payload).subscribe({
     next: (response: any) => {
       if (response?.status) {
         this.requestList = response.data?.items || response.data || [];

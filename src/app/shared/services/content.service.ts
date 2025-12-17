@@ -184,6 +184,45 @@ return this.http.post<any>(environment.apiUrl + ApiEndPoint.patientAssign,data)
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.requestType + '?mrn=' +mrn)
   }
 
+  getRequestLists(data: any) {
+  let url = `${environment.apiUrl}${ApiEndPoint.requestList}?pageNumber=${data.pageNumber}&pageSize=${data.pageSize}`;
+
+  if (data.searchQuery) {
+    url += `&searchQuery=${encodeURIComponent(data.searchQuery)}`;
+  }
+
+const mrn = localStorage.getItem('mrn');
+if (mrn) {
+  url += `&mrn=${encodeURIComponent(mrn)}`;
+}
+
+
+  if (data.fromDate) {
+    url += `&fromDate=${data.fromDate}`;
+  }
+
+  if (data.toDate) {
+    url += `&toDate=${data.toDate}`;
+  }
+
+  if (data.statusId) {
+    url += `&statusId=${data.statusId}`;
+  }
+
+  
+    if (data.requestTypeId) {
+    url += `&requestTypeId=${data.requestTypeId}`;
+  }
+
+  
+  
+    if (data.code) {
+    url += `&careProviderCode=${data.code}`;
+  }
+  return this.http.get<any>(url);
+}
+
+
 getRequestList(data: any) {
   let url = `${environment.apiUrl}${ApiEndPoint.requestList}?pageNumber=${data.pageNumber}&pageSize=${data.pageSize}`;
 
