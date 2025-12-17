@@ -31,7 +31,7 @@
                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
                 <p class="col-5">
                   <label class="address-texts">
-                    <a *ngIf="detail?.contentUrl" [href]="rootUrl + detail.contentUrl" rel="noopener">
+                    <a *ngIf="detail?.contentUrl" [href]="rootUrl + detail.contentUrl" rel="noopener" style="color: blue;">
                       {{ 'VIEW_DOCUMENT' | translate }}
                     </a>
                     <span *ngIf="!detail?.contentUrl">{{ 'N_A' | translate }}</span>

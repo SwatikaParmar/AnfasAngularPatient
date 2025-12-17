@@ -23,7 +23,8 @@
           <!-- Patient Name -->
           <div class="col-md-4">
             <label class="form-label">{{ 'SEARCH_BY_PATIENT_MRN' | translate }}</label>
-            <input type="text" class="form-control" [(ngModel)]="filterPatientName" (input)="onFilterChange()"
+            <input type="text" class="form-control" [(ngModel)]="filterPatientName"
+             (input)="onFilterChange()"
               placeholder="{{ 'SEARCH_BY_PATIENT_MRN' | translate }}" />
           </div>
 
