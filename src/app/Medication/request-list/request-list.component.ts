@@ -146,7 +146,7 @@ getStatusText(statusId: number): string {
     case 2: return 'Approved';
     case 3: return 'Rejected';
     case 4: return 'Other';
-    default: return 'N/A';
+    default: return '--';
   }
 }
 

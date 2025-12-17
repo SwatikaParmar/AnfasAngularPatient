@@ -39,10 +39,7 @@ debugger
             location.reload();
           }
 
-          // ⭐ Redirect to maintenance page for API outage errors
-          if ([404, 502, 503, 500].includes(error.status)) {
-            this.router.navigate(['/maintenance']);
-          }
+ 
 
         }
       )

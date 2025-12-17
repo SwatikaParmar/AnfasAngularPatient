@@ -38,7 +38,8 @@ export class ComplaintChatComponent {
   }
     this.complaintReply();
 
-   
+       this.fetchComplaintDetails(); // Add this method
+
   }
 
     getStatusColor(status: any): string {
@@ -61,7 +62,7 @@ export class ComplaintChatComponent {
     page: 1,
     pageSize: 1000
   };
-
+debugger
   this.contentService.getComplaint(payload).subscribe(
     (response) => {
       if (response.status && response.data?.complaints?.length) {

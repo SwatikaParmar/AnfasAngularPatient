@@ -94,7 +94,7 @@ onLogin() {
   });
 
   if (this.loginForm.invalid || isAnyRequiredFieldEmpty) {
-    this.toasterService.error('Please enter correct value');
+    this.toasterService.error('Please select an organisation code');
     this.spinner.hide();
     return;
   }
@@ -122,7 +122,7 @@ onLogin() {
       this.spinner.hide();
     },
     error: (err) => {
-      this.toasterService.error('Login failed. Please try again.');
+      this.toasterService.error('Login failed.');
       this.spinner.hide();
     }
   });

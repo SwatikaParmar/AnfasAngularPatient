@@ -77,12 +77,12 @@
                                                                     ? item.instructions.split(' ').slice(0, 3).join(' ')
                                                                     + (item.instructions.split(' ').length > 3 ? '...' :
                                                                     '')
-                                                                    : 'N/A'
+                                                                    : '--'
                                                                     }}
                                                                 </td>
 
                                                                 <td>{{ item.createdAt ? (item.createdAt |
-                                                                    date:'dd-MM-yyyy') : 'N/A' }}
+                                                                    date:'dd-MM-yyyy') : '--' }}
                                                                 </td>
                                                                 <td>
                                                                     <div class="form-check form-switch">
@@ -243,7 +243,7 @@
                                                         </a>
                                                     </td>
                                                     <td>{{ item.isApproved }}</td>
-                                                    <td>{{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : 'N/A'
+                                                    <td>{{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : '--'
                                                         }}</td>
                                                     <td>
                                                         <a class="list-icon"><i class="fa fa-eye"

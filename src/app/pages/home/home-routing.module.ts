@@ -66,6 +66,10 @@ import { ComplaintListDoctorComponent } from 'src/app/doctor/complaint-suggestio
 import { DoctorReqstDetailComponent } from 'src/app/doctor/doctor-reqst/doctor-reqst-detail/doctor-reqst-detail.component';
 import { DoctorReqstComponent } from 'src/app/doctor/doctor-reqst/doctor-reqst.component';
 import { MonthlySatisfactionFormComponent } from './satisfaction/monthly-satisfaction-form/monthly-satisfaction-form.component';
+import { DoctorAdminEducationComponent } from 'src/app/doctor/doctor-admin-education/doctor-admin-education.component';
+import { DoctorAdminEducationDetailComponent } from 'src/app/doctor/doctor-admin-education-detail/doctor-admin-education-detail.component';
+
+
 const routes: Routes = [
 
   {
@@ -88,7 +92,7 @@ const routes: Routes = [
       { path: 'profile/consent', component: PatientConsentComponent },
       { path: 'appointment-list/appointment/book', component: BookAppointmentComponent },
       { path: 'messages/chat', component: MessageChatComponent },
-      { path: 'complaint/chat/:id', component: ComplaintChatComponent },
+      { path: 'complaint/chat/:id/:id1', component: ComplaintChatComponent },
       { path: 'complaint/complaint-add', component: ComplaintFormComponent },
       { path: 'history-list', component: HistoryListComponent },
       { path: 'history-list/chat', component: HistoryChatComponent },
@@ -141,7 +145,9 @@ const routes: Routes = [
       { path: 'doctor-complaint', component:ComplaintListDoctorComponent},
       { path: 'doctor-complaint/detail/:id',component:ComplaintListDetailComponent},
       { path: 'doctor-reqst', component:DoctorReqstComponent},
-      { path: 'doctor-reqst/detail/:id',component:DoctorReqstDetailComponent}
+      { path: 'doctor-reqst/detail/:id',component:DoctorReqstDetailComponent},
+      { path: 'doctor-admin-education', component:DoctorAdminEducationComponent},
+      { path: 'doctor-admin-education/detail/:id', component:DoctorAdminEducationDetailComponent}
 
     ]
   }

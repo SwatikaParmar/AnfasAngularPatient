@@ -5,18 +5,17 @@ import { ToastrService } from 'ngx-toastr';
 import { ContentService } from 'src/app/shared/services/content.service';
 import { environment } from 'src/environments/environment';
 @Component({
-  selector: 'app-complaint-list',
-  templateUrl: './complaint-list.component.html',
-  styleUrls: ['./complaint-list.component.css']
+  selector: 'app-doctor-admin-education',
+  templateUrl: './doctor-admin-education.component.html',
+  styleUrls: ['./doctor-admin-education.component.css']
 })
-export class ComplaintListComponent {
-  page: number = 0;
+export class DoctorAdminEducationComponent {
+page: number = 0;
   itemsPerPage!: number;
   totalItems!: number;
-  complaintList: any;
+  materialList: any;
   rootUrl: any;
-
-
+role: string = '';
 
   constructor(
     private toastrService: ToastrService,
@@ -27,31 +26,51 @@ export class ComplaintListComponent {
   ){ }
 
   ngOnInit(): void {
+    debugger
+      this.role = localStorage.getItem('role') || '';
+
     this.rootUrl = environment.rootPathUrl;
     this.route.queryParams.subscribe((params) => {
       this.page = +params['page'] || 0;
     });
-    this.ComplaintList();  
+    this.MaterialList();  
   }
-  
-  ComplaintList() {
 
+    getStatusColor(status: any): string {
+    switch (status) {
+      case 1:
+        return 'orange';  // Yellow or Orange
+      case 2:
+        return 'green';
+      case 3:
+        return 'red';
+      default:
+        return 'black';  // Default color
+    }
+  }
+
+  MaterialList() {
+    this.spinner.show();
     let payload = {
-      mrn : localStorage.getItem('mrn'),
-      page : 1,
-      pageSize : 1000
+      pageNumber : 1,
+      pageSize : 100000,
+      // isApproved : true,
+      careProviderCode : localStorage.getItem('code'),
+     
     }
 
-    this.contentService.getComplaint(payload).subscribe(
+    this.contentService.geteducationalMaterialDocAdmin(payload).subscribe(
       response => {
-        if (response.status === true) {
-          this.complaintList = response.data.complaints;
+        if (response.isSuccess) {
+          this.materialList = response.data.dataList;
+          this.spinner.hide();
         } else {
-  
+          this.spinner.hide();
+       
         }
       },
       error => {
-      
+        
       }
     );
   }    
@@ -65,28 +84,5 @@ export class ComplaintListComponent {
     });
   }
 
-  getStatusColor(status: any): string {
-    switch (status) {
-      case 1:
-        return 'orange';  // Yellow or Orange
-      case 2:
-        return 'green';
-      case 3:
-        return 'red';
-      default:
-        return 'black';  // Default color
-    }
-  }
-  
- 
-  goToComplaintChat(complaint: any): void {
-  this.router.navigate(['/complaint/chat', complaint.complaintId, complaint.mrn], {
-    state: { complaintData: complaint }
-  });
 }
-
-  
-  
-}
-
 

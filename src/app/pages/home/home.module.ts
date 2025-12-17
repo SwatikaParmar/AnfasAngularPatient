@@ -79,7 +79,8 @@ import { ComplaintListDoctorComponent } from 'src/app/doctor/complaint-suggestio
 import { DoctorReqstDetailComponent } from 'src/app/doctor/doctor-reqst/doctor-reqst-detail/doctor-reqst-detail.component';
 import { DoctorReqstComponent } from 'src/app/doctor/doctor-reqst/doctor-reqst.component';
 import { MonthlySatisfactionFormComponent } from './satisfaction/monthly-satisfaction-form/monthly-satisfaction-form.component';
-
+import { DoctorAdminEducationComponent } from 'src/app/doctor/doctor-admin-education/doctor-admin-education.component';
+import { DoctorAdminEducationDetailComponent } from 'src/app/doctor/doctor-admin-education-detail/doctor-admin-education-detail.component';
 // export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 //   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 // }
@@ -149,7 +150,9 @@ import { MonthlySatisfactionFormComponent } from './satisfaction/monthly-satisfa
     ComplaintListDoctorComponent,
     DoctorReqstDetailComponent,
     DoctorReqstComponent,
-    MonthlySatisfactionFormComponent
+    MonthlySatisfactionFormComponent,
+    DoctorAdminEducationComponent,
+    DoctorAdminEducationDetailComponent
 
   ],
   imports: [

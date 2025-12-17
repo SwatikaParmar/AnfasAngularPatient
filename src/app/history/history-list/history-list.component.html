@@ -49,7 +49,7 @@
                       <!-- Left Side -->
                       <div class="appointment-header">
                         {{ 'APPOINTMENT_DATE' | translate }}<br />
-                        <strong>{{ item.slots[0]?.start ? (item.slots[0].start | date: 'medium') : 'N/A' }}</strong>
+                        <strong>{{ item.slots[0]?.start ? (item.slots[0].start | date: 'medium') : '--' }}</strong>
                       </div>
                       <!-- Right Side -->
                       <div class="chat-icon-box d-flex justify-content-center align-items-center pt-2">

@@ -5,18 +5,13 @@
             <div class="container-fluid">
                 <div class="flex mb-2 items-center ml-1">
 
-                    <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">{{ 'PATIENT_EDUCATION'
+                    <h1 class="text-lg font-semibold" style="font-size: 25px; color: #726641;">{{ 'ADMIN_EDUCATION'
                         | translate }}</h1>
                 </div>
                 <div class="bg-gray-50 text-gray-800 font-sans" style="border-radius: 15px;">
                     <div class="custom-container mx-auto p-3">
                         <div class="container">
-                            <div class="text-end d-flex align-items-end justify-content-end mb-3">
-                                <button type="button"  class="appointment-btn   px-4 py-2  text-white px-4 py-2 rounded-full sm:w-auto"
-                                    [routerLink]="'/doctor/educational-material'">
-                                    + {{ 'ADD_EDUCATIONAL' | translate }}
-                                </button>
-                            </div>
+                      
 
                             <div class="table-container">
                                 <div class="table-responsive">
@@ -25,7 +20,6 @@
                                             <tr>
                                                 <th>{{ 'TITLE1' | translate }}</th>
                                                 <!-- <th>{{ 'IMAGE' | translate }}</th> -->
-                                                <th>{{ 'CARE_PROVIDER_CODE' | translate }}</th>
                                                 <th *ngIf="role === 'Doctor'" >{{ 'IS_APPROVED' | translate }}</th>
                                                 <th>{{ 'CREATED_AT' | translate }}</th>
                                                                                                 <th>{{ 'DESCRIPTION1' | translate }}</th>
@@ -48,13 +42,12 @@
                                                     <ng-template #noUrl>N/A</ng-template>
                                                 </td> -->
 
-                                     
+                                              
 
-                                                <td>{{ item.careProviderCode || '--' }}</td>
                                                 <td *ngIf="role === 'Doctor'" [ngStyle]="{ 'color': getStatusColor(item.statusId) }">{{ item.isApproved || '--' }}</td>
                                                 <td>{{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : '--' }}
                                                 </td>
-                                                           <td>
+                                                  <td>
                                                     {{
                                                     (item.description ? item.description.split(' ').slice(0, 2).join('
                                                     ') +
@@ -63,12 +56,10 @@
                                                 </td>
                                                 <td>
                                                     <a class="list-icon"><i class="fa fa-eye"
-                                                            [routerLink]="['/doctor/educational-detail', item?.id]"
+                                                            [routerLink]="['/doctor-admin-education/detail', item?.id]"
                                                             aria-hidden="true"></i></a>&nbsp;
 
-                                                    <a class="list-icon" *ngIf="item.statusId == 1"
-                                                        [routerLink]="'/doctor/educational-material-edit/' + item?.id"><i
-                                                            class="fa fa-pencil"></i></a>
+                                  
 
                                                 </td>
                                             </tr>

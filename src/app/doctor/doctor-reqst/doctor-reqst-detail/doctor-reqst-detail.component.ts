@@ -40,10 +40,10 @@ detail: any;
 }
 
 Detail(id: number): void {
-  const mrn = localStorage.getItem('mrn') || ''; // get MRN safely
+  const mrn = localStorage.getItem('loginId') || ''; // get MRN safely
   this.spinner.show();
 
-  this.contentService.requestDetail(id, mrn).subscribe({
+  this.contentService.requestDetails(id, mrn).subscribe({
     next: (response) => {
       if (response.status || response.isSuccess) {
         this.detail = response.data;

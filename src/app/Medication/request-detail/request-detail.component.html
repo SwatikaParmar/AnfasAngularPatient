@@ -25,7 +25,7 @@
                 <p class="col-5">                                {{ 'PATIENT_NAME' | translate }}
 </p>
                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                <p class="col-5"><label class="address-texts">{{ detail?.patientFullName || 'N/A' }}</label></p>
+                <p class="col-5"><label class="address-texts">{{ detail?.patientFullName || '--' }}</label></p>
               </li>
 
                <li class="list-group-item d-flex align-items-center">
@@ -64,7 +64,7 @@
                       </a>
 
                     </ng-container>
-                    <ng-template #noReport>N/A</ng-template>
+                    <ng-template #noReport>--</ng-template>
                   </label>
                 </p>
               </li>
@@ -82,13 +82,13 @@
                   <li class="list-group-item d-flex align-items-center">
               <p class="col-5">{{ 'Requested_Date' | translate }}</p>
                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                <p class="col-5">  {{ detail.createdAt ? (detail.createdAt | date:'dd-MM-yyyy') : 'N/A' }}</p>
+                <p class="col-5">  {{ detail.createdAt ? (detail.createdAt | date:'dd-MM-yyyy') : '--' }}</p>
               </li>
 
                   <li class="list-group-item d-flex align-items-center">
                 <p class="col-5">{{ 'Uploaded_Date' | translate }}</p>
                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
-                <p class="col-5"><label class="address-texts"> {{ detail.uploadedAt ? (detail.uploadedAt | date:'dd-MM-yyyy') : 'N/A' }}</label></p>
+                <p class="col-5"><label class="address-texts"> {{ detail.uploadedAt ? (detail.uploadedAt | date:'dd-MM-yyyy') : '--' }}</label></p>
               </li>
 
 

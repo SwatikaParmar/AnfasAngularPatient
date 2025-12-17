@@ -60,7 +60,7 @@
               <!-- Month Dropdown (NEW) -->
               <div class="col-md-4 col-12 mb-3">
                 <label class="form-label"> {{ 'Month' | translate }} :</label>
-                <select class="form-select" formControlName="code">
+                <select class="form-select" formControlName="code" >
                   <option *ngFor="let m of monthOptions" [value]="m.code">
                     {{ m.label }}
                   </option>

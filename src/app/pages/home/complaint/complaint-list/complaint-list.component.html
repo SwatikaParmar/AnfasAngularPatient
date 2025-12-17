@@ -39,7 +39,7 @@
     }" (click)="goToComplaintChat(item)">
                         <td>{{ item.patientName || '--' }}</td>
                         <td>{{ item.complaintTypeName || '--' }}</td>
-                        <td>{{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : 'N/A' }}</td>
+                        <td>{{ item.createdAt ? (item.createdAt | date:'dd-MM-yyyy') : '--' }}</td>
                         <td [ngStyle]="{ 'color': getStatusColor(item.statusId) }">
                           {{ item.status || '--' }}
                         </td>

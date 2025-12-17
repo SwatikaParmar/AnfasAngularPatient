@@ -506,7 +506,16 @@
               </a>
             </div>
 
-
+      <div class="item shw one" routerLinkActive="active">
+              <a class="sub-btn" [routerLink]="['/doctor-admin-education']"
+                (click)="updatedoctorVisitSection(VisitSectionType.EducationMaterial)">
+                <i class="fas fa-book" style="font-size: 20px; margin-right: 10px;"></i> <!-- Book icon -->
+                <span style="font-size: 15px !important; font-weight: 600 !important;">
+                  {{ 'ADMIN_EDUCATION'
+                  | translate }}
+                </span>
+              </a>
+            </div>
 
             <div class="item shw one" routerLinkActive="active">
               <a [routerLink]="['/chat-list']">

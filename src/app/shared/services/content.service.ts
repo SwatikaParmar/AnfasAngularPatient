@@ -99,6 +99,13 @@ return this.http.post<any>(environment.apiUrl + ApiEndPoint.patientAssign,data)
     )
   }
 
+    getComplaintDoctor(data: any) {
+      const code = localStorage.getItem('loginId')
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.complaintList + '?mrn=' + data.mrn +
+      '&page=' + data.page + '&pageSize=' + data.pageSize + '&careProviderCode=' + code
+    )
+  }
+
 
     getComplaintdoctor(data: any) {
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.complaintList + '?careProviderCode=' + data.careProviderCode +
@@ -204,6 +211,12 @@ getRequestList(data: any) {
     if (data.requestTypeId) {
     url += `&requestTypeId=${data.requestTypeId}`;
   }
+
+  
+  
+    if (data.code) {
+    url += `&careProviderCode=${data.code}`;
+  }
   return this.http.get<any>(url);
 }
 
@@ -213,6 +226,13 @@ getRequestList(data: any) {
       + '&pageSize=' + data.pageSize
     );
   }
+
+     getRequestTypeDoctor(code:any) {
+    
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.requestType + '?code=' + code)
+  }
+
+  
 
   getHealthTracker(data: any) {
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.healthTracker + '?mrn=' + data.mrn + '&type=' + data.type +
@@ -281,11 +301,18 @@ getRequestList(data: any) {
 
   
 
-  geteducationalMaterialDetail(id: any): Observable<any> {
-    return this.http.get<any>(
-      `${environment.apiUrl}${ApiEndPoint.educationalMaterialDetail}?id=${id}`
-    );
+geteducationalMaterialDetail(id: any): Observable<any> {
+  const code = localStorage.getItem('loginId');
+
+  let url = `${environment.apiUrl}${ApiEndPoint.educationalMaterialDetail}?id=${id}`;
+
+  if (code) {
+    url += `&careProviderCode=${code}`;
   }
+
+  return this.http.get<any>(url);
+}
+
 
   cancelAppoint(data: any) {
     return this.http.post<any>(environment.apiUrl + ApiEndPoint.cancelAppointment, data)
@@ -334,6 +361,12 @@ getRequestList(data: any) {
   geteducationalMaterialDoc(data: any) {
     return this.http.get<any>(environment.apiUrl + ApiEndPoint.educationalMaterial + '?pageNumber=' + data.pageNumber + '&pageSize=' + data.pageSize
       + '&careProviderCode=' + data.careProviderCode
+    );
+  }
+
+    geteducationalMaterialDocAdmin(data: any) {
+    return this.http.get<any>(environment.apiUrl + ApiEndPoint.educationalMaterial + '?pageNumber=' + data.pageNumber + '&pageSize=' + data.pageSize
+      + '&careProviderCode=' + data.careProviderCode + '&isAssigned=true'
     );
   }
 
@@ -457,6 +490,11 @@ requestDetail(id: number, mrn: string): Observable<any> {
 }
 
 
+requestDetails(id: number, careProviderCode: string): Observable<any> {
+  return this.http.get<any>(
+    `${environment.apiUrl}${ApiEndPoint.requestDetail}?id=${id}&careProviderCode=${careProviderCode}`
+  );
+}
 
 visitDetail(data:any){
   return this.http.get<any>(environment.apiUrl + ApiEndPoint.visitDetail + '?mrn=' + data.mrn + '&visitId=' + data.visitId)
@@ -507,7 +545,7 @@ getSatisfactionMonthlyForm(visitId:any){
 }
 
 // content.service.ts
-getSatisfactionMonthlyForms(mrn: string | null, month: number) {
+getSatisfactionMonthlyForms(mrn: string | null, month: number, year: number) {
   return this.http.get<any>(
     `${environment.apiUrl}}api/Satisfaction/GetMonthlySatisfactionForm
 ?mrn=${mrn}&code=${month}`

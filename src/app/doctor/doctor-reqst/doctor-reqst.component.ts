@@ -18,6 +18,15 @@ export class DoctorReqstComponent {
   rootUrl: any;
   currentLang = 'en'; // default
 
+    filterMRN: string = '';
+filterPatientName: string = '';
+fromDate: string = '';
+toDate: string = '';
+statusId: number | '' = '';
+  reqstType: any;
+reqstTypeList: any[] = [];
+selectedRequestType: number | '' = '';
+
   constructor(
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService,
@@ -28,6 +37,7 @@ export class DoctorReqstComponent {
 
   ngOnInit(): void {
     this.rootUrl = environment.rootPathUrl;
+  this.getReqstTypeList(); // ✅ add this
 
     this.route.queryParams.subscribe((params) => {
       this.page = +params['page'] || 1;
@@ -48,33 +58,52 @@ export class DoctorReqstComponent {
     }
   }
   
-  RequestList(): void {
-    this.spinner.show();
+RequestList(): void {
+  this.spinner.show();
 
-    const mrn = localStorage.getItem('loginId') || '';
-    const payload = {
-      userName: mrn,
-      pageNumber: this.page,
-      pageSize: this.itemsPerPage
-    };
+  const payload: any = {
+    pageNumber: this.page,
+    pageSize: this.itemsPerPage,
+    code: localStorage.getItem('loginId')
+  };
 
-    this.contentService.getRequestListdoctor(payload).subscribe({
-      next: (response: any) => {
-        if (response?.status) {
-          this.requestList = response.data || [];
-          this.totalItems = response.data?.length || 0; // ✅ Corrected assignment
-        } else {
-      
-        }
-      },
-      error: (error) => {
-       
-      },
-      complete: () => {
-        this.spinner.hide();
-      }
-    });
+  // 🔍 Text Filters
+  if (this.filterMRN) payload.mrn = this.filterMRN;
+  if (this.filterPatientName) payload.searchQuery = this.filterPatientName;
+
+  // 📅 Date Filters
+  if (this.fromDate) payload.fromDate = this.fromDate;
+  if (this.toDate) payload.toDate = this.toDate;
+
+  // 📌 Status Filter
+  if (this.statusId) payload.statusId = this.statusId;
+
+    // ✅ REQUEST TYPE FILTER
+  if (this.selectedRequestType) {
+    payload.requestTypeId = this.selectedRequestType;
   }
+
+
+  this.contentService.getRequestList(payload).subscribe({
+    next: (response: any) => {
+      if (response?.status) {
+        this.requestList = response.data?.items || response.data || [];
+        this.totalItems = response.data?.totalCount || 0;
+      } else {
+        this.requestList = [];
+        this.totalItems = 0;
+      }
+    },
+    error: () => {
+      this.requestList = [];
+      this.totalItems = 0;
+      this.toastrService.error('Failed to load request list');
+    },
+    complete: () => {
+      this.spinner.hide();
+    }
+  });
+}
 
   onPageChange(page: number): void {
     this.router.navigate([], {
@@ -83,6 +112,35 @@ export class DoctorReqstComponent {
       queryParamsHandling: 'merge',
     });
   }
+
+  clearFilters(): void {
+  this.filterMRN = '';
+  this.filterPatientName = '';
+  this.fromDate = '';
+  this.toDate = '';
+  this.statusId = '';
+  this.selectedRequestType = ''; // ✅ add
+  this.page = 1;
+  this.RequestList();
+}
+
+getReqstTypeList() {
+  this.contentService.getRequestTypeDoctor(localStorage.getItem('loginId')).subscribe(response => {
+    if (response?.status) {
+      debugger
+      this.reqstTypeList = response.data || [];
+    } else {
+      this.reqstTypeList = [];
+    }
+  });
+}
+
+onFilterChange(): void {
+  this.page = 1; // reset pagination
+  this.RequestList();
+}
+
+
 }
 
 

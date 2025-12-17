@@ -62,7 +62,7 @@ export class ComplaintListDetailComponent {
     pageSize: 1000
   };
 
-  this.contentService.getComplaint(payload).subscribe(
+  this.contentService.getComplaintDoctor(payload).subscribe(
     (response) => {
       if (response.status && response.data?.complaints?.length) {
         this.complaintDetails = response.data.complaints.find(

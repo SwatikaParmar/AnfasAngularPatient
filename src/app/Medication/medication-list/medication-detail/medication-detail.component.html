@@ -70,7 +70,7 @@
                                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
                                 <p class="col-5">
                                     <label class="address-texts">
-                                        {{ detail?.startDate ? (detail.startDate | date: 'dd-MM-yyyy') : 'N/A' }}
+                                        {{ detail?.startDate ? (detail.startDate | date: 'dd-MM-yyyy') : '--' }}
                                     </label>
                                 </p>
                             </li>
@@ -82,7 +82,7 @@
                                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
                                 <p class="col-5">
                                     <label class="address-texts">
-                                        {{ detail?.endDate ? (detail.endDate | date: 'dd-MM-yyyy') : 'N/A' }}
+                                        {{ detail?.endDate ? (detail.endDate | date: 'dd-MM-yyyy') : '--' }}
                                     </label>
                                 </p>
                             </li>
@@ -96,7 +96,7 @@
                                 <p class="col-5">{{ 'DATE' | translate }}</p>
                                 <p class="col-2 text-center"><i class="fa fa-chevron-circle-right"></i></p>
                                 <p class="col-5"><label class="address-texts"> {{ detail.createdAt ?
-                                        (detail.createdAt | date:'dd-MM-yyyy') : 'N/A' }}</label></p>
+                                        (detail.createdAt | date:'dd-MM-yyyy') : '--' }}</label></p>
                             </li>
 
 

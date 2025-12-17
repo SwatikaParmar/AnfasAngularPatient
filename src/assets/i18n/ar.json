@@ -496,7 +496,11 @@
   "Year":"سنة",
    "SELECT_AMC":"حدد AMC",
       "SEARCH_BY_PATIENT_MRN":"البحث باستخدام رقم السجل الطبي واسم المريض",
-        "ALL_REQUEST_TYPE": "جميع أنواع الطلبات"
+        "ALL_REQUEST_TYPE": "جميع أنواع الطلبات",
+          "ADMIN_EDUCATION": "التعليم الإداري",
+            "SELECT_ORGANISATION_CODE": "يرجى اختيار رمز المؤسسة"
+
+
 
 
 
