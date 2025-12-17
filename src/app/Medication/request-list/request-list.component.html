@@ -28,14 +28,11 @@
   >
     <option value="">{{ 'ALL' | translate }}</option>
 
-    <option
-      *ngFor="let type of reqstTypeList"
-      [value]="type.requestTypeID"
-    >
-      {{ type.requestTypeName }}
-    </option>
-  </select>
-</div>
+              <option *ngFor="let type of reqstTypeList" [value]="type.requestTypeID">
+                {{ type.requestTypeName }}
+              </option>
+            </select>
+          </div>
 
           <div class="col-md-3">
             <label class="form-label">{{ 'FROM_DATE' | translate }}</label>
