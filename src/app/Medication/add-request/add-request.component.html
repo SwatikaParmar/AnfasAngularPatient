@@ -118,7 +118,7 @@
       </div>
     </div>
       </div>
-
+<!-- 
       <div class="col-12">
         <label for="description" class="form-label">{{ 'DESCRIPTION1' | translate }}</label>
         <textarea
@@ -136,11 +136,11 @@
             {{ 'DESCRIPTION_IS_REQUIRED' | translate }}
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <!-- ✅ Description (only for medical) -->
-    <div class="row mb-3 mt-1" *ngIf="selectedRequestType === 'medicalreport'">
+    <div class="row mb-3 mt-1" *ngIf="showDescription">
       <div class="col-12">
         <label for="description" class="form-label">{{ 'DESCRIPTION1' | translate }}</label>
         <textarea

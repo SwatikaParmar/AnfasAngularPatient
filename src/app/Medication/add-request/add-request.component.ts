@@ -17,6 +17,7 @@ export class AddRequestComponent implements OnInit {
   id: any;
   requestTypeList: any;
   selectedRequestType: string = '';
+  showDescription: any;
 
   constructor(
     private toaster: ToastrService,
@@ -89,30 +90,28 @@ getRequestDetails(id: number) {
       }
     });
   }
-
 onRequestTypeChange() {
-  const selectedId = Number(this.requestForm.get('requestTypeId')?.value); // Convert to number
-  console.log('Selected ID:', selectedId);
+  const selectedId = Number(this.requestForm.get('requestTypeId')?.value);
+  this.selectedRequestType = '';
+  this.showDescription = false;
 
-  this.selectedRequestType = ''; // Reset first
+  // Clear all validators first
+  this.requestForm.get('discretion')?.clearValidators();
+  this.requestForm.get('companionName')?.clearValidators();
+  this.requestForm.get('companionNationalId')?.clearValidators();
+  this.requestForm.get('phoneNumber')?.clearValidators();
+  this.requestForm.get('dob')?.clearValidators();
 
-  // Apply validators based on selected ID
   switch (selectedId) {
     case 1: // Medical Report
       this.selectedRequestType = 'medicalreport';
-
-      // Apply validators
+      this.showDescription = true;
       this.requestForm.get('discretion')?.setValidators([Validators.required]);
-      this.requestForm.get('companionName')?.clearValidators();
-      this.requestForm.get('companionNationalId')?.clearValidators();
-      this.requestForm.get('phoneNumber')?.clearValidators();
-      this.requestForm.get('dob')?.clearValidators();
       break;
 
     case 6: // Companion
       this.selectedRequestType = 'companion';
-
-      // Apply validators
+      this.showDescription = true;
       this.requestForm.get('discretion')?.setValidators([Validators.required]);
       this.requestForm.get('companionName')?.setValidators([Validators.required]);
       this.requestForm.get('companionNationalId')?.setValidators([Validators.required]);
@@ -120,19 +119,18 @@ onRequestTypeChange() {
       this.requestForm.get('dob')?.setValidators([Validators.required]);
       break;
 
+    case 7: // ✅ Hospitalization Notice Request
+      this.selectedRequestType = 'hospitalization';
+      this.showDescription = true;
+      this.requestForm.get('discretion')?.setValidators([Validators.required]);
+      break;
+
     default:
-      // Reset all validators if none selected
-      this.requestForm.get('discretion')?.clearValidators();
-      this.requestForm.get('companionName')?.clearValidators();
-      this.requestForm.get('companionNationalId')?.clearValidators();
-      this.requestForm.get('phoneNumber')?.clearValidators();
-      this.requestForm.get('dob')?.clearValidators();
+      // Nothing required
       break;
   }
 
   this.requestForm.updateValueAndValidity();
-
-  console.log('Selected Request Type (by ID):', this.selectedRequestType);
 }
 
 
@@ -140,7 +138,7 @@ onRequestTypeChange() {
  onSubmit() {
   this.submitted = true;
 
-  // If invalid, stop and highlight errors
+  // ❌ Stop if form is invalid
   if (this.requestForm.invalid) {
     Object.keys(this.requestForm.controls).forEach(key => {
       const control = this.requestForm.get(key);
@@ -164,20 +162,38 @@ onRequestTypeChange() {
   };
 
   this.content.addRequest(requestData).subscribe({
-    next: (response) => {
+    // ✅ SUCCESS (HTTP 200)
+    next: (response: any) => {
       this.spinner.hide();
-      if (response.status) {
-        const message = this.id ? 'Updated successfully' : 'Added successfully';
-        this.toaster.success(message);
+
+      if (response?.status) {
+        const msg = this.id
+          ? 'Updated successfully'
+          : 'Added successfully';
+
+        this.toaster.success(msg);
         this.router.navigate(['/request-list']);
       } else {
-        this.toaster.error(response.message || 'Failed to save request');
+        // ⚠️ Backend returned 200 but status=false
+        this.toaster.error(
+          response?.message || 'Failed to save request'
+        );
       }
     },
-    error: () => {
+
+    // ❌ ERROR (HTTP 400 / 404 / 500)
+    error: (err) => {
       this.spinner.hide();
-      this.toaster.error('Something went wrong');
+
+      // 🔥 MOST IMPORTANT PART
+      const errorMessage =
+        err?.error?.message ||   // backend custom message
+        err?.message ||          // angular error message
+        'Something went wrong';  // fallback
+
+      this.toaster.error(errorMessage);
     }
   });
 }
+
 }
