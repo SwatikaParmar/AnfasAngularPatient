@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class DoctorReqstComponent {
  page: number = 1;
-  itemsPerPage: number = 10;
+  itemsPerPage: number = 350000;
   totalItems: number = 0;
   requestList: any[] = [];
   rootUrl: any;
@@ -136,6 +136,10 @@ getReqstTypeList() {
 }
 
 onFilterChange(): void {
+    if (this.toDate && this.fromDate > this.toDate) {
+    this.toDate = '';
+  }
+
   this.page = 1; // reset pagination
   this.RequestList();
 }

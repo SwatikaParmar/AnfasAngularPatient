@@ -11,10 +11,10 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./request-list.component.css']
 })
 export class RequestListComponent {
-  page: number = 1;
-  itemsPerPage: number = 10;
-  totalItems: number = 0;
-  requestList: any[] = [];
+  // page: number = 1;
+  // itemsPerPage: number = 5;
+  // totalItems: number = 0;
+  // requestList: any[] = [];
   rootUrl: any;
   currentLang = 'en'; // default
 filterMRN: string = '';
@@ -55,59 +55,56 @@ selectedRequestType: number | '' = '';
         return 'black';  // Default color
     }
   }
-  
- RequestList(): void {
+  page: number = 0;
+  itemsPerPage!: number;
+  totalItems!: number;
+requestList: any[] = [];
+
+
+
+
+RequestList(): void {
   this.spinner.show();
 
   const payload: any = {
     pageNumber: this.page,
-    pageSize: this.itemsPerPage
+    pageSize: 35000
   };
 
-  // 🔍 Text Filters
+  // filters
   if (this.filterMRN) payload.mrn = this.filterMRN;
   if (this.filterPatientName) payload.searchQuery = this.filterPatientName;
-
-  // 📅 Date Filters
   if (this.fromDate) payload.fromDate = this.fromDate;
   if (this.toDate) payload.toDate = this.toDate;
-
-  // 📌 Status Filter
   if (this.statusId) payload.statusId = this.statusId;
-
-  
-    // ✅ REQUEST TYPE FILTER
-  if (this.selectedRequestType) {
-    payload.requestTypeId = this.selectedRequestType;
-  }
-
+  if (this.selectedRequestType) payload.requestTypeId = this.selectedRequestType;
 
   this.contentService.getRequestLists(payload).subscribe({
-    next: (response: any) => {
-      if (response?.status) {
-        this.requestList = response.data?.items || response.data || [];
-        this.totalItems = response.data?.totalCount || 0;
+    next: (res: any) => {
+      if (res?.status) {
+        this.requestList = res.data || [];
+
+        // 🔥 pagination mapping
+      
       } else {
         this.requestList = [];
-        this.totalItems = 0;
       }
     },
-    error: () => {
-      this.requestList = [];
-      this.totalItems = 0;
-    },
-    complete: () => {
-      this.spinner.hide();
-    }
+    complete: () => this.spinner.hide()
   });
 }
+
+
+
   onPageChange(page: number): void {
+    // Update query parameters for pagination
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { page: page },
       queryParamsHandling: 'merge',
     });
   }
+
 
 
   
@@ -124,13 +121,10 @@ clearFilters(): void {
 
 
 onFilterChange(): void {
-  if (this.fromDate && this.toDate && this.fromDate > this.toDate) {
-    this.toDate = '';
-  }
-  
-  this.page = 1; // reset pagination
+  this.page = 1;
   this.RequestList();
 }
+
 
 
 
