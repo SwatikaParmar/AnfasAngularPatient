@@ -80,7 +80,7 @@ closeImagePreview(): void {
       mrn: localStorage.getItem('mrn'),
       type: 'bloodsugar',
       pageNumber: 1,
-      pageSize: 10
+      pageSize: 1000
     };
   
     this.contentService.getHealthTracker(payload).subscribe({

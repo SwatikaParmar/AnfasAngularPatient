@@ -80,7 +80,7 @@ export class ComplaintListDetailComponent {
     const payload = {
       complaintId: this.complaintId,  // Pass the complaintId
       page: 1,                        // You can adjust the page number as needed
-      pageSize: 10                    // You can adjust the pageSize (number of items per page)
+      pageSize: 10000                    // You can adjust the pageSize (number of items per page)
     };
   
     this.contentService.getComplaintReply(payload).subscribe(

@@ -37,7 +37,7 @@ export class MedicationListComponent {
     let payload = {
       mrn : localStorage.getItem('mrn'),
       pageNumber : 1,
-      pageSize : 10
+      pageSize : 1000
     }
 
     this.contentService.getmedication(payload).subscribe(

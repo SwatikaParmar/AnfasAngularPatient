@@ -37,7 +37,7 @@ export class EducationalMaterialComponent {
   MaterialList() {
     let payload = {
       pageNumber : 1,
-      pageSize : 10,
+      pageSize : 1000,
       // isApproved : true,
       mrn : localStorage.getItem('mrn'),
      

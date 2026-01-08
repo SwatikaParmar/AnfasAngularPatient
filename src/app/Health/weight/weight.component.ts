@@ -46,7 +46,7 @@ export class WeightComponent {
       mrn: localStorage.getItem('mrn'),
       type: 'weightrecords',
       pageNumber: 1,
-      pageSize: 10
+      pageSize: 1000
     }
 
     this.contentService.getHealthTracker(payload).subscribe(

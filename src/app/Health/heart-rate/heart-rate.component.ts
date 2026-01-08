@@ -81,7 +81,7 @@ imageFile: File | null = null;
       mrn: localStorage.getItem('mrn'),
       type: 'heartrate',
       pageNumber: 1,
-      pageSize: 10
+      pageSize: 1000
     };
 
     this.contentService.getHealthTracker(payload).subscribe(
