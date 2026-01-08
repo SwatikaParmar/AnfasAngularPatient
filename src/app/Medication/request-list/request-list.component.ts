@@ -124,6 +124,10 @@ clearFilters(): void {
 
 
 onFilterChange(): void {
+  if (this.fromDate && this.toDate && this.fromDate > this.toDate) {
+    this.toDate = '';
+  }
+  
   this.page = 1; // reset pagination
   this.RequestList();
 }
