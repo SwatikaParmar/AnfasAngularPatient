@@ -13,15 +13,16 @@
             <img src="assets/images/logo-dashboard.png" alt="Profile Image">
           </div>
           <div class="row d-flex p-10">
-            <div class="col-md-4 col-12 mt-2 mb-2">
-              <div class="info-group"><strong>{{ 'FIRST_NAME' | translate }}:</strong> {{detail.firstName}}</div>
-            </div>
-            <div class="col-md-4 col-12 mt-2 mb-2">
-              <div class="info-group"><strong>{{ 'MIDDLE_NAME' | translate }}:</strong> {{detail.middleName}}</div>
-            </div>
-            <div class="col-md-4 col-12 mt-2 mb-2">
-              <div class="info-group"><strong>{{ 'LAST_NAME' | translate }}:</strong> {{detail.lastName}}</div>
-            </div>
+<div class="col-md-4 col-12 mt-2 mb-2">
+  <div class="info-group">
+    <strong>{{ 'NAME' | translate }}:</strong>
+    {{ detail.firstName || '' }}
+    {{ detail.middleName || '' }}
+    {{ detail.thirdName || '' }}
+    {{ detail.lastName || '' }}
+  </div>
+</div>
+
             <div class="col-md-4 col-12 mt-2 mb-2">
               <div class="info-group"><strong>{{ 'GENDER' | translate }}:</strong> {{gender.valueDescription}}</div>
             </div>
