@@ -1,0 +1,103 @@
+.privacy-page {
+  min-height: 100vh;
+  background: #ffffff;
+  color: #000000;
+  padding: 8px;
+}
+
+.privacy-document {
+  margin: 0;
+  padding: 0;
+}
+
+.privacy-loading,
+.privacy-html {
+  color: #000000;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  line-height: normal;
+}
+
+.privacy-loading {
+  margin: 1em 0;
+}
+
+.privacy-html ::ng-deep * {
+  box-sizing: content-box;
+}
+
+.privacy-html ::ng-deep header {
+  align-items: normal !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  display: block !important;
+  flex-direction: initial !important;
+  gap: normal !important;
+  height: auto !important;
+  justify-content: normal !important;
+  margin: 0 !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  position: static !important;
+  width: auto !important;
+}
+
+.privacy-html ::ng-deep h1 {
+  color: #000000;
+  display: block !important;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 2em;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0.67em 0;
+}
+
+.privacy-html ::ng-deep h2 {
+  color: #000000;
+  display: block !important;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.5em;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0.83em 0;
+}
+
+.privacy-html ::ng-deep p {
+  color: #000000;
+  display: block !important;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  line-height: normal;
+  margin: 1em 0;
+}
+
+.privacy-html ::ng-deep ul,
+.privacy-html ::ng-deep ol {
+  color: #000000;
+  display: block !important;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  line-height: normal;
+  margin: 1em 0;
+  padding-left: 40px;
+}
+
+.privacy-html ::ng-deep li {
+  color: #000000;
+  display: list-item !important;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  line-height: normal;
+  margin: 0;
+}
+
+.privacy-html ::ng-deep b,
+.privacy-html ::ng-deep strong {
+  font-weight: 700;
+}
+
+.privacy-html ::ng-deep a {
+  color: #0000ee;
+  text-decoration: underline;
+}

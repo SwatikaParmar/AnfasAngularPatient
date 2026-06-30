@@ -447,6 +447,12 @@ geteducationalMaterialDetail(id: any): Observable<any> {
   });
 }
 
+privacyPolicy(): Observable<string> {
+  return this.http.get(environment.apiUrl + ApiEndPoint.getPrivacy, {
+    responseType: 'text'
+  });
+}
+
 
 getBloodPressure(data: any) {
   let url = `${environment.apiUrl}${ApiEndPoint.recordType}?pageNumber=${data.pageNumber}&pageSize=${data.pageSize}&careProviderCode=${data.careProviderCode}&mrn=${data.mrn}&type=${data.type}`;

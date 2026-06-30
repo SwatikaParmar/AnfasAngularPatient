@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 const routes: Routes = [
   { path: 'maintenance', component: MaintenanceComponent },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent },
 
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 

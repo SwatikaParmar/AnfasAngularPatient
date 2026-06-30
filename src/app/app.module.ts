@@ -23,6 +23,7 @@ import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
 import { MessagingService } from './shared/services/messaging-service';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 
 
@@ -38,6 +39,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   declarations: [
     AppComponent,
     MaintenanceComponent,
+    PrivacyPolicyComponent,
     
 
   ],
